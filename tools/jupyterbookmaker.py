@@ -13,6 +13,8 @@ import yaml
 import nbformat
 from nbformat.v4.nbbase import new_markdown_cell
 
+version = '0.1.0'
+
 # Regular expression for indexing the notebooks
 # Tested in https://regexr.com/
 REG = re.compile(r'(\b\d\d|[A][A-Z]|[B][A-Z])\.(\d{2}|)-(.*)\.ipynb') 
