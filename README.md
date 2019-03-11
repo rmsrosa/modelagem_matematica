@@ -1,20 +1,23 @@
 # Modelagem Matemática - IM/UFRJ
 
-[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/rmsrosa/modelagem_matematica/master?filepath=notebooks%2FPagina_inicial.ipynb)
+[Página Inicial no github](notebooks/00.00-Pagina_inicial.ipynb)
 
-[![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/rmsrosa/modelagem_matematica/blob/master/notebooks/Pagina_inicial.ipynb)
+[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/rmsrosa/modelagem_matematica/master?filepath=notebooks%2F00.00-Pagina_inicial.ipynb)
+
+[![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/rmsrosa/modelagem_matematica/blob/master/notebooks/00.00-Pagina_inicial.ipynb)
 
 Repositório das notas de aula da disciplina de Modelagem Matemática do Instituto de Matemática da UFRJ. 
 
 ## Utilização
 
-- As notas de aula estão inteiramente disponíveis *online* no repositório [rmsrosa/modelagem_matematica](https://github.com/rmsrosa/modelagem_matematica) do [Github](https://github.com).
+- Há uma [Página Inicial](notebooks/00.00-Pagina_Inicial.ipynb) exibindo a coleção de cadernos de forma estruturada, com links para cada caderno.
+- Os cadernos podem ser acessados e executados na nuvem através do [binder](https://beta.mybinder.org/): [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/rmsrosa/modelagem_matematica/master?filepath=notebooks%2F00.00-Pagina_inicial.ipynb)
+- Os cadernos também podem ser acessados e executados na nuvem através do [Google Colab](http://colab.research.google.com): [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/rmsrosa/modelagem_matematica/blob/master/notebooks/00.00-Pagina_inicial.ipynb)
+- As notas de aula estão inteiramente disponíveis *online* neste repositório [rmsrosa/modelagem_matematica](https://github.com/rmsrosa/modelagem_matematica) do [Github](https://github.com).
 - As notas estão dispostas na forma de uma coleção de **cadernos Jupyter**, e estão disponíveis no subdiretório [notebooks](notebooks).
-- Há uma [Página Inicial](notebooks/Pagina_Inicial.ipynb) exibindo a coleção de cadernos de forma estrutura, com links para cada caderno.
 - O repositório inteiro, incluindo a coleção com todos os cadernos que compõem as notas de aula podem ser copiadas *(downloaded)* para uma máquina local através do link `Clone or Download` da página inicial [rmsrosa/modelagem_matematica](https://github.com/rmsrosa/modelagem_matematica) do repositório, escolhendo a opção `Download ZIP`.
-- Cada caderno também pode ser visualizado diretamente no [Github](https://github.com) e, ao ser visualizado, também pode ser copiado individualmente para uma máquina local clicando-se no ícone `Raw` que aparece em cada página e salvando o conteúdo que aparece (é um arquivo fonte de cadernos jupyter, com a extensão ".ipynb").
-- Os cadernos podem ser acessados e executados na nuvem através do [binder](https://beta.mybinder.org/): [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/rmsrosa/modelagem_matematica/master?filepath=notebooks%2FPagina_inicial.ipynb)
-- Os cadernos também podem ser acessados e executados na nuvem através do [Google Colab](http://colab.research.google.com): [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/rmsrosa/modelagem_matematica/blob/master/notebooks/Pagina_inicial.ipynb)
+- Cada caderno, além de poder visualizado diretamente no [Github](https://github.com), também pode ser copiado individualmente para uma máquina local clicando-se no ícone `Raw`, que aparece em cada página, e salvando o conteúdo que aparece (é um arquivo fonte de cadernos jupyter, com a extensão ".ipynb").
+
 
 ## Modificando os cadernos
 
