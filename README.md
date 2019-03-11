@@ -10,7 +10,7 @@ Repositório das notas de aula da disciplina de Modelagem Matemática do Institu
 
 - As notas de aula estão inteiramente disponíveis *online* no repositório [rmsrosa/modelagem_matematica](https://github.com/rmsrosa/modelagem_matematica) do [Github](https://github.com).
 - As notas estão dispostas na forma de uma coleção de **cadernos Jupyter**, e estão disponíveis no subdiretório [notebooks](notebooks).
-- Há um [Índice de Conteúdo](notebooks/Indice.ipynb) exibindo a coleção de cadernos de forma estrutura, com links para cada caderno.
+- Há uma [Página Inicial](notebooks/Pagina_Inicial.ipynb) exibindo a coleção de cadernos de forma estrutura, com links para cada caderno.
 - O repositório inteiro, incluindo a coleção com todos os cadernos que compõem as notas de aula podem ser copiadas *(downloaded)* para uma máquina local através do link `Clone or Download` da página inicial [rmsrosa/modelagem_matematica](https://github.com/rmsrosa/modelagem_matematica) do repositório, escolhendo a opção `Download ZIP`.
 - Cada caderno também pode ser visualizado diretamente no [Github](https://github.com) e, ao ser visualizado, também pode ser copiado individualmente para uma máquina local clicando-se no ícone `Raw` que aparece em cada página e salvando o conteúdo que aparece (é um arquivo fonte de cadernos jupyter, com a extensão ".ipynb").
 - Os cadernos podem ser acessados e executados na nuvem através do [binder](https://beta.mybinder.org/): [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/rmsrosa/modelagem_matematica/master?filepath=notebooks%2FIndice.ipynb)
