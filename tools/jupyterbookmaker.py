@@ -1,8 +1,18 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 '''
-Adds a book-like structure to a collection of Jupyter notebooks.
+Generates a book-like structure to a collection of Jupyter notebooks.
 '''
+
+__author__ = "Ricardo M. S. Rosa <rmsrosa@gmail.com>"
+__homepage__ = "http://github.com/rmsrosa/jupyterbookmaker"
+__copyright__ = '''
+Original work Copyright (c) 2016 Jacob VanderPlas
+Modified work licensed under GNU GPLv3
+'''
+__license__ = "GNU GPLv3"
+__version__ = "0.2.0"
+__status__ = "beta"
 
 import os
 import re
@@ -13,37 +23,58 @@ import yaml
 import nbformat
 from nbformat.v4.nbbase import new_markdown_cell
 
-version = '0.1.0'
-
 # Regular expression for indexing the notebooks
 # Tested in https://regexr.com/
 REG = re.compile(r'(\b\d\d|[A][A-Z]|[B][A-Z])\.(\d{2}|)-(.*)\.ipynb') 
 
-   
-def iter_notebooks(directory=''):
+TOC_MARKER = "<!--TABLE_OF_CONTENTS-->"    
+HEADER_MARKER = "<!--HEADER-->"   
+NAVIGATOR_MARKER = "<!--NAVIGATOR-->"
+
+def indexed_notebooks(directory='.'):
     '''
-    Returns a sorted list of the filenames in the given 'directory' 
-    that matches the regular expression REG. Filenames that do not
+    Returns a sorted list with the filenames of the 'indexed notebooks'
+    in the given 'directory'. The 'indexed notebooks' are those that
+    match the regular expression REG. Filenames that do not
     match the regular expression are ignored.
 
-    Input:
-    ------
+    Argument:
+    ---------
         directory: string
             The directory that contains the notebooks. 
-    Output:
+
+    Returns:
     -------
         : list of strings
-            A list, ordered by the lexicographycal order, with the 
-            filenames of the notebooks that match the regular 
-            expression.
+            A list with the filenames of the notebooks that match 
+            the regular expression (the 'indexed notebooks'), 
+            ordered by the lexicographycal order.
+
     Raises:
     -------
     
     '''
     return sorted(nb for nb in os.listdir(directory) if REG.match(nb))
 
+def is_marker_cell(MARKER, cell):
+    return  cell.source.startswith(MARKER)
 
-def get_notebook_title(nb_file, directory=''):
+def remove_marker_cell(MARKER, directory='.'):
+    for nb_name in indexed_notebooks(directory):
+        nb_file = os.path.join(directory, nb_name)
+        nb = nbformat.read(nb_file, as_version=4)
+
+        new_cells = []
+        for cell in nb.cells:
+            if not is_marker_cell(MARKER, cell):
+                new_cells.append(cell)
+            else:
+                print(f"- removing '{MARKER}' cell from {nb_name}")
+
+        nb.cells = new_cells
+        nbformat.write(nb, nb_file)
+
+def get_notebook_title(nb_name, directory='.'):
     '''
     Returns the title of a juyter notebook.
 
@@ -55,7 +86,7 @@ def get_notebook_title(nb_file, directory=''):
     ------
         directory: string
             The directory that contains the notebook.
-        nb_file: string
+        nb_name: string
             The name of the jupyter notebook file.
     
     Output:
@@ -64,13 +95,13 @@ def get_notebook_title(nb_file, directory=''):
             The desired title of the notebook or None if not found.
 
     '''
-    nb = nbformat.read(os.path.join(directory, nb_file), as_version=4)
+    nb = nbformat.read(os.path.join(directory, nb_name), as_version=4)
     for cell in nb.cells:
         if cell.source.startswith('#'):
             return cell.source[1:].splitlines()[0].strip()
 
 
-def get_notebook_full_entry(nb_name, directory=''):
+def get_notebook_full_entry(nb_name, directory='.'):
     '''
     Returns the entry of a notebook to be used in the Table of Contents
 
@@ -109,23 +140,23 @@ def get_notebook_full_entry(nb_name, directory=''):
 
     return markdown_entry, notebook_entry
 
-def get_notebook_entry(nb_name, directory='', show_full_entry=True):
+def get_notebook_entry(nb_name, directory='.', show_full_entry=True):
     if show_full_entry:
         entry = get_notebook_full_entry(nb_name, directory)[1]
     else:
         entry = get_notebook_title(nb_name, directory)
     return entry   
 
-def gen_contents(directory=''):
-    for nb_name in iter_notebooks(directory):
+def yield_contents(directory='.'):
+    for nb_name in indexed_notebooks(directory):
         markdown_entry, notebook_entry = get_notebook_full_entry(nb_name, directory)
         yield f'{markdown_entry}[{notebook_entry}]({nb_name})'
 
-def print_contents(directory=''):
-    print('\n'.join(gen_contents(directory)))
+def print_contents(directory='.'):
+    print('\n'.join(yield_contents(directory)))
 
 
-def get_contents(directory=''):
+def get_contents(directory='.'):
     """
     Returns a string with the 'Table of Contents' constructed 
     from the collection of notebooks in the 'directory' given
@@ -133,58 +164,47 @@ def get_contents(directory=''):
     """
 
     contents = ""
-    for item in gen_contents(directory):
+    for item in yield_contents(directory):
         contents += item + "\n"
     
     return contents
 
-def add_contents(toc_nb_name, directory=''):
-
+def add_contents(toc_nb_name, directory='.'):
     # error handling
     assert(type(directory)==str), "Argument 'directory' should be a string"
     assert(type(toc_nb_name)==str), "Argument 'toc_nb_name' should be a string"
 
-
-    TOC_COMMENT = "<!--TABLE_OF_CONTENTS-->\n"
-
-    contents = TOC_COMMENT + "\n\n"
-    for item in gen_contents(directory):
+    contents = TOC_MARKER + "\n\n"
+    for item in yield_contents(directory):
         contents += item + "\n"
 
-    if directory:
-        toc_nb_file = os.path.join(directory, toc_nb_name)
-    else:
-        toc_nb_file = toc_nb_name
+    toc_nb_file = os.path.join(directory, toc_nb_name)
 
     toc_nb = nbformat.read(toc_nb_file, as_version=4)
-    is_comment = lambda cell: cell.source.startswith(TOC_COMMENT)
 
     toc_cell_found = False
     for cell in toc_nb.cells:
-        if is_comment(cell):
+        if is_marker_cell(TOC_MARKER, cell):
             cell.source = contents
             toc_cell_found = True
             
     if toc_cell_found:
         nbformat.write(toc_nb, toc_nb_file)
-        print(f'Table of contents inserted in {toc_nb_name}')
+        print(f'- Table of contents updated in {toc_nb_name}')
     else:
-        print(f'No markdown cell starting with {TOC_COMMENT} found in {toc_nb_name}')
+        print(f'* No markdown cell starting with {TOC_MARKER} found in {toc_nb_name}')
 
-def add_book_header(book_header, directory=''):
-    BOOK_COMMENT = "<!--BOOK_INFORMATION-->\n"
-    for nb_name in iter_notebooks(directory):
+def add_headers(header, directory='.'):
+    for nb_name in indexed_notebooks(directory):
         nb_file = os.path.join(directory, nb_name)
         nb = nbformat.read(nb_file, as_version=4)
 
-        is_comment = lambda cell: cell.source.startswith(BOOK_COMMENT)
-
-        if is_comment(nb.cells[0]):
-            print('- amending comment for {0}'.format(nb_name))
-            nb.cells[0].source = BOOK_COMMENT + book_header
+        if nb.cells and is_marker_cell(HEADER_MARKER, nb.cells[0]):    
+            print('- updating header for {0}'.format(nb_name))
+            nb.cells[0].source = HEADER_MARKER + '\n' + header
         else:
-            print('- inserting comment for {0}'.format(nb_name))
-            nb.cells.insert(0, new_markdown_cell(BOOK_COMMENT + book_header))
+            print('- inserting header for {0}'.format(nb_name))
+            nb.cells.insert(0, new_markdown_cell(HEADER_MARKER + '\n' + header))
         nbformat.write(nb, nb_file)
 
 def prev_this_next(it):
@@ -192,9 +212,9 @@ def prev_this_next(it):
     next(c)
     return zip(itertools.chain([None], a), b, itertools.chain(c, [None]))
 
-def iter_navbars(center_nav, directory='', 
-                 repository = None, branch = None, 
-                 show_full_entry = True):
+def get_navigator_entries(core_navigators = [], directory='.', 
+                          repository = None, branch = None, 
+                          show_full_entry = True):
 
     PREV_TEMPLATE = "[<- {title}]({url}) "
     CENTER_TEMPLATE = "| [{title}]({url}) "
@@ -207,13 +227,13 @@ def iter_navbars(center_nav, directory='',
 <a href="https://mybinder.org/v2/gh/{repository}/{branch}?filepath=notebooks/{notebook_filename}"><img align="left" src="https://mybinder.org/badge.svg" alt="Open in binder" title="Open and Execute in Binder"></a>
 """
 
-    for prev_nb, nb, next_nb in prev_this_next(iter_notebooks(directory)):
+    for prev_nb, this_nb, next_nb in prev_this_next(indexed_notebooks(directory)):
         navbar = ""
         if prev_nb:
             entry = get_notebook_entry(prev_nb, directory, show_full_entry)
             navbar += PREV_TEMPLATE.format(title=entry, url=prev_nb)
 
-        for center_nb in center_nav:
+        for center_nb in core_navigators:
             entry = get_notebook_entry(center_nb, directory, show_full_entry)
             navbar += CENTER_TEMPLATE.format(title=entry, url=center_nb)
 
@@ -222,23 +242,22 @@ def iter_navbars(center_nav, directory='',
             navbar += NEXT_TEMPLATE.format(title=entry, url=next_nb)
 
         this_colab_link = COLAB_LINK.format(repository=repository, 
-            branch=branch, notebook_filename=os.path.basename(nb))
+            branch=branch, notebook_filename=os.path.basename(this_nb))
         this_binder_link = BINDER_LINK.format(repository=repository, 
-            branch=branch, notebook_filename=os.path.basename(nb))
+            branch=branch, notebook_filename=os.path.basename(this_nb))
             
-        yield os.path.join(directory, nb), navbar, this_colab_link, this_binder_link
+        yield os.path.join(directory, this_nb), navbar, this_colab_link, this_binder_link
 
-def add_navbars(center_nav='', directory='', repository = '', branch = '', 
-                show_colab=False, show_binder=False, 
-                show_full_entry=True):
-    NAV_COMMENT = "<!--NAVIGATION-->\n"
-    for nb_name, navbar, this_colab_link, this_binder_link in iter_navbars(center_nav, directory, repository, branch, show_full_entry):
-        nb = nbformat.read(nb_name, as_version=4)
-        nb_file = os.path.basename(nb_name)
-        is_comment = lambda cell: cell.source.startswith(NAV_COMMENT)
+def add_navigators(core_navigators=[], directory='.', 
+                   repository = '', branch = '', 
+                   show_colab=False, show_binder=False, 
+                   show_full_entry=True):
+    for nb_file, navbar, this_colab_link, this_binder_link in get_navigator_entries(core_navigators, directory, repository, branch, show_full_entry):
+        nb = nbformat.read(nb_file, as_version=4)
+        nb_name = os.path.basename(nb_file)
 
-        navbar_top = navbar_bottom = NAV_COMMENT
-        navbar_bottom = NAV_COMMENT + "\n---\n" + navbar
+        navbar_top = navbar_bottom = NAVIGATOR_MARKER + "\n"
+        navbar_bottom = NAVIGATOR_MARKER + "\n\n---\n" + navbar
         if show_colab and show_binder:
             navbar_top += this_colab_link + "&nbsp;" + this_binder_link + "&nbsp;\n"
             navbar_bottom += "\n" + this_colab_link + this_binder_link + "&nbsp;" 
@@ -251,42 +270,53 @@ def add_navbars(center_nav='', directory='', repository = '', branch = '',
 
         navbar_top += "\n" + navbar + "\n\n---\n"
 
-        if is_comment(nb.cells[1]):
-            print("- amending navbar for {0}".format(nb_file))
+        if len(nb.cells) > 1 and is_marker_cell(NAVIGATOR_MARKER, nb.cells[1]):         
+            print("- updating navbar for {0}".format(nb_name))
             nb.cells[1].source = navbar_top
         else:
-            print("- inserting navbar for {0}".format(nb_file))
+            print("- inserting navbar for {0}".format(nb_name))
             nb.cells.insert(1, new_markdown_cell(source=navbar_top))
 
-        if is_comment(nb.cells[-1]):
+        if nb.cells and is_marker_cell(NAVIGATOR_MARKER, nb.cells[-1]):
             nb.cells[-1].source = navbar_bottom
         else:
             nb.cells.append(new_markdown_cell(source=navbar_bottom))
-        nbformat.write(nb, nb_name)
+        nbformat.write(nb, nb_file)
 
-def make_book(toc_nb_name, book_header, center_nav,
-              directory='', repository='', branch='', 
+def make_book(toc_nb_name, header, core_navigators,
+              directory='.', repository='', branch='', 
               show_colab=False, show_binder=False, show_full_entry=True):
 
     add_contents(toc_nb_name = toc_nb_name, directory = directory)
-    add_book_header(book_header = book_header, directory = directory)
-    add_navbars(center_nav=center_nav, directory=directory, 
-                repository=repository, branch=branch, 
-                show_colab=show_colab, show_binder=show_binder,
-                show_full_entry=show_full_entry)
+    add_headers(header = header, directory = directory)
+    add_navigators(core_navigators=core_navigators, directory=directory, 
+                   repository=repository, branch=branch, 
+                   show_colab=show_colab, show_binder=show_binder,
+                   show_full_entry=show_full_entry)
 
 def make_book_from_configfile(config_file):
     with open(config_file, 'r') as f:
         config = yaml.load(f)
-    if 'makebook' in config:
-        make_book(**config['makebook'])
+    if 'book' in config:
+        make_book(**config['book'])
     else:
+        directory = '.'
+        for sec in config:
+            if 'directory' in config[sec]:
+                directory = config[sec]['directory']
+
         if 'contents' in config:
             add_contents(**config['contents'])
-        if 'book_header' in config:
-            add_book_header(**config['book_header'])
-        if 'navbars' in config:
-            add_navbars(**config['navbars'])
+
+        if 'header' in config:
+            add_headers(**config['header'])
+        else:
+            remove_marker_cell(HEADER_MARKER, directory)
+
+        if 'navigator' in config:
+            add_navigators(**config['navigator'])
+        else:
+            remove_marker_cell(NAVIGATOR_MARKER, directory)
 
 if __name__ == '__main__':
     if len(sys.argv) == 1 or sys.argv[1] == '--help' or sys.argv[1] == '-h':

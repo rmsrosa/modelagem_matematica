@@ -1,26 +1,14 @@
-# Tools
+# The Jupyter Bookmaker
 
-These are tools for managing the collection of notebooks in this repository, giving them a book-like structure, with a table of contents, notebook headers, and top and bottom navigators.
+The `jupyterbookmaker.py` module/script is a tools to generate a book-like structure for a collection of [Jupyter](https://jupyter.org/) notebooks, giving them a table of contents, notebook headers, and top and bottom navigators.
 
-## Files
+The script is included here and its package can be found in the github repository [rmsrosa/jupyterbookmaker](https://github.com/rmsrosa/jupyterbookmaker)
 
-- `jupyterbookmaker.py`: this is the main script/module that adds a table of contents, notebook headers and top and bottom navigators, according to some given parameters. 
-- `config.yml`: this is the configuration file, in YAML format, to be passed to `jupyterbookmaker.py`, with the parameters used to create the book-like structure of the collection of jupyter notebooks in this repository.
+As a script, `jupyterbookmaker.py` reads a given configuration file, in the [YAML](https://en.wikipedia.org/wiki/YAML) format, to properly construct the book-like structure in a desired way.
 
-## How to use them
+As a module, it can build the structure out of a configuration file and also provides some extra features. See the github repository for more details.
 
-In a `bash` terminal, within the `tools` directory, issue the command
-```bash
-./jupyterbookmaker.py config.yml
-```
+Within this [rmsrosa/modelagem_matematica](https://github.com/rmsrosa/modelagem_matematica) repository, the module is copied verbatim in the `tools` folder and it is imported and used in the Jupyter notebook [../notebooks/Estrutura_livro.ipynb] to build the book-like structure.
 
-This populates (or updates) the notebooks with the table of contents, notebook headers, and top and bottom navigators.
-
-## License
-
-The codes within this subdirectory `tools` are licensed under the [MIT license](https://opensource.org/licenses/MIT), with copyright to Ricardo M. S. Rosa
-
-## Credits
-
-The `jupyterbookmaker.py` module/script is my own modification of the set of tools found in the [Python Data Science Handbook](https://github.com/jakevdp/PythonDataScienceHandbook) 
-by [Jake VanderPlas](http://vanderplas.com/).
+The `jupyterbookmaker.py` is licensed under the [GNU GPLv3 license](https://www.gnu.org/licenses/gpl.html). It is my own modification of the set of tools found in the [Python Data Science Handbook](https://github.com/jakevdp/PythonDataScienceHandbook) 
+by [Jake VanderPlas](http://vanderplas.com/), which are originally realeased under the [MIT license](https://opensource.org/licenses/MIT)
