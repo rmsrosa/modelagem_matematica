@@ -31,12 +31,12 @@ Este é o primeiro período da disciplina neste formato (2019/1). As notas ainda
 
 ## Licença
 
-O **texto** desse repositório está disponível sob a licença [CC-BY-NC-ND license](LICENSE-TEXT). Mais informações sobre essa licença em [Creative Commons](https://creativecommons.org/licenses/by-nc-nd/3.0/us/legalcode).
+Os **textos** neste repositório estão disponíveis sob a licença [CC-BY-NC-ND license](LICENSE-TEXT). Mais informações sobre essa licença em [Creative Commons Attribution-NonCommercial-NoDerivs 3.0](https://creativecommons.org/licenses/by-nc-nd/3.0/us/legalcode).
 
-Os **códigos** nesse repositório estão disponíveis sob a licença [MIT license](LICENSE-CODE). Mais informações sobre essa licença em [Open Source Initiative](https://opensource.org/licenses/MIT), respectivamente.
+Os **códigos** neste repositório, nos blocos de código dos *Jupyter notebooks,* estão disponíveis sob a [licença GNU-GPL](LICENSE-CODEE). Mais informações sobre essa licença em [GNU GENERAL PUBLIC LICENSE Version 3](https://www.gnu.org/licenses/gpl.html).
 
-## Agradecimentos
+## Créditos
 
 O formato dessas notas, a estrutura do repositório e os códigos para a construção da Índice de Conteúdo e dos navegadores de páginas foram inspirados no repositório [github/jakevdp/PythonDataScienceHandbook](https://github.com/jakevdp/PythonDataScienceHandbook), de [Jake VanderPlas](http://vanderplas.com).
 
-Também agradecemos a todos os que contribuíram e contribuem com o desenvolvimento das diversas ferramentas livres e gratuitas que utilizamos, como o próprio python, seus módulos, latex, mathjax, github, etc.
+O conteúdo está sendo desenvolvido por [Ricardo M. S. Rosa (IM-UFRJ)](http://www.dma.im.ufrj.br/~rrosa), em colaboração com [Alejandro Cabrera (IM-UFRJ)](http://www.dma.im.ufrj.br/~acabrera/).
