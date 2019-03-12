@@ -16,7 +16,7 @@ Repositório das notas de aula da disciplina de Modelagem Matemática do Institu
 - As notas de aula estão inteiramente disponíveis *online* neste repositório [rmsrosa/modelagem_matematica](https://github.com/rmsrosa/modelagem_matematica) do [Github](https://github.com).
 - As notas estão dispostas na forma de uma coleção de **cadernos Jupyter**, e estão disponíveis no subdiretório [notebooks](notebooks).
 - O repositório inteiro, incluindo a coleção com todos os cadernos que compõem as notas de aula podem ser copiadas *(downloaded)* para uma máquina local através do link `Clone or Download` da página inicial [rmsrosa/modelagem_matematica](https://github.com/rmsrosa/modelagem_matematica) do repositório, escolhendo a opção `Download ZIP`.
-- Cada caderno, além de poder visualizado diretamente no [Github](https://github.com), também pode ser copiado individualmente para uma máquina local clicando-se no ícone `Raw`, que aparece em cada página, e salvando o conteúdo que aparece (é um arquivo fonte de cadernos jupyter, com a extensão ".ipynb").
+- Cada caderno, além de poder visualizado diretamente no [Github](https://github.com), também pode ser copiado individualmente para uma máquina local clicando-se no ícone `Raw`, que aparece em cada página, e salvando o conteúdo que aparece (é um arquivo fonte de cadernos jupyter, com a extensão `".ipynb"`).
 
 
 ## Modificando os cadernos
@@ -24,9 +24,12 @@ Repositório das notas de aula da disciplina de Modelagem Matemática do Institu
 Naturalmente, durante a disciplina, é esperado que os alunos modifiquem os cadernos existentes e criem os seus próprios cadernos para resolver exercícios e escrever os mini-projetos e o projeto final.
 
 - Isso pode ser feito localmente, em máquinas com o Python (versão 3.6 ou 3.7) e os devidos pacotes devidamente instalados. A lista dos pacotes necessários para o conjunto de cadernos aparece no arquivo [requirements.txt](requirements.txt). (Esse arquivo é necessário para o *Binder* poder montar o ambiente python necessário para o devido funcionamento dos cadernos. O *Google Colab* já tem o seu próprio ambiente.)
+
 - Caso não seja possível trabalhar localmente, por falta de uma versão apropriada do Python, é possível trabalhar na nuvem. Ao acessar os arquivos deste repositório, um ambiente python temporário é montado e os cadernos podem ser alterados e executados interativamente. Mas eles não são guardados para uma próxima sessão. Se quiser salvar as alterações, é necessário "baixar" os cadernos alterados para a sua máquina.
+
 - Uma alternativa, caso tenha um *Google Drive*, é habilitar o *Google Colab* em sua conta do Google e copiar as notas para um diretório denominado *Colab Notebooks* que será automaticamente criado em seu *Google Drive*. Nesse caso, as notas podem ser acessadas, executadas e gravadas normalmente, como se estivesse com uma instalação local do python/jupyter. 
-- Uma outra alternativa é criar uma conta no [github](https://github.com), *clonar* o repositório e usar o [Google Colab]() ou o [Binder] a partir do seu repositório. Será necessário, no entanto, após a clonagem, modificar os cadernos para atualizar os links com o nome do seu repositório. Trabalhar com o github não é trivial, mas uma vantagem é que será mais fácil submeter correções ou sugestões para este repositório, ajudando-o a melhorar.
+
+- Uma outra alternativa é criar uma conta no [github](https://github.com), *clonar* o repositório e usar o [Google Colab](http://colab.research.google.com)) ou o [Binder](https://beta.mybinder.org/) a partir do seu repositório. Será necessário, no entanto, após a clonagem, modificar os cadernos para atualizar os links com o nome do seu repositório. Trabalhar com o github não é trivial, mas uma vantagem é que será mais fácil submeter correções ou sugestões para este repositório, ajudando-o a melhorar.
 
 ## Aviso
 
