@@ -1,0 +1,10 @@
+book:
+  toc_nb_name: 00-Sumario.ipynb
+  header: "*[Guia de aulas da disciplina de Modelagem Matemática](https://github.com/rmsrosa/modelagem_matematica) do [IM-UFRJ](https://www.im.ufrj.br).*"
+  core_navigators:
+    - 00-Sumario.ipynb
+  repository: rmsrosa/modelagem_matematica
+  branch: master
+  show_colab: True
+  show_binder: True
+  show_full_entry: False
