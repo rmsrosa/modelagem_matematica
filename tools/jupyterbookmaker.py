@@ -25,7 +25,7 @@ from nbformat.v4.nbbase import new_markdown_cell
 
 # Regular expression for indexing the notebooks
 # Tested in https://regexr.com/
-REG = re.compile(r'(\b\d\d|[A][A-Z]|[B][A-Z])\.(\d{2}|)-(.*)\.ipynb') 
+REG = re.compile(r'(\b\d\d|\b[A][A-Z]|[B][A-Z])\.(\d{2}|)-(.*)\.ipynb') 
 
 TOC_MARKER = "<!--TABLE_OF_CONTENTS-->"    
 HEADER_MARKER = "<!--HEADER-->"   
