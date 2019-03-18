@@ -11,7 +11,7 @@ Original work Copyright (c) 2016 Jacob VanderPlas
 Modified work licensed under GNU GPLv3
 '''
 __license__ = "GNU GPLv3"
-__version__ = "0.2.0"
+__version__ = "0.3.2"
 __status__ = "beta"
 
 import os
@@ -25,23 +25,25 @@ from nbformat.v4.nbbase import new_markdown_cell
 
 # Regular expression for indexing the notebooks
 # Tested in https://regexr.com/
-REG = re.compile(r'(\b\d\d|\b[A][A-Z]|[B][A-Z])\.(\d{2}|)-(.*)\.ipynb') 
+REG = re.compile(r'(\b\d\d|\b[A][A-Z]|\b[B][A-Z])\.(\d{2}|)-(.*)\.ipynb') 
 
 TOC_MARKER = "<!--TABLE_OF_CONTENTS-->"    
 HEADER_MARKER = "<!--HEADER-->"   
 NAVIGATOR_MARKER = "<!--NAVIGATOR-->"
 
-def indexed_notebooks(directory='.'):
+def indexed_notebooks(app_to_notes_path='.'):
     '''
     Returns a sorted list with the filenames of the 'indexed notebooks'
-    in the given 'directory'. The 'indexed notebooks' are those that
+    in the given 'app_to_notes_path'. The 'indexed notebooks' are those that
     match the regular expression REG. Filenames that do not
     match the regular expression are ignored.
 
     Argument:
     ---------
-        directory: string
-            The directory that contains the notebooks. 
+        app_to_notes_path: string
+            The path to the directory that contains the notebooks, 
+            either the absolute path or the path relative from 
+            where the code is being ran.
 
     Returns:
     -------
@@ -54,14 +56,14 @@ def indexed_notebooks(directory='.'):
     -------
     
     '''
-    return sorted(nb for nb in os.listdir(directory) if REG.match(nb))
+    return sorted(nb for nb in os.listdir(app_to_notes_path) if REG.match(nb))
 
 def is_marker_cell(MARKER, cell):
     return  cell.source.startswith(MARKER)
 
-def remove_marker_cell(MARKER, directory='.'):
-    for nb_name in indexed_notebooks(directory):
-        nb_file = os.path.join(directory, nb_name)
+def remove_marker_cell(MARKER, app_to_notes_path='.'):
+    for nb_name in indexed_notebooks(app_to_notes_path):
+        nb_file = os.path.join(app_to_notes_path, nb_name)
         nb = nbformat.read(nb_file, as_version=4)
 
         new_cells = []
@@ -74,7 +76,7 @@ def remove_marker_cell(MARKER, directory='.'):
         nb.cells = new_cells
         nbformat.write(nb, nb_file)
 
-def get_notebook_title(nb_name, directory='.'):
+def get_notebook_title(nb_name, app_to_notes_path='.'):
     '''
     Returns the title of a juyter notebook.
 
@@ -84,10 +86,12 @@ def get_notebook_title(nb_name, directory='.'):
 
     Input:
     ------
-        directory: string
-            The directory that contains the notebook.
         nb_name: string
             The name of the jupyter notebook file.
+        app_to_notes_path: string
+            The path to the directory that contains the notebooks, 
+            either the absolute path or the path relative from 
+            where the code is being ran.
     
     Output:
     -------
@@ -95,22 +99,25 @@ def get_notebook_title(nb_name, directory='.'):
             The desired title of the notebook or None if not found.
 
     '''
-    nb = nbformat.read(os.path.join(directory, nb_name), as_version=4)
+    nb = nbformat.read(os.path.join(app_to_notes_path, nb_name), as_version=4)
     for cell in nb.cells:
         if cell.source.startswith('#'):
             return cell.source[1:].splitlines()[0].strip()
 
 
-def get_notebook_full_entry(nb_name, directory='.'):
+def get_notebook_full_entry(nb_name, app_to_notes_path='.'):
     '''
     Returns the entry of a notebook to be used in the Table of Contents
 
     Input:
     ------
-        directory: string
-            The directory that contains the notebooks.
         nb_name: string
             The name of the jupyter notebook file. 
+        app_to_notes_path: string
+            The path to the directory that contains the notebooks, 
+            either the absolute path or the path relative from 
+            where the code is being ran.
+
     Output:
     -------
         markdown_entry: string
@@ -129,56 +136,67 @@ def get_notebook_full_entry(nb_name, directory='.'):
         chapter_clean = int(chapter)
     else:
         chapter_clean = chapter[1]
-    title = get_notebook_title(nb_name, directory)
+    title = get_notebook_title(nb_name, app_to_notes_path)
 
     if chapter=='00' or chapter[0]=='B' or section=='':
-        markdown_entry, notebook_entry = '\n### ', '{0}'.format(title)
+        markdown_entry = '### '
+        num_entry = ''
     elif section=='00':
-        markdown_entry, notebook_entry= '\n### ', '{0}. {1}'.format(chapter_clean, title)
+        markdown_entry = '### '
+        num_entry = f'{chapter_clean}. '
     else:
-        markdown_entry, notebook_entry = '\n&nbsp;&nbsp;&nbsp;&nbsp; ', '{0}.{1}. {2}'.format(chapter_clean, int(section), title)
+        markdown_entry = '&nbsp;&nbsp;&nbsp;&nbsp; '
+        num_entry = f'{chapter_clean}.{int(section)}. '
+    
+    return markdown_entry, num_entry, title
 
-    return markdown_entry, notebook_entry
-
-def get_notebook_entry(nb_name, directory='.', show_full_entry=True):
+def get_notebook_entry(nb_name, app_to_notes_path='.', 
+                       show_full_entry=True):
     if show_full_entry:
-        entry = get_notebook_full_entry(nb_name, directory)[1]
+        entry = ''.join(list(get_notebook_full_entry(nb_name, app_to_notes_path)[1:3]))
     else:
-        entry = get_notebook_title(nb_name, directory)
+        entry = get_notebook_title(nb_name, app_to_notes_path)
     return entry   
 
-def yield_contents(directory='.'):
-    for nb_name in indexed_notebooks(directory):
-        markdown_entry, notebook_entry = get_notebook_full_entry(nb_name, directory)
-        yield f'{markdown_entry}[{notebook_entry}]({nb_name})'
+def yield_contents(app_to_notes_path='.', show_full_entry_in_toc=True):
+    for nb_name in indexed_notebooks(app_to_notes_path):
+        markdown_entry, num_entry, title = get_notebook_full_entry(nb_name, app_to_notes_path)
+        if show_full_entry_in_toc:
+            yield f'{markdown_entry}[{num_entry + title}]({nb_name})\n'
+        else:
+            yield f'{markdown_entry}[{title}]({nb_name})\n'
+ 
 
-def print_contents(directory='.'):
-    print('\n'.join(yield_contents(directory)))
+def print_contents(app_to_notes_path='.', 
+                   show_full_entry_in_toc=True):
+    print('\n'.join(yield_contents(app_to_notes_path, 
+                                   show_full_entry_in_toc)))
 
 
-def get_contents(directory='.'):
+def get_contents(app_to_notes_path='.', show_full_entry_in_toc=True):
     """
     Returns a string with the 'Table of Contents' constructed 
-    from the collection of notebooks in the 'directory' given
+    from the collection of notebooks in the 'app_to_notes_path' given
     as argument.
     """
 
     contents = ""
-    for item in yield_contents(directory):
+    for item in yield_contents(app_to_notes_path, show_full_entry_in_toc):
         contents += item + "\n"
     
     return contents
 
-def add_contents(toc_nb_name, directory='.'):
+def add_contents(toc_nb_name, app_to_notes_path='.',
+                 show_full_entry_in_toc=True):
     # error handling
-    assert(type(directory)==str), "Argument 'directory' should be a string"
+    assert(type(app_to_notes_path)==str), "Argument 'app_to_notes_path' should be a string"
     assert(type(toc_nb_name)==str), "Argument 'toc_nb_name' should be a string"
 
     contents = TOC_MARKER + "\n\n"
-    for item in yield_contents(directory):
+    for item in yield_contents(app_to_notes_path, show_full_entry_in_toc):
         contents += item + "\n"
 
-    toc_nb_file = os.path.join(directory, toc_nb_name)
+    toc_nb_file = os.path.join(app_to_notes_path, toc_nb_name)
 
     toc_nb = nbformat.read(toc_nb_file, as_version=4)
 
@@ -194,9 +212,9 @@ def add_contents(toc_nb_name, directory='.'):
     else:
         print(f'* No markdown cell starting with {TOC_MARKER} found in {toc_nb_name}')
 
-def add_headers(header, directory='.'):
-    for nb_name in indexed_notebooks(directory):
-        nb_file = os.path.join(directory, nb_name)
+def add_headers(header, app_to_notes_path='.'):
+    for nb_name in indexed_notebooks(app_to_notes_path):
+        nb_file = os.path.join(app_to_notes_path, nb_name)
         nb = nbformat.read(nb_file, as_version=4)
 
         if nb.cells and is_marker_cell(HEADER_MARKER, nb.cells[0]):    
@@ -212,47 +230,55 @@ def prev_this_next(it):
     next(c)
     return zip(itertools.chain([None], a), b, itertools.chain(c, [None]))
 
-def get_navigator_entries(core_navigators = [], directory='.', 
-                          repository = None, branch = None, 
-                          show_full_entry = True):
+def get_navigator_entries(core_navigators = [], app_to_notes_path='.', 
+                          repository = '', branch = '',
+                          github_nb_dir = '', 
+                          show_full_entry_in_nav = True):
 
     PREV_TEMPLATE = "[<- {title}]({url}) "
     CENTER_TEMPLATE = "| [{title}]({url}) "
     NEXT_TEMPLATE = "| [{title} ->]({url})"
 
     COLAB_LINK = """
-<a href="https://colab.research.google.com/github/{repository}/blob/{branch}/notebooks/{notebook_filename}"><img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open and Execute in Google Colaboratory"></a>
+<a href="https://colab.research.google.com/github/{repository}/blob/{branch}/{github_nb_dir}/{notebook_filename}"><img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open and Execute in Google Colaboratory"></a>
 """
     BINDER_LINK = """
-<a href="https://mybinder.org/v2/gh/{repository}/{branch}?filepath=notebooks/{notebook_filename}"><img align="left" src="https://mybinder.org/badge.svg" alt="Open in binder" title="Open and Execute in Binder"></a>
+<a href="https://mybinder.org/v2/gh/{repository}/{branch}?filepath={github_nb_dir}/{notebook_filename}"><img align="left" src="https://mybinder.org/badge.svg" alt="Open in binder" title="Open and Execute in Binder"></a>
 """
 
-    for prev_nb, this_nb, next_nb in prev_this_next(indexed_notebooks(directory)):
+    for prev_nb, this_nb, next_nb in prev_this_next(indexed_notebooks(app_to_notes_path)):
         navbar = ""
         if prev_nb:
-            entry = get_notebook_entry(prev_nb, directory, show_full_entry)
+            entry = get_notebook_entry(prev_nb, app_to_notes_path, 
+                                       show_full_entry_in_nav)
             navbar += PREV_TEMPLATE.format(title=entry, url=prev_nb)
 
         for center_nb in core_navigators:
-            entry = get_notebook_entry(center_nb, directory, show_full_entry)
+            entry = get_notebook_entry(center_nb, app_to_notes_path, 
+                                       show_full_entry_in_nav)
             navbar += CENTER_TEMPLATE.format(title=entry, url=center_nb)
 
         if next_nb:
-            entry = get_notebook_entry(next_nb, directory, show_full_entry)
+            entry = get_notebook_entry(next_nb, app_to_notes_path, 
+                                       show_full_entry_in_nav)
             navbar += NEXT_TEMPLATE.format(title=entry, url=next_nb)
 
         this_colab_link = COLAB_LINK.format(repository=repository, 
-            branch=branch, notebook_filename=os.path.basename(this_nb))
+            branch=branch, github_nb_dir=github_nb_dir, 
+            notebook_filename=os.path.basename(this_nb))
         this_binder_link = BINDER_LINK.format(repository=repository, 
-            branch=branch, notebook_filename=os.path.basename(this_nb))
+            branch=branch, github_nb_dir=github_nb_dir, 
+            notebook_filename=os.path.basename(this_nb))
             
-        yield os.path.join(directory, this_nb), navbar, this_colab_link, this_binder_link
+        yield os.path.join(app_to_notes_path, this_nb), navbar, this_colab_link, this_binder_link
 
-def add_navigators(core_navigators=[], directory='.', 
+def add_navigators(core_navigators=[], app_to_notes_path='.', 
                    repository = '', branch = '', 
+                   github_nb_dir = '',
                    show_colab=False, show_binder=False, 
-                   show_full_entry=True):
-    for nb_file, navbar, this_colab_link, this_binder_link in get_navigator_entries(core_navigators, directory, repository, branch, show_full_entry):
+                   show_full_entry_in_nav=True):
+    for nb_file, navbar, this_colab_link, this_binder_link in get_navigator_entries(core_navigators, app_to_notes_path, repository, 
+                          branch, github_nb_dir, show_full_entry_in_nav):
         nb = nbformat.read(nb_file, as_version=4)
         nb_name = os.path.basename(nb_file)
 
@@ -284,39 +310,53 @@ def add_navigators(core_navigators=[], directory='.',
         nbformat.write(nb, nb_file)
 
 def make_book(toc_nb_name, header, core_navigators,
-              directory='.', repository='', branch='', 
-              show_colab=False, show_binder=False, show_full_entry=True):
+              app_to_notes_path='.', repository='', branch='', 
+              github_nb_dir ='',
+              show_colab=False, show_binder=False,
+              show_full_entry_in_toc=True,
+              show_full_entry_in_nav=True):
 
-    add_contents(toc_nb_name = toc_nb_name, directory = directory)
-    add_headers(header = header, directory = directory)
-    add_navigators(core_navigators=core_navigators, directory=directory, 
+    add_contents(toc_nb_name=toc_nb_name, 
+                 app_to_notes_path=app_to_notes_path,
+                 show_full_entry_in_toc=show_full_entry_in_toc)
+
+    add_headers(header = header, app_to_notes_path = app_to_notes_path)
+
+    add_navigators(core_navigators=core_navigators,
+                   app_to_notes_path=app_to_notes_path, 
                    repository=repository, branch=branch, 
+                   github_nb_dir=github_nb_dir,
                    show_colab=show_colab, show_binder=show_binder,
-                   show_full_entry=show_full_entry)
+                   show_full_entry_in_nav=show_full_entry_in_nav)
 
 def make_book_from_configfile(config_file):
     with open(config_file, 'r') as f:
         config = yaml.load(f)
-    if 'book' in config:
-        make_book(**config['book'])
-    else:
-        directory = '.'
-        for sec in config:
-            if 'directory' in config[sec]:
-                directory = config[sec]['directory']
 
+    if 'directory' in config:
+        app_to_notes_path = config['directory']['app_to_notes_path']
+    else:
+        app_to_notes_path = '.'
+
+    if 'book' in config:
+        make_book(**config['book'], 
+                app_to_notes_path=app_to_notes_path)
+    else:
         if 'contents' in config:
-            add_contents(**config['contents'])
+            add_contents(**config['contents'], 
+                app_to_notes_path=app_to_notes_path)
 
         if 'header' in config:
-            add_headers(**config['header'])
+            add_headers(**config['header'], 
+                app_to_notes_path=app_to_notes_path)
         else:
-            remove_marker_cell(HEADER_MARKER, directory)
+            remove_marker_cell(HEADER_MARKER, app_to_notes_path)
 
         if 'navigator' in config:
-            add_navigators(**config['navigator'])
+            add_navigators(**config['navigator'], 
+                app_to_notes_path=app_to_notes_path)
         else:
-            remove_marker_cell(NAVIGATOR_MARKER, directory)
+            remove_marker_cell(NAVIGATOR_MARKER, app_to_notes_path)
 
 if __name__ == '__main__':
     if len(sys.argv) == 1 or sys.argv[1] == '--help' or sys.argv[1] == '-h':

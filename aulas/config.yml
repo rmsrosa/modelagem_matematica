@@ -5,6 +5,8 @@ book:
     - 00-Sumario.ipynb
   repository: rmsrosa/modelagem_matematica
   branch: master
+  github_nb_dir: aulas
   show_colab: True
   show_binder: True
-  show_full_entry: False
+  show_full_entry_in_toc: False
+  show_full_entry_in_nav: False
