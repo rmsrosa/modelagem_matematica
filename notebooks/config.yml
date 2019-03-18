@@ -4,9 +4,9 @@ book:
   core_navigators:
     - 00.00-Pagina_inicial.ipynb
     - BA.00-Bibliografia.ipynb
-  directory: ../notebooks
   repository: rmsrosa/modelagem_matematica
   branch: master
+  github_nb_dir: notebooks
   show_colab: True
   show_binder: True
-  show_full_entry: True
+  show_full_entry_in_nav: True
