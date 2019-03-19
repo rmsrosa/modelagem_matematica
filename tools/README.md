@@ -1,6 +1,6 @@
 # The Jupyter Bookmaker
 
-The `jupyterbookmaker.py` module/script is a tools to generate a book-like structure for a collection of [Jupyter](https://jupyter.org/) notebooks, giving them a table of contents, notebook headers, and top and bottom navigators.
+The `jupyterbookmaker.py` is a module/script that generate a book-like structure for a collection of [Jupyter](https://jupyter.org/) notebooks, giving them a table of contents, notebook headers, and top and bottom navigators.
 
 The script is included here and its package can be found in the github repository [rmsrosa/jupyterbookmaker](https://github.com/rmsrosa/jupyterbookmaker)
 
