@@ -13242,7 +13242,7 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Aula-4:-Estimativa-b&#225;sica-de-propaga&#231;&#227;o-de-erros-experimentais">Aula 4: Estimativa b&#225;sica de propaga&#231;&#227;o de erros experimentais<a class="anchor-link" href="#Aula-4:-Estimativa-b&#225;sica-de-propaga&#231;&#227;o-de-erros-experimentais">&#182;</a></h1><h2 id="Objetivos">Objetivos<a class="anchor-link" href="#Objetivos">&#182;</a></h2><p>Vamos ver o básico de propagação de erros</p>
+<h1 id="Aula-4:-Estimativa-b&#225;sica-de-propaga&#231;&#227;o-de-erros-experimentais">Aula 4: Estimativa b&#225;sica de propaga&#231;&#227;o de erros experimentais<a class="anchor-link" href="#Aula-4:-Estimativa-b&#225;sica-de-propaga&#231;&#227;o-de-erros-experimentais">&#182;</a></h1><h3 id="Objetivos">Objetivos<a class="anchor-link" href="#Objetivos">&#182;</a></h3><p>Vamos ver o básico de propagação de erros</p>
 <ul>
 <li>Erros em medições: descrição, tipos</li>
 <li>Propagação: distribuções de probabilidade e aproximação linear</li>
@@ -13260,7 +13260,7 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Incertezas-em-medi&#231;oes">Incertezas em medi&#231;oes<a class="anchor-link" href="#Incertezas-em-medi&#231;oes">&#182;</a></h3><p>Toda medição vem com um erro. (O conceito de erro é intrínseco ao de mediçao!)</p>
+<h2 id="Incertezas-em-medi&#231;oes">Incertezas em medi&#231;oes<a class="anchor-link" href="#Incertezas-em-medi&#231;oes">&#182;</a></h2><p>Toda medição vem com um erro. (O conceito de erro é intrínseco ao de mediçao!)</p>
 $$ \text{valor medido} = \text{valor médio} \pm \text{intervalo de confiança/incerteza}$$$$ q = \bar q \pm \Delta q, \ \ \text{intervalo } [-\Delta q, \Delta q], \ \ \Delta q &gt;0$$<p>A ideia é ver como estimar essa incerteza e ver como essa incerteza (ou "erro") se propaga das quantidades medidas às quantidades derivadas delas, em algum modelo.</p>
 
 </div>
@@ -13350,7 +13350,7 @@ $$ pr_q := \frac{|q-q_e|}{|q_e|} $$
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="M&#233;dia-e-dispers&#227;o-dos-dados">M&#233;dia e dispers&#227;o dos dados<a class="anchor-link" href="#M&#233;dia-e-dispers&#227;o-dos-dados">&#182;</a></h3><p>Se fizermos N medições $q_1, \dots, q_N$ e plotarmos um <em>histograma</em> dessas medições, esperamos obter uma distribuiçao centrada perto do <strong>valor médio</strong></p>
+<h2 id="M&#233;dia-e-dispers&#227;o-dos-dados">M&#233;dia e dispers&#227;o dos dados<a class="anchor-link" href="#M&#233;dia-e-dispers&#227;o-dos-dados">&#182;</a></h2><p>Se fizermos N medições $q_1, \dots, q_N$ e plotarmos um <em>histograma</em> dessas medições, esperamos obter uma distribuiçao centrada perto do <strong>valor médio</strong></p>
 $$ \bar q = \frac{q_1 + \ldots + q_N}{N}
 $$<p></p>
 <p>e com uma certa "dispersão" em torno de $q_e$.</p>
@@ -13397,7 +13397,7 @@ width=800
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Distribui&#231;&#227;o-normal">Distribui&#231;&#227;o normal<a class="anchor-link" href="#Distribui&#231;&#227;o-normal">&#182;</a></h2><p>O histograma acima foi formado a partir de amostras de uma <strong>distribuição normal</strong> de probabilidades $\mathcal{N}(\mu, \sigma^2)$, onde</p>
+<h3 id="Distribui&#231;&#227;o-normal">Distribui&#231;&#227;o normal<a class="anchor-link" href="#Distribui&#231;&#227;o-normal">&#182;</a></h3><p>O histograma acima foi formado a partir de amostras de uma <strong>distribuição normal</strong> de probabilidades $\mathcal{N}(\mu, \sigma^2)$, onde</p>
 $$ \mu = E[q]
 $$<p></p>
 <p>é o <strong>valor esperado</strong> e</p>
@@ -13574,7 +13574,7 @@ $$
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="V&#225;rias-vari&#225;veis-(eg:-2-por-simplicidade)">V&#225;rias vari&#225;veis (eg: 2 por simplicidade)<a class="anchor-link" href="#V&#225;rias-vari&#225;veis-(eg:-2-por-simplicidade)">&#182;</a></h2><p>Nesse caso, usamos a aproximação linear</p>
+<h3 id="V&#225;rias-vari&#225;veis-(eg:-2-por-simplicidade)">V&#225;rias vari&#225;veis (eg: 2 por simplicidade)<a class="anchor-link" href="#V&#225;rias-vari&#225;veis-(eg:-2-por-simplicidade)">&#182;</a></h3><p>Nesse caso, usamos a aproximação linear</p>
 $$f(q,r) \simeq f(q_0,r_0) + \frac{\partial f}{\partial q}(q_0,r_0) (q-q_0) + \frac{\partial f}{\partial r}(q_0,r_0) (r-r_0)
 $$<p>Em geral se assume que as medições de $q$ e $r$ não estão co-relacionadas, e isto se traduz na estimativa para a propagacao:</p>
 $$ \Delta f = \sqrt{\left(\frac{\partial f}{\partial q}(q_0,r_0) \Delta q\right)^2 + \left(\frac{\partial f}{\partial r}(q_0,r_0) \Delta r\right)^2 }
@@ -13703,36 +13703,6 @@ width=800
 </ol>
 </li>
 </ul>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Exerc&#237;cios-primeira-parte">Exerc&#237;cios primeira parte<a class="anchor-link" href="#Exerc&#237;cios-primeira-parte">&#182;</a></h2><p>Para cada comprimento $l$, pegar o arquivo correspondente dos dados do movimento do pêndulo (iluminância e proximidade) e fazer as seguintes análises:</p>
-<ol>
-<li>Extrair dos uma coleção de instantes $(t_1, ... , t_n)$ entre cada dois mínimos (pontos de proximidade), ou cada dois máximos (longe da sensor), que são informações sobre o período do movimento (a cada dois pois o pêndulo passa a cada meio-período sobre o sensor). Pode desprezar os <em>outliers</em>.</li>
-<li>Plotar esta amostra em um histograma.</li>
-<li>Achar a média $\bar t$ e o desvio padrão corrigido $s_t$ dessa amostra.</li>
-<li>Achar o erro padrão $\Delta t$ desta quantidade. </li>
-<li>Assumindo que na medição do comprimento $l$ há uma incerteza de $e_l \simeq 1\%$, estimar o erro na quantidade derivada $$ g \equiv g(t,l) = 4 \pi^2 l/(2t)^2.$$</li>
-<li>Verificar se o valor tabulado $g_e = 9.8 m/s^2$ cai dentro da margem de erro para cada $l$.</li>
-</ol>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Exerc&#237;cios-segunda-parte">Exerc&#237;cios segunda parte<a class="anchor-link" href="#Exerc&#237;cios-segunda-parte">&#182;</a></h2><p>Juntando a análise anterior de todos os comprimentos:</p>
-<ol>
-<li>Fazer uma figura com os valores encontrados $(\ell_i, \bar t_i)$, para cada comprimento considerado $\ell_i$ e cada período médio correspondente $\bar t_i$, incluindo as barras de erro assumindo $1\%$ na estimativa de $\ell_i$ e barras com um intervalo de confiança $\bar t_i - 2 \Delta t_i,$ correspondendo a um grau de confiança da ordem de $95\%$.</li>
-<li>Fazer uma regressão dos valores $t$ versus $l$ do tipo $l = a (2t)^2$.</li>
-<li>Estimar a incerteza induzida na quantidade $a = a(t,l)$.</li>
-<li>Deduzir $g$ usando $a$ e comparar a estimativa do erro com a que vem dos $l$'s individuais, concluindo com qual método é mais preciso.</li>
-</ol>
 
 </div>
 </div>
