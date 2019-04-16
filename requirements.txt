@@ -7,5 +7,5 @@ matplotlib>=2
 seaborn>=0.9
 jupyter>=1
 notebook>=5.7.2
-cv2>=4.0.0
+cv2>=3.5.0
 imutils>=0.5.2
