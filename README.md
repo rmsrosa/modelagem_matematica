@@ -10,7 +10,7 @@ Página inicial das notas:
 
 Página inicial das aulas:
 
-[![Github](https://rmsrosa.github.io/jupyterbookmaker/badges/github_badge.svg](aulas/00-Sumario.ipynb)
+[![Github](https://rmsrosa.github.io/jupyterbookmaker/badges/github_badge.svg)](aulas/00-Sumario.ipynb)
 &nbsp;
 [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/rmsrosa/modelagem_matematica/master?filepath=aulas%2F00-Sumario.ipynb)
 &nbsp;
