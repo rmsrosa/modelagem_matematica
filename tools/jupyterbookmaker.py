@@ -11,7 +11,7 @@ Original work Copyright (c) 2016 Jacob VanderPlas
 Modified work licensed under GNU GPLv3
 '''
 __license__ = "GNU GPLv3"
-__version__ = "0.3.2"
+__version__ = "0.4.1"
 __status__ = "beta"
 
 import os
@@ -231,8 +231,10 @@ def prev_this_next(it):
     return zip(itertools.chain([None], a), b, itertools.chain(c, [None]))
 
 def get_navigator_entries(core_navigators = [], app_to_notes_path='.', 
-                          repository = '', branch = '',
+                          user = '', repository = '', 
+                          branch = '',
                           github_nb_dir = '', 
+                          github_io_slides_dir = '',
                           show_full_entry_in_nav = True):
 
     PREV_TEMPLATE = "[<- {title}]({url}) "
@@ -240,10 +242,13 @@ def get_navigator_entries(core_navigators = [], app_to_notes_path='.',
     NEXT_TEMPLATE = "| [{title} ->]({url})"
 
     COLAB_LINK = """
-<a href="https://colab.research.google.com/github/{repository}/blob/{branch}/{github_nb_dir}/{notebook_filename}"><img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open and Execute in Google Colaboratory"></a>
+<a href="https://colab.research.google.com/github/{user}/{repository}/blob/{branch}/{github_nb_dir}/{notebook_filename}"><img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open and Execute in Google Colaboratory"></a>
 """
     BINDER_LINK = """
-<a href="https://mybinder.org/v2/gh/{repository}/{branch}?filepath={github_nb_dir}/{notebook_filename}"><img align="left" src="https://mybinder.org/badge.svg" alt="Open in binder" title="Open and Execute in Binder"></a>
+<a href="https://mybinder.org/v2/gh/{user}/{repository}/{branch}?filepath={github_nb_dir}/{notebook_filename}"><img align="left" src="https://mybinder.org/badge.svg" alt="Open in binder" title="Open and Execute in Binder"></a>
+"""
+    SLIDES_LINK = """
+<a href="https://{user}.github.io/{repository}/{github_io_slides_dir}/{slides_filename}"><img align="left" src="https://rmsrosa.github.io/jupyterbookmaker/badges/slides_badge.svg" alt="Open slides" title="Open and View Slides"></a>
 """
 
     for prev_nb, this_nb, next_nb in prev_this_next(indexed_notebooks(app_to_notes_path)):
@@ -263,27 +268,40 @@ def get_navigator_entries(core_navigators = [], app_to_notes_path='.',
                                        show_full_entry_in_nav)
             navbar += NEXT_TEMPLATE.format(title=entry, url=next_nb)
 
-        this_colab_link = COLAB_LINK.format(repository=repository, 
+        this_colab_link = COLAB_LINK.format(user=user,
+            repository=repository, 
             branch=branch, github_nb_dir=github_nb_dir, 
             notebook_filename=os.path.basename(this_nb))
-        this_binder_link = BINDER_LINK.format(repository=repository, 
+        this_binder_link = BINDER_LINK.format(user=user,
+            repository=repository, 
             branch=branch, github_nb_dir=github_nb_dir, 
             notebook_filename=os.path.basename(this_nb))
+        this_slide_link = SLIDES_LINK.format(user=user, 
+            repository=repository,
+            github_io_slides_dir=github_io_slides_dir,
+            slides_filename=os.path.basename(this_nb.replace('.ipynb',
+                                                             '.slides.html')))
             
-        yield os.path.join(app_to_notes_path, this_nb), navbar, this_colab_link, this_binder_link
+        yield os.path.join(app_to_notes_path, this_nb), navbar, this_colab_link, this_binder_link, this_slide_link
 
 def add_navigators(core_navigators=[], app_to_notes_path='.', 
-                   repository = '', branch = '', 
+                   user = '', repository = '', branch = '', 
                    github_nb_dir = '',
+                   github_io_slides_dir = '',
                    show_colab=False, show_binder=False, 
+                   show_slides=False,
                    show_full_entry_in_nav=True):
-    for nb_file, navbar, this_colab_link, this_binder_link in get_navigator_entries(core_navigators, app_to_notes_path, repository, 
-                          branch, github_nb_dir, show_full_entry_in_nav):
+    for nb_file, navbar, this_colab_link, this_binder_link, this_slide_link in get_navigator_entries(core_navigators, app_to_notes_path, 
+                          user, repository, branch, 
+                          github_nb_dir,
+                          github_io_slides_dir, 
+                          show_full_entry_in_nav):
         nb = nbformat.read(nb_file, as_version=4)
         nb_name = os.path.basename(nb_file)
 
         navbar_top = navbar_bottom = NAVIGATOR_MARKER + "\n"
         navbar_bottom = NAVIGATOR_MARKER + "\n\n---\n" + navbar
+            
         if show_colab and show_binder:
             navbar_top += this_colab_link + "&nbsp;" + this_binder_link + "&nbsp;\n"
             navbar_bottom += "\n" + this_colab_link + this_binder_link + "&nbsp;" 
@@ -293,6 +311,28 @@ def add_navigators(core_navigators=[], app_to_notes_path='.',
         elif show_binder:
             navbar_top += this_binder_link + "&nbsp;\n" 
             navbar_bottom += "\n" + this_binder_link
+
+        navbar_top = navbar_bottom = NAVIGATOR_MARKER + "\n"
+        navbar_bottom = NAVIGATOR_MARKER + "\n\n---\n" + navbar
+
+        if show_colab or show_binder or show_slides:
+            navbar_bottom += "\n"
+
+        if show_colab:
+            navbar_top += this_colab_link + "&nbsp;"
+            navbar_bottom += this_colab_link
+
+        if show_binder:
+            navbar_top += this_binder_link + "&nbsp;"
+            navbar_bottom += this_binder_link
+
+        if show_slides:
+            navbar_top += this_slide_link + "&nbsp;"
+            navbar_bottom += this_slide_link
+
+        if show_colab or show_binder or show_slides:
+            navbar_top += "\n"
+            navbar_bottom += "&nbsp;"
 
         navbar_top += "\n" + navbar + "\n\n---\n"
 
@@ -310,9 +350,12 @@ def add_navigators(core_navigators=[], app_to_notes_path='.',
         nbformat.write(nb, nb_file)
 
 def make_book(toc_nb_name, header, core_navigators,
-              app_to_notes_path='.', repository='', branch='', 
-              github_nb_dir ='',
-              show_colab=False, show_binder=False,
+              app_to_notes_path='.', user='',
+              repository='', branch='', 
+              github_nb_dir='',
+              github_io_slides_dir='',
+              show_colab=False, show_binder=False, 
+              show_slides=False,
               show_full_entry_in_toc=True,
               show_full_entry_in_nav=True):
 
@@ -324,9 +367,13 @@ def make_book(toc_nb_name, header, core_navigators,
 
     add_navigators(core_navigators=core_navigators,
                    app_to_notes_path=app_to_notes_path, 
+                   user=user, 
                    repository=repository, branch=branch, 
                    github_nb_dir=github_nb_dir,
-                   show_colab=show_colab, show_binder=show_binder,
+                   github_io_slides_dir=github_io_slides_dir,
+                   show_colab=show_colab, 
+                   show_binder=show_binder,
+                   show_slides=show_slides,
                    show_full_entry_in_nav=show_full_entry_in_nav)
 
 def make_book_from_configfile(config_file):
