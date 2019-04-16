@@ -3,10 +3,13 @@ book:
   header: "*[Guia de aulas da disciplina de Modelagem Matemática](https://github.com/rmsrosa/modelagem_matematica) do [IM-UFRJ](https://www.im.ufrj.br).*"
   core_navigators:
     - 00-Sumario.ipynb
-  repository: rmsrosa/modelagem_matematica
+  user: rmsrosa
+  repository: modelagem_matematica
   branch: master
   github_nb_dir: aulas
+  github_io_slides_dir: aulas
   show_colab: True
   show_binder: True
+  show_slides: True
   show_full_entry_in_toc: False
   show_full_entry_in_nav: False
