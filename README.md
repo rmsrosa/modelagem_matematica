@@ -2,7 +2,7 @@
 
 Página inicial das notas:
 
-[![Github](https://raw.githubusercontent.com/rmsrosa/jupyterbookmaker/master/badges/github_badge.svg)](notebooks/00.00-Pagina_inicial.ipynb)
+[![Github](https://rmsrosa.github.io/jupyterbookmaker/badges/github_badge.svg)](notebooks/00.00-Pagina_inicial.ipynb)
 &nbsp;
 [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/rmsrosa/modelagem_matematica/master?filepath=notebooks%2F00.00-Pagina_inicial.ipynb)
 &nbsp;
@@ -10,7 +10,7 @@ Página inicial das notas:
 
 Página inicial das aulas:
 
-[![Github](https://raw.githubusercontent.com/rmsrosa/jupyterbookmaker/master/badges/github_badge.svg](aulas/00-Sumario.ipynb)
+[![Github](https://rmsrosa.github.io/jupyterbookmaker/badges/github_badge.svg](aulas/00-Sumario.ipynb)
 &nbsp;
 [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/rmsrosa/modelagem_matematica/master?filepath=aulas%2F00-Sumario.ipynb)
 &nbsp;
@@ -21,7 +21,7 @@ Repositório das notas de aula da disciplina de Modelagem Matemática do Institu
 ## Utilização
 
 - Há uma [Página Inicial](notebooks/00.00-Pagina_Inicial.ipynb) exibindo a coleção de cadernos de forma estruturada, com links para cada caderno.
-- Os cadernos podem ser visualizados dentro do próprio github: [![Github](https://raw.githubusercontent.com/rmsrosa/jupyterbookmaker/master/badges/github_badge.svg)](notebooks/00.00-Pagina_inicial.ipynb)
+- Os cadernos podem ser visualizados dentro do próprio github: [![Github](https://rmsrosa.github.io/jupyterbookmaker/badges/github_badge.svg)](notebooks/00.00-Pagina_inicial.ipynb)
 - Os cadernos podem ser acessados e executados na nuvem através do [binder](https://beta.mybinder.org/): [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/rmsrosa/modelagem_matematica/master?filepath=notebooks%2F00.00-Pagina_inicial.ipynb)
 - Os cadernos também podem ser acessados e executados na nuvem através do [Google Colab](http://colab.research.google.com): [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/rmsrosa/modelagem_matematica/blob/master/notebooks/00.00-Pagina_inicial.ipynb)
 - As notas de aula estão inteiramente disponíveis *online* neste repositório [rmsrosa/modelagem_matematica](https://github.com/rmsrosa/modelagem_matematica) do [Github](https://github.com).
