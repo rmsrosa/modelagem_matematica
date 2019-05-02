@@ -168,10 +168,10 @@ def detector_de_movimento(video, width = 512,
             Uma lista de listas, onde o primeiro item da lista 
             é a lista de strings ['n', 'x', 'y', 'l', 'h'], o segundo 
             item é a lista de strings `['quadro', 'abscissa(px)', 
-            'ordenada(px)', 'largura(px)', 'altura(px)']` e outros 
-            itens são listas contenda, no ordem, inteiros indicando
+            'ordenada(px)', 'largura(px)', 'altura(px)']` e os outros 
+            itens são listas contendo, no ordem, inteiros indicando
             o número do quadro correspondente, a abscissa e a ordenada
-            do cando esquerdo inferior da caixa de entorno do objeto
+            do canto superior esquerdo da caixa de entorno do objeto
             identificado no quadro e a largura e a altura dessa caixa
             de entorno.
 
@@ -208,12 +208,25 @@ def detector_de_movimento(video, width = 512,
     # define o primeiro quadro inicialmente como None
     firstFrame = None    
 
-    # inicializa tracado
+    # define a figura de entorno como sendo um retângulo 
+    # ("caixa de entorno"), mas posteriormente
+    # podemos habilitar a opção de ser um círculo, cujo 
+    # código já está preparado abaixo e no loop
+    # veja https://docs.opencv.org/4.0.0/dd/d49/tutorial_py_contour_features.html
 
-    tracado = [
-        ['n', 'x', 'y', 'l', 'h'],
-        ['quadro', 'abscissa(px)', 'ordenada(px)', 'largura(px)', 'altura(px)']
-    ]
+    figura = 'retangulo'
+
+    # inicializa tracado
+    if figura == 'retangulo':
+        tracado = [
+            ['n', 'x', 'y', 'l', 'h'],
+            ['quadro', 'abscissa(pt)', 'ordenada(pt)', 'largura(pt)', 'altura(pt)']
+        ]
+    elif figura == 'circulo':
+        tracado = [
+            ['n', 'x', 'y', 'r'],
+            ['quadro', 'abscissa(pt)', 'ordenada(pt)', 'raio(pt)']
+        ]
 
     # inicializa variavel de contagem de quadros
     num_quadro = 0
@@ -289,15 +302,32 @@ def detector_de_movimento(video, width = 512,
             if cv2.contourArea(c) < area_min:
                 continue
 
-            # calcula a "caixa de entorno" *(bounding box)* do contorno,
-            # desenha a caixa na imagem e atualiza o texto a gravar
-            (x, y, w, h) = cv2.boundingRect(c)
-            cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
-            text = "Ocupado"
+            if figura == 'retangulo':
+                # calcula a "caixa de entorno" *(bounding box)* 
+                # do contorno, desenha a caixa na imagem e atualiza 
+                # o texto a gravar
+                (x, y, w, h) = cv2.boundingRect(c)
+                cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
+                text = "Ocupado"
 
-            # exibe, no console, o tempo decorrido até esse quadro e
-            # as informaçõs da caixa de entorno
-            tracado.append([num_quadro,x,y,w,h])
+                # exibe, no console, o tempo decorrido até esse quadro e
+                # as informaçõs da caixa de entorno
+                tracado.append([num_quadro,x,y,w,h])
+
+            elif figura == 'circulo':
+                # calcula a "círculo de entorno" *(enclosing circle)* 
+                # do contorno, desenha a caixa na imagem e atualiza 
+                # o texto a gravar
+                (x,y), raio = cv.minEnclosingCircle(c)
+                x = int(x)
+                y = int(y)
+                raio = int(raio)
+                cv2.circle(frame, (x, y), raio, (0, 255, 0), 2)
+                text = "Ocupado"
+
+                # exibe, no console, o tempo decorrido até esse quadro e
+                # as informaçõs da caixa de entorno
+                tracado.append([num_quadro,x,y,r])
 
         # escreve o texto, o número do quadro e o tempo decorrido
         cor_do_texto = (0,0,220)
