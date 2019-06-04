@@ -13726,40 +13726,64 @@ $$
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Origem-do-nome-sinograma">Origem do nome sinograma<a class="anchor-link" href="#Origem-do-nome-sinograma">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Se o corpo está concentrado em um ponto $(x_0,y_0)$ fora da origem, com densidade delta de Dirac,</p>
-$$ f(x,y) = \delta_{(x_0,y_0)}(x,y),
-$$<p>então</p>
-$$ Rf(t,\theta) = \begin{cases}
-    1, &amp; \exists s, \;  t\cos\theta - s\sin\theta = x_0, \;t\sin\theta + s\cos\theta = y_0, \\
-    0, &amp; \text{caso contrário}
-  \end{cases}
-$$
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>A condição para que $Rf$ seja igual a $1$ nos leva à relação</p>
-$$ t^2 + s^2 = x_0^2 + y_0^2.
-$$<p>Além disso,</p>
-$$ x_0^2 = t^2\cos^2\theta - s^2\sin^2 \theta = t^2 -(t^2 + s^2)\sin^2\theta,
-$$<p>o que nos leva a</p>
-$$ t^2 = x_0^2 + (x_0^2 + y_0^2)\sin^2\theta.
-$$<p>No caso particular em que $x_0=0$ e $y_0\neq 0$, temos $t = \pm y_0\sin\theta$, mas o único caso que satisfaz a condição para que $Rf(t, \theta) = 1$ é</p>
-$$ t = y_0\sin\theta,
-$$<p>que, de qualquer forma, determina o gráfico de um seno. Analogamente para $x_0\neq 0$ e $y_0 = 0$, onde obtemos $t = x_0\sin\theta$.</p>
 
 </div>
 </div>
-</div></div></section></section><section><section>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Origem-do-nome-sinograma">Origem do nome sinograma<a class="anchor-link" href="#Origem-do-nome-sinograma">&#182;</a></h2><h3 id="Corpo-pontual">Corpo pontual<a class="anchor-link" href="#Corpo-pontual">&#182;</a></h3><p>Se o corpo está concentrado em um ponto $(x_*,y_*)$ fora da origem, com massa $1$, podemos representá-lo pela função delta de Dirac,</p>
+$$ f(x,y) = \delta_{(x_*,y_*)}(x,y).
+$$<p>Esta não é exatamente uma função no sentido clássico. Ela é um exemplo de uma <strong>distribuição</strong>, que é um operador que leva uma função suave $g(x,y)$ em</p>
+$$ \langle f, g \rangle = g(x_*, y_*). 
+$$<p>A notação $\langle f, g\rangle$ denota a aplicação da distribuição $f$ na função $g$. Ela é uma generalização do produto escalar em $L^2(\mathbb{R}^2)$ (nesse caso bidimensional, já que a teoria de distribuições se aplica a qualquer dimensão). Mesmo  $f$ não sendo integrável, é comum mantermos a representação integral para $\langle f, g \rangle = (f,g)_{L^2(\mathbb{R}^2)}$, apesar de não ser propriamente uma integral.</p>
+<p>Caso $f$ também fosse suave, teríamos</p>
+$$ \langle f, g \rangle = \iint_{\mathbb{R}^2} f(x,y) g(x,y) \;{\rm d} x \;{\rm d} y
+$$<p>No caso em que $f$ não é uma função integrável, é comum mantermos a representação integral, apesar de não ser propriamente uma integral.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Transformada-de-Radon-com-nota&#231;&#227;o-de-distribui&#231;&#227;o">Transformada de Radon com nota&#231;&#227;o de distribui&#231;&#227;o<a class="anchor-link" href="#Transformada-de-Radon-com-nota&#231;&#227;o-de-distribui&#231;&#227;o">&#182;</a></h3><p>Denotando por $\delta$ a função delta de Dirac unidimensional com massa pontual na origem, ou seja,</p>
+$$\langle \delta, g\rangle = g(0),
+$$<p></p>
+<p>para uma função $g=g(x)$ unidimensional, podemos escrever a transformada de Radon na forma</p>
+$$ \begin{multline*} 
+  Rf(t, \theta) = \int_{-\infty}^\infty f(t\cos\theta - s\sin\theta, t\sin\theta + s\cos\theta) \;{\rm d} s \\ = \iint_{\mathbb{R}^2} f(r\cos\theta - s\sin\theta, r\sin\theta + s\cos\theta)\delta(r-t) \;{\rm d} r\, {\rm d} s
+  \end{multline*}
+$$<p>No caso em que $f(x,y) = \delta_{(x_*,y_*)}(x,y)$, podemos escrever, utilando a delta de Dirac unidimensional,</p>
+$$ f(x,y) = \delta_{(x_*,y_*)}(x,y) = \delta(x-x_*)\delta(y-y_*).
+$$<p>Assim, a transformada de Radon de $f$ nos dá</p>
+$$ \begin{multline*} 
+  Rf(t, \theta) = \iint_{\mathbb{R}^2} \delta(r\cos\theta - s\sin\theta)\delta(r\sin\theta + s\cos\theta)\delta(r-t) \;{\rm d} r\, {\rm d} s
+  \end{multline*} \\ = \int_{-\infty}^\infty \delta(t\cos\theta - s\sin\theta)\delta(t\sin\theta + s\cos\theta) \;{\rm d} s
+$$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Sinograma-de-um-corpo-pontual">Sinograma de um corpo pontual<a class="anchor-link" href="#Sinograma-de-um-corpo-pontual">&#182;</a></h3><p>No caso em que $f(x,y) = \delta_{(x_*,y_*)}(x,y)$, temos, então, que</p>
+$$ Rf(t, \theta) = \int_{-\infty}^\infty f(t\cos\theta - s\sin\theta, t\sin\theta + s\cos\theta) \;{\rm d} s = 1
+$$<p>se, e somente se,</p>
+$$ \exists s\in \mathbb{R}, \; (t\cos\theta - s\sin\theta, t\sin\theta + s\cos\theta) = (x_*, y_*).
+$$<p>Ou seja, se, e somente se,</p>
+$$ \begin{cases}
+  t\cos\theta - s\sin\theta = x_* \\
+  t\sin\theta + s\cos\theta = y_*.
+\end{cases}
+$$<p>Multiplicando a primeira equação por $\cos\theta$, a segunda por $\sin\theta$ e somando os resultados obtemos</p>
+$$ t = x_*\cos\theta + y_*\sin\theta.
+$$<p>Portanto, $Rf(t,\theta) = 1$ apenas ao longo da senoide determinada pela equação acima (considerando $(x_*,y_*)\neq (0,0)$.</p>
+
+</div>
+</div>
+</div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13944,7 +13968,7 @@ $$
 $$ (\mathcal{R}^*h)(x,y) = \frac{1}{\pi}\int_0^\pi h(x\cos\theta + y\sin\theta, \theta) \;\rm d \theta.
 $$<p>Temos a propriedade de $\mathcal R$ e $\mathcal R^*$ serem adjuntas em espaços apropriados:</p>
 $$ \begin{multline*}
- \langle \mathcal{R}f, h \rangle_{\pi^{-1}L^2(\mathbb{R}\times S_1)} = \frac{1}{\pi} \int_0^\pi \int_0^\pi \mathcal{R}(f)(t,\theta) h(t, \theta) \;\rm d t, \rm d \theta \\ = \iint_{\mathbb{R}^2} f(x,y) (\mathcal{R}^*h)(x,y) \;\rm d x \; \rm d y = \langle f, \mathcal{R}^*h\rangle_{L^2(\mathbb{R}^2)}
+ \langle \mathcal{R}f, h \rangle_{\pi^{-1}L^2(\mathbb{R}\times S_1)} = \frac{1}{\pi} \int_0^\pi \int_0^\pi \mathcal{R}(f)(t,\theta) h(t, \theta) \;\rm d t\, \rm d \theta \\ = \iint_{\mathbb{R}^2} f(x,y) (\mathcal{R}^*h)(x,y) \;\rm d x \; \rm d y = \langle f, \mathcal{R}^*h\rangle_{L^2(\mathbb{R}^2)}
  \end{multline*}
 $$<p>Aplicando-se a adjunta à transformada de Radon de uma função $f=f(x,y)$, obtemos a <strong>retroprojeção não-filtrada</strong></p>
 $$ (\mathcal{B}f)(x,y) = (\mathcal{R}^*(\mathcal{R}f)) = \frac{1}{\pi}\int_0^\pi (Rf)(x\cos\theta + y\sin\theta, \theta) \;\rm d \theta.
@@ -13955,10 +13979,38 @@ $$
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Invertendo-via-retroproje&#231;&#227;o-filtrada">Invertendo via retroproje&#231;&#227;o filtrada<a class="anchor-link" href="#Invertendo-via-retroproje&#231;&#227;o-filtrada">&#182;</a></h3><p>A retroprojeção não-filtrada não dá bons resultados, é apenas uma aproximação grosseira. Mas incorporando uma espécie de filtro, obtemos um resultado muito melhor.</p>
-<p>Dado um "filtro" $K(t)$, a retroprojeção filtrada associada a $K(t)$ é a transformada</p>
-$$ (\mathcal{B}_K f)(x,y) = \frac{1}{\pi}\int_0^\pi \int_{-\infty}^\infty (\mathcal{R}f)(t - x\cos\theta - y\sin\theta, \theta) K(t)\;\rm d t \;\rm d \theta
-$$<p>Usando uma família de filtros $\Gamma_z$, $z\in \mathbb{R}$, satisfazendo $\mathcal{R}^*\Gamma_z = \gamma_z$, onde</p>
+<h3 id="Interpreta&#231;&#227;o-da-retroproje&#231;&#227;o-n&#227;o-filtrada">Interpreta&#231;&#227;o da retroproje&#231;&#227;o n&#227;o-filtrada<a class="anchor-link" href="#Interpreta&#231;&#227;o-da-retroproje&#231;&#227;o-n&#227;o-filtrada">&#182;</a></h3><p>Temos
+$$ (\mathcal{R}^*h)(x,y) = \frac{1}{\pi}\int_0^\pi h(x\cos\theta + y\sin\theta, \theta) \;\rm d \theta.
+$$</p>
+<p>Isso é, para cada para $(x,y)$ uma média de $h=h(t,\theta)$ ao longo da senoide $t = x\cos\theta + y\sin\theta$.</p>
+<p>Por sua vez, a retroprojeção não-filtrada é</p>
+$$ (\mathcal{B}f)(x,y) = (\mathcal{R}^*(\mathcal{R}f)) = \frac{1}{\pi}\int_0^\pi (Rf)(x\cos\theta + y\sin\theta, \theta) \;\rm d \theta.
+$$<p>Como $\mathcal{R}f(t,\theta)$ para cada $t=x\cos\theta + y\sin\theta$ é a integral de $f=f(x,y)$ ao longo da reta que passa por $(x,y)$ e cuja normal tem inclinação dada pelo ângulo $\theta$, vemos que $(\mathcal{B}f)(x,y)$ é a média da transformada de Radon de $f$ em relação a todas as retas que passam pelo ponto $(x,y)$.</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Retroproje&#231;&#227;o-filtrada">Retroproje&#231;&#227;o filtrada<a class="anchor-link" href="#Retroproje&#231;&#227;o-filtrada">&#182;</a></h3><p>A retroprojeção não-filtrada não dá bons resultados, é apenas uma aproximação grosseira. Mas incorporando uma espécie de filtro, obtemos um resultado muito melhor.</p>
+<p>Dado um "filtro" $K=K(t, \theta)$, a retroprojeção filtrada associada a $K$ é a transformada</p>
+$$ (\mathcal{B}_K f)(x,y) = \frac{1}{\pi}\int_0^\pi \int_{-\infty}^\infty (\mathcal{R}f)(t - x\cos\theta - y\sin\theta, \theta) K(t, \theta)\;{\rm d} t \,{\rm d} \theta.
+$$<p>Expandindo $\mathcal{R}f$, temos
+$$ \begin{multline*}
+  (\mathcal{B}_K f)(x,y) = \frac{1}{\pi}\int_0^\pi \int_{-\infty}^\infty \int_{-\infty}^\infty \\ f((t - x\cos\theta - y\sin\theta)\cos \theta - s\sin\theta, (t - x\cos\theta - y\sin\theta)\sin\theta + s\cos\theta) K(t, \theta) \\\;{\rm d} s \,{\rm d} t \,{\rm d} \theta.
+  \end{multline*}
+$$</p>
+<p>Ao utilizarmos a adjunta da transformada de Radon, podemos reescrever a expressão acima como uma integral envolvendo $f$ e $\mathcal{R}^*K$.</p>
+<p>Utilizando $K$ tal que $\mathcal{R}^*K$ esteja próximo de uma delta de Dirac deslocada para pontos $(x,y)$, obtemos que a expressão está próxima de $f(x,y)$.</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Retroproje&#231;&#227;o-com-uma-fam&#237;lia-apropriada-de-filtros">Retroproje&#231;&#227;o com uma fam&#237;lia apropriada de filtros<a class="anchor-link" href="#Retroproje&#231;&#227;o-com-uma-fam&#237;lia-apropriada-de-filtros">&#182;</a></h3><p>Usando uma família de filtros $\Gamma_z$, $z\in \mathbb{R}$, satisfazendo $\mathcal{R}^*\Gamma_z = \gamma_z$, onde</p>
 $$ \gamma_z(\xi, \eta) = \frac{1}{\pi z^2}\chi_{B(0, z)}(\xi, \eta),
 $$<p>obtemos a seguinte fórmula para a <strong>inversa da transformada de Radon</strong> via retroprojeção filtrada:</p>
 $$ \begin{multline*}
@@ -13980,8 +14032,8 @@ $$ \Gamma_z(t, \theta) = \frac{1}{\pi z^2}\begin{cases}
     1, &amp; |t| \leq |z|, \\
     \displaystyle 1 - \frac{1}{\sqrt{1 - z^2/t^2}}, &amp; |t|&gt; |z|.
   \end{cases}
-$$<p>Outros filtros podem ser utilizados, desde que formem uma família de aproximações da função delta de Dirac (aproximações da identidade).</p>
-<p>Na prática, utiliza-se $z$ "pequeno" o suficiente para uma "boa" aproximação.</p>
+$$<p>Outros filtros podem ser utilizados, desde que formem uma família convergindo para a  função delta de Dirac (aproximações da identidade).</p>
+<p>Na prática, utiliza-se $z$ "pequeno" o suficiente para uma "boa" aproximação. Ou algum outro filtro que seja uma "boa" aproximação da delta de Dirac.</p>
 
 </div>
 </div>
