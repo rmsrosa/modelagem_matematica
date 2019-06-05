@@ -13262,7 +13262,7 @@ $(document).ready(function(){
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Retroproje&#231;&#227;o-n&#227;o-filtrada">Retroproje&#231;&#227;o n&#227;o-filtrada<a class="anchor-link" href="#Retroproje&#231;&#227;o-n&#227;o-filtrada">&#182;</a></h1><h2 id="Objetivos:">Objetivos:<a class="anchor-link" href="#Objetivos:">&#182;</a></h2><ul>
+<h1 id="Aula-20:-Retroproje&#231;&#227;o-n&#227;o-filtrada">Aula 20: Retroproje&#231;&#227;o n&#227;o-filtrada<a class="anchor-link" href="#Aula-20:-Retroproje&#231;&#227;o-n&#227;o-filtrada">&#182;</a></h1><h2 id="Objetivos:">Objetivos:<a class="anchor-link" href="#Objetivos:">&#182;</a></h2><ul>
 <li><p>Implementar um algoritmo de cálculo da retroprojeção não-filtrada para a aproximação da transformada inversa de Radon.</p>
 </li>
 <li><p>Servir como base para uma implementação da retroprojeção filtrada.</p>
@@ -13281,6 +13281,8 @@ $(document).ready(function(){
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">os</span> <span class="k">import</span> <span class="n">path</span>
+
+<span class="kn">from</span> <span class="nn">functools</span> <span class="k">import</span> <span class="n">partial</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="k">import</span> <span class="n">quad</span>
@@ -13327,8 +13329,9 @@ $(document).ready(function(){
 <span class="sd">            que é interpretado como a densidade de absorção de raio X </span>
 <span class="sd">            em cada ponto (x,y).</span>
 <span class="sd">    Saída:</span>
+<span class="sd">    ------</span>
 <span class="sd">        radon_f: função python</span>
-<span class="sd">            Um função em python, de duas variáveis (t,theta) em ponto</span>
+<span class="sd">            Uma função em python, de duas variáveis (t,theta) em ponto</span>
 <span class="sd">            flutuante, que dá o valor, no ponto (t, theta), da </span>
 <span class="sd">            transformada de Radon da função f </span>
 <span class="sd">    &#39;&#39;&#39;</span>
@@ -13370,8 +13373,9 @@ Radon(f)
             que é interpretado como a densidade de absorção de raio X 
             em cada ponto (x,y).
     Saída:
+    ------
         radon_f: função python
-            Um função em python, de duas variáveis (t,theta) em ponto
+            Uma função em python, de duas variáveis (t,theta) em ponto
             flutuante, que dá o valor, no ponto (t, theta), da 
             transformada de Radon da função f
 
@@ -13427,7 +13431,7 @@ Radon(f)
 <span class="sd">            do sinograma. </span>
 <span class="sd">    Saída:</span>
 <span class="sd">    ------</span>
-<span class="sd">        - sino: numpy array </span>
+<span class="sd">        sino: numpy array </span>
 <span class="sd">            Um array do numpy de dimensões Ntheta e Nt representando </span>
 <span class="sd">            o sinograma nos pontos (t_i, theta_j) da malha no retângulo </span>
 <span class="sd">            [-tmax, tmax] x [0, pi]. Observe que, na notação matricial </span>
@@ -13496,7 +13500,7 @@ sinograma(f, tmax, Nt=100, Ntheta=200, Ns=200)
             do sinograma. 
     Saída:
     ------
-        - sino: numpy array 
+        sino: numpy array 
             Um array do numpy de dimensões Ntheta e Nt representando 
             o sinograma nos pontos (t_i, theta_j) da malha no retângulo 
             [-tmax, tmax] x [0, pi]. Observe que, na notação matricial 
@@ -13613,8 +13617,8 @@ sinograma(f, tmax, Nt=100, Ntheta=200, Ns=200)
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>CPU times: user 21.7 s, sys: 111 ms, total: 21.9 s
-Wall time: 22 s
+<pre>CPU times: user 23.1 s, sys: 191 ms, total: 23.2 s
+Wall time: 23.6 s
 </pre>
 </div>
 </div>
@@ -13737,7 +13741,7 @@ $$<p>Para visualizar melhor a necessidade da interpolação, vamos exibir esse c
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input_hidden">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">xmax</span> <span class="o">=</span> <span class="n">ymax</span> <span class="o">=</span> <span class="mf">1.0</span>
@@ -13756,11 +13760,10 @@ $$<p>Para visualizar melhor a necessidade da interpolação, vamos exibir esse c
 
 <span class="n">Ti</span><span class="p">,</span> <span class="n">Thetaj</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">ti</span><span class="p">,</span> <span class="n">thetaj</span><span class="p">)</span>
 
-<span class="n">n</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="n">m</span> <span class="o">=</span> <span class="mi">7</span>
-
-<span class="n">t_theta</span> <span class="o">=</span> <span class="n">xn</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="o">+</span> <span class="n">ym</span><span class="p">[</span><span class="n">m</span><span class="p">]</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Caminho associado ao ponto $(x,y)$ = &#39;</span> <span class="o">+</span> <span class="n">f</span><span class="s1">&#39;(</span><span class="si">{xn[n]:.2f}</span><span class="s1">, </span><span class="si">{ym[m]:.2f}</span><span class="s1">)&#39;</span><span class="p">)</span>
+<span class="n">xp</span> <span class="o">=</span> <span class="n">xn</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">yp</span> <span class="o">=</span> <span class="n">ym</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span>
+<span class="n">t_theta</span> <span class="o">=</span> <span class="n">xp</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="o">+</span> <span class="n">yp</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Caminho associado ao ponto (x,y) = (</span><span class="si">{xp:.2f}</span><span class="s1">, </span><span class="si">{yp:.2f}</span><span class="s1">)&#39;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -13779,7 +13782,7 @@ $$<p>Para visualizar melhor a necessidade da interpolação, vamos exibir esse c
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Caminho associado ao ponto $(x,y)$ = (-0.73, -0.07)
+<pre>Caminho associado ao ponto (x,y) = (-0.73, -0.07)
 </pre>
 </div>
 </div>
@@ -13791,7 +13794,7 @@ $$<p>Para visualizar melhor a necessidade da interpolação, vamos exibir esse c
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input_hidden">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
@@ -13799,13 +13802,13 @@ $$<p>Para visualizar melhor a necessidade da interpolação, vamos exibir esse c
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_theta</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;tab:blue&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">Ti</span><span class="p">,</span> <span class="n">Thetaj</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">([</span><span class="n">xn</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="n">ym</span><span class="p">[</span><span class="n">m</span><span class="p">],</span> <span class="o">-</span><span class="n">xn</span><span class="p">[</span><span class="n">n</span><span class="p">]],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;tab:blue&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">([</span><span class="n">xp</span><span class="p">,</span> <span class="n">yp</span><span class="p">,</span> <span class="o">-</span><span class="n">xp</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;tab:blue&quot;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$t$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\theta$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Malha $(t_i, \theta_j)_</span><span class="si">{ij}</span><span class="s1">$ (&quot;x&quot;) e gráfico $t=x\cos\theta + y\sin\theta$ (&quot;-&quot;)&#39;</span> 
-          <span class="o">+</span> <span class="n">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">para $(x, y) = $ (</span><span class="si">{xn[n]:.1f}</span><span class="s1">, </span><span class="si">{ym[m]:.1f}</span><span class="s1">) (&quot;o&quot;)</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+          <span class="o">+</span> <span class="n">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">para $(x, y) = $ (</span><span class="si">{xp:.1f}</span><span class="s1">, </span><span class="si">{yp:.1f}</span><span class="s1">) (&quot;o&quot;)</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
@@ -13848,7 +13851,7 @@ $$<p>Para visualizar melhor a necessidade da interpolação, vamos exibir esse c
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input_hidden">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">nlist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
@@ -13867,7 +13870,7 @@ $$<p>Para visualizar melhor a necessidade da interpolação, vamos exibir esse c
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input_hidden">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
@@ -13974,16 +13977,16 @@ $$<p>onde $t_I$ é o último ponto da malha $(t_i)_i$.</p>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input_hidden">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="n">m</span> <span class="o">=</span> <span class="mi">7</span>
-<span class="n">t_theta</span> <span class="o">=</span> <span class="n">xn</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="o">+</span> <span class="n">ym</span><span class="p">[</span><span class="n">m</span><span class="p">]</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
-<span class="n">t_thetaj</span> <span class="o">=</span> <span class="n">xn</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">thetaj</span><span class="p">)</span> <span class="o">+</span> <span class="n">ym</span><span class="p">[</span><span class="n">m</span><span class="p">]</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">thetaj</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">xp</span> <span class="o">=</span> <span class="n">xn</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">yp</span> <span class="o">=</span> <span class="n">ym</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span>
+<span class="n">t_theta</span> <span class="o">=</span> <span class="n">xp</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="o">+</span> <span class="n">yp</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+<span class="n">t_thetaj</span> <span class="o">=</span> <span class="n">xp</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">thetaj</span><span class="p">)</span> <span class="o">+</span> <span class="n">yp</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">thetaj</span><span class="p">)</span>
 
-<span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">Ti</span><span class="p">[</span><span class="n">j</span><span class="p">,:]</span> <span class="o">&lt;=</span> <span class="n">t_thetaj</span><span class="p">[</span><span class="n">j</span><span class="p">])[</span><span class="mi">0</span><span class="p">]])[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">thetaj</span><span class="p">))])</span>
-<span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">Ti</span><span class="p">[</span><span class="n">j</span><span class="p">,:]</span> <span class="o">&lt;=</span> <span class="n">t_thetaj</span><span class="p">[</span><span class="n">j</span><span class="p">])[</span><span class="mi">0</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t_thetaj</span><span class="p">))])</span>
+<span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">ti</span> <span class="o">&lt;=</span> <span class="n">t_thetaj</span><span class="p">[</span><span class="n">j</span><span class="p">])[</span><span class="mi">0</span><span class="p">]])[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">thetaj</span><span class="p">))])</span>
+<span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">ti</span> <span class="o">&lt;=</span> <span class="n">t_thetaj</span><span class="p">[</span><span class="n">j</span><span class="p">])[</span><span class="mi">0</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t_thetaj</span><span class="p">))])</span>
 </pre></div>
 
     </div>
@@ -13996,21 +13999,21 @@ $$<p>onde $t_I$ é o último ponto da malha $(t_i)_i$.</p>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input_hidden">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_theta</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;tab:blue&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">Ti</span><span class="p">,</span> <span class="n">Thetaj</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">([</span><span class="n">xn</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="o">-</span><span class="n">xn</span><span class="p">[</span><span class="n">n</span><span class="p">]],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;tab:blue&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">([</span><span class="n">xp</span><span class="p">,</span> <span class="o">-</span><span class="n">xp</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;tab:blue&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">ti</span><span class="p">[</span><span class="n">indices</span><span class="p">],</span> <span class="n">thetaj</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;tab:red&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">ti</span><span class="p">[</span><span class="n">indices</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="n">thetaj</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;tab:green&quot;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$t$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\theta$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Malha $(t_i, \theta_j)_</span><span class="si">{ij}</span><span class="s1">$ (&quot;x&quot;), gráfico $t=x\cos\theta + y\sin\theta$ (&quot;-&quot;)&#39;</span> 
-          <span class="o">+</span> <span class="n">f</span><span class="s1">&#39; para $(x, y) = $ (</span><span class="si">{xn[n]:.1f}</span><span class="s1">, </span><span class="si">{ym[m]:.1f}</span><span class="s1">) (&quot;o&quot;)&#39;</span>
+          <span class="o">+</span> <span class="n">f</span><span class="s1">&#39; para $(x, y) = $ (</span><span class="si">{xp:.1f}</span><span class="s1">, </span><span class="si">{yp:.1f}</span><span class="s1">) (&quot;o&quot;)&#39;</span>
           <span class="o">+</span> <span class="n">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">e pontos da malha anteriores (&quot;o&quot; vermelhos)</span><span class="se">\n</span><span class="s1">e posteriores (&quot;o&quot; verdes&quot;)&#39;</span>
           <span class="o">+</span> <span class="n">f</span><span class="s1">&#39; ao gráfico</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -14057,28 +14060,28 @@ $$<p>onde $t_I$ é o último ponto da malha $(t_i)_i$.</p>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input_hidden">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">m</span> <span class="o">=</span> <span class="mi">15</span>
-<span class="n">t_theta</span> <span class="o">=</span> <span class="n">xn</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="o">+</span> <span class="n">ym</span><span class="p">[</span><span class="n">m</span><span class="p">]</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
-<span class="n">t_thetaj</span> <span class="o">=</span> <span class="n">xn</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">thetaj</span><span class="p">)</span> <span class="o">+</span> <span class="n">ym</span><span class="p">[</span><span class="n">m</span><span class="p">]</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">thetaj</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">xp</span> <span class="o">=</span> <span class="n">xn</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">yp</span> <span class="o">=</span> <span class="n">ym</span><span class="p">[</span><span class="mi">15</span><span class="p">]</span>
+<span class="n">t_theta</span> <span class="o">=</span> <span class="n">xp</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="o">+</span> <span class="n">yp</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+<span class="n">t_thetaj</span> <span class="o">=</span> <span class="n">xp</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">thetaj</span><span class="p">)</span> <span class="o">+</span> <span class="n">yp</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">thetaj</span><span class="p">)</span>
 
-<span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">Ti</span><span class="p">[</span><span class="n">j</span><span class="p">,:]</span> <span class="o">&lt;=</span> <span class="n">t_thetaj</span><span class="p">[</span><span class="n">j</span><span class="p">])[</span><span class="mi">0</span><span class="p">]])[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t_thetaj</span><span class="p">))])</span>
+<span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">ti</span> <span class="o">&lt;=</span> <span class="n">t_thetaj</span><span class="p">[</span><span class="n">j</span><span class="p">])[</span><span class="mi">0</span><span class="p">]])[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t_thetaj</span><span class="p">))])</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_theta</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;tab:blue&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">Ti</span><span class="p">,</span> <span class="n">Thetaj</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">([</span><span class="n">xn</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="o">-</span><span class="n">xn</span><span class="p">[</span><span class="n">n</span><span class="p">]],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;tab:blue&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">([</span><span class="n">xp</span><span class="p">,</span> <span class="o">-</span><span class="n">xp</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;tab:blue&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">ti</span><span class="p">[</span><span class="n">indices</span><span class="p">],</span> <span class="n">thetaj</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;tab:red&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">ti</span><span class="p">[</span><span class="n">indices</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="n">thetaj</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;tab:green&quot;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$t$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\theta$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Malha $(t_i, \theta_j)_</span><span class="si">{ij}</span><span class="s1">$ (&quot;x&quot;), gráfico $t=x\cos\theta + y\sin\theta$ (&quot;-&quot;)&#39;</span> 
-          <span class="o">+</span> <span class="n">f</span><span class="s1">&#39; para $(x, y) = $ (</span><span class="si">{xn[n]:.1f}</span><span class="s1">, </span><span class="si">{ym[m]:.1f}</span><span class="s1">) (&quot;o&quot;)&#39;</span>
+          <span class="o">+</span> <span class="n">f</span><span class="s1">&#39; para $(x, y) = $ (</span><span class="si">{xp:.1f}</span><span class="s1">, </span><span class="si">{yp:.1f}</span><span class="s1">) (&quot;o&quot;)&#39;</span>
           <span class="o">+</span> <span class="n">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">e pontos da malha anteriores (&quot;o&quot; vermelhos)</span><span class="se">\n</span><span class="s1">e posteriores (&quot;o&quot; verdes&quot;)&#39;</span>
           <span class="o">+</span> <span class="n">f</span><span class="s1">&#39; ao gráfico</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -14124,16 +14127,13 @@ $$<p>onde $t_I$ é o último ponto da malha $(t_i)_i$.</p>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input_hidden">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">T</span><span class="p">,</span> <span class="n">Theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">theta</span><span class="p">)</span>
 
-<span class="n">n</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="n">m</span> <span class="o">=</span> <span class="mi">7</span>
-
-<span class="o">%</span><span class="k">timeit</span> np.array([np.where(T[j,:] &lt;= t[j])[0][-1] for j in range(len(t))])
-<span class="o">%</span><span class="k">timeit</span> np.array([np.concatenate([np.array([-1]), np.where(T[j,:] &lt;= t[j])[0]])[-1] for j in range(len(t))])
+<span class="o">%</span><span class="k">timeit</span> np.array([np.where(t &lt;= t[j])[0][-1] for j in range(len(t))])
+<span class="o">%</span><span class="k">timeit</span> np.array([np.concatenate([np.array([-1]), np.where(t &lt;= t[j])[0]])[-1] for j in range(len(t))])
 </pre></div>
 
     </div>
@@ -14152,8 +14152,8 @@ $$<p>onde $t_I$ é o último ponto da malha $(t_i)_i$.</p>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>311 µs ± 16.9 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
-600 µs ± 12.8 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+<pre>351 µs ± 44.3 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+703 µs ± 161 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 </pre>
 </div>
 </div>
@@ -14199,7 +14199,7 @@ $$
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input_hidden">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
@@ -14222,8 +14222,8 @@ $$
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>CPU times: user 20.7 s, sys: 51.1 ms, total: 20.8 s
-Wall time: 20.8 s
+<pre>CPU times: user 24.1 s, sys: 243 ms, total: 24.3 s
+Wall time: 25.6 s
 </pre>
 </div>
 </div>
@@ -14235,11 +14235,11 @@ Wall time: 20.8 s
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input_hidden">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
-<span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">T</span><span class="p">[</span><span class="n">j</span><span class="p">,:]</span> <span class="o">&lt;=</span> <span class="n">t_theta</span><span class="p">[</span><span class="n">j</span><span class="p">])[</span><span class="mi">0</span><span class="p">]])[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t_theta</span><span class="p">))])</span>
+<span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">t</span> <span class="o">&lt;=</span> <span class="n">t_theta</span><span class="p">[</span><span class="n">j</span><span class="p">])[</span><span class="mi">0</span><span class="p">]])[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t_theta</span><span class="p">))])</span>
 
 <span class="n">hpre</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">h</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">indices</span><span class="p">[</span><span class="n">j</span><span class="p">]]</span> <span class="k">if</span> <span class="n">indices</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&gt;=</span><span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">theta</span><span class="p">))])</span>
 <span class="n">hpos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">h</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">indices</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="n">indices</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">h</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">theta</span><span class="p">))])</span>
@@ -14263,8 +14263,8 @@ Wall time: 20.8 s
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>CPU times: user 5 ms, sys: 1.27 ms, total: 6.26 ms
-Wall time: 5.13 ms
+<pre>CPU times: user 4.41 ms, sys: 1.33 ms, total: 5.74 ms
+Wall time: 6.97 ms
 </pre>
 </div>
 </div>
@@ -14276,7 +14276,7 @@ Wall time: 5.13 ms
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input_hidden">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
@@ -14328,7 +14328,7 @@ Wall time: 5.13 ms
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input_hidden">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
@@ -14380,31 +14380,30 @@ Wall time: 5.13 ms
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input_hidden">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">retroprojecao_pontual</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">retroprojecao_pontual</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">xp</span><span class="p">,</span> <span class="n">yp</span><span class="p">):</span>
 
-    <span class="n">dt</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># assumindo malha uniforme</span>
-    <span class="n">dtheta</span> <span class="o">=</span> <span class="n">theta</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">theta</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># assumindo malha uniforme</span>
+    <span class="n">dt</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># assumindo malha uniforme em t</span>
+    <span class="n">dtheta</span> <span class="o">=</span> <span class="n">theta</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">theta</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># assumindo malha uniforme em theta</span>
     
-    <span class="n">T</span><span class="p">,</span> <span class="n">Theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">theta</span><span class="p">)</span>
-    
-    <span class="n">t_theta</span> <span class="o">=</span> <span class="n">x</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="o">+</span> <span class="n">y</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+    <span class="n">t_theta</span> <span class="o">=</span> <span class="n">xp</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="o">+</span> <span class="n">yp</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="c1"># caminho senoidal</span>
 
     <span class="n">jrange</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">theta</span><span class="p">))</span>
 
-    <span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">T</span><span class="p">[</span><span class="n">j</span><span class="p">,:]</span> <span class="o">&lt;=</span> <span class="n">t_theta</span><span class="p">[</span><span class="n">j</span><span class="p">])[</span><span class="mi">0</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">jrange</span><span class="p">])</span>
+    <span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">t</span> <span class="o">&lt;=</span> <span class="n">t_theta</span><span class="p">[</span><span class="n">j</span><span class="p">])[</span><span class="mi">0</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">jrange</span><span class="p">])</span>
 
 <span class="c1">#    hpre = [h[j, indices[j]] for j in jrange]</span>
 <span class="c1">#    hpos = [h[j, indices[j]+1] for j in jrange]</span>
 
-    <span class="n">hpre</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">h</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">indices</span><span class="p">[</span><span class="n">j</span><span class="p">]]</span> <span class="k">if</span> <span class="n">indices</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">theta</span><span class="p">))])</span>
-    <span class="n">hpos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">h</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">indices</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="n">indices</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">h</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">theta</span><span class="p">))])</span>
+    <span class="n">hpre</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">h</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">indices</span><span class="p">[</span><span class="n">j</span><span class="p">]]</span> <span class="k">if</span> <span class="n">indices</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">jrange</span><span class="p">])</span>
+    <span class="n">hpos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">h</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">indices</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="n">indices</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">h</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">jrange</span><span class="p">])</span>
     
     <span class="n">haprox</span> <span class="o">=</span> <span class="p">((</span><span class="n">t</span><span class="p">[</span><span class="n">indices</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">t_theta</span><span class="p">)</span><span class="o">*</span><span class="n">hpre</span> <span class="o">+</span> <span class="p">(</span><span class="n">t_theta</span> <span class="o">-</span> <span class="n">t</span><span class="p">[</span><span class="n">indices</span><span class="p">])</span><span class="o">*</span><span class="n">hpos</span><span class="p">)</span><span class="o">/</span><span class="n">dt</span>
     
     <span class="n">hintegral</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">haprox</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">+</span> <span class="n">haprox</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span><span class="o">*</span><span class="n">dtheta</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span>
+    
     <span class="k">return</span> <span class="n">hintegral</span>
 </pre></div>
 
@@ -14418,44 +14417,10 @@ Wall time: 5.13 ms
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input_hidden">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">timeit</span> retroprojecao_pontual(h, t, theta, xn[2], ym[7])
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>1.07 ms ± 25.3 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input_hidden">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[21]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Retroprojeção no ponto (x,y) = &#39;</span> <span class="o">+</span> <span class="n">f</span><span class="s1">&#39;{retroprojecao_pontual(h, t, theta, xn[2], ym[7]):.2f}&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Retroprojeção no ponto (x,y) = {retroprojecao_pontual(h, t, theta, xn[2], ym[7]):.2f}&#39;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -14482,18 +14447,58 @@ Wall time: 5.13 ms
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input_hidden">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">timeit</span> retroprojecao_pontual(h, t, theta, xn[2], ym[7])
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>1.09 ms ± 101 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Retroproje&#231;&#227;o">Retroproje&#231;&#227;o<a class="anchor-link" href="#Retroproje&#231;&#227;o">&#182;</a></h3>
+<h3 id="Retroproje&#231;&#227;o">Retroproje&#231;&#227;o<a class="anchor-link" href="#Retroproje&#231;&#227;o">&#182;</a></h3><p>Uma forma simples de implementar a retroprojeção da imagem completa é usar uma <a href="https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions">list comprehension</a>:</p>
+
+<pre><code>(python)
+h_retro = [[retroprojecao_pontual(h, t, theta, xx, yy) 
+                                    for xx in x] for yy in y]</code></pre>
+<p>Tempo de execução:</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input_hidden">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span> 
@@ -14516,8 +14521,8 @@ Wall time: 5.13 ms
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>CPU times: user 46.8 s, sys: 368 ms, total: 47.2 s
-Wall time: 47.8 s
+<pre>CPU times: user 41.6 s, sys: 367 ms, total: 42 s
+Wall time: 43.7 s
 </pre>
 </div>
 </div>
@@ -14525,11 +14530,18 @@ Wall time: 47.8 s
 </div>
 </div>
 
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Visualizando-a-retroproje&#231;&#227;o-n&#227;o-filtrada">Visualizando a retroproje&#231;&#227;o n&#227;o-filtrada<a class="anchor-link" href="#Visualizando-a-retroproje&#231;&#227;o-n&#227;o-filtrada">&#182;</a></h2>
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input_hidden">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
@@ -14569,11 +14581,328 @@ Wall time: 47.8 s
 </div>
 </div>
 
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Acelerando-a-retroproje&#231;&#227;o">Acelerando a retroproje&#231;&#227;o<a class="anchor-link" href="#Acelerando-a-retroproje&#231;&#227;o">&#182;</a></h2><p>Podemos acelerar a retroprojeção pontual e, com isso, a global, usando o <code>np.where</code> em uma versão matricial e calculando <code>hpre</code> e <code>hpos</code> de forma vetorial, no <code>numpy</code>, como feito a seguir.</p>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input_hidden">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">retroprojecao_pontual_2</span><span class="p">(</span><span class="n">xp</span><span class="p">,</span> <span class="n">yp</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">theta</span><span class="p">):</span>
+
+    <span class="n">dt</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># assumindo malha uniforme em t</span>
+    <span class="n">dtheta</span> <span class="o">=</span> <span class="n">theta</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">theta</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># assumindo malha uniforme em theta</span>
+    
+    <span class="n">t_theta</span> <span class="o">=</span> <span class="n">xp</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="o">+</span> <span class="n">yp</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="c1"># caminho senoidal</span>
+    
+    <span class="n">T</span><span class="p">,</span> <span class="n">T_theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">t_theta</span><span class="p">)</span>    
+    <span class="n">I</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)),</span> <span class="n">theta</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    
+    <span class="n">jrange</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">theta</span><span class="p">))</span>
+
+    <span class="n">i_pre</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">T</span><span class="o">&lt;=</span><span class="n">T_theta</span><span class="p">,</span> <span class="n">I</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>   
+
+    <span class="n">hpre</span> <span class="o">=</span> <span class="n">h</span><span class="p">[</span><span class="n">jrange</span><span class="p">,</span> <span class="n">i_pre</span><span class="p">]</span>
+    <span class="n">hpos</span> <span class="o">=</span> <span class="n">h</span><span class="p">[</span><span class="n">jrange</span><span class="p">,</span> <span class="n">i_pre</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+    
+    <span class="n">haprox</span> <span class="o">=</span> <span class="p">((</span><span class="n">t</span><span class="p">[</span><span class="n">i_pre</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">t_theta</span><span class="p">)</span><span class="o">*</span><span class="n">hpre</span> <span class="o">+</span> <span class="p">(</span><span class="n">t_theta</span> <span class="o">-</span> <span class="n">t</span><span class="p">[</span><span class="n">i_pre</span><span class="p">])</span><span class="o">*</span><span class="n">hpos</span><span class="p">)</span><span class="o">/</span><span class="n">dt</span>
+    
+    <span class="n">hintegral</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">haprox</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">+</span> <span class="n">haprox</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span><span class="o">*</span><span class="n">dtheta</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span>
+    
+    <span class="k">return</span> <span class="n">hintegral</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input_hidden">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Retroprojeção no ponto (x,y) = &#39;</span> <span class="o">+</span> <span class="n">f</span><span class="s1">&#39;{retroprojecao_pontual_2(xn[2], ym[7], h, t, theta):.2f}&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Retroprojeção no ponto (x,y) = 4.20
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Observe a melhoria (1/3) no tempo de execução da retroprojecao pontual:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input_hidden">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">timeit</span> retroprojecao_pontual_2(xn[2], ym[7], h, t, theta)
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>357 µs ± 22.4 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Essa melhoria é refletida na retroprojecao global:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input_hidden">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[30]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span> 
+<span class="n">h_retro</span> <span class="o">=</span> <span class="p">[[</span><span class="n">retroprojecao_pontual_2</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">theta</span><span class="p">)</span> <span class="k">for</span> <span class="n">xx</span> <span class="ow">in</span> <span class="n">x</span><span class="p">]</span> <span class="k">for</span> <span class="n">yy</span> <span class="ow">in</span> <span class="n">y</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>CPU times: user 15.5 s, sys: 320 ms, total: 15.8 s
+Wall time: 16.8 s
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Vetorizando-para-acelerar-um-pouco-mais">Vetorizando para acelerar um pouco mais<a class="anchor-link" href="#Vetorizando-para-acelerar-um-pouco-mais">&#182;</a></h2><p>Podemos acelerar a retroprojeção global um pouco mais, vetorizando a retroprojeção pontual e aplicando-a direto à malha gerada por <code>x</code> e <code>y</code>, além de pré-definir alguns parâmetros que não mudam a cada cálculo.</p>
+<p>Para isso, criamos uma nova função de retroprojeção pontual que recebe diversos parâmetros já calculados e usamos o método <code>partial</code> do módulo padrão <code>functools</code> para fixar esses parâmetros, antes de vetorizar a função no numpy.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input_hidden">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[31]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">retroprojecao_pontual_3</span><span class="p">(</span><span class="n">xp</span><span class="p">,</span> <span class="n">yp</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">dtheta</span><span class="p">,</span> <span class="n">I</span><span class="p">,</span> <span class="n">jrange</span><span class="p">):</span>
+
+    <span class="n">t_theta</span> <span class="o">=</span> <span class="n">xp</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="o">+</span> <span class="n">yp</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="c1"># caminho senoidal</span>
+    <span class="n">T</span><span class="p">,</span> <span class="n">T_theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">t_theta</span><span class="p">)</span>
+    <span class="n">i_pre</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">T</span><span class="o">&lt;=</span><span class="n">T_theta</span><span class="p">,</span> <span class="n">I</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> 
+
+    <span class="n">hpre</span> <span class="o">=</span> <span class="n">h</span><span class="p">[</span><span class="n">jrange</span><span class="p">,</span> <span class="n">i_pre</span><span class="p">]</span>
+    <span class="n">hpos</span> <span class="o">=</span> <span class="n">h</span><span class="p">[</span><span class="n">jrange</span><span class="p">,</span> <span class="n">i_pre</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="n">haprox</span> <span class="o">=</span> <span class="p">((</span><span class="n">t</span><span class="p">[</span><span class="n">i_pre</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">t_theta</span><span class="p">)</span><span class="o">*</span><span class="n">hpre</span> <span class="o">+</span> <span class="p">(</span><span class="n">t_theta</span> <span class="o">-</span> <span class="n">t</span><span class="p">[</span><span class="n">i_pre</span><span class="p">])</span><span class="o">*</span><span class="n">hpos</span><span class="p">)</span><span class="o">/</span><span class="n">dt</span>
+    <span class="n">hintegral</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">haprox</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">+</span> <span class="n">haprox</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span><span class="o">*</span><span class="n">dtheta</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span>
+
+    <span class="k">return</span> <span class="n">hintegral</span>
+
+<span class="n">retroprojecao_pontual_vetorizada</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span><span class="n">partial</span><span class="p">(</span><span class="n">retroprojecao_pontual_3</span><span class="p">,</span> 
+                                            <span class="n">h</span><span class="o">=</span><span class="n">h</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="n">t</span><span class="p">,</span> <span class="n">theta</span><span class="o">=</span><span class="n">theta</span><span class="p">,</span> 
+                                            <span class="n">dt</span><span class="o">=</span><span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dtheta</span><span class="o">=</span><span class="n">theta</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">theta</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                                            <span class="n">I</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)),</span> <span class="n">theta</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span>
+                                            <span class="n">jrange</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">theta</span><span class="p">))))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input_hidden">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[32]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Observe agora a ligeira melhoria no cálculo da retroprojeção global:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input_hidden">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[33]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span> 
+<span class="n">h_retro</span> <span class="o">=</span> <span class="n">retroprojecao_pontual_vetorizada</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>CPU times: user 10.9 s, sys: 239 ms, total: 11.2 s
+Wall time: 11.4 s
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Visualizando-para-conferir-o-resultado">Visualizando para conferir o resultado<a class="anchor-link" href="#Visualizando-para-conferir-o-resultado">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input_hidden">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[34]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">im</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">h_retro</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;bilinear&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Blues</span><span class="p">,</span>
+               <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="n">xmax</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="o">-</span><span class="n">ymax</span><span class="p">,</span> <span class="n">ymax</span><span class="p">],</span>
+               <span class="n">vmin</span><span class="o">=</span><span class="n">h_retro</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">vmax</span><span class="o">=</span><span class="n">h_retro</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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
+"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input_hidden">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[35]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>jupyter nbconvert <span class="m">20</span>.00-Aula20.ipynb --to slides --SlidesExporter.reveal_scroll<span class="o">=</span>True --template output_toggle.tpl
@@ -14596,7 +14925,7 @@ Wall time: 47.8 s
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>[NbConvertApp] Converting notebook 20.00-Aula20.ipynb to slides
-[NbConvertApp] Writing 756207 bytes to 20.00-Aula20.slides.html
+[NbConvertApp] Writing 821484 bytes to 20.00-Aula20.slides.html
 </pre>
 </div>
 </div>
