@@ -248,7 +248,7 @@ def get_navigator_entries(core_navigators = [], app_to_notes_path='.',
 <a href="https://mybinder.org/v2/gh/{user}/{repository}/{branch}?filepath={github_nb_dir}/{notebook_filename}"><img align="left" src="https://mybinder.org/badge.svg" alt="Open in binder" title="Open and Execute in Binder"></a>
 """
     SLIDES_LINK = """
-<a href="https://{user}.github.io/{repository}/{github_io_slides_dir}/{slides_filename}"><img align="left" src="https://rmsrosa.github.io/jupyterbookmaker/badges/slides_badge.svg" alt="Open slides" title="Open and View Slides"></a>
+<a href="https://nbviewer.jupyter.org/github/{user}/{repository}/blob/{branch}/{github_io_slides_dir}/{slides_filename}"><img align="left" src="https://rmsrosa.github.io/jupyterbookmaker/badges/slides_badge.svg" alt="Open slides" title="Open and View Slides"></a>
 """
 
     for prev_nb, this_nb, next_nb in prev_this_next(indexed_notebooks(app_to_notes_path)):
@@ -278,7 +278,7 @@ def get_navigator_entries(core_navigators = [], app_to_notes_path='.',
             notebook_filename=os.path.basename(this_nb))
         this_slide_link = SLIDES_LINK.format(user=user, 
             repository=repository,
-            github_io_slides_dir=github_io_slides_dir,
+            branch=branch, github_io_slides_dir=github_io_slides_dir,
             slides_filename=os.path.basename(this_nb.replace('.ipynb',
                                                              '.slides.html')))
             
