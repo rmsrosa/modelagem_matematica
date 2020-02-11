@@ -37,7 +37,7 @@ if( window.location.search.match( /print-pdf/gi ) ) {
 
 <!-- Loading the mathjax macro -->
 <!-- Load mathjax -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
     <!-- MathJax configuration -->
     <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
@@ -13439,7 +13439,7 @@ $$ \frac{\rm{d}}{\rm{dt}} (S + I + R) = 0.
 $$<p>Observe, ainda, que as equações para $S$ e $I$ estão desacopladas de $R$. Assim, para a evolução da epidemia, podemos considerar apenas o sistema em $S$ e $I$ e deduzir $R$ a partir de $S$, $I$ e $N$, ou seja, evoluimos de acordo com</p>
 $$ \begin{cases}
      S' = \displaystyle - \beta\frac{I}{N} S, \\
-    I' = \displaystyle \beta\frac{I}{N} I - \gamma I, \\
+    I' = \displaystyle \beta\frac{I}{N} S - \gamma I, \\
    \end{cases}
 $$<p>e encontramos $R$ através de</p>
 $$ R = N - S - I.

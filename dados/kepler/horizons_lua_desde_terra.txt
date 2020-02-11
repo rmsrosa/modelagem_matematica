@@ -1,0 +1,30 @@
+*** Horizons ERROR/Unexpected Results ***
+
+*******************************************************************************
+ Revised: July 31, 2013             Moon / (Earth)                          301
+ 
+ GEOPHYSICAL DATA (updated 2018-Aug-15):
+  Vol. mean radius, km  = 1737.53+-0.03    Mass, x10^22 kg       =    7.349
+  Radius (gravity), km  = 1738.0           Surface emissivity    =    0.92
+  Radius (IAU), km      = 1737.4           GM, km^3/s^2          = 4902.800066
+  Density, g/cm^3       =    3.3437        GM 1-sigma, km^3/s^2  =  +-0.0001  
+  V(1,0)                =   +0.21          Surface accel., m/s^2 =    1.62
+  Earth/Moon mass ratio = 81.3005690769    Farside crust. thick. = ~80 - 90 km
+  Mean crustal density  = 2.97+-.07 g/cm^3 Nearside crust. thick.= 58+-8 km 
+  Heat flow, Apollo 15  = 3.1+-.6 mW/m^2   Mean angular diameter = 31'05.2"
+  Heat flow, Apollo 17  = 2.2+-.5 mW/m^2   Sid. rot. rate, rad/s = 0.0000026617
+  Geometric Albedo      = 0.12             Mean solar day        = 29.5306 d
+  Obliquity to orbit    = 6.67 deg         Orbit period          = 27.321582 d
+  Semi-major axis, a    = 384400 km        Eccentricity          = 0.05490
+  Mean motion, rad/s    = 2.6616995x10^-6  Inclination           = 5.145 deg
+  Apsidal period        = 3231.50 d        Nodal period          = 6798.38 d
+                                 Perihelion  Aphelion    Mean
+  Solar Constant (W/m^2)         1414+-7     1323+-7     1368+-7
+  Maximum Planetary IR (W/m^2)   1314        1226        1268
+  Minimum Planetary IR (W/m^2)      5.2         5.2         5.2
+ *******************************************************************************
+ 
+Body frame output not available for this center.
+</pre>
+</td></tr>
+</table>
