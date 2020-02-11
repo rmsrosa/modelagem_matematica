@@ -37,7 +37,7 @@ if( window.location.search.match( /print-pdf/gi ) ) {
 
 <!-- Loading the mathjax macro -->
 <!-- Load mathjax -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
     <!-- MathJax configuration -->
     <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
@@ -13957,6 +13957,19 @@ pendulo_sensor_de_proximidade_l80cm_theta0.14.csv
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>jupyter nbconvert <span class="m">03</span>.00-Aula3.ipynb --to slides
+</pre></div>
+
+    </div>
+</div>
+</div>
+
 </div></section></section>
 </div>
 </div>
@@ -14003,7 +14016,7 @@ require(
         Reveal.addEventListener('slidechanged', update);
 
         function setScrollingSlide() {
-            var scroll = true
+            var scroll = false
             if (scroll === true) {
               var h = $('.reveal').height() * 0.95;
               $('section.present').find('section')
