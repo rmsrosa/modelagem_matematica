@@ -8,7 +8,7 @@ Este *branch* do repositório contém o livro texto da disciplina de Modelagem M
 
 ## Aviso
 
-O texto ainda está em uma fase muito preliminar e não está sendo muito utilizado no curso. Mas a ideia é que o texto seja desenvolvido ao longo das primeiras edições da disciplina e que chegue, em breve, em um formato mais completo.
+O texto ainda está em uma fase bastante preliminar e não está sendo muito utilizado no curso. A ideia é que o texto seja desenvolvido ao longo das primeiras edições da disciplina e que chegue, em breve, em um formato mais completo.
 
 ## Licença
 
