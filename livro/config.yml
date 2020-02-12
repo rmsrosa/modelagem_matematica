@@ -1,12 +1,12 @@
 book:
   toc_nb_name: 00.00-Pagina_Inicial.ipynb
-  header: "*[Notas de aula da disciplina de Modelagem Matemática](https://github.com/rmsrosa/modelagem_matematica) do [IM-UFRJ](https://www.im.ufrj.br).*"
+  header: "[*Notas de aula da disciplina de Modelagem Matemática*](https://github.com/rmsrosa/modelagem_matematica) *do* [*IM-UFRJ*](https://www.im.ufrj.br)."
   core_navigators:
     - 00.00-Pagina_inicial.ipynb
     - BA.00-Bibliografia.ipynb
   repository: rmsrosa/modelagem_matematica
-  branch: master
-  github_nb_dir: notebooks
+  branch: livro
+  github_nb_dir: livro
   show_colab: True
   show_binder: True
   show_full_entry_in_nav: True
