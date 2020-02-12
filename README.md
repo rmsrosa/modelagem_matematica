@@ -1,6 +1,6 @@
-# Modelagem Matemática - IM/UFRJ - Período 2019/1
+# Modelagem Matemática - IM/UFRJ - Período 2020/1
 
-Notas de aula da disciplina de Modelagem Matemática do Instituto de Matemática da UFRJ, do período 2019/1.
+Notas de aula da disciplina de Modelagem Matemática do Instituto de Matemática da UFRJ, do período 2020/1.
 
 *Links* para a página inicial das aulas no [Github](https://github.com), [Binder](https://beta.mybinder.org/) e [Google Colab](http://colab.research.google.com):
 
@@ -16,7 +16,7 @@ Notas de aula da disciplina de Modelagem Matemática do Instituto de Matemática
 
 - As notas de aula estão inteiramente disponíveis *online* neste repositório [rmsrosa/modelagem_matematica](https://github.com/rmsrosa/modelagem_matematica) do [Github](https://github.com).
 
-- Cada período será mantido em um *branch* próprio do repositório. As notas do período 2019/1 estão neste *branch* [modmat2019p1](https://github.com/rmsrosa/modelagem_matematica/tree/modmat2019p1).
+- Cada período será mantido em um *branch* próprio do repositório. As notas do período 2020/1 estão neste *branch* [modmat2020p1](https://github.com/rmsrosa/modelagem_matematica/tree/modmat2020p1).
 
 - O repositório inteiro, incluindo a coleção com todos os cadernos que compõem as notas de aula podem ser copiadas *(downloaded)* para uma máquina local através do link `Clone or Download` da página inicial [rmsrosa/modelagem_matematica](https://github.com/rmsrosa/modelagem_matematica) do repositório, escolhendo a opção `Download ZIP`.
 
@@ -38,7 +38,7 @@ Ao longo do período, é esperado que os alunos modifiquem os cadernos existente
 
 ## Aviso
 
-Este foi o primeiro período da disciplina nesse novo formato (2019/1). O conteúdo deve ser aprimorado ao longo dos próximos períodos.
+Em cada período, os cadernos das aulas vão sendo escritos e disponibilizados ao longo do curso. Os cadernos de períodos anteriores estão disponíveis em seus respectivos *branches*.
 
 ## Licença
 
