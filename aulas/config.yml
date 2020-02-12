@@ -5,7 +5,7 @@ book:
     - 00.00-Pagina_Inicial.ipynb
   user: rmsrosa
   repository: modelagem_matematica
-  branch: master
+  branch: modmat2019p1
   github_nb_dir: aulas
   github_io_slides_dir: aulas
   show_colab: True
