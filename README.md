@@ -26,7 +26,7 @@ Notas de aula da disciplina de Modelagem Matemática do Instituto de Matemática
 
 Ao longo do período, é esperado que os alunos modifiquem os cadernos existentes e criem os seus próprios cadernos para resolver os exercícios, os testes e escrever os mini-projetos e o projeto final.
 
-- Isso pode ser feito localmente, em máquinas com o Python (versão 3.6 ou maior) e os devidos pacotes devidamente instalados. 
+- Isso pode ser feito localmente, em máquinas com o Python (versão 3.6 ou maior) e os devidos pacotes devidamente instalados.
 
 - A lista dos pacotes necessários para o conjunto de cadernos aparece no arquivo [requirements.txt](requirements.txt). Esse arquivo é necessário para o [Binder](https://beta.mybinder.org/) poder montar o ambiente python com todos os pacotes a serem utilizados. O [Google Colab](http://colab.research.google.com) já tem o seu próprio ambiente e não requer esse arquivo.
 
