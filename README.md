@@ -12,8 +12,7 @@ Professor da disciplina neste período: [Ricardo M. S. Rosa](http://www.im.ufrj.
 
 Link para o *branch* das aulas do período anterior:
 
-[![ModMat2019p1](https://img.shields.io/badge/branch%20for-ModMat2019p1-darkgreen)](https://colab.research.google.com/assets/colab-badge.svg)
-
+[![ModMat2019p1](https://img.shields.io/badge/branch-ModMat2019p1-darkgreen)](https://colab.research.google.com/assets/colab-badge.svg)
 
 ## Observações
 
@@ -53,7 +52,7 @@ Link para o *branch* das aulas do período anterior:
 
 - Outra opção é clicar no botão *Watch*, também no canto superior direito do repositório. Dessa forma, você receberá notificações, por *e-mail*, sobre qualquer modificação feita no mesmo.
 
-- Há um *branch* [livro](https://github.com/rmsrosa/modelagem_matematica/tree/livro), que contém uma versão bastante preliminar de um livro-texto para a disciplina. Este livro-texto não está sendo muito utilizado na matéria. A ideia, no entanto, é que ele seja aprimorado aos poucos e que seja mais útil em uma das próximas edições da disciplina.
+- Há um *branch* [livro](https://github.com/rmsrosa/modelagem_matematica/tree/livro), que contém uma versão bastante preliminar de um livro-texto para a disciplina. Este livro-texto ainda não está sendo muito utilizado na matéria. A ideia, no entanto, é que ele seja aprimorado aos poucos e que seja mais útil em uma das próximas edições da disciplina.
 
 ## Licença
 
