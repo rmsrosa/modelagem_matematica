@@ -1,10 +1,10 @@
 # Modelagem Matemática - IM/UFRJ - Período 2020/1
 
+[![Text License: CC-BY-NC-ND license](https://img.shields.io/badge/Text%20License-CC--BY--NC--ND-yellow.svg)](https://opensource.org/licenses/MIT) [![Code License: GNU-GPLv3](https://img.shields.io/badge/Code%20License-GNU--GPLv3-yellow.svg)](https://www.gnu.org/licenses/gpl.html) ![GitHub repo size](https://img.shields.io/github/repo-size/rmsrosa/nbbinder)
+
 Notas de aula da disciplina de Modelagem Matemática do Instituto de Matemática da UFRJ, do período 2020/1.
 
 Professor da disciplina neste período: [Ricardo M. S. Rosa](http://www.im.ufrj.br/rrosa/).
-
-[![Text License: CC-BY-NC-ND license](https://img.shields.io/badge/Text%20License-CC%20BY%20NC%20ND%20-yellow.svg)](https://opensource.org/licenses/MIT) [![Code License: GNU-GPLv3](https://img.shields.io/badge/Code%20License-GNU%20GPLv3-yellow.svg)](https://www.gnu.org/licenses/gpl.html) ![GitHub repo size](https://img.shields.io/github/repo-size/rmsrosa/nbbinder)
 
 ## *Links* de acesso direto aos cadernos
 
@@ -12,7 +12,7 @@ Professor da disciplina neste período: [Ricardo M. S. Rosa](http://www.im.ufrj.
 
 [![Github](https://img.shields.io/badge/view%20on-github-orange)](aulas/00.00-Pagina_Inicial.ipynb) [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/rmsrosa/modelagem_matematica/master?filepath=aulas%2F00.00-Pagina_Inicial.ipynb) [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/rmsrosa/modelagem_matematica/blob/master/aulas/00.00-Pagina_Inicial.ipynb)
 
-Link para o *branch* das aulas do período anterior:
+Link para as notas de aula do período anterior:
 
 [![ModMat2019p1](https://img.shields.io/badge/branch-ModMat2019p1-darkgreen)](https://colab.research.google.com/assets/colab-badge.svg)
 
