@@ -6,9 +6,14 @@ Professor da disciplina neste período: [Ricardo M. S. Rosa](http://www.im.ufrj.
 
 ## *Links* de acesso direto aos cadernos
 
-*Links* para acessar a página inicial das notas de aula, via [Github](https://github.com), [Binder](https://beta.mybinder.org/) e [Google Colab](http://colab.research.google.com):
+*Links* para acessar a página inicial das notas de aula, do período 2020/1, via [Github](https://github.com), [Binder](https://beta.mybinder.org/) e [Google Colab](http://colab.research.google.com):
 
 [![Github](https://img.shields.io/badge/view%20on-github-orange)](aulas/00.00-Pagina_Inicial.ipynb) [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/rmsrosa/modelagem_matematica/master?filepath=aulas%2F00.00-Pagina_Inicial.ipynb) [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/rmsrosa/modelagem_matematica/blob/master/aulas/00.00-Pagina_Inicial.ipynb)
+
+Link para o *branch* das aulas do período anterior:
+
+[![ModMat2019p1](https://img.shields.io/badge/branch%20for-ModMat2019p1-darkgreen)](https://colab.research.google.com/assets/colab-badge.svg)
+
 
 ## Observações
 
