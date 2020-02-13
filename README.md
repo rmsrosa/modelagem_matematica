@@ -4,6 +4,8 @@ Notas de aula da disciplina de Modelagem Matemática do Instituto de Matemática
 
 Professor da disciplina neste período: [Ricardo M. S. Rosa](http://www.im.ufrj.br/rrosa/).
 
+[![Text License: CC-BY-NC-ND license](https://img.shields.io/badge/Text%20License-CC%20BY%20NC%20ND%20-yellow.svg)](https://opensource.org/licenses/MIT) [![Code License: GNU-GPLv3](https://img.shields.io/badge/Code%20License-GNU%20GPLv3-yellow.svg)](https://www.gnu.org/licenses/gpl.html) ![GitHub repo size](https://img.shields.io/github/repo-size/rmsrosa/nbbinder)
+
 ## *Links* de acesso direto aos cadernos
 
 *Links* para acessar a página inicial das notas de aula, do período 2020/1, via [Github](https://github.com), [Binder](https://beta.mybinder.org/) e [Google Colab](http://colab.research.google.com):
@@ -58,4 +60,4 @@ Link para o *branch* das aulas do período anterior:
 
 Os **textos** neste repositório estão disponíveis sob a licença [CC-BY-NC-ND license](LICENSE-TEXT). Mais informações sobre essa licença em [Creative Commons Attribution-NonCommercial-NoDerivs 3.0](https://creativecommons.org/licenses/by-nc-nd/3.0/us/legalcode).
 
-Os **códigos** neste repositório, nos blocos de código dos [jupyter notebooks,](https://jupyter.org/) estão disponíveis sob a [licença GNU-GPL](LICENSE-CODEE). Mais informações sobre essa licença em [GNU GENERAL PUBLIC LICENSE Version 3](https://www.gnu.org/licenses/gpl.html).
+Os **códigos** neste repositório, nos blocos de código dos [jupyter notebooks,](https://jupyter.org/) estão disponíveis sob a [licença GNU-GPL](LICENSE-CODE). Mais informações sobre essa licença em [GNU GENERAL PUBLIC LICENSE Version 3](https://www.gnu.org/licenses/gpl.html).
