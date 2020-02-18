@@ -13202,9 +13202,98 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Princ&#237;pios-de-Modelagem-Matem&#225;tica-e-primeiros-exemplos">Princ&#237;pios de Modelagem Matem&#225;tica e primeiros exemplos<a class="anchor-link" href="#Princ&#237;pios-de-Modelagem-Matem&#225;tica-e-primeiros-exemplos">&#182;</a></h1>
+<h1 id="Teste">Teste<a class="anchor-link" href="#Teste">&#182;</a></h1><p>Defina, abaixo, uma função <code>fatorial</code> que recebe um inteiro não-negativo e retorne o seu fatorial, gerando erro caso o argumento não seja um inteiro positivo.</p>
+
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">fatorial</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="c1">### Begin solution</span>
+    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="nb">int</span><span class="p">),</span> <span class="s2">&quot;O argumento deve ser um inteiro.&quot;</span>
+    <span class="k">assert</span> <span class="n">n</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;O argumento deve ser um inteiro positivo.&quot;</span>
+    <span class="k">return</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">n</span><span class="o">*</span><span class="n">fatorial</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="c1">### End solution</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">fat</span> <span class="ow">in</span> <span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">24</span><span class="p">),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">120</span><span class="p">),</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">3628800</span><span class="p">)):</span>
+    <span class="k">assert</span> <span class="n">fatorial</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">==</span> <span class="n">fat</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fatorial</span><span class="p">(</span><span class="s1">&#39;2&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">AssertionError</span>                            Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-15-8b1ebfcb6e76&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>fatorial<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#39;2&#39;</span><span class="ansi-blue-fg">)</span>
+
+<span class="ansi-green-fg">&lt;ipython-input-9-7e6a5a7f37ff&gt;</span> in <span class="ansi-cyan-fg">fatorial</span><span class="ansi-blue-fg">(n)</span>
+<span class="ansi-green-intense-fg ansi-bold">      1</span> <span class="ansi-green-fg">def</span> fatorial<span class="ansi-blue-fg">(</span>n<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">      2</span>     <span class="ansi-red-fg">### Begin solution</span>
+<span class="ansi-green-fg">----&gt; 3</span><span class="ansi-red-fg">     </span><span class="ansi-green-fg">assert</span> isinstance<span class="ansi-blue-fg">(</span>n<span class="ansi-blue-fg">,</span> int<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">&#34;O argumento deve ser um inteiro.&#34;</span>
+<span class="ansi-green-intense-fg ansi-bold">      4</span>     <span class="ansi-green-fg">assert</span> n <span class="ansi-blue-fg">&gt;=</span> <span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">&#34;O argumento deve ser um inteiro positivo.&#34;</span>
+<span class="ansi-green-intense-fg ansi-bold">      5</span>     <span class="ansi-green-fg">return</span> <span class="ansi-cyan-fg">1</span> <span class="ansi-green-fg">if</span> n <span class="ansi-blue-fg">==</span> <span class="ansi-cyan-fg">0</span> <span class="ansi-green-fg">else</span> n<span class="ansi-blue-fg">*</span>fatorial<span class="ansi-blue-fg">(</span>n<span class="ansi-blue-fg">-</span><span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">)</span>
+
+<span class="ansi-red-fg">AssertionError</span>: O argumento deve ser um inteiro.</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
 </div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
@@ -13212,7 +13301,7 @@ a.anchor-link {
 <!--NAVIGATOR-->
 
 <hr>
-<p><a href="00.00-Pagina_Inicial.slides.html">&lt;- Página Inicial</a> | <a href="00.00-Pagina_Inicial.slides.html">Página Inicial</a> | <a href="01.01-Teste1.slides.html">Teste -&gt;</a></p>
+<p><a href="01.00.Aula-Modelagem.slides.html">&lt;- Princípios de Modelagem Matemática e primeiros exemplos</a> | <a href="00.00-Pagina_Inicial.slides.html">Página Inicial</a></p>
 
 </div>
 </div>
