@@ -24,15 +24,19 @@ Link para as notas de aula do período anterior:
 
 - Os cadernos podem ser visualizados dentro do próprio [Github](https://github.com), ou acessadas, modificadas e executadas nas "nuvens de computação" [Binder](https://beta.mybinder.org/) e [Google Colab](http://colab.research.google.com), através dos links exibidos acima.
 
+- Além disso, um servidor próprio para o curso está sendo construído no [AWS - Amazon Web Services](https://github.com/rmsrosa/modelagem_matematica), onde cada aluno terá uma conta e todo o ambiente computacional necessário para o acompanhamento do curso. O endereço para esse ambiente computacional é <https://www.modmat.ml/jupyter>.
+
+- Cada aluno deverá enviar, para o email do professor, o seu **nome**, **sobrenome**, **email** e o **nome de usuário** que deseja ter em <https://www.modmat.ml/jupyter>.
+
 - Cada período será mantido em um *branch* próprio do repositório. As notas do período corrente são mantidas no *branch* [master](https://github.com/rmsrosa/modelagem_matematica). Ao final do período, serão transferidas para outro *branch*.
 
 - As edições anteriores da disciplina, ministradas neste formato, e que estão em outros *branches*, podem ser acessadas diretamente através dos seguintes *links:*
 
   - [Modelagem Matemática - Período 2019/1](https://github.com/rmsrosa/modelagem_matematica/tree/modmat2019p1).
 
-- Ao longo do período, é esperado que os alunos modifiquem os cadernos existentes e criem os seus próprios cadernos para resolver os exercícios, os testes e escrever os mini-projetos e o projeto final.
+- Ao longo do período, é esperado que os alunos modifiquem os cadernos existentes e criem os seus próprios cadernos para resolver os exercícios, os testes e escrever os trabalhos/mini-projetos e o projeto final.
 
-- Em princípio, a comunicação entre o professor e os alunos será feita, prioritariamente, através do [AVA @ UFRJ (Ambiente Virtual de Aprendizagem na UFRJ)](http://ambientevirtual.nce.ufrj.br/). Informes via [SIGA/Intranet UFRJ](https://intranet.ufrj.br/) também podem ser utilizados, assim como mensagens via *e-mail*.
+- A comunicação mais apropriada entre o professor e os alunos ainda está sendo avaliada, mas uma possibilidade é que isso seja feito através do [AVA @ UFRJ (Ambiente Virtual de Aprendizagem na UFRJ)](http://ambientevirtual.nce.ufrj.br/). Informes via [SIGA/Intranet UFRJ](https://intranet.ufrj.br/) e mensagens diretas via *e-mail* também podem ser utilizados.
 
 - Cada *branch*, contendo a coleção de todos os cadernos, figuras, dados e códigos que compõem as notas de aula, podem ser baixadas para uma máquina local através do botão `Clone or Download` da página inicial [rmsrosa/modelagem_matematica](https://github.com/rmsrosa/modelagem_matematica) do *branch* de cada repositório, escolhendo a opção `Download ZIP`.
 
@@ -40,7 +44,7 @@ Link para as notas de aula do período anterior:
 
 - As alterações nos cadernos deste repositório e a criação de novos cadernos podem ser feitas localmente, em máquinas com o Python (versão 3.6 ou maior) e os devidos pacotes devidamente instalados, ou nas nuvens de computação mencionadas acima.
 
-- A lista dos pacotes python necessários para a execução do conjunto de cadernos aparece no arquivo [requirements.txt](requirements.txt). Esse arquivo não é apenas uma referência, ele é necessário para o [Binder](https://beta.mybinder.org/) poder montar o ambiente python com todos os pacotes a serem utilizados. O [Google Colab](http://colab.research.google.com), por outro lado, já tem o seu próprio ambiente, bastante completo, e não depende deste arquivo.
+- A lista dos pacotes python necessários para a execução do conjunto de cadernos aparece no arquivo [requirements.txt](requirements.txt). Esse arquivo não é apenas uma referência, ele é necessário para o [Binder](https://beta.mybinder.org/) poder montar o ambiente python com todos os pacotes a serem utilizados. O [Google Colab](http://colab.research.google.com), por outro lado, já tem o seu próprio ambiente, bastante completo, e não depende deste arquivo. O ambiente em <https://www.modmat.ml/jupyter>, por sua vez, já conta com os pacotes devidamente pré-instalados.
 
 - No [Binder](https://beta.mybinder.org/) e no [Google Colab](http://colab.research.google.com), um ambiente python temporário é montado e os cadernos podem ser alterados e executados interativamente. Mas eles não são guardados para uma próxima sessão. Se quiser salvar as alterações, é necessário baixar os cadernos alterados para a sua máquina.
 
