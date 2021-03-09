@@ -6,9 +6,9 @@ Notas de aula da disciplina de Modelagem Matemática do Instituto de Matemática
 
 O material de cada edição da disciplina ministrada neste formato está em um determinado *branch* deste repositório:
 
-* [Modelagem Matemática - Período 2019/1](https://github.com/rmsrosa/modelagem_matematica/tree/modmat2019p1).
-
 * [Modelagem Matemática - Período 2021/1](https://github.com/rmsrosa/modelagem_matematica/tree/modmat2021p1).
+
+* [Modelagem Matemática - Período 2019/1](https://github.com/rmsrosa/modelagem_matematica/tree/modmat2019p1).
 
 PS: A edição de 2020/1 foi adiada devido à pandemia de Covid-19 e outro professor acabou sendo responsável pela disciplina. Dessa maneira, o material não foi disponibilizado por aqui.
 
