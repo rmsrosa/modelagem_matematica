@@ -2,6 +2,8 @@
 
 [![Text License: CC-BY-NC-ND license](https://img.shields.io/badge/Text%20License-CC--BY--NC--ND-yellow.svg)](https://opensource.org/licenses/MIT) [![Code License: GNU-GPLv3](https://img.shields.io/badge/Code%20License-GNU--GPLv3-yellow.svg)](https://www.gnu.org/licenses/gpl.html) ![GitHub repo size](https://img.shields.io/github/repo-size/rmsrosa/nbbinder)
 
+**ATENÇÃO:** DEVIDO À PANDEMIA DE COVID-19, O PERÍODO FOI ADIADO, A DISTRIBUIÇÃO DE TURMAS FOI MODIFICADA, EU ACABEI NÃO SENDO O RESPONSÁVEL PELA DISCIPLINA E ESSE *BRANCH* NÃO FOI UTILIZADO.
+
 Notas de aula da disciplina de Modelagem Matemática do Instituto de Matemática da UFRJ, do período 2020/1.
 
 Professor da disciplina neste período: [Ricardo M. S. Rosa](http://www.im.ufrj.br/rrosa/).
