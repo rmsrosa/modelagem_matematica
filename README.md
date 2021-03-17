@@ -1,12 +1,14 @@
-# Modelagem Matemática - IM/UFRJ - Período 2021/1
+# Modelagem Matemática - IM/UFRJ - Período 2020/2
+
+[![ModMat2020p2](https://img.shields.io/badge/ModMat-2020p2-orange)](https://github.com/rmsrosa/modelagem_matematica/tree/modmat2020p2)
 
 [![Text License: CC-BY-NC-ND license](https://img.shields.io/badge/Text%20License-CC--BY--NC--ND-yellow.svg)](https://opensource.org/licenses/MIT) [![Code License: GNU-GPLv3](https://img.shields.io/badge/Code%20License-GNU--GPLv3-yellow.svg)](https://www.gnu.org/licenses/gpl.html) ![GitHub repo size](https://img.shields.io/github/repo-size/rmsrosa/nbbinder)
 
 Notas de aula da disciplina de Modelagem Matemática do Instituto de Matemática da UFRJ do Professor [Ricardo M. S. Rosa](http://www.im.ufrj.br/rrosa/).
 
-O material de cada edição da disciplina ministrada neste formato está em um determinado *branch* deste repositório:
+O material de cada edição da disciplina ministrada neste formato está em um determinado ramo *(branch)* deste repositório:
 
-* [Modelagem Matemática - Período 2021/1](https://github.com/rmsrosa/modelagem_matematica/tree/modmat2021p1).
+* [Modelagem Matemática - Período 2020/2](https://github.com/rmsrosa/modelagem_matematica/tree/modmat2020p2).
 
 * [Modelagem Matemática - Período 2019/1](https://github.com/rmsrosa/modelagem_matematica/tree/modmat2019p1).
 
