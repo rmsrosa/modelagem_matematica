@@ -3,7 +3,7 @@
 
 version: 0.13a
 
-path_to_notes: .
+path_to_notes: ../notas_de_aula
 
 contents:
   toc_nb_name: 00.00-Pagina_inicial.ipynb
@@ -25,7 +25,7 @@ badges:
     message: nbviewer
     color: orange
   - title: Open in binder
-    url: https://mybinder.org/v2/gh/rmsrosa/modelagem_matematica/modmat2020p2?filepath=notas_de_aula
+    url: https://mybinder.org/v2/gh/rmsrosa/modelagem_matematica/julia-env-for-binder?urlpath=git-pull%3Frepo%3Dhttps%253A%252F%252Fgithub.com%252Frmsrosa%252Fmodelagem_matematica%26branch%3Dmodmat2020p2%26urlpath%3Dtree%252Fmodelagem_matematica%252Fnotas_de_aula
     src: https://mybinder.org/badge.svg
   - title: View Slides
     url: https://nbviewer.jupyter.org/github/rmsrosa/modelagem_matematica/blob/modmat2020p2/notas_de_aula/slides
