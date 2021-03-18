@@ -8,7 +8,7 @@ Notas de aula da disciplina de Modelagem Matemática do Instituto de Matemática
 
 *Links* para o diretório com as notas de aula, via [Github](https://github.com), [Binder](https://beta.mybinder.org/) e [Google Colab](http://colab.research.google.com):
 
-[![Github](https://img.shields.io/badge/view%20on-github-orange)](notas_de_aula/) [![binder modmat2020p2](https://mybinder.org/v2/gh/rmsrosa/modelagem_matematica/julia-env-for-binder?urlpath=git-pull%3Frepo%3Dhttps%253A%252F%252Fgithub.com%252Frmsrosa%252Fmodelagem_matematica%26urlpath%3Dtree%252Fmodelagem_matematica%252Fnotas_de_aula%26branch%3Dmodmat2020p2)] [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/rmsrosa/modelagem_matematica/blob/motmat2020p2/notas_de_aula)
+[![Github](https://img.shields.io/badge/view%20on-github-orange)](notas_de_aula/) [![Binder ModMat2020p2](https://img.shields.io/badge/ModMat2020p2-binder-orange)](https://mybinder.org/v2/gh/rmsrosa/modelagem_matematica/julia-env-for-binder?urlpath=git-pull%3Frepo%3Dhttps%253A%252F%252Fgithub.com%252Frmsrosa%252Fmodelagem_matematica%26urlpath%3Dtree%252Fmodelagem_matematica%252Fnotas_de_aula%26branch%3Dmodmat2020p2)] [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/rmsrosa/modelagem_matematica/blob/motmat2020p2/notas_de_aula)
 
 ## Edições atual e anteriores
 
