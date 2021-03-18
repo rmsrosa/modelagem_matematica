@@ -1,0 +1,41 @@
+# Configuration file for the python module NBJoint for the machinelearning_notes
+# Arquivo de configuração do módulo NBJoint para as notas de Modelagem Matemática
+
+version: 0.13a
+
+path_to_notes: .
+
+contents:
+  toc_nb_name: 00.00-Pagina_inicial.ipynb
+  toc_title: Sumário
+  show_index_in_toc: True
+
+header: "*Notas de aula de Modelagem Matemática - 2020/2 [- Ricardo M. S. Rosa (IM/UFRJ)](http://www.im.ufrj.br/rrosa)*"
+
+navigators:
+  core_navigators:
+    - 00.00-Pagina_inicial.ipynb
+  show_nb_title_in_nav: True
+  show_index_in_nav: True
+
+badges:
+  - title: View in NBViewer
+    url: https://nbviewer.jupyter.org/github/rmsrosa/modelagem_matematica/blob/modmat2020p2/notas_de_aula
+    label: view in
+    message: nbviewer
+    color: orange
+  - title: Open in binder
+    url: https://mybinder.org/v2/gh/rmsrosa/modelagem_matematica/modmat2020p2?filepath=notas_de_aula
+    src: https://mybinder.org/badge.svg
+  - title: View Slides
+    url: https://nbviewer.jupyter.org/github/rmsrosa/modelagem_matematica/blob/modmat2020p2/notas_de_aula/slides
+    extension: .slides.html
+    label: view
+    message: slides
+    color: darkgreen
+    
+exports:
+  - export_path: slides
+    exporter_name: slides
+    exporter_args:
+      reveal_scroll: True
