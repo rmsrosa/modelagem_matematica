@@ -16,25 +16,27 @@ Notas de aula da disciplina de Modelagem Matemática do Instituto de Matemática
 
 - Os cadernos podem ser visualizados dentro do próprio [Github](https://github.com), ou acessadas nas "nuvens de computação" [Binder](https://beta.mybinder.org/) e [Google Colab](http://colab.research.google.com), através dos links exibidos acima.
 
-- As notas de aula estão inteiramente disponíveis *online* neste repositório [rmsrosa/modelagem_matematica](https://github.com/rmsrosa/modelagem_matematica) do [Github](https://github.com).
+- A utilização no [Google Colab](http://colab.research.google.com), no entanto, não é imediata. É preciso configurá-lo para rodar Julia. Mais sobre isso em breve. Mas o [Binder](https://beta.mybinder.org/) já está preparado para rodar sem mais configurações.
 
-- Cada período será mantido em um ramo *(branch)* próprio do repositório. As notas do período 2019/1 estão em [modmat2019p1](https://github.com/rmsrosa/modelagem_matematica/tree/modmat2019p1).
+- As notas de aula estão inteiramente disponíveis *online* neste repositório.
 
-- O repositório inteiro, incluindo a coleção com todos os cadernos que compõem as notas de aula podem ser copiadas *(downloaded)* para uma máquina local através do link `Clone or Download` da página inicial [rmsrosa/modelagem_matematica](https://github.com/rmsrosa/modelagem_matematica) do repositório, escolhendo a opção `Download ZIP`.
+- Cada período será mantido em um ramo próprio do repositório. Este é sobre o período 2020/2. As notas do período 2019/1 estão em [modmat2019p1](https://github.com/rmsrosa/modelagem_matematica/tree/modmat2019p1).
+
+- O repositório inteiro, incluindo a coleção com todos os cadernos que compõem as notas de aula, pode ser copiado *(downloaded)* para uma máquina local através do link `Clone or Download` da página inicial do repositório, escolhendo a opção `Download ZIP`.
 
 - Cada caderno, além de poder ser visualizado diretamente no [Github](https://github.com), também pode ser copiado individualmente para uma máquina local clicando-se no ícone `Raw`, que aparece em cada página, e salvando o conteúdo que aparece (é um arquivo fonte de cadernos [jupyter](https://jupyter.org/), com a extensão `".ipynb"`).
 
-- Contrariamente às outras edições, desta vez vamos utilizar a linguagem de programação [Julia](https://julialang.org).
+- Contrariamente às outras edições, desta vez vamos utilizar a linguagem de programação [Julia](https://julialang.org). Mais sobre isso nas notas de aula.
 
 ## Modificando os cadernos
 
 Ao longo do período, é esperado que os alunos modifiquem os cadernos existentes e criem os seus próprios cadernos para resolver os exercícios, os testes e escrever os mini-projetos e o projeto final.
 
-- Isso pode ser feito localmente, em máquinas com [Julia](https://julialang.org) e os devidos pacotes devidamente instalados (veja os pacotes no arquivo [Project.toml](Project.toml)).
+- Isso pode ser feito localmente, em máquinas com [Julia](https://julialang.org) e com os devidos pacotes devidamente instalados (veja os pacotes no arquivo [Project.toml](Project.toml)).
 
 - Caso não seja possível trabalhar localmente, é possível trabalhar na "nuvem". Ao acessar os arquivos deste repositório no [Binder](https://beta.mybinder.org/), um ambiente Julia temporário é montado e os cadernos podem ser alterados e executados interativamente. Mas eles não são guardados para uma próxima sessão. Se quiser salvar as alterações, é necessário "baixar" os cadernos alterados para a sua máquina. Esses arquivos baixados podem ser carregados novamente em sessões futuras do Binder.
 
-- Uma alternativa, caso tenha o [Google Drive](https://www.google.com/drive/), é habilitar o [Google Colab](http://colab.research.google.com) em sua conta do Google e copiar as notas para um diretório denominado *Colab Notebooks* que será automaticamente criado em seu [Google Drive](https://www.google.com/drive/). Nesse caso, as notas podem ser acessadas, executadas e gravadas normalmente, como se estivesse com uma instalação local do [jupyter](https://jupyter.org/).
+- Uma alternativa, caso tenha o [Google Drive](https://www.google.com/drive/), é habilitar o [Google Colab](http://colab.research.google.com) em sua conta do Google e copiar as notas para um diretório denominado *Colab Notebooks* que será automaticamente criado em seu [Google Drive](https://www.google.com/drive/). Nesse caso, as notas podem ser acessadas, executadas e gravadas normalmente, como se estivesse com uma instalação local do [jupyter](https://jupyter.org/). Mas, como ressaltado acima, a utilização no colab não é imediata.
 
 - Uma outra alternativa é criar uma conta no [github](https://github.com), *clonar* o repositório e usar o [Google Colab](http://colab.research.google.com) ou o [Binder](https://beta.mybinder.org/) a partir do seu repositório. Será necessário, no entanto, após a clonagem, modificar os cadernos para atualizar os links com o nome do seu repositório. Trabalhar com o github não é trivial, mas uma vantagem é que será mais fácil submeter correções ou sugestões para este repositório, ajudando-o a melhorar.
 
