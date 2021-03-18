@@ -2,23 +2,11 @@
 
 [![Text License: CC-BY-NC-ND license](https://img.shields.io/badge/Text%20License-CC--BY--NC--ND-yellow.svg)](https://opensource.org/licenses/MIT) [![Code License: GNU-GPLv3](https://img.shields.io/badge/Code%20License-GNU--GPLv3-yellow.svg)](https://www.gnu.org/licenses/gpl.html) ![GitHub repo size](https://img.shields.io/github/repo-size/rmsrosa/nbbinder)
 
-Notas de aula da disciplina de Modelagem Matemática do Instituto de Matemática da UFRJ do Professor [Ricardo M. S. Rosa](http://www.im.ufrj.br/rrosa/).
+Notas de aula da disciplina de Modelagem Matemática do Instituto de Matemática da UFRJ do Professor [Ricardo M. S. Rosa](http://www.im.ufrj.br/rrosa/), período 2020/2.
 
 ## Links diretos para as notas de aula
 
-*Links* para o diretório com as notas de aula, via [Github](https://github.com), [Binder](https://beta.mybinder.org/) e [Google Colab](http://colab.research.google.com):
-
-[![Github](https://img.shields.io/badge/view%20on-github-orange)](notas_de_aula/) [![Binder ModMat2020p2](https://img.shields.io/badge/ModMat2020p2-binder-orange)](https://mybinder.org/v2/gh/rmsrosa/modelagem_matematica/julia-env-for-binder?urlpath=git-pull%3Frepo%3Dhttps%253A%252F%252Fgithub.com%252Frmsrosa%252Fmodelagem_matematica%26urlpath%3Dtree%252Fmodelagem_matematica%252Fnotas_de_aula%26branch%3Dmodmat2020p2)] [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/rmsrosa/modelagem_matematica/blob/motmat2020p2/notas_de_aula)
-
-## Edições atual e anteriores
-
-O material de cada edição da disciplina ministrada neste formato está em um determinado ramo *(branch)* deste repositório:
-
-[![ModMat2020p2](https://img.shields.io/badge/Repo%20Branch-ModMat2020p2-darkgreen)](https://github.com/rmsrosa/modelagem_matematica/tree/modmat2020p2)
-
-[![ModMat2019p1](https://img.shields.io/badge/Repo%20Branch-ModMat2019p1-darkgreen)](https://github.com/rmsrosa/modelagem_matematica/tree/modmat2019p1)
-
-PS: A edição de 2020/1 foi adiada devido à pandemia de Covid-19 e outro professor acabou sendo responsável pela disciplina. Dessa maneira, o material não foi disponibilizado por aqui.
+[![Github](https://img.shields.io/badge/view%20on-github-orange)](notas_de_aula/) [![Binder ModMat2020p2](https://img.shields.io/badge/ModMat2020p2-binder-orange)](https://mybinder.org/v2/gh/rmsrosa/modelagem_matematica/julia-env-for-binder?urlpath=git-pull%3Frepo%3Dhttps%253A%252F%252Fgithub.com%252Frmsrosa%252Fmodelagem_matematica%26urlpath%3Dtree%252Fmodelagem_matematica%252Fnotas_de_aula%26branch%3Dmodmat2020p2) [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/rmsrosa/modelagem_matematica/blob/motmat2020p2/notas_de_aula)
 
 ## Utilização
 
@@ -49,6 +37,16 @@ Ao longo do período, é esperado que os alunos modifiquem os cadernos existente
 - Uma alternativa, caso tenha o [Google Drive](https://www.google.com/drive/), é habilitar o [Google Colab](http://colab.research.google.com) em sua conta do Google e copiar as notas para um diretório denominado *Colab Notebooks* que será automaticamente criado em seu [Google Drive](https://www.google.com/drive/). Nesse caso, as notas podem ser acessadas, executadas e gravadas normalmente, como se estivesse com uma instalação local do [jupyter](https://jupyter.org/).
 
 - Uma outra alternativa é criar uma conta no [github](https://github.com), *clonar* o repositório e usar o [Google Colab](http://colab.research.google.com) ou o [Binder](https://beta.mybinder.org/) a partir do seu repositório. Será necessário, no entanto, após a clonagem, modificar os cadernos para atualizar os links com o nome do seu repositório. Trabalhar com o github não é trivial, mas uma vantagem é que será mais fácil submeter correções ou sugestões para este repositório, ajudando-o a melhorar.
+
+## Edições atual e anteriores
+
+O material de cada edição da disciplina ministrada neste formato está em um determinado ramo *(branch)* deste repositório:
+
+[![ModMat2020p2](https://img.shields.io/badge/Repo%20Branch-ModMat2020p2-darkgreen)](https://github.com/rmsrosa/modelagem_matematica/tree/modmat2020p2)
+
+[![ModMat2019p1](https://img.shields.io/badge/Repo%20Branch-ModMat2019p1-darkgreen)](https://github.com/rmsrosa/modelagem_matematica/tree/modmat2019p1)
+
+PS: A edição de 2020/1 foi adiada devido à pandemia de Covid-19 e outro professor acabou sendo responsável pela disciplina. Dessa maneira, o material não foi disponibilizado por aqui.
 
 ## Licença
 
