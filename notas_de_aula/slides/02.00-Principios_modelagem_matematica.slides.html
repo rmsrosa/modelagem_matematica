@@ -13203,14 +13203,14 @@ a.anchor-link {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Princ&#237;pios-de-modelagem-matem&#225;tica">Princ&#237;pios de modelagem matem&#225;tica<a class="anchor-link" href="#Princ&#237;pios-de-modelagem-matem&#225;tica">&#182;</a></h1><ul>
-<li><p>Tipos de modelos</p>
-</li>
-<li><p>Modelos matemáticos</p>
-</li>
-<li><p>Tipos de modelagem</p>
-</li>
-<li><p>Validação</p>
-</li>
+<li>Modelos em geral</li>
+<li>Modelos matemáticos</li>
+<li>Tipos de modelos</li>
+<li>Tipos de modelagem</li>
+<li>Ajuste de parâmetros</li>
+<li>Validação</li>
+<li>Escolha do modelo</li>
+<li>Quantificação de incertezas</li>
 </ul>
 
 </div>
@@ -13328,11 +13328,35 @@ $$</li>
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Tipos-de-modelos">Tipos de modelos<a class="anchor-link" href="#Tipos-de-modelos">&#182;</a></h3><ul>
+<li>estacionário x dinâmico</li>
+<li>determinístico x estocástico</li>
+<li>discreto x contínuo</li>
+<li>explícito x implícito</li>
+<li>macroscópico/microscópico x complexo</li>
+<li>diferencial x não-diferencial</li>
+<li>otimização x não-otimização</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Modelagem-matem&#225;tica">Modelagem matem&#225;tica<a class="anchor-link" href="#Modelagem-matem&#225;tica">&#182;</a></h2><p>"Modelagem matemática é um processo que utiliza conceitos matemáticos para representar, analisar, fazer previsões e obter concenhecimento de fenômenos do mundo real." - <a href="https://m3challenge.siam.org/resources/teaching-modeling">GAIMME</a></p>
+
+</div>
+</div>
 </div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Modelagem">Modelagem<a class="anchor-link" href="#Modelagem">&#182;</a></h2><p>O processo de modelagem pode seguir vários caminhos:</p>
+<h3 id="Tipos-de-modelagem">Tipos de modelagem<a class="anchor-link" href="#Tipos-de-modelagem">&#182;</a></h3><p>O processo de modelagem pode seguir vários caminhos:</p>
 <ul>
 <li><strong>empírico:</strong> através da observação, seja de fenômenos reais, seja de experimentos controlados</li>
 <li><strong>análise dimensional:</strong> baseado na análise das dimensões de quantidades envolvidas no fenômeno</li>
@@ -13459,9 +13483,21 @@ $$</li>
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="An&#225;lise-dimensional-e-o-per&#237;odo-de-um-p&#234;ndulo">An&#225;lise dimensional e o per&#237;odo de um p&#234;ndulo<a class="anchor-link" href="#An&#225;lise-dimensional-e-o-per&#237;odo-de-um-p&#234;ndulo">&#182;</a></h3><ul>
-<li>Na análise dimensional, busca-se obter uma relação entre os parâmetros envolvidos em um determinado problema.</li>
+<li>Na <strong>análise dimensional</strong>, busca-se obter uma relação entre os parâmetros envolvidos em um determinado problema.</li>
+<li>Usualmente, essa analise vem embutida com uma <strong>hipótese de universalidade</strong>, assumindo que o problema só depende dos parâmetros escolhidos.</li>
+</ul>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="P&#234;ndulo">P&#234;ndulo<a class="anchor-link" href="#P&#234;ndulo">&#182;</a></h4><ul>
 <li>Como exemplo, considere um pêndulo com haste de comprimento $\ell$ e massa $m$.</li>
 <li>Sob a ação da força gravitacional, cuja aceleração é denotada por $g$, o pêndulo oscila, com um período $\tau$.</li>
+<li>Buscamos entender como esse período depende dos outros parâmetros.</li>
+<li>A fórmula obtida pode inclusive ser utilizada para se estimar um dos parâmetros em função dos outros.</li>
 </ul>
 
 </div>
@@ -13474,7 +13510,7 @@ $$</li>
 <li>Cada sistema possui um <strong>sistema de dimensões</strong>.</li>
 <li>No caso de um sistema mecânico, temos as dimensões de <em>comprimento</em> $L$, <em>massa</em> $M$ e <em>tempo</em> $T$.</li>
 <li>Outros sistemas podem incluir unidades de temperatura $\Theta$, corrent elétrica $A$, intensidade luminosa $CD$, etc..</li>
-<li>Associado a isso, temos um <strong>sistema de unidades</strong>. Por exemplo, o sistema MKS utiliza as unidades de <em>metro</em>, <em>quilômetro</em> e <em>segundo</em> para as dimensões de comprimento, massa e tempo, respectivamente.</li>
+<li>Associado a isso, temos um <strong>sistema de unidades</strong>. Por exemplo, o sistema MKS utiliza as unidades de <em>metro</em>, <em>quilômetro</em> e <em>segundo</em> para as dimensões de comprimento, massa e tempo, respectivamente, mas que não entram explicitamente na análise dimensional.</li>
 <li>Cada parâmetro está ligado a uma das dimensões.</li>
 <li>Denotamos a dimensão de uma quantidade colocando-a entre colchetes, e.g. $[m], [\ell], [g], [\tau]$.</li>
 <li>Assim, temos
@@ -13489,8 +13525,8 @@ $$</li>
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Hip&#243;tese-de-universalidade-e-lei-dimensional">Hip&#243;tese de universalidade e lei dimensional<a class="anchor-link" href="#Hip&#243;tese-de-universalidade-e-lei-dimensional">&#182;</a></h4><ul>
-<li>Usualmente, a análise dimensional vem acompanhada de uma <strong>hipótese de universalidade</strong>.</li>
-<li>No caso do pêndulo, podemos fazer tal hipótese de que o período é caracterizado apenas pela combinação dos parâmetros $\ell, m$ e $g$, da forma, por exemplo,
+<li>Como dito acima, a análise dimensional vem usualmente acompanhada de uma <strong>hipótese de universalidade</strong>.</li>
+<li>No caso do pêndulo, podemos fazer a hipótese de que o período é caracterizado apenas pela combinação dos parâmetros $\ell$, $m$ e $g$, por exemplo,
 $$\tau \propto m^a \ell^b g^c.
 $$</li>
 <li>Essa combinação tem dimensão
@@ -13505,6 +13541,7 @@ $$</li>
 <li>O símbolo $\propto$ significa que uma quantidade é diretamente proporcional à outra, ou seja é um múltiplo constante da outra: $x \propto y$ é equivalente a $x = ky$ para algum $k\neq 0$.</li>
 <li>A constante de proporcionalidade, no entanto, não segue diretamente desssa análise.</li>
 <li>Além disso, desprezamos a resistência do ar, a variação na temperatura ambiente, a elasticidade da haste, o ângulo da oscilação, e outras parâmetros menos tangíveis.</li>
+<li>Mais adiante, veremos o Teorema de Buckinham-Pi, que formaliza mais essa análise.</li>
 </ul>
 
 </div>
@@ -13569,11 +13606,18 @@ $$</li>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Crescimento-com-limita&#231;&#227;o">Crescimento com limita&#231;&#227;o<a class="anchor-link" href="#Crescimento-com-limita&#231;&#227;o">&#182;</a></h4><ul>
-<li>Indo além, podemos considerar que o organismo depende de nutrientes para se desenvolver e gerar novos organismos.</li>
-<li>E podemos imaginar situações em que essa quantidade de nutrientes é limitado, como em um placa de Petri.</li>
+<h3 id="Ad-hoc---crescimento-com-limita&#231;&#227;o">Ad-hoc - crescimento com limita&#231;&#227;o<a class="anchor-link" href="#Ad-hoc---crescimento-com-limita&#231;&#227;o">&#182;</a></h3><ul>
+<li>Modelagem <strong>ad-hoc</strong> é utilizada quando não temos algum mecanismo razoável para considerar algum aspecto da modelagem.</li>
+<li>Ela é muito utilizada em combinação com outras modelagens, para complementar alguma informação faltante.</li>
+<li>No caso de crescimento populacional, por exemplo, isso pode aparecer ao considerarmos que o organismo depende de nutrientes para se desenvolver e gerar novos organismos.</li>
+<li>Podemos imaginar situações em que essa quantidade de nutrientes é limitada, como em um placa de Petri.</li>
 <li>Assim, o crescimento será afetado pelo tamanho da população, com a taxa de crescimento diminuindo conforme a população aumenta.</li>
-<li>Podemos argumentr</li>
+<li>Um hipótese comum é assumir que isso é afetado por um termo de ordem quadrática, levando-nos à equação logística:
+$$ \frac{\text{d}x}{\text{d}t} = \alpha x - \beta x^2 \quad \Longleftrightarrow \quad \frac{\text{d}x}{\text{d}t} = \alpha ( 1 - \frac{\beta}{\alpha} x) x.
+$$</li>
+<li>Observe que para $0&lt; x \ll \alpha/\beta$, o termo quadrático é desprezível, e obtemos o crescimento natural.</li>
+<li>Mas para $x \sim \alpha/\beta$, o termo quadrático reduz consideravelmente a taxa de crescimento.</li>
+<li>Observe, no entanto, que isso foi uma dedução essencialmente matemática, em termos de ordem de grandeza, sem levar em consideração algum mecanismo especial. O mesmo efeito seria alcançado com qualquer potência maior $p&gt;1$, não necessariamente $p=2$. Nesse sentido, foi uma escolha <em>ad-hoc</em>.</li>
 </ul>
 
 </div>
@@ -13599,34 +13643,12 @@ vale em geral, desde que sob condições macroscópicas mas sem exageros astron�
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Ad-hoc">Ad-hoc<a class="anchor-link" href="#Ad-hoc">&#182;</a></h3><ul>
-<li>Modelagem <strong>ad-hoc</strong> é utilizada quando não temos nenhuma informação muito concreta.</li>
-<li>Ela é muito utilizada em combinação com outras modelagens, para complementar alguma informação faltante.</li>
-<li></li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Primeiros-modelos">Primeiros modelos<a class="anchor-link" href="#Primeiros-modelos">&#182;</a></h1><ul>
-<li>Nesta parte, vamos ver <strong>modelos funcionais</strong>, i.e. relacionando diretamente uma variável $x$ a uma variável $y$.</li>
-<li>Isso pode se dar de maneira <strong>explícita</strong>,
-$$ y = f(x),
-$$
-ou <strong>implícita</strong>,
-$$ F(x,y) = 0.
-$$</li>
-<li>Invariavelmente, teremos vários <strong>parâmetros</strong> $\beta$ nas funções, 
-$$ y = f_\beta(x) \quad \text{ou} \quad F_\beta(x,y) = 0.
-$$</li>
-<li>Essas funções e os seus parâmetros podem ser obtidos, em alguns casos, via <strong>análise dimensional</strong></li>
-<li>Em outros casos, podem ser obtidos via <strong>ajuste dos parâmetros</strong>, em um modelo genérico.</li>
-<li>Podemos ter, na verdade, várias variáveis, e.g.
-$$ y_i = f_{i,\beta}(x_1, x_2,\ldots, x_m), \quad i=1,\ldots, n.
-$$</li>
+<h2 id="Ajuste-de-par&#226;metros">Ajuste de par&#226;metros<a class="anchor-link" href="#Ajuste-de-par&#226;metros">&#182;</a></h2><ul>
+<li>Uma parte fundamental do processo de modelagem é o <strong>ajuste de parâmetros</strong>.</li>
+<li>Os modelos dependem, normalmente, de vários parâmetros.</li>
+<li>É fundamental termos dados reais para ajustar os parâmetros a esses dados, e assim modelar o fenômeno apropriadamente.</li>
+<li>Esse ajuste pode ser feito com várias técnicas, algumas das quais veremos ao longo do curso.</li>
+<li>E invariavelmente os dados reais contém <strong>ruídos da medição</strong> e/ou refletem <strong>incertezas inerentes ao processo</strong>. Nesse caso, conceitos estatísticos/probilísticos são necessários.</li>
 </ul>
 
 </div>
@@ -13640,7 +13662,73 @@ $$</li>
 <li>É preciso <strong>validá-lo</strong>, também.</li>
 <li>Mesmo no modelo de um <strong>busto</strong>, fazemos a validação através da <strong>olhar</strong>, ou até mesmo do <strong>tato</strong>.</li>
 <li>Em um modelo matemático, também podemos fazer isso, tanto de forma <strong>qualitativa</strong> como <strong>quantitativa</strong>.</li>
-<li>No exemplo de alometria, podemos medir a diferença entre os valores medidos para a massa e o valor estimado, para cada comprimento correspondente, e ver o quão pequena essa diferença é.</li>
+<li>No exemplo de alometria, podemos medir, para cada comprimento dado, a diferença entre os valores medidos para a massa e o valor estimado pelo modelo, e ver o quão pequena essa diferença é. De preferência de forma relativa, para termos um critério mais objetivo.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Escolha-do-modelo">Escolha do modelo<a class="anchor-link" href="#Escolha-do-modelo">&#182;</a></h2><ul>
+<li>Em muitos casos, vários modelos parecem ser apropriados.</li>
+<li>Não é tão imediato decidir qual deles será mais satisfatório para o problema em questão.</li>
+<li>Diversas técnicas podem ser utilizadas para verificar a robustez de um modelo a predições, evitando, em particular, um excesso de parâmetros que possam ajustar perfeitamente o modelo mas causar erros grosseiros de predição, algo conhecido como <em>over-fitting</em>.</li>
+<li>Há testes de validação cruzada e critérios de teoria de informação que iremos explorar com esse objetivo.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Quantifica&#231;&#227;o-de-incertezas">Quantifica&#231;&#227;o de incertezas<a class="anchor-link" href="#Quantifica&#231;&#227;o-de-incertezas">&#182;</a></h2><ul>
+<li>Qualquer modelo contém <strong>incertezas</strong> em relação ao objeto da modelagem.</li>
+<li>Incertezas de <strong>naturezas diversas:</strong><ul>
+<li>Aspectos não considerados no modelo;</li>
+<li>Impossibilidade do fenômeno de ser completamente modelado;</li>
+<li>Imprecisões nas medições;</li>
+<li>Incertezas no ajuste de dados.</li>
+</ul>
+</li>
+<li>Nesse sentido, é importante buscar quantificar essas incertezas e como elas afetam diversos aspectos oriundos da modelagem:<ul>
+<li>Predição</li>
+<li>Representação</li>
+<li>Análise</li>
+<li>Robustez</li>
+</ul>
+</li>
+<li>Há técnicas clássicas de análise de erro local<ul>
+<li>Estatísticas/probilísticas (e.g. médias, desvio-padrão, cálculo de intervalos de confiança, análises de correlação)</li>
+<li>Propagação local de erro, via análise de derivads</li>
+<li>Propagação global de erro, via simulações de Monte-Carlo</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Conclus&#227;o">Conclus&#227;o<a class="anchor-link" href="#Conclus&#227;o">&#182;</a></h2><ul>
+<li>Vimos acima diversos aspectos do processo de modelagem:<ul>
+<li>Observação</li>
+<li>Elaboração do modelo</li>
+<li>Ajuste de dados</li>
+<li>Validação</li>
+<li>Escolha do "melhor" modelo</li>
+<li>Quantificação de incertezas</li>
+</ul>
+</li>
+<li>Ao longo do curso, vamos analisar cada um desses aspectos</li>
+<li>Faremos isso buscando, também, trabalhar em cima de diversos casos concretos</li>
+<li>E através de projetos em que cada um de vocês terá a oportunidade de fazer na prática</li>
+<li>Na escolha dos seus projetos, levem em consideração os aspectos mencionados acima.</li>
+<li>Quanto mais aspectos forem utilizados, mais enriquecedor será o projeto. Mais do que elaborar um projeto extremamente aplicado e detalhado mas que toque em apenas um ou dois aspectos.</li>
 </ul>
 
 </div>
