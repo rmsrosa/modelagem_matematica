@@ -35,7 +35,10 @@ badges:
     color: darkgreen
     
 exports:
-  - export_path: slides
+  - export_path: ../notas_de_aula/slides
     exporter_name: slides
     exporter_args:
       reveal_scroll: True
+#      TemplateExporter.extra_template_basedirs: /Users/rrosa/Documents/git_repositories/modelagem_matematica/tools
+#      template: "/Users/rrosa/Documents/git_repositories/modelagem_matematica/tools/output_toggle.tpl"
+      
