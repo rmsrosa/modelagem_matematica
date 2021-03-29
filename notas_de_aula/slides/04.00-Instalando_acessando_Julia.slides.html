@@ -13202,15 +13202,448 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="P&#225;gina-inicial">P&#225;gina inicial<a class="anchor-link" href="#P&#225;gina-inicial">&#182;</a></h1>
+<h1 id="Instalando-e-interagindo-com-o-Julia">Instalando e interagindo com o Julia<a class="anchor-link" href="#Instalando-e-interagindo-com-o-Julia">&#182;</a></h1><ul>
+<li>Nessa edição da disciplina, vamos usar a <a href="https://julialang.org">linguagem de programação Julia</a>.</li>
+<li>A <a href="https://julialang.org/blog/2021/03/julia-1.6-highlights/">versão 1.6.0</a> foi recentemente lançada e está disponível para <a href="https://julialang.org/downloads/">download aqui</a></li>
+</ul>
+
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><!--TABLE_OF_CONTENTS--></p>
-<h2 id="Sum&#225;rio"><a href="#">Sum&#225;rio</a><a class="anchor-link" href="#Sum&#225;rio">&#182;</a></h2><h3 id="P&#225;gina-inicial"><a href="00.00-Pagina_inicial.slides.html">P&#225;gina inicial</a><a class="anchor-link" href="#P&#225;gina-inicial">&#182;</a></h3><h3 id="1.-Aspectos-do-curso---edi&#231;&#227;o-2020/2"><a href="01.00-Aspectos_curso.slides.html">1. Aspectos do curso - edi&#231;&#227;o 2020/2</a><a class="anchor-link" href="#1.-Aspectos-do-curso---edi&#231;&#227;o-2020/2">&#182;</a></h3><h3 id="2.-Princ&#237;pios-de-modelagem-matem&#225;tica"><a href="02.00-Principios_modelagem_matematica.slides.html">2. Princ&#237;pios de modelagem matem&#225;tica</a><a class="anchor-link" href="#2.-Princ&#237;pios-de-modelagem-matem&#225;tica">&#182;</a></h3><h3 id="3.-Exemplos-de-tipos-de-modelagem"><a href="03.00-Exemplos_tipos_modelagem.slides.html">3. Exemplos de tipos de modelagem</a><a class="anchor-link" href="#3.-Exemplos-de-tipos-de-modelagem">&#182;</a></h3><h3 id="4.-Instalando-e-interagindo-com-o-Julia"><a href="04.00-Instalando_acessando_Julia.slides.html">4. Instalando e interagindo com o Julia</a><a class="anchor-link" href="#4.-Instalando-e-interagindo-com-o-Julia">&#182;</a></h3><h3 id="5.-Primeiros-passos-em-Julia"><a href="05.00-Primeiros_passos_Julia.slides.html">5. Primeiros passos em Julia</a><a class="anchor-link" href="#5.-Primeiros-passos-em-Julia">&#182;</a></h3><h3 id="6.-An&#225;lise-dimensional-e-o-Teorema-de-Buckinham-Pi"><a href="06.00-BuckinghamPi_analise_dimensional.slides.html">6. An&#225;lise dimensional e o Teorema de Buckinham-Pi</a><a class="anchor-link" href="#6.-An&#225;lise-dimensional-e-o-Teorema-de-Buckinham-Pi">&#182;</a></h3><h3 id="7.-Ajuste-de-dados-via-m&#237;nimos-quadrados"><a href="07.00-Ajuste_dados.slides.html">7. Ajuste de dados via m&#237;nimos quadrados</a><a class="anchor-link" href="#7.-Ajuste-de-dados-via-m&#237;nimos-quadrados">&#182;</a></h3>
+<h2 id="Alguns-guias">Alguns guias<a class="anchor-link" href="#Alguns-guias">&#182;</a></h2><ul>
+<li><a href="https://juliadocs.github.io/Julia-Cheat-Sheet/br/">A via rápida para Julia 1.0</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Julia_(programming_language">Wikipedia - Julia (programming language)</a>)</li>
+<li><a href="https://cheatsheets.quantecon.org">MATLAB–Python–Julia cheatsheet (QuantEcon)</a></li>
+<li><a href="https://julia.quantecon.org/getting_started_julia/index.html">Getting Started with Julia (QuantEcon)</a></li>
+<li><a href="https://docs.julialang.org/en/v1/">Julia Documentation</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Julia">Julia<a class="anchor-link" href="#Julia">&#182;</a></h2><p><a href="https://en.wikipedia.org/wiki/Julia_(programming_language">Julia</a>) é uma linguagem de programação de uso geral, criada para ser fácil e rápida. Ela tem a abstração de linguagens de alto nível (como python e matlab) e a rapidez de linguagens de baixo nível (como c e fortran). Há um slogan que diz que "Julia parece python, tem um espírito de Lisp e roda como fortran" (ou, no original, "looks like Python, feels like Lisp, and runs like Fortran").</p>
+<p>Julia foi desenvolvida por <a href="https://www.wikidata.org/wiki/Q20630572">Jeff Bezanson</a>, <a href="https://en.wikipedia.org/wiki/Alan_Edelman">Alan Edelman</a>, Viral B. Shah (<a href="https://en.wikipedia.org/wiki/Viral_B._Shah">https://en.wikipedia.org/wiki/Viral_B._Shah</a>) e <a href="https://en.wikipedia.org/wiki/Stefan_Karpinski">Stefan Karpinski</a>, no MIT. É uma linguagem relativamente nova, tendo sido iniciada em 2009, mas cuja primeira versão estável, 1.0.0, sendo lançada apenas em meados de 2018. Em 24 de março de 2021, <a href="https://julialang.org/blog/2021/03/julia-1.6-highlights/">a versão 1.6.0</a> foi lançada.</p>
+<p>Pelas propriedades mencionadas acima, Julia tem crescido de maneira vertiginosa. O seu ecosistema de pacotes ainda é relativamente pequeno, mas limpo e em pleno crescimento, contendo, em particular, tudo que precisaremos nesta matéria.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Modos-de-utiliza&#231;&#227;o">Modos de utiliza&#231;&#227;o<a class="anchor-link" href="#Modos-de-utiliza&#231;&#227;o">&#182;</a></h2><p>Você pode programar em julia de diversas maneiras</p>
+<ul>
+<li>No <a href="https://docs.julialang.org/en/v1/stdlib/REPL/">Julia REPL <em>(read-eval-print loop)</em></a>, que é um ambiente interativo de linha de comando.</li>
+<li>No <a href="https://jupyter.org">Jupyter (notebook ou lab)</a>, como nas notas utilizadas aqui.</li>
+<li>No <a href="https://github.com/fonsp/Pluto.jl">Pluto</a>, que é uma versão <em>reativa</em> do Jupyter, escrita especialmente para Julia.</li>
+<li>No <a href="https://colab.research.google.com/notebooks/intro.ipynb">Google Colab</a>; veja <a href="https://github.com/Dsantra92/Julia-on-Colab">Julia on Colab</a>, que é uma espécie de Jupyter notebook rodando "na nuvem", em servidores do Google.</li>
+<li>No <a href="https://mybinder.org">Binder</a>, um ambiente na nuvem para rodar notebooks Jupyter.</li>
+<li>Em algum editor integrado a um ambiente de computação (tecnicamente um Ambiente de Desenvolvimento Integrado, ou <em>IDE - Integrated Development Environment</em>), como, por exemplo<ul>
+<li><a href="https://code.visualstudio.com/">VSCode</a>, com a extensão <em>Julia Language Support (julialang.language-julia)</em></li>
+<li><a href="https://junolab.org">Juno</a>, feito especialmente para o Julia, mas que recentemente tem recebido menos atenção, com a adoção maior do VSCode.</li>
+</ul>
+</li>
+</ul>
+<p>Eu, pessoalmente, uso o <em>REPL</em>, <em>Jupyter lab</em>, <em>Binder</em> e <em>VSCode</em>.</p>
+<p>Vocês podem "baixar" os notebooks para os seus computadores e utilizar qualquer ferramenta local como as mencionadas acima. Ou interagirem com os notebooks na nuvem. O acesso a cada caderno no binder pode ser feito diretamente clicando-se no ícone</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Modo-interativo">Modo interativo<a class="anchor-link" href="#Modo-interativo">&#182;</a></h2><p>Tanto no REPL, como nos ambientes tipo Jupyter, podemos executar instruções de maneira interativa.</p>
+<p>E temos acesso a quatro ambientes:</p>
+<ul>
+<li>O de <strong>comandos julia</strong>, propriamente;</li>
+<li>Um para a <strong>manutenção de pacotes</strong>;</li>
+<li>Um para <strong>ajuda</strong>; e</li>
+<li>Um para acesso ao <strong>shell</strong>.</li>
+</ul>
+<p>Vamos falar brevemente de cada um deles.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Julia-em-modo-interativo">Julia em modo interativo<a class="anchor-link" href="#Julia-em-modo-interativo">&#182;</a></h3><p>O ambiente julia é o principal ao que temos acesso. No REPL, ele aparece de início como</p>
+<div class="highlight"><pre><span></span><span class="p">(</span><span class="n">base</span><span class="p">)</span> <span class="o">%</span> <span class="n">julia</span>
+               <span class="n">_</span>
+   <span class="n">_</span>       <span class="n">_</span> <span class="n">_</span><span class="p">(</span><span class="n">_</span><span class="p">)</span><span class="n">_</span>     <span class="o">|</span>  <span class="n">Documentation</span><span class="o">:</span> <span class="n">https</span><span class="o">://</span><span class="n">docs</span><span class="o">.</span><span class="n">julialang</span><span class="o">.</span><span class="n">org</span>
+  <span class="p">(</span><span class="n">_</span><span class="p">)</span>     <span class="o">|</span> <span class="p">(</span><span class="n">_</span><span class="p">)</span> <span class="p">(</span><span class="n">_</span><span class="p">)</span>    <span class="o">|</span>
+   <span class="n">_</span> <span class="n">_</span>   <span class="n">_</span><span class="o">|</span> <span class="o">|</span><span class="n">_</span>  <span class="n">__</span> <span class="n">_</span>   <span class="o">|</span>  <span class="kt">Type</span> <span class="s">&quot;?&quot;</span> <span class="k">for</span> <span class="n">help</span><span class="p">,</span> <span class="s">&quot;]?&quot;</span> <span class="k">for</span> <span class="n">Pkg</span> <span class="n">help</span><span class="o">.</span>
+  <span class="o">|</span> <span class="o">|</span> <span class="o">|</span> <span class="o">|</span> <span class="o">|</span> <span class="o">|</span> <span class="o">|/</span> <span class="n">_</span><span class="sb">` |  |</span>
+<span class="sb">  | | |_| | | | (_| |  |  Version 1.6.0 (2021-03-24)</span>
+<span class="sb"> _/ |\__&#39;_|_|_|\__&#39;_|  |  Official https://julialang.org/ release</span>
+<span class="sb">|__/                   |</span>
+
+<span class="sb">julia&gt;</span>
+</pre></div>
+<p>Observe as instruções para digitar <code>"?"</code> para ajuda e <code>"]?"</code> para ajuda com os pacotes. Ao entrar nesses ambiente, pode-se voltar ao ambiente julia digitando <code>&lt;backspace&gt;</code> ou <code>&lt;delete&gt;</code>, dependendo do seu sistema/computador.</p>
+<p>Podemos usá-lo, por exemplo, como uma calculadora:</p>
+<div class="highlight"><pre><span></span><span class="n">julia</span><span class="o">&gt;</span> <span class="n">sin</span><span class="p">(</span><span class="nb">π</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+<span class="mf">1.0</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Julia-no-notebook">Julia no notebook<a class="anchor-link" href="#Julia-no-notebook">&#182;</a></h3><p>No notebook, acessamos o julia em uma célula de código:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">sin</span><span class="p">(</span><span class="nb">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[1]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>1.0</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Vamos falar mais desse ambiente em seguida. No momento, vamos aos outros.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Ajuda">Ajuda<a class="anchor-link" href="#Ajuda">&#182;</a></h3><p>Digitando <code>?</code>, obtemos o <em>prompt</em> <code>help?&gt;</code> de ajuda. Para ajuda sobre o próprio modo <code>help?&gt;</code> basta digitar <code>help</code> seguido de <code>&lt;enter&gt;</code> ou <code>&lt;return&gt;</code>:</p>
+<div class="highlight"><pre><span></span><span class="n">help</span><span class="o">?&gt;</span> <span class="n">help</span>
+<span class="n">search</span><span class="o">:</span> <span class="n">help</span> <span class="n">schedule</span> <span class="kt">Channel</span> <span class="n">hasfield</span> <span class="nd">@threadcall</span> <span class="kt">AbstractChannel</span>
+
+  <span class="n">Welcome</span> <span class="n">to</span> <span class="n">Julia</span> <span class="mf">1.6</span><span class="o">.</span><span class="mf">0.</span> <span class="n">The</span> <span class="n">full</span> <span class="n">manual</span> <span class="n">is</span> <span class="n">available</span> <span class="n">at</span>
+
+  <span class="n">https</span><span class="o">://</span><span class="n">docs</span><span class="o">.</span><span class="n">julialang</span><span class="o">.</span><span class="n">org</span>
+
+  <span class="n">as</span> <span class="n">well</span> <span class="n">as</span> <span class="n">many</span> <span class="n">great</span> <span class="n">tutorials</span> <span class="n">and</span> <span class="n">learning</span> <span class="n">resources</span><span class="o">:</span>
+
+  <span class="n">https</span><span class="o">://</span><span class="n">julialang</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">learning</span><span class="o">/</span>
+
+  <span class="n">For</span> <span class="n">help</span> <span class="n">on</span> <span class="n">a</span> <span class="n">specific</span> <span class="k">function</span> <span class="n">or</span> <span class="k">macro</span><span class="p">,</span> <span class="k">type</span> <span class="o">?</span> <span class="n">followed</span> <span class="n">by</span> <span class="n">its</span> <span class="n">name</span><span class="p">,</span> <span class="nb">e</span><span class="o">.</span><span class="n">g</span><span class="o">.</span>
+  <span class="o">?</span><span class="n">cos</span><span class="p">,</span> <span class="n">or</span> <span class="o">?</span><span class="nd">@time</span><span class="p">,</span> <span class="n">and</span> <span class="n">press</span> <span class="n">enter</span><span class="o">.</span> <span class="kt">Type</span> <span class="p">;</span> <span class="n">to</span> <span class="n">enter</span> <span class="n">shell</span> <span class="n">mode</span><span class="p">,</span> <span class="p">]</span> <span class="n">to</span> <span class="n">enter</span>
+  <span class="n">package</span> <span class="n">mode</span><span class="o">.</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Ajuda-sobre-uma-fun&#231;&#227;o">Ajuda sobre uma fun&#231;&#227;o<a class="anchor-link" href="#Ajuda-sobre-uma-fun&#231;&#227;o">&#182;</a></h3><p>Podemos, nesse ambiente, pedir ajuda sobre qualquer função disponível no ambiente:</p>
+<div class="highlight"><pre><span></span><span class="n">help</span><span class="o">?&gt;</span> <span class="n">sin</span>
+<span class="n">search</span><span class="o">:</span> <span class="n">sin</span> <span class="n">sinh</span> <span class="n">sind</span> <span class="n">sinc</span> <span class="n">sinpi</span> <span class="n">sincos</span> <span class="n">sincosd</span> <span class="n">sincospi</span> <span class="n">asin</span> <span class="k">using</span> <span class="n">isinf</span> <span class="n">asinh</span>
+
+  <span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+  <span class="n">Compute</span> <span class="n">sine</span> <span class="n">of</span> <span class="n">x</span><span class="p">,</span> <span class="n">where</span> <span class="n">x</span> <span class="n">is</span> <span class="kp">in</span> <span class="n">radians</span><span class="o">.</span>
+
+  <span class="n">────────────────────────────────────────────────────────────────────────────</span>
+
+  <span class="n">sin</span><span class="p">(</span><span class="n">A</span><span class="o">::</span><span class="kt">AbstractMatrix</span><span class="p">)</span>
+
+  <span class="n">Compute</span> <span class="n">the</span> <span class="n">matrix</span> <span class="n">sine</span> <span class="n">of</span> <span class="n">a</span> <span class="n">square</span> <span class="n">matrix</span> <span class="n">A</span><span class="o">.</span>
+
+  <span class="n">If</span> <span class="n">A</span> <span class="n">is</span> <span class="n">symmetric</span> <span class="n">or</span> <span class="kt">Hermitian</span><span class="p">,</span> <span class="n">its</span> <span class="n">eigendecomposition</span> <span class="p">(</span><span class="n">eigen</span><span class="p">)</span> <span class="n">is</span> <span class="n">used</span> <span class="n">to</span>
+  <span class="n">compute</span> <span class="n">the</span> <span class="n">sine</span><span class="o">.</span> <span class="n">Otherwise</span><span class="p">,</span> <span class="n">the</span> <span class="n">sine</span> <span class="n">is</span> <span class="n">determined</span> <span class="n">by</span> <span class="n">calling</span> <span class="n">exp</span><span class="o">.</span>
+
+  <span class="n">Examples</span>
+  <span class="o">≡≡≡≡≡≡≡≡≡≡</span>
+
+  <span class="n">julia</span><span class="o">&gt;</span> <span class="n">sin</span><span class="p">(</span><span class="n">fill</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)))</span>
+  <span class="mi">2</span><span class="n">×2</span> <span class="kt">Matrix</span><span class="p">{</span><span class="kt">Float64</span><span class="p">}</span><span class="o">:</span>
+   <span class="mf">0.454649</span>  <span class="mf">0.454649</span>
+   <span class="mf">0.454649</span>  <span class="mf">0.454649</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Ajuda-no-notebook">Ajuda no notebook<a class="anchor-link" href="#Ajuda-no-notebook">&#182;</a></h3><p>Da mesma forma, podemos digitar <code>?</code> seguido do nome de uma função</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="o">?</span><span class="nd">@time</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[2]:</div>
+
+
+
+<div class="output_markdown rendered_html output_subarea output_execute_result">
+
+<pre><code>@time</code></pre>
+<p>A macro to execute an expression, printing the time it took to execute, the number of allocations, and the total number of bytes its execution caused to be allocated, before returning the value of the expression.</p>
+<p>See also <a href="@ref"><code>@timev</code></a>, <a href="@ref"><code>@timed</code></a>, <a href="@ref"><code>@elapsed</code></a>, and <a href="@ref"><code>@allocated</code></a>.</p>
+<p>!!! note
+    For more serious benchmarking, consider the <code>@btime</code> macro from the BenchmarkTools.jl package which among other things evaluates the function multiple times in order to reduce noise.</p>
+
+<pre><code>julia-repl
+julia&gt; @time rand(10^6);
+  0.001525 seconds (7 allocations: 7.630 MiB)
+
+julia&gt; @time begin
+           sleep(0.3)
+           1+1
+       end
+  0.301395 seconds (8 allocations: 336 bytes)
+2</code></pre>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Shell">Shell<a class="anchor-link" href="#Shell">&#182;</a></h3><p>Podemos acessar diretamente o ambiente <em>shell</em> digitando <code>;</code>. No REPL, por exemplo, podemos obter a lista de arquivos/diretórios no diretório atual digitando <code>;ls</code>. Ao digitarmos <code>;</code>, o <em>prompt</em> automaticamente muda para <code>shell&gt;</code>:</p>
+<div class="highlight"><pre><span></span>shell&gt; ls
+<span class="m">00</span>.00-Pagina_inicial.ipynb                      <span class="m">05</span>.00-BuckinghamPi_analise_dimensional.ipynb
+<span class="m">01</span>.00-Aspectos_curso.ipynb                      <span class="m">06</span>.00-Ajuste_dados.ipynb
+<span class="m">02</span>.00-Principios_modelagem_matematica.ipynb     img
+<span class="m">03</span>.00-Exemplos_tipos_modelagem.ipynb            slides
+<span class="m">04</span>.00-Primeiros_passos_Julia.ipynb              src
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Acessando-o-shell-pelo-notebook">Acessando o shell pelo notebook<a class="anchor-link" href="#Acessando-o-shell-pelo-notebook">&#182;</a></h3><p>O mesmo acontece a partir de uma célula de código do notebook</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="p">;</span><span class="n">ls</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>00.00-Pagina_inicial.ipynb
+01.00-Aspectos_curso.ipynb
+02.00-Principios_modelagem_matematica.ipynb
+03.00-Exemplos_tipos_modelagem.ipynb
+04.00-Instalando_acessando_Julia.ipynb
+05.00-Primeiros_passos_Julia.ipynb
+06.00-BuckinghamPi_analise_dimensional.ipynb
+07.00-Ajuste_dados.ipynb
+img
+slides
+src
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Também podemos ler o diretório com o comando julia <code>readdir()</code>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">readdir</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[4]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>12-element Array{String,1}:
+ &#34;.ipynb_checkpoints&#34;
+ &#34;00.00-Pagina_inicial.ipynb&#34;
+ &#34;01.00-Aspectos_curso.ipynb&#34;
+ &#34;02.00-Principios_modelagem_matematica.ipynb&#34;
+ &#34;03.00-Exemplos_tipos_modelagem.ipynb&#34;
+ &#34;04.00-Instalando_acessando_Julia.ipynb&#34;
+ &#34;05.00-Primeiros_passos_Julia.ipynb&#34;
+ &#34;06.00-BuckinghamPi_analise_dimensional.ipynb&#34;
+ &#34;07.00-Ajuste_dados.ipynb&#34;
+ &#34;img&#34;
+ &#34;slides&#34;
+ &#34;src&#34;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="O-ambiente-de-pacotes">O ambiente de pacotes<a class="anchor-link" href="#O-ambiente-de-pacotes">&#182;</a></h2><p>Assim como no python e em várias outras linguagens, pacotes adicionais estão disponíveis com diversas ferramentas. Temos pacotes para álgebra linear, vários tipos de equações diferenciais, integração e diferenciação, otimização, redes neurais, gráficos, <em>benchmarking</em>, etc.</p>
+<p>No ambiente de pacotes, podemos <strong>adicionar</strong> e <strong>remover</strong> pacotes, ver a <strong>situação</strong> do ambiente de projetos, i.e. quais e que versões de pacotes estão instalados, e <strong>atualizar</strong> o ambiente.</p>
+<p>Assim como no python, é possível, e saudável, ter vários ambientes separados, para cada tipo de projeto. Por isso se chama <a href="https://pkgdocs.julialang.org/v1/environments/">ambiente de projeto</a>. Os pacotes do ambiente estão definidos em arquivos denominados <code>Project.toml</code>, mantidos nos diretórios de cada pacote.</p>
+<p>Uma distinção:</p>
+<ul>
+<li>Ao entrarmos no REPL, o ambiente carregado será, em princípio, um ambiente global.</li>
+<li>Ao entrarmos no jupyter, o ambiente carregado será o descrito pelo arquivo <code>Project.toml</code>, caso o jupyter seja chamado de um diretório contendo tal arquivo, ou o ambiente global, caso contrário.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="O-ambiente-de-pacotes-da-mat&#233;ria">O ambiente de pacotes da mat&#233;ria<a class="anchor-link" href="#O-ambiente-de-pacotes-da-mat&#233;ria">&#182;</a></h3><p>Este repositório das notas contém um ambiente de projeto com todos os pacotes necessários. Na verdade alguns pacotes serão incluídos ao longo do andamento da matéria.</p>
+<p>Para visualizar os pacotes já instalados, basta digitarmos <code>]st</code>, onde <code>]</code> indica o acesso ao modo de gerenciamento de pacotes e <code>st</code> é o comando para verificar o status do ambiente.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="p">]</span><span class="n">st</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre><span class="ansi-green-intense-fg ansi-bold">Status</span> `~/Documents/git_repositories/modelagem_matematica/Project.toml`
+ <span class="ansi-black-intense-fg"> [6e4b80f9] </span><span class="ansi-white-fg">BenchmarkTools v0.6.0</span>
+ <span class="ansi-black-intense-fg"> [0c46a032] </span><span class="ansi-white-fg">DifferentialEquations v6.16.0</span>
+ <span class="ansi-black-intense-fg"> [82e4d734] </span><span class="ansi-white-fg">ImageIO v0.5.3</span>
+ <span class="ansi-black-intense-fg"> [6218d12a] </span><span class="ansi-white-fg">ImageMagick v1.2.0</span>
+ <span class="ansi-black-intense-fg"> [916415d5] </span><span class="ansi-white-fg">Images v0.23.3</span>
+ <span class="ansi-black-intense-fg"> [ae8d54c2] </span><span class="ansi-white-fg">Luxor v2.10.0</span>
+ <span class="ansi-black-intense-fg"> [91a5bcdd] </span><span class="ansi-white-fg">Plots v1.10.6</span>
+ <span class="ansi-black-intense-fg"> [e6cf234a] </span><span class="ansi-white-fg">RandomNumbers v1.4.0</span>
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Ativando-um-ambiente-de-pacotes">Ativando um ambiente de pacotes<a class="anchor-link" href="#Ativando-um-ambiente-de-pacotes">&#182;</a></h3><p>Caso você acesse o REPL e queira utilizar o ambiente de projeto da matéria (ou algum outro), primeiro navegue (ou antes de chamar o REPL ou depois, usando <code>;cd &lt;path/to/folder&gt;</code>) até o diretório que contenha o arquivo <code>Project.toml</code>. Em seguida, ative o modo de gerenciamento de pacotes e execute o comando <code>pkg&gt; activate .</code>.</p>
+<p>Ou digite diretamente <code>pkg&gt; activate &lt;path/to/folder&gt;</code> a partir de qualquer diretório.</p>
+
 </div>
 </div>
 </div></section></section>
