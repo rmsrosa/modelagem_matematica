@@ -13202,14 +13202,14 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Instalando-e-interagindo-com-o-Julia">Instalando e interagindo com o Julia<a class="anchor-link" href="#Instalando-e-interagindo-com-o-Julia">&#182;</a></h1><ul>
+<h1 id="Instalando-e-acessando-o-Julia">Instalando e acessando o Julia<a class="anchor-link" href="#Instalando-e-acessando-o-Julia">&#182;</a></h1><ul>
 <li>Nessa edição da disciplina, vamos usar a <a href="https://julialang.org">linguagem de programação Julia</a>.</li>
 <li>A <a href="https://julialang.org/blog/2021/03/julia-1.6-highlights/">versão 1.6.0</a> foi recentemente lançada e está disponível para <a href="https://julialang.org/downloads/">download aqui</a></li>
 </ul>
 
 </div>
 </div>
-</div>
+</div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13223,7 +13223,7 @@ a.anchor-link {
 
 </div>
 </div>
-</div>
+</div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13233,7 +13233,7 @@ a.anchor-link {
 
 </div>
 </div>
-</div>
+</div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13251,11 +13251,12 @@ a.anchor-link {
 </li>
 </ul>
 <p>Eu, pessoalmente, uso o <em>REPL</em>, <em>Jupyter lab</em>, <em>Binder</em> e <em>VSCode</em>.</p>
-<p>Vocês podem "baixar" os notebooks para os seus computadores e utilizar qualquer ferramenta local como as mencionadas acima. Ou interagirem com os notebooks na nuvem. O acesso a cada caderno no binder pode ser feito diretamente clicando-se no ícone</p>
+<p>Vocês podem "baixar" os notebooks para os seus computadores e utilizar qualquer ferramenta local como as mencionadas acima.</p>
+<p>Ou interagirem com os notebooks na nuvem. O acesso a cada caderno no binder pode ser feito diretamente clicando-se no ícone "launch binder" no topo de cada página.</p>
 
 </div>
 </div>
-</div>
+</div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13271,7 +13272,7 @@ a.anchor-link {
 
 </div>
 </div>
-</div>
+</div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13296,7 +13297,7 @@ a.anchor-link {
 
 </div>
 </div>
-</div>
+</div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13304,7 +13305,7 @@ a.anchor-link {
 
 </div>
 </div>
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[1]:</div>
@@ -13337,7 +13338,7 @@ a.anchor-link {
 </div>
 </div>
 
-</div>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13345,7 +13346,7 @@ a.anchor-link {
 
 </div>
 </div>
-</div>
+</div></div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13368,7 +13369,7 @@ a.anchor-link {
 
 </div>
 </div>
-</div>
+</div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13400,7 +13401,7 @@ a.anchor-link {
 
 </div>
 </div>
-</div>
+</div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13408,7 +13409,7 @@ a.anchor-link {
 
 </div>
 </div>
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[2]:</div>
@@ -13434,14 +13435,20 @@ a.anchor-link {
 <div class="output_markdown rendered_html output_subarea output_execute_result">
 
 <pre><code>@time</code></pre>
-<p>A macro to execute an expression, printing the time it took to execute, the number of allocations, and the total number of bytes its execution caused to be allocated, before returning the value of the expression.</p>
+<p>A macro to execute an expression, printing the time it took to execute, the number of allocations, and the total number of bytes its execution caused to be allocated, before returning the value of the expression. Any time spent garbage collecting (gc) or compiling is shown as a percentage.</p>
+<p>In some cases the system will look inside the <code>@time</code> expression and compile some of the called code before execution of the top-level expression begins. When that happens, some compilation time will not be counted. To include this time you can run <code>@time @eval ...</code>.</p>
 <p>See also <a href="@ref"><code>@timev</code></a>, <a href="@ref"><code>@timed</code></a>, <a href="@ref"><code>@elapsed</code></a>, and <a href="@ref"><code>@allocated</code></a>.</p>
 <p>!!! note
     For more serious benchmarking, consider the <code>@btime</code> macro from the BenchmarkTools.jl package which among other things evaluates the function multiple times in order to reduce noise.</p>
 
 <pre><code>julia-repl
-julia&gt; @time rand(10^6);
-  0.001525 seconds (7 allocations: 7.630 MiB)
+julia&gt; x = rand(10,10);
+
+julia&gt; @time x * x;
+  0.606588 seconds (2.19 M allocations: 116.555 MiB, 3.75% gc time, 99.94% compilation time)
+
+julia&gt; @time x * x;
+  0.000009 seconds (1 allocation: 896 bytes)
 
 julia&gt; @time begin
            sleep(0.3)
@@ -13457,7 +13464,7 @@ julia&gt; @time begin
 </div>
 </div>
 
-</div>
+</div></div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13472,7 +13479,7 @@ julia&gt; @time begin
 
 </div>
 </div>
-</div>
+</div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13480,7 +13487,7 @@ julia&gt; @time begin
 
 </div>
 </div>
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[3]:</div>
@@ -13521,7 +13528,7 @@ src
 </div>
 </div>
 
-</div>
+</div></div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13529,7 +13536,7 @@ src
 
 </div>
 </div>
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[4]:</div>
@@ -13554,7 +13561,7 @@ src
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>12-element Array{String,1}:
+<pre>12-element Vector{String}:
  &#34;.ipynb_checkpoints&#34;
  &#34;00.00-Pagina_inicial.ipynb&#34;
  &#34;01.00-Aspectos_curso.ipynb&#34;
@@ -13574,7 +13581,7 @@ src
 </div>
 </div>
 
-</div>
+</div></div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13589,7 +13596,7 @@ src
 
 </div>
 </div>
-</div>
+</div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13598,7 +13605,7 @@ src
 
 </div>
 </div>
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[5]:</div>
@@ -13621,9 +13628,10 @@ src
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre><span class="ansi-green-intense-fg ansi-bold">Status</span> `~/Documents/git_repositories/modelagem_matematica/Project.toml`
+<pre><span class="ansi-green-intense-fg ansi-bold">      Status</span> `~/Documents/git_repositories/modelagem_matematica/Project.toml`
  <span class="ansi-black-intense-fg"> [6e4b80f9] </span><span class="ansi-white-fg">BenchmarkTools v0.6.0</span>
  <span class="ansi-black-intense-fg"> [0c46a032] </span><span class="ansi-white-fg">DifferentialEquations v6.16.0</span>
+ <span class="ansi-black-intense-fg"> [7073ff75] </span><span class="ansi-white-fg">IJulia v1.23.2</span>
  <span class="ansi-black-intense-fg"> [82e4d734] </span><span class="ansi-white-fg">ImageIO v0.5.3</span>
  <span class="ansi-black-intense-fg"> [6218d12a] </span><span class="ansi-white-fg">ImageMagick v1.2.0</span>
  <span class="ansi-black-intense-fg"> [916415d5] </span><span class="ansi-white-fg">Images v0.23.3</span>
@@ -13637,12 +13645,155 @@ src
 </div>
 </div>
 
-</div>
+</div></div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Ativando-um-ambiente-de-pacotes">Ativando um ambiente de pacotes<a class="anchor-link" href="#Ativando-um-ambiente-de-pacotes">&#182;</a></h3><p>Caso você acesse o REPL e queira utilizar o ambiente de projeto da matéria (ou algum outro), primeiro navegue (ou antes de chamar o REPL ou depois, usando <code>;cd &lt;path/to/folder&gt;</code>) até o diretório que contenha o arquivo <code>Project.toml</code>. Em seguida, ative o modo de gerenciamento de pacotes e execute o comando <code>pkg&gt; activate .</code>.</p>
 <p>Ou digite diretamente <code>pkg&gt; activate &lt;path/to/folder&gt;</code> a partir de qualquer diretório.</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="O-IJulia">O IJulia<a class="anchor-link" href="#O-IJulia">&#182;</a></h3><p>Um pacote importante para acessar o Julia a partir do Jupyter é o <a href="https://github.com/JuliaLang/IJulia.jl">IJulia</a>.</p>
+<p>Ao instalar o IJulia pela primeira vez, automaticamente um novo <em>kernel</em> do Julia no Jupyter será criado. Pode-se instalar o IJulia com</p>
+
+<pre><code>pkg&gt; activate .
+pkg&gt; add IJulia</code></pre>
+<p>O kernel apropriado pode ser escolhido no menu tipo "drop-down" no canto superior direito de cada notebook. Ou na janela de seleção de kernel no momento de criação de um novo notebook.</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Instatiate"><em>Instatiate</em><a class="anchor-link" href="#Instatiate">&#182;</a></h3><p>Caso você copia uma estrutura de arquivos de outro lugar e caso essa estrutura já possua um arquivo <code>Project.toml</code> com os pacotes necessários, isso não significa que os pacotes venham instalados automaticamente.</p>
+<p>Caso eles não estejam instalados, eles vão aparecer com uma marcação especial, na lista de pacotes que aparece ao se executar <code>]st</code>.</p>
+<p>Nesse caso, é preciso <em>instantiate</em> o projeto, para que os pacotes indicados sejam instalados, sem a necessidade de adicioná-los um por um. Isso é feito com o comando</p>
+<div class="highlight"><pre><span></span><span class="n">pkg</span><span class="o">&gt;</span> <span class="n">instantiate</span>
+</pre></div>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Usando-os-pacotes">Usando os pacotes<a class="anchor-link" href="#Usando-os-pacotes">&#182;</a></h3><p>Ao começarmos o Julia, seja no REPL, seja no jupyter, temos disponível uma ampla gama de funções do <code>Julia.Base</code> (veja em "Base" no menu à esquerda em <a href="https://docs.julialang.org/en/v1/">Julia Documentation</a>.</p>
+<p>Mas, como dito acima, há uma série de outros pacotes com funcionalidades extras. Algumas na biblioteca padrão (veja em "Standard Library", no mesmo link acima). Estas, no entanto, não estão disponíveis de imediato. Mas também não precisão ser adicionas no projeto. Elas já estão instaladas. Só não estão disponíveis.</p>
+<p>Para utilizar um pacote que esteja instalado mas que não esteja disponível de imediado, é preciso "importá-lo*, assim como é feito no python. No Julia, no entanto, há formas diferentes de se fazer isso. Pra começar, temos dois comandos: <code>import</code> e <code>using</code>. E há várias formas de utilizá-los.</p>
+<p>Mas essa discussão não cabe aqui nesse primeiro momento. Para quem quiser saber mais, sugiro ler a página <a href="https://docs.julialang.org/en/v1/manual/modules">Modules</a> (veja, ainda, a tabela, ainda válida, na versão anterior da documentação <a href="https://docs.julialang.org/en/v1.5/manual/modules/#Summary-of-module-usage">Modules v.1.5</a>).</p>
+<p>Na prática, usaremos <code>using</code>, para simplificar, como veremos na célula a seguir e nos próximos notebooks.</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Gerenciando-os-pacotes-a-partir-do-Pkg()">Gerenciando os pacotes a partir do Pkg()<a class="anchor-link" href="#Gerenciando-os-pacotes-a-partir-do-Pkg()">&#182;</a></h3><p>Também é possível gerenciar os pacotes através do pacote <code>Pkg</code>, diretamente do <em>prompt</em> do julia.</p>
+<p>Para isso, é preciso disponibilizar o pacote via <code>import</code> ou <code>using</code>. No caso, podemos fazer</p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">Pkg</span>
+<span class="n">Pkg</span><span class="o">.</span><span class="n">status</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre><span class="ansi-green-intense-fg ansi-bold">      Status</span> `~/Documents/git_repositories/modelagem_matematica/Project.toml`
+ <span class="ansi-black-intense-fg"> [6e4b80f9] </span><span class="ansi-white-fg">BenchmarkTools v0.6.0</span>
+ <span class="ansi-black-intense-fg"> [0c46a032] </span><span class="ansi-white-fg">DifferentialEquations v6.16.0</span>
+ <span class="ansi-black-intense-fg"> [7073ff75] </span><span class="ansi-white-fg">IJulia v1.23.2</span>
+ <span class="ansi-black-intense-fg"> [82e4d734] </span><span class="ansi-white-fg">ImageIO v0.5.3</span>
+ <span class="ansi-black-intense-fg"> [6218d12a] </span><span class="ansi-white-fg">ImageMagick v1.2.0</span>
+ <span class="ansi-black-intense-fg"> [916415d5] </span><span class="ansi-white-fg">Images v0.23.3</span>
+ <span class="ansi-black-intense-fg"> [ae8d54c2] </span><span class="ansi-white-fg">Luxor v2.10.0</span>
+ <span class="ansi-black-intense-fg"> [91a5bcdd] </span><span class="ansi-white-fg">Plots v1.10.6</span>
+ <span class="ansi-black-intense-fg"> [e6cf234a] </span><span class="ansi-white-fg">RandomNumbers v1.4.0</span>
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Vers&#227;o-do-Julia">Vers&#227;o do Julia<a class="anchor-link" href="#Vers&#227;o-do-Julia">&#182;</a></h3><p>Para visualizar mais detalhes sobre a máquina e a versão do julia em uso, pode-se usar o comando <code>versioninfo()</code></p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">versioninfo</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Julia Version 1.6.0
+Commit f9720dc2eb (2021-03-24 12:55 UTC)
+Platform Info:
+  OS: macOS (x86_64-apple-darwin19.6.0)
+  CPU: Intel(R) Core(TM) m5-6Y54 CPU @ 1.10GHz
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-11.0.1 (ORCJIT, skylake)
+Environment:
+  JULIA_NUM_THREADS = 2
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Utilizando-o-Julia">Utilizando o Julia<a class="anchor-link" href="#Utilizando-o-Julia">&#182;</a></h2><p>No próximo caderno, vamos investigar o uso da linguagem Julia propriamente.</p>
 
 </div>
 </div>
