@@ -14100,7 +14100,7 @@ sort([&#34;d&#34;, &#34;a&#34;, &#34;c&#34;]) = [&#34;a&#34;, &#34;c&#34;, &#34;
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="k">struct</span> <span class="n">Retângulo</span>
@@ -14126,7 +14126,7 @@ sort([&#34;d&#34;, &#34;a&#34;, &#34;c&#34;]) = [&#34;a&#34;, &#34;c&#34;, &#34;
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[17]:</div>
+    <div class="prompt output_prompt">Out[5]:</div>
 
 
 
@@ -14151,7 +14151,7 @@ sort([&#34;d&#34;, &#34;a&#34;, &#34;c&#34;]) = [&#34;a&#34;, &#34;c&#34;, &#34;
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">area</span><span class="p">(</span><span class="n">R</span><span class="o">::</span><span class="n">Retângulo</span><span class="p">)</span> <span class="o">=</span> <span class="n">R</span><span class="o">.</span><span class="n">lado1</span> <span class="o">*</span> <span class="n">R</span><span class="o">.</span><span class="n">lado2</span>
@@ -14186,7 +14186,7 @@ area(R4) = 6.0
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[18]:</div>
+    <div class="prompt output_prompt">Out[6]:</div>
 
 
 
@@ -14215,7 +14215,7 @@ area(R4) = 6.0
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="k">import</span> <span class="n">Base</span><span class="o">:</span> <span class="n">isless</span><span class="p">,</span> <span class="o">==</span>
@@ -14251,7 +14251,7 @@ R1 == R4 = true
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[19]:</div>
+    <div class="prompt output_prompt">Out[7]:</div>
 
 
 
@@ -14276,7 +14276,7 @@ R1 == R4 = true
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="nd">@show</span> <span class="n">R1</span> <span class="o">&lt;</span> <span class="n">R3</span>
@@ -14318,7 +14318,7 @@ R1 &gt; R3 = false
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">ordenados</span> <span class="o">=</span> <span class="n">sort</span><span class="p">([</span><span class="n">R1</span><span class="p">,</span> <span class="n">R2</span><span class="p">,</span> <span class="n">R3</span><span class="p">,</span> <span class="n">R4</span><span class="p">])</span>
@@ -14345,6 +14345,45 @@ R1 &gt; R3 = false
 2ᵒ: Retângulo(3.0, 2.0) com área 6.0
 3ᵒ: Retângulo(1.2, 7.0) com área 8.4
 4ᵒ: Retângulo(1.5, 6.0) com área 9.0
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Da mesma forma, podemos imediatamente obter os valores máximo, mínimos e os respectivos retângulos:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Mínimo </span><span class="si">$</span><span class="p">(</span><span class="n">minimum</span><span class="p">([</span><span class="n">R1</span><span class="p">,</span> <span class="n">R2</span><span class="p">,</span> <span class="n">R3</span><span class="p">,</span> <span class="n">R4</span><span class="p">]))</span><span class="s"> em </span><span class="si">$</span><span class="p">(</span><span class="n">argmin</span><span class="p">([</span><span class="n">R1</span><span class="p">,</span> <span class="n">R2</span><span class="p">,</span> <span class="n">R3</span><span class="p">,</span> <span class="n">R4</span><span class="p">]))</span><span class="s">&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Mínimo Retângulo(2.0, 3.0) em 1
 </pre>
 </div>
 </div>
