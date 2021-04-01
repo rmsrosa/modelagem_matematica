@@ -13692,14 +13692,6 @@ o que está de acordo com a dimensão de força.</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="An&#225;lise-dimensional">An&#225;lise dimensional<a class="anchor-link" href="#An&#225;lise-dimensional">&#182;</a></h2><p>Vamos aproveitar o exemplo anterior para exemplificarmos mais um processo de análise dimensional.</p>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Teorema-de-Buckingham-Pi">Teorema de Buckingham-Pi<a class="anchor-link" href="#Teorema-de-Buckingham-Pi">&#182;</a></h2><p>Ou <strong>Teorema Pi de Buckingham</strong> ou <strong>Teorema Buckingham-$\mathbf{\Pi}$</strong></p>
 <ul>
 <li><p>O teorema foi proposto em 1914 por Buckingham. O nome Pi se deve a notação matemática $\Pi$ para um produtório, neste caso, um produto de grandezas (variáveis e parâmetros), dado que os <em>grupos adimensionais</em> fornecidos pelo teorema são produtos de potências (inteiras) de notados por originalmente por $\pi_1$, $\pi_2$, etc.</p>
@@ -13803,11 +13795,44 @@ $$</p>
 </li>
 <li><p>Portanto, teremos no mínimo $n-m$ soluções linearmente indepentes, $r_k$, $k=1, \ldots, s_{n-m}$.</p>
 </li>
-<li><p>Cada solução $r_k=(r_{k,1}, \ldots, r_{k,n})$, $k=1, \ldots, n-m$ nos dá uma quantidade adimensional
+<li><p>Cada solução $r_k=(r_{k,1}, \ldots, r_{k,n})$, $k=1, \ldots, n-m$, nos dá uma quantidade adimensional
 $$ \pi_k = q_1^{r_{k,1}} ~\cdots~ q_n^{r_{k,n}}.
 $$</p>
 </li>
 <li><p>Isso corresponde justamente às $n-m$ grandezas adimensionais do enunciado do teorema.</p>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><p>Agora, para a segunda parte, considere 
+$$ f(q_1, \ldots, q_n) = 0.
+$$</p>
+</li>
+<li><p>Obtivemos que
+$$ \pi_k = q_1^{r_{k,1}} ~\cdots~ q_n^{r_{k,n}}, \qquad k=1, \ldots, n-m.
+$$</p>
+</li>
+<li><p>A dificuldade aqui é obter a relação inversa da dependência dos $q_i$'s nos $\pi_k$'s.</p>
+</li>
+<li><p>De fato, isso é, em geral, impossível para todos os $q_i$'s, pois usualmente temos mais grandezas $q_i$, $i=1, \ldots, n$, do que quantidades adimensionais $\pi_k$, $k=1, \ldots, n-m$ (e equações correspondentes).</p>
+</li>
+<li><p>Mas podemos resolver para $n-m$ grandezas:
+$$ q_{n-m+1}, \ldots, q_n = \text{ monômios em } \pi_1, \ldots, \pi_{n-m}, q_1 \ldots q_{n-m}.
+$$</p>
+</li>
+<li><p>Isso nos leva a um novo modelo
+$$ f^*(q_1, \ldots, q_{n-m}, \pi_1, \ldots, \pi_{n-m}) = 0.
+$$</p>
+</li>
+<li><p>Por fim, o princípio de homogeneidade dimensional, é possível mostrar que o termo acima é independente de $q_1, \ldots, q_{n-m}$, nos levando finalmente a
+$$ f^*(\pi_1, \ldots, \pi_{n-m}) = 0.
+$$</p>
 </li>
 </ul>
 
@@ -13841,15 +13866,16 @@ $$</p>
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Segunda-quantidade-adimensional">Segunda quantidade adimensional<a class="anchor-link" href="#Segunda-quantidade-adimensional">&#182;</a></h3><ul>
-<li><p>Para encontrar a outra quantidade adimensional, formamos o produto
+<li><p>Para encontrar a outra quantidade adimensional, vamos descartar $\theta$ que já foi encontrado e formar o produto
 $$
 \pi_2 = t^{r_1} \ell^{r_2} m^{r_3} g^{r_4}.
-$$
-Temos, 
+$$</p>
+</li>
+<li><p>Temos, 
 $$ [t] = T, \quad [\ell] = L, \quad [m] = M, \quad [g] = LT^{-2}.
 $$</p>
 </li>
-<li><p>Substituindo no produto acima teremos
+<li><p>Substituindo no produto acima, obtemos
 $$
 [\pi_2] = T^{r_1} L^{r_2} M^{r_3} (LT^{-2})^{r_4} = T^{r_1 - 2 r_4} L^{r_2 + r_4} M^{r_3},
 $$</p>
