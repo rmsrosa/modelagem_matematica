@@ -13627,7 +13627,7 @@ $$
 onde $m$ é a massa do objeto.</p>
 </li>
 <li><p>Nesse caso
-$$ \left[m\dfrac{d^2 h}{d^2 t}\right] = M L T^2, \qquad [-mg] = [m][g] = M L T^{-2}
+$$ \left[m\dfrac{d^2 h}{d^2 t}\right] = M L T^{-2}, \qquad [-mg] = [m][g] = M L T^{-2}
 $$
 ou seja, todo os dois termos aditivos têm dimensão $MLT^{-2}$.</p>
 </li>
@@ -13793,7 +13793,7 @@ $$</p>
 </li>
 <li><p>Ou seja, a dimensão do núcleo é no mínimo $n-m$.</p>
 </li>
-<li><p>Portanto, teremos no mínimo $n-m$ soluções linearmente indepentes, $r_k$, $k=1, \ldots, s_{n-m}$.</p>
+<li><p>Portanto, teremos no mínimo $n-m$ soluções linearmente indepentes, $r_k$, $k=1, \ldots, n-m$.</p>
 </li>
 <li><p>Cada solução $r_k=(r_{k,1}, \ldots, r_{k,n})$, $k=1, \ldots, n-m$, nos dá uma quantidade adimensional
 $$ \pi_k = q_1^{r_{k,1}} ~\cdots~ q_n^{r_{k,n}}.
@@ -13830,7 +13830,7 @@ $$</p>
 $$ f^*(q_1, \ldots, q_{n-m}, \pi_1, \ldots, \pi_{n-m}) = 0.
 $$</p>
 </li>
-<li><p>Por fim, o princípio de homogeneidade dimensional, é possível mostrar que o termo acima é independente de $q_1, \ldots, q_{n-m}$, nos levando finalmente a
+<li><p>Por fim, pelo princípio de homogeneidade dimensional, é possível mostrar que o termo acima é independente de $q_1, \ldots, q_{n-m}$, nos levando finalmente a
 $$ f^*(\pi_1, \ldots, \pi_{n-m}) = 0.
 $$</p>
 </li>
@@ -13958,13 +13958,7 @@ $$</p>
 $$ [v^\alpha p^\beta \rho^\gamma] = \left(\frac{L}{T}\right)^\alpha \left(\frac{M}{LT^2}\right)^\beta \left(\frac{M}{L^3}\right)^\gamma = L^{\alpha-\beta-3\gamma}M^{\beta + \gamma}T^{-\alpha-2\beta}.
 $$</p>
 </li>
-<li><p>Para termos essa quantidade sendo adimensioal, temos o sistema
-$$ \begin{cases}
-\alpha - \beta - 3\gamma = 0 \\
-\beta + \gamma = 0 \\
--\alpha-2\beta = 0.
-\end{cases}
-$$</p>
+<li><p>Observe que temos $3$ quantidades, $p$, $\rho$ e $v$, para três dimensões, $L$, $M$, $T$. O Teorema de Buckingham-Pi nos garante <em>pelo menos</em> $n-m = 3 - 3 = 0$ quantidades adimensionais. Ou seja, não há nada garantido nesse caso. Mas nada nos impede de tentar.</p>
 </li>
 </ul>
 
@@ -13975,6 +13969,14 @@ $$</p>
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
+<li><p>Para termos $\pi = v^\alpha p^\beta \rho^\gamma$ adimensioal, precisamos resolver o sistema
+$$ \begin{cases}
+\alpha - \beta - 3\gamma = 0 \\
+\beta + \gamma = 0 \\
+-\alpha-2\beta = 0.
+\end{cases}
+$$</p>
+</li>
 <li><p>Resolvendo,
 $$ \begin{cases}
 \alpha = 2\gamma \\
@@ -13987,8 +13989,10 @@ com $\gamma$ qualquer.</p>
 $$ \pi = v^{2\gamma}p^{-\gamma}\rho^\gamma
 $$</p>
 </li>
+<li><p>Ou seja, mesmo nesse caso em que $m=n$, ainda temos um sistema degenerado, com um núcleo de dimensão $1$.</p>
+</li>
 <li><p>Assim, obtemos
-$$ c \propto \sqrt{\frac{p}{\rho}}
+$$ v \propto \sqrt{\frac{p}{\rho}}
 $$</p>
 </li>
 <li><p>Esta é uma aproximação. Na prática, efeitos térmicos influenciam na lei. Além disso, ela não é universal, no sentido da constante de proporcionalidade ser independente do gás. Leia mais sobre isso em <a href="https://pt.wikipedia.org/wiki/Velocidade_do_som">velocidade do som</a></p>
