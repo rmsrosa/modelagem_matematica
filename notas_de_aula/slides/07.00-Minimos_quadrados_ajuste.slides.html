@@ -13288,14 +13288,14 @@ $$</p>
 </li>
 <li><p>Nesse ajuste, temos as condições
 $$ \begin{cases}
-2m + b = 1, \\
-3m + b = 4.
+b + 2m = 1, \\
+b + 3m = 4.
 \end{cases}
 $$</p>
 </li>
 <li><p>Em forma matricial,
 $$
-\left[ \begin{matrix} 2 &amp; 1 \\ 3 &amp; 1 \end{matrix}\right] \left( \begin{matrix} m \\ b \end{matrix} \right) = \left( \begin{matrix} 1 \\ 4 \end{matrix} \right).
+\left[ \begin{matrix} 1 &amp; 2 \\ 1 &amp; 3 \end{matrix}\right] \left( \begin{matrix} m \\ b \end{matrix} \right) = \left( \begin{matrix} 1 \\ 4 \end{matrix} \right).
 $$</p>
 </li>
 </ul>
@@ -13309,15 +13309,15 @@ $$</p>
 <ul>
 <li><p>É fácil resolver o sistema 
 $$ \begin{cases}
-2m + b = 1, \\
-3m + b = 4.
+b + 2m = 1, \\
+b + 3m = 4.
 \end{cases}
 $$
 usando uma equação pra escrever $b$ em função de $m$ e sem seguida resolvendo a outra equação para $m$.</p>
 </li>
 <li><p>Também podemos inverter a matriz associada para achar
 $$
- \left( \begin{matrix} m \\ b \end{matrix} \right) = \left[ \begin{matrix} 2 &amp; 1 \\ 3 &amp; 1 \end{matrix}\right]^{-1} \left( \begin{matrix} 1 \\ 4 \end{matrix} \right) = \left[ \begin{matrix} -1 &amp; 1 \\ 3 &amp; -2 \end{matrix}\right] \left( \begin{matrix} 1 \\ 4 \end{matrix} \right) = \left( \begin{matrix} 3 \\ -5 \end{matrix} \right).
+ \left( \begin{matrix} b \\ m \end{matrix} \right) = \left[ \begin{matrix} 1 &amp; 2 \\ 1 &amp; 3 \end{matrix}\right]^{-1} \left( \begin{matrix} 1 \\ 4 \end{matrix} \right) = \left[ \begin{matrix} 3 &amp; -2 \\ -1 &amp; 1 \end{matrix}\right] \left( \begin{matrix} 1 \\ 4 \end{matrix} \right) = \left( \begin{matrix} -5 \\ 3 \end{matrix} \right).
 $$</p>
 </li>
 <li><p>Esse problema sempre tem solução, a menos que os dois pontos estejam na vertical.</p>
@@ -13481,15 +13481,15 @@ $$</p>
 <ul>
 <li><p>Se existisse solução exata, ela seria solução do sistema
 $$ \begin{cases}
- m + b = 2, \\
-2m + b = 1, \\
-3m + b = 4.
+b + m = 2, \\
+b + 2m = 1, \\
+b + 3m = 4.
 \end{cases}
 $$</p>
 </li>
 <li><p>Em forma matricial,
 $$
-\left[ \begin{matrix} 1 &amp; 1 \\ 2 &amp; 1 \\ 3 &amp; 1 \end{matrix}\right] \left( \begin{matrix} m \\ b \end{matrix} \right) = \left( \begin{matrix} 2 \\ 1 \\ 4 \end{matrix} \right).
+\left[ \begin{matrix} 1 &amp; 1 \\ 1 &amp; 2 \\ 1 &amp; 3 \end{matrix}\right] \left( \begin{matrix} m \\ b \end{matrix} \right) = \left( \begin{matrix} 2 \\ 1 \\ 4 \end{matrix} \right).
 $$</p>
 </li>
 <li><p>É imediato deduzir, a partir da visualização dos pontos no plano, que é impossível achar tal reta. O mesmo pode ser deduzido a partir do sistema linear ou do escalonamento da matriz.</p>
@@ -13562,12 +13562,12 @@ $$</p>
 </li>
 <li><p>Portanto, os pontos críticos são dados pelo sistema, escrito em forma matricial,
 $$
-\left[ \begin{matrix} \sum_i x_i^2 &amp; \sum_i xi \\ \sum_i x_i &amp; \sum_i 1 \end{matrix} \right] \left(\begin{matrix} m \\ b \end{matrix}\right) = \left(\begin{matrix} \sum_i x_iy_i \\ \sum_i y_i \end{matrix}\right).
+\left[ \begin{matrix} \sum_i x_i &amp; \sum_i x_i^2 \\ \sum_i 1 &amp; \sum_i x_i\end{matrix} \right] \left(\begin{matrix} b \\ m \end{matrix}\right) = \left(\begin{matrix} \sum_i x_iy_i \\ \sum_i y_i \end{matrix}\right).
 $$</p>
 </li>
 <li><p>Esse sistema tem uma certa estrutura, que pode não ser clara de imediato, mas que tem a seguinte forma
 $$
-\left[ \begin{matrix}  x_1 &amp; \ldots &amp; x_N \\ 1 &amp; \ldots &amp; 1 \end{matrix} \right] \left[ \begin{matrix} x_1 &amp; 1 \\ \vdots &amp; \vdots \\ x_n &amp; 1 \end{matrix} \right] \left(\begin{matrix} m \\ b \end{matrix}\right) = \left[ \begin{matrix}  x_1 &amp; \ldots &amp; x_N \\ 1 &amp; \ldots &amp; 1 \end{matrix} \right] \left(\begin{matrix} y_1 \\ \vdots \\ y_N \end{matrix}\right).
+\left[ \begin{matrix} 1 &amp; \ldots &amp; 1 \\ x_1 &amp; \ldots &amp; x_N \end{matrix} \right] \left[ \begin{matrix} 1 &amp; x_1 \\ \vdots &amp; \vdots \\ 1 &amp; x_n \end{matrix} \right] \left(\begin{matrix} b \\ m \end{matrix}\right) = \left[ \begin{matrix} 1 &amp; \ldots &amp; 1 \\ x_1 &amp; \ldots &amp; x_N \end{matrix} \right] \left(\begin{matrix} y_1 \\ \vdots \\ y_N \end{matrix}\right).
 $$</p>
 </li>
 </ul>
@@ -13580,7 +13580,7 @@ $$</p>
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
 <li><p>Mais ainda, note que a matriz à esquerda é a transposta da matriz seguinte, i.e.
-$$ \left[ \begin{matrix}  x_1 &amp; \ldots &amp; x_N \\ 1 &amp; \ldots &amp; 1 \end{matrix} \right]  = \left[ \begin{matrix} x_1 &amp; 1 \\ \vdots &amp; \vdots \\ x_n &amp; 1 \end{matrix} \right]^t
+$$\left[ \begin{matrix} 1 &amp; \ldots &amp; 1 \\ x_1 &amp; \ldots &amp; x_N \end{matrix} \right] = \left[ \begin{matrix} 1 &amp; x_1 \\ \vdots &amp; \vdots \\ 1 &amp; x_n \end{matrix} \right]^t
 $$</p>
 </li>
 <li><p>Isso pode ser visto de uma maneira mais natural, a partir da formulação
@@ -13588,11 +13588,11 @@ $$ \operatorname{argmin}_{m,b\in \mathbb{R}} \sum_{i=1}^N |y_i - mx_i - b|^2.
 $$</p>
 </li>
 <li><p>A função a ser minimizada por ser reescrita como
-$$  \left\|\left(\begin{matrix} y_1 - mx_1 - b\\ \vdots \\ y_N - m x_N - b\end{matrix}\right)\right\|^2 = \left\|\left(\begin{matrix} y_1 \\ \vdots \\ y_N \end{matrix}\right) - m \left(\begin{matrix} x_1 \\ \vdots \\ x_N \end{matrix}\right) - b \left(\begin{matrix} 1 \\ \vdots \\ 1 \end{matrix}\right)\right\|^2 = \left\|\left(\begin{matrix} y_1 \\ \vdots \\ y_N \end{matrix}\right) - \left[\begin{matrix} x_1 &amp; 1 \\ \vdots &amp; \vdots \\ x_N &amp; 1 \end{matrix}\right]\left(\begin{matrix} m \\ b \end{matrix}\right)\right\|^2.
+$$  \left\|\left(\begin{matrix} y_1 - b - mx_1\\ \vdots \\ y_N - b - m x_N\end{matrix}\right)\right\|^2 = \left\|\left(\begin{matrix} y_1 \\ \vdots \\ y_N \end{matrix}\right) - b \left(\begin{matrix} 1 \\ \vdots \\ 1 \end{matrix}\right) - m \left(\begin{matrix} x_1 \\ \vdots \\ x_N \end{matrix}\right)\right\|^2 = \left\|\left(\begin{matrix} y_1 \\ \vdots \\ y_N \end{matrix}\right) - \left[\begin{matrix} 1 &amp; x_1 \\ \vdots &amp; \vdots \\ 1 &amp; x_N \end{matrix}\right]\left(\begin{matrix} b \\ m \end{matrix}\right)\right\|^2.
 $$</p>
 </li>
 <li><p>Ou seja, $\|\mathbf{y} - A \boldsymbol{\beta}\|^2$, onde
-$$ A = \left[\begin{matrix} x_1 &amp; 1 \\ \vdots &amp; \vdots \\ x_N &amp; 1 \end{matrix}\right], \quad \boldsymbol{\beta} = \left(\begin{matrix} m \\ b \end{matrix}\right), \quad \mathbf{y} = \left(\begin{matrix} y_1 \\ \vdots \\ y_N \end{matrix}\right).
+$$ A = \left[\begin{matrix} 1 &amp; x_1 \\ \vdots &amp; \vdots \\ 1 &amp; x_N \end{matrix}\right], \quad \boldsymbol{\beta} = \left(\begin{matrix} b \\ m \end{matrix}\right), \quad \mathbf{y} = \left(\begin{matrix} y_1 \\ \vdots \\ y_N \end{matrix}\right).
 $$</p>
 </li>
 </ul>
@@ -13706,7 +13706,7 @@ $$</p>
 $$ \text{se} \quad A^t\boldsymbol{\alpha} = 0 \quad \text{e} \quad \boldsymbol{\gamma} = A\boldsymbol{\beta},
 $$
 então
-$$ \boldsymbol{\alpha} \cdot \boldsymbol{\gamma} = \boldsymbol{\beta} \cdot A\boldsymbol{\beta} = A^t\boldsymbol{\alpha} \cdot \boldsymbol{\beta} = \mathbf{0} \cdot \boldsymbol{\beta} = \mathbf{0}.
+$$ \boldsymbol{\alpha} \cdot \boldsymbol{\gamma} = \boldsymbol{\alpha} \cdot A\boldsymbol{\beta} = A^t\boldsymbol{\alpha} \cdot \boldsymbol{\beta} = \mathbf{0} \cdot \boldsymbol{\beta} = \mathbf{0}.
 $$</p>
 </li>
 <li>Assim, se $A^tA\boldsymbol{\beta} = 0$: <ul>
