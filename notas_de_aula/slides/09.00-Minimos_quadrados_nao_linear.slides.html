@@ -13202,15 +13202,424 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="P&#225;gina-inicial">P&#225;gina inicial<a class="anchor-link" href="#P&#225;gina-inicial">&#182;</a></h1>
+<h1 id="M&#237;nimos-quadrados-n&#227;o-linear">M&#237;nimos quadrados n&#227;o-linear<a class="anchor-link" href="#M&#237;nimos-quadrados-n&#227;o-linear">&#182;</a></h1><ul>
+<li><p>Modelos reais são raramente lineares.</p>
+</li>
+<li><p>E nem todos os fenômenos lineares podem ser bem aproximados por modelos redutíveis a lineares, como vimos da última vez.</p>
+</li>
+<li><p>Como ajustar parâmetros de modelos genuinamente não lineares?</p>
+</li>
+</ul>
+
 </div>
 </div>
 </div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><!--TABLE_OF_CONTENTS--></p>
-<h2 id="Sum&#225;rio"><a href="#">Sum&#225;rio</a><a class="anchor-link" href="#Sum&#225;rio">&#182;</a></h2><h3 id="P&#225;gina-inicial"><a href="00.00-Pagina_inicial.slides.html">P&#225;gina inicial</a><a class="anchor-link" href="#P&#225;gina-inicial">&#182;</a></h3><h3 id="1.-Aspectos-do-curso---edi&#231;&#227;o-2020/2"><a href="01.00-Aspectos_curso.slides.html">1. Aspectos do curso - edi&#231;&#227;o 2020/2</a><a class="anchor-link" href="#1.-Aspectos-do-curso---edi&#231;&#227;o-2020/2">&#182;</a></h3><h3 id="2.-Princ&#237;pios-de-modelagem-matem&#225;tica"><a href="02.00-Principios_modelagem_matematica.slides.html">2. Princ&#237;pios de modelagem matem&#225;tica</a><a class="anchor-link" href="#2.-Princ&#237;pios-de-modelagem-matem&#225;tica">&#182;</a></h3><h3 id="3.-Exemplos-de-tipos-de-modelagem"><a href="03.00-Exemplos_tipos_modelagem.slides.html">3. Exemplos de tipos de modelagem</a><a class="anchor-link" href="#3.-Exemplos-de-tipos-de-modelagem">&#182;</a></h3><h3 id="4.-Instalando-e-acessando-o-Julia"><a href="04.00-Instalando_acessando_Julia.slides.html">4. Instalando e acessando o Julia</a><a class="anchor-link" href="#4.-Instalando-e-acessando-o-Julia">&#182;</a></h3><h3 id="5.-Primeiros-passos-em-Julia"><a href="05.00-Primeiros_passos_Julia.slides.html">5. Primeiros passos em Julia</a><a class="anchor-link" href="#5.-Primeiros-passos-em-Julia">&#182;</a></h3><h3 id="6.-An&#225;lise-dimensional-e-o-Teorema-de-Buckingham-Pi"><a href="06.00-BuckinghamPi_analise_dimensional.slides.html">6. An&#225;lise dimensional e o Teorema de Buckingham-Pi</a><a class="anchor-link" href="#6.-An&#225;lise-dimensional-e-o-Teorema-de-Buckingham-Pi">&#182;</a></h3><h3 id="7.-M&#237;nimos-quadrados-e-o-ajuste-de-par&#226;metros"><a href="07.00-Minimos_quadrados_ajuste.slides.html">7. M&#237;nimos quadrados e o ajuste de par&#226;metros</a><a class="anchor-link" href="#7.-M&#237;nimos-quadrados-e-o-ajuste-de-par&#226;metros">&#182;</a></h3><h3 id="8.-Modelos-redut&#237;veis-ao-caso-linear-nos-par&#226;metros-e-aplica&#231;&#245;es"><a href="08.00-Modelos_redutiveis_linear_aplicacoes.slides.html">8. Modelos redut&#237;veis ao caso linear nos par&#226;metros e aplica&#231;&#245;es</a><a class="anchor-link" href="#8.-Modelos-redut&#237;veis-ao-caso-linear-nos-par&#226;metros-e-aplica&#231;&#245;es">&#182;</a></h3><h3 id="9.-M&#237;nimos-quadrados-n&#227;o-linear"><a href="09.00-Minimos_quadrados_nao_linear.slides.html">9. M&#237;nimos quadrados n&#227;o-linear</a><a class="anchor-link" href="#9.-M&#237;nimos-quadrados-n&#227;o-linear">&#182;</a></h3>
+<h2 id="Contexto">Contexto<a class="anchor-link" href="#Contexto">&#182;</a></h2><ul>
+<li><p>Considere um conjunto de dados $(x_i, y_i)$ com $x_i, y_i \in \mathbb{R}$, $i = 1, \ldots, N$.</p>
+</li>
+<li><p>Buscamos aproximar o fenômeno com um modelo da forma
+$$y(t) =  \varphi(x, \boldsymbol{\beta}),$$
+onde $\boldsymbol{\beta} = (\beta_1, \ldots, \beta_m)$ é um conjunto de parâmetros (desconhecidos) do modelo.</p>
+</li>
+<li><p>Idealmente, poderíamos ajustar os parâmetros por <strong>colocação</strong>, ou seja, de tal forma que eles coincidissem em todos os dados:
+$$y(t_i) =  \varphi(x_i ; \theta), \quad i=1, \ldots, N.$$</p>
+</li>
+<li><p>No entanto, assim como no caso linear, não esperamos essa "perfeição" em geral.</p>
+</li>
+</ul>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="O-problema-de-m&#237;nimos-quadrados-n&#227;o-linear">O problema de m&#237;nimos quadrados n&#227;o linear<a class="anchor-link" href="#O-problema-de-m&#237;nimos-quadrados-n&#227;o-linear">&#182;</a></h3><ul>
+<li><p>Buscamos, então, <em>reduzir o erro</em>, em algum sentido. Por exemplo, o de minimizar o <strong>erro quadrático</strong>
+$$ E(\boldsymbol{\beta}) = \sum_{i=1}^N |y_i - \varphi(x_i,\boldsymbol{\beta})|^2.
+$$</p>
+</li>
+<li><p>Cada componente é, novamente, chamado de <strong>resíduo</strong> (não-linear)
+$$ r_i = y_i - \varphi(x_i,\boldsymbol{\beta}), \qquad i=1, \ldots, N.
+$$</p>
+</li>
+<li><p>Assim, chegamos ao problema de <strong>otimização</strong>
+$$ \hat{\boldsymbol{\beta}} = \operatorname{argmin}_{\boldsymbol{\beta}} \sum_{i=1}^N |y_i - \varphi(x_i,\boldsymbol{\beta})|^2.
+$$</p>
+</li>
+</ul>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Condi&#231;&#227;o-para-ser-ponto-de-m&#237;nimo">Condi&#231;&#227;o para ser ponto de m&#237;nimo<a class="anchor-link" href="#Condi&#231;&#227;o-para-ser-ponto-de-m&#237;nimo">&#182;</a></h3><ul>
+<li><p>Uma condição <strong>necessária</strong> para que $\hat{\boldsymbol\beta}$ seja um ponto de mínimo de $E(\boldsymbol\beta)$ é que ele seja um <strong>ponto crítico:</strong>
+$$\nabla E(\hat{\boldsymbol\beta}) = 0.
+$$</p>
+</li>
+<li><p>Em termos de coordenadas, é necessário que
+$$ \frac{\partial}{\partial \beta_j} E(\hat{\boldsymbol\beta}) = 0, \qquad \forall j=1, \ldots, m.
+$$</p>
+</li>
+<li><p>Calculando explicitamente, temos
+$$ \frac{\partial}{\partial \beta_j} E(\hat{\boldsymbol\beta}) =   \frac{\partial}{\partial \beta_j}\left( \sum_{i=1}^N \left|y_i - \varphi(x_i, \boldsymbol\beta)\right|^2 \right) =  \sum_{i=1}^N (y_i - \varphi(x_i, \boldsymbol\beta))\frac{\partial}{\partial \beta_j}\varphi(x_i, \boldsymbol{\beta}) = 0,
+$$
+para $j=1, \ldots, m.$</p>
+</li>
+<li><p>Em termos matriciais, podemos escrever
+$$D\mathbf{r}(\hat{\boldsymbol\beta})^t \mathbf{r}(\hat{\boldsymbol\beta}) = 0. \quad\quad (2)
+$$
+onde $D\mathbf{r}(\boldsymbol\beta)^t$ é a transposta da matriz Jacobiana $D\mathbf{r}(\boldsymbol\beta)$, cujas linhas são os gradientes da função vetorial cujos componentes são os resíduos:
+$$ \mathbf{r}(\boldsymbol\beta) = \left(y_i - \varphi(x_i, \boldsymbol\beta)\right)_{i=1, \ldots, n}.
+$$</p>
+</li>
+</ul>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Interl&#250;dio-para-o-caso-linear">Interl&#250;dio para o caso linear<a class="anchor-link" href="#Interl&#250;dio-para-o-caso-linear">&#182;</a></h3><ul>
+<li><p>Observe que, no caso linear, temos
+$$\mathbf{r}(\boldsymbol\beta) = A \boldsymbol\beta - \mathbf{b}$$
+e a equação acima se reduz à equação normal do problema de mínimos quadrados linear:
+$$ A^t(A\boldsymbol\beta) = A^t\mathbf{b}.
+$$</p>
+</li>
+<li><p>Diferentemente do caso linear, onde a hipótese de $A$ ter posto completo (com $m$ colunas linearmente independentes) implica na convexidade de $\mathbf{r}$ (hessiana positiva-definida), e portanto na unicidade da solução de, o caso não-linear tem a condição acima apenas como <strong>necessária</strong>. Podem existir vários pontos de mínimo local.</p>
+</li>
+</ul>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Algoritmos">Algoritmos<a class="anchor-link" href="#Algoritmos">&#182;</a></h2><ul>
+<li><p>Os métodos de <strong>Gradiente descendente</strong>, <strong>Gauss-Newton</strong> e <strong>Levenberg-Marquardt</strong>, por exemplo, são algoritmos iterativos clássicos.</p>
+</li>
+<li><p>Neles, busca-se uma <strong>sequência minimizante</strong> $\boldsymbol\beta^{(0)}, \boldsymbol\beta^{(1)}, \ldots$ se aproximando do ponto de mínimo desejado.</p>
+</li>
+<li><p>A escolha do ponto de partida $\boldsymbol\beta^{(0)}$ é delicada, pois pode nos levar à mínimos locais, longe de um bom ajuste.</p>
+</li>
+<li><p>O algoritmo termina quando algum <strong>critério de parada</strong> é alcançado. Por exemplo:</p>
+<ul>
+<li>quando o erro $E(\boldsymbol\beta)$ é suficientemente pequeno;</li>
+<li>quando a variação em $E(\boldsymbol\beta)$ é suficientemente pequena;</li>
+<li>quando ${\boldsymbol\beta}^{(k+1)}$ está bem próximo de $\boldsymbol\beta^{(k)}$; ou</li>
+<li>quando um número máximo de iterações é atingido.</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Gradiente-descendente">Gradiente descendente<a class="anchor-link" href="#Gradiente-descendente">&#182;</a></h3><ul>
+<li><p>Esse método é bastante intuitivo.</p>
+</li>
+<li><p>Assumindo que a função $E(\boldsymbol\beta)$ seja suave, a sua direção de maior decrescimento é a contrária ao seu gradiente.</p>
+</li>
+<li><p>A idéia, então, é dar um passo na direção contrária ao gradiente, em cada iteração:</p>
+<ol>
+<li>Dado um ponto $\boldsymbol{\beta}^{(k)}$, em que o erro $E(\boldsymbol{\beta}^{(k)})$ ainda não é suficientemente pequeno (caso contrário já teríamos resolvido o problemo), calculamos o gradiente
+$$ \nabla E(\boldsymbol{\beta}^{(k)})
+$$</li>
+<li>Dado um "tamanho de passo" $\eta$, "andamos" na direção contrária, escolhendo o próximo ponto $\boldsymbol{\beta}^{(k+1)}$ como
+$$ \boldsymbol{\beta}^{(k+1)} = \boldsymbol{\beta}^{(k)} - \eta \nabla E(\boldsymbol{\beta}^{(k)}).
+$$</li>
+</ol>
+</li>
+</ul>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Defici&#234;ncias-do-m&#233;todo-de-gradiente-conjugado">Defici&#234;ncias do m&#233;todo de gradiente conjugado<a class="anchor-link" href="#Defici&#234;ncias-do-m&#233;todo-de-gradiente-conjugado">&#182;</a></h4><ul>
+<li><p>A sua convergência é relativamente lenta.</p>
+</li>
+<li><p>A escolha do tamanho de passo $\eta$ não segue uma receita muito bem definida.</p>
+</li>
+<li><p>Passos muito grandes podem fazer com que o método não-convirja ("pule para um lugar mais alto do outro lado do vale").</p>
+</li>
+<li><p>Passos muito pequenos podem levar ao acúmulo de erros numéricos ("pequenas mudanças em um passo curto acarretam em grandes mudanças no ângulo de direcionamento).</p>
+</li>
+</ul>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Gauss-Newton">Gauss-Newton<a class="anchor-link" href="#Gauss-Newton">&#182;</a></h3><ul>
+<li>O método consiste basicamente nos seguintes ingredientes:<ol>
+<li>Pensar no objetivo $E(\boldsymbol{\beta}) = \|\mathbf{r}\|^2 = 0$ como um <strong>objetivo para os resíduos</strong>:
+$$ \mathbf{r}(\boldsymbol{\beta}) = \mathbf{0};
+$$</li>
+<li>Dado o $k$-ésimo termo da sequência, obter uma <strong>aproximação afim</strong> da função $\mathbf{r}$ perto do ponto $\boldsymbol{\beta}^{(k)}$;</li>
+<li>Minimizar o erro quadrático da aproximação afim.</li>
+<li>Olhar para essa solução como o novo termo $\boldsymbol{\beta}^{(k+1)}$ da sequência;</li>
+<li>Repetir o processo até alcançar um dos critérios de parada.</li>
+</ol>
+</li>
+</ul>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Aproxima&#231;&#227;o-afim">Aproxima&#231;&#227;o afim<a class="anchor-link" href="#Aproxima&#231;&#227;o-afim">&#182;</a></h4><ol>
+<li><p>A partir do ponto $\boldsymbol{\beta}^{(k)}$, em que o erro $E(\boldsymbol{\beta}^{(k)})$ ainda não é suficientemente pequeno (caso contrário já teríamos resolvido o problema), buscamos uma aproximação linear para os resíduos $\mathbf{r}(\boldsymbol{\beta})$.</p>
+</li>
+<li><p>Como aproximação linear, é natural tomarmos a linearização em torno do ponto dado:
+$$ \mathbf{r}(\boldsymbol{\beta}) \approx \mathbf{r}(\boldsymbol{\beta}^{(k)}) + D\mathbf{r}(\boldsymbol{\beta}^{(k)})(\boldsymbol{\beta} - \boldsymbol{\beta}^{(k)}),
+$$
+onde $D\mathbf{r}(\boldsymbol{\beta}^{(k)})$ é a diferencial de $\mathbf{r}$, cusas linhas são os gradientes de cada resíduo $r_i$.</p>
+</li>
+</ol>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Itera&#231;&#227;o">Itera&#231;&#227;o<a class="anchor-link" href="#Itera&#231;&#227;o">&#182;</a></h4><ol>
+<li><p>Agora, buscamos $\boldsymbol{\beta}$ de forma a minimizar o erro quadrático segundo essa aproximação afim
+$$ \boldsymbol{\beta}^{(k+1)} = \operatorname{argmin}_{\boldsymbol{\beta}} \|\mathbf{r}(\boldsymbol{\beta}^{(k)}) + D\mathbf{r}(\boldsymbol{\beta}^{(k)})(\boldsymbol{\beta} - \boldsymbol{\beta}^{(k)})\|^2.
+$$</p>
+</li>
+<li><p>Isso nada mais é do que um problema de mínimos quadrados linear.</p>
+</li>
+<li><p>Assumindo-se que as colunas de $D\mathbf{r}(\theta^{(k)})$ sejam <strong>linearmente independentes</strong> (i.e. $N\geq m$ e matriz com posto máximo), a solução é dada pelas equações normais
+$$ \left(D\mathbf{r}(\boldsymbol{\beta}^{(k)})^t D\mathbf{r}(\boldsymbol{\beta}^{(k)})\right)\boldsymbol{\beta}^{(k+1)} = D\mathbf{r}(\boldsymbol{\beta}^{(k)})^t\left(D\mathbf{r}(\boldsymbol{\beta}^{(k)})\boldsymbol{\beta}^{(k)}) - \mathbf{r}(\boldsymbol{\beta}^{(k)})\right).
+$$</p>
+</li>
+<li><p>Nesse caso, o processo iterativo pode ser escrito na forma
+$$ \boldsymbol{\beta}^{(k+1)} = \boldsymbol{\beta}^{(k)} - \left( D\mathbf{r}(\boldsymbol{\beta}^{(k)})^t D\mathbf{r}(\boldsymbol{\beta}^{(k)})\right)^{-1} D\mathbf{r}(\boldsymbol{\beta}^{(k)})^t\mathbf{r}(\boldsymbol{\beta}^{(k)}).
+$$</p>
+</li>
+</ol>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Observação:</strong> No caso de uma matriz quadrada ($m=N$) invertível, obtemos o método de Newton $\boldsymbol{\beta}^{(k+1)} = \boldsymbol{\beta}^{(k)} - D\mathbf{r}(\boldsymbol{\beta}^{(k)})^{-1}\mathbf{r}(\boldsymbol{\beta}^{(k)})$.</p>
+
+</div>
+</div>
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Defici&#234;ncias-do-Gauss-Newton">Defici&#234;ncias do Gauss-Newton<a class="anchor-link" href="#Defici&#234;ncias-do-Gauss-Newton">&#182;</a></h4><ol>
+<li><p><strong>O método pode divergir</strong>: Isso pode acontecer quando $\boldsymbol\beta^{(k+1)}$ não está muito próximo de $\boldsymbol\beta^{(k)}$, de modo que o passo seja muito grande;</p>
+</li>
+<li><p><strong>O método pode ter que ser abortado</strong>: A hipótese de que as colunas de $D\mathbf{r}(\boldsymbol\beta^{(k)})$ sejam linearmente independentes pode falhar em alguma iteração, de modo que o cálculo de $\theta^{(k+1)}$ não seja possível.</p>
+</li>
+</ol>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Levenberg-Marquardt">Levenberg-Marquardt<a class="anchor-link" href="#Levenberg-Marquardt">&#182;</a></h3><ul>
+<li><p>É mais recente, de meados do século XX.</p>
+</li>
+<li><p>Motivado pelas deficiências do método de Gauss-Newton.</p>
+</li>
+<li><p>Pode ser visto como um meio termo entre o gradiente descendente e o Gauss-Newton.</p>
+</li>
+<li><p>É uma forma de um Gauss-Newton amortecido.</p>
+</li>
+<li><p>Pode ser mais lento, mas é mais robusto do que o Gauss-Newton.</p>
+</li>
+<li><p>Procura alcançar dois objetivos:</p>
+<ol>
+<li>Fazer o erro quadrático pequeno.</li>
+<li>Fazer o passo  $\|\boldsymbol\beta^{(k+1)} - \boldsymbol\beta^{(k)}\|$ também pequeno.</li>
+</ol>
+</li>
+</ul>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Implementa&#231;&#227;o-dos-objetivos">Implementa&#231;&#227;o dos objetivos<a class="anchor-link" href="#Implementa&#231;&#227;o-dos-objetivos">&#182;</a></h4><ul>
+<li><p>Para "penalizar" tanto o erro quando o passo, a ideia é obter $\boldsymbol\beta^{(k+1)}$ através da minimização de
+$$ \|\mathbf{r}(\boldsymbol{\beta}^{(k)}) + D\mathbf{r}(\boldsymbol{\beta}^{(k)})(\boldsymbol{\beta} - \boldsymbol{\beta}^{(k)})\|^2 + \lambda\|\boldsymbol\beta - \boldsymbol\beta^{(k)}\|^2.
+$$</p>
+</li>
+<li><p>Isso leva em consideração a aproximação afim do erro, sendo, portanto, uma aproximação quadrádica de
+$$ \|\mathbf{r}(\boldsymbol{\beta})\|^2 + \lambda\|\boldsymbol\beta - \boldsymbol\beta^{(k)}\|^2.
+$$</p>
+</li>
+<li><p>O parâmetro $\lambda$ é um parâmetro positivo de <em>regularização</em>, ou <em>suavização</em>, ou, ainda, de <em>amortecimento</em>.</p>
+</li>
+<li><p>Esse é um problema de mínimos quadrados linear <strong>multi-objetivo</strong>.</p>
+</li>
+</ul>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Itera&#231;&#227;o">Itera&#231;&#227;o<a class="anchor-link" href="#Itera&#231;&#227;o">&#182;</a></h4><ul>
+<li>O parâmetro é escolhido a cada passo, $\lambda=\lambda^{(k)}$, nos levando ao problema iterativo
+$$ \boldsymbol\beta^{(k+1)} = \operatorname{argmin}_{\boldsymbol\beta}\left[\|\mathbf{r}(\boldsymbol{\beta}^{(k)}) + D\mathbf{r}(\boldsymbol{\beta}^{(k)})(\boldsymbol{\beta} - \boldsymbol{\beta}^{(k)})\|^2 + \lambda^{(k)}\|\boldsymbol\beta - \boldsymbol\beta^{(k)}\|^2\right].
+$$</li>
+</ul>
+
+</div>
+</div>
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Resolu&#231;&#227;o">Resolu&#231;&#227;o<a class="anchor-link" href="#Resolu&#231;&#227;o">&#182;</a></h4><ul>
+<li><p>Podemos escrever
+$$ \begin{multline*}
+\|\mathbf{r}(\boldsymbol{\beta}^{(k)}) + D\mathbf{r}(\boldsymbol{\beta}^{(k)})(\boldsymbol{\beta} - \boldsymbol{\beta}^{(k)})\|^2 + \lambda\|\boldsymbol\beta - \boldsymbol\beta^{(k)}\|^2 \\
+= \left\| \begin{matrix} \mathbf{r}(\boldsymbol{\beta}^{(k)}) + D\mathbf{r}(\boldsymbol{\beta}^{(k)})(\boldsymbol{\beta} - \boldsymbol{\beta}^{(k)}) \\ \sqrt{\lambda}(\boldsymbol\beta - \boldsymbol\beta^{(k)})\end{matrix}\right\|^2 \\ 
+= \left\| \left[\begin{matrix} D\mathbf{r}(\boldsymbol{\beta}^{(k)}) \\ \sqrt{\lambda}I\end{matrix}\right]\boldsymbol{\beta}  - \left(\begin{matrix} D\mathbf{r}(\boldsymbol{\beta}^{(k)})\boldsymbol{\beta}^{(k)} - \mathbf{r}(\boldsymbol{\beta}^{(k)}) \\ \sqrt{\lambda}\boldsymbol\beta^{(k)}\end{matrix}\right)\right\|^2.\end{multline*}
+$$</p>
+</li>
+<li><p>Por esse ponto de vista, é um clássico problema de mínimos quadrados linear da form $\operatorname{argmin}\|A\boldsymbol\beta + \mathbf{y}\|^2$.</p>
+</li>
+<li><p>Se $D\mathbf{r}(\boldsymbol{\beta}^{(k)})$ tiver posto máximo, assim também o tem a matriz $A$, de forma que o problema tem solução única.</p>
+</li>
+<li><p>A sua forma normal $A^tA\boldsymbol{\beta} = A^t\mathbf{y}$ nos leva à fórmula de recursão (verifique!)
+$$\boldsymbol{\beta}^{(k+1)} = \boldsymbol{\beta}^{(k)} - \left( D\mathbf{r}(\boldsymbol{\beta}^{(k)})^t D\mathbf{r}(\boldsymbol{\beta}^{(k)}) + \lambda^{(k)}I \right)^{-1} D\mathbf{r}(\boldsymbol{\beta}^{(k)})^t \mathbf{r}(\boldsymbol{\beta}^{(k)}).$$</p>
+</li>
+</ul>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Amortecimento">Amortecimento<a class="anchor-link" href="#Amortecimento">&#182;</a></h4><ul>
+<li><p>Reescrevemos
+$$\boldsymbol{\beta}^{(k+1)} = \boldsymbol{\beta}^{(k)} - \left( D\mathbf{r}(\boldsymbol{\beta}^{(k)})^t D\mathbf{r}(\boldsymbol{\beta}^{(k)}) + \lambda^{(k)}I \right)^{-1} D\mathbf{r}(\boldsymbol{\beta}^{(k)})^t \mathbf{r}(\boldsymbol{\beta}^{(k)})$$
+como
+$$\left( D\mathbf{r}(\boldsymbol{\beta}^{(k)})^t D\mathbf{r}(\boldsymbol{\beta}^{(k)}) + \lambda^{(k)}I \right)\left(\boldsymbol{\beta}^{(k+1)} - \boldsymbol{\beta}^{(k)}\right) = -  D\mathbf{r}(\boldsymbol{\beta}^{(k)})^t \mathbf{r}(\boldsymbol{\beta}^{(k)}).$$</p>
+</li>
+<li><p>Observe que $\lambda^{(k)}&gt;0$ tem o papel de reduzir o passo $\boldsymbol{\beta}^{(k+1)} - \boldsymbol{\beta}^{(k)}$.</p>
+</li>
+<li><p>Por esse motivo ele é visto como um parâmetro de amortecimento.</p>
+</li>
+<li><p>Ele também busca evitar abrutos "buracos" locais.</p>
+</li>
+</ul>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Sobre-o-par&#226;metro-de-amortecimento">Sobre o par&#226;metro de amortecimento<a class="anchor-link" href="#Sobre-o-par&#226;metro-de-amortecimento">&#182;</a></h3><ul>
+<li><p>O parâmetro $\lambda^{(k)}$ é também conhecido como parâmetro de confiança, pois outra forma de interpretar o problema de otimização resolvido a cada iteração é como um método de região de confiança (<em>trust-region method</em>).</p>
+</li>
+<li><p>Visto como um parâmetro de regularização/penalização, ele controla qual parte da função objetivo é levada mais em consideração.</p>
+</li>
+<li><p>Diferentes estratégias para a escolha do parâmetro podem ser seguidas.
+Maiores informações podem ser encontradas em <a href="">Boyd</a>.</p>
+</li>
+</ul>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Outros-m&#233;todos">Outros m&#233;todos<a class="anchor-link" href="#Outros-m&#233;todos">&#182;</a></h3><ul>
+<li><p>Há vários outros métodos, alguns sendo variações dos vistos acima (e.g gradiente estocástico), mas não é o nosso objetivo explorar os diversos métodos. Isso fica para um curso de otimização.</p>
+</li>
+<li><p>Devo mencinar que os métodos como descritos acima são métodos para problemas de minimização <em>sem restrição</em>.</p>
+</li>
+<li><p>Métodos para problemas com restrição podem ser modificados para levar a restrição em consideração ou para atacar um formulação via multiplicadores de Lagrange.</p>
+</li>
+</ul>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="M&#233;todos-livre-de-derivada">M&#233;todos livre de derivada<a class="anchor-link" href="#M&#233;todos-livre-de-derivada">&#182;</a></h3><ul>
+<li><p>Devo ressaltar, ainda, os métodos <strong>livres de derivada</strong>, ou <em>derivative-free</em>.</p>
+</li>
+<li><p>São úteis quando não temos a derivada disponível ou ela é muito custosa de se calcular.</p>
+</li>
+<li><p>Exemplos notáveis são os seguintes.</p>
+<ul>
+<li><strong>Nelder-Mead:</strong> busca através de polítopos com $m+1$ vértices (e.g. vértices de triângulos no plano). Avalia a função nos vértices de um polítopo, (que muda a cada iteração, exceto pelo ponto "base"), retendo o ponto de mínimo dentre os vértices omo um novo ponto base para a formação do próximo polítopo.</li>
+<li><strong>Algoritmos genéticos:</strong> parte-se de vários pontos escolhidos aleatoriamente e busca-se reduzir o erro em cada ponto através de funções objetivo envolvendo outros critérios.</li>
+<li><strong>Região de confiança:</strong> busca-se modelos que aproximem bem localmente, aumentando-se aos poucos a região de busca.</li>
+<li><strong><em>Simulated annealing:</em></strong> busca-se reduzir uma função "temperatura" de maneira probabilística.</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Exerc&#237;cios">Exerc&#237;cios<a class="anchor-link" href="#Exerc&#237;cios">&#182;</a></h2><ol>
+<li><p>Verifique a formula do gradiente da função erro $E(\boldsymbol\beta) = \|\mathbf{r}(\boldsymbol\beta)\|^2$, onde $\mathbf{r}(\boldsymbol\beta)$ é o vetor $\mathbf{r}(\boldsymbol\beta) = \left(y_i - \varphi(x_i, \boldsymbol\beta)\right)_{i=1}^N$.</p>
+</li>
+<li><p>Obtenha a fórmula
+$$\boldsymbol{\beta}^{(k+1)} = \boldsymbol{\beta}^{(k)} - \left( D\mathbf{r}(\boldsymbol{\beta}^{(k)})^t D\mathbf{r}(\boldsymbol{\beta}^{(k)}) + \lambda^{(k)}I \right)^{-1} D\mathbf{r}(\boldsymbol{\beta}^{(k)})^t \mathbf{r}(\boldsymbol{\beta}^{(k)}).$$
+a partir da forma normal  $A^tA\boldsymbol{\beta} = A^t\mathbf{y}$ como descrito no método de Levenberg-Marquardt.</p>
+</li>
+<li><p>Escreva explicitamente a fórmula iterativa $\beta^{(k+1)} = \beta^{(k)} + \ldots$ quando temos apenas um parâmetro $\beta\in \mathbb{R}$ e o modelo tem a forma $y = \varphi(x, \beta) = x^2 + \sin(\beta x)$.</p>
+</li>
+</ol>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Refer&#234;ncia">Refer&#234;ncia<a class="anchor-link" href="#Refer&#234;ncia">&#182;</a></h2><ol>
+<li><a href="https://web.stanford.edu/~boyd/vmls/">S. Boyd, L. Vandenberghe, <em>Introduction to Applied Linear Algebra – Vectors, Matrices, and Least Squares</em>, Cambridge University Press, 2018.</a></li>
+</ol>
+
 </div>
 </div>
 </div></section></section>
