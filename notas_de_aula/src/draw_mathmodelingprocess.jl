@@ -21,7 +21,6 @@ function drawmathmoddiag(base_length::Int)
     pt_f = Point(1.4, 0.55)*base_length
 
     pt_down = Point(0.0, 0.06)*base_length
-    pt_right = Point(0.06, 0.0)*base_length
 
     circle_color = "royalblue"
     circle_radius = 0.4*base_length
