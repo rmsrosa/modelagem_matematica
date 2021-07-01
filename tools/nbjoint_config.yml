@@ -10,7 +10,7 @@ contents:
   toc_title: Sumário
   show_index_in_toc: True
 
-header: "*Notas de aula de Modelagem Matemática - 2020/2 [- Ricardo M. S. Rosa (IM/UFRJ)](http://www.im.ufrj.br/rrosa)*"
+header: "*Notas de aula de Modelagem Matemática - 2021/1 [- Ricardo M. S. Rosa (IM/UFRJ)](http://www.im.ufrj.br/rrosa)*"
 
 navigators:
   core_navigators:
@@ -20,15 +20,15 @@ navigators:
 
 badges:
   - title: View in NBViewer
-    url: https://nbviewer.jupyter.org/github/rmsrosa/modelagem_matematica/blob/modmat2020p2/notas_de_aula
+    url: https://nbviewer.jupyter.org/github/rmsrosa/modelagem_matematica/blob/modmat2021p1/notas_de_aula
     label: view in
     message: nbviewer
     color: orange
   - title: Open in binder
-    url: https://mybinder.org/v2/gh/rmsrosa/modelagem_matematica/julia-env-for-binder-2020p2?urlpath=git-pull%3Frepo%3Dhttps%253A%252F%252Fgithub.com%252Frmsrosa%252Fmodelagem_matematica%26branch%3Dmodmat2020p2%26urlpath%3Dtree%252Fmodelagem_matematica%252Fnotas_de_aula
+    url: https://mybinder.org/v2/gh/rmsrosa/modelagem_matematica/julia-env-for-binder-2021p1?urlpath=git-pull%3Frepo%3Dhttps%253A%252F%252Fgithub.com%252Frmsrosa%252Fmodelagem_matematica%26branch%3Dmodmat2021p1%26urlpath%3Dtree%252Fmodelagem_matematica%252Fnotas_de_aula
     src: https://mybinder.org/badge.svg
   - title: View Slides
-    url: https://nbviewer.jupyter.org/github/rmsrosa/modelagem_matematica/blob/modmat2020p2/notas_de_aula/slides
+    url: https://nbviewer.jupyter.org/github/rmsrosa/modelagem_matematica/blob/modmat2021p1/notas_de_aula/slides
     extension: .slides.html
     label: view
     message: slides
