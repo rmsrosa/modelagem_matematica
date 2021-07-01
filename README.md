@@ -8,6 +8,8 @@ Notas de aula da disciplina de Modelagem Matemática do Instituto de Matemática
 
 O material de cada edição da disciplina ministrada neste formato está em um determinado ramo *(branch)* deste repositório:
 
+[![ModMat2021p1](https://img.shields.io/badge/Repo%20Branch-ModMat2021p1-darkgreen)](https://github.com/rmsrosa/modelagem_matematica/tree/modmat2021p1)
+
 [![ModMat2020p2](https://img.shields.io/badge/Repo%20Branch-ModMat2020p2-darkgreen)](https://github.com/rmsrosa/modelagem_matematica/tree/modmat2020p2)
 
 [![ModMat2019p1](https://img.shields.io/badge/Repo%20Branch-ModMat2019p1-darkgreen)](https://github.com/rmsrosa/modelagem_matematica/tree/modmat2019p1)
