@@ -4,7 +4,7 @@ Notas de aula da disciplina de Modelagem Matemática do Instituto de Matemática
 
 *Links* para a página inicial das aulas no [Github](https://github.com), [Binder](https://beta.mybinder.org/) e [Google Colab](http://colab.research.google.com):
 
-[![Github](https://img.shields.io/badge/view%20on-github-orange)](aulas/00.00-Pagina_Inicial.ipynb) [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/rmsrosa/modelagem_matematica/master?filepath=aulas%2F00.00-Pagina_Inicial.ipynb) [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/rmsrosa/modelagem_matematica/blob/master/aulas/00.00-Pagina_Inicial.ipynb)
+[![Github](https://img.shields.io/badge/view%20on-github-orange)](aulas/00.00-Pagina_Inicial.ipynb) [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/rmsrosa/modelagem_matematica/modmap2019p1?filepath=aulas%2F00.00-Pagina_Inicial.ipynb) [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/rmsrosa/modelagem_matematica/blob/modmap2019p1/aulas/00.00-Pagina_Inicial.ipynb)
 
 ## Utilização
 
