@@ -13204,7 +13204,7 @@ a.anchor-link {
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Instalando-e-acessando-o-Julia">Instalando e acessando o Julia<a class="anchor-link" href="#Instalando-e-acessando-o-Julia">&#182;</a></h1><ul>
 <li>Nessa edição da disciplina, vamos usar a <a href="https://julialang.org">linguagem de programação Julia</a>.</li>
-<li>A <a href="https://julialang.org/blog/2021/03/julia-1.6-highlights/">versão 1.6.0</a> foi recentemente lançada e está disponível para <a href="https://julialang.org/downloads/">download aqui</a></li>
+<li>A <a href="https://julialang.org/blog/2021/03/julia-1.6-highlights/">versão 1.6</a> foi recentemente lançada e está disponível para <a href="https://julialang.org/downloads/">download aqui</a></li>
 </ul>
 
 </div>
@@ -13232,7 +13232,7 @@ a.anchor-link {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Julia">Julia<a class="anchor-link" href="#Julia">&#182;</a></h2><p><a href="https://en.wikipedia.org/wiki/Julia_(programming_language">Julia</a>) é uma linguagem de programação de uso geral, criada para ser fácil e rápida. Ela tem a abstração de linguagens de alto nível (como python e matlab) e a rapidez de linguagens de baixo nível (como c e fortran). Há um slogan que diz que "Julia parece python, tem um espírito de Lisp e roda como fortran" (ou, no original, "looks like Python, feels like Lisp, and runs like Fortran").</p>
-<p>Julia foi desenvolvida por <a href="https://www.wikidata.org/wiki/Q20630572">Jeff Bezanson</a>, <a href="https://en.wikipedia.org/wiki/Alan_Edelman">Alan Edelman</a>, <a href="https://en.wikipedia.org/wiki/Viral_B._Shah">Viral B. Shah</a> e <a href="https://en.wikipedia.org/wiki/Stefan_Karpinski">Stefan Karpinski</a>, no MIT. É uma linguagem relativamente nova, tendo sido iniciada em 2009, mas cuja primeira versão estável, 1.0.0, sendo lançada apenas em meados de 2018. Em 24 de março de 2021, <a href="https://julialang.org/blog/2021/03/julia-1.6-highlights/">a versão 1.6.0</a> foi lançada.</p>
+<p>Julia foi desenvolvida por <a href="https://www.wikidata.org/wiki/Q20630572">Jeff Bezanson</a>, <a href="https://en.wikipedia.org/wiki/Alan_Edelman">Alan Edelman</a>, <a href="https://en.wikipedia.org/wiki/Viral_B._Shah">Viral B. Shah</a> e <a href="https://en.wikipedia.org/wiki/Stefan_Karpinski">Stefan Karpinski</a>, no MIT. É uma linguagem relativamente nova, tendo sido iniciada em 2009, mas cuja primeira versão estável, 1.0, sendo lançada apenas em meados de 2018. Em 24 de março de 2021, <a href="https://julialang.org/blog/2021/03/julia-1.6-highlights/">a versão 1.6</a> foi lançada.</p>
 <p>Pelas propriedades mencionadas acima, Julia tem crescido de maneira vertiginosa. O seu ecosistema de pacotes ainda é relativamente pequeno, mas limpo e em pleno crescimento, contendo, em particular, tudo que precisaremos nesta matéria.</p>
 
 </div>
@@ -13535,13 +13535,53 @@ julia&gt; @time begin
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>00.00-Pagina_inicial.ipynb
-01.00-Aspectos_curso.ipynb
+01.00-Preliminares.ipynb
+01.01-Aspectos_curso.ipynb
+01.02-Instalando_acessando_Julia.ipynb
+01.03-Primeiros_passos_Julia.ipynb
 02.00-Principios_modelagem_matematica.ipynb
-03.00-Exemplos_tipos_modelagem.ipynb
-04.00-Instalando_acessando_Julia.ipynb
-05.00-Primeiros_passos_Julia.ipynb
-06.00-BuckinghamPi_analise_dimensional.ipynb
-07.00-Ajuste_dados.ipynb
+02.01-Principios_basicos.ipynb
+02.02-Exemplos_tipos_modelagem.ipynb
+03.00-Analise_dimensional.ipynb
+03.01-BuckinghamPi_analise_dimensional.ipynb
+03.02-Unidades_Julia.ipynb
+04.00-Ajuste_parametros.ipynb
+04.01-Minimos_quadrados_ajuste.ipynb
+04.02-Modelos_redutiveis_linear_aplicacoes.ipynb
+04.03-Minimos_quadrados_nao_linear.ipynb
+04.04-Exemplos_ajuste_naolinear.ipynb
+05.00-Erros_incertezas_quantificacao.ipynb
+05.01-Erros_e_incertezas.ipynb
+05.02-Minimos_quadrados_verossimilhanca.ipynb
+05.03-Propagacao_incertezas.ipynb
+06.00-Avaliacao_modelos.ipynb
+06.01-Qualidade_do_modelo.ipynb
+06.02-Validacao_do_modelo.ipynb
+06.03-Comparacao_de_modelos.ipynb
+07.00-Aplicacoes_iniciais.ipynb
+07.01-Modelo_diodo.ipynb
+07.02-Isomerizacao.ipynb
+08.00-Modelos_epidemiologicos.ipynb
+08.01-Modelos_epidemiologicos_compartimentais.ipynb
+08.02-Ajuste_SIR.ipynb
+08.03-Compartimentais_estruturados.ipynb
+09.00-Fourier.ipynb
+09.01-Series_Fourier.ipynb
+09.02-Transformada_discreta_Fourier.ipynb
+09.03-Ondas_sonoras_elementos_musicais.ipynb
+10.00-EDP.ipynb
+10.01-EDP_e_diferencas_finitas.ipynb
+10.02-EDP_advecao.ipynb
+10.03-EDP_calor.ipynb
+10.04-EDP_onda.ipynb
+10.05-EDP_calor_bidimensional.ipynb
+10.06-EDP_onda_bidimensional.ipynb
+10.07-Ondas_sismicas.ipynb
+Audio_playground.ipynb
+Covid.ipynb
+Ondas_sonoras_elementos_musicais.ipynb
+ReacaoEnzimatica.ipynb
+data
 img
 slides
 src
@@ -13585,16 +13625,30 @@ src
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>12-element Vector{String}:
+<pre>52-element Vector{String}:
  &#34;.ipynb_checkpoints&#34;
  &#34;00.00-Pagina_inicial.ipynb&#34;
- &#34;01.00-Aspectos_curso.ipynb&#34;
+ &#34;01.00-Preliminares.ipynb&#34;
+ &#34;01.01-Aspectos_curso.ipynb&#34;
+ &#34;01.02-Instalando_acessando_Julia.ipynb&#34;
+ &#34;01.03-Primeiros_passos_Julia.ipynb&#34;
  &#34;02.00-Principios_modelagem_matematica.ipynb&#34;
- &#34;03.00-Exemplos_tipos_modelagem.ipynb&#34;
- &#34;04.00-Instalando_acessando_Julia.ipynb&#34;
- &#34;05.00-Primeiros_passos_Julia.ipynb&#34;
- &#34;06.00-BuckinghamPi_analise_dimensional.ipynb&#34;
- &#34;07.00-Ajuste_dados.ipynb&#34;
+ &#34;02.01-Principios_basicos.ipynb&#34;
+ &#34;02.02-Exemplos_tipos_modelagem.ipynb&#34;
+ &#34;03.00-Analise_dimensional.ipynb&#34;
+ &#34;03.01-BuckinghamPi_analise_dimensional.ipynb&#34;
+ &#34;03.02-Unidades_Julia.ipynb&#34;
+ &#34;04.00-Ajuste_parametros.ipynb&#34;
+ ⋮
+ &#34;10.04-EDP_onda.ipynb&#34;
+ &#34;10.05-EDP_calor_bidimensional.ipynb&#34;
+ &#34;10.06-EDP_onda_bidimensional.ipynb&#34;
+ &#34;10.07-Ondas_sismicas.ipynb&#34;
+ &#34;Audio_playground.ipynb&#34;
+ &#34;Covid.ipynb&#34;
+ &#34;Ondas_sonoras_elementos_musicais.ipynb&#34;
+ &#34;ReacaoEnzimatica.ipynb&#34;
+ &#34;data&#34;
  &#34;img&#34;
  &#34;slides&#34;
  &#34;src&#34;</pre>
@@ -13630,45 +13684,36 @@ src
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="p">]</span><span class="n">st</span>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span><span class="p">]</span><span class="n">st</span>
+      <span class="n">Status</span> <span class="sb">`~/Documents/git_repositories/modelagem_matematica/Project.toml`</span>
+  <span class="p">[</span><span class="mf">6e4</span><span class="n">b80f9</span><span class="p">]</span> <span class="n">BenchmarkTools</span> <span class="n">v1</span><span class="o">.</span><span class="mf">1.0</span>
+  <span class="p">[</span><span class="mi">336</span><span class="n">ed68f</span><span class="p">]</span> <span class="n">CSV</span> <span class="n">v0</span><span class="o">.</span><span class="mf">8.5</span>
+  <span class="p">[</span><span class="mi">717857</span><span class="n">b8</span><span class="p">]</span> <span class="n">DSP</span> <span class="n">v0</span><span class="o">.</span><span class="mf">6.10</span>
+  <span class="p">[</span><span class="mi">0</span><span class="n">c46a032</span><span class="p">]</span> <span class="n">DifferentialEquations</span> <span class="n">v6</span><span class="o">.</span><span class="mf">17.2</span>
+  <span class="p">[</span><span class="mi">31</span><span class="n">c24e10</span><span class="p">]</span> <span class="n">Distributions</span> <span class="n">v0</span><span class="o">.</span><span class="mf">25.10</span>
+  <span class="p">[</span><span class="mi">7</span><span class="n">a1cc6ca</span><span class="p">]</span> <span class="n">FFTW</span> <span class="n">v1</span><span class="o">.</span><span class="mf">4.3</span>
+  <span class="p">[</span><span class="mi">7073</span><span class="n">ff75</span><span class="p">]</span> <span class="n">IJulia</span> <span class="n">v1</span><span class="o">.</span><span class="mf">23.2</span>
+  <span class="p">[</span><span class="mf">82e4</span><span class="n">d734</span><span class="p">]</span> <span class="n">ImageIO</span> <span class="n">v0</span><span class="o">.</span><span class="mf">5.6</span>
+  <span class="p">[</span><span class="mi">6218</span><span class="n">d12a</span><span class="p">]</span> <span class="n">ImageMagick</span> <span class="n">v1</span><span class="o">.</span><span class="mf">2.1</span>
+  <span class="p">[</span><span class="mi">916415</span><span class="n">d5</span><span class="p">]</span> <span class="n">Images</span> <span class="n">v0</span><span class="o">.</span><span class="mf">24.1</span>
+  <span class="p">[</span><span class="n">b964fa9f</span><span class="p">]</span> <span class="n">LaTeXStrings</span> <span class="n">v1</span><span class="o">.</span><span class="mf">2.1</span>
+  <span class="p">[</span><span class="mi">2</span><span class="n">fda8390</span><span class="p">]</span> <span class="n">LsqFit</span> <span class="n">v0</span><span class="o">.</span><span class="mf">12.1</span>
+  <span class="p">[</span><span class="n">ae8d54c2</span><span class="p">]</span> <span class="n">Luxor</span> <span class="n">v2</span><span class="o">.</span><span class="mf">13.0</span>
+  <span class="p">[</span><span class="mi">429524</span><span class="n">aa</span><span class="p">]</span> <span class="n">Optim</span> <span class="n">v1</span><span class="o">.</span><span class="mf">3.0</span>
+  <span class="p">[</span><span class="mi">91</span><span class="n">a5bcdd</span><span class="p">]</span> <span class="n">Plots</span> <span class="n">v1</span><span class="o">.</span><span class="mf">18.2</span>
+  <span class="p">[</span><span class="n">e6cf234a</span><span class="p">]</span> <span class="n">RandomNumbers</span> <span class="n">v1</span><span class="o">.</span><span class="mf">4.0</span>
+  <span class="p">[</span><span class="n">bd7594eb</span><span class="p">]</span> <span class="n">SampledSignals</span> <span class="n">v2</span><span class="o">.</span><span class="mf">1.2</span>
+  <span class="p">[</span><span class="mi">1986</span><span class="n">cc42</span><span class="p">]</span> <span class="n">Unitful</span> <span class="n">v1</span><span class="o">.</span><span class="mf">8.0</span>
+  <span class="p">[</span><span class="n">a5a2160c</span><span class="p">]</span> <span class="n">UnitfulBuckinghamPi</span> <span class="n">v0</span><span class="o">.</span><span class="mf">1.0</span>
+  <span class="p">[</span><span class="mi">42071</span><span class="n">c24</span><span class="p">]</span> <span class="n">UnitfulRecipes</span> <span class="n">v1</span><span class="o">.</span><span class="mf">4.0</span>
+  <span class="p">[</span><span class="mf">8149f6</span><span class="n">b0</span><span class="p">]</span> <span class="n">WAV</span> <span class="n">v1</span><span class="o">.</span><span class="mf">1.1</span>
 </pre></div>
 
-    </div>
 </div>
 </div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre><span class="ansi-green-intense-fg ansi-bold">      Status</span> `~/Documents/git_repositories/modelagem_matematica/Project.toml`
- <span class="ansi-black-intense-fg"> [6e4b80f9] </span><span class="ansi-white-fg">BenchmarkTools v0.6.0</span>
- <span class="ansi-black-intense-fg"> [0c46a032] </span><span class="ansi-white-fg">DifferentialEquations v6.16.0</span>
- <span class="ansi-black-intense-fg"> [7073ff75] </span><span class="ansi-white-fg">IJulia v1.23.2</span>
- <span class="ansi-black-intense-fg"> [82e4d734] </span><span class="ansi-white-fg">ImageIO v0.5.3</span>
- <span class="ansi-black-intense-fg"> [6218d12a] </span><span class="ansi-white-fg">ImageMagick v1.2.0</span>
- <span class="ansi-black-intense-fg"> [916415d5] </span><span class="ansi-white-fg">Images v0.23.3</span>
- <span class="ansi-black-intense-fg"> [ae8d54c2] </span><span class="ansi-white-fg">Luxor v2.10.0</span>
- <span class="ansi-black-intense-fg"> [91a5bcdd] </span><span class="ansi-white-fg">Plots v1.10.6</span>
- <span class="ansi-black-intense-fg"> [e6cf234a] </span><span class="ansi-white-fg">RandomNumbers v1.4.0</span>
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
 </div></div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
@@ -13727,10 +13772,11 @@ pkg&gt; add IJulia</code></pre>
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">Pkg</span>
+<span class="n">Pkg</span><span class="o">.</span><span class="n">DEFAULT_IO</span><span class="p">[]</span> <span class="o">=</span> <span class="n">stdout</span>
 <span class="n">Pkg</span><span class="o">.</span><span class="n">status</span><span class="p">()</span>
 </pre></div>
 
@@ -13749,15 +13795,27 @@ pkg&gt; add IJulia</code></pre>
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre><span class="ansi-green-intense-fg ansi-bold">      Status</span> `~/Documents/git_repositories/modelagem_matematica/Project.toml`
- <span class="ansi-black-intense-fg"> [6e4b80f9] </span><span class="ansi-white-fg">BenchmarkTools v0.6.0</span>
- <span class="ansi-black-intense-fg"> [0c46a032] </span><span class="ansi-white-fg">DifferentialEquations v6.16.0</span>
+ <span class="ansi-black-intense-fg"> [6e4b80f9] </span><span class="ansi-white-fg">BenchmarkTools v1.1.0</span>
+ <span class="ansi-black-intense-fg"> [336ed68f] </span><span class="ansi-white-fg">CSV v0.8.5</span>
+ <span class="ansi-black-intense-fg"> [717857b8] </span><span class="ansi-white-fg">DSP v0.6.10</span>
+ <span class="ansi-black-intense-fg"> [0c46a032] </span><span class="ansi-white-fg">DifferentialEquations v6.17.2</span>
+ <span class="ansi-black-intense-fg"> [31c24e10] </span><span class="ansi-white-fg">Distributions v0.25.10</span>
+ <span class="ansi-black-intense-fg"> [7a1cc6ca] </span><span class="ansi-white-fg">FFTW v1.4.3</span>
  <span class="ansi-black-intense-fg"> [7073ff75] </span><span class="ansi-white-fg">IJulia v1.23.2</span>
- <span class="ansi-black-intense-fg"> [82e4d734] </span><span class="ansi-white-fg">ImageIO v0.5.3</span>
- <span class="ansi-black-intense-fg"> [6218d12a] </span><span class="ansi-white-fg">ImageMagick v1.2.0</span>
- <span class="ansi-black-intense-fg"> [916415d5] </span><span class="ansi-white-fg">Images v0.23.3</span>
- <span class="ansi-black-intense-fg"> [ae8d54c2] </span><span class="ansi-white-fg">Luxor v2.10.0</span>
- <span class="ansi-black-intense-fg"> [91a5bcdd] </span><span class="ansi-white-fg">Plots v1.10.6</span>
+ <span class="ansi-black-intense-fg"> [82e4d734] </span><span class="ansi-white-fg">ImageIO v0.5.6</span>
+ <span class="ansi-black-intense-fg"> [6218d12a] </span><span class="ansi-white-fg">ImageMagick v1.2.1</span>
+ <span class="ansi-black-intense-fg"> [916415d5] </span><span class="ansi-white-fg">Images v0.24.1</span>
+ <span class="ansi-black-intense-fg"> [b964fa9f] </span><span class="ansi-white-fg">LaTeXStrings v1.2.1</span>
+ <span class="ansi-black-intense-fg"> [2fda8390] </span><span class="ansi-white-fg">LsqFit v0.12.1</span>
+ <span class="ansi-black-intense-fg"> [ae8d54c2] </span><span class="ansi-white-fg">Luxor v2.13.0</span>
+ <span class="ansi-black-intense-fg"> [429524aa] </span><span class="ansi-white-fg">Optim v1.3.0</span>
+ <span class="ansi-black-intense-fg"> [91a5bcdd] </span><span class="ansi-white-fg">Plots v1.18.2</span>
  <span class="ansi-black-intense-fg"> [e6cf234a] </span><span class="ansi-white-fg">RandomNumbers v1.4.0</span>
+ <span class="ansi-black-intense-fg"> [bd7594eb] </span><span class="ansi-white-fg">SampledSignals v2.1.2</span>
+ <span class="ansi-black-intense-fg"> [1986cc42] </span><span class="ansi-white-fg">Unitful v1.8.0</span>
+ <span class="ansi-black-intense-fg"> [a5a2160c] </span><span class="ansi-white-fg">UnitfulBuckinghamPi v0.1.0</span>
+ <span class="ansi-black-intense-fg"> [42071c24] </span><span class="ansi-white-fg">UnitfulRecipes v1.4.0</span>
+ <span class="ansi-black-intense-fg"> [8149f6b0] </span><span class="ansi-white-fg">WAV v1.1.1</span>
 </pre>
 </div>
 </div>
@@ -13776,7 +13834,7 @@ pkg&gt; add IJulia</code></pre>
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">versioninfo</span><span class="p">()</span>
@@ -13796,10 +13854,10 @@ pkg&gt; add IJulia</code></pre>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Julia Version 1.6.0
-Commit f9720dc2eb (2021-03-24 12:55 UTC)
+<pre>Julia Version 1.6.1
+Commit 6aaedecc44 (2021-04-23 05:59 UTC)
 Platform Info:
-  OS: macOS (x86_64-apple-darwin19.6.0)
+  OS: macOS (x86_64-apple-darwin18.7.0)
   CPU: Intel(R) Core(TM) m5-6Y54 CPU @ 1.10GHz
   WORD_SIZE: 64
   LIBM: libopenlibm
