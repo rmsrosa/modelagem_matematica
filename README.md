@@ -1,8 +1,8 @@
-# Ambiente Julia do Binder para as notas de aula de Modelagem Matemática de 2020/2 - IM/UFRJ
+# Ambiente Julia do Binder para as notas de aula de Modelagem Matemática de 2021/1 - IM/UFRJ
 
 [![Text License: CC-BY-NC-ND license](https://img.shields.io/badge/Text%20License-CC--BY--NC--ND-yellow.svg)](https://opensource.org/licenses/MIT) [![Code License: GNU-GPLv3](https://img.shields.io/badge/Code%20License-GNU--GPLv3-yellow.svg)](https://www.gnu.org/licenses/gpl.html) ![GitHub repo size](https://img.shields.io/github/repo-size/rmsrosa/nbbinder)
 
-Esse ramo do repositório é utilizado apenas para a criação do ambiente Julia pelo [binder](https://mybinder.org). O conteúdo principal do repositório está em outros ramos, cada um relativo ao seu semestre.
+Esse ramo do repositório é utilizado apenas para a criação do ambiente Julia pelo [binder](https://mybinder.org). O conteúdo principal do repositório está em outro ramo.
 
 No momento do primeiro acesso, após cada alteração (i.e. cada novo *commit*) no repositório, um novo ambiente binder precisa ser gerado pelo [binder](https://mybinder.org), acarretando em uma grande demora no acesso. Isso acontece independentemente da alteração ser nas informações essenciais ao ambiente (e.g. nos arquivos `Package.toml`, `requirements.txt`, `environment.yaml`, etc.) ou no conteúdo (e.g. `README.md`, Jupyter notebooks).
 
