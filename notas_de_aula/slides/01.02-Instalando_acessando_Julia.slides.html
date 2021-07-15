@@ -13362,6 +13362,96 @@ a.anchor-link {
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Em uma célula com várias expressões, apenas o resultado da última expressão é exibido ao final da célula (a menos que haja uma operação explícita de exibição de resultado, como <code>println</code>, <code>@show</code>, <code>@info</code>, etc..</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">var1</span> <span class="o">=</span> <span class="mf">2.0</span>
+<span class="n">var2</span> <span class="o">=</span> <span class="n">sin</span><span class="p">(</span><span class="nb">π</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">var3</span> <span class="o">=</span> <span class="n">var1</span> <span class="o">*</span> <span class="n">var2</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[2]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>1.414213562373095</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Aviso, no entanto, que, ao longo do curso, utilizarei muito <code>nothing</code> para evitar a exibição do resulto do último comando executado em uma célula. E vou utilizar <code>@show</code> para exibir os resultados desejados. Por exemplo,</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">var1</span> <span class="o">=</span> <span class="nb">π</span><span class="o">/</span><span class="mi">4</span>
+<span class="n">var2</span> <span class="o">=</span> <span class="n">sin</span><span class="p">(</span><span class="nb">π</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">var3</span> <span class="o">=</span> <span class="n">var1</span> <span class="o">*</span> <span class="n">var2</span>
+<span class="nd">@show</span> <span class="n">var3</span>
+<span class="n">var4</span> <span class="o">=</span> <span class="n">cos</span><span class="p">(</span><span class="n">var1</span><span class="p">)</span>
+<span class="n">var5</span> <span class="o">=</span> <span class="n">var3</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="n">var1</span><span class="o">^</span><span class="mi">2</span><span class="o">*</span><span class="n">var4</span><span class="o">^</span><span class="mi">2</span>
+<span class="nd">@show</span> <span class="n">var5</span>
+<span class="nb">nothing</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>var3 = 0.5553603672697958
+var5 = 0.6168502750680849
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div></div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
@@ -13436,7 +13526,7 @@ a.anchor-link {
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="o">?</span><span class="nd">@time</span>
@@ -13452,7 +13542,7 @@ a.anchor-link {
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[2]:</div>
+    <div class="prompt output_prompt">Out[4]:</div>
 
 
 
@@ -13514,7 +13604,7 @@ julia&gt; @time begin
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="p">;</span><span class="n">ls</span>
@@ -13579,7 +13669,6 @@ julia&gt; @time begin
 10.07-Ondas_sismicas.ipynb
 Audio_playground.ipynb
 Covid.ipynb
-Ondas_sonoras_elementos_musicais.ipynb
 ReacaoEnzimatica.ipynb
 data
 img
@@ -13603,7 +13692,7 @@ src
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">readdir</span><span class="p">()</span>
@@ -13619,13 +13708,13 @@ src
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[4]:</div>
+    <div class="prompt output_prompt">Out[6]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>52-element Vector{String}:
+<pre>51-element Vector{String}:
  &#34;.ipynb_checkpoints&#34;
  &#34;00.00-Pagina_inicial.ipynb&#34;
  &#34;01.00-Preliminares.ipynb&#34;
@@ -13640,13 +13729,13 @@ src
  &#34;03.02-Unidades_Julia.ipynb&#34;
  &#34;04.00-Ajuste_parametros.ipynb&#34;
  ⋮
+ &#34;10.03-EDP_calor.ipynb&#34;
  &#34;10.04-EDP_onda.ipynb&#34;
  &#34;10.05-EDP_calor_bidimensional.ipynb&#34;
  &#34;10.06-EDP_onda_bidimensional.ipynb&#34;
  &#34;10.07-Ondas_sismicas.ipynb&#34;
  &#34;Audio_playground.ipynb&#34;
  &#34;Covid.ipynb&#34;
- &#34;Ondas_sonoras_elementos_musicais.ipynb&#34;
  &#34;ReacaoEnzimatica.ipynb&#34;
  &#34;data&#34;
  &#34;img&#34;
@@ -13683,38 +13772,59 @@ src
 
 </div>
 </div>
-</div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div class="highlight"><pre><span></span><span class="p">]</span><span class="n">st</span>
-      <span class="n">Status</span> <span class="sb">`~/Documents/git_repositories/modelagem_matematica/Project.toml`</span>
-  <span class="p">[</span><span class="mf">6e4</span><span class="n">b80f9</span><span class="p">]</span> <span class="n">BenchmarkTools</span> <span class="n">v1</span><span class="o">.</span><span class="mf">1.0</span>
-  <span class="p">[</span><span class="mi">336</span><span class="n">ed68f</span><span class="p">]</span> <span class="n">CSV</span> <span class="n">v0</span><span class="o">.</span><span class="mf">8.5</span>
-  <span class="p">[</span><span class="mi">717857</span><span class="n">b8</span><span class="p">]</span> <span class="n">DSP</span> <span class="n">v0</span><span class="o">.</span><span class="mf">6.10</span>
-  <span class="p">[</span><span class="mi">0</span><span class="n">c46a032</span><span class="p">]</span> <span class="n">DifferentialEquations</span> <span class="n">v6</span><span class="o">.</span><span class="mf">17.2</span>
-  <span class="p">[</span><span class="mi">31</span><span class="n">c24e10</span><span class="p">]</span> <span class="n">Distributions</span> <span class="n">v0</span><span class="o">.</span><span class="mf">25.10</span>
-  <span class="p">[</span><span class="mi">7</span><span class="n">a1cc6ca</span><span class="p">]</span> <span class="n">FFTW</span> <span class="n">v1</span><span class="o">.</span><span class="mf">4.3</span>
-  <span class="p">[</span><span class="mi">7073</span><span class="n">ff75</span><span class="p">]</span> <span class="n">IJulia</span> <span class="n">v1</span><span class="o">.</span><span class="mf">23.2</span>
-  <span class="p">[</span><span class="mf">82e4</span><span class="n">d734</span><span class="p">]</span> <span class="n">ImageIO</span> <span class="n">v0</span><span class="o">.</span><span class="mf">5.6</span>
-  <span class="p">[</span><span class="mi">6218</span><span class="n">d12a</span><span class="p">]</span> <span class="n">ImageMagick</span> <span class="n">v1</span><span class="o">.</span><span class="mf">2.1</span>
-  <span class="p">[</span><span class="mi">916415</span><span class="n">d5</span><span class="p">]</span> <span class="n">Images</span> <span class="n">v0</span><span class="o">.</span><span class="mf">24.1</span>
-  <span class="p">[</span><span class="n">b964fa9f</span><span class="p">]</span> <span class="n">LaTeXStrings</span> <span class="n">v1</span><span class="o">.</span><span class="mf">2.1</span>
-  <span class="p">[</span><span class="mi">2</span><span class="n">fda8390</span><span class="p">]</span> <span class="n">LsqFit</span> <span class="n">v0</span><span class="o">.</span><span class="mf">12.1</span>
-  <span class="p">[</span><span class="n">ae8d54c2</span><span class="p">]</span> <span class="n">Luxor</span> <span class="n">v2</span><span class="o">.</span><span class="mf">13.0</span>
-  <span class="p">[</span><span class="mi">429524</span><span class="n">aa</span><span class="p">]</span> <span class="n">Optim</span> <span class="n">v1</span><span class="o">.</span><span class="mf">3.0</span>
-  <span class="p">[</span><span class="mi">91</span><span class="n">a5bcdd</span><span class="p">]</span> <span class="n">Plots</span> <span class="n">v1</span><span class="o">.</span><span class="mf">18.2</span>
-  <span class="p">[</span><span class="n">e6cf234a</span><span class="p">]</span> <span class="n">RandomNumbers</span> <span class="n">v1</span><span class="o">.</span><span class="mf">4.0</span>
-  <span class="p">[</span><span class="n">bd7594eb</span><span class="p">]</span> <span class="n">SampledSignals</span> <span class="n">v2</span><span class="o">.</span><span class="mf">1.2</span>
-  <span class="p">[</span><span class="mi">1986</span><span class="n">cc42</span><span class="p">]</span> <span class="n">Unitful</span> <span class="n">v1</span><span class="o">.</span><span class="mf">8.0</span>
-  <span class="p">[</span><span class="n">a5a2160c</span><span class="p">]</span> <span class="n">UnitfulBuckinghamPi</span> <span class="n">v0</span><span class="o">.</span><span class="mf">1.0</span>
-  <span class="p">[</span><span class="mi">42071</span><span class="n">c24</span><span class="p">]</span> <span class="n">UnitfulRecipes</span> <span class="n">v1</span><span class="o">.</span><span class="mf">4.0</span>
-  <span class="p">[</span><span class="mf">8149f6</span><span class="n">b0</span><span class="p">]</span> <span class="n">WAV</span> <span class="n">v1</span><span class="o">.</span><span class="mf">1.1</span>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="p">]</span><span class="n">st</span>
 </pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre><span class="ansi-green-intense-fg ansi-bold">      Status</span> `~/Documents/git_repositories/modelagem_matematica/Project.toml`
+ <span class="ansi-black-intense-fg"> [6e4b80f9] </span>BenchmarkTools v1.1.0
+ <span class="ansi-black-intense-fg"> [336ed68f] </span>CSV v0.8.5
+ <span class="ansi-black-intense-fg"> [717857b8] </span>DSP
+ <span class="ansi-black-intense-fg"> [0c46a032] </span>DifferentialEquations v6.17.2
+ <span class="ansi-black-intense-fg"> [31c24e10] </span>Distributions v0.25.10
+ <span class="ansi-black-intense-fg"> [7a1cc6ca] </span>FFTW v1.4.3
+ <span class="ansi-black-intense-fg"> [7073ff75] </span>IJulia v1.23.2
+ <span class="ansi-black-intense-fg"> [82e4d734] </span>ImageIO v0.5.6
+ <span class="ansi-black-intense-fg"> [6218d12a] </span>ImageMagick v1.2.1
+ <span class="ansi-black-intense-fg"> [916415d5] </span>Images v0.24.1
+ <span class="ansi-black-intense-fg"> [b964fa9f] </span>LaTeXStrings v1.2.1
+ <span class="ansi-black-intense-fg"> [2fda8390] </span>LsqFit v0.12.1
+ <span class="ansi-black-intense-fg"> [ae8d54c2] </span>Luxor v2.13.0
+ <span class="ansi-black-intense-fg"> [429524aa] </span>Optim v1.3.0
+ <span class="ansi-black-intense-fg"> [91a5bcdd] </span>Plots v1.19.0
+ <span class="ansi-black-intense-fg"> [e6cf234a] </span>RandomNumbers v1.4.0
+ <span class="ansi-black-intense-fg"> [bd7594eb] </span>SampledSignals
+ <span class="ansi-black-intense-fg"> [1986cc42] </span>Unitful v1.8.0
+ <span class="ansi-black-intense-fg"> [a5a2160c] </span>UnitfulBuckinghamPi v0.1.0
+ <span class="ansi-black-intense-fg"> [42071c24] </span>UnitfulRecipes v1.4.0
+ <span class="ansi-black-intense-fg"> [8149f6b0] </span>WAV v1.1.1
+</pre>
+</div>
+</div>
 
 </div>
 </div>
-</div></div></section></section><section><section>
+
+</div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13728,10 +13838,11 @@ src
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="O-IJulia">O IJulia<a class="anchor-link" href="#O-IJulia">&#182;</a></h3><p>Um pacote importante para acessar o Julia a partir do Jupyter é o <a href="https://github.com/JuliaLang/IJulia.jl">IJulia</a>.</p>
-<p>Ao instalar o IJulia pela primeira vez, automaticamente um novo <em>kernel</em> do Julia no Jupyter será criado. Pode-se instalar o IJulia com</p>
+<p>Ao instalar o IJulia pela primeira vez, um novo <em>kernel</em> do Julia no Jupyter deve ser criado antes de acessá-lo. Pode-se instalar o IJulia e o kernel com</p>
 
 <pre><code>pkg&gt; activate .
-pkg&gt; add IJulia</code></pre>
+pkg&gt; add IJulia
+pkg&gt; build IJulia</code></pre>
 <p>O kernel apropriado pode ser escolhido no menu tipo "drop-down" no canto superior direito de cada notebook. Ou na janela de seleção de kernel no momento de criação de um novo notebook.</p>
 
 </div>
@@ -13740,7 +13851,7 @@ pkg&gt; add IJulia</code></pre>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Instatiate"><em>Instatiate</em><a class="anchor-link" href="#Instatiate">&#182;</a></h3><p>Caso você copia uma estrutura de arquivos de outro lugar e caso essa estrutura já possua um arquivo <code>Project.toml</code> com os pacotes necessários, isso não significa que os pacotes venham instalados automaticamente.</p>
+<h3 id="Instantiate"><em>Instantiate</em><a class="anchor-link" href="#Instantiate">&#182;</a></h3><p>Caso você copie uma estrutura de arquivos de outro lugar e caso essa estrutura já possua um arquivo <code>Project.toml</code> com os pacotes necessários, isso não significa que os pacotes venham instalados automaticamente.</p>
 <p>Caso eles não estejam instalados, eles vão aparecer com uma marcação especial, na lista de pacotes que aparece ao se executar <code>]st</code>.</p>
 <p>Nesse caso, é preciso <em>instantiate</em> o projeto, para que os pacotes indicados sejam instalados, sem a necessidade de adicioná-los um por um. Isso é feito com o comando</p>
 <div class="highlight"><pre><span></span><span class="n">pkg</span><span class="o">&gt;</span> <span class="n">instantiate</span>
@@ -13772,11 +13883,10 @@ pkg&gt; add IJulia</code></pre>
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">Pkg</span>
-<span class="n">Pkg</span><span class="o">.</span><span class="n">DEFAULT_IO</span><span class="p">[]</span> <span class="o">=</span> <span class="n">stdout</span>
 <span class="n">Pkg</span><span class="o">.</span><span class="n">status</span><span class="p">()</span>
 </pre></div>
 
@@ -13795,27 +13905,27 @@ pkg&gt; add IJulia</code></pre>
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre><span class="ansi-green-intense-fg ansi-bold">      Status</span> `~/Documents/git_repositories/modelagem_matematica/Project.toml`
- <span class="ansi-black-intense-fg"> [6e4b80f9] </span><span class="ansi-white-fg">BenchmarkTools v1.1.0</span>
- <span class="ansi-black-intense-fg"> [336ed68f] </span><span class="ansi-white-fg">CSV v0.8.5</span>
- <span class="ansi-black-intense-fg"> [717857b8] </span><span class="ansi-white-fg">DSP v0.6.10</span>
- <span class="ansi-black-intense-fg"> [0c46a032] </span><span class="ansi-white-fg">DifferentialEquations v6.17.2</span>
- <span class="ansi-black-intense-fg"> [31c24e10] </span><span class="ansi-white-fg">Distributions v0.25.10</span>
- <span class="ansi-black-intense-fg"> [7a1cc6ca] </span><span class="ansi-white-fg">FFTW v1.4.3</span>
- <span class="ansi-black-intense-fg"> [7073ff75] </span><span class="ansi-white-fg">IJulia v1.23.2</span>
- <span class="ansi-black-intense-fg"> [82e4d734] </span><span class="ansi-white-fg">ImageIO v0.5.6</span>
- <span class="ansi-black-intense-fg"> [6218d12a] </span><span class="ansi-white-fg">ImageMagick v1.2.1</span>
- <span class="ansi-black-intense-fg"> [916415d5] </span><span class="ansi-white-fg">Images v0.24.1</span>
- <span class="ansi-black-intense-fg"> [b964fa9f] </span><span class="ansi-white-fg">LaTeXStrings v1.2.1</span>
- <span class="ansi-black-intense-fg"> [2fda8390] </span><span class="ansi-white-fg">LsqFit v0.12.1</span>
- <span class="ansi-black-intense-fg"> [ae8d54c2] </span><span class="ansi-white-fg">Luxor v2.13.0</span>
- <span class="ansi-black-intense-fg"> [429524aa] </span><span class="ansi-white-fg">Optim v1.3.0</span>
- <span class="ansi-black-intense-fg"> [91a5bcdd] </span><span class="ansi-white-fg">Plots v1.18.2</span>
- <span class="ansi-black-intense-fg"> [e6cf234a] </span><span class="ansi-white-fg">RandomNumbers v1.4.0</span>
- <span class="ansi-black-intense-fg"> [bd7594eb] </span><span class="ansi-white-fg">SampledSignals v2.1.2</span>
- <span class="ansi-black-intense-fg"> [1986cc42] </span><span class="ansi-white-fg">Unitful v1.8.0</span>
- <span class="ansi-black-intense-fg"> [a5a2160c] </span><span class="ansi-white-fg">UnitfulBuckinghamPi v0.1.0</span>
- <span class="ansi-black-intense-fg"> [42071c24] </span><span class="ansi-white-fg">UnitfulRecipes v1.4.0</span>
- <span class="ansi-black-intense-fg"> [8149f6b0] </span><span class="ansi-white-fg">WAV v1.1.1</span>
+ <span class="ansi-black-intense-fg"> [6e4b80f9] </span>BenchmarkTools v1.1.0
+ <span class="ansi-black-intense-fg"> [336ed68f] </span>CSV v0.8.5
+ <span class="ansi-black-intense-fg"> [717857b8] </span>DSP
+ <span class="ansi-black-intense-fg"> [0c46a032] </span>DifferentialEquations v6.17.2
+ <span class="ansi-black-intense-fg"> [31c24e10] </span>Distributions v0.25.10
+ <span class="ansi-black-intense-fg"> [7a1cc6ca] </span>FFTW v1.4.3
+ <span class="ansi-black-intense-fg"> [7073ff75] </span>IJulia v1.23.2
+ <span class="ansi-black-intense-fg"> [82e4d734] </span>ImageIO v0.5.6
+ <span class="ansi-black-intense-fg"> [6218d12a] </span>ImageMagick v1.2.1
+ <span class="ansi-black-intense-fg"> [916415d5] </span>Images v0.24.1
+ <span class="ansi-black-intense-fg"> [b964fa9f] </span>LaTeXStrings v1.2.1
+ <span class="ansi-black-intense-fg"> [2fda8390] </span>LsqFit v0.12.1
+ <span class="ansi-black-intense-fg"> [ae8d54c2] </span>Luxor v2.13.0
+ <span class="ansi-black-intense-fg"> [429524aa] </span>Optim v1.3.0
+ <span class="ansi-black-intense-fg"> [91a5bcdd] </span>Plots v1.19.0
+ <span class="ansi-black-intense-fg"> [e6cf234a] </span>RandomNumbers v1.4.0
+ <span class="ansi-black-intense-fg"> [bd7594eb] </span>SampledSignals
+ <span class="ansi-black-intense-fg"> [1986cc42] </span>Unitful v1.8.0
+ <span class="ansi-black-intense-fg"> [a5a2160c] </span>UnitfulBuckinghamPi v0.1.0
+ <span class="ansi-black-intense-fg"> [42071c24] </span>UnitfulRecipes v1.4.0
+ <span class="ansi-black-intense-fg"> [8149f6b0] </span>WAV v1.1.1
 </pre>
 </div>
 </div>
@@ -13834,7 +13944,7 @@ pkg&gt; add IJulia</code></pre>
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">versioninfo</span><span class="p">()</span>
@@ -13854,8 +13964,8 @@ pkg&gt; add IJulia</code></pre>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Julia Version 1.6.1
-Commit 6aaedecc44 (2021-04-23 05:59 UTC)
+<pre>Julia Version 1.6.2
+Commit 1b93d53fc4 (2021-07-14 15:36 UTC)
 Platform Info:
   OS: macOS (x86_64-apple-darwin18.7.0)
   CPU: Intel(R) Core(TM) m5-6Y54 CPU @ 1.10GHz
