@@ -13202,47 +13202,519 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="P&#225;gina-inicial">P&#225;gina inicial<a class="anchor-link" href="#P&#225;gina-inicial">&#182;</a></h1>
+<h1 id="Quantidades,-unidades-e-dimens&#245;es">Quantidades, unidades e dimens&#245;es<a class="anchor-link" href="#Quantidades,-unidades-e-dimens&#245;es">&#182;</a></h1><ul>
+<li>Análise dimensional é uma técnica clássica usada em engenharia e física para a obtenção de leis aproximadas para algum problema/fenômeno.</li>
+<li>Essa análise se aplica, mais geralmente, a diversas áreas.</li>
+<li>Uma formalização da técnica dada pela análise dimensional é o Teorema de Buckinham-Pi.</li>
+<li>Nesse primeira parte sobre o assunto, vamos ver os conceitos de quantidade, unidade e dimensão.</li>
+</ul>
+
 </div>
 </div>
 </div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><!--TABLE_OF_CONTENTS--></p>
-<h2 id="Sum&#225;rio"><a href="#">Sum&#225;rio</a><a class="anchor-link" href="#Sum&#225;rio">&#182;</a></h2><h3 id="P&#225;gina-inicial"><a href="00.00-Pagina_inicial.slides.html">P&#225;gina inicial</a><a class="anchor-link" href="#P&#225;gina-inicial">&#182;</a></h3><h3 id="1.-Preliminares"><a href="01.00-Preliminares.slides.html">1. Preliminares</a><a class="anchor-link" href="#1.-Preliminares">&#182;</a></h3><p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="01.01-Aspectos_curso.slides.html">1.1. Aspectos do curso - edição 2021/1</a></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="01.02-Instalando_acessando_Julia.slides.html">1.2. Instalando e acessando o Julia</a></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="01.03-Primeiros_passos_Julia.slides.html">1.3. Primeiros passos em Julia</a></p>
-<h3 id="2.-Principios-de-modelagem-matem&#225;tica"><a href="02.00-Principios_modelagem_matematica.slides.html">2. Principios de modelagem matem&#225;tica</a><a class="anchor-link" href="#2.-Principios-de-modelagem-matem&#225;tica">&#182;</a></h3><p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="02.01-Principios_basicos.slides.html">2.1. Princípios básicos de modelagem</a></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="02.02-Exemplos_tipos_modelagem.slides.html">2.2. Exemplos de tipos de modelagem</a></p>
-<h3 id="3.-An&#225;lise-dimensional"><a href="03.00-Analise_dimensional.slides.html">3. An&#225;lise dimensional</a><a class="anchor-link" href="#3.-An&#225;lise-dimensional">&#182;</a></h3><p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="03.01-Quantidades_unidades_dimensoes.slides.html">3.1. Quantidades, unidades e dimensões</a></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="03.02-BuckinghamPi.slides.html">3.2. Análise dimensional e o Teorema de Buckingham-Pi</a></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="03.03-Unidades_Julia.slides.html">3.3. Trabalhando com unidades e dimensões em Julia</a></p>
-<h3 id="4.-Ajuste-de-par&#226;metros"><a href="04.00-Ajuste_parametros.slides.html">4. Ajuste de par&#226;metros</a><a class="anchor-link" href="#4.-Ajuste-de-par&#226;metros">&#182;</a></h3><p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="04.01-Minimos_quadrados_ajuste.slides.html">4.1. Mínimos quadrados e o ajuste de parâmetros</a></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="04.02-Modelos_redutiveis_linear_aplicacoes.slides.html">4.2. Modelos redutíveis ao caso linear nos parâmetros e aplicações</a></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="04.03-Minimos_quadrados_nao_linear.slides.html">4.3. Mínimos quadrados não-linear</a></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="04.04-Exemplos_ajuste_naolinear.slides.html">4.4. Exemplos de ajuste não-linear de parâmetros</a></p>
-<h3 id="5.-Erros,-incertezas"><a href="05.00-Erros_incertezas_quantificacao.slides.html">5. Erros, incertezas</a><a class="anchor-link" href="#5.-Erros,-incertezas">&#182;</a></h3><p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="05.01-Erros_e_incertezas.slides.html">5.1. Erros e incertezas</a></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="05.02-Minimos_quadrados_verossimilhanca.slides.html">5.2. Mínimos quadrados, maximização da verossimilhança e quantificação de incertezas em regressões lineares</a></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="05.03-Propagacao_incertezas.slides.html">5.3. Propagação de incertezas</a></p>
-<h3 id="6.-Avalia&#231;&#227;o-dos-modelos"><a href="06.00-Avaliacao_modelos.slides.html">6. Avalia&#231;&#227;o dos modelos</a><a class="anchor-link" href="#6.-Avalia&#231;&#227;o-dos-modelos">&#182;</a></h3><p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="06.01-Qualidade_do_modelo.slides.html">6.1. Qualidade do ajuste</a></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="06.02-Validacao_do_modelo.slides.html">6.2. Validação de modelos</a></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="06.03-Comparacao_de_modelos.slides.html">6.3. Comparação de modelos</a></p>
-<h3 id="7.-Aplica&#231;&#245;es-iniciais"><a href="07.00-Aplicacoes_iniciais.slides.html">7. Aplica&#231;&#245;es iniciais</a><a class="anchor-link" href="#7.-Aplica&#231;&#245;es-iniciais">&#182;</a></h3><p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="07.01-Modelo_diodo.slides.html">7.1. Modelagem da relacão voltagem-corrente de um diodo</a></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="07.02-Isomerizacao.slides.html">7.2. Lupulagem e a conversão de humulone em iso-humulone considerando saturação</a></p>
-<h3 id="8.-Modelos-epidemiol&#243;gicos"><a href="08.00-Modelos_epidemiologicos.slides.html">8. Modelos epidemiol&#243;gicos</a><a class="anchor-link" href="#8.-Modelos-epidemiol&#243;gicos">&#182;</a></h3><p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="08.01-Modelos_epidemiologicos_compartimentais.slides.html">8.1. Modelos epidemiológicos compartimentais</a></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="08.02-Ajuste_SIR.slides.html">8.2. Ajustando um modelo SIR a uma epidemia de Influenza</a></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="08.03-Compartimentais_estruturados.slides.html">8.3. Modelos compartimentais estruturados</a></p>
-<h3 id="9.-S&#233;ries-de-Fourier-e-aplica&#231;&#245;es"><a href="09.00-Fourier.slides.html">9. S&#233;ries de Fourier e aplica&#231;&#245;es</a><a class="anchor-link" href="#9.-S&#233;ries-de-Fourier-e-aplica&#231;&#245;es">&#182;</a></h3><p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="09.01-Series_Fourier.slides.html">9.1. Séries de Fourier</a></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="09.02-Transformada_discreta_Fourier.slides.html">9.2. Transformada discreta de Fourier</a></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="09.03-Ondas_sonoras_elementos_musicais.slides.html">9.3. Ondas sonoras e elementos musicais</a></p>
-<h3 id="10.-Modelos-com-equa&#231;&#245;es-a-derivadas-parciais"><a href="10.00-EDP.slides.html">10. Modelos com equa&#231;&#245;es a derivadas parciais</a><a class="anchor-link" href="#10.-Modelos-com-equa&#231;&#245;es-a-derivadas-parciais">&#182;</a></h3><p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="10.01-EDP_e_diferencas_finitas.slides.html">10.1. Equações a derivadas parciais e diferenças finitas</a></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="10.02-EDP_advecao.slides.html">10.2. Equação de adveçcão</a></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="10.03-EDP_calor.slides.html">10.3. Equação do calor unidimensional</a></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="10.04-EDP_onda.slides.html">10.4. Equação da onda unidimensional</a></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="10.05-EDP_calor_bidimensional.slides.html">10.5. Equação do calor em duas dimensões espaciais</a></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="10.06-EDP_onda_bidimensional.slides.html">10.6. Equação da onda em duas dimensões espaciais</a></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="10.07-Ondas_sismicas.slides.html">10.7. Ondas sísmicas</a></p>
+<h2 id="Objetivos-da-an&#225;lise-dimensional">Objetivos da an&#225;lise dimensional<a class="anchor-link" href="#Objetivos-da-an&#225;lise-dimensional">&#182;</a></h2><ul>
+<li><p>Reduzir o número e a complexidade de variáveis que afetam um determinado fenômeno.</p>
+</li>
+<li><p>Fornecer uma intuição simples e objetiva da realidade, apesar de aproximada.</p>
+</li>
+<li><p>Benefício extra: fazer uma primeira validação de um modelo checando-se a sua consistência dimensional.</p>
+</li>
+</ul>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Quantidades,-unidades-e-dimens&#245;es---vers&#227;o-informal">Quantidades, unidades e dimens&#245;es - vers&#227;o informal<a class="anchor-link" href="#Quantidades,-unidades-e-dimens&#245;es---vers&#227;o-informal">&#182;</a></h2><ul>
+<li>Uma <strong>quantidade</strong> é uma propriedade de um objeto (e.g. material, sistema, bem, serviço, etc.) que possa ser quantificado com alguma medida. Por exemplo, a altura de uma pessoa;</li>
+<li>Essa <em>medida</em> de uma <em>quantidade</em> é expressa através de um <strong>valor</strong> (numérico) e uma <strong>unidade de medida</strong>. Por exemplo, um metro e oitenta de altura, denotado por $h = 1,80\,\texttt{m}$;</li>
+<li>Cada unidade, ou quantidade, possui uma <strong>dimensão</strong>, com dada dimensão podendo ter várias unidades. Por exemplo, comprimento, denotado por $L$, medido em unidades como metro $(\texttt{m})$, quilômetro $(\texttt{km})$, centímetro $(\texttt{cm})$, etc.</li>
+<li>Podemos somar ou subtrair quantidades com a mesma dimensão, mantendo a dimensão, mas não necessariamente a unidade. Por exemplo, $1\,\texttt{m} + 80\,\texttt{cm} = 1800\,\texttt{mm}$;</li>
+<li>Podemos multiplicar e dividir dimensões diferentes, gerando novas dimensões. Por exemplo, 
+comprimento $L$ ao quadrado nos dá a dimensão $L^2$ de área; comprimento $L$ sobre tempo $T$ nos dá a dimensão $L/T$ de velocidade.</li>
+<li>Da mesma forma, podemos multiplicar e dividir unidades e quantidades de dimensões diferentes. Por exemplo, $\texttt{m}*\texttt{m} = \texttt{m}^2$ é uma unidade de área e $(36\,\texttt{km})/(30\,\texttt{min}) = 72\,\texttt{km}/\texttt{h} = 20\,\texttt{m}/\texttt{s}$ é uma quantidade medindo velocidade.</li>
+<li>Mais pra frente veremos uma, das muitas possíveis, versões formais abstratas desses conceitos.</li>
+</ul>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Exemplos">Exemplos<a class="anchor-link" href="#Exemplos">&#182;</a></h2><ul>
+<li><p>Como mencionado acima, podemos consider a <em>altura</em> como sendo uma propriedade de uma pessoa, com a dimensão de comprimento, que pode ser medida em unidades de metros, centímetros, pés, polegas, etc., e com um valor numérico apropriado. Por exemplo, a minha altura é de $h = 1,80 \,\texttt{m}$, onde $\texttt{m}$ é o símbolo para metros. A notação para a dimensão de comprimento é $[h] = L$. Em outras unidades, posso escrever $h = 180 \,\texttt{cm}$ ou $h = 5\,\texttt{ft} \;11\,\texttt{in}$.</p>
+</li>
+<li><p>A pressão atmosférica é a pressão que sentimos devida à atmosfera da Terra. Ao nível do mar, na média ao redor da Terra, ela é de aproximadamente 1 <strong>atmosfera</strong>, ou $1 \,\texttt{atm}$, onde $\texttt{atm}$ é, mais precisamente, a <strong>atmosfera padrão</strong>, que é definida como 
+$$
+\begin{multline*}
+1\,\texttt{atm} = 101,325.0\,\texttt{Pa} = 1,013.25 \,\texttt{hPa} =  1,013.25 \,\texttt{mbar} \\
+= 760 \,\texttt{mm}\;\texttt{Hg} = 29.9212 \,\texttt{in}\;\texttt{Hg} = 14.696 \,\texttt{psi}.
+\end{multline*}
+$$</p>
+</li>
+</ul>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Conjuntos-de-dimens&#245;es">Conjuntos de dimens&#245;es<a class="anchor-link" href="#Conjuntos-de-dimens&#245;es">&#182;</a></h2><ul>
+<li><p>Em geral, para cada problema em questão, podemos nos restringir a apenas um determinado conjunto de dimensões.</p>
+</li>
+<li><p>Por exemplo, para problemas mecânicos, basta considerarmos <strong>massa</strong>, <strong>comprimento</strong> e <strong>tempo</strong>.</p>
+</li>
+<li><p>No caso de problemas termo-mecânicos, devemos adicionar a <strong>temperatura</strong>.</p>
+</li>
+<li><p>Em finanças, consideramos uma <strong>dimensão monetária</strong>.</p>
+</li>
+<li><p>Em química, precisamos de uma dimensão para a <strong>quantidade de uma substância</strong>.</p>
+</li>
+<li><p>Em outros problemas, uma dimensão para a <strong>corrente elétrica</strong>, para <strong>luminosidade</strong>, etc.</p>
+</li>
+</ul>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Sistemas-de-unidades">Sistemas de unidades<a class="anchor-link" href="#Sistemas-de-unidades">&#182;</a></h2><ul>
+<li><p>Junto com a determinação de um conjunto de dimensões para um determinado problema, podemos escolher um conjunto de unidades para representar quantidades em cada dimensão.</p>
+</li>
+<li><p>Fixando as unidades, podemos abstrair os valores e facilitar os cálculos entre as quantidades.</p>
+</li>
+<li><p>Uma determinada escolha de unidades é chamada de <strong>sistema de unidades</strong>.</p>
+</li>
+</ul>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Sistema-MKS">Sistema MKS<a class="anchor-link" href="#Sistema-MKS">&#182;</a></h3><ul>
+<li>Por exemplo, o sistema <strong>MKS</strong> considera metros, quilograma e segundos para as dimensões de comprimento, massa e tempo, como exibido na tabela a seguir. </li>
+</ul>
+<table>
+<thead><tr>
+<th style="text-align:left">Grandeza</th>
+<th style="text-align:center">Unidades</th>
+<th style="text-align:center">Nome</th>
+<th style="text-align:center">Dimensão</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">comprimento</td>
+<td style="text-align:center">$\texttt{m}$</td>
+<td style="text-align:center">metro</td>
+<td style="text-align:center">$L$</td>
+</tr>
+<tr>
+<td style="text-align:left">massa</td>
+<td style="text-align:center">$\texttt{kg}$</td>
+<td style="text-align:center">quilograma</td>
+<td style="text-align:center">$M$</td>
+</tr>
+<tr>
+<td style="text-align:left">tempo</td>
+<td style="text-align:center">$\texttt{s}$</td>
+<td style="text-align:center">segundos</td>
+<td style="text-align:center">$T$</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Agregando-a-temperatura">Agregando a temperatura<a class="anchor-link" href="#Agregando-a-temperatura">&#182;</a></h3><ul>
+<li>Em problemas termo-mecânicos, precisamos incluir a temperatura, usualmente medida em Kelvin, nos levando ao sistema</li>
+</ul>
+<table>
+<thead><tr>
+<th>Grandeza</th>
+<th style="text-align:center">Unidades</th>
+<th style="text-align:center">Nome</th>
+<th style="text-align:center">Dimensão</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>comprimento</td>
+<td style="text-align:center">$\texttt{m}$</td>
+<td style="text-align:center">metro</td>
+<td style="text-align:center">$L$</td>
+</tr>
+<tr>
+<td>massa</td>
+<td style="text-align:center">$\texttt{kg}$</td>
+<td style="text-align:center">quilograma</td>
+<td style="text-align:center">$M$</td>
+</tr>
+<tr>
+<td>tempo</td>
+<td style="text-align:center">$\texttt{s}$</td>
+<td style="text-align:center">segundos</td>
+<td style="text-align:center">$T$</td>
+</tr>
+<tr>
+<td>temperatura</td>
+<td style="text-align:center">$\texttt{K}$</td>
+<td style="text-align:center">kelvin</td>
+<td style="text-align:center">$\Theta$</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="O-sistema-internacional-de-unidades">O sistema internacional de unidades<a class="anchor-link" href="#O-sistema-internacional-de-unidades">&#182;</a></h3><ul>
+<li>Este sistema inclui ainda <strong>corrente elétrica</strong>, <strong>unidade para a quantidade de substância</strong>, e <strong>intensidade luminosa</strong>.</li>
+</ul>
+<table>
+<thead><tr>
+<th>Grandeza</th>
+<th style="text-align:center">Unidades</th>
+<th style="text-align:center">Nome</th>
+<th style="text-align:center">Dimensão</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>comprimento</td>
+<td style="text-align:center">$\texttt{m}$</td>
+<td style="text-align:center">metro</td>
+<td style="text-align:center">$L$</td>
+</tr>
+<tr>
+<td>massa</td>
+<td style="text-align:center">$\texttt{kg}$</td>
+<td style="text-align:center">quilograma</td>
+<td style="text-align:center">$M$</td>
+</tr>
+<tr>
+<td>tempo</td>
+<td style="text-align:center">$\texttt{s}$</td>
+<td style="text-align:center">segundos</td>
+<td style="text-align:center">$T$</td>
+</tr>
+<tr>
+<td>temperatura</td>
+<td style="text-align:center">$\texttt{K}$</td>
+<td style="text-align:center">kelvin</td>
+<td style="text-align:center">$\Theta$</td>
+</tr>
+<tr>
+<td>corrente elétrica</td>
+<td style="text-align:center">$\texttt{A}$</td>
+<td style="text-align:center">ampére</td>
+<td style="text-align:center">$I$</td>
+</tr>
+<tr>
+<td>intensidade luminosa</td>
+<td style="text-align:center">$\texttt{cd}$</td>
+<td style="text-align:center">candeia</td>
+<td style="text-align:center">$J$</td>
+</tr>
+<tr>
+<td>quantidade de substância</td>
+<td style="text-align:center">$\texttt{mol}$</td>
+<td style="text-align:center">mole</td>
+<td style="text-align:center">$N$</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Dimens&#245;es-e-unidades-fundamentais-e-derivadas">Dimens&#245;es e unidades fundamentais e derivadas<a class="anchor-link" href="#Dimens&#245;es-e-unidades-fundamentais-e-derivadas">&#182;</a></h3><ul>
+<li><p>As dimensões e as unidades associadas às grandezas físicas são divididas em duas categorias: <strong>fundamentais</strong> (ou <strong>de base</strong>) e <strong>derivadas</strong>.</p>
+</li>
+<li><p>No sistema <strong>MKS</strong>, por exemplo, as dimensões fundamentais são comprimento, massa e tempo. A partir delas, podemos obter volume, área, velocidade, aceleração e densidade, por exemplo, com dimensões, respectivamente, de $L^3$, $L^2$, $L/T$, $L/T^2$ e $M/L^3$.</p>
+</li>
+<li><p>Mas essa classificação é arbitrária. Poderíamos considerar o volume como unidade fundamental, no lugar de comprimento, e obter o comprimento $L=\text{volume}^{1/3}$. Ou considerar ainda a densidade no lugar da massa e obter $M=\text{densidade}\times\text{volume}$.</p>
+</li>
+<li><p>Associadas à escolha das dimensões fundamentais, temos as unidades fundamentais correspondentes, assim como as unidades derivadas.</p>
+</li>
+</ul>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Exemplos-de-unidades-derivadas">Exemplos de unidades derivadas<a class="anchor-link" href="#Exemplos-de-unidades-derivadas">&#182;</a></h3><table>
+<thead><tr>
+<th>Grandeza</th>
+<th style="text-align:center">Unidades</th>
+<th style="text-align:center">Dimensão</th>
+<th>Nome</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>área</td>
+<td style="text-align:center">$\texttt{m}^2$</td>
+<td style="text-align:center">$L^2$</td>
+<td></td>
+</tr>
+<tr>
+<td>volume</td>
+<td style="text-align:center">$\texttt{m}^3$</td>
+<td style="text-align:center">$L^3$</td>
+<td></td>
+</tr>
+<tr>
+<td>velocidade</td>
+<td style="text-align:center">$\texttt{m}\,/\,\texttt{s}$ = $\texttt{m}\,\texttt{s}^{-1}$</td>
+<td style="text-align:center">$L T^{-1}$</td>
+<td></td>
+</tr>
+<tr>
+<td>aceleração</td>
+<td style="text-align:center">$m/s^2$ = $m \, s^{-2}$</td>
+<td style="text-align:center">$L T^{-2}$</td>
+<td></td>
+</tr>
+<tr>
+<td>força</td>
+<td style="text-align:center">$N$ = $\dfrac{\texttt{kg}\,\texttt{m}}{\texttt{s}^2}$ = ${\texttt{kg} \, \texttt{m} \, \texttt{s}^{-2}}$</td>
+<td style="text-align:center">$M L T^{-2}$</td>
+<td>Newton</td>
+</tr>
+<tr>
+<td>trabalho / energia</td>
+<td style="text-align:center">$\texttt{J}$ = $\dfrac{\texttt{kg} \, \texttt{m}^2}{\texttt{s}^2}$ = ${\texttt{kg} \, \texttt{m}^2 \, \texttt{s}^{-2}}$</td>
+<td style="text-align:center">$M L^2 T^{-2}$</td>
+<td>Joule</td>
+</tr>
+<tr>
+<td>pressão</td>
+<td style="text-align:center">$\texttt{Pa}$ = $\dfrac{\texttt{kg}}{\texttt{m} \, \texttt{s}^2}$ = ${\texttt{kg} \, \texttt{m}^{-1} \, \texttt{s}^{-2}}$</td>
+<td style="text-align:center">$M L^{-1} T^{-2}$</td>
+<td>Pascal</td>
+</tr>
+<tr>
+<td>densidade (massa específica)</td>
+<td style="text-align:center">$\dfrac{\texttt{kg}}{\texttt{m}^3}$ = $\texttt{kg} \, \texttt{m}^{-3}$</td>
+<td style="text-align:center">$M L^{-3}$</td>
+<td></td>
+</tr>
+<tr>
+<td>difusividade (de massa e térmica)</td>
+<td style="text-align:center">$\dfrac{\texttt{m}^2}{\texttt{s}}$ = $\texttt{m}^2 \, \texttt{s}^{-1}$</td>
+<td style="text-align:center">$M^2 T^{-1}$</td>
+</tr>
+</tbody>
+</table>
+<p>Observe que o <strong>litro</strong> é uma unidade de volume igual a um <strong>decímetro cúbico</strong>, i.e. $\texttt{l} = \texttt{dm}^3$.</p>
+<p>Para uma lista mais completa, veja <a href="https://en.wikipedia.org/wiki/List_of_physical_quantities">Lista de grandezas físicas</a></p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Sistemas-de-mesma-classe">Sistemas de mesma classe<a class="anchor-link" href="#Sistemas-de-mesma-classe">&#182;</a></h3><ul>
+<li><p>Um outro sistema semelhante ao MKS é o CGS, onde as unidades tomadas para as dimensões de comprimento, massa e tempo são <strong>centímetro</strong>, <strong>grama</strong> e <strong>segundos</strong>.</p>
+</li>
+<li><p>Observe que eles representam as mesmas dimensões. Qualquer dimensão em um sistema é representável por uma dimensão (fundamental ou derivada, mas nesse caso sempre fundamental) no outro. Nesse casos, eles são ditos sistemas de mesma classe.</p>
+</li>
+<li><p>Sistemas da mesma classe são facilmente intercambiáveis. Podemos expressar qualquer quantidade possível em um ou em outro sistema. Por exemplo, como vimos acima, podemos representar uma distância de 2 metros como sendo de 200 centímetros. E uma densidade de $1000\,\texttt{kg}/\texttt{m}^3$ como sendo de $1.000.000\,\texttt{g}/100^3\texttt{cm}^3 = 1\,\texttt{g}/\texttt{cm}^3$.</p>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Quantidades,-unidades-e-dimens&#245;es---uma-vers&#227;o-formal">Quantidades, unidades e dimens&#245;es - uma vers&#227;o formal<a class="anchor-link" href="#Quantidades,-unidades-e-dimens&#245;es---uma-vers&#227;o-formal">&#182;</a></h2><ul>
+<li>Uma <strong>quantidade</strong> é um conjunto de pares ordenados $(r, \texttt{u})$, onde $r\in \mathbb{R}$ é um <strong>valor numérico</strong> e $\texttt{u}$ é uma <strong>unidade</strong>, pertencente a um <em>conjunto de unidades</em> $\texttt{U}$.</li>
+<li>Em termos de notação, escrevemos $q=(r,\texttt{u})$ como $q = r\,\texttt{u}$.</li>
+<li>Uma hipótese fundamental é a de que existe uma <em>relação de equivalência</em> $\sim$ no conjunto $\texttt{U}$ das unidades, onde cada classe de equivalência é chamada de <strong>dimensão</strong>.</li>
+<li>Em termos de notação, escrevemos a <em>dimensão</em> de uma unidade $\texttt{u}$ por $[\texttt{u}]$.</li>
+<li>Essa relação de equivalência se estende, naturalmente, às quantidades: $r \,\texttt{u}\sim s \,\texttt{v} \Leftrightarrow \texttt{u}\sim \texttt{v}$. Dessa forma, a dimensão de uma quantidade $q$ é definida através da dimensão da sua unidade: $[q]=[\texttt{u}]$.</li>
+<li>Outra hipótese é a de que o conjunto de classes de equivalência possui uma operação de multiplicação com a qual é um grupo abeliano. O elemento neutro recebe uma terminologia especial, a de ser <strong>adimensional</strong>.</li>
+<li>Outra hipótese fundamental é a de que, em cada classe de equivalência, temos uma operação de adição sob a qual a classe de equivalência também forma um grupo abeliano.</li>
+<li>Por fim, temos a hipótese de que quaisquer unidades $\texttt{u}$ e $\texttt{v}$ com a mesma dimensão estão relacionadas por uma transformação <em>afim</em>, ou seja, existem $a_0\in\mathbb{R}$ e $\lambda &gt; 0$ tais que, para qualquer $r\in \mathbb{R}$, temos 
+$$ r\,\texttt{u} = (a_0 + \lambda r) \,\texttt{v}.
+$$
+Na maioria dos casos, no entanto, a relação é <em>linear</em>, i.e. com $a_0=0$.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Propriedades">Propriedades<a class="anchor-link" href="#Propriedades">&#182;</a></h3><ul>
+<li>Com as hipóteses acima, podemos comparar as magnitudes de quaisquer duas dimensões $q=r\,u$ e $p=s\,\texttt{v}$ com a mesma dimensão através da comparação de seu valores na mesma unidade, ou seja, comparando-se $a_0 + \lambda r$ com $s$, onde $a_0$ e $\lambda$ são dados pela relação $1 \,\texttt{u} = (a_0 + \lambda) \,\texttt{v}$.</li>
+<li>Das hipóteses de adição e de subtração, temos as propriedades $[q + p] = [q] + [p]$, para quantidades de mesma dimensão, e $[pq] = [p][q]$, para quantidades de dimensões diferentes.</li>
+<li>A adição se estende para quantidades de mesma dimensão: $r\,\texttt{u} + s\,\texttt{v} = (a_0 + \lambda r + s)\,\texttt{v}$. Naturalmente, a dimensão é preservada: $[r\,\texttt{u} + s\,\texttt{v}] = [\texttt{u}] = [\texttt{v}]$.</li>
+<li>A hipótese do conjunto de unidades ser um grupo abeliano (em particular, qualquer dimensão $D$ possui inversa $D^{-1}$, com $D^0=1$ adimensional), nos permite considerar $D^q$ para qualquer racional $q$.</li>
+<li>Essa multiplicação se estende naturalmente a unidades e quantidades.<ul>
+<li>No caso de unidades, definimos $(\texttt{u},\texttt{v})\rightarrow \texttt{u}*\texttt{v}$, com $[\texttt{u}\texttt{v}] = [\texttt{u}][\texttt{v}]$, assim como a inversa multiplicativa $[\texttt{u}/\texttt{v}] = [\texttt{u}]/[\texttt{v}]$, sendo que $[\texttt{u}/\texttt{u}] = 1$, representando a adimensionalidade.</li>
+<li>No caso de quantidades, temos $r\,\texttt{u} * s\,\texttt{v} = rs \,\texttt{u}\texttt{v}$ e $(r\,\texttt{u}) / (s\,\texttt{v}) = (r/s)\,\texttt{u}\texttt{v}$, quando $s\neq 0$.</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Fun&#231;&#245;es-transcendentais">Fun&#231;&#245;es transcendentais<a class="anchor-link" href="#Fun&#231;&#245;es-transcendentais">&#182;</a></h3><ul>
+<li><p>As funções trigonométricas, a função exponencial, o logaritmo e outras funções transcendentais não são estendidas diretamente a quantidades, unidades e dimensões.</p>
+</li>
+<li><p>Elas podem ser definidas por geometria ou por séries de potências ou por outras maneiras não puramente algébricas e que não estão plenamente disponíveis no contexto dimensional.</p>
+</li>
+<li><p>Elas só se aplicam a quantidades <em>adimensionais</em>.</p>
+</li>
+<li><p>O logaritmo, no entanto, pode ser dado um certo sentido em geral, mas é preciso ter cuidado.</p>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Dimens&#245;es-com-estrutura-de-espa&#231;o-vetorial-e-&quot;um&quot;-logaritmo">Dimens&#245;es com estrutura de espa&#231;o vetorial e "um" logaritmo<a class="anchor-link" href="#Dimens&#245;es-com-estrutura-de-espa&#231;o-vetorial-e-&quot;um&quot;-logaritmo">&#182;</a></h3><ul>
+<li><p>De maneira apropriada, podemos associar o grupo $\mathcal{D}$ de dimensões com um espaço vetorial sobre os racionais.</p>
+</li>
+<li><p>Para diferenciar o conjunto de dimensões munido das operações de grupo, que denotamos por $\mathcal{D}$, do mesmo conjunto munido das operações vetoriais, vamos denotar este último por $\overline{\mathcal{D}}$.</p>
+</li>
+<li><p>A cada $D$, vamos denotar por $\bar D$ essa dimensão vista como elemento de $\overline{\mathcal{D}}$. (Imagine "mergulhar" $x\in\mathbb{R}$ em $\bar x = (x,0)\in \mathbb{R}^2$, ou trasformar $s\in (0,\infty)$ em $\bar s = \log s \in \mathbb{R}$... 😉)</p>
+</li>
+<li><p>Dados um racional $q$ e dimensões $\bar D$, $\bar D_1$ e $\bar D_2$ em $\overline{\mathcal{D}}$, definimos o produto escalar e a soma vetorial em $\mathcal{D}$ respectivamente por
+$$ q \bar D = \overline{D^q}, \qquad \bar D_1 + \bar D_2 = \overline{D_1 D_2}.
+$$</p>
+</li>
+<li><p>Verifique, de fato, que isso faz de $\bar{D}$ um espaço vetorial sobre os racionais!</p>
+</li>
+<li><p>E observe que, com essa representação, a transformação $D\mapsto \bar D$ tem a "cara" (propriedades algébricas) de um logaritmo.</p>
+</li>
+<li><p>Por conta disso, podemos renomear essa transformação para $\operatorname{Log}$:
+$$ q \operatorname{Log}(D) = \operatorname{Log}(D^q), \qquad \operatorname{Log}(D_1D_2) = \operatorname{Log}(D_1) + \operatorname{Log}(D_2).
+$$</p>
+</li>
+<li><p>Observe o meu cuidado em não escrever $\log$, mas $\operatorname{Log}$, para ressaltar que ele não é o mesmo operador que age concretamente nos reais (e nos complexos, quaternions, etc.)</p>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="O-espa&#231;o-de-dimens&#245;es-do-sistema-MKS">O espa&#231;o de dimens&#245;es do sistema MKS<a class="anchor-link" href="#O-espa&#231;o-de-dimens&#245;es-do-sistema-MKS">&#182;</a></h3><ul>
+<li><p>No sistema MKS, só consideramos as dimensões de comprimento, massa e tempo: $L$, $M$ e $T$.</p>
+</li>
+<li><p>A partir delas, temos velocidade $L T^{-1}$, aceleração $L T^{-2}$, área $L^2$, volume $L^3$, densidade $ML^{-3}$, energia $ML^2T^{-2}$ e assim por diante.</p>
+</li>
+<li><p>Claramente, isso tem uma aspecto de base, onde $L$, $M$ e $T$ geram todas as outras dimensões desse sistema.</p>
+</li>
+<li><p>Essa associação fica mais clara quando usamos a representação logarítmica anterior, onde podemos escrever
+$$ \begin{align*}
+\operatorname{Log}(L T^{-1}) &amp; = \operatorname{Log}(L) - \operatorname{Log}(T), &amp; \text{(velocidade)} \\
+\operatorname{Log}(L T^{-2}) &amp; = \operatorname{Log}(L) - 2\operatorname{Log}(T), &amp; \mathrm{(aceleração)} \\
+\operatorname{Log}(L^2) &amp; = 2 \operatorname{Log}(L), &amp; \mathrm{(área)} \\
+\operatorname{Log}(L^3) &amp; = 3 \operatorname{Log}(L), &amp; \mathrm{(volume)} \\
+\operatorname{Log}(ML^{-3}) &amp; = \operatorname{Log}(M) - 3\operatorname{Log}(L), &amp; \mathrm{ (densidade)} \\
+\operatorname{Log}(ML^{2}T^{-2}) &amp; = \operatorname{Log}(M) - 2\operatorname{Log}(L) - 2\operatorname{T}, &amp; \mathrm{(energia)} 
+\end{align*}
+$$</p>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Logaritmos-de-quantidades-e-unidades">Logaritmos de quantidades e unidades<a class="anchor-link" href="#Logaritmos-de-quantidades-e-unidades">&#182;</a></h3><ul>
+<li><p>A mesma ideia pode ser estendida a quantidades e unidades, afinal eles também tem essa estutura de grupo abeliano para a multiplicação.</p>
+</li>
+<li><p>Podemos considerar $\operatorname{Log}(\texttt{u})$ de uma unidade $\texttt{u}$ e, associado a isso, $\operatorname{Log}(q)$ de uma quantidade.</p>
+</li>
+<li><p><strong>Mas cuidado!:</strong></p>
+<ul>
+<li>A operação $\operatorname{Log}(\texttt{u}) + \operatorname{Log}(\texttt{v})$ deve ser vista meramente como uma representação da unidade $\texttt{u}\texttt{v}$, não como números reais sendo somados. Essa adição mora em um espaço vetorial abstrato.</li>
+<li>Da mesma forma para quantidades, mas, mais ainda, nem pensar em fazer $\operatorname{Log}(2 \;\texttt{metros}) = \log(2) + \operatorname{Log}(\texttt{metros})$. Isso não tem o menor sentido. Não podemos "quebrar" a unidade $(2, \texttt{m})$ em dois objetos separados e operar em cada um deles, nem tampouco somar um número real $\log(2)$ com essa representação abstrata $\operatorname{Log}(\texttt{metros})$ da unidade metros.</li>
+<li>E não confundir $\operatorname{Log}$ com $\log$!</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Quantidades-e-unidades-como-um-subespa&#231;o-afim-unidimensional-real">Quantidades e unidades como um subespa&#231;o afim unidimensional real<a class="anchor-link" href="#Quantidades-e-unidades-como-um-subespa&#231;o-afim-unidimensional-real">&#182;</a></h2><ul>
+<li><p>O conjunto de unidades também pode ter uma representação mais concreta.</p>
+</li>
+<li><p>Cada conjunto de equivalência de unidade pode ser visto como um subespaço afim unidimensional sobre os reais.</p>
+</li>
+<li><p>Na maioria dos casos, simplesmente como um subespaço.</p>
+</li>
+<li><p>Dadas duas unidades $\texttt{u}$ e $\texttt{v}$ na mesma classe, ou seja, de mesma dimensão, existem um $a_0\in \mathbb{R}$ e um fator $\lambda&gt;0$ tais que, qualquer $r\in \mathbb{R}$, podemos sempre escrever $r\,\texttt{u}$ como $r\,\texttt{u} = (a_0 + \lambda r)\,\texttt{v}$, para algum $s\in \mathbb{R}$.</p>
+</li>
+<li><p>É essencialmente como se cada unidade se comportasse como uma base para o subespaço.</p>
+</li>
+</ul>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Refer&#234;ncias">Refer&#234;ncias<a class="anchor-link" href="#Refer&#234;ncias">&#182;</a></h2><ol>
+<li><p>C. Dym, Principles of Mathematical Modeling, 2nd ed, Academic Press, 2004.</p>
+</li>
+<li><p>E. A. Bender, An Introduction to Mathematical Modeling, Dover, 1978.</p>
+</li>
+<li><p>G. Barenblatt, G. -- <em>Scaling</em>, Cambridge University Press, 2003.</p>
+</li>
+<li><p>Groesen, E. van, and Molenaar, J. -- <em>Continuum Modeling in the Physical Sciences</em>, SIAM, 2007.</p>
+</li>
+<li><p><a href="https://terrytao.wordpress.com/2012/12/29/a-mathematical-formalisation-of-dimensional-analysis/">T. Tao, A mathematical formalisation of dimensional analysis</a>.</p>
+</li>
+</ol>
 
 </div>
 </div>
