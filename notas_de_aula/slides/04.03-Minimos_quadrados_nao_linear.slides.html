@@ -13221,11 +13221,11 @@ a.anchor-link {
 <li><p>Considere um conjunto de dados $(x_i, y_i)$ com $x_i, y_i \in \mathbb{R}$, $i = 1, \ldots, N$.</p>
 </li>
 <li><p>Buscamos aproximar o fenômeno com um modelo da forma
-$$y(t) =  \varphi(x, \boldsymbol{\beta}),$$
+$$y(x) =  \varphi(x, \boldsymbol{\beta}),$$
 onde $\boldsymbol{\beta} = (\beta_1, \ldots, \beta_m)$ é um conjunto de parâmetros (desconhecidos) do modelo.</p>
 </li>
 <li><p>Idealmente, poderíamos ajustar os parâmetros por <strong>colocação</strong>, ou seja, de tal forma que eles coincidissem em todos os dados:
-$$y(t_i) =  \varphi(x_i ; \theta), \quad i=1, \ldots, N.$$</p>
+$$y(t_i) =  \varphi(x_i ; \beta), \quad i=1, \ldots, N.$$</p>
 </li>
 <li><p>No entanto, assim como no caso linear, não esperamos essa "perfeição" em geral.</p>
 </li>
@@ -13350,7 +13350,7 @@ $$</li>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Defici&#234;ncias-do-m&#233;todo-de-gradiente-conjugado">Defici&#234;ncias do m&#233;todo de gradiente conjugado<a class="anchor-link" href="#Defici&#234;ncias-do-m&#233;todo-de-gradiente-conjugado">&#182;</a></h4><ul>
+<h4 id="Defici&#234;ncias-do-m&#233;todo-de-gradiente-descendente">Defici&#234;ncias do m&#233;todo de gradiente descendente<a class="anchor-link" href="#Defici&#234;ncias-do-m&#233;todo-de-gradiente-descendente">&#182;</a></h4><ul>
 <li><p>A sua convergência é relativamente lenta.</p>
 </li>
 <li><p>A escolha do tamanho de passo $\eta$ não segue uma receita muito bem definida.</p>
