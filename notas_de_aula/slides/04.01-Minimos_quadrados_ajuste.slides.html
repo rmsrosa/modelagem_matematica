@@ -13509,15 +13509,15 @@ $$</p>
 </li>
 <li><p>Para cada abscissa $x_i$ de cada ponto $(x_i, y_i)$ da amostra, temos a ordenada correspondente $y_i$ e ordenada $\hat y_i = mx_i + b$ obtida pelo modelo.</p>
 </li>
-<li><p>A diferença entre $\hat y_i$ e $y_i$ é chamada de <strong>resíduo</strong> no ponto $i$:
-$$ r_i = \hat y_i - y_i.
+<li><p>A diferença entre $y_i$ e $\hat y_i$ é chamada de <strong>resíduo</strong> no ponto $i$:
+$$ r_i = y_i - \hat y_i.
 $$</p>
 </li>
 <li><p>O <strong>erro</strong> absoluto em cada ponto é
-$$ |y_i - \hat y_i|
+$$ |r_i| = |y_i - \hat y_i|
 $$</p>
 </li>
-<li><p>O <strong>erro quadrático</strong> total, ou <strong>soma dos quadrados dos resíduos</strong>, é
+<li><p>O <strong>erro quadrático</strong> total, ou <strong>soma dos quadrados dos resíduos</strong> <em>(RSS=residual sum of squares)</em>, é
 $$ E = \sum_{i=1}^N |y_i - \hat y_i|^2,
 $$
 onde $N=3$, nesse caso (três pontos).</p>
@@ -13607,15 +13607,15 @@ $$</p>
 <li><p>Para minimizar $E(\boldsymbol{\beta}) = \|\mathbf{y} - A\boldsymbol{\beta}\|^2$, olhamos, novamente, para os seus pontos críticos.</p>
 </li>
 <li><p>A derivada direcional de $E(\boldsymbol{\beta})$ na direção de um vetor unitário $\boldsymbol{\alpha}$ é (verifique!)
-$$ \nabla E(\boldsymbol{\beta})\cdot \boldsymbol{\alpha} = 2(\mathbf{y} - A\boldsymbol{\beta})\cdot (A\boldsymbol{\alpha}).
+$$ \nabla E(\boldsymbol{\beta})\cdot \boldsymbol{\alpha} = -2(\mathbf{y} - A\boldsymbol{\beta})\cdot (A\boldsymbol{\alpha}).
 $$</p>
 </li>
 <li><p>Podemos reescrever isso usando exatamente a transposta de $A$:
-$$ \nabla E(\boldsymbol{\beta})\cdot \boldsymbol{\alpha} = 2(A^t(\mathbf{y} - A\boldsymbol{\beta}))\cdot \boldsymbol{\alpha}.
+$$ \nabla E(\boldsymbol{\beta})\cdot \boldsymbol{\alpha} = - 2(A^t(\mathbf{y} - A\boldsymbol{\beta}))\cdot \boldsymbol{\alpha}.
 $$</p>
 </li>
 <li><p>Ou seja, 
-$$ \nabla E(\boldsymbol{\beta}) = 2A^t(\mathbf{y} - A\boldsymbol{\beta}).
+$$ \nabla E(\boldsymbol{\beta}) = - 2A^t(\mathbf{y} - A\boldsymbol{\beta}).
 $$</p>
 </li>
 <li><p>No ponto crítico, devemos ter $\nabla E(\boldsymbol{\beta}) = \mathbf{0}$, ou seja
@@ -13646,7 +13646,7 @@ $$  y_i - \beta_0 - \beta_1x_i - \beta_2 x_i^2 - \ldots - \beta_m x_i^m.
 $$</p>
 </li>
 <li><p>O erro quadrático tem a forma matricial
-$$ \left\|\left(\begin{matrix} y_1 \\ \vdots \\ y_N \end{matrix}\right) - \left[\begin{matrix} 1 &amp; x_1 &amp; \ldots &amp; x_1^m \\ \vdots &amp; \vdots &amp; \cdots &amp; \vdots \\ 1 &amp; x_N &amp; \ldots &amp; x_N^m \end{matrix}\right]\left(\begin{matrix} \beta_1 \\ \ldots \\ \beta_m \end{matrix}\right)\right\|^2.
+$$ \left\|\left(\begin{matrix} y_1 \\ \vdots \\ y_N \end{matrix}\right) - \left[\begin{matrix} 1 &amp; x_1 &amp; \ldots &amp; x_1^m \\ \vdots &amp; \vdots &amp; \cdots &amp; \vdots \\ 1 &amp; x_N &amp; \ldots &amp; x_N^m \end{matrix}\right]\left(\begin{matrix} \beta_0 \\ \ldots \\ \beta_m \end{matrix}\right)\right\|^2.
 $$</p>
 </li>
 </ul>
@@ -13763,7 +13763,7 @@ $$</p>
 <ul>
 <li><p>Em segundo lugar, quando $N \geq m$, precisamos que as amostras sejam obtidas em pelo menos $m$ abscissas distintas $x_i$.</p>
 </li>
-<li><p>De fato, com $m$ abscissas distantas, podemos reordenar as linhas de $A$ para que as abscissas distintas sejam $x_1, \dots, x_m$.</p>
+<li><p>De fato, com $m$ abscissas distintas, podemos reordenar as linhas de $A$ para que as abscissas distintas sejam $x_1, \dots, x_m$.</p>
 </li>
 <li><p>Em seguida, olhamos para as primeiras $m$ linhas da matriz $A$, que vamos chamar de $A_m$:
 $$ A = \left[\begin{matrix} 1 &amp; x_1 &amp; \ldots &amp; x_1^m \\ \vdots &amp; \vdots &amp; \cdots &amp; \vdots \\ 1 &amp; x_m &amp; \ldots &amp; x_m^m \end{matrix}\right].
@@ -13835,7 +13835,7 @@ $$</p>
 <li><p>Ou, analogamente, em mais de duas variáveis e com termos não necessariamente polinomiais.</p>
 </li>
 <li><p>O que é importante é que o modelo seja linear nos parâmetros $\boldsymbol{\beta}$. Assim, a forma da matriz $A$ pode mudar, mas o problema de mínimos quadrados continua sendo resolvido por
-$$ A^tA\boldsymbol{b} = A^t\boldsymbol{y}.
+$$ A^tA\boldsymbol{\beta} = A^t\mathbf{y}.
 $$</p>
 </li>
 <li><p>A questão da invertibilidade de $A^tA$ vai depender, analogamente, da separação dos valores correspondentes dos termos associados aos parâmetros. (Pense isso!)</p>
