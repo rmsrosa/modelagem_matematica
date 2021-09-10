@@ -29,6 +29,13 @@ function drawpendulum(img_width::Int)
     bob_color = "mediumorchid3"
     arrow_color = "brown3"
     path_color = "forestgreen"
+
+    fix_color = "forestgreen"
+    line_color = fix_color
+    ceiling_color = "mediumorchid3"
+    bob_color = "royalblue"
+    arrow_color = "brown3"
+    path_color = "gray"
     fontface("JuliaMono")
     fontsize(60)
 
