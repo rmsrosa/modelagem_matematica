@@ -13202,52 +13202,322 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="P&#225;gina-inicial">P&#225;gina inicial<a class="anchor-link" href="#P&#225;gina-inicial">&#182;</a></h1>
+<h1 id="Mec&#226;nica-Lagrangiana">Mec&#226;nica Lagrangiana<a class="anchor-link" href="#Mec&#226;nica-Lagrangiana">&#182;</a></h1>
 </div>
 </div>
-</div></section></section><section><section>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">Images</span>
+<span class="k">using</span> <span class="n">Plots</span>
+<span class="k">using</span> <span class="n">DifferentialEquations</span><span class="o">.</span><span class="n">OrdinaryDiffEq</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><!--TABLE_OF_CONTENTS--></p>
-<h2 id="Sum&#225;rio"><a href="#">Sum&#225;rio</a><a class="anchor-link" href="#Sum&#225;rio">&#182;</a></h2><h3 id="P&#225;gina-inicial"><a href="00.00-Pagina_inicial.slides.html">P&#225;gina inicial</a><a class="anchor-link" href="#P&#225;gina-inicial">&#182;</a></h3><h3 id="1.-Preliminares"><a href="01.00-Preliminares.slides.html">1. Preliminares</a><a class="anchor-link" href="#1.-Preliminares">&#182;</a></h3><p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="01.01-Aspectos_curso.slides.html">1.1. Aspectos do curso - edição 2021/1</a></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="01.02-Instalando_acessando_Julia.slides.html">1.2. Instalando e acessando o Julia</a></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="01.03-Primeiros_passos_Julia.slides.html">1.3. Primeiros passos em Julia</a></p>
-<h3 id="2.-Principios-de-modelagem-matem&#225;tica"><a href="02.00-Principios_modelagem_matematica.slides.html">2. Principios de modelagem matem&#225;tica</a><a class="anchor-link" href="#2.-Principios-de-modelagem-matem&#225;tica">&#182;</a></h3><p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="02.01-Principios_basicos.slides.html">2.1. Princípios básicos de modelagem</a></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="02.02-Exemplos_tipos_modelagem.slides.html">2.2. Exemplos de tipos de modelagem</a></p>
-<h3 id="3.-An&#225;lise-dimensional"><a href="03.00-Analise_dimensional.slides.html">3. An&#225;lise dimensional</a><a class="anchor-link" href="#3.-An&#225;lise-dimensional">&#182;</a></h3><p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="03.01-Quantidades_unidades_dimensoes.slides.html">3.1. Quantidades, unidades e dimensões</a></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="03.02-BuckinghamPi.slides.html">3.2. Análise dimensional e o Teorema de Buckingham-Pi</a></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="03.03-Unidades_Julia.slides.html">3.3. Trabalhando com unidades e dimensões em Julia</a></p>
-<h3 id="4.-Ajuste-de-par&#226;metros"><a href="04.00-Ajuste_parametros.slides.html">4. Ajuste de par&#226;metros</a><a class="anchor-link" href="#4.-Ajuste-de-par&#226;metros">&#182;</a></h3><p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="04.01-Minimos_quadrados_ajuste.slides.html">4.1. Mínimos quadrados e o ajuste de parâmetros</a></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="04.02-Modelos_redutiveis_linear_aplicacoes.slides.html">4.2. Modelos redutíveis ao caso linear nos parâmetros e aplicações</a></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="04.03-Minimos_quadrados_nao_linear.slides.html">4.3. Mínimos quadrados não-linear</a></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="04.04-Exemplos_ajuste_naolinear.slides.html">4.4. Exemplos de ajuste não-linear de parâmetros</a></p>
-<h3 id="5.-Erros,-incertezas"><a href="05.00-Erros_incertezas_quantificacao.slides.html">5. Erros, incertezas</a><a class="anchor-link" href="#5.-Erros,-incertezas">&#182;</a></h3><p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="05.01-Erros_e_incertezas.slides.html">5.1. Erros e incertezas</a></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="05.02-Minimos_quadrados_verossimilhanca.slides.html">5.2. Mínimos quadrados, maximização da verossimilhança e quantificação de incertezas em regressões lineares</a></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="05.03-Propagacao_incertezas.slides.html">5.3. Propagação de incertezas</a></p>
-<h3 id="6.-Avalia&#231;&#227;o-de-modelos"><a href="06.00-Avaliacao_modelos.slides.html">6. Avalia&#231;&#227;o de modelos</a><a class="anchor-link" href="#6.-Avalia&#231;&#227;o-de-modelos">&#182;</a></h3><p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="06.01-Qualidade_do_modelo.slides.html">6.1. Qualidade do ajuste</a></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="06.02-Validacao_do_modelo.slides.html">6.2. Validação de modelos</a></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="06.03-Comparacao_de_modelos.slides.html">6.3. Comparação de modelos</a></p>
-<h3 id="7.-Mec&#226;nica"><a href="07.00-Mecanica.slides.html">7. Mec&#226;nica</a><a class="anchor-link" href="#7.-Mec&#226;nica">&#182;</a></h3><p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="07.01-Mecanica_Newtoniana.slides.html">7.1. Mecânica Newtoniana</a></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="07.02-Mecanica_Lagrangiana.slides.html">7.2. Mecânica Lagrangiana</a></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="07.03-Pendulo.slides.html">7.3. Mecânica Newtoniana e o pêndulo planar</a></p>
-<h3 id="8.-Eletr&#244;nica"><a href="08.00-Eletronica.slides.html">8. Eletr&#244;nica</a><a class="anchor-link" href="#8.-Eletr&#244;nica">&#182;</a></h3><p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="08.01-Modelo_diodo.slides.html">8.1. Modelagem da relação voltagem-corrente de um diodo</a></p>
-<h3 id="9.-Rea&#231;&#245;es-qu&#237;micas-e-bioqu&#237;micas"><a href="09.00-Reacoes_quimicas.slides.html">9. Rea&#231;&#245;es qu&#237;micas e bioqu&#237;micas</a><a class="anchor-link" href="#9.-Rea&#231;&#245;es-qu&#237;micas-e-bioqu&#237;micas">&#182;</a></h3><p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="09.01-Lei_acao_de_massas.slides.html">9.1. Lei de ação de massas</a></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="09.02-Reacoes_enzimaticas.slides.html">9.2. Modelagem de reações enzimática</a></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="09.03-Isomerizacao.slides.html">9.3. Lupulagem e a conversão de humulone em iso-humulone considerando saturação</a></p>
-<h3 id="10.-Modelos-epidemiol&#243;gicos"><a href="10.00-Modelos_epidemiologicos.slides.html">10. Modelos epidemiol&#243;gicos</a><a class="anchor-link" href="#10.-Modelos-epidemiol&#243;gicos">&#182;</a></h3><p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="10.01-Modelos_epidemiologicos_compartimentais.slides.html">10.1. Modelos epidemiológicos compartimentais</a></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="10.02-Ajuste_SIR.slides.html">10.2. Ajustando um modelo SIR a uma epidemia de Influenza</a></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="10.03-Compartimentais_estruturados.slides.html">10.3. Modelos compartimentais estruturados</a></p>
-<h3 id="11.-S&#233;ries-de-Fourier-e-aplica&#231;&#245;es"><a href="11.00-Fourier_e_aplicacoes.slides.html">11. S&#233;ries de Fourier e aplica&#231;&#245;es</a><a class="anchor-link" href="#11.-S&#233;ries-de-Fourier-e-aplica&#231;&#245;es">&#182;</a></h3><p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="11.01-Series_Fourier.slides.html">11.1. Séries de Fourier</a></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="11.02-Transformada_discreta_Fourier.slides.html">11.2. Transformada discreta de Fourier</a></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="11.03-Ondas_sonoras_elementos_musicais.slides.html">11.3. Ondas sonoras e elementos musicais</a></p>
-<h3 id="12.-Modelos-com-equa&#231;&#245;es-a-derivadas-parciais"><a href="12.00-EDP.slides.html">12. Modelos com equa&#231;&#245;es a derivadas parciais</a><a class="anchor-link" href="#12.-Modelos-com-equa&#231;&#245;es-a-derivadas-parciais">&#182;</a></h3><p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="12.01-EDP_e_diferencas_finitas.slides.html">12.1. Equações a derivadas parciais e diferenças finitas</a></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="12.02-EDP_advecao.slides.html">12.2. Equação de adveçcão</a></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="12.03-EDP_calor.slides.html">12.3. Equação do calor unidimensional</a></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="12.04-EDP_onda.slides.html">12.4. Equação da onda unidimensional</a></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="12.05-EDP_calor_bidimensional.slides.html">12.5. Equação do calor em duas dimensões espaciais</a></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="12.06-EDP_onda_bidimensional.slides.html">12.6. Equação da onda em duas dimensões espaciais</a></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="12.07-Ondas_sismicas.slides.html">12.7. Ondas sísmicas</a></p>
+<h2 id="Fundamentos">Fundamentos<a class="anchor-link" href="#Fundamentos">&#182;</a></h2><ul>
+<li><p>Na Mecânica Lagrangiana, o <em>princípio de menor ação</em>, baseado em uma <em>função Lagrangiana</em>, substitui as leis de Newton, em particular a segunda lei de Newton, que diz que a <em>taxa de variação de momento em relação ao tempo é igual ao resultante das forças</em>.</p>
+</li>
+<li><p>O <strong>Lagrangiano</strong> é uma função dependente da variável temporal, da posição e da velocidade dos pontos materiais envolvidos no sistema: $L(\mathbf{r}, \mathbf{\dot r}, t)$.</p>
+</li>
+<li><p>A <strong>ação</strong> do sistema ao longo de um caminho $\mathbf{r}(t)$, $t_0\leq t \leq t$, é dada pela integral de caminho do Lagrangiano:</p>
+</li>
+</ul>
+$$ S(\mathbf{r}) = \int_{t_0}^{t_1} L(\mathbf{r}(t), \mathbf{\dot r}(t), t) \;\mathrm{d} t.
+$$<ul>
+<li>O <strong>princípio da menor ação</strong> afirma que a trajetória que um sistema percorre saindo de uma posição $\mathbf{r}(t_0) = \mathbf{r}_0$, no instante $t_0$, e indo até uma posição $\mathbf{r}(t_1) = \mathbf{r}_1$, num instante subseqüente $t_1$, é dado pelo mínimo da ação ao longo de todos os caminhos possíveis, i.e.</li>
+</ul>
+$$ S(\mathbf{r}) = \min_{\mathbf{\tilde r}\in \mathcal{V}} S(\mathbf{\tilde r}),
+$$<p>onde o mínimo é tomado em relação a todos os possíveis caminhos
+ligando $\mathbf{r}_0$ a $\mathbf{r}_1$, i.e.</p>
+$$ \mathcal{V} = \mathcal{V}(t_0, t_1, \mathbf{r}_0, \mathbf{r}_1) = \{ \mathbf{\tilde r} = \mathbf{\tilde r}(t); \; t_0\leq t \leq t_1,
+       \mathbf{\tilde r}(t_0)=\mathbf{r}_0, \;\mathbf{\tilde r}(t_1) = \mathbf{r}_1\}.
+$$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="M&#237;nimo-da-a&#231;&#227;o">M&#237;nimo da a&#231;&#227;o<a class="anchor-link" href="#M&#237;nimo-da-a&#231;&#227;o">&#182;</a></h2><ul>
+<li><p>Assim como no Cálculo de Várias Variáveis, o mínimo de $S = S(\mathbf{r})$ é encontrado como ponto crítico de $S$, buscando os "pontos" em que o "gradiente" se anula.</p>
+</li>
+<li><p>Exceto que, nesse caso, olhamos para a condição das "derivadas direcionais" se anularem.</p>
+</li>
+<li><p>De fato, escrevendo $\mathbf{\tilde r} =\mathbf{r}+\mathbf{w}$,  consideramos o conjunto</p>
+</li>
+</ul>
+$$ \mathcal{W}(t_0,t_1) = \{\mathbf{w}=\mathbf{w}(t); \;t_0\leq t \leq t_1, \; \mathbf{w}(t_0)=0, \;\mathbf{w}(t_1)=0\},
+$$<p>de modo que 
+$$ \mathcal{V} = \mathbf{r} + \mathcal{W},
+$$</p>
+<p>e o problema de minimização pode ser escrito como o de encontrar</p>
+$$ \mathbf{r} \in \mathcal{V} \;\textrm{ tal que }\; \mathcal{S}(\mathbf{r}) \leq \mathcal{S}(\mathbf{r} + \mathbf{w}), \;\forall \mathbf{w} \in \mathcal{W}.
+$$<ul>
+<li>Como $\varepsilon\mathbf{w}\in \mathcal{W}$, para qualquer $\mathbf{w}\in \mathcal{W}$, a condição de $\mathbf{r}$ ser mínimo nos dá, para todo $\varepsilon &gt; 0$,</li>
+</ul>
+$$ \frac{\mathcal{S}(\mathbf{r}+\varepsilon\mathbf{w})-\mathcal{S}(\mathbf{r})}{\varepsilon} \geq 0
+$$<ul>
+<li>Assim, no limite, obtemos a condição
+$$ \lim_{\varepsilon\rightarrow 0^+} 
+<pre><code>\frac{\mathcal{S}(\mathbf{r}+\varepsilon\mathbf{w})-\mathcal{S}(\mathbf{r})}{\varepsilon} \geq 0.
+</code></pre>
+$$</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Derivada-de-G&#226;teaux-da-a&#231;&#227;o">Derivada de G&#226;teaux da a&#231;&#227;o<a class="anchor-link" href="#Derivada-de-G&#226;teaux-da-a&#231;&#227;o">&#182;</a></h2><ul>
+<li><p>Nesse contexto de função $S(\mathbf{r})$ de funções $\mathbf{r}$, as derivadas direcionais ganham o nome pomposo de <em>derivadas de Gâteaux</em>.</p>
+</li>
+<li><p>Para o cálculo da derivada de Gâteaux, assumindo $L(\mathbf{r}, \mathbf{\dot r}, t)$ uma função suave, temos a expansão de Taylor</p>
+</li>
+</ul>
+$$ L(\mathbf{r} + \varepsilon \mathbf{w}, \mathbf{\dot r} + \varepsilon \mathbf{\dot w}, t) = L(\mathbf{r}, \mathbf{\dot r}, t) + \varepsilon \frac{\partial L}{\partial \mathbf{r}} (\mathbf{r}, \mathbf{\dot r}, t)\mathbf{w} + \varepsilon \frac{\partial L}{\partial \mathbf{\dot r}} (\mathbf{r}, \mathbf{\dot r}, t)\mathbf{\dot w} + \mathcal{O}(\varepsilon^2).
+$$<ul>
+<li><p>Os termos $\mathbf{r}$ e $\mathbf{\dot r}$ são vetores, então as derivadas parciais acima são, na verdade, vetores gradientes.</p>
+</li>
+<li><p>Dividindo por $\varepsilon &gt; 0$ e integrando, obtemos</p>
+</li>
+</ul>
+$$ \frac{\mathcal{S}(\mathbf{r}+\varepsilon\mathbf{w})-\mathcal{S}(\mathbf{r})}{\varepsilon} = \int_{t_0}^{t_1} \left( \frac{\partial L}{\partial \mathbf{r}} (\mathbf{r}, \mathbf{\dot r}, t)\mathbf{w} + \frac{\partial L}{\partial \mathbf{\dot r}} (\mathbf{r}, \mathbf{\dot r}, t)\mathbf{\dot w} \right) \;\mathrm{d} t + \mathcal{O}(\varepsilon)
+$$<ul>
+<li>Integrando por partes o segundo termo, usando as condições $\mathbf{w}(t_0) = \mathbf{w}(t_1) = 0$ nos extremos, obtemos</li>
+</ul>
+$$ \frac{\mathcal{S}(\mathbf{r}+\varepsilon\mathbf{w})-\mathcal{S}(\mathbf{r})}{\varepsilon} = \int_{t_0}^{t_1} \left( \frac{\partial L}{\partial\mathbf{r}}(\mathbf{r},\mathbf{\dot r},t) 
+           - \frac{\mathrm{d}}{\mathrm{d} t}\frac{\partial L}{\partial\mathbf{\dot r}}(\mathbf{r},\mathbf{\dot r},t)\right)\mathbf{w}(t) \;\mathrm{d} t + \mathcal{O}(\varepsilon)
+$$<ul>
+<li>Tomando o limite, chegamos à expressão para a derivada de Gâteaux de $S(\cdot)$ no "ponto" $\mathbf{r}$, na direção $\mathbf{w}$, com a condição para $\mathbf{r}$ ser mínimo devendo valer para todo $\mathbf{w} \in \mathcal{W}$:</li>
+</ul>
+$$ \lim_{\varepsilon\rightarrow 0} 
+      \frac{\mathcal{S}(\mathbf{r}+\varepsilon\mathbf{w})-\mathcal{S}(\mathbf{r})}{\varepsilon}
+      = \int_{t_0}^{t_1} \left( \frac{\partial L}{\partial\mathbf{r}}(\mathbf{r},\mathbf{\dot r},t) 
+           - \frac{\mathrm{d}}{\mathrm{d} t}\frac{\partial L}{\partial\mathbf{\dot r}}(\mathbf{r},\mathbf{\dot r},t)\right)\mathbf{w}(t) \;\mathrm{d} t \geq 0.
+$$<ul>
+<li>Como $-\mathbf{w}$ também pertence a $\mathcal{W}$, isso nos dá a condição</li>
+</ul>
+$$
+\int_{t_0}^{t_1} \left( \frac{\partial L}{\partial\mathbf{r}}(\mathbf{r},\mathbf{\dot r},t) - \frac{\mathrm{d}}{\mathrm{d} t}\frac{\partial L}{\partial\mathbf{\dot r}}(\mathbf{r},\mathbf{\dot r},t)\right)\mathbf{w}(t) \;\mathrm{d} t = 0, \qquad \forall \mathbf{w}\in \mathcal{W}.
+$$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Equa&#231;&#245;es-de-Euler-Lagrange">Equa&#231;&#245;es de Euler-Lagrange<a class="anchor-link" href="#Equa&#231;&#245;es-de-Euler-Lagrange">&#182;</a></h2><ul>
+<li>Como a condição acima deve valer para todo $\mathbf{w}\in \mathcal{W}$, obtemos as chamadas <strong>equações de Euler-Lagrange</strong> para trajetória que minimiza a ação:</li>
+</ul>
+$$ \frac{\mathrm{d}}{\mathrm{d} t}\frac{\partial L}{\partial\mathbf{\dot r}}(\mathbf{r},\mathbf{\dot r},t) - \frac{\partial L}{\partial\mathbf{r}}(\mathbf{r},\mathbf{\dot r},t) = 0, \qquad \forall t \in (t_0, t_1).
+$$<ul>
+<li>Essas equações são as equações de movimento do sistema, substituindo as equações de Newton.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Exemplos-de-Lagrangianos">Exemplos de Lagrangianos<a class="anchor-link" href="#Exemplos-de-Lagrangianos">&#182;</a></h2><ul>
+<li><p>Não há uma expressão geral para o Lagrangiano.</p>
+</li>
+<li><p>Em mecânica clássica, não relativística, de sistemas conservativos, o Lagrangiano é da forma</p>
+</li>
+</ul>
+$$ L = K - V,
+$$<p>onde $K = K(\mathbf{\dot r})$ é a energia cinética e $V = V(\mathbf{r})$ é a energia potencial.</p>
+<ul>
+<li>Por exemplo, no caso de um corpo de massa $m$ em queda livre, com altura $h = h(t)$, temos</li>
+</ul>
+$$ \mathbf{r} = (0, 0, h), \qquad K(\mathbf{r}) = \frac{1}{2} m {\dot h}^2, \qquad V(\mathbf{r}) = mgh.
+$$<ul>
+<li>Nesse caso, o Lagrangiano simplifica para</li>
+</ul>
+$$ L = L(h, \dot h) = \frac{1}{2} m {\dot h}^2 - mgh.
+$$<ul>
+<li>Para as equações de Euler-Lagrange, temos</li>
+</ul>
+$$ \frac{\partial L}{\partial h}(h, \dot h) = -mg, \qquad \frac{\partial L}{\partial \dot h}(h, \dot h) = m \dot h.
+$$<ul>
+<li>Assim,</li>
+</ul>
+$$ \frac{\mathrm{d}}{\mathrm{d} t} \frac{\partial L}{\partial \dot h}(h, \dot h) - \frac{\partial L}{\partial h}(h, \dot h) = \frac{\mathrm{d}}{\mathrm{d} t} (m \dot h) + mg = m \ddot h + mg = 0.
+$$<ul>
+<li>Portanto, recuperamos as equações obtidas pela formulação Newtoniana:</li>
+</ul>
+$$ m\ddot h = -mg.
+$$<ul>
+<li>No caso mais geral, de $n$ partículas de massa $m_j$, $j=1, \ldots, n$, e força conservativa $F = - \nabla V$, $\mathbf{r} = (\mathbf{r}_1, \ldots, \mathbf{r}_n)$,</li>
+</ul>
+$$ K(\mathbf{\dot r}) = \frac{1}{2} \sum_{j=1}^n m_j \|\mathbf{r}_j\|^2, \quad L(\mathbf{r}, \mathbf{\dot r}) = K(\mathbf{\dot r}) - V(\mathbf{r}).
+$$<ul>
+<li>As equações de Euler-Lagrange também nos dão</li>
+</ul>
+$$ m_j \mathbf{\ddot r}_j = - \frac{\partial V}{\partial \mathbf{r}_j}(\mathbf{r}).
+$$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Lagrangiano-em-relatividade-restrita">Lagrangiano em relatividade restrita<a class="anchor-link" href="#Lagrangiano-em-relatividade-restrita">&#182;</a></h2><ul>
+<li>Em relatividade restrita, as equações de movimento de uma partícula livre são dadas por</li>
+</ul>
+$$ \frac{\mathrm{d}}{\mathrm{d} t} \left(\frac{m\mathbf{\dot r}}{\displaystyle\sqrt{1-\frac{\|\mathbf{\dot r}\|^2}{c^2}}} 
+          \right)= 0,
+$$<p>onde $c$ é a velocidade da luz e $m$ é a massa de repouso da partícula.</p>
+<ul>
+<li>Essa equação pode ser deduzida através das equações de Euler-Lagrange para o Lagrangiano</li>
+</ul>
+$$ L(\mathbf{\dot r}) = -mc^2\sqrt{1 - \frac{\|\mathbf{\dot r}\|^2}{c^2}}.
+$$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="V&#237;nculos">V&#237;nculos<a class="anchor-link" href="#V&#237;nculos">&#182;</a></h2><ul>
+<li><p>Um dos grandes "poderes" da mecânica Lagrangiana é facilitar a dedução das equações quando há alguma espécie de restrição que limita os possíveis estados, ou configurações, do sistema.</p>
+</li>
+<li><p>Por exemplo, o problema de um <strong>corpo em queda livre</strong> possui as restrições $x = y = 0$.</p>
+</li>
+<li><p>Em um <strong>pêndulo planar simples</strong>, a massa do pêndulo está restrita a um movimento circular. As coordenadas $x(t), y(t), z(t)$ do seu centro de massa devem satisfazer $x = 0$, $y^2 + z^2 = \ell^2$.</p>
+</li>
+<li><p>No problema de uma <strong>bola quicante</strong>, estando o "piso" no plano $xy$, a restrição é da forma $z \geq 0$.</p>
+</li>
+<li><p>Em uma <strong>mola vertical</strong>, o extremo "livre" está em uma posição $\mathbf{r} = (x, y, z)$ com $x = y = 0$.</p>
+</li>
+<li><p>No caso de um <strong>pêndulo planar com extremidade variável</strong>, onde a extremidade fixa passa a se mover de forma determinada $(x, y) = (f(t), g(t))$ ao longo do plano $xy$, temos as restrições</p>
+</li>
+</ul>
+$$ x = f(t), \quad (y - g(t))^2 + z^2 = \ell^2.
+$$<ul>
+<li>Um exemplo interessante é o de um <strong>pêndulo girante</strong> (veja relação com o <a href="https://en.wikipedia.org/wiki/Centrifugal_governor"><em>governador centrífugo</em></a>), que consiste em um pêndulo tridimensional mas girando com uma velocidade angular determinada, em torno do eixo $z$. Nesse caso, temos as restrições</li>
+</ul>
+$$ x^2 + y^2 + z^2 = \ell^2, \quad \dot\theta = \omega,
+$$<p>onde $\omega$ é uma constante dada (velocidade angular) e $\theta = \theta(x,y)$ é o ângulo entre o vetor $(1, 0)$ e o vetor $(x,y)$, no sentido trigonométrico.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="V&#237;nculos-hol&#244;nomos">V&#237;nculos hol&#244;nomos<a class="anchor-link" href="#V&#237;nculos-hol&#244;nomos">&#182;</a></h2><ul>
+<li>Vamos nos concentrar no caso de <strong>vínculos holônomos</strong>, que são os vínculos "integráveis", que não dependem do movimento em si, apenas das posições, podendo ser escritos como (uma ou mais) equações envolvendo apenas a posição e o tempo:</li>
+</ul>
+$$ \Phi_k(\mathbf{r}, t) = 0, \qquad k = 1, \ldots, n_r.
+$$<ul>
+<li><p>Há, no entanto, uma série de <a href="https://en.wikipedia.org/wiki/Nonholonomic_system">vínculos não-holonômos</a> importantes.</p>
+</li>
+<li><p>No caso do pêndulo planar, temos os vínculos holônomos</p>
+</li>
+</ul>
+$$ \Phi_1(x, y, z) = x, \quad \Phi_2(x, y, z) = y^2 + z^2 - \ell^2,
+$$<ul>
+<li>No caso do pêndulo planar com extremo forçado, temos os vínculos holônomos</li>
+</ul>
+$$ \Phi_1(x, y, z) = x - f(t), \quad \Phi_2(x, y, z) = y, \quad \Phi_3(x, y, z) = z
+$$<ul>
+<li>Mesmo no caso do pêndulo girante, a condição $\dot\theta = \omega$ pode ser integrada, nos levando aos vínculos holônomos</li>
+</ul>
+$$ \Phi_1(x, y, z) = x^2 + y^2 + z^2 - \ell^2, \qquad \Phi_2(x, y, z, t) = \theta(x, y) - \omega t.
+$$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Coordenadas-generalizadas">Coordenadas generalizadas<a class="anchor-link" href="#Coordenadas-generalizadas">&#182;</a></h2><ul>
+<li><p>Em muitos casos, os vínculos holônomos $\Phi_k(\mathbf{r}, t) = 0$ podem ser satisfeitos de maneira explícita, $\mathbf{r} = \mathbf{r}(\mathbf{q}, t)$, através de <strong>coordenadas generalizadas</strong> $\mathbf{q}$.</p>
+</li>
+<li><p>Por exemplo, no <em>corpo em queda livre</em>, temos a coordenada generalizada $h$, com</p>
+</li>
+</ul>
+$$ \mathbf{r} = (0, 0, h).
+$$<ul>
+<li>Na <em>mola vertical</em>, temos a coordenada generalizada $u$, com</li>
+</ul>
+$$ \mathbf{r} = (0, 0, -u).
+$$<ul>
+<li>No <em>pêndulo planar simples</em>, temos a coordenada generalizada $\theta$, com</li>
+</ul>
+$$ \mathbf{r} = (0, \ell\sin\theta, - \ell\cos\theta).
+$$<ul>
+<li>No <em>pêndulo forçado</em>, temos a coordenada generalizada $\theta$, com</li>
+</ul>
+$$ \mathbf{r} = (f(t), g(t) + \ell\sin\theta, - \ell\cos\theta).
+$$<ul>
+<li>No <em>pêndulo girante</em>, temos a coordenada generalizada $\varphi$, com</li>
+</ul>
+$$ \mathbf{r} = (\ell\sin\varphi\cos(\omega t),\ell\sin\varphi\sin(\omega t),-\ell\cos\varphi).
+$$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Equa&#231;&#245;es-de-Euler-Lagrange-em-coordenadas-generalizadas">Equa&#231;&#245;es de Euler-Lagrange em coordenadas generalizadas<a class="anchor-link" href="#Equa&#231;&#245;es-de-Euler-Lagrange-em-coordenadas-generalizadas">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="V&#237;nculos-hol&#244;nomos-impl&#237;citos">V&#237;nculos hol&#244;nomos impl&#237;citos<a class="anchor-link" href="#V&#237;nculos-hol&#244;nomos-impl&#237;citos">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Exerc&#237;cios">Exerc&#237;cios<a class="anchor-link" href="#Exerc&#237;cios">&#182;</a></h2><ol>
+<li><p>O <strong>Lema Fundamental do Cálculo das Variações</strong> diz que se uma função contínua $f:[t_0,t_1]\rightarrow \mathbb{R}$ é tal que
+$$ \int_{t_0}^{t_1} g(t)w(t) \;\mathrm{d} t = 0,
+$$
+para toda função $w:[t_0,t_1]\rightarrow \mathbb{R}$ contínua com $w(t_0)=w(t_1)=0$, então $f(t)=0$ para todo $t\in [t_0,t_1]$. Mostre esse resultado.</p>
+</li>
+<li><p>Verifique que as equações de Euler-Lagrange associadas ao Lagrangiano 
+$$ L(\mathbf{r}, \mathbf{\dot r}) = \frac{1}{2}\sum_{j=1}^n m_j \|\mathbf{r}_j\|^2 - V(\mathbf{r})
+$$
+são
+$$ m_j \mathbf{\ddot r}_j = - \frac{\partial V}{\partial \mathbf{r}_j}(\mathbf{r}).
+$$</p>
+</li>
+<li><p>Um referencial é dito inercial quando o tempo é homogêneo e o espaço é homogêneo e isotrópico, ou seja as suas propriedades métricas não dependem da posição no espaço (homogeneidade espacial), do instante de tempo (homogeneidade temporal) e da direção no espaço (isotropia). No caso de uma sistema mecânico de uma única partícula livre, isso se traduz na condição do Lagrangiano $L(\mathbf{r}, \mathbf{\dot r}, t)$, $\mathbf{r}\in\mathbb{R}^3$, ser invariante por translações no tempo e no espaço (homogeneidades espacial e temporal) e invariante por rotações no espaço (isotropia). Matematicamente, isso é expresso pelas condições
+$$
+ \begin{align*}
+   L(\mathbf{r}+\mathbf{r}_0,\mathbf{\dot r},t) = L(\mathbf{r},\mathbf{\dot r},t),    \\
+   L(\mathbf{r},\mathbf{\dot r},t+s) = L(\mathbf{r},\mathbf{\dot r},t), \\
+   L(Q\mathbf{r},Q\mathbf{\dot r},t) = L(\mathbf{r},\mathbf{\dot r},t),
+ \end{align*}
+$$
+para quaisquer $\mathbf{r}_0\in \mathbb{R}^3$, $s\in \mathbb{R}$, $Q\in O(3)$, onde $\mathbf{r}_0$  representa uma translação qualquer no espaço, $s$ uma translação qualquer no tempo, e $Q$ é uma matriz ortogonal qualquer representando uma rotação e/ou uma reflexão arbitrária. 
+Deduza que um Lagrangiano $L(\mathbf{r},\mathbf{\dot r},t)$ de uma única partícula,
+ $\mathbf{r}\in\mathbb{R}^3$, em um referencial inercial é necessariamente da forma
+ $$ L(\mathbf{r},\mathbf{\dot r},t) = f(\|\mathbf{\dot r}\|^2),
+ $$
+ para alguma função real $f$.</p>
+</li>
+</ol>
 
 </div>
 </div>
