@@ -13229,7 +13229,7 @@ a.anchor-link {
 </li>
 <li><p>O <strong>Lagrangiano</strong> é uma função dependente da variável temporal, da posição e da velocidade dos pontos materiais envolvidos no sistema: $L(\mathbf{r}, \mathbf{\dot r}, t)$.</p>
 </li>
-<li><p>A <strong>ação</strong> do sistema ao longo de um caminho $\mathbf{r}(t)$, $t_0\leq t \leq t$, é dada pela integral de caminho do Lagrangiano:</p>
+<li><p>A <strong>ação</strong> do sistema ao longo de um caminho $\mathbf{r}(t)$, $t_0\leq t \leq t_1$, é dada pela integral de caminho do Lagrangiano:</p>
 </li>
 </ul>
 $$ S(\mathbf{r}) = \int_{t_0}^{t_1} L(\mathbf{r}(t), \mathbf{\dot r}(t), t) \;\mathrm{d} t.
@@ -13367,7 +13367,7 @@ $$ \frac{\mathrm{d}}{\mathrm{d} t}\frac{\partial L}{\partial\mathbf{\dot r}}(\ma
 $$<ul>
 <li>Além disso,</li>
 </ul>
-$$ \frac{\partial L}{\partial\mathbf{r}}(\mathbf{r},\mathbf{\dot r}) = \frac{\partial V}{\partial\mathbf{r}}(\mathbf{r}) = - \mathbf{F}(\mathbf{r}).
+$$ \frac{\partial L}{\partial\mathbf{r}}(\mathbf{r},\mathbf{\dot r}) = - \frac{\partial V}{\partial\mathbf{r}}(\mathbf{r}) = \mathbf{F}(\mathbf{r}).
 $$<ul>
 <li>Assim, as equações de Euler-Lagrange nos dão as equações clássicas de um sistema conservativo com potencial $V$:</li>
 </ul>
@@ -13602,15 +13602,15 @@ $$ \mathbf{r} = (0, \ell\sin\theta, - \ell\cos\theta).
 $$<ul>
 <li>As energia cinética e potencial se escrevem</li>
 </ul>
-$$ K = K(\dot\theta) = \frac{1}{2}m{\dot \theta}^2, \qquad V(\theta) = -mg\ell\cos\theta.
+$$ K = K(\dot\theta) = \frac{1}{2}m\ell^2{\dot \theta}^2, \qquad V(\theta) = -mg\ell\cos\theta.
 $$<ul>
 <li>O Lagrangiano toma a forma</li>
 </ul>
-$$ L(\theta, \dot \theta) = \frac{1}{2}m{\dot \theta}^2 + mg\ell\cos\theta
+$$ L(\theta, \dot \theta) = \frac{1}{2}m\ell^2{\dot \theta}^2 + mg\ell\cos\theta
 $$<ul>
 <li>Com isso, obtemos as equações de Euler-Lagrange</li>
 </ul>
-$$ m\ddot \theta = - mg\ell\cos\theta.
+$$ m\ell\ddot \theta = - mg\cos\theta.
 $$
 </div>
 </div>
