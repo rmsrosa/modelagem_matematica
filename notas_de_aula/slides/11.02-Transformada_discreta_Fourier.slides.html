@@ -13250,10 +13250,10 @@ $$</p>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Simetria-no-caso-real">Simetria no caso real<a class="anchor-link" href="#Simetria-no-caso-real">&#182;</a></h3><ul>
 <li><p>No caso em que o sinal $x=(x_n)_{n=0}^{N-1}$ é real, temos, para $k=1, \ldots, N-1$,
-$$ \begin{multline*}
-X_{N-k} = \sum_{n=0}^{N-1} x_n e^{\frac{-2\pi i (N-k)n}{N}} = \sum_{n=0}^{N-1} x_n e^{-2\pi i n}e^{\frac{2\pi i kn}{N}} = \sum_{n=0}^{N-1} x_n e^{\frac{2\pi i kn}{N}} \\
-= \sum_{n=0}^{N-1} \overline{x_n e^{\frac{-2\pi i kn}{N}}} = \overline{\sum_{n=0}^{N-1} x_n e^{\frac{-2\pi i k n}{N}}} = \overline{X_k}.
-\end{multline*}
+$$ \begin{align*}
+X_{N-k} &amp; = \sum_{n=0}^{N-1} x_n e^{\frac{-2\pi i (N-k)n}{N}} = \sum_{n=0}^{N-1} x_n e^{-2\pi i n}e^{\frac{2\pi i kn}{N}} = \sum_{n=0}^{N-1} x_n e^{\frac{2\pi i kn}{N}} \\
+&amp; = \sum_{n=0}^{N-1} \overline{x_n e^{\frac{-2\pi i kn}{N}}} = \overline{\sum_{n=0}^{N-1} x_n e^{\frac{-2\pi i k n}{N}}} = \overline{X_k}.
+\end{align*}
 $$</p>
 </li>
 <li><p>Ou seja, $X_{N-k}$ é o complexo conjugado de $X_k$, para $k=1, \ldots, N-1$ (excluindo $k=0$, pois $x_{N-0} = x_N$ não está definido).</p>
