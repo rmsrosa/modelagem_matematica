@@ -1,8 +1,8 @@
 """
-ImageTracking v0.0.2
+VideoTracking v0.0.2
 
 """
-module ImageTracking
+module VideoTracking
 
 using VideoIO
 using Images

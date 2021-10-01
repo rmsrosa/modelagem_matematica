@@ -1,4 +1,4 @@
-include("ImageTracking.jl")
+include("VideoTracking.jl")
 
 using CSV
 using DataFrames
@@ -7,7 +7,7 @@ using DataFrames
 filename = "../img/pendulo_40cm_reduzido.mov"
 filename = "../img/pendulo_70cm_1_reduzido_curto.mp4"
 filename = "../img/pendulo_70cm_1_reduzido.mov"
-tracks = ImageTracking.find_tracks(filename)
+tracks = VideoTracking.find_tracks(filename)
 
 df = DataFrame(
     nf = collect(getfield(tracks[1], :nspan)),
