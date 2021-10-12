@@ -13631,9 +13631,9 @@ $$<p>Dessa forma, eles representam taxas temporais:</p>
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="A-taxa-de-recupera&#231;&#227;o-e-o-tempo-m&#233;dio-de-recupera&#231;&#227;o">A taxa de recupera&#231;&#227;o e o tempo m&#233;dio de recupera&#231;&#227;o<a class="anchor-link" href="#A-taxa-de-recupera&#231;&#227;o-e-o-tempo-m&#233;dio-de-recupera&#231;&#227;o">&#182;</a></h3><p>O inverso $1/\gamma$ da taxa de recuperação, que tem dimensão física de tempo, é interpretado como o <strong>tempo médio de infecção</strong> ou <strong>tempo médio de recuperação</strong> da doença. De fato, observe que, integrando-se a equação $R'=\gamma I$ em um intervalo $[t, t + 1/\gamma]$, temos que o total de recuperados neste intervalo é igual a média do número de infectados neste mesmo período:</p>
-$$ \Delta R = R(t+1/\gamma) - R(t) = \int_t^{t+1/\gamma} R'(s)\;\mathrm{d}s = \gamma \int_t^{1/\gamma} I(s)\;\mathrm{d}s = \frac{1}{\frac{1}{\gamma}}\int_t^{1/\gamma} I(s)\;\mathrm{d}s = \textrm{média de $I$ no intervalo $[t,t+1/\gamma]$}.
+$$ \Delta R = R(t+1/\gamma) - R(t) = \int_t^{t+1/\gamma} R'(s)\;\mathrm{d}s = \gamma \int_t^{t+1/\gamma} I(s)\;\mathrm{d}s = \frac{1}{\frac{1}{\gamma}}\int_t^{t+1/\gamma} I(s)\;\mathrm{d}s = \textrm{média de $I$ no intervalo $[t,t+1/\gamma]$}.
 $$<p>Assim</p>
-$$ \gamma = \frac{1}{\textrm{tempo de infecção}}
+$$ \gamma \approx \frac{1}{\textrm{tempo médio de infecção}}
 $$
 </div>
 </div>
@@ -13860,24 +13860,33 @@ $$<p>seja confortavelmente satisfeita.</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Fim-da-epidemia">Fim da epidemia<a class="anchor-link" href="#Fim-da-epidemia">&#182;</a></h3><p>Como $S$ é positivo e estritamente decrescente, então ele converge para um valor 
+<h3 id="Limite-dos-suscet&#237;veis">Limite dos suscet&#237;veis<a class="anchor-link" href="#Limite-dos-suscet&#237;veis">&#182;</a></h3><p>Como $S$ é positivo e estritamente decrescente, então ele converge para um valor 
 $$ S_* = \lim_{t\rightarrow \infty} S(t).
 $$</p>
 <p>Se
 $$ S_* \geq \frac{N}{\mathcal{R}_0},
 $$
-então $I(t)$ é crescente e, além disso, 
-$$ i' = (\beta s - \gamma) i &gt; (\beta S_*/N - \gamma) i(0) \geq \gamma i(0),
+então $I$ é estritamente crescente, pois
+$$ I' = \left(\frac{\beta S}{N} - \gamma\right) I &gt; \gamma \left( \frac{S_*}{N}\mathcal{R}_0 - 1\right) I \geq 0.
+$$</p>
+<p>Logo, ou $I(t) \rightarrow \infty$ ou existe $I_* = \lim_{t\rightarrow \infty} I(t) &gt; 0$.</p>
+<p>O primeiro caso é um absurdo, pois $I, S, R \geq 0$ e $I + S + R = N$.</p>
+<p>O segundo caso também é um absurdo, pois teríamos um ponto fixo $(S_*, I_*)$ do sistema em $S$ e $I$, o que seria uma solução, com termos positivos, do sistema</p>
+$$ \begin{cases}
+     \displaystyle - \beta\frac{I}{N} S = 0, \\
+    \displaystyle \beta\frac{I}{N} S - \gamma I = 0.
+   \end{cases}
+$$<p>Mas as soluções desse sistema são da forma $(S_*, 0)$.</p>
+<p>Portanto, $S(t)$ é estritamente decrescente, com limite $S_*$ satisfazendo</p>
+$$ 0 \leq S_* &lt; \frac{N}{\mathcal{R}_0}.
 $$
-ou seja,
-$$ i(t) \geq (1 + \gamma t) i(0) \rightarrow \infty, \quad t\rightarrow \infty,
-$$
-o que é impossível.</p>
-<p>Portanto, 
-$$ S_* = \lim_{t\rightarrow \infty} S(t) &lt; \frac{N}{\mathcal{R}_0},
-$$
-o que significa que, independente do valor de $\mathcal{R}_0$, eventualmente a condição suficiente para a epidemia não será satisfeita e não teremos mais epidemia.</p>
-<p>Agora, como, eventualmente,</p>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Destino-da-epidemia">Destino da epidemia<a class="anchor-link" href="#Destino-da-epidemia">&#182;</a></h3><p>Agora, como, eventualmente,</p>
 $$ \frac{S(t)}{N} \frac{\beta}{\gamma} \leq \theta &lt; 1,
 $$<p>para algum $\theta$, então</p>
 $$ I' = \left(\beta \frac{S}{N} - \gamma\right) I \leq \gamma (\theta - 1)I = - \gamma(1-\theta) I,
