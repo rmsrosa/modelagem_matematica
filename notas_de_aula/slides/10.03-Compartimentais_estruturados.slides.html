@@ -13355,7 +13355,7 @@ $$<p>Neste caso, temos dois parâmetros:</p>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Modelo-na-forma-de-a&#231;&#227;o-de-massas">Modelo na forma de a&#231;&#227;o de massas<a class="anchor-link" href="#Modelo-na-forma-de-a&#231;&#227;o-de-massas">&#182;</a></h3>$$
 \begin{cases}
-  S + I \stackrel{\beta/N}{\longrightarrow} 2I, &amp; \text{(processo de infeção)} \\
+  S + I \stackrel{\beta}{\longrightarrow} 2I, &amp; \text{(processo de infeção)} \\
   I \stackrel{\gamma}{\longrightarrow} S, &amp; \text{(processo de recuperação)}.
 \end{cases}
 $$
@@ -13439,10 +13439,10 @@ $$
 <p>Na forma de ação de massas, isso pode ser descrito pelas reações</p>
 $$
 \begin{cases}
-  S_H + I_H \stackrel{\beta_{HH}/N}{\longrightarrow} 2I_H, &amp; \text{(processo de infeção entre indivíduos de alto risco)} \\
-  S_H + I_L \stackrel{\beta_{HL}/N}{\longrightarrow} I_H + I_L, &amp; \text{(processo de infeção entre um suscetível de alto risco e um infectado de baixo risco)} \\
-  S_L + I_H \stackrel{\beta_{LH}/N}{\longrightarrow} I_L + I_H, &amp; \text{(processo de infeção entre um suscetível de baixo risco e um infectado de alto risco)} \\
-  S_L + I_L \stackrel{\beta_{LL}/N}{\longrightarrow} 2I_L, &amp; \text{(processo de infeção entre indivíduos de baixo risco)} \\
+  S_H + I_H \stackrel{\beta_{HH}}{\longrightarrow} 2I_H, &amp; \text{(processo de infeção entre indivíduos de alto risco)} \\
+  S_H + I_L \stackrel{\beta_{HL}}{\longrightarrow} I_H + I_L, &amp; \text{(processo de infeção entre um suscetível de alto risco e um infectado de baixo risco)} \\
+  S_L + I_H \stackrel{\beta_{LH}}{\longrightarrow} I_L + I_H, &amp; \text{(processo de infeção entre um suscetível de baixo risco e um infectado de alto risco)} \\
+  S_L + I_L \stackrel{\beta_{LL}}{\longrightarrow} 2I_L, &amp; \text{(processo de infeção entre indivíduos de baixo risco)} \\
   I_H \stackrel{\gamma_H}{\longrightarrow} S_H, &amp; \text{(processo de recuperação de indivíuos de alto risco)} \\
   I_L \stackrel{\gamma_L}{\longrightarrow} S_L, &amp; \text{(processo de recuperação de indivíuos de baixo risco)}.
 \end{cases}
@@ -13537,10 +13537,10 @@ $$
 <h3 id="Sistema-de-equa&#231;&#245;es-diferencias">Sistema de equa&#231;&#245;es diferencias<a class="anchor-link" href="#Sistema-de-equa&#231;&#245;es-diferencias">&#182;</a></h3><p>Lembremos dos processos dinâmicos em forma de lei de ação de massas:</p>
 $$
 \begin{cases}
-  S_H + I_H \stackrel{\beta_{HH}/N}{\longrightarrow} 2I_H, &amp; \text{(infeção entre indivíduos de alto risco)} \\
-  S_H + I_L \stackrel{\beta_{HL}/N}{\longrightarrow} I_H + I_L, &amp; \text{(infeção entre suscetível de alto risco e infectado de baixo risco)} \\
-  S_L + I_H \stackrel{\beta_{LH}/N}{\longrightarrow} I_L + I_H, &amp; \text{(infeção entre suscetível de baixo risco e infectado de alto risco)} \\
-  S_L + I_L \stackrel{\beta_{LL}/N}{\longrightarrow} 2I_L, &amp; \text{(infeção entre indivíduos de baixo risco)} \\
+  S_H + I_H \stackrel{\beta_{HH}}{\longrightarrow} 2I_H, &amp; \text{(infeção entre indivíduos de alto risco)} \\
+  S_H + I_L \stackrel{\beta_{HL}}{\longrightarrow} I_H + I_L, &amp; \text{(infeção entre suscetível de alto risco e infectado de baixo risco)} \\
+  S_L + I_H \stackrel{\beta_{LH}}{\longrightarrow} I_L + I_H, &amp; \text{(infeção entre suscetível de baixo risco e infectado de alto risco)} \\
+  S_L + I_L \stackrel{\beta_{LL}}{\longrightarrow} 2I_L, &amp; \text{(infeção entre indivíduos de baixo risco)} \\
   I_H \stackrel{\gamma_H}{\longrightarrow} S_H, &amp; \text{(recuperação de indivíuos de alto risco)} \\
   I_L \stackrel{\gamma_L}{\longrightarrow} S_L, &amp; \text{(recuperação de indivíuos de baixo risco)}.
 \end{cases}
@@ -13669,7 +13669,7 @@ $$ \begin{cases}
 $$<p>Assumindo, inicialmente, que a população de suscetíveis é praticamente toda a população inicial, dentro de cada grupo, i.e. $s_L \approx n_L = N_L/N$ e $s_H \approx n_H = N_H/N$, temos</p>
 $$ \frac{\displaystyle \mathrm{d}}{\displaystyle \mathrm{d}t} \left(\begin{matrix} i_H \\ i_L \end{matrix} \right) \lessapprox \left[ \begin{matrix} \beta_{HH}n_H - \gamma_H &amp; \beta_{HL}n_H \\ \beta_{LH}n_L  &amp; \beta_{LL}n_L - \gamma_L \end{matrix} \right] \left(\begin{matrix} i_H \\ i_L \end{matrix} \right).
 $$<p>Observe que</p>
-$$ \left[ \begin{matrix} \beta_{HH}n_H - \gamma_H &amp; \beta_{HL}n_H \\ \beta_{LH}n_L  &amp; \beta_{LL}n_L - \gamma_L \end{matrix} \right] = B - \Gamma.
+$$ \left[ \begin{matrix} \beta_{HH}n_H - \gamma_H &amp; \beta_{HL}n_H \\ \beta_{LH}n_L  &amp; \beta_{LL}n_L - \gamma_L \end{matrix} \right] = NB - \Gamma.
 $$
 </div>
 </div>
