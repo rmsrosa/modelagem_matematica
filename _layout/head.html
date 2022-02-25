@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="{{ author }}" />
+  <meta name="author" content="and contributors" />
+  {{isdef title}} <title>{{fill title}}</title>  {{end}}
+  <link rel="shortcut icon" type="image/png" href="/assets/images/favicon.png"/>
+  <link rel="stylesheet" href="/css/base.css"/>
+  {{ if show_aside }}
+    <link rel="stylesheet" href="/css/base_showaside.css"/>
+  {{ end }}
+  <script src="/libs/mousetrap/mousetrap.min.js"></script>
+
+  {{if hascode}}
+    <link rel="stylesheet" href="/libs/highlight/github.min.css">
+    <script src="/libs/highlight/highlight.pack.js"></script>
+    <script src="/libs/highlight/julia.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', (event) => {
+        document.querySelectorAll('pre').forEach((el) => {
+          hljs.highlightElement(el);
+        });
+      });
+    </script>
+  {{end}}
+
+  {{if hasmath}}
+    <link rel="stylesheet" href="/libs/katex/katex.min.css">
+  {{end}}
+</head>
+
+<body>
+
+  <div class="books-container">
+
+  {{ insert aside.html }}
+
+  <div class="books-content">
+
+    {{ if nav_on_top }}
+      {{ navigation }}
+    {{ end }}
+
+    {{ if show_link_bagdes }}
+      {{ linkbadges }}
+    {{ end }}

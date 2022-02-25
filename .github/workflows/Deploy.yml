@@ -1,0 +1,34 @@
+name: Build and Deploy
+on:
+  push:
+    branches:
+      - modmat2022p1
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        persist-credentials: false
+    - name: Install Julia
+      uses: julia-actions/setup-julia@v1
+      with:
+        version: 1.7
+    # GR recommended (plots backend, in case it is used)
+    - run: |
+            sudo apt-get update -y
+            sudo apt-get install -y qt5-default
+    # Website build
+    - run: xvfb-run julia -e '
+            using Pkg; Pkg.activate("."); Pkg.instantiate();
+            using NodeJS; run(`$(npm_cmd()) install highlight.js`);
+            using Franklin;
+            optimize(minify=false, prerender=false)'
+    # Deployment and caching
+    - run: touch __site/.nojekyll
+    - name: Deploy 🚀
+      uses: JamesIves/github-pages-deploy-action@releases/v4
+      with:
+        BRANCH: gh-pages
+        FOLDER: __site

@@ -1,0 +1,14 @@
+{{ if nav_on_bottom }}
+    {{ navigation }}
+{{ end }}
+
+<div class="page-foot">
+    {{ if show_license }}
+        <div class="license">
+            <a href={{ license_link }}>{{ book_license }} </a>
+            {{ book_licensees }}
+        </div>
+    {{ end }}
+
+    {{isnotpage /tag/*}}Last modified: {{ fill fd_mtime }}.{{end}} Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
+</div>

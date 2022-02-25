@@ -1,0 +1,27 @@
+<aside class="books-menu">
+  <input type="checkbox" id="menu">
+  <label for="menu">☰</label>
+
+  <div class="books-title">
+    <a href="/">{{ book_title }}</a>
+  </div>
+
+  <br />
+
+  <div class="books-subtitle">
+    {{ book_subtitle }}
+  </div>
+
+  <br />
+
+  <div class="books-author">
+    {{ book_author }}
+  </div>
+
+  {{ menubar }}
+
+  {{ if show_github }}
+    {{ github_repo_link }}
+  {{ end }}
+
+</aside>
