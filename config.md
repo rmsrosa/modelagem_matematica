@@ -58,6 +58,6 @@ website = "rmsrosa.github.io/modelagem_matematica/tree/modmat2021p1"
 ## binder variables
 +++
 nbgitpuller_repo = "rmsrosa/modelagem_matematica"
-nbgitpuller_branch = "mybinderenv"
+nbgitpuller_branch = "julia-env-for-binder-2022p1"
 binder_application = "lab" 
 +++
