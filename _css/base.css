@@ -9,9 +9,9 @@
   --background: hsl(42, 80%, 99%);
   --block-background: hsl(42, 0%, 94%);
   --output-background: hsl(120, 100%, 94%);
-  --menu-width: 224px;
-  --max-body-width: 1024px;
-  --content-left-margin: 62px;
+  --menu-width: 256px;
+  --max-body-width: 1280px;
+  --content-left-margin: 32px;
 }
 
 .menu-level-2 {
@@ -137,7 +137,7 @@ html {
 }
 
 html {
-    background-image: url("../assets/images/background.jpg");
+    background-image: url("../assets/images/background_sand.jpg");
     background-attachment: fixed;
     background-size: cover;
     -webkit-background-size: cover;
