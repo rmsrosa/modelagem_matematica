@@ -2,6 +2,7 @@ __site/
 node_modules/
 package-lock.json
 Manifest.toml
+LocalPreferences.toml
 .DS_Store
 .vscode
 .ipynb_checkpoints
