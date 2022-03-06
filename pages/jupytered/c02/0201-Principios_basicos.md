@@ -12,11 +12,6 @@
 * Escolha do modelo
 * Quantificação de incertezas
 
-```julia
-using Images
-```
-
-
 
 ## Modelos
 
@@ -35,16 +30,8 @@ using Images
 * Um **perfil psicológico** é um modelo das características psicológicas de um indivíduo;
 * Um **mapa** é um modelo geográfico, e.g. um mapa rodoviário, topográfico, geo-político, etc.
 
-```julia
-load(joinpath("img","modmat_model_examples.png"))
-```
 
-```
-Error: ArgumentError: No file exists at given path: img/modmat_model_exampl
-es.png
-```
-
-
+![Exemplos de modelos](/assets/attachments/img/modmat_model_examples.png)
 
 
 Créditos: [Imagem da rainha Nefertiti](https://commons.wikimedia.org/wiki/File:Nefertiti_30-01-2006.jpg?uselang=pt), [Star Wars pesonality test](https://www.geekinheels.com/2013/10/23/star-wars-mbti-chart.html) [Pesquisa CNT de rodovias](https://pesquisarodovias.cnt.org.br/)
@@ -88,16 +75,8 @@ $$
 
 ### Processo de modelagem
 
-```julia
-load(joinpath("img","mathmoddiag_512x256.png"))
-```
 
-```
-Error: ArgumentError: No file exists at given path: img/mathmoddiag_512x256
-.png
-```
-
-
+![processo de modelagem](/assets/attachments/img/mathmoddiag_512x256.png)
 
 
 ### Tipos de modelagem

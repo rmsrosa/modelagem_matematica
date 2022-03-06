@@ -132,11 +132,11 @@ nothing
 ```
 
 ```
-pointer(a) = Ptr{Int64} @0x000000011ebf9300
-pointer(a) = Ptr{Int64} @0x000000011ef21df0
-pointer(a) = Ptr{Int64} @0x000000011ef227f0
-pointer(a) = Ptr{Int64} @0x000000011ef227f0
-pointer(a) = Ptr{Int64} @0x000000011ef227f0
+pointer(a) = Ptr{Int64} @0x00000002b36d49f0
+pointer(a) = Ptr{Int64} @0x00000002b36d5120
+pointer(a) = Ptr{Int64} @0x00000002b36d5850
+pointer(a) = Ptr{Int64} @0x00000002b36d5850
+pointer(a) = Ptr{Int64} @0x00000002b36d5850
 ```
 
 
@@ -158,9 +158,9 @@ nothing
 ```
 
 ```
-pointer(s) = Ptr{UInt8} @0x000000011ed87e58
-pointer(s) = Ptr{UInt8} @0x000000011ed87eb8
-pointer(s) = Ptr{UInt8} @0x000000011efd5e78
+pointer(s) = Ptr{UInt8} @0x00000002b418ae80
+pointer(s) = Ptr{UInt8} @0x00000002b418aea8
+pointer(s) = Ptr{UInt8} @0x00000002b418b2e0
 s = "Modelos Matemáticos"
 ```
 
@@ -257,8 +257,8 @@ nothing
 ```
 
 ```
-resultado = "180 é par"
-resultado = "181 é impar"
+resultado = "140 é par"
+resultado = "141 é impar"
 ```
 
 
@@ -272,11 +272,11 @@ Se quisermos escrever `$` precisamos "escapá-lo" com uma barra invertida:
 
 ```julia
 valor = 10.0
-println("Esse produto cuta R\$$valor")
+println("Esse produto custa R\$$valor")
 ```
 
 ```
-Esse produto cuta R$10.0
+Esse produto custa R$10.0
 ```
 
 
@@ -511,9 +511,9 @@ R1, R2, R3, R4
 ```
 
 ```
-(Main.##WeaveSandBox#276.Retângulo(2.0, 3.0), Main.##WeaveSandBox#276.Retân
-gulo(1.5, 6.0), Main.##WeaveSandBox#276.Retângulo(1.2, 7.0), Main.##WeaveSa
-ndBox#276.Retângulo(3.0, 2.0))
+(Main.var"##WeaveSandBox#357".Retângulo(2.0, 3.0), Main.var"##WeaveSandBox#
+357".Retângulo(1.5, 6.0), Main.var"##WeaveSandBox#357".Retângulo(1.2, 7.0),
+ Main.var"##WeaveSandBox#357".Retângulo(3.0, 2.0))
 ```
 
 
@@ -598,10 +598,10 @@ end
 ```
 
 ```
-1ᵒ: Main.##WeaveSandBox#276.Retângulo(2.0, 3.0) com área 6.0
-2ᵒ: Main.##WeaveSandBox#276.Retângulo(3.0, 2.0) com área 6.0
-3ᵒ: Main.##WeaveSandBox#276.Retângulo(1.2, 7.0) com área 8.4
-4ᵒ: Main.##WeaveSandBox#276.Retângulo(1.5, 6.0) com área 9.0
+1ᵒ: Main.var"##WeaveSandBox#357".Retângulo(2.0, 3.0) com área 6.0
+2ᵒ: Main.var"##WeaveSandBox#357".Retângulo(3.0, 2.0) com área 6.0
+3ᵒ: Main.var"##WeaveSandBox#357".Retângulo(1.2, 7.0) com área 8.4
+4ᵒ: Main.var"##WeaveSandBox#357".Retângulo(1.5, 6.0) com área 9.0
 ```
 
 
@@ -614,7 +614,7 @@ println("Mínimo $(minimum([R1, R2, R3, R4])) em $(argmin([R1, R2, R3, R4]))")
 ```
 
 ```
-Mínimo Main.##WeaveSandBox#276.Retângulo(2.0, 3.0) em 1
+Mínimo Main.var"##WeaveSandBox#357".Retângulo(2.0, 3.0) em 1
 ```
 
 
@@ -645,7 +645,7 @@ mat' = [1 4; 3 5]
 copy(mat') = [1 4; 3 5]
 vec = [1, 2]
 mat * vec = [7, 14]
-mat \ vec = [0.1428571428571429, 0.2857142857142857]
+mat \ vec = [0.14285714285714288, 0.2857142857142857]
 mat * (mat \ vec) - vec = [0.0, 0.0]
 ```
 
@@ -700,7 +700,7 @@ nothing
 28.860000000000007
 28.860000000000007
 28.860000000000007
-28.860000000000007
+28.860000000000003
 ```
 
 
@@ -731,7 +731,7 @@ svd([1 3; 4 5])
 ```
 
 ```
-LinearAlgebra.SVD{Float64, Float64, Matrix{Float64}}
+LinearAlgebra.SVD{Float64, Float64, Matrix{Float64}, Vector{Float64}}
 U factor:
 2×2 Matrix{Float64}:
  -0.428878  -0.903362
@@ -739,7 +739,7 @@ U factor:
 singular values:
 2-element Vector{Float64}:
  7.072510139298386
- 0.9897476090001659
+ 0.9897476090001657
 Vt factor:
 2×2 Matrix{Float64}:
  -0.571555  -0.820564
@@ -768,19 +768,7 @@ plot(I, sin.(I), xaxis="x", yaxis="y", label="y=sin(x)",
     title="Gráfico de y=sin(x) no intervalo (0, 2π)")
 ```
 
-```
-Error: could not load library "libGR.dylib"
-dlopen(/Users/rrosa/.julia/packages/GR/jpQcZ/src/../deps/gr/lib/libGR.dylib
-, 0x0001): tried: '/Users/rrosa/.julia/packages/GR/jpQcZ/src/../deps/gr/lib
-/libGR.dylib' (mach-o file, but is an incompatible architecture (have 'arm6
-4', need 'x86_64')), '/usr/local/lib/libGR.dylib' (no such file), '/usr/lib
-/libGR.dylib' (no such file), '/Users/rrosa/.julia/packages/GR/jpQcZ/deps/g
-r/lib/libGR.dylib' (mach-o file, but is an incompatible architecture (have 
-'arm64', need 'x86_64')), '/usr/local/lib/libGR.dylib' (no such file), '/us
-r/lib/libGR.dylib' (no such file)
-```
-
-
+\fig{images/0103-Primeiros_passos_Julia_29_1.png}
 
 ```julia
 I = 0.0:0.1:2π
@@ -788,19 +776,7 @@ plot(I, [sin.(I), cos.(I)], xaxis="x", yaxis="y", label=["y=sin(x)" "y=cos(x)"],
     title="Gráficos de y=sin(x) e y=cos(x) no intervalo (0, 2π)")
 ```
 
-```
-Error: could not load library "libGR.dylib"
-dlopen(/Users/rrosa/.julia/packages/GR/jpQcZ/src/../deps/gr/lib/libGR.dylib
-, 0x0001): tried: '/Users/rrosa/.julia/packages/GR/jpQcZ/src/../deps/gr/lib
-/libGR.dylib' (mach-o file, but is an incompatible architecture (have 'arm6
-4', need 'x86_64')), '/usr/local/lib/libGR.dylib' (no such file), '/usr/lib
-/libGR.dylib' (no such file), '/Users/rrosa/.julia/packages/GR/jpQcZ/deps/g
-r/lib/libGR.dylib' (mach-o file, but is an incompatible architecture (have 
-'arm64', need 'x86_64')), '/usr/local/lib/libGR.dylib' (no such file), '/us
-r/lib/libGR.dylib' (no such file)
-```
-
-
+\fig{images/0103-Primeiros_passos_Julia_30_1.png}
 
 ```julia
 plot(area.(ordenados), xaxis="ordem", yaxis="área", label="área", color=:brown3,
@@ -810,19 +786,7 @@ plot(area.(ordenados), xaxis="ordem", yaxis="área", label="área", color=:brown
 )
 ```
 
-```
-Error: could not load library "libGR.dylib"
-dlopen(/Users/rrosa/.julia/packages/GR/jpQcZ/src/../deps/gr/lib/libGR.dylib
-, 0x0001): tried: '/Users/rrosa/.julia/packages/GR/jpQcZ/src/../deps/gr/lib
-/libGR.dylib' (mach-o file, but is an incompatible architecture (have 'arm6
-4', need 'x86_64')), '/usr/local/lib/libGR.dylib' (no such file), '/usr/lib
-/libGR.dylib' (no such file), '/Users/rrosa/.julia/packages/GR/jpQcZ/deps/g
-r/lib/libGR.dylib' (mach-o file, but is an incompatible architecture (have 
-'arm64', need 'x86_64')), '/usr/local/lib/libGR.dylib' (no such file), '/us
-r/lib/libGR.dylib' (no such file)
-```
-
-
+\fig{images/0103-Primeiros_passos_Julia_31_1.png}
 
 
 ## Performance
@@ -840,8 +804,8 @@ nothing
 ```
 
 ```
-0.000035 seconds (1 allocation: 20.625 KiB)
-  0.001326 seconds (23 allocations: 21.797 KiB, 76.97% compilation time)
+0.000020 seconds (1 allocation: 20.625 KiB)
+  0.000033 seconds (2 allocations: 20.641 KiB)
 ```
 
 
@@ -876,10 +840,10 @@ nothing
 ```
 escalar1(vec1, vec2) ≈ escalar2(vec1, vec2) ≈ escalar3(vec1, vec2) ≈ escala
 r4(vec1, vec2) = true
-  78.512 ns (1 allocation: 896 bytes)
-  64.308 ns (0 allocations: 0 bytes)
-  274.614 ns (0 allocations: 0 bytes)
-  29.397 ns (0 allocations: 0 bytes)
+  69.900 ns (1 allocation: 896 bytes)
+  60.675 ns (0 allocations: 0 bytes)
+  442.970 ns (0 allocations: 0 bytes)
+  24.389 ns (0 allocations: 0 bytes)
 ```
 
 
@@ -892,16 +856,16 @@ Para uma estatística mais detalhada, usamos `@benchmark`.
 ```
 
 ```
-BenchmarkTools.Trial: 10000 samples with 995 evaluations.
- Range (min … max):  29.397 ns … 136.767 ns  ┊ GC (min … max): 0.00% … 0.00
+BenchmarkTools.Trial: 10000 samples with 996 evaluations.
+ Range (min … max):  24.138 ns … 313.086 ns  ┊ GC (min … max): 0.00% … 0.00
 %
- Time  (median):     30.402 ns               ┊ GC (median):    0.00%
- Time  (mean ± σ):   31.050 ns ±   3.644 ns  ┊ GC (mean ± σ):  0.00% ± 0.00
+ Time  (median):     24.264 ns               ┊ GC (median):    0.00%
+ Time  (mean ± σ):   25.685 ns ±  10.173 ns  ┊ GC (mean ± σ):  0.00% ± 0.00
 %
 
-  ▃▅██▃▃▅▂▁  ▁                                                 ▁
-  ██████████▇█▇▆▇▆▆▆▅▄▄▄▅▅▄▅▂▅▆▃▄▄▄▅▂▂▄▅▆▅▅▄▄▄▄▄▅▄▅▄▃▂▃▄▄▆▂▃▅▅ █
-  29.4 ns       Histogram: log(frequency) by time      48.9 ns <
+  █▆▄▄▂▁                                                       ▁
+  ███████▇▆▆▆▆▆▅▅▆▅▅▅▄▅▅▃▃▄▅▃▅▄▅▄▅▄▃▅▄▁▅▃▃▃▃▄▄▃▃▁▅▁▄▁▄▃▃▄▁▄▁▁▃ █
+  24.1 ns       Histogram: log(frequency) by time      55.3 ns <
 
  Memory estimate: 0 bytes, allocs estimate: 0.
 ```

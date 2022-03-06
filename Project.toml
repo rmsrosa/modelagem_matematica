@@ -32,3 +32,6 @@ UnitfulRecipes = "42071c24-d89e-48dd-8a24-8a12d9b8861f"
 VideoIO = "d6d074c3-1acf-5d4c-9a43-ef38773959a2"
 WAV = "8149f6b0-98f6-5db9-b78f-408fbbb8ef88"
 Weave = "44d3d7a6-8a23-5bf8-98c5-b353f8df5ec9"
+
+[extras]
+CPUSummary = "2a0fbf3d-bb9c-48f3-b0a9-814d99fd7ab9"

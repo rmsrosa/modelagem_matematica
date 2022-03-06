@@ -90,7 +90,7 @@ O ambiente julia é o principal ao que temos acesso. No REPL, ele aparece de in�
   (_)     | (_) (_)    |
    _ _   _| |_  __ _   |  Type "?" for help, "]?" for Pkg help.
   | | | | | | |/ _` |  |
-  | | |_| | | | (_| |  |  Version 1.6.0 (2021-03-24)
+  | | |_| | | | (_| |  |  Version 1.7.1 (2021-12-22)
  _/ |\__'_|_|_|\__'_|  |  Official https://julialang.org/ release
 |__/                   |
 
@@ -168,7 +168,7 @@ Digitando `?`, obtemos o *prompt* `help?>` de ajuda. Para ajuda sobre o próprio
 help?> help
 search: help schedule Channel hasfield @threadcall AbstractChannel
 
-  Welcome to Julia 1.6.0. The full manual is available at
+  Welcome to Julia 1.7.1. The full manual is available at
 
   https://docs.julialang.org
 
@@ -234,11 +234,9 @@ Error: syntax: invalid identifier name "?"
 Podemos acessar diretamente o ambiente *shell* digitando `;`. No REPL, por exemplo, podemos obter a lista de arquivos/diretórios no diretório atual digitando `;ls`. Ao digitarmos `;`, o *prompt* automaticamente muda para `shell>`:
 ```zsh
 shell> ls
-00.00-Pagina_inicial.ipynb                      05.00-BuckinghamPi_analise_dimensional.ipynb
-01.00-Aspectos_curso.ipynb                      06.00-Ajuste_dados.ipynb
-02.00-Principios_modelagem_matematica.ipynb     img
-03.00-Exemplos_tipos_modelagem.ipynb            slides
-04.00-Primeiros_passos_Julia.ipynb              src
+01.01-Aspectos_curso.ipynb
+01.02-Instalando_acessando_Julia.ipynb
+01.03-Primeiros_passos_Julia.ipynb
 ```
 
 
@@ -266,7 +264,7 @@ readdir()
 
 ```
 2-element Vector{String}:
- "01.01-Aspectos_curso.md"
+ "0101-Aspectos_curso.md"
  "images"
 ```
 
@@ -361,16 +359,15 @@ Pkg.status()
 ```
 
 ```
-Status `~/Documents/git_repositories/modelagem_matematica/Project.tom
-l`
+Status `~/Documents/git_repositories/modelagem_matematica/Project.toml`
   [6e4b80f9] BenchmarkTools v1.3.1
   [336ed68f] CSV v0.10.2
   [13f3f980] CairoMakie v0.7.4
-  [717857b8] DSP v0.7.4
+  [717857b8] DSP v0.7.5
   [a93c6f00] DataFrames v1.3.2
   [0c46a032] DifferentialEquations v7.1.0
   [31c24e10] Distributions v0.25.49
-  [7a1cc6ca] FFTW v1.4.5
+  [7a1cc6ca] FFTW v1.4.6
   [713c75ef] Franklin v0.10.69
   [e9467ef8] GLMakie v0.5.4
   [28b8d3ca] GR v0.64.0
@@ -383,10 +380,10 @@ l`
   [b964fa9f] LaTeXStrings v1.3.0
   [98b081ad] Literate v2.13.0
   [2fda8390] LsqFit v0.12.1
-  [ae8d54c2] Luxor v3.0.0
+  [ae8d54c2] Luxor v3.1.0
   [2bd173c7] NodeJS v1.3.0
-  [429524aa] Optim v1.6.1
-  [91a5bcdd] Plots v1.25.11
+  [429524aa] Optim v1.6.2
+  [91a5bcdd] Plots v1.26.0
   [e6cf234a] RandomNumbers v1.5.3
   [bd7594eb] SampledSignals v2.1.3
   [2913bbd2] StatsBase v0.33.16
@@ -406,11 +403,22 @@ l`
 Para visualizar mais detalhes sobre a máquina e a versão do julia em uso, pode-se usar o comando `versioninfo()`
 
 ```julia
+using InteractiveUtils
 versioninfo()
 ```
 
 ```
-Error: UndefVarError: versioninfo not defined
+Julia Version 1.8.0-beta1
+Commit 7b711ce699 (2022-02-23 15:09 UTC)
+Platform Info:
+  OS: macOS (arm64-apple-darwin21.2.0)
+  CPU: 8 × Apple M1 Pro
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-13.0.1 (ORCJIT, apple-m1)
+  Threads: 8 on 6 virtual cores
+Environment:
+  JULIA_NUM_THREADS = 8
 ```
 
 

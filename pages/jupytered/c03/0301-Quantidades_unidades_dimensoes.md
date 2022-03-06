@@ -36,10 +36,10 @@ comprimento $L$ ao quadrado nos dá a dimensão $L^2$ de área; comprimento $L$ 
 
 * A pressão atmosférica é a pressão que sentimos devida à atmosfera da Terra. Ao nível do mar, na média ao redor da Terra, ela é de aproximadamente 1 **atmosfera**, ou $1 \,\texttt{atm}$, onde $\texttt{atm}$ é, mais precisamente, a **atmosfera padrão**, que é definida como 
 $$
-\begin{multline*}
-1\,\texttt{atm} = 101,325.0\,\texttt{Pa} = 1,013.25 \,\texttt{hPa} =  1,013.25 \,\texttt{mbar} \\
-= 760 \,\texttt{mm}\;\texttt{Hg} = 29.9212 \,\texttt{in}\;\texttt{Hg} = 14.696 \,\texttt{psi}.
-\end{multline*}
+\begin{align*}
+1\,\texttt{atm} & = 101,325.0\,\texttt{Pa} = 1,013.25 \,\texttt{hPa} =  1,013.25 \,\texttt{mbar} \\
+& = 760 \,\texttt{mm}\;\texttt{Hg} = 29.9212 \,\texttt{in}\;\texttt{Hg} = 14.696 \,\texttt{psi}.
+\end{align*}
 $$
 
 

@@ -10,17 +10,12 @@
   * heurístico
   * fundamental
 
-```julia
-using Images;
-```
-
-
 
 ## Tipos de modelagem
 
 O processo de modelagem pode seguir vários caminhos:
 
-* **empírico:** através da observação, seja de fenômenos reais, seja de experimentos controlados
+* **empírico:** através da observação, seja de fenômenos naturais ou de experimentos controlados
 * **análise dimensional:** baseado na análise das dimensões de quantidades envolvidas no fenômeno
 * **ad-hoc:** introduzida sem muito fundamento e sem muita capacidade de generalização/extrapolação
 * **mecanicista:** baseado em mecanismos envolvidos no fenômeno
@@ -60,16 +55,8 @@ $$
 $$ y = bx^\alpha.
 $$
 
-```julia
-load(joinpath("img","NileTilapia_WeightLength_512x373.png"))
-```
 
-```
-Error: ArgumentError: No file exists at given path: img/NileTilapia_WeightL
-ength_512x373.png
-```
-
-
+![Alometria tilápia-do-Nilo](/assets/attachments/img/NileTilapia_WeightLength_512x373.png)
 
 
 ## Análise dimensional e o período de um pêndulo
@@ -80,16 +67,8 @@ ength_512x373.png
 
 ### Pêndulo
 
-```julia
-load(joinpath("img","pendulum_256x256.png"))
-```
 
-```
-Error: ArgumentError: No file exists at given path: img/pendulum_256x256.pn
-g
-```
-
-
+![pêndulo](/assets/attachments/img/pendulum_256x256.png)
 
 
 * Como exemplo, considere um pêndulo com haste de comprimento $\ell$ e massa $m$.

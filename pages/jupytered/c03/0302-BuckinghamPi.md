@@ -334,10 +334,10 @@ $$
 1. Em 1941, [G. I Taylor](https://pt.wikipedia.org/wiki/Geoffrey_Ingram_Taylor), um famoso físico e matemático britânico, com grandes contribuições à mecânica dos fluidos, fez uma [estimativa do rendimento da primeira bomba nuclear](https://en.wikipedia.org/wiki/Nuclear_weapon_yield) detonada pelos EUA, na chamada [experiência Trinity](https://pt.wikipedia.org/wiki/Experiência_Trinity). A estimativa foi feita apenas com análise dimensional e [dados da evolução da frente de onda obtidos de uma filmagem da explosão](http://nuclearweaponarchive.org/Usa/Tests/Trinity.html). Assumindo que os únicos parâmetros relevantes para o cálculo do rendimento $E$ (energia despendida) são a densidade $\rho$ do ar, o raio da onda de choque $r=r(t)$ e o instante de tempo $t$, encontre uma relação adimensional entre essas quantidades.
 
 1. Estimar o atrito na parede de um tubo é uma das tarefas mais comuns em aplicações de engenharia envolvendo fluidos. Para tubos longos circulares e ásperos em regime de escoamento turbulento, a tensão de cisalhamento no parede, $\tau_w$, é uma função da densidade $\rho$, viscosidade (dinâmica) $\mu$, velocidade média $V$, diâmetro do cano $d$, e da altura de rugosidade da parede $\varepsilon$. Assim, funcionalmente podemos escrever a relação $\tau_w = f(\rho, \mu, V, d, \varepsilon)$.
-  1. Usando o procedimento do Teorema de Buckingham-Pi, mostre como chegar nos grandezas adimensionais
-    $$
+  1. Usando o procedimento do Teorema de Buckingham-Pi, mostre como chegar nos grandezas adimensionais    
+  $$
     C_f = \dfrac{\tau_w}{\rho V^2}, \quad Re = \dfrac{\rho V d}{\mu}, \quad \varepsilon^* = \dfrac{\varepsilon}{d},
-    $$
+  $$
   2. Conclua que a relação pode ser simplificada para $C_f = f^*(Re, \varepsilon^*)$. 
   3. Obs: $C_f$ é dito o *coeficiente de atrito na parede*; $Re$ é dito o número de Reynolds; e $\varepsilon^*$ dita a rugosidade relativa.
 

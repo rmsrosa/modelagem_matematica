@@ -184,19 +184,7 @@ nothing}}}:
 plot(t, t -> h(t, h0, v0))
 ```
 
-```
-Error: could not load library "libGR.dylib"
-dlopen(/Users/rrosa/.julia/packages/GR/jpQcZ/src/../deps/gr/lib/libGR.dylib
-, 0x0001): tried: '/Users/rrosa/.julia/packages/GR/jpQcZ/src/../deps/gr/lib
-/libGR.dylib' (mach-o file, but is an incompatible architecture (have 'arm6
-4', need 'x86_64')), '/usr/local/lib/libGR.dylib' (no such file), '/usr/lib
-/libGR.dylib' (no such file), '/Users/rrosa/.julia/packages/GR/jpQcZ/deps/g
-r/lib/libGR.dylib' (mach-o file, but is an incompatible architecture (have 
-'arm64', need 'x86_64')), '/usr/local/lib/libGR.dylib' (no such file), '/us
-r/lib/libGR.dylib' (no such file)
-```
-
-
+\fig{images/0303-Unidades_Julia_14_1.png}
 
 
 ### Traçando o gráfico com os vetores/iteradores de quantidades
@@ -207,19 +195,7 @@ r/lib/libGR.dylib' (no such file)
 plot(t, h.(t, h0, v0))
 ```
 
-```
-Error: could not load library "libGR.dylib"
-dlopen(/Users/rrosa/.julia/packages/GR/jpQcZ/src/../deps/gr/lib/libGR.dylib
-, 0x0001): tried: '/Users/rrosa/.julia/packages/GR/jpQcZ/src/../deps/gr/lib
-/libGR.dylib' (mach-o file, but is an incompatible architecture (have 'arm6
-4', need 'x86_64')), '/usr/local/lib/libGR.dylib' (no such file), '/usr/lib
-/libGR.dylib' (no such file), '/Users/rrosa/.julia/packages/GR/jpQcZ/deps/g
-r/lib/libGR.dylib' (mach-o file, but is an incompatible architecture (have 
-'arm64', need 'x86_64')), '/usr/local/lib/libGR.dylib' (no such file), '/us
-r/lib/libGR.dylib' (no such file)
-```
-
-
+\fig{images/0303-Unidades_Julia_15_1.png}
 
 
 ### Embelezando o gráfico
@@ -234,19 +210,7 @@ plot(t, h.(t, h0, v0), title="lançamento vertical de um objeto", titlefont=10,
     xlabel = "tempo", ylabel="altura")
 ```
 
-```
-Error: could not load library "libGR.dylib"
-dlopen(/Users/rrosa/.julia/packages/GR/jpQcZ/src/../deps/gr/lib/libGR.dylib
-, 0x0001): tried: '/Users/rrosa/.julia/packages/GR/jpQcZ/src/../deps/gr/lib
-/libGR.dylib' (mach-o file, but is an incompatible architecture (have 'arm6
-4', need 'x86_64')), '/usr/local/lib/libGR.dylib' (no such file), '/usr/lib
-/libGR.dylib' (no such file), '/Users/rrosa/.julia/packages/GR/jpQcZ/deps/g
-r/lib/libGR.dylib' (mach-o file, but is an incompatible architecture (have 
-'arm64', need 'x86_64')), '/usr/local/lib/libGR.dylib' (no such file), '/us
-r/lib/libGR.dylib' (no such file)
-```
-
-
+\fig{images/0303-Unidades_Julia_16_1.png}
 
 
 ### Operações permitidas
@@ -356,11 +320,11 @@ Error: MethodError: no method matching +(::Unitful.FreeUnits{(m,), 𝐋, nothi
 ng}, ::Unitful.FreeUnits{(m,), 𝐋, nothing})
 Closest candidates are:
   +(::Any, ::Any, !Matched::Any, !Matched::Any...) at /Applications/Julia-1
-.7-rosetta.app/Contents/Resources/julia/share/julia/base/operators.jl:655
-  +(!Matched::ChainRulesCore.Tangent{P}, ::P) where P at ~/.julia/packages/
-ChainRulesCore/IzITE/src/tangent_arithmetic.jl:146
+.8.app/Contents/Resources/julia/share/julia/base/operators.jl:591
   +(!Matched::ChainRulesCore.AbstractThunk, ::Any) at ~/.julia/packages/Cha
 inRulesCore/IzITE/src/tangent_arithmetic.jl:122
+  +(!Matched::ChainRulesCore.Tangent{P}, ::P) where P at ~/.julia/packages/
+ChainRulesCore/IzITE/src/tangent_arithmetic.jl:146
   ...
 ```
 
@@ -376,15 +340,11 @@ tful.FreeUnits{(m, s), 𝐋 𝐓, nothing}}, ::Unitful.Dimensions{(Unitful.Dimen
 ion{:Time}(1//1),)})
 Closest candidates are:
   *(::Any, ::Any, !Matched::Any, !Matched::Any...) at /Applications/Julia-1
-.7-rosetta.app/Contents/Resources/julia/share/julia/base/operators.jl:655
-  *(::Number, !Matched::Union{SparseArrays.SparseVector{Tv, Ti}, SubArray{T
-v, 1, <:SparseArrays.AbstractSparseMatrixCSC{Tv, Ti}, Tuple{Base.Slice{Base
-.OneTo{Int64}}, Int64}, false}, SubArray{Tv, 1, <:SparseArrays.AbstractSpar
-seVector{Tv, Ti}, Tuple{Base.Slice{Base.OneTo{Int64}}}, false}} where {Tv, 
-Ti}) at /Applications/Julia-1.7-rosetta.app/Contents/Resources/julia/share/
-julia/stdlib/v1.7/SparseArrays/src/sparsevector.jl:1475
-  *(::Number, !Matched::Union{ColorTypes.LMS, ColorTypes.XYZ}) at ~/.julia/
-packages/Colors/yDxFN/src/algorithms.jl:7
+.8.app/Contents/Resources/julia/share/julia/base/operators.jl:591
+  *(::Unitful.Quantity, !Matched::Unitful.Gain) at ~/.julia/packages/Unitfu
+l/SUQzL/src/logarithm.jl:222
+  *(::Unitful.Quantity, !Matched::Unitful.Level) at ~/.julia/packages/Unitf
+ul/SUQzL/src/logarithm.jl:211
   ...
 ```
 
@@ -490,15 +450,11 @@ nitful.FreeUnits{(s⁻¹,), 𝐓⁻¹, nothing}}, ::Unitful.Dimensions{(Unitful.
 nsion{:Time}(1//1),)})
 Closest candidates are:
   *(::Any, ::Any, !Matched::Any, !Matched::Any...) at /Applications/Julia-1
-.7-rosetta.app/Contents/Resources/julia/share/julia/base/operators.jl:655
-  *(::Number, !Matched::Union{SparseArrays.SparseVector{Tv, Ti}, SubArray{T
-v, 1, <:SparseArrays.AbstractSparseMatrixCSC{Tv, Ti}, Tuple{Base.Slice{Base
-.OneTo{Int64}}, Int64}, false}, SubArray{Tv, 1, <:SparseArrays.AbstractSpar
-seVector{Tv, Ti}, Tuple{Base.Slice{Base.OneTo{Int64}}}, false}} where {Tv, 
-Ti}) at /Applications/Julia-1.7-rosetta.app/Contents/Resources/julia/share/
-julia/stdlib/v1.7/SparseArrays/src/sparsevector.jl:1475
-  *(::Number, !Matched::Union{ColorTypes.LMS, ColorTypes.XYZ}) at ~/.julia/
-packages/Colors/yDxFN/src/algorithms.jl:7
+.8.app/Contents/Resources/julia/share/julia/base/operators.jl:591
+  *(::Unitful.Quantity, !Matched::Unitful.Gain) at ~/.julia/packages/Unitfu
+l/SUQzL/src/logarithm.jl:222
+  *(::Unitful.Quantity, !Matched::Unitful.Level) at ~/.julia/packages/Unitf
+ul/SUQzL/src/logarithm.jl:211
   ...
 ```
 
