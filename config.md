@@ -36,13 +36,13 @@ nav_on_bottom = true
 page_numbering = true
 menu = [
     "*pages/intro",
-    "*PART I",
+    "*PARTE I",
     "Preliminares" => [
         "_jupyter/c01/0101-Aspectos_curso.ipynb"
         "_jupyter/c01/0102-Instalando_acessando_Julia.ipynb"
         "_jupyter/c01/0103-Primeiros_passos_Julia.ipynb"
     ],
-   "*PART II",
+   "*PARTE II",
     "Princípios de Modelagem Matemática" => [
         "_jupyter/c02/0201-Principios_basicos.ipynb"
         "_jupyter/c02/0202-Exemplos_tipos_modelagem.ipynb"
@@ -52,8 +52,6 @@ menu = [
         "_jupyter/c03/0302-BuckinghamPi.ipynb"
         "_jupyter/c03/0303-Unidades_Julia.ipynb"
     ],
-]
-menu_left = [
     "Ajuste de Parâmetros" => [
         "_jupyter/c04/0401-Minimos_quadrados_ajuste.ipynb"
         "_jupyter/c04/0402-Modelos_redutiveis_linear_aplicacoes.ipynb"
@@ -61,6 +59,8 @@ menu_left = [
         "_jupyter/c04/0404-Exemplos_ajuste_naolinear.ipynb"
         "_jupyter/c04/0405-Ajuste_em_redes_neurais.ipynb"
     ],
+]
+menu_left = [
     "Erros e Incertezas" => [
         "_jupyter/c05/0501-Erros_e_incertezas.ipynb"
         "_jupyter/c05/0502-Minimos_quadrados_verossimilhanca.ipynb"

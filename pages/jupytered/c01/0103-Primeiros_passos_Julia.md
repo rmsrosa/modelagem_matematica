@@ -132,11 +132,11 @@ nothing
 ```
 
 ```
-pointer(a) = Ptr{Int64} @0x00000002b36d49f0
-pointer(a) = Ptr{Int64} @0x00000002b36d5120
-pointer(a) = Ptr{Int64} @0x00000002b36d5850
-pointer(a) = Ptr{Int64} @0x00000002b36d5850
-pointer(a) = Ptr{Int64} @0x00000002b36d5850
+pointer(a) = Ptr{Int64} @0x000000010e2b1170
+pointer(a) = Ptr{Int64} @0x000000010f325440
+pointer(a) = Ptr{Int64} @0x000000010f325bc0
+pointer(a) = Ptr{Int64} @0x000000010f325bc0
+pointer(a) = Ptr{Int64} @0x000000010f325bc0
 ```
 
 
@@ -158,9 +158,9 @@ nothing
 ```
 
 ```
-pointer(s) = Ptr{UInt8} @0x00000002b418ae80
-pointer(s) = Ptr{UInt8} @0x00000002b418aea8
-pointer(s) = Ptr{UInt8} @0x00000002b418b2e0
+pointer(s) = Ptr{UInt8} @0x000000010c52cce8
+pointer(s) = Ptr{UInt8} @0x000000010c52cd38
+pointer(s) = Ptr{UInt8} @0x000000010c52ce28
 s = "Modelos Matemáticos"
 ```
 
@@ -257,8 +257,8 @@ nothing
 ```
 
 ```
-resultado = "140 é par"
-resultado = "141 é impar"
+resultado = "172 é par"
+resultado = "173 é impar"
 ```
 
 
@@ -511,9 +511,9 @@ R1, R2, R3, R4
 ```
 
 ```
-(Main.var"##WeaveSandBox#357".Retângulo(2.0, 3.0), Main.var"##WeaveSandBox#
-357".Retângulo(1.5, 6.0), Main.var"##WeaveSandBox#357".Retângulo(1.2, 7.0),
- Main.var"##WeaveSandBox#357".Retângulo(3.0, 2.0))
+(Main.var"##WeaveSandBox#295".Retângulo(2.0, 3.0), Main.var"##WeaveSandBox#
+295".Retângulo(1.5, 6.0), Main.var"##WeaveSandBox#295".Retângulo(1.2, 7.0),
+ Main.var"##WeaveSandBox#295".Retângulo(3.0, 2.0))
 ```
 
 
@@ -598,10 +598,10 @@ end
 ```
 
 ```
-1ᵒ: Main.var"##WeaveSandBox#357".Retângulo(2.0, 3.0) com área 6.0
-2ᵒ: Main.var"##WeaveSandBox#357".Retângulo(3.0, 2.0) com área 6.0
-3ᵒ: Main.var"##WeaveSandBox#357".Retângulo(1.2, 7.0) com área 8.4
-4ᵒ: Main.var"##WeaveSandBox#357".Retângulo(1.5, 6.0) com área 9.0
+1ᵒ: Main.var"##WeaveSandBox#295".Retângulo(2.0, 3.0) com área 6.0
+2ᵒ: Main.var"##WeaveSandBox#295".Retângulo(3.0, 2.0) com área 6.0
+3ᵒ: Main.var"##WeaveSandBox#295".Retângulo(1.2, 7.0) com área 8.4
+4ᵒ: Main.var"##WeaveSandBox#295".Retângulo(1.5, 6.0) com área 9.0
 ```
 
 
@@ -614,7 +614,7 @@ println("Mínimo $(minimum([R1, R2, R3, R4])) em $(argmin([R1, R2, R3, R4]))")
 ```
 
 ```
-Mínimo Main.var"##WeaveSandBox#357".Retângulo(2.0, 3.0) em 1
+Mínimo Main.var"##WeaveSandBox#295".Retângulo(2.0, 3.0) em 1
 ```
 
 
@@ -804,8 +804,8 @@ nothing
 ```
 
 ```
-0.000020 seconds (1 allocation: 20.625 KiB)
-  0.000033 seconds (2 allocations: 20.641 KiB)
+0.000017 seconds (1 allocation: 20.625 KiB)
+  0.000682 seconds (25 allocations: 21.906 KiB, 95.19% compilation time)
 ```
 
 
@@ -840,9 +840,9 @@ nothing
 ```
 escalar1(vec1, vec2) ≈ escalar2(vec1, vec2) ≈ escalar3(vec1, vec2) ≈ escala
 r4(vec1, vec2) = true
-  69.900 ns (1 allocation: 896 bytes)
+  75.103 ns (1 allocation: 896 bytes)
   60.675 ns (0 allocations: 0 bytes)
-  442.970 ns (0 allocations: 0 bytes)
+  443.182 ns (0 allocations: 0 bytes)
   24.389 ns (0 allocations: 0 bytes)
 ```
 
@@ -857,15 +857,13 @@ Para uma estatística mais detalhada, usamos `@benchmark`.
 
 ```
 BenchmarkTools.Trial: 10000 samples with 996 evaluations.
- Range (min … max):  24.138 ns … 313.086 ns  ┊ GC (min … max): 0.00% … 0.00
-%
- Time  (median):     24.264 ns               ┊ GC (median):    0.00%
- Time  (mean ± σ):   25.685 ns ±  10.173 ns  ┊ GC (mean ± σ):  0.00% ± 0.00
-%
+ Range (min … max):  24.096 ns … 40.663 ns  ┊ GC (min … max): 0.00% … 0.00%
+ Time  (median):     24.222 ns              ┊ GC (median):    0.00%
+ Time  (mean ± σ):   24.265 ns ±  0.372 ns  ┊ GC (mean ± σ):  0.00% ± 0.00%
 
-  █▆▄▄▂▁                                                       ▁
-  ███████▇▆▆▆▆▆▅▅▆▅▅▅▄▅▅▃▃▄▅▃▅▄▅▄▅▄▃▅▄▁▅▃▃▃▃▄▄▃▃▁▅▁▄▁▄▃▃▄▁▄▁▁▃ █
-  24.1 ns       Histogram: log(frequency) by time      55.3 ns <
+       ▆  █  ▇  ▃ ▂  ▂  ▁                                     ▂
+  ▃▁█▁▁█▁▁█▁▁█▁▁█▁█▁▁█▁▁█▁▁▇▁▁▆▁▄▁▁▁▁▁▃▁▁▃▁▁▁▁▁▁▁▁▁▁▁▁▁▄▁▁▅▁▅ █
+  24.1 ns      Histogram: log(frequency) by time        25 ns <
 
  Memory estimate: 0 bytes, allocs estimate: 0.
 ```
