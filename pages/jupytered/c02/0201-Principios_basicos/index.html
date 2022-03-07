@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="" />
+  <meta name="author" content="and contributors" />
+   <title>Princípios básicos de modelagem</title>  
+  <link rel="shortcut icon" type="image/png" href="/modelagem_matematica/assets/images/favicon.png"/>
+  <link rel="stylesheet" href="/modelagem_matematica/css/base.css"/>
+  
+    <link rel="stylesheet" href="/modelagem_matematica/css/base_showaside.css"/>
+  
+  <script src="/modelagem_matematica/libs/mousetrap/mousetrap.min.js"></script>
+
+  
+
+  
+    <link rel="stylesheet" href="/modelagem_matematica/libs/katex/katex.min.css">
+  
+</head>
+
+<body>
+
+  <div class="books-container">
+
+  <aside class="books-menu">
+  <input type="checkbox" id="menu">
+  <label for="menu">☰</label>
+
+  <div class="books-title">
+    <a href="/modelagem_matematica/">Modelagem Matemática</a>
+  </div>
+
+  <br />
+
+  <div class="books-subtitle">
+    Notas de aula
+  </div>
+
+  <br />
+
+  <div class="books-author">
+    <a href="https://rmsrosa.github.io">Ricardo M. S. Rosa</a>
+  </div>
+
+  <div class="books-menu-content">
+    <div class="menu-level-1">
+    <li><a href="/modelagem_matematica/pages/intro">Introdução</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>PARTE I</li>
+    </div>
+    <div class="menu-level-1">
+    <li>1. Preliminares</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c01/0101-Aspectos_curso">1.1. Aspectos do curso</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c01/0102-Instalando_acessando_Julia">1.2. Instalando e acessando o Julia</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c01/0103-Primeiros_passos_Julia">1.3. Primeiros passos em Julia</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>PARTE II</li>
+    </div>
+    <div class="menu-level-1">
+    <li>2. Princípios de Modelagem Matemática</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c02/0201-Principios_basicos">2.1. Princípios básicos de modelagem</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c02/0202-Exemplos_tipos_modelagem">2.2. Exemplos de tipos de modelagem</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>3. Análise Dimensional</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c03/0301-Quantidades_unidades_dimensoes">3.1. Quantidades, unidades e dimensões</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c03/0302-BuckinghamPi">3.2. Análise dimensional e o Teorema de Buckingham-Pi</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c03/0303-Unidades_Julia">3.3. Trabalhando com unidades e dimensões em Julia</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>4. Ajuste de Parâmetros</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c04/0401-Minimos_quadrados_ajuste">4.1. Mínimos quadrados e o ajuste de parâmetros</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c04/0402-Modelos_redutiveis_linear_aplicacoes">4.2. Modelos redutíveis ao caso linear nos parâmetros e aplicações</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c04/0403-Minimos_quadrados_nao_linear">4.3. Mínimos quadrados não-linear</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c04/0404-Exemplos_ajuste_naolinear">4.4. Exemplos de ajuste não-linear de parâmetros</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c04/0405-Ajuste_em_redes_neurais">4.5. Ajuste de parâmetros em modelos de redes neurais (WIP)</a></li>
+    </div>
+<div>
+
+
+  
+    <a href="https://github.com/rmsrosa/modelagem_matematica/tree/modmat2022p1"><img src="/modelagem_matematica/assets/images/GitHub-Mark-32px.png" alt="GitHub repo" width="18" style="margin:5px 5px" align="left"></a>
+
+  
+
+</aside>
+
+
+  <div class="books-content">
+
+    
+      <div class="navbar">
+    <p id="nav">
+<span id="nav-prev" style="float: left;">
+<a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c01/0103-Primeiros_passos_Julia">1.3. Primeiros passos em Julia <kbd>←</kbd></a>
+</span>
+<span id="nav-next" style="float: right;">
+    <a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c02/0202-Exemplos_tipos_modelagem"><kbd>→</kbd> 2.2. Exemplos de tipos de modelagem</a>
+</span>
+    </p>
+</div>
+</br></br>
+
+    
+
+    
+      <div class="badges">
+<p>
+<a href="https://nbviewer.org/urls/rmsrosa.github.io/modelagem_matematica/tree/modmat2021p1/generated/notebooks/jupytered/c02/0201-Principios_basicos.ipynb"><img align="left" src="https://img.shields.io/badge/view%20in-nbviewer-orange" alt="View in NBViewer" title="View Jupyter notebook in NBViewer"></a>
+<a href="https://mybinder.org/v2/gh/rmsrosa/modelagem_matematica/julia-env-for-binder-2022p1?urlpath=git-pull%3Frepo%3Dhttps://github.com/rmsrosa/modelagem_matematica/tree/modmat2022p1%26urlpath%3Dlab/tree%252Fmodelagem_matematica/generated/notebooks/jupytered/c02/0201-Principios_basicos.ipynb%26branch%3Dgh-pages"><img align="left" src="https://mybinder.org/badge.svg" alt="Open in binder" title="Open in binder"></a>
+<a href="/modelagem_matematica/generated/notebooks/jupytered/c02/0201-Principios_basicos.ipynb"><img align="left" src="https://img.shields.io/badge/download-notebook-blue" alt="Download notebook" title="Download Jupyter notebook"></a>
+<a href="https://github.com/rmsrosa/modelagem_matematica/tree/modmat2022p1/blob/main/_jupyter/c02/0201-Principios_basicos.ipynb"><img align="left" src="https://img.shields.io/badge/view-source-lightblue" alt="View source" title="View source"></a>
+</p>
+</div></br>
+
+    
+<h1 id="get_title"><a href="#get_title" class="header-anchor">2.1. Princípios básicos de modelagem</a></h1>
+<ul>
+<li><p>Modelos em geral</p>
+</li>
+<li><p>Modelos matemáticos</p>
+</li>
+<li><p>Tipos de modelos</p>
+</li>
+<li><p>Tipos de modelagem</p>
+</li>
+<li><p>Ajuste de parâmetros</p>
+</li>
+<li><p>Validação</p>
+</li>
+<li><p>Escolha do modelo</p>
+</li>
+<li><p>Quantificação de incertezas</p>
+</li>
+</ul>
+<h2 id="modelos"><a href="#modelos" class="header-anchor">Modelos</a></h2>
+<ul>
+<li><p>Um <strong>modelo</strong> é uma representação de algo:</p>
+<ul>
+<li><p>Pessoa</p>
+</li>
+<li><p>Objeto</p>
+</li>
+<li><p>Conceito</p>
+</li>
+<li><p>Fenômeno</p>
+</li>
+<li><p>Etc.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="exemplos_de_modelos"><a href="#exemplos_de_modelos" class="header-anchor">Exemplos de modelos</a></h3>
+<ul>
+<li><p>Um <strong>busto</strong> é uma representação visual de um indivíduo;</p>
+</li>
+<li><p>Um <strong>perfil psicológico</strong> é um modelo das características psicológicas de um indivíduo;</p>
+</li>
+<li><p>Um <strong>mapa</strong> é um modelo geográfico, e.g. um mapa rodoviário, topográfico, geo-político, etc.</p>
+</li>
+</ul>
+<p><img src="/modelagem_matematica/assets/attachments/img/modmat_model_examples.png" alt="Exemplos de modelos" /></p>
+<p>Créditos: <a href="https://commons.wikimedia.org/wiki/File:Nefertiti_30-01-2006.jpg?uselang&#61;pt">Imagem da rainha Nefertiti</a>, <a href="https://www.geekinheels.com/2013/10/23/star-wars-mbti-chart.html">Star Wars pesonality test</a> <a href="https://pesquisarodovias.cnt.org.br/">Pesquisa CNT de rodovias</a></p>
+<h3 id="modelo_matemático"><a href="#modelo_matemático" class="header-anchor">Modelo matemático</a></h3>
+<p>Um <strong>modelo matemático</strong> usa conceitos matemáticos nessas representações.</p>
+<ul>
+<li><p>Um <strong>mapa rodoviário</strong> pode ser um <strong>grafo</strong> conectando lugares.</p>
+</li>
+</ul>
+\[ \begin{align}
+& \qquad \qquad \qquad \fbox{Minas Gerais}  \\
+& \qquad \qquad \nearrow \qquad \quad \;\updownarrow \qquad \qquad \nwarrow \\
+& \fbox{São Paulo} \longleftrightarrow \fbox{Rio de Janeiro} \longleftrightarrow \fbox{Espírito Santo}
+\end{align}
+\]
+<ul>
+<li><p>A dependência da oferta \(Q(P)\) de um produto em relação ao seu preço \(P\) pode ser o de <em>elasticidade-constante</em> \(\epsilon\), com uma <strong>função</strong></p>
+</li>
+</ul>
+\[ Q(P) = C P^\epsilon.
+\]
+<ul>
+<li><p>A dinâmica populacional de uma determinada espécie pode ser a <strong>equação diferencial logística</strong></p>
+</li>
+</ul>
+\[ \frac{\text{d} x}{\text{d} t} = \alpha x - \beta x^2.
+\]
+<h3 id="tipos_de_modelos"><a href="#tipos_de_modelos" class="header-anchor">Tipos de modelos</a></h3>
+<ul>
+<li><p>estacionário x dinâmico</p>
+</li>
+<li><p>determinístico x estocástico</p>
+</li>
+<li><p>discreto x contínuo</p>
+</li>
+<li><p>explícito x implícito</p>
+</li>
+<li><p>macroscópico/microscópico x complexo</p>
+</li>
+<li><p>diferencial x não-diferencial</p>
+</li>
+<li><p>otimização x não-otimização</p>
+</li>
+</ul>
+<h2 id="modelagem_matemática"><a href="#modelagem_matemática" class="header-anchor">Modelagem matemática</a></h2>
+<p>&quot;Modelagem matemática é um processo que utiliza conceitos matemáticos para representar, analisar, fazer previsões e obter conhecimento de fenômenos do mundo real.&quot; - <a href="https://m3challenge.siam.org/resources/teaching-modeling">GAIMME</a></p>
+<h3 id="processo_de_modelagem"><a href="#processo_de_modelagem" class="header-anchor">Processo de modelagem</a></h3>
+<p><img src="/modelagem_matematica/assets/attachments/img/mathmoddiag_512x256.png" alt="processo de modelagem" /></p>
+<h3 id="tipos_de_modelagem"><a href="#tipos_de_modelagem" class="header-anchor">Tipos de modelagem</a></h3>
+<p>O processo de modelagem pode seguir vários caminhos:</p>
+<ul>
+<li><p><strong>empírico:</strong> através da observação, seja de fenômenos reais, seja de experimentos controlados</p>
+</li>
+<li><p><strong>análise dimensional:</strong> baseado na análise das dimensões de quantidades envolvidas no fenômeno</p>
+</li>
+<li><p><strong>ad-hoc:</strong> introduzida sem muito fundamento e sem muita capacidade de generalização/extrapolação</p>
+</li>
+<li><p><strong>mecanicista:</strong> baseado em mecanismos envolvidos no fenômeno</p>
+<ul>
+<li><p><strong>heurístico:</strong> baseada em mecanismos qualitativos &#40;e.g. os termos de interação entre duas espécies&#41;</p>
+</li>
+<li><p><strong>fundamental:</strong> baseado em relações/modelos bem estabelecidas e &quot;precisos&quot; &#40;e.g. mecânica, termodinâmica, lei ação de massas&#41;</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>Vale ressaltar que vários desses processos estão interligados.</p>
+<h2 id="ajuste_de_parâmetros"><a href="#ajuste_de_parâmetros" class="header-anchor">Ajuste de parâmetros</a></h2>
+<ul>
+<li><p>Uma parte fundamental do processo de modelagem é o <strong>ajuste de parâmetros</strong>.</p>
+</li>
+<li><p>Os modelos dependem, normalmente, de vários parâmetros.</p>
+</li>
+<li><p>É fundamental termos dados reais para ajustar os parâmetros a esses dados, e assim modelar o fenômeno apropriadamente.</p>
+</li>
+<li><p>Esse ajuste pode ser feito com várias técnicas, algumas das quais veremos ao longo do curso.</p>
+</li>
+<li><p>E invariavelmente os dados reais contém <strong>ruídos da medição</strong> e/ou refletem <strong>incertezas inerentes ao processo</strong>. Nesse caso, conceitos estatísticos/probilísticos são necessários.</p>
+</li>
+</ul>
+<h2 id="validação"><a href="#validação" class="header-anchor">Validação</a></h2>
+<ul>
+<li><p>No processo de modelagem, não devemos nos preocupar apenas com a <strong>criação</strong> do modelo.</p>
+</li>
+<li><p>É preciso <strong>validá-lo</strong>, também.</p>
+</li>
+<li><p>Mesmo no modelo de um <strong>busto</strong>, fazemos a validação através da <strong>olhar</strong>, ou até mesmo do <strong>tato</strong>.</p>
+</li>
+<li><p>Em um modelo matemático, também podemos fazer isso, tanto de forma <strong>qualitativa</strong> como <strong>quantitativa</strong>.</p>
+</li>
+<li><p>No exemplo de alometria, podemos medir, para cada comprimento dado, a diferença entre os valores medidos para a massa e o valor estimado pelo modelo, e ver o quão pequena essa diferença é. De preferência de forma relativa, para termos um critério mais objetivo, entre modelos.</p>
+</li>
+</ul>
+<h2 id="escolha_do_modelo"><a href="#escolha_do_modelo" class="header-anchor">Escolha do modelo</a></h2>
+<ul>
+<li><p>Em muitos casos, vários modelos parecem ser apropriados.</p>
+</li>
+<li><p>Não é tão imediato decidir qual deles será mais satisfatório para o problema em questão.</p>
+</li>
+<li><p>Diversas técnicas podem ser utilizadas para verificar a robustez de um modelo a predições, evitando, em particular, um excesso de parâmetros que possam ajustar perfeitamente o modelo mas causar erros grosseiros de predição, algo conhecido como <em>over-fitting</em>.</p>
+</li>
+<li><p>Há testes de validação cruzada e critérios de teoria de informação que iremos explorar com esse objetivo.</p>
+</li>
+</ul>
+<h2 id="quantificação_de_incertezas"><a href="#quantificação_de_incertezas" class="header-anchor">Quantificação de incertezas</a></h2>
+<ul>
+<li><p>Qualquer modelo contém <strong>incertezas</strong> em relação ao objeto da modelagem.</p>
+</li>
+<li><p>Incertezas de <strong>naturezas diversas:</strong></p>
+<ul>
+<li><p>Aspectos não considerados no modelo;</p>
+</li>
+<li><p>Impossibilidade do fenômeno de ser completamente modelado;</p>
+</li>
+<li><p>Imprecisões nas medições;</p>
+</li>
+<li><p>Incertezas no ajuste de dados.</p>
+</li>
+</ul>
+</li>
+<li><p>Nesse sentido, é importante buscar quantificar essas incertezas e como elas afetam diversos aspectos oriundos da modelagem:</p>
+<ul>
+<li><p>Predição</p>
+</li>
+<li><p>Representação</p>
+</li>
+<li><p>Análise</p>
+</li>
+<li><p>Robustez</p>
+</li>
+</ul>
+</li>
+<li><p>Há técnicas clássicas de análise de erro</p>
+<ul>
+<li><p>Estatísticas/probilísticas &#40;e.g. médias, desvio-padrão, cálculo de intervalos de confiança, análises de correlação&#41;</p>
+</li>
+<li><p>Propagação local de erro, via análise de derivads</p>
+</li>
+<li><p>Propagação global de erro, via simulações de Monte-Carlo</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="conclusão"><a href="#conclusão" class="header-anchor">Conclusão</a></h2>
+<ul>
+<li><p>Vimos acima diversos aspectos do processo de modelagem:</p>
+<ul>
+<li><p>Observação</p>
+</li>
+<li><p>Elaboração do modelo</p>
+</li>
+<li><p>Ajuste de dados</p>
+</li>
+<li><p>Validação</p>
+</li>
+<li><p>Escolha do &quot;melhor&quot; modelo</p>
+</li>
+<li><p>Quantificação de incertezas</p>
+</li>
+</ul>
+</li>
+<li><p>Ao longo do curso, vamos analisar cada um desses aspectos</p>
+</li>
+<li><p>Faremos isso buscando, também, trabalhar em cima de diversos casos concretos</p>
+</li>
+<li><p>E através de projetos em que cada um de vocês terá a oportunidade de fazer na prática</p>
+</li>
+</ul>
+
+    <div class="navbar">
+    <p id="nav">
+<span id="nav-prev" style="float: left;">
+<a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c01/0103-Primeiros_passos_Julia">1.3. Primeiros passos em Julia <kbd>←</kbd></a>
+</span>
+<span id="nav-next" style="float: right;">
+    <a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c02/0202-Exemplos_tipos_modelagem"><kbd>→</kbd> 2.2. Exemplos de tipos de modelagem</a>
+</span>
+    </p>
+</div>
+</br></br>
+
+
+
+<div class="page-foot">
+    
+        <div class="license">
+            <a href=https://creativecommons.org/licenses/by-nc-nd/4.0/>(CC BY-NC-ND 4.0) Attribution-NonCommercial-NoDerivatives 4.0 International </a>
+            
+        </div>
+    
+
+    Last modified: March 07, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
+</div><!-- CONTENT ENDS HERE -->
+
+      </div> <!-- .books-content -->
+    </div> <!-- .books-container -->
+
+    
+        <script src="/modelagem_matematica/libs/katex/katex.min.js"></script>
+        <script src="/modelagem_matematica/libs/katex/auto-render.min.js"></script>
+        <script>renderMathInElement(document.body)</script>
+    
+
+    
+
+  </body>
+</html>

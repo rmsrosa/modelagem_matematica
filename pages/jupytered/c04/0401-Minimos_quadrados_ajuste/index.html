@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="" />
+  <meta name="author" content="and contributors" />
+   <title>Mínimos quadrados e o ajuste de parâmetros</title>  
+  <link rel="shortcut icon" type="image/png" href="/modelagem_matematica/assets/images/favicon.png"/>
+  <link rel="stylesheet" href="/modelagem_matematica/css/base.css"/>
+  
+    <link rel="stylesheet" href="/modelagem_matematica/css/base_showaside.css"/>
+  
+  <script src="/modelagem_matematica/libs/mousetrap/mousetrap.min.js"></script>
+
+  
+
+  
+    <link rel="stylesheet" href="/modelagem_matematica/libs/katex/katex.min.css">
+  
+</head>
+
+<body>
+
+  <div class="books-container">
+
+  <aside class="books-menu">
+  <input type="checkbox" id="menu">
+  <label for="menu">☰</label>
+
+  <div class="books-title">
+    <a href="/modelagem_matematica/">Modelagem Matemática</a>
+  </div>
+
+  <br />
+
+  <div class="books-subtitle">
+    Notas de aula
+  </div>
+
+  <br />
+
+  <div class="books-author">
+    <a href="https://rmsrosa.github.io">Ricardo M. S. Rosa</a>
+  </div>
+
+  <div class="books-menu-content">
+    <div class="menu-level-1">
+    <li><a href="/modelagem_matematica/pages/intro">Introdução</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>PARTE I</li>
+    </div>
+    <div class="menu-level-1">
+    <li>1. Preliminares</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c01/0101-Aspectos_curso">1.1. Aspectos do curso</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c01/0102-Instalando_acessando_Julia">1.2. Instalando e acessando o Julia</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c01/0103-Primeiros_passos_Julia">1.3. Primeiros passos em Julia</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>PARTE II</li>
+    </div>
+    <div class="menu-level-1">
+    <li>2. Princípios de Modelagem Matemática</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c02/0201-Principios_basicos">2.1. Princípios básicos de modelagem</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c02/0202-Exemplos_tipos_modelagem">2.2. Exemplos de tipos de modelagem</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>3. Análise Dimensional</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c03/0301-Quantidades_unidades_dimensoes">3.1. Quantidades, unidades e dimensões</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c03/0302-BuckinghamPi">3.2. Análise dimensional e o Teorema de Buckingham-Pi</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c03/0303-Unidades_Julia">3.3. Trabalhando com unidades e dimensões em Julia</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>4. Ajuste de Parâmetros</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c04/0401-Minimos_quadrados_ajuste">4.1. Mínimos quadrados e o ajuste de parâmetros</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c04/0402-Modelos_redutiveis_linear_aplicacoes">4.2. Modelos redutíveis ao caso linear nos parâmetros e aplicações</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c04/0403-Minimos_quadrados_nao_linear">4.3. Mínimos quadrados não-linear</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c04/0404-Exemplos_ajuste_naolinear">4.4. Exemplos de ajuste não-linear de parâmetros</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c04/0405-Ajuste_em_redes_neurais">4.5. Ajuste de parâmetros em modelos de redes neurais (WIP)</a></li>
+    </div>
+<div>
+
+
+  
+    <a href="https://github.com/rmsrosa/modelagem_matematica/tree/modmat2022p1"><img src="/modelagem_matematica/assets/images/GitHub-Mark-32px.png" alt="GitHub repo" width="18" style="margin:5px 5px" align="left"></a>
+
+  
+
+</aside>
+
+
+  <div class="books-content">
+
+    
+      <div class="navbar">
+    <p id="nav">
+<span id="nav-prev" style="float: left;">
+<a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c03/0303-Unidades_Julia">3.3. Trabalhando com unidades e dimensões em Julia <kbd>←</kbd></a>
+</span>
+<span id="nav-next" style="float: right;">
+    <a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c04/0402-Modelos_redutiveis_linear_aplicacoes"><kbd>→</kbd> 4.2. Modelos redutíveis ao caso linear nos parâmetros e aplicações</a>
+</span>
+    </p>
+</div>
+</br></br>
+
+    
+
+    
+      <div class="badges">
+<p>
+<a href="https://nbviewer.org/urls/rmsrosa.github.io/modelagem_matematica/tree/modmat2021p1/generated/notebooks/jupytered/c04/0401-Minimos_quadrados_ajuste.ipynb"><img align="left" src="https://img.shields.io/badge/view%20in-nbviewer-orange" alt="View in NBViewer" title="View Jupyter notebook in NBViewer"></a>
+<a href="https://mybinder.org/v2/gh/rmsrosa/modelagem_matematica/julia-env-for-binder-2022p1?urlpath=git-pull%3Frepo%3Dhttps://github.com/rmsrosa/modelagem_matematica/tree/modmat2022p1%26urlpath%3Dlab/tree%252Fmodelagem_matematica/generated/notebooks/jupytered/c04/0401-Minimos_quadrados_ajuste.ipynb%26branch%3Dgh-pages"><img align="left" src="https://mybinder.org/badge.svg" alt="Open in binder" title="Open in binder"></a>
+<a href="/modelagem_matematica/generated/notebooks/jupytered/c04/0401-Minimos_quadrados_ajuste.ipynb"><img align="left" src="https://img.shields.io/badge/download-notebook-blue" alt="Download notebook" title="Download Jupyter notebook"></a>
+<a href="https://github.com/rmsrosa/modelagem_matematica/tree/modmat2022p1/blob/main/_jupyter/c04/0401-Minimos_quadrados_ajuste.ipynb"><img align="left" src="https://img.shields.io/badge/view-source-lightblue" alt="View source" title="View source"></a>
+</p>
+</div></br>
+
+    
+<h1 id="get_title"><a href="#get_title" class="header-anchor">4.1. Mínimos quadrados e o ajuste de parâmetros</a></h1>
+<h2 id="ajuste_de_parâmetros"><a href="#ajuste_de_parâmetros" class="header-anchor">Ajuste de parâmetros</a></h2>
+<ul>
+<li><p>Independentemente de como chegamos a um modelo, uma parte importante do processo de modelagem é o ajuste dos parâmetros do modelo.</p>
+</li>
+<li><p>O tipo de ajuste depende do tipo de modelagem.</p>
+</li>
+<li><p>Veremos aqui, o método de mínimos quadrados, aplicável em modelos lineares nos parâmetros.</p>
+</li>
+</ul>
+<h2 id="exemplo_reta_passando_por_dois_pontos"><a href="#exemplo_reta_passando_por_dois_pontos" class="header-anchor">Exemplo: Reta passando por dois pontos</a></h2>
+<ul>
+<li><p>Considere, para efeito de motivação, o problema de se achar a reta que passa por dois pontos no plano.</p>
+</li>
+<li><p>Em uma aplicação, esses pontos seriam os <strong>dados</strong> da <strong>amostra</strong>.</p>
+</li>
+<li><p>Vamos supor que eles sejam \((2, 1)\) e \((3, 4)\).</p>
+</li>
+<li><p>Nesse caso, a reta passa por \((2,1)\) e tem inclinação \((4-1)/(3-2) = 3\). Logo, é dada por</p>
+</li>
+</ul>
+\[ (y - 1) = 3(x - 2).
+\]
+<ul>
+<li><p>Ou, de outra forma,</p>
+</li>
+</ul>
+\[ y = 3x - 5.
+\]
+<p><img src="/modelagem_matematica/assets/attachments/img/ajuste_reta_a_dois_pontos.png" alt="ajuste reta a dois pontos" /></p>
+<ul>
+<li><p>Podemos, também, enxergar isso como um problema de álgebra linear. Isso é feito procurando-se uma reta \(y = mx + b\) que passe pelos dois pontos.</p>
+</li>
+<li><p>Nesse caso, temos o problema de <strong>ajustar os parâmetros</strong> \(m\) e \(b\) aos <strong>dados</strong> \((2,1)\) e \((3,4)\).</p>
+</li>
+<li><p>Nesse ajuste, temos as condições</p>
+</li>
+</ul>
+\[ \begin{cases}
+  b + 2m = 1, \\
+  b + 3m = 4.
+\end{cases}
+\]
+<ul>
+<li><p>Em forma matricial,</p>
+</li>
+</ul>
+\[
+  \left[ \begin{matrix} 1 & 2 \\ 1 & 3 \end{matrix}\right] \left( \begin{matrix} m \\ b \end{matrix} \right) = \left( \begin{matrix} 1 \\ 4 \end{matrix} \right).
+\]
+<ul>
+<li><p>É fácil resolver o sistema </p>
+</li>
+</ul>
+\[ \begin{cases}
+  b + 2m = 1, \\
+  b + 3m = 4.
+\end{cases}
+\]
+<p>usando uma equação pra escrever \(b\) em função de \(m\) e sem seguida resolvendo a outra equação para \(m\).</p>
+<ul>
+<li><p>Também podemos inverter a matriz associada para achar</p>
+</li>
+</ul>
+\[
+   \left( \begin{matrix} b \\ m \end{matrix} \right) = \left[ \begin{matrix} 1 & 2 \\ 1 & 3 \end{matrix}\right]^{-1} \left( \begin{matrix} 1 \\ 4 \end{matrix} \right) = \left[ \begin{matrix} 3 & -2 \\ -1 & 1 \end{matrix}\right] \left( \begin{matrix} 1 \\ 4 \end{matrix} \right) = \left( \begin{matrix} -5 \\ 3 \end{matrix} \right).
+\]
+<ul>
+<li><p>Esse problema sempre tem solução, a menos que os dois pontos estejam na vertical.</p>
+</li>
+</ul>
+<h2 id="observações"><a href="#observações" class="header-anchor">Observações</a></h2>
+<ul>
+<li><p>Na prática, no entanto, o modelo não é perfeito, os dados não são precisos e a solução não é tão simples.</p>
+</li>
+<li><p>Em alguns casos, podemos ter poucos dados, em outros, podemos ter muitos.</p>
+</li>
+<li><p><em>Poucos dados</em> nos dão muitas incertezas. Pense no problema de se achar uma reta sobre a qual só temos a informação de um ponto por onde ela passa.</p>
+</li>
+<li><p><em>Muitos dados</em> nos dão aproximações, nem sempre muito boas. Pense no problema de se achar uma reta que passa perto de três pontos não-colineares.</p>
+</li>
+</ul>
+<h2 id="exemplo_retas_passando_por_um_único_ponto"><a href="#exemplo_retas_passando_por_um_único_ponto" class="header-anchor">Exemplo: Retas passando por um único ponto</a></h2>
+<ul>
+<li><p>Digamos, no entanto, que temos apenas um ponto \((1,2)\). &#40;uma simplificação exagerada do que pode acontecer na prática&#41;.</p>
+</li>
+<li><p>Há infinitas soluções para \(m\) e \(b\) tais que \(y=mx + b\) passe por \((1,2)\), basta que</p>
+</li>
+</ul>
+\[ m + b = 2
+\]
+<ul>
+<li><p>Nesse caso, podemos simplificar o modelo e/ou exigir uma condição a mais.</p>
+</li>
+<li><p>Podemos simplificar o modelo exigindo que a reta seja horizontal:</p>
+</li>
+</ul>
+\[ m = 0 \text{ e } b = 2 \quad \Longrightarrow \quad \text{Modelo: } y = 2
+\]
+<ul>
+<li><p>Ou que ela seja homogênea, i.e. passe pela origem:</p>
+</li>
+</ul>
+\[ m = 2 \text{ e } b = 0 \quad \Longrightarrow \quad \text{Modelo: } y = x
+\]
+<ul>
+<li><p>De outro ponto de vista, os modelos acima podem ser vistos como os com o <strong>menor número de parâmetros</strong>.</p>
+</li>
+</ul>
+<p><img src="/modelagem_matematica/assets/attachments/img/ajuste_reta_a_um_ponto.png" alt="ajuste reta a um pontos" /></p>
+<ul>
+<li><p>Podemos, também, exigir que a solução seja a de <strong>menor norma euclidiana</strong>: \(\sqrt{m^2 + b^2}\). Na verdade isso é equivalente a minimizar \(m^2 + b^2\), que é mais fácil por não envolver a raiz quadrada. Nesse caso &#40;verifique&#33;&#41;,</p>
+</li>
+</ul>
+\[ m = 1 \text{ e } b = 1 \quad \Longrightarrow \quad \text{Modelo: } y = x + 1
+\]
+<ul>
+<li><p>As soluções acima são tipos de <strong>regularização</strong> &#40;e.g. <a href="https://en.wikipedia.org/wiki/Lasso_&#40;statistics&#41;">LASSO</a>,  <a href="https://en.wikipedia.org/wiki/Ridge_regression">Ridge</a>, <a href="https://en.wikipedia.org/wiki/Tikhonov_regularization">Tikhonov</a>&#41; de um problema <strong>mal-posto</strong> &#40;no caso, com mais de uma solução&#41;. A regularização nos dá uma forma de escolher alguma das possíveis soluções de acordo com algum propósito.</p>
+</li>
+</ul>
+<h2 id="exemplo_ajustando_uma_reta_a_mais_de_dois_pontos_não_colineares"><a href="#exemplo_ajustando_uma_reta_a_mais_de_dois_pontos_não_colineares" class="header-anchor">Exemplo: ajustando uma reta a mais de dois pontos não colineares</a></h2>
+<ul>
+<li><p>Um problema oposto é o de ajustar uma reta a mais de dois pontos.</p>
+</li>
+<li><p>Isso funciona bem quando todos os pontos são colineares.</p>
+</li>
+<li><p>Caso contrário, teremos, no máximo, uma <em>aproximação</em>.</p>
+</li>
+<li><p>Como fazer essa aproximação?</p>
+</li>
+<li><p>A resposta tradicional é a de usar <strong>mínimos quadrados</strong>, ou seja, procurar a reta que <em>minimiza o erro quadrático</em>.</p>
+</li>
+<li><p>Por exemplo, digamos que queiramos ajustar a reta \(y=mx + b\) aos pontos \((1,2)\), \((2,1)\) e \((3,4)\).</p>
+</li>
+</ul>
+<p><img src="/modelagem_matematica/assets/attachments/img/ajuste_reta_a_tres_pontos.png" alt="ajuste reta a três pontos" /></p>
+<ul>
+<li><p>Se existisse solução exata, ela seria solução do sistema</p>
+</li>
+</ul>
+\[ \begin{cases}
+  b + m = 2, \\
+  b + 2m = 1, \\
+  b + 3m = 4.
+\end{cases}
+\]
+<ul>
+<li><p>Em forma matricial,</p>
+</li>
+</ul>
+\[
+  \left[ \begin{matrix} 1 & 1 \\ 1 & 2 \\ 1 & 3 \end{matrix}\right] \left( \begin{matrix} m \\ b \end{matrix} \right) = \left( \begin{matrix} 2 \\ 1 \\ 4 \end{matrix} \right).
+\]
+<ul>
+<li><p>É imediato deduzir, a partir da visualização dos pontos no plano, que é impossível achar tal reta. O mesmo pode ser deduzido a partir do sistema linear ou do escalonamento da matriz.</p>
+</li>
+<li><p>Mas podemos buscar a solução que melhor aproxima os dados no sentido do erro quadrático, como veremos a seguir.</p>
+</li>
+</ul>
+<h2 id="mínimos_quadrados"><a href="#mínimos_quadrados" class="header-anchor">Mínimos quadrados</a></h2>
+<ul>
+<li><p>A ideia, então, é achar a reta mais próxima dos pontos em algum sentido.</p>
+</li>
+<li><p>Para cada abscissa \(x_i\) de cada ponto \((x_i, y_i)\) da amostra, temos a ordenada correspondente \(y_i\) e ordenada \(\hat y_i = mx_i + b\) obtida pelo modelo.</p>
+</li>
+<li><p>A diferença entre \(y_i\) e \(\hat y_i\) é chamada de <strong>resíduo</strong> no ponto \(i\):</p>
+</li>
+</ul>
+\[ r_i = y_i - \hat y_i.
+\]
+<ul>
+<li><p>O <strong>erro</strong> absoluto em cada ponto é</p>
+</li>
+</ul>
+\[ |r_i| = |y_i - \hat y_i|
+\]
+<ul>
+<li><p>O <strong>erro quadrático</strong> total, ou <strong>soma dos quadrados dos resíduos</strong> <em>&#40;RSS&#61;residual sum of squares&#41;</em>, é</p>
+</li>
+</ul>
+\[ E = \sum_{i=1}^N |y_i - \hat y_i|^2,
+\]
+<p>onde \(N=3\), nesse caso &#40;três pontos&#41;.</p>
+<ul>
+<li><p>Buscamos, então, minimizar esse erro:</p>
+</li>
+</ul>
+\[ \operatorname{argmin}_{m,b\in \mathbb{R}} \sum_{i=1}^N |y_i - \hat y_i|^2.
+\]
+<ul>
+<li><p>A função a ser minimizada é suave &#40;quadrática&#41;, convexa e coerciva:</p>
+</li>
+</ul>
+\[  E(m,b) = \sum_{i=1}^N |y_i - \hat y_i|^2 = \sum_{i=1}^N |y_i - mx_i - b|^2
+\]
+<ul>
+<li><p>Portanto, existe pelo menos uma solução.</p>
+</li>
+<li><p>As soluções podem ser encontradas procurando-se o ponto crítico da função</p>
+</li>
+</ul>
+\[ \nabla E(m,b) = (0,0).
+\]
+<ul>
+<li><p>O gradiente da função \(E=\sum_i |y_i - mx_i - b|^2\) é o vetor \(\nabla E(m,b) = (\partial_m E, \partial_b E)\) das derivadas parciais</p>
+</li>
+</ul>
+\[ \frac{\partial E}{\partial m} = -2\sum_i (y_i - mx_i - b)x_i = 2(\sum_i x_i^2)m  + 2(\sum_i xi)b -2\sum_i x_iy_i,
+\]
+\[ \frac{\partial E}{\partial b} = -2\sum_i (y_i - mx_i - b) = 2(\sum_i x_i)m + 2(\sum_i 1))b - 2\sum_i y_i.
+\]
+<ul>
+<li><p>Portanto, os pontos críticos são dados pelo sistema, escrito em forma matricial,</p>
+</li>
+</ul>
+\[
+ \left[ \begin{matrix} \sum_i x_i & \sum_i x_i^2 \\ \sum_i 1 & \sum_i x_i\end{matrix} \right] \left(\begin{matrix} b \\ m \end{matrix}\right) = \left(\begin{matrix} \sum_i x_iy_i \\ \sum_i y_i \end{matrix}\right).
+\]
+<ul>
+<li><p>Esse sistema tem uma certa estrutura, que pode não ser clara de imediato, mas que tem a seguinte forma</p>
+</li>
+</ul>
+\[
+ \left[ \begin{matrix} 1 & \ldots & 1 \\ x_1 & \ldots & x_N \end{matrix} \right] \left[ \begin{matrix} 1 & x_1 \\ \vdots & \vdots \\ 1 & x_n \end{matrix} \right] \left(\begin{matrix} b \\ m \end{matrix}\right) = \left[ \begin{matrix} 1 & \ldots & 1 \\ x_1 & \ldots & x_N \end{matrix} \right] \left(\begin{matrix} y_1 \\ \vdots \\ y_N \end{matrix}\right).
+\]
+<ul>
+<li><p>Mais ainda, note que a matriz à esquerda é a transposta da matriz seguinte, i.e.</p>
+</li>
+</ul>
+\[\left[ \begin{matrix} 1 & \ldots & 1 \\ x_1 & \ldots & x_N \end{matrix} \right] = \left[ \begin{matrix} 1 & x_1 \\ \vdots & \vdots \\ 1 & x_n \end{matrix} \right]^t
+\]
+<ul>
+<li><p>Isso pode ser visto de uma maneira mais natural, a partir da formulação</p>
+</li>
+</ul>
+\[ \operatorname{argmin}_{m,b\in \mathbb{R}} \sum_{i=1}^N |y_i - mx_i - b|^2.
+\]
+<ul>
+<li><p>A função a ser minimizada por ser reescrita como</p>
+</li>
+</ul>
+\[  \left\|\left(\begin{matrix} y_1 - b - mx_1\\ \vdots \\ y_N - b - m x_N\end{matrix}\right)\right\|^2 = \left\|\left(\begin{matrix} y_1 \\ \vdots \\ y_N \end{matrix}\right) - b \left(\begin{matrix} 1 \\ \vdots \\ 1 \end{matrix}\right) - m \left(\begin{matrix} x_1 \\ \vdots \\ x_N \end{matrix}\right)\right\|^2 = \left\|\left(\begin{matrix} y_1 \\ \vdots \\ y_N \end{matrix}\right) - \left[\begin{matrix} 1 & x_1 \\ \vdots & \vdots \\ 1 & x_N \end{matrix}\right]\left(\begin{matrix} b \\ m \end{matrix}\right)\right\|^2.
+\]
+<ul>
+<li><p>Ou seja, \(\|\mathbf{y} - A \boldsymbol{\beta}\|^2\), onde</p>
+</li>
+</ul>
+\[ A = \left[\begin{matrix} 1 & x_1 \\ \vdots & \vdots \\ 1 & x_N \end{matrix}\right], \quad \boldsymbol{\beta} = \left(\begin{matrix} b \\ m \end{matrix}\right), \quad \mathbf{y} = \left(\begin{matrix} y_1 \\ \vdots \\ y_N \end{matrix}\right).
+\]
+<ul>
+<li><p>Para minimizar \(E(\boldsymbol{\beta}) = \|\mathbf{y} - A\boldsymbol{\beta}\|^2\), olhamos, novamente, para os seus pontos críticos.</p>
+</li>
+<li><p>A derivada direcional de \(E(\boldsymbol{\beta})\) na direção de um vetor unitário \(\boldsymbol{\alpha}\) é &#40;verifique&#33;&#41;</p>
+</li>
+</ul>
+\[ \nabla E(\boldsymbol{\beta})\cdot \boldsymbol{\alpha} = -2(\mathbf{y} - A\boldsymbol{\beta})\cdot (A\boldsymbol{\alpha}).
+\]
+<ul>
+<li><p>Podemos reescrever isso usando exatamente a transposta de \(A\):</p>
+</li>
+</ul>
+\[ \nabla E(\boldsymbol{\beta})\cdot \boldsymbol{\alpha} = - 2(A^t(\mathbf{y} - A\boldsymbol{\beta}))\cdot \boldsymbol{\alpha}.
+\]
+<ul>
+<li><p>Ou seja, </p>
+</li>
+</ul>
+\[ \nabla E(\boldsymbol{\beta}) = - 2A^t(\mathbf{y} - A\boldsymbol{\beta}).
+\]
+<ul>
+<li><p>No ponto crítico, devemos ter \(\nabla E(\boldsymbol{\beta}) = \mathbf{0}\), ou seja</p>
+</li>
+</ul>
+\[ A^tA\boldsymbol{\beta} = A^t\mathbf{y}.
+\]
+<ul>
+<li><p>Note que isso é exatamente a fórmula obtida anteriormente. Mas agora está mais fácil de ser generalizada&#33;</p>
+</li>
+</ul>
+<h2 id="ajustando_polinômios_de_ordem_mais_alta"><a href="#ajustando_polinômios_de_ordem_mais_alta" class="header-anchor">Ajustando polinômios de ordem mais alta</a></h2>
+<ul>
+<li><p>Não precisamos nos restringir a modelos lineares \(y=mx + b\).</p>
+</li>
+<li><p>Podemos procurar polinômios de ordem mais alta</p>
+</li>
+</ul>
+\[ y = \beta_0 + \beta_1x + \beta_2 x^2 + \ldots + \beta_m x^m.
+\]
+<ul>
+<li><p>E com um determinado número de dados \((x_1, y_1), \ldots, (x_N, y_N)\).</p>
+</li>
+<li><p>Nesse caso, os resíduos são</p>
+</li>
+</ul>
+\[  y_i - \beta_0 - \beta_1x_i - \beta_2 x_i^2 - \ldots - \beta_m x_i^m.
+\]
+<ul>
+<li><p>O erro quadrático tem a forma matricial</p>
+</li>
+</ul>
+\[ \left\|\left(\begin{matrix} y_1 \\ \vdots \\ y_N \end{matrix}\right) - \left[\begin{matrix} 1 & x_1 & \ldots & x_1^m \\ \vdots & \vdots & \cdots & \vdots \\ 1 & x_N & \ldots & x_N^m \end{matrix}\right]\left(\begin{matrix} \beta_0 \\ \ldots \\ \beta_m \end{matrix}\right)\right\|^2.
+\]
+<ul>
+<li><p>Os parâmetros a serem ajustados são</p>
+</li>
+</ul>
+\[ \boldsymbol{\beta} = \left( \begin{matrix} \beta_0 \\ \vdots \\ \beta_m \end{matrix} \right).
+\]
+<ul>
+<li><p>E a matriz associada tem a forma de uma <strong>matriz de Vandermonde</strong>:</p>
+</li>
+</ul>
+\[ A = \left[\begin{matrix} 1 & x_1 & \ldots & x_1^m \\ \vdots & \vdots & \cdots & \vdots \\ 1 & x_N & \ldots & x_N^m \end{matrix}\right]
+\]
+<ul>
+<li><p>As soluções \(\boldsymbol{\beta}\) são dadas pela chamada <strong>forma normal</strong></p>
+</li>
+</ul>
+\[ A^tA\boldsymbol{\beta} = A^t\mathbf{y}.
+\]
+<ul>
+<li><p>Note que</p>
+</li>
+</ul>
+\[ A^tA = \left[\begin{matrix} 1 & 1 & \ldots & 1 \\ x_1 & x_2 & \ldots & x_N \\ \vdots & \vdots & \cdots & \vdots \\ x_1^m & x_N^m & \ldots & x_N^m \end{matrix}\right] \left[\begin{matrix} 1 & x_1 & \ldots & x_1^m \\ \vdots & \vdots & \cdots & \vdots \\ 1 & x_N & \ldots & x_N^m \end{matrix}\right]
+\]
+<ul>
+<li><p>Note que \(A^tA\) é uma matriz quadrada \(m\times m\), para exatamente \(m\) parâmetros.</p>
+</li>
+<li><p>A sua invertibilidade depende do posto de \(A\).</p>
+</li>
+<li><p>Caso seja invertível, a solução é única e pode ser escrita na forma</p>
+</li>
+</ul>
+\[ \boldsymbol{\beta} = (A^tA)^{-1}A^t\mathbf{y}.
+\]
+<h2 id="invertibilidade_da_matriz_ata"><a href="#invertibilidade_da_matriz_ata" class="header-anchor">Invertibilidade da matriz \(A^tA\)</a></h2>
+<ul>
+<li><p>A invertibilidade de \(A^tA\) está diretamente ligada ao posto de \(A\).</p>
+</li>
+<li><p>Observe que o núcleo de \(A^t\) é ortogonal à imagem de \(A\). De fato, </p>
+</li>
+</ul>
+\[ \text{se} \quad A^t\boldsymbol{\alpha} = 0 \quad \text{e} \quad \boldsymbol{\gamma} = A\boldsymbol{\beta},
+\]
+<p>então</p>
+\[ \boldsymbol{\alpha} \cdot \boldsymbol{\gamma} = \boldsymbol{\alpha} \cdot A\boldsymbol{\beta} = A^t\boldsymbol{\alpha} \cdot \boldsymbol{\beta} = \mathbf{0} \cdot \boldsymbol{\beta} = \mathbf{0}.
+\]
+<ul>
+<li><p>Assim, se \(A^tA\boldsymbol{\beta} = 0\): </p>
+<ul>
+<li><p>\(A\boldsymbol{\beta}\) está no núcleo de \(A^t\);</p>
+</li>
+<li><p>Então \(A\boldsymbol{\beta}\) é ortogonal à imagem de \(A\);</p>
+</li>
+<li><p>Mas \(A\boldsymbol{\beta}\) também está na imagem de \(A\);</p>
+</li>
+<li><p>Assim, \(A\boldsymbol{\beta}\) tanto é ortogonal como pertence à imagem de \(A\).</p>
+</li>
+<li><p>Logo, \(A\boldsymbol{\beta} = 0\).</p>
+</li>
+</ul>
+</li>
+<li><p>E obviamente, se \(A\boldsymbol{\beta} = 0\), então \(A^tA\boldsymbol{\beta} = 0\). Portanto, temos a equivalência</p>
+</li>
+</ul>
+\[ \text{Núcleo de } A^tA = \text{Núcleo de } A.
+\]
+<ul>
+<li><p>Lembremos, nesse momento, que uma matriz quadrada é invertível se e somente se o seu núcleo se reduz à origem.</p>
+</li>
+<li><p>Assim, \(A^tA\) é invertível se, e somente se, o núcleo de \(A\) tem dimensão nula. Isso é equivalente a dizer que o seu posto é máximo.</p>
+</li>
+<li><p>Finalmente, \(A\) tem posto máximo/dimensão nula se pelo menos \(m\) colunas são linearmente independentes.</p>
+</li>
+</ul>
+<ul>
+<li><p>Como podemos garantir que \(A\) tenha posto máximo? Ou de outra forma, que tenha \(m\) colunas linearmente independentes?</p>
+</li>
+<li><p>Para isso, é, primeiramente, necessário que o número de pontos da amostra seja maior do que o número de parâmetros: \(N\geq m\).</p>
+</li>
+<li><p>Caso contrário, como o contradomínio de \(A\) é \(N\), o seu posto é limitado por \(N\):</p>
+</li>
+</ul>
+\[\operatorname{posto} A \leq N<m.
+\]
+<ul>
+<li><p>Em segundo lugar, quando \(N \geq m\), precisamos que as amostras sejam obtidas em pelo menos \(m\) abscissas distintas \(x_i\).</p>
+</li>
+<li><p>De fato, com \(m\) abscissas distintas, podemos reordenar as linhas de \(A\) para que as abscissas distintas sejam \(x_1, \dots, x_m\). </p>
+</li>
+<li><p>Em seguida, olhamos para as primeiras \(m\) linhas da matriz \(A\), que vamos chamar de \(A_m\):</p>
+</li>
+</ul>
+\[ A = \left[\begin{matrix} 1 & x_1 & \ldots & x_1^m \\ \vdots & \vdots & \cdots & \vdots \\ 1 & x_m & \ldots & x_m^m \end{matrix}\right].
+\]
+<ul>
+<li><p>\(A_m\) é uma matriz quadrada \(m\times m\).</p>
+</li>
+<li><p>\(A_m\) nada mais é do que composição de \(A\) com a projeção \(P_m\) de \(\mathbb{R}^N= \mathbb{R}^m \times \mathbb{R}^{N-m}\) nas \(m\) primeiras coordenadas \(\mathbb{R}^m\).</p>
+</li>
+<li><p>Assim, se \(A_m\) for invertível, então \(A_m=P_mA\) tem posto \(m\), logo \(A\) também o tem.</p>
+</li>
+</ul>
+<ul>
+<li><p>\(A_m\) é uma matriz de Vandermonde e o seu determinante é dado por</p>
+</li>
+</ul>
+\[ \det A_m = \prod_{j>i} (x_j-x_i).
+\]
+<ul>
+<li><p>Há várias demontrações disso, veja em <a href="https://en.wikipedia.org/wiki/Vandermonde_matrix">Vandermonde matrix</a>, mas a mais básica, feita por indução na dimensão \(m\), não está lá.</p>
+</li>
+<li><p>De qualquer forma, observe que esse determinante é não-nulo se, e somente se, todos os \(x_i\)&#39;s, para \(i=1, \ldots, m\), são distintos.</p>
+</li>
+<li><p>Isso é exatamente a nossa hipótese de que pelo menos \(m\) dados são obtidos em abscissas distantes.</p>
+</li>
+<li><p>Assim, sendo o determinante não-nulo, a matriz \(A_m\) é invertível e \(A\) tem posto \(m\), como queríamos.</p>
+</li>
+</ul>
+<h2 id="outros_modelos"><a href="#outros_modelos" class="header-anchor">Outros modelos</a></h2>
+<ul>
+<li><p>O modelo não precisa ser um polinômio, nem ser de um única variável, para ser tratado como feito acima.</p>
+</li>
+<li><p>Pode ser, por exemplo, qualquer função da forma</p>
+</li>
+</ul>
+\[ y = \beta_0 f_0(x) + \beta_1 f_1(x) + \ldots + \beta_m f_m(x)
+\]
+<ul>
+<li><p>Nesse caso, </p>
+</li>
+</ul>
+\[ A = \left[\begin{matrix} f_0(x_1) & f_1(x_1) & \ldots & f_m(x_1) \\ \vdots & \vdots & \cdots & \vdots \\ f_0(x_N) & f_1(x_N) & \ldots & f_m(x_N) \end{matrix}\right]
+\]
+<ul>
+<li><p>Ou, em duas variáveis,</p>
+</li>
+</ul>
+\[ y = \beta_0 + \beta_{1,0}x_1 + \beta_{0,1}x_2 + \beta_{1,1}x_1x_2 + \ldots + \beta_{m_1, m_2}x_1^{m_1}x_2^{m_2} 
+\]
+<ul>
+<li><p>Ou, em várias variáveis</p>
+</li>
+</ul>
+\[ y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \ldots + \beta_k x_k.
+\]
+<ul>
+<li><p>Ou, analogamente, em mais de duas variáveis e com termos não necessariamente polinomiais.</p>
+</li>
+<li><p>O que é importante é que o modelo seja linear nos parâmetros \(\boldsymbol{\beta}\). Assim, a forma da matriz \(A\) pode mudar, mas o problema de mínimos quadrados continua sendo resolvido por</p>
+</li>
+</ul>
+\[ A^tA\boldsymbol{\beta} = A^t\mathbf{y}.
+\]
+<ul>
+<li><p>A questão da invertibilidade de \(A^tA\) vai depender, analogamente, da separação dos valores correspondentes dos termos associados aos parâmetros. &#40;Pense isso&#33;&#41;</p>
+</li>
+</ul>
+<h2 id="exercícios"><a href="#exercícios" class="header-anchor">Exercícios</a></h2>
+<ol>
+<li><p>Mostre que \((m,b) = (1,1)\) é a solução de \(m + b = 2\) que minimiza \(m^2 + b^2\).</p>
+</li>
+<li><p>Mostre que \((m,b) = (2,0)\) é a solução de \(m + b = 2\) que minimiza \(\epsilon|m| + |b|\) para \(0<\epsilon<1\). O que acontece no caso \(\epsilon=1\)? E quando \(\epsilon>1\)? E se objetivo for minimizar \(\max\{|m|,|b|\}\)? Ou minimizar \(\operatorname{sgn}|m|+\operatorname{sgn}|b|\) &#40;onde \(\operatorname{sign}(r) = 0\), se \(r=0\), ou \(r/|r|\), se \(r\neq 0\)&#41;?</p>
+</li>
+<li><p>Em qual das abscissas \(x=1, \ldots, 5\) temos o resíduo com o maior erro no caso em que o modelo é \(\hat y= 5x + x^2\) e a amostra é dada pelos pontos \((x,y) = (1, 2)\), \((2, 3)\), \((3, 4)\), \((4, 3)\) e \((5, 2)\)?</p>
+</li>
+<li><p>O que acontece se quisermos ajustar uma parábola \(y=ax + bx^2 + c\) aos dados \((1,1)\), \((1,3)\) e \((2,2)\)?</p>
+</li>
+<li><p>Se quisermos ajustar um modelo \(y=\beta_0 + \beta_1\sin(x) + \beta_2\cos(x)\) a dados \((x_1,y_1)\), \((x_2,y_2)\), \((x_3,y_3)\), qual a condição em \(x_1, x_2, x_3\) que garante que existe um, e somente um, conjunto de parâmetros \(\boldsymbol{\beta}=(\beta_0, \beta_1, \beta_2)\) que melhor ajusta o modelo no sentido dos mínimos quadrados?</p>
+</li>
+</ol>
+<p><hr /> <a href="04.00-Ajuste_parametros.ipynb">&lt;- 4. Ajuste de parâmetros</a> | <a href="00.00-Pagina_inicial.ipynb">Página inicial</a> | <a href="04.02-Modelos_redutiveis_linear_aplicacoes.ipynb">4.2. Modelos redutíveis ao caso linear nos parâmetros e aplicações -&gt;</a></p>
+
+    <div class="navbar">
+    <p id="nav">
+<span id="nav-prev" style="float: left;">
+<a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c03/0303-Unidades_Julia">3.3. Trabalhando com unidades e dimensões em Julia <kbd>←</kbd></a>
+</span>
+<span id="nav-next" style="float: right;">
+    <a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c04/0402-Modelos_redutiveis_linear_aplicacoes"><kbd>→</kbd> 4.2. Modelos redutíveis ao caso linear nos parâmetros e aplicações</a>
+</span>
+    </p>
+</div>
+</br></br>
+
+
+
+<div class="page-foot">
+    
+        <div class="license">
+            <a href=https://creativecommons.org/licenses/by-nc-nd/4.0/>(CC BY-NC-ND 4.0) Attribution-NonCommercial-NoDerivatives 4.0 International </a>
+            
+        </div>
+    
+
+    Last modified: March 07, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
+</div><!-- CONTENT ENDS HERE -->
+
+      </div> <!-- .books-content -->
+    </div> <!-- .books-container -->
+
+    
+        <script src="/modelagem_matematica/libs/katex/katex.min.js"></script>
+        <script src="/modelagem_matematica/libs/katex/auto-render.min.js"></script>
+        <script>renderMathInElement(document.body)</script>
+    
+
+    
+
+  </body>
+</html>
