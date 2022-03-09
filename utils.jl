@@ -230,9 +230,6 @@ function process_it(filename)
         )
     fig_path = "images"
     processed_filename = first(splitext("$out_path/$(basename(filename))")) * ".md"
-    @info "filename: $filename"
-    @info "out_path: $out_path"
-    @info "processed_filename: $processed_filename"
 
     link_download_notebook = globvar(:link_download_notebook)
     link_nbview_notebook = globvar(:link_nbview_notebook)
@@ -414,7 +411,7 @@ function postprocess_it(filename, out_path, fig_path)
             else
                 line = replace(
                     line,
-                    r"!\[([^\]]*)\]\(\.\.[\.|/]*/_assets/([^\)]*)\)" =>
+                    r"!\[([^\]]*)\]\((?:\.\./)*_assets/([^\)]*)\)" =>
                         s"![\1](/assets/\2)",
                     r"^!\[\]\(([^/)][^\)]*)\)" => s"\\fig{\1}",
                     r"^!\[([^\]]*)\]\(([^/)][^\)]*)\)" => s"\\figalt{\1}{\2}",
