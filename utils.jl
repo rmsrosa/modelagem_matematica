@@ -7,9 +7,9 @@ using Literate
 Return the html code to display the menu bar, with the table of contents and other book info.
 """
 @delay function hfun_menubar()
-    menu = pagevar("config.md", :menu)
+    menu = globvar(:menu)
     isnothing(menu) && return ""
-    page_numbering = pagevar("config.md", :page_numbering) === true
+    page_numbering = globvar(:page_numbering) === true
     toc = build_toc(menu, page_numbering)
     getfield.(last.(toc), :title)
     io = IOBuffer()
@@ -49,17 +49,15 @@ end
 Return the title of the page, prepended with the section number.
 """
 @delay function hfun_get_title()
-    menu = pagevar("config.md", :menu)
+    menu = globvar(:menu)
     filename = locvar(:fd_rpath)
     title = pagevar(filename, :title)
     isnothing(title) && return filename
     isnothing(menu) && return pagevar(filename, :title)
 
-    filename_noext =
-        occursin('.', basename(filename)) ?
-        filename[1:prevind(filename, findlast('.', filename))] : filename
+    filename_noext = first(splitext(filename))
 
-    page_numbering = pagevar("config.md", :page_numbering) === true
+    page_numbering = globvar(:page_numbering) === true
     toc = build_toc(menu, page_numbering)
     entries = toc[map(x -> x.filename, last.(toc)).==filename_noext]
     return length(entries) == 1 ? only(last.(entries)).title : "Title not found"
@@ -73,16 +71,14 @@ Return the html code to display the navigation buttons on the top and/or bottom 
 @delay function hfun_navigation()
     io = IOBuffer()
 
-    menu = pagevar("config.md", :menu)
+    menu = globvar(:menu)
     isnothing(menu) && return String(take!(io))
 
     filename = locvar(:fd_rpath)
 
-    filename_noext =
-        occursin('.', filename) ? filename[1:prevind(filename, findlast('.', filename))] :
-        filename
+    filename_noext = first(splitext(filename))
 
-    page_numbering = pagevar("config.md", :page_numbering) === true
+    page_numbering = globvar(:page_numbering) === true
     toc = build_toc(menu, page_numbering)
 
     prevnext = build_prevnext(toc)
@@ -146,7 +142,7 @@ end
 Return the html code to display the link to the github repo.
 """
 function hfun_github_repo_link()
-    github_repo = pagevar("config.md", :github_repo)
+    github_repo = globvar(:github_repo)
     (github_repo === nothing || github_repo == "") && return ""
 
     io = IOBuffer()
@@ -177,14 +173,10 @@ function build_toc(menu, page_numbering = true, level = 1, pre = "")
 
         new_pre = this_page_numbering === false ? "" : "$pre$(i += 1)."
 
-        filename =
-            startswith(sec, "_weave/") ? weave_it(sec) :
-            startswith(sec, "_literate/") ? literate_it(sec) :
-            startswith(sec, "_jupyter/") ? jupyter_it(sec) :
-            startswith(sec, "pages/") ? "$sec.md" : nothing
-        filename_noext = filename !== nothing && occursin('.', filename) ? replace(filename, r"\.(?:jl|md|jmd|ipynb)$" => "") : filename
+        filename = process_it(sec)
+        filename_noext = filename !== nothing ? first(splitext(filename)) : nothing
 
-        title = filename === nothing ? sec : pagevar("$filename", :title)
+        title = filename === nothing ? sec : pagevar(filename, :title)
         if this_page_numbering !== false
             title = "$new_pre $title"
         end
@@ -216,131 +208,85 @@ function build_prevnext(toc)
 end
 
 """
-    function weave_it(filename)
+    function process_it(filename)
 
-Process a given julia script or Juno's style markdown file `.jmd` via Weave, generating
-a Markdown file for Franklin and a Jupyter notebook.
+Process a given julia script or Juno's style markdown file `.jmd` or jupyter notebook.
+
+Processing is done via either Weave or Literate, depending on the folder it belongs to
+(whether `_weave` or `_jupyter`, for Weave, or `_literate`, for Literate)
+
+Processing generates a Markdown file for Franklin and a Jupyter notebook for the reader, if desired.
 """
-function weave_it(filename)
-    isfile(filename) || return ""
-    out_path = "pages/" * replace(dirname(filename), r"^_weave" => "weaved")
-    fig_path = "images"
-    doctype = "github"
-    weaved_filename =
-        replace("$out_path/$(basename(filename))", r"(?:\.jl|\.jmd)$" => ".md")
+function process_it(filename)
+    startswith(filename, "pages/") && return "$filename.md"
+    startswith(filename, "_src/") || return nothing
 
-    link_download_notebook = pagevar("config.md", :link_download_notebook)
-    link_nbview_notebook = pagevar("config.md", :link_nbview_notebook)
-    link_binder_notebook = pagevar("config.md", :link_binder_notebook)
-
-    if mtime(filename) > mtime("$weaved_filename")
-        Weave.weave(filename; out_path, fig_path, doctype)
-        postprocess_it(weaved_filename, out_path, fig_path)
-    end
-
-    notebook_output_dir = "__site/generated/notebooks/$(replace(dirname(filename), r"^_weave" => "weaved"))"
-    notebook_path = "$notebook_output_dir/$(replace(basename(filename), r"(?:\.jl|\.jmd)$" => ".ipynb"))"
-
-    if any(
-        ==(true),
-        (link_download_notebook, link_nbview_notebook, link_binder_notebook),
-    ) && mtime(filename) > mtime(notebook_path)
-        mkpath(notebook_output_dir)
-        Weave.notebook(
-            filename,
-            out_path = notebook_output_dir,
-            nbconvert_options = "--allow-errors",
+    out_path =
+        replace(
+            dirname(filename),
+            r"^_src/weave" => "pages/weaved",
+            r"^_src/literate" => "pages/literated",
+            r"^_src/jupyter" => "pages/jupytered",
         )
-    end
-
-    return weaved_filename[1:end-3] # remove extension ".md"
-end
-
-"""
-    function literate_it(filename)
-
-Process the given julia script via Literate, generating a Markdown file for Franklin and
-a Jupyter notebook.
-"""
-function literate_it(filename)
-    isfile(filename) || return ""
-    out_path = "pages/" * replace(dirname(filename), r"^_literate" => "literated")
     fig_path = "images"
-    flavor = Literate.FranklinFlavor()
-    literated_filename = replace("$out_path/$(basename(filename))", r"\.jl$" => ".md")
+    processed_filename = first(splitext("$out_path/$(basename(filename))")) * ".md"
+    @info "filename: $filename"
+    @info "out_path: $out_path"
+    @info "processed_filename: $processed_filename"
 
-    link_download_notebook = pagevar("config.md", :link_download_notebook)
-    link_nbview_notebook = pagevar("config.md", :link_nbview_notebook)
-    link_binder_notebook = pagevar("config.md", :link_binder_notebook)
+    link_download_notebook = globvar(:link_download_notebook)
+    link_nbview_notebook = globvar(:link_nbview_notebook)
+    link_binder_notebook = globvar(:link_binder_notebook)
 
-    if mtime(filename) > mtime("$literated_filename")
-        Literate.markdown(
-            filename,
-            out_path,
-            execute = true,
-            credit = false,
-            flavor = flavor,
-        )
-
-        postprocess_it(literated_filename, out_path, fig_path)
+    if mtime(filename) > mtime(processed_filename)
+        if startswith(filename, "_src/literate/")
+            Literate.markdown(
+                filename,
+                out_path,
+                execute = true,
+                credit = false,
+                flavor = Literate.FranklinFlavor(),
+            )
+        else
+            Weave.weave(filename; out_path, fig_path, doctype = "github")
+        end
+        postprocess_it(processed_filename, out_path, fig_path)
     end
 
-    notebook_output_dir = "__site/generated/notebooks/$(replace(dirname(filename), r"^_literate" => "literated"))"
-    notebook_path = "$notebook_output_dir/$(replace(basename(filename), r"\.jl$" => ".ipynb"))"
+    notebook_output_dir = "__site/generated/notebooks/$(replace(dirname(filename), r"^_src/weave" => "weaved", r"^_src/literate" => "literated", r"^_src/jupyter" => "jupytered"))"
+    notebook_path =
+        first(splitext("$notebook_output_dir/$(basename(filename))")) * ".ipynb"
 
     if any(
         ==(true),
         (link_download_notebook, link_nbview_notebook, link_binder_notebook),
     ) && mtime(filename) > mtime(notebook_path)
-        Literate.notebook(filename, notebook_output_dir)
+
+        if startswith(filename, "_src/weave/")
+            mkpath(notebook_output_dir)
+            Weave.notebook(
+                filename,
+                out_path = notebook_output_dir,
+                nbconvert_options = "--allow-errors",
+            )
+        elseif startswith(filename, "_src/literate/")
+            Literate.notebook(filename, notebook_output_dir)
+        elseif startswith(filename, "_src/jupyter/")
+            mkpath(notebook_output_dir)
+            cp(filename, "$notebook_output_dir/$(basename(filename))", force = true)
+            #= 
+            # The following would have the advantage of forcing a clean
+            # execution of the notebook, but Weave currently has some issues
+            # with that
+            Weave.notebook(
+                filename,
+                out_path = notebook_output_dir,
+                nbconvert_options = "--allow-errors"
+            ) =#
+        end
     end
 
-    return literated_filename[1:end-3] # remove extension ".md"
-end
-
-"""
-    function jupyter_it(filename)
-
-Process a given notebook via Weave, generating a Markdown file for Franklin, and
-copying the original notebook to a place suitable for downloading by the reader.
-"""
-function jupyter_it(filename)
-    isfile(filename) || return ""
-    out_path = "pages/" * replace(dirname(filename), r"^_jupyter" => "jupytered")
-    fig_path = "images"
-    doctype = "github"
-    weaved_filename = replace("$out_path/$(basename(filename))", r"\.ipynb$" => ".md")
-
-    link_download_notebook = pagevar("config.md", :link_download_notebook)
-    link_nbview_notebook = pagevar("config.md", :link_nbview_notebook)
-    link_binder_notebook = pagevar("config.md", :link_binder_notebook)
-
-    if mtime(filename) > mtime("$weaved_filename")
-        Weave.weave(filename; out_path, fig_path, doctype)
-        postprocess_it(weaved_filename, out_path, fig_path)
-    end
-
-    notebook_output_dir = "__site/generated/notebooks/$(replace(dirname(filename), r"^_jupyter" => "jupytered"))"
-    notebook_path = "$notebook_output_dir/$(basename(filename))"
-
-    if any(
-        ==(true),
-        (link_download_notebook, link_nbview_notebook, link_binder_notebook),
-    ) && mtime(filename) > mtime(notebook_path)
-        mkpath(notebook_output_dir)
-        cp(filename, "$notebook_output_dir/$(basename(filename))", force = true)
-        #= 
-        # The following would have the advantage of forcing a clean
-        # execution of the notebook, but Weave currently has some issues
-        # with notebooks
-        Weave.notebook(
-            filename,
-            out_path = notebook_output_dir,
-            nbconvert_options = "--allow-errors"
-        ) =#
-    end
-
-    return weaved_filename[1:end-3] # remove extension ".md"
+    return first(splitext(processed_filename)) # remove extension ".md"
 end
 
 """
@@ -352,12 +298,12 @@ code associated with each page that has been processed via Weave or Literate.
 @delay function hfun_linkbadges()
     filename = locvar(:fd_rpath)
 
-    link_view_source = pagevar("config.md", :link_view_source)
-    link_download_notebook = pagevar("config.md", :link_download_notebook)
-    link_nbview_notebook = pagevar("config.md", :link_nbview_notebook)
-    link_binder_notebook = pagevar("config.md", :link_binder_notebook)
+    link_view_source = globvar(:link_view_source)
+    link_download_notebook = globvar(:link_download_notebook)
+    link_nbview_notebook = globvar(:link_nbview_notebook)
+    link_binder_notebook = globvar(:link_binder_notebook)
 
-    github_repo = pagevar("config.md", :github_repo)
+    github_repo = globvar(:github_repo)
 
     notebook_path = "generated/notebooks/$(replace(dirname(filename), r"^pages/?" => ""))/$(replace(basename(filename), r".md$" => ".ipynb"))"
 
@@ -379,7 +325,7 @@ code associated with each page that has been processed via Weave or Literate.
             """,
         )
         if link_nbview_notebook == true && isfile("__site/$notebook_path")
-            website = pagevar("config.md", :website)
+            website = globvar(:website)
             write(
                 io,
                 """
@@ -388,10 +334,10 @@ code associated with each page that has been processed via Weave or Literate.
             )
         end
         if link_binder_notebook == true && isfile("__site/$notebook_path")
-            nbgitpuller_repo = pagevar("config.md", :nbgitpuller_repo)
-            nbgitpuller_branch = pagevar("config.md", :nbgitpuller_branch)
-            binder_application = pagevar("config.md", :binder_application)
-            prepath = pagevar("config.md", :prepath)
+            nbgitpuller_repo = globvar(:nbgitpuller_repo)
+            nbgitpuller_branch = globvar(:nbgitpuller_branch)
+            binder_application = globvar(:binder_application)
+            prepath = globvar(:prepath)
             if all(
                 !isnothing,
                 (nbgitpuller_repo, nbgitpuller_branch, binder_application, prepath),
@@ -424,10 +370,10 @@ code associated with each page that has been processed via Weave or Literate.
 
         if link_view_source == true &&
            startswith(filename, r"pages/(?:weaved|literated|jupytered)/")
-            menu = pagevar("config.md", :menu)
-            page_numbering = pagevar("config.md", :page_numbering) === true
+            menu = globvar(:menu)
+            page_numbering = globvar(:page_numbering) === true
             toc = build_toc(menu, page_numbering)
-            ftoc = filter(x -> last(x).filename == filename[1:end-3], toc)
+            ftoc = filter(x -> last(x).filename == first(splitext(filename)), toc)
             source_path =
                 length(ftoc) > 0 ? "$github_repo/blob/main/$(first(first.(ftoc)))" : nothing
             write(
@@ -452,15 +398,15 @@ end
 """
     postprocess_it(filename, out_path, fig_path)
 
-Post-process a markdown file generated by Weave or Literate for compatibility with Franklin,
-by replacing `![...](...)`` with either a full path or with `\figalt`/`\fig`, depending
-on the situation; by moving any output image to the proper place; and by properly handling
-the title.
+Post-process a markdown file generated by Weave or Literate for compatibility with
+Franklin, by replacing `![...](...)`` with either a full path or with `\figalt`/`\fig`
+depending on the situation; by moving any output image to the proper place; and by
+properly handling the title, adding the section number, if needed.
 """
 function postprocess_it(filename, out_path, fig_path)
     tmppath, tmpio = mktemp()
     no_match_so_far = true
-    open("$filename", "r") do io
+    open(filename, "r") do io
         for line in eachline(io, keep = true)
             if (m = match(r"^#\s+(.*)$", line)) !== nothing && no_match_so_far == true
                 line = "@def title = \"$(m.captures[1])\"\n\n# {{ get_title }}\n"
@@ -478,9 +424,9 @@ function postprocess_it(filename, out_path, fig_path)
         end
     end
     close(tmpio)
-    mv(tmppath, "$filename", force = true)
+    mv(tmppath, filename, force = true)
     if isdir("$out_path/$fig_path/")
-        destination = "_assets/$(filename[1:end-3])/code/$fig_path"
+        destination = "_assets/$(first(splitext(filename)))/code/$fig_path"
         mkpath(destination)
         mv("$out_path/$fig_path", destination, force = true)
     end
