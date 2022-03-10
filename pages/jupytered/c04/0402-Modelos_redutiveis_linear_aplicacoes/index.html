@@ -116,6 +116,18 @@
     <div class="menu-level-2">
     <li><a href="/modelagem_matematica/pages/jupytered/c04/0405-Ajuste_em_redes_neurais">4.5. Ajuste de parâmetros em modelos de redes neurais (WIP)</a></li>
     </div>
+    <div class="menu-level-1">
+    <li>5. Erros e Incertezas</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c05/0501-Erros_e_incertezas">5.1. Erros e incertezas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c05/0502-Minimos_quadrados_verossimilhanca">5.2. Mínimos quadrados, maximização da verossimilhança e quantificação de incertezas em regressões lineares</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c05/0503-Propagacao_incertezas">5.3. Propagação de incertezas</a></li>
+    </div>
 <div>
 
 
@@ -304,8 +316,10 @@ plot&#40;y, seriestype &#61; :scatter, xlims&#61;&#40;0,9&#41;, ylims&#61;&#40;0
  1  6
  1  7
  1  8</code></pre>
-<pre><code class="language-julia">* Também podemos fazer isso de forma mais programática:</code></pre>
-<pre><code class="language-julia">Error: syntax: &quot;*&quot; is not a unary operator</code></pre>
+<ul>
+<li><p>Também podemos fazer isso de forma mais programática:</p>
+</li>
+</ul>
 <pre><code class="language-julia">A &#61; &#91;ones&#40;8&#41; collect&#40;1:8&#41;&#93;</code></pre>
 <pre><code class="language-julia">8×2 Matrix&#123;Float64&#125;:
  1.0  1.0
@@ -338,7 +352,7 @@ plot&#40;y, seriestype &#61; :scatter, xlims&#61;&#40;0,9&#41;, ylims&#61;&#40;0
     label&#61;&quot;salário&quot;, title&#61;&quot;Média salarial semanal em função do grau de instrução&quot;, 
     titlefont&#61;12, legend&#61;:topleft&#41;
 plot&#33;&#40;&#91;&#40;0,x&#91;1&#93;&#41;, &#40;9,x&#91;2&#93;*9&#41;&#93;, label&#61;&quot;modelo ajustado&quot;&#41;</code></pre>
-<img src="/modelagem_matematica/assets/pages/jupytered/c04/0402-Modelos_redutiveis_linear_aplicacoes/code/images/0402-Modelos_redutiveis_linear_aplicacoes_7_1.png" alt="">
+<img src="/modelagem_matematica/assets/pages/jupytered/c04/0402-Modelos_redutiveis_linear_aplicacoes/code/images/0402-Modelos_redutiveis_linear_aplicacoes_6_1.png" alt="">
 <h2 id="o_operador"><a href="#o_operador" class="header-anchor">O operador \</a></h2>
 <ul>
 <li><p>Em Julia, o operador &#92; funciona de maneira diferente de acordo com o tipo de matriz &#40;um polialgoritmo&#41;.</p>
@@ -465,13 +479,13 @@ y&#39; &#61; &#91;28.6 88.6 177.6 313.8 423.7 774.4&#93;
     label&#61;&quot;dados&quot;, title&#61;&quot;Dados e ajuste do modelo de potência em escalas logarítmicas&quot;, 
     titlefont&#61;12, legend&#61;:topleft&#41;
 plot&#33;&#40;&#91;&#40;2, β̃&#91;1&#93; &#43; β̃&#91;2&#93;*2&#41;, &#40;4,β̃&#91;1&#93; &#43; β̃&#91;2&#93;*4&#41;&#93;, label&#61;&quot;modelo ajustado&quot;&#41;</code></pre>
-<img src="/modelagem_matematica/assets/pages/jupytered/c04/0402-Modelos_redutiveis_linear_aplicacoes/code/images/0402-Modelos_redutiveis_linear_aplicacoes_15_1.png" alt="">
+<img src="/modelagem_matematica/assets/pages/jupytered/c04/0402-Modelos_redutiveis_linear_aplicacoes/code/images/0402-Modelos_redutiveis_linear_aplicacoes_14_1.png" alt="">
 <pre><code class="language-julia">plot&#40;x, y, seriestype &#61; :scatter, xlims&#61;&#40;10,32&#41;, ylims&#61;&#40;0,800&#41;, xticks&#61;10:2:32,
     xaxis &#61; &quot;comprimento &#40;cm&#41;&quot;, yaxis&#61;&quot;massa &#40;g&#41;&quot;,
     label&#61;&quot;dados&quot;, title&#61;&quot;Dados e ajuste do modelo de potência&quot;, 
     titlefont&#61;12, legend&#61;:topleft&#41;
 plot&#33;&#40;10:32, β₀*&#40;10:32&#41;.^β₁, label&#61;&quot;modelo ajustado&quot;&#41;</code></pre>
-<img src="/modelagem_matematica/assets/pages/jupytered/c04/0402-Modelos_redutiveis_linear_aplicacoes/code/images/0402-Modelos_redutiveis_linear_aplicacoes_16_1.png" alt="">
+<img src="/modelagem_matematica/assets/pages/jupytered/c04/0402-Modelos_redutiveis_linear_aplicacoes/code/images/0402-Modelos_redutiveis_linear_aplicacoes_15_1.png" alt="">
 <h2 id="decaimento_radioativo_do_plutônio-241"><a href="#decaimento_radioativo_do_plutônio-241" class="header-anchor">Decaimento radioativo do Plutônio-241</a></h2>
 <ul>
 <li><p>Neste outro exemplo, vamos examinar o decaimento radioativo do Plutônio-241, que é um dos muitos isótopos do <a href="https://en.wikipedia.org/wiki/Plutonium">Plutônio</a>.</p>
@@ -556,9 +570,7 @@ plot&#33;&#40;10:32, β₀*&#40;10:32&#41;.^β₁, label&#61;&quot;modelo ajusta
 </li>
 </ul>
 <pre><code class="language-julia">println&#40;readdir&#40;&#41;&#41;</code></pre>
-<pre><code class="language-julia">&#91;&quot;0401-Minimos_quadrados_ajuste.md&quot;, &quot;0402-Modelos_redutiveis_linear_aplica
-coes.md&quot;, &quot;0403-Minimos_quadrados_nao_linear.md&quot;, &quot;0404-Exemplos_ajuste_nao
-linear.md&quot;, &quot;0405-Ajuste_em_redes_neurais.md&quot;, &quot;images&quot;&#93;</code></pre>
+<pre><code class="language-julia">&#91;&quot;0401-Minimos_quadrados_ajuste.md&quot;, &quot;images&quot;&#93;</code></pre>
 <pre><code class="language-julia">println&#40;readlines&#40;&quot;../../../_assets/attachments/data/decaimento_plutonio241.csv&quot;&#41;&#41;</code></pre>
 <pre><code class="language-julia">&#91;&quot;Data&#40;ano/mês/dia&#41;,Fração das frações&quot;, &quot;1976-01-13,6.5066&quot;, &quot;1976-01-19,6
 .4965&quot;, &quot;1976-09-27,6.2857&quot;, &quot;1976-10-04,6.282&quot;, &quot;1977-03-08,6.1526&quot;, &quot;1977
@@ -659,7 +671,7 @@ s frações&quot; &#61; 1.47161&#41;</code></pre>
     xaxis &#61; &quot;Data &#40;ano/mês/dia&#41;&quot;, yaxis&#61;&quot;fração das frações&quot;, xrotation&#61;45,
     label&#61;&quot;dados&quot;, title&#61;&quot;Dados amostrais da fração das frações de isótopos de Plutônio&quot;, 
     titlefont&#61;12, legend&#61;:topright&#41;</code></pre>
-<img src="/modelagem_matematica/assets/pages/jupytered/c04/0402-Modelos_redutiveis_linear_aplicacoes/code/images/0402-Modelos_redutiveis_linear_aplicacoes_23_1.png" alt="">
+<img src="/modelagem_matematica/assets/pages/jupytered/c04/0402-Modelos_redutiveis_linear_aplicacoes/code/images/0402-Modelos_redutiveis_linear_aplicacoes_22_1.png" alt="">
 <ul>
 <li><p>Para fazer o ajuste, transformamos a data em anos decorridos desde o dia da primeira amostragem.</p>
 </li>
@@ -689,7 +701,7 @@ s frações&quot; &#61; 1.47161&#41;</code></pre>
     xaxis &#61; &#40;&quot;log&#40;anos decorridos&#41;&quot;, :log10&#41;, yaxis&#61;&#40;&quot;log&#40;fração das frações&#41;&quot;, :log10&#41;, xrotation&#61;45,
     label&#61;&quot;dados&quot;, title&#61;&quot;Dados amostrais da fração das frações de isótopos de Plutônio&quot;, 
     titlefont&#61;12, legend&#61;:topright&#41;</code></pre>
-<img src="/modelagem_matematica/assets/pages/jupytered/c04/0402-Modelos_redutiveis_linear_aplicacoes/code/images/0402-Modelos_redutiveis_linear_aplicacoes_25_1.png" alt="">
+<img src="/modelagem_matematica/assets/pages/jupytered/c04/0402-Modelos_redutiveis_linear_aplicacoes/code/images/0402-Modelos_redutiveis_linear_aplicacoes_24_1.png" alt="">
 <h3 id="ajuste"><a href="#ajuste" class="header-anchor">Ajuste</a></h3>
 <ul>
 <li><p>Transformamos os dados para a escala adequada.</p>
@@ -729,7 +741,7 @@ nothing</code></pre>
     titlefont&#61;12, legend&#61;:topright&#41;
 tt &#61; t&#91;1&#93;:10:t&#91;end&#93;
 plot&#33;&#40;tt, C*exp.&#40;-p*tt&#41;, xaxis&#61;:log10, yaxis&#61;:log10, label&#61;&quot;modelo ajustado&quot;&#41;</code></pre>
-<img src="/modelagem_matematica/assets/pages/jupytered/c04/0402-Modelos_redutiveis_linear_aplicacoes/code/images/0402-Modelos_redutiveis_linear_aplicacoes_28_1.png" alt="">
+<img src="/modelagem_matematica/assets/pages/jupytered/c04/0402-Modelos_redutiveis_linear_aplicacoes/code/images/0402-Modelos_redutiveis_linear_aplicacoes_27_1.png" alt="">
 <ul>
 <li><p>De volta às coordenadas originais</p>
 </li>
@@ -740,7 +752,7 @@ plot&#33;&#40;tt, C*exp.&#40;-p*tt&#41;, xaxis&#61;:log10, yaxis&#61;:log10, lab
     titlefont&#61;12, legend&#61;:topright&#41;
 tt &#61; t&#91;1&#93;-1:1:t&#91;end&#93;&#43;1
 plot&#33;&#40;tt, C*exp.&#40;-p*tt&#41;, label&#61;&quot;modelo ajustado&quot;&#41;</code></pre>
-<img src="/modelagem_matematica/assets/pages/jupytered/c04/0402-Modelos_redutiveis_linear_aplicacoes/code/images/0402-Modelos_redutiveis_linear_aplicacoes_29_1.png" alt="">
+<img src="/modelagem_matematica/assets/pages/jupytered/c04/0402-Modelos_redutiveis_linear_aplicacoes/code/images/0402-Modelos_redutiveis_linear_aplicacoes_28_1.png" alt="">
 <h2 id="meia-vida_do_plutônio-241"><a href="#meia-vida_do_plutônio-241" class="header-anchor">Meia-vida do Plutônio-241</a></h2>
 <ul>
 <li><p>A meia-vida do Plutônio-239 é tomada como sendo de 24110 anos.</p>
@@ -805,7 +817,7 @@ plot&#33;&#40;tt, C*exp.&#40;-p*tt&#41;, label&#61;&quot;modelo ajustado&quot;&#
         </div>
     
 
-    Last modified: March 09, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
+    Last modified: March 10, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

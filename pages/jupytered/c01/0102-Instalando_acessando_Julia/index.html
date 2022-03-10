@@ -114,6 +114,18 @@
     <div class="menu-level-2">
     <li><a href="/modelagem_matematica/pages/jupytered/c04/0405-Ajuste_em_redes_neurais">4.5. Ajuste de parâmetros em modelos de redes neurais (WIP)</a></li>
     </div>
+    <div class="menu-level-1">
+    <li>5. Erros e Incertezas</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c05/0501-Erros_e_incertezas">5.1. Erros e incertezas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c05/0502-Minimos_quadrados_verossimilhanca">5.2. Mínimos quadrados, maximização da verossimilhança e quantificação de incertezas em regressões lineares</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c05/0503-Propagacao_incertezas">5.3. Propagação de incertezas</a></li>
+    </div>
 <div>
 
 
@@ -388,14 +400,14 @@ pkg&gt; build IJulia</code></pre>
 Pkg.status&#40;&#41;</code></pre>
 <pre><code class="language-julia">Status &#96;~/Documents/git_repositories/modelagem_matematica/Project.toml&#96;
   &#91;6e4b80f9&#93; BenchmarkTools v1.3.1
-⌃ &#91;336ed68f&#93; CSV v0.10.2
+  &#91;336ed68f&#93; CSV v0.10.3
   &#91;13f3f980&#93; CairoMakie v0.7.4
   &#91;717857b8&#93; DSP v0.7.5
   &#91;a93c6f00&#93; DataFrames v1.3.2
   &#91;0c46a032&#93; DifferentialEquations v7.1.0
   &#91;31c24e10&#93; Distributions v0.25.49
   &#91;7a1cc6ca&#93; FFTW v1.4.6
-⌃ &#91;713c75ef&#93; Franklin v0.10.69
+  &#91;713c75ef&#93; Franklin v0.10.72
   &#91;e9467ef8&#93; GLMakie v0.5.4
   &#91;28b8d3ca&#93; GR v0.64.0
   &#91;7073ff75&#93; IJulia v1.23.2
@@ -403,11 +415,11 @@ Pkg.status&#40;&#41;</code></pre>
   &#91;82e4d734&#93; ImageIO v0.6.1
   &#91;6218d12a&#93; ImageMagick v1.2.2
   &#91;916415d5&#93; Images v0.25.1
-⌃ &#91;0f8b85d8&#93; JSON3 v1.9.2
+  &#91;0f8b85d8&#93; JSON3 v1.9.3
   &#91;b964fa9f&#93; LaTeXStrings v1.3.0
   &#91;98b081ad&#93; Literate v2.13.0
   &#91;2fda8390&#93; LsqFit v0.12.1
-⌃ &#91;ae8d54c2&#93; Luxor v3.1.0
+  &#91;ae8d54c2&#93; Luxor v3.1.1
   &#91;2bd173c7&#93; NodeJS v1.3.0
   &#91;429524aa&#93; Optim v1.6.2
   &#91;91a5bcdd&#93; Plots v1.26.0
@@ -417,10 +429,9 @@ Pkg.status&#40;&#41;</code></pre>
   &#91;1986cc42&#93; Unitful v1.11.0
   &#91;a5a2160c&#93; UnitfulBuckinghamPi v0.1.0
   &#91;42071c24&#93; UnitfulRecipes v1.5.3
-⌃ &#91;d6d074c3&#93; VideoIO v0.9.6
+  &#91;d6d074c3&#93; VideoIO v1.0.0
   &#91;8149f6b0&#93; WAV v1.2.0
-  &#91;44d3d7a6&#93; Weave v0.10.10
-Info Packages marked with ⌃ have new versions available</code></pre>
+  &#91;44d3d7a6&#93; Weave v0.10.10</code></pre>
 <h3 id="versão_do_julia"><a href="#versão_do_julia" class="header-anchor">Versão do Julia</a></h3>
 <p>Para visualizar mais detalhes sobre a máquina e a versão do julia em uso, pode-se usar o comando <code>versioninfo&#40;&#41;</code></p>
 <pre><code class="language-julia">using InteractiveUtils
@@ -461,7 +472,7 @@ Environment:
         </div>
     
 
-    Last modified: March 09, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
+    Last modified: March 10, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

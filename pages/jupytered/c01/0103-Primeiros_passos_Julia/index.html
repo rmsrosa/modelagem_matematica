@@ -116,6 +116,18 @@
     <div class="menu-level-2">
     <li><a href="/modelagem_matematica/pages/jupytered/c04/0405-Ajuste_em_redes_neurais">4.5. Ajuste de parâmetros em modelos de redes neurais (WIP)</a></li>
     </div>
+    <div class="menu-level-1">
+    <li>5. Erros e Incertezas</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c05/0501-Erros_e_incertezas">5.1. Erros e incertezas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c05/0502-Minimos_quadrados_verossimilhanca">5.2. Mínimos quadrados, maximização da verossimilhança e quantificação de incertezas em regressões lineares</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c05/0503-Propagacao_incertezas">5.3. Propagação de incertezas</a></li>
+    </div>
 <div>
 
 
@@ -245,11 +257,11 @@ a&#91;1&#93; &#61; 7 # modificando um elemento de &#96;a&#96;
 a&#91;1:3&#93; &#61; &#91;8,9,0&#93; # modificando todos os elementos de &#96;a&#96;
 @show pointer&#40;a&#41;
 nothing</code></pre>
-<pre><code class="language-julia">pointer&#40;a&#41; &#61; Ptr&#123;Int64&#125; @0x0000000162ac1530
-pointer&#40;a&#41; &#61; Ptr&#123;Int64&#125; @0x0000000162b77e20
-pointer&#40;a&#41; &#61; Ptr&#123;Int64&#125; @0x0000000162b78bd0
-pointer&#40;a&#41; &#61; Ptr&#123;Int64&#125; @0x0000000162b78bd0
-pointer&#40;a&#41; &#61; Ptr&#123;Int64&#125; @0x0000000162b78bd0</code></pre>
+<pre><code class="language-julia">pointer&#40;a&#41; &#61; Ptr&#123;Int64&#125; @0x00000002b7b633d0
+pointer&#40;a&#41; &#61; Ptr&#123;Int64&#125; @0x00000002e1599350
+pointer&#40;a&#41; &#61; Ptr&#123;Int64&#125; @0x00000002e159a1b0
+pointer&#40;a&#41; &#61; Ptr&#123;Int64&#125; @0x00000002e159a1b0
+pointer&#40;a&#41; &#61; Ptr&#123;Int64&#125; @0x00000002e159a1b0</code></pre>
 <h3 id="atribuição_de_strings"><a href="#atribuição_de_strings" class="header-anchor">Atribuição de strings</a></h3>
 <p><em>Strings</em> também são imutáveis.</p>
 <pre><code class="language-julia">s &#61; &quot;Equações diferenciais&quot;
@@ -260,9 +272,9 @@ s &#61; replace&#40;s, &quot;Modelagem&quot; &#61;&gt; &quot;Modelos&quot;&#41;&
 @show pointer&#40;s&#41;
 @show s
 nothing</code></pre>
-<pre><code class="language-julia">pointer&#40;s&#41; &#61; Ptr&#123;UInt8&#125; @0x000000010a254a68
-pointer&#40;s&#41; &#61; Ptr&#123;UInt8&#125; @0x000000010a254ab8
-pointer&#40;s&#41; &#61; Ptr&#123;UInt8&#125; @0x000000010a254cc0
+<pre><code class="language-julia">pointer&#40;s&#41; &#61; Ptr&#123;UInt8&#125; @0x000000010cdb5918
+pointer&#40;s&#41; &#61; Ptr&#123;UInt8&#125; @0x000000010cdb5968
+pointer&#40;s&#41; &#61; Ptr&#123;UInt8&#125; @0x000000010cdec888
 s &#61; &quot;Modelos Matemáticos&quot;</code></pre>
 <h3 id="cuidados_com_a_atribuição_de_variáveis_imutáveis"><a href="#cuidados_com_a_atribuição_de_variáveis_imutáveis" class="header-anchor">Cuidados com a atribuição de variáveis imutáveis</a></h3>
 <p>No caso de um objeto imutável mas com elementos mutáveis &#40;e.g. <em>arrays</em>, <em>dicts</em>, <em>sets</em>&#41;, é preciso termos cuidado quando tentamos copiá-lo.</p>
@@ -316,8 +328,8 @@ test &#43;&#61; 1
 resultado &#61; isodd&#40;test&#41; ? &quot;&#36;test é impar&quot; : &quot;&#36;test é par&quot;
 @show resultado
 nothing</code></pre>
-<pre><code class="language-julia">resultado &#61; &quot;142 é par&quot;
-resultado &#61; &quot;143 é impar&quot;</code></pre>
+<pre><code class="language-julia">resultado &#61; &quot;172 é par&quot;
+resultado &#61; &quot;173 é impar&quot;</code></pre>
 <h2 id="interpolação"><a href="#interpolação" class="header-anchor">Interpolação</a></h2>
 <p>Observe que acima usamos o símbolo <code>&#36;</code> dentro de uma string. Ele é chamado de operador de <strong>interpolação</strong>. Ele substitui o valor da váriável na string.</p>
 <p>Se quisermos escrever <code>&#36;</code> precisamos &quot;escapá-lo&quot; com uma barra invertida:</p>
@@ -600,8 +612,8 @@ plot&#40;I, &#91;sin.&#40;I&#41;, cos.&#40;I&#41;&#93;, xaxis&#61;&quot;x&quot;,
     length&#40;s&#41;
 end
 nothing</code></pre>
-<pre><code class="language-julia">0.000017 seconds &#40;1 allocation: 20.625 KiB&#41;
-  0.000637 seconds &#40;25 allocations: 21.906 KiB, 95.23&#37; compilation time&#41;</code></pre>
+<pre><code class="language-julia">0.000021 seconds &#40;1 allocation: 20.625 KiB&#41;
+  0.000590 seconds &#40;25 allocations: 21.906 KiB, 95.57&#37; compilation time&#41;</code></pre>
 <p>O pacote <a href="https://github.com/JuliaCI/BenchmarkTools.jl">JuliaCI/BenchmarkTools.jl</a> é mais completo e dá mais informações para avaliar a performance dos códigos.</p>
 <p>Em particular, ela executa o código várias vezes, para evitar ruído e retornar uma informação mais precisa sobre a performance.</p>
 <p>Por exemplo, podemos comparar as diversas maneiras de se calcular o produto escalar entre dois vetores.</p>
@@ -624,22 +636,20 @@ escalar4&#40;vec1, vec2&#41; &#61; vec1 ⋅ vec2
 nothing</code></pre>
 <pre><code class="language-julia">escalar1&#40;vec1, vec2&#41; ≈ escalar2&#40;vec1, vec2&#41; ≈ escalar3&#40;vec1, vec2&#41; ≈ escala
 r4&#40;vec1, vec2&#41; &#61; true
-  72.125 ns &#40;1 allocation: 896 bytes&#41;
+  75.060 ns &#40;1 allocation: 896 bytes&#41;
   61.396 ns &#40;0 allocations: 0 bytes&#41;
   443.182 ns &#40;0 allocations: 0 bytes&#41;
-  35.114 ns &#40;0 allocations: 0 bytes&#41;</code></pre>
+  24.180 ns &#40;0 allocations: 0 bytes&#41;</code></pre>
 <p>Para uma estatística mais detalhada, usamos <code>@benchmark</code>.</p>
 <pre><code class="language-julia">@benchmark escalar4&#40;v, w&#41; setup &#61; &#40;v&#61;&#36;vec1; w&#61;&#36;vec2&#41;</code></pre>
-<pre><code class="language-julia">BenchmarkTools.Trial: 10000 samples with 992 evaluations.
- Range &#40;min … max&#41;:  37.719 ns … 211.021 ns  ┊ GC &#40;min … max&#41;: 0.00&#37; … 0.00
-&#37;
- Time  &#40;median&#41;:     37.886 ns               ┊ GC &#40;median&#41;:    0.00&#37;
- Time  &#40;mean ± σ&#41;:   38.730 ns ±   4.385 ns  ┊ GC &#40;mean ± σ&#41;:  0.00&#37; ± 0.00
-&#37;
+<pre><code class="language-julia">BenchmarkTools.Trial: 10000 samples with 996 evaluations.
+ Range &#40;min … max&#41;:  24.054 ns … 39.825 ns  ┊ GC &#40;min … max&#41;: 0.00&#37; … 0.00&#37;
+ Time  &#40;median&#41;:     24.641 ns              ┊ GC &#40;median&#41;:    0.00&#37;
+ Time  &#40;mean ± σ&#41;:   24.652 ns ±  0.382 ns  ┊ GC &#40;mean ± σ&#41;:  0.00&#37; ± 0.00&#37;
 
-  █▂▁▂▄▁  ▁▁▁                                                  ▁
-  ███████████▆▆▅▅▅▅▅▄▄▄▃▄▅▅▄▃▄▄▅▄▃▄▅▄▃▄▄▃▆▄▃▄▅▃▂▃▄▄▅▄▂▄▃▄▅▃▄▄▄ █
-  37.7 ns       Histogram: log&#40;frequency&#41; by time      56.1 ns &lt;
+                                    ▂  ▅  █                    
+  ▂▁▂▁▁▃▁▁▃▁▃▁▁▃▁▁▂▁▂▁▁▂▁▁▂▁▂▁▁▂▁▁▅▁█▁▁█▁▁█▁█▁▁▄▁▁▃▁▂▁▁▂▁▁▂▁▂ ▃
+  24.1 ns         Histogram: frequency by time          25 ns &lt;
 
  Memory estimate: 0 bytes, allocs estimate: 0.</code></pre>
 
@@ -665,7 +675,7 @@ r4&#40;vec1, vec2&#41; &#61; true
         </div>
     
 
-    Last modified: March 09, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
+    Last modified: March 10, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
