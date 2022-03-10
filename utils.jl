@@ -48,9 +48,9 @@ end
 
 Return the title of the page, prepended with the section number.
 """
-@delay function hfun_get_title()
+@delay function hfun_get_title(section = nothing)
     menu = globvar(:menu)
-    filename = locvar(:fd_rpath)
+    filename = section === nothing ? locvar(:fd_rpath) : "$(section[1]).md"
     title = pagevar(filename, :title)
     isnothing(title) && return filename
     isnothing(menu) && return pagevar(filename, :title)
@@ -415,6 +415,7 @@ function postprocess_it(filename, out_path, fig_path)
                         s"![\1](/assets/\2)",
                     r"^!\[\]\(([^/)][^\)]*)\)" => s"\\fig{\1}",
                     r"^!\[([^\]]*)\]\(([^/)][^\)]*)\)" => s"\\figalt{\1}{\2}",
+                    r"(?<!\!)\[[^\]]*\]\(/pages/([^\)]*)\)" => s" [{{get_title pages/\1}}](/pages/\1)"
                 )
             end
             write(tmpio, line)
