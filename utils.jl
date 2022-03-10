@@ -415,7 +415,7 @@ function postprocess_it(filename, out_path, fig_path)
                         s"![\1](/assets/\2)",
                     r"^!\[\]\(([^/)][^\)]*)\)" => s"\\fig{\1}",
                     r"^!\[([^\]]*)\]\(([^/)][^\)]*)\)" => s"\\figalt{\1}{\2}",
-                    r"(?<!\!)\[[^\]]*\]\(/pages/([^\)]*)\)" => s" [{{get_title pages/\1}}](/pages/\1)"
+                    r"(?<!\!)\[[^\]]*\]\(/pages/([^\)]*)\)" => s"[{{get_title pages/\1}}](/pages/\1)"
                 )
             end
             write(tmpio, line)
