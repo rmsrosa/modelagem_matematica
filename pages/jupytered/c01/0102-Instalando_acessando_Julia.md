@@ -361,14 +361,14 @@ Pkg.status()
 ```
 Status `~/Documents/git_repositories/modelagem_matematica/Project.toml`
   [6e4b80f9] BenchmarkTools v1.3.1
-⌃ [336ed68f] CSV v0.10.2
+  [336ed68f] CSV v0.10.3
   [13f3f980] CairoMakie v0.7.4
   [717857b8] DSP v0.7.5
   [a93c6f00] DataFrames v1.3.2
   [0c46a032] DifferentialEquations v7.1.0
   [31c24e10] Distributions v0.25.49
   [7a1cc6ca] FFTW v1.4.6
-⌃ [713c75ef] Franklin v0.10.69
+  [713c75ef] Franklin v0.10.72
   [e9467ef8] GLMakie v0.5.4
   [28b8d3ca] GR v0.64.0
   [7073ff75] IJulia v1.23.2
@@ -376,11 +376,11 @@ Status `~/Documents/git_repositories/modelagem_matematica/Project.toml`
   [82e4d734] ImageIO v0.6.1
   [6218d12a] ImageMagick v1.2.2
   [916415d5] Images v0.25.1
-⌃ [0f8b85d8] JSON3 v1.9.2
+  [0f8b85d8] JSON3 v1.9.3
   [b964fa9f] LaTeXStrings v1.3.0
   [98b081ad] Literate v2.13.0
   [2fda8390] LsqFit v0.12.1
-⌃ [ae8d54c2] Luxor v3.1.0
+  [ae8d54c2] Luxor v3.1.1
   [2bd173c7] NodeJS v1.3.0
   [429524aa] Optim v1.6.2
   [91a5bcdd] Plots v1.26.0
@@ -390,10 +390,9 @@ Status `~/Documents/git_repositories/modelagem_matematica/Project.toml`
   [1986cc42] Unitful v1.11.0
   [a5a2160c] UnitfulBuckinghamPi v0.1.0
   [42071c24] UnitfulRecipes v1.5.3
-⌃ [d6d074c3] VideoIO v0.9.6
+  [d6d074c3] VideoIO v1.0.0
   [8149f6b0] WAV v1.2.0
   [44d3d7a6] Weave v0.10.10
-Info Packages marked with ⌃ have new versions available
 ```
 
 

@@ -132,11 +132,11 @@ nothing
 ```
 
 ```
-pointer(a) = Ptr{Int64} @0x0000000162ac1530
-pointer(a) = Ptr{Int64} @0x0000000162b77e20
-pointer(a) = Ptr{Int64} @0x0000000162b78bd0
-pointer(a) = Ptr{Int64} @0x0000000162b78bd0
-pointer(a) = Ptr{Int64} @0x0000000162b78bd0
+pointer(a) = Ptr{Int64} @0x00000002b7b633d0
+pointer(a) = Ptr{Int64} @0x00000002e1599350
+pointer(a) = Ptr{Int64} @0x00000002e159a1b0
+pointer(a) = Ptr{Int64} @0x00000002e159a1b0
+pointer(a) = Ptr{Int64} @0x00000002e159a1b0
 ```
 
 
@@ -158,9 +158,9 @@ nothing
 ```
 
 ```
-pointer(s) = Ptr{UInt8} @0x000000010a254a68
-pointer(s) = Ptr{UInt8} @0x000000010a254ab8
-pointer(s) = Ptr{UInt8} @0x000000010a254cc0
+pointer(s) = Ptr{UInt8} @0x000000010cdb5918
+pointer(s) = Ptr{UInt8} @0x000000010cdb5968
+pointer(s) = Ptr{UInt8} @0x000000010cdec888
 s = "Modelos Matemáticos"
 ```
 
@@ -257,8 +257,8 @@ nothing
 ```
 
 ```
-resultado = "142 é par"
-resultado = "143 é impar"
+resultado = "172 é par"
+resultado = "173 é impar"
 ```
 
 
@@ -804,8 +804,8 @@ nothing
 ```
 
 ```
-0.000017 seconds (1 allocation: 20.625 KiB)
-  0.000637 seconds (25 allocations: 21.906 KiB, 95.23% compilation time)
+0.000021 seconds (1 allocation: 20.625 KiB)
+  0.000590 seconds (25 allocations: 21.906 KiB, 95.57% compilation time)
 ```
 
 
@@ -840,10 +840,10 @@ nothing
 ```
 escalar1(vec1, vec2) ≈ escalar2(vec1, vec2) ≈ escalar3(vec1, vec2) ≈ escala
 r4(vec1, vec2) = true
-  72.125 ns (1 allocation: 896 bytes)
+  75.060 ns (1 allocation: 896 bytes)
   61.396 ns (0 allocations: 0 bytes)
   443.182 ns (0 allocations: 0 bytes)
-  35.114 ns (0 allocations: 0 bytes)
+  24.180 ns (0 allocations: 0 bytes)
 ```
 
 
@@ -856,16 +856,14 @@ Para uma estatística mais detalhada, usamos `@benchmark`.
 ```
 
 ```
-BenchmarkTools.Trial: 10000 samples with 992 evaluations.
- Range (min … max):  37.719 ns … 211.021 ns  ┊ GC (min … max): 0.00% … 0.00
-%
- Time  (median):     37.886 ns               ┊ GC (median):    0.00%
- Time  (mean ± σ):   38.730 ns ±   4.385 ns  ┊ GC (mean ± σ):  0.00% ± 0.00
-%
+BenchmarkTools.Trial: 10000 samples with 996 evaluations.
+ Range (min … max):  24.054 ns … 39.825 ns  ┊ GC (min … max): 0.00% … 0.00%
+ Time  (median):     24.641 ns              ┊ GC (median):    0.00%
+ Time  (mean ± σ):   24.652 ns ±  0.382 ns  ┊ GC (mean ± σ):  0.00% ± 0.00%
 
-  █▂▁▂▄▁  ▁▁▁                                                  ▁
-  ███████████▆▆▅▅▅▅▅▄▄▄▃▄▅▅▄▃▄▄▅▄▃▄▅▄▃▄▄▃▆▄▃▄▅▃▂▃▄▄▅▄▂▄▃▄▅▃▄▄▄ █
-  37.7 ns       Histogram: log(frequency) by time      56.1 ns <
+                                    ▂  ▅  █                    
+  ▂▁▂▁▁▃▁▁▃▁▃▁▁▃▁▁▂▁▂▁▁▂▁▁▂▁▂▁▁▂▁▁▅▁█▁▁█▁▁█▁█▁▁▄▁▁▃▁▂▁▁▂▁▁▂▁▂ ▃
+  24.1 ns         Histogram: frequency by time          25 ns <
 
  Memory estimate: 0 bytes, allocs estimate: 0.
 ```

@@ -150,15 +150,8 @@ A = [1 1; 1 2; 1 3; 1 4; 1 5; 1 6; 1 7; 1 8]
 
 
 
-```julia
+
 * Também podemos fazer isso de forma mais programática:
-```
-
-```
-Error: syntax: "*" is not a unary operator
-```
-
-
 
 ```julia
 A = [ones(8) collect(1:8)]
@@ -209,7 +202,7 @@ plot(y, seriestype = :scatter, xlims=(0,9), ylims=(0,2000),
 plot!([(0,x[1]), (9,x[2]*9)], label="modelo ajustado")
 ```
 
-\fig{images/0402-Modelos_redutiveis_linear_aplicacoes_7_1.png}
+\fig{images/0402-Modelos_redutiveis_linear_aplicacoes_6_1.png}
 
 
 ## O operador \
@@ -391,7 +384,7 @@ plot(ξ, η, seriestype = :scatter, xlims=(2,4), ylims=(0,7), xticks=2:0.5:4,
 plot!([(2, β̃[1] + β̃[2]*2), (4,β̃[1] + β̃[2]*4)], label="modelo ajustado")
 ```
 
-\fig{images/0402-Modelos_redutiveis_linear_aplicacoes_15_1.png}
+\fig{images/0402-Modelos_redutiveis_linear_aplicacoes_14_1.png}
 
 ```julia
 plot(x, y, seriestype = :scatter, xlims=(10,32), ylims=(0,800), xticks=10:2:32,
@@ -401,7 +394,7 @@ plot(x, y, seriestype = :scatter, xlims=(10,32), ylims=(0,800), xticks=10:2:32,
 plot!(10:32, β₀*(10:32).^β₁, label="modelo ajustado")
 ```
 
-\fig{images/0402-Modelos_redutiveis_linear_aplicacoes_16_1.png}
+\fig{images/0402-Modelos_redutiveis_linear_aplicacoes_15_1.png}
 
 
 ## Decaimento radioativo do Plutônio-241
@@ -477,9 +470,7 @@ println(readdir())
 ```
 
 ```
-["0401-Minimos_quadrados_ajuste.md", "0402-Modelos_redutiveis_linear_aplica
-coes.md", "0403-Minimos_quadrados_nao_linear.md", "0404-Exemplos_ajuste_nao
-linear.md", "0405-Ajuste_em_redes_neurais.md", "images"]
+["0401-Minimos_quadrados_ajuste.md", "images"]
 ```
 
 
@@ -625,7 +616,7 @@ plot(data, r, seriestype = :scatter, xlims=(data[1]-Dates.Year(1), data[end]+Dat
     titlefont=12, legend=:topright)
 ```
 
-\fig{images/0402-Modelos_redutiveis_linear_aplicacoes_23_1.png}
+\fig{images/0402-Modelos_redutiveis_linear_aplicacoes_22_1.png}
 
 
 * Para fazer o ajuste, transformamos a data em anos decorridos desde o dia da primeira amostragem.
@@ -666,7 +657,7 @@ plot(t, r, seriestype = :scatter, xlims=(t[1]-1, t[end]+1), ylims=(1,7), xticks=
     titlefont=12, legend=:topright)
 ```
 
-\fig{images/0402-Modelos_redutiveis_linear_aplicacoes_25_1.png}
+\fig{images/0402-Modelos_redutiveis_linear_aplicacoes_24_1.png}
 
 
 ### Ajuste
@@ -726,7 +717,7 @@ tt = t[1]:10:t[end]
 plot!(tt, C*exp.(-p*tt), xaxis=:log10, yaxis=:log10, label="modelo ajustado")
 ```
 
-\fig{images/0402-Modelos_redutiveis_linear_aplicacoes_28_1.png}
+\fig{images/0402-Modelos_redutiveis_linear_aplicacoes_27_1.png}
 
 
 * De volta às coordenadas originais
@@ -740,7 +731,7 @@ tt = t[1]-1:1:t[end]+1
 plot!(tt, C*exp.(-p*tt), label="modelo ajustado")
 ```
 
-\fig{images/0402-Modelos_redutiveis_linear_aplicacoes_29_1.png}
+\fig{images/0402-Modelos_redutiveis_linear_aplicacoes_28_1.png}
 
 
 ## Meia-vida do Plutônio-241

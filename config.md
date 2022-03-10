@@ -59,13 +59,13 @@ menu = [
         "_src/jupyter/c04/0404-Exemplos_ajuste_naolinear.ipynb"
         "_src/jupyter/c04/0405-Ajuste_em_redes_neurais.ipynb"
     ],
-]
-menu_left = [
     "Erros e Incertezas" => [
         "_src/jupyter/c05/0501-Erros_e_incertezas.ipynb"
         "_src/jupyter/c05/0502-Minimos_quadrados_verossimilhanca.ipynb"
         "_src/jupyter/c05/0503-Propagacao_incertezas.ipynb"
     ],
+]
+menu_left = [
     "Avaliação de Modelos" => [
         "_src/jupyter/c06/0601-Qualidade_do_modelo.ipynb"
         "_src/jupyter/c06/0602-Validacao_do_modelo.ipynb"
