@@ -263,8 +263,10 @@ readdir()
 ```
 
 ```
-2-element Vector{String}:
+4-element Vector{String}:
  "0101-Aspectos_curso.md"
+ "0102-Instalando_acessando_Julia.md"
+ "0103-Primeiros_passos_Julia.md"
  "images"
 ```
 
@@ -359,43 +361,41 @@ Pkg.status()
 ```
 
 ```
-Status `~/Documents/git_repositories/modelagem_matematica/Project.tom
-l`
+Status `~/Dropbox/Mac/Documents/git-repositories/modelagem_matematica
+/Project.toml`
   [6e4b80f9] BenchmarkTools v1.3.1
-  [336ed68f] CSV v0.10.3
-→ [13f3f980] CairoMakie v0.7.4
-→ [717857b8] DSP v0.7.5
+  [336ed68f] CSV v0.10.4
+  [13f3f980] CairoMakie v0.7.5
+  [717857b8] DSP v0.7.5
   [a93c6f00] DataFrames v1.3.2
   [0c46a032] DifferentialEquations v7.1.0
-→ [31c24e10] Distributions v0.25.49
+  [31c24e10] Distributions v0.25.53
   [7a1cc6ca] FFTW v1.4.6
   [713c75ef] Franklin v0.10.72
-  [e9467ef8] GLMakie v0.5.4
-  [28b8d3ca] GR v0.64.0
-  [7073ff75] IJulia v1.23.2
-→ [4381153b] ImageDraw v0.2.5
+  [e9467ef8] GLMakie v0.5.5
+  [28b8d3ca] GR v0.64.2
+  [7073ff75] IJulia v1.23.3
+  [4381153b] ImageDraw v0.2.5
   [82e4d734] ImageIO v0.6.1
-→ [6218d12a] ImageMagick v1.2.2
-  [916415d5] Images v0.25.1
-→ [0f8b85d8] JSON3 v1.9.3
+  [6218d12a] ImageMagick v1.2.2
+  [916415d5] Images v0.25.2
+  [0f8b85d8] JSON3 v1.9.4
   [b964fa9f] LaTeXStrings v1.3.0
-  [98b081ad] Literate v2.13.0
-→ [2fda8390] LsqFit v0.12.1
-→ [ae8d54c2] Luxor v3.1.1
+  [98b081ad] Literate v2.13.1
+  [2fda8390] LsqFit v0.12.1
+  [ae8d54c2] Luxor v3.2.0
   [2bd173c7] NodeJS v1.3.0
   [429524aa] Optim v1.6.2
-  [91a5bcdd] Plots v1.26.0
+  [91a5bcdd] Plots v1.27.5
   [e6cf234a] RandomNumbers v1.5.3
-→ [bd7594eb] SampledSignals v2.1.3
+  [bd7594eb] SampledSignals v2.1.3
   [2913bbd2] StatsBase v0.33.16
   [1986cc42] Unitful v1.11.0
-→ [a5a2160c] UnitfulBuckinghamPi v0.1.0
-→ [42071c24] UnitfulRecipes v1.5.3
-→ [d6d074c3] VideoIO v1.0.0
-→ [8149f6b0] WAV v1.2.0
+  [a5a2160c] UnitfulBuckinghamPi v0.1.0
+  [42071c24] UnitfulRecipes v1.5.3
+  [d6d074c3] VideoIO v1.0.0
+  [8149f6b0] WAV v1.2.0
   [44d3d7a6] Weave v0.10.10
-        Info packages marked with → not downloaded, use `instantiate` to do
-wnload
 ```
 
 
@@ -415,12 +415,10 @@ Julia Version 1.7.2
 Commit bf53498635 (2022-02-06 15:21 UTC)
 Platform Info:
   OS: macOS (x86_64-apple-darwin19.5.0)
-  CPU: Apple M1 Pro
+  CPU: Intel(R) Core(TM) m5-6Y54 CPU @ 1.10GHz
   WORD_SIZE: 64
   LIBM: libopenlibm
-  LLVM: libLLVM-12.0.1 (ORCJIT, westmere)
-Environment:
-  JULIA_NUM_THREADS = 8
+  LLVM: libLLVM-12.0.1 (ORCJIT, skylake)
 ```
 
 

@@ -16,13 +16,6 @@ using Plots
 using UnitfulRecipes
 ```
 
-```
-Error: ArgumentError: Package UnitfulBuckinghamPi [a5a2160c-bd99-4b31-b024-
-0885c747111f] is required but does not seem to be installed:
- - Run `Pkg.instantiate()` to install all recorded dependencies.
-```
-
-
 
 
 ## Quantidades, unidades e dimensão via Unitful.jl
@@ -191,11 +184,7 @@ nothing}}}:
 plot(t, t -> h(t, h0, v0))
 ```
 
-```
-Error: UndefVarError: plot not defined
-```
-
-
+\fig{images/0303-Unidades_Julia_14_1.png}
 
 
 ### Traçando o gráfico com os vetores/iteradores de quantidades
@@ -206,11 +195,7 @@ Error: UndefVarError: plot not defined
 plot(t, h.(t, h0, v0))
 ```
 
-```
-Error: UndefVarError: plot not defined
-```
-
-
+\fig{images/0303-Unidades_Julia_15_1.png}
 
 
 ### Embelezando o gráfico
@@ -225,11 +210,7 @@ plot(t, h.(t, h0, v0), title="lançamento vertical de um objeto", titlefont=10,
     xlabel = "tempo", ylabel="altura")
 ```
 
-```
-Error: UndefVarError: plot not defined
-```
-
-
+\fig{images/0303-Unidades_Julia_16_1.png}
 
 
 ### Operações permitidas
@@ -341,9 +322,9 @@ Closest candidates are:
   +(::Any, ::Any, !Matched::Any, !Matched::Any...) at /Applications/Julia-1
 .7.app/Contents/Resources/julia/share/julia/base/operators.jl:655
   +(!Matched::ChainRulesCore.Tangent{P}, ::P) where P at ~/.julia/packages/
-ChainRulesCore/IzITE/src/tangent_arithmetic.jl:146
+ChainRulesCore/RbX5a/src/tangent_arithmetic.jl:146
   +(!Matched::ChainRulesCore.AbstractThunk, ::Any) at ~/.julia/packages/Cha
-inRulesCore/IzITE/src/tangent_arithmetic.jl:122
+inRulesCore/RbX5a/src/tangent_arithmetic.jl:122
   ...
 ```
 
@@ -360,10 +341,14 @@ ion{:Time}(1//1),)})
 Closest candidates are:
   *(::Any, ::Any, !Matched::Any, !Matched::Any...) at /Applications/Julia-1
 .7.app/Contents/Resources/julia/share/julia/base/operators.jl:655
-  *(!Matched::Unitful.Dimensions, ::Unitful.Dimensions...) at ~/.julia/pack
-ages/Unitful/SUQzL/src/dimensions.jl:25
-  *(::Unitful.Quantity, !Matched::Unitful.Gain) at ~/.julia/packages/Unitfu
-l/SUQzL/src/logarithm.jl:222
+  *(!Matched::ChainRulesCore.AbstractThunk, ::Any) at ~/.julia/packages/Cha
+inRulesCore/RbX5a/src/tangent_arithmetic.jl:125
+  *(::Number, !Matched::Union{SparseArrays.SparseVector{Tv, Ti}, SubArray{T
+v, 1, <:SparseArrays.AbstractSparseMatrixCSC{Tv, Ti}, Tuple{Base.Slice{Base
+.OneTo{Int64}}, Int64}, false}, SubArray{Tv, 1, <:SparseArrays.AbstractSpar
+seVector{Tv, Ti}, Tuple{Base.Slice{Base.OneTo{Int64}}}, false}} where {Tv, 
+Ti}) at /Applications/Julia-1.7.app/Contents/Resources/julia/share/julia/st
+dlib/v1.7/SparseArrays/src/sparsevector.jl:1475
   ...
 ```
 
@@ -417,13 +402,6 @@ nothing
 @setparameters ℓ g m T θ
 ```
 
-```
-Error: LoadError: UndefVarError: @setparameters not defined
-in expression starting at /Users/rrosa/Documents/git_repositories/modelagem
-_matematica/src/jupyter/c03/0303-Unidades_Julia.ipynb:3
-```
-
-
 
 ```julia
 # grupos adimensionais na forma de string
@@ -431,7 +409,9 @@ pi_groups(:String)
 ```
 
 ```
-Error: UndefVarError: pi_groups not defined
+2-element Vector{String}:
+ "g^(1//2)*ℓ^(-1//2)*T^(1//1)"
+ "θ^(1//1)"
 ```
 
 
@@ -442,7 +422,9 @@ Error: UndefVarError: pi_groups not defined
 ```
 
 ```
-Error: UndefVarError: pi_groups not defined
+2-element Vector{Expr}:
+ :(g ^ (1 // 2) * ℓ ^ (-1 // 2) * T ^ (1 // 1))
+ :(θ ^ (1 // 1))
 ```
 
 
@@ -457,7 +439,7 @@ eval(Π[2])
 ```
 
 ```
-Error: UndefVarError: Π not defined
+NoDims
 ```
 
 
@@ -467,7 +449,21 @@ eval(Π[1])
 ```
 
 ```
-Error: UndefVarError: Π not defined
+Error: MethodError: no method matching *(::Unitful.Quantity{Float64, 𝐓⁻¹, U
+nitful.FreeUnits{(s⁻¹,), 𝐓⁻¹, nothing}}, ::Unitful.Dimensions{(Unitful.Dime
+nsion{:Time}(1//1),)})
+Closest candidates are:
+  *(::Any, ::Any, !Matched::Any, !Matched::Any...) at /Applications/Julia-1
+.7.app/Contents/Resources/julia/share/julia/base/operators.jl:655
+  *(!Matched::ChainRulesCore.AbstractThunk, ::Any) at ~/.julia/packages/Cha
+inRulesCore/RbX5a/src/tangent_arithmetic.jl:125
+  *(::Number, !Matched::Union{SparseArrays.SparseVector{Tv, Ti}, SubArray{T
+v, 1, <:SparseArrays.AbstractSparseMatrixCSC{Tv, Ti}, Tuple{Base.Slice{Base
+.OneTo{Int64}}, Int64}, false}, SubArray{Tv, 1, <:SparseArrays.AbstractSpar
+seVector{Tv, Ti}, Tuple{Base.Slice{Base.OneTo{Int64}}}, false}} where {Tv, 
+Ti}) at /Applications/Julia-1.7.app/Contents/Resources/julia/share/julia/st
+dlib/v1.7/SparseArrays/src/sparsevector.jl:1475
+  ...
 ```
 
 
@@ -489,20 +485,15 @@ s
 @setparameters ℓ g m τ θ
 ```
 
-```
-Error: LoadError: UndefVarError: @setparameters not defined
-in expression starting at /Users/rrosa/Documents/git_repositories/modelagem
-_matematica/src/jupyter/c03/0303-Unidades_Julia.ipynb:2
-```
-
-
 
 ```julia
 Π = pi_groups()
 ```
 
 ```
-Error: UndefVarError: pi_groups not defined
+2-element Vector{Expr}:
+ :(g ^ (1 // 2) * ℓ ^ (-1 // 2) * τ ^ (1 // 1))
+ :(θ ^ (1 // 1))
 ```
 
 
@@ -512,7 +503,7 @@ eval(Π[1])
 ```
 
 ```
-Error: UndefVarError: Π not defined
+2.2135943621178655
 ```
 
 
@@ -522,7 +513,7 @@ eval(Π[2])
 ```
 
 ```
-Error: UndefVarError: Π not defined
+NoDims
 ```
 
 
@@ -532,7 +523,7 @@ dimension(eval(Π[1]))
 ```
 
 ```
-Error: UndefVarError: Π not defined
+NoDims
 ```
 
 

@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="" />
+  <meta name="author" content="and contributors" />
+   <title>Exemplos de ajuste não-linear de parâmetros</title>  
+  <link rel="shortcut icon" type="image/png" href="/modelagem_matematica/assets/images/favicon.png"/>
+  <link rel="stylesheet" href="/modelagem_matematica/css/base.css"/>
+  
+    <link rel="stylesheet" href="/modelagem_matematica/css/base_showaside.css"/>
+  
+  <script src="/modelagem_matematica/libs/mousetrap/mousetrap.min.js"></script>
+
+  
+    <link rel="stylesheet" href="/modelagem_matematica/libs/highlight/github.min.css">
+    <script src="/modelagem_matematica/libs/highlight/highlight.pack.js"></script>
+    <script src="/modelagem_matematica/libs/highlight/julia.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', (event) => {
+        document.querySelectorAll('pre').forEach((el) => {
+          hljs.highlightElement(el);
+        });
+      });
+    </script>
+  
+
+  
+    <link rel="stylesheet" href="/modelagem_matematica/libs/katex/katex.min.css">
+  
+</head>
+
+<body>
+
+  <div class="books-container">
+
+  <aside class="books-menu">
+  <input type="checkbox" id="menu">
+  <label for="menu">☰</label>
+
+  <div class="books-title">
+    <a href="/modelagem_matematica/">Modelagem Matemática</a>
+  </div>
+
+  <br />
+
+  <div class="books-subtitle">
+    Notas de aula
+  </div>
+
+  <br />
+
+  <div class="books-author">
+    <a href="https://rmsrosa.github.io">Ricardo M. S. Rosa</a>
+  </div>
+
+  <div class="books-menu-content">
+    <div class="menu-level-1">
+    <li><a href="/modelagem_matematica/pages/intro">Introdução</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>PARTE I</li>
+    </div>
+    <div class="menu-level-1">
+    <li>1. Preliminares</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c01/0101-Aspectos_curso">1.1. Aspectos do curso</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c01/0102-Instalando_acessando_Julia">1.2. Instalando e acessando o Julia</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c01/0103-Primeiros_passos_Julia">1.3. Primeiros passos em Julia</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>PARTE II</li>
+    </div>
+    <div class="menu-level-1">
+    <li>2. Princípios de Modelagem Matemática</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c02/0201-Principios_basicos">2.1. Princípios básicos de modelagem</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c02/0202-Exemplos_tipos_modelagem">2.2. Exemplos de tipos de modelagem</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>3. Análise Dimensional</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c03/0301-Quantidades_unidades_dimensoes">3.1. Quantidades, unidades e dimensões</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c03/0302-BuckinghamPi">3.2. Análise dimensional e o Teorema de Buckingham-Pi</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c03/0303-Unidades_Julia">3.3. Trabalhando com unidades e dimensões em Julia</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>4. Ajuste de Parâmetros</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c04/0401-Minimos_quadrados_ajuste">4.1. Mínimos quadrados e o ajuste de parâmetros</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c04/0402-Modelos_redutiveis_linear_aplicacoes">4.2. Modelos redutíveis ao caso linear nos parâmetros e aplicações</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c04/0403-Minimos_quadrados_nao_linear">4.3. Mínimos quadrados não-linear</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c04/0404-Exemplos_ajuste_naolinear">4.4. Exemplos de ajuste não-linear de parâmetros</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c04/0405-Ajuste_em_redes_neurais">4.5. Ajuste de parâmetros em modelos de redes neurais (WIP)</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>5. Erros e Incertezas</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c05/0501-Erros_e_incertezas">5.1. Erros e incertezas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c05/0502-Minimos_quadrados_verossimilhanca">5.2. Mínimos quadrados, maximização da verossimilhança e quantificação de incertezas em regressões lineares</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c05/0503-Propagacao_incertezas">5.3. Propagação de incertezas</a></li>
+    </div>
+<div>
+
+
+  
+    <a href="https://github.com/rmsrosa/modelagem_matematica/tree/modmat2022p1"><img src="/modelagem_matematica/assets/images/GitHub-Mark-32px.png" alt="GitHub repo" width="18" style="margin:5px 5px" align="left"></a>
+
+  
+
+</aside>
+
+
+  <div class="books-content">
+
+    
+      <div class="navbar">
+    <p id="nav">
+<span id="nav-prev" style="float: left;">
+<a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c04/0403-Minimos_quadrados_nao_linear">4.3. Mínimos quadrados não-linear <kbd>←</kbd></a>
+</span>
+<span id="nav-next" style="float: right;">
+    <a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c04/0405-Ajuste_em_redes_neurais"><kbd>→</kbd> 4.5. Ajuste de parâmetros em modelos de redes neurais (WIP)</a>
+</span>
+    </p>
+</div>
+</br></br>
+
+    
+
+    
+      <div class="badges">
+<p>
+<a href="https://nbviewer.org/urls/rmsrosa.github.io/modelagem_matematica/tree/modmat2022p1/generated/jupytered/c04/0404-Exemplos_ajuste_naolinear.ipynb"><img align="left" src="https://img.shields.io/badge/view%20in-nbviewer-orange" alt="View in NBViewer" title="View Jupyter notebook in NBViewer"></a>
+<a href="https://mybinder.org/v2/gh/rmsrosa/modelagem_matematica/julia-env-for-binder-2022p1?urlpath=git-pull%3Frepo%3Dhttps://github.com/rmsrosa/modelagem_matematica/tree/modmat2022p1%26urlpath%3Dlab/tree%252Fmodelagem_matematica/generated/jupytered/c04/0404-Exemplos_ajuste_naolinear.ipynb%26branch%3Dgh-pages"><img align="left" src="https://mybinder.org/badge.svg" alt="Open in binder" title="Open in binder"></a>
+<a href="/modelagem_matematica/generated/jupytered/c04/0404-Exemplos_ajuste_naolinear.ipynb"><img align="left" src="https://img.shields.io/badge/download-notebook-blue" alt="Download notebook" title="Download Jupyter notebook"></a>
+<a href="/modelagem_matematica/src/jupyter/c04/0404-Exemplos_ajuste_naolinear.ipynb"><img align="left" src="https://img.shields.io/badge/view-source-lightblue" alt="View source" title="View source"></a>
+</p>
+</div></br>
+
+    
+<h1 id="get_title"><a href="#get_title" class="header-anchor">4.4. Exemplos de ajuste não-linear de parâmetros</a></h1>
+<ul>
+<li><p>Há vários pacotes de otimização disponíveis no julia</p>
+</li>
+<li><p>Aqui, vamos usar apenas o <code>LsqFit</code> e o <code>Optim</code>:</p>
+</li>
+<li><p><a href="https://github.com/JuliaNLSolvers/LsqFit.jl">JuliaNLSolvers/LsqFit.jl</a>: implementação do algoritmo de Levenberg-Maquardt especificamente para mínimos quadrados não-linear.</p>
+</li>
+<li><p><a href="https://github.com/JuliaNLSolvers/Optim.jl">JuliaNLSolvers/Optim.jl</a>: implementação de vários algoritmos de otimização, com qualquer função-objetivo, não necessariamente mínimos quadrados.</p>
+</li>
+</ul>
+<h3 id="outros_pacotes"><a href="#outros_pacotes" class="header-anchor">Outros pacotes</a></h3>
+<ul>
+<li><p><a href="https://github.com/JuliaNLSolvers/LineSearches.jl">JuliaNLSolvers/LineSearches.jl</a>: implementação de vários algoritmos do tipo <em>busca linear</em> <em>&#40;linesearch&#41;</em> &#40;como o gradiente descendente, etc.&#41;.</p>
+</li>
+<li><p><a href="https://github.com/jump-dev/JuMP.jl">jump-dev/JuMP.jl</a>: para processos de modelagem mais complexos, com uma série de macros para construir um modelo para a otimização, e com interface para vários pacotes &#40;em julia ou não&#41; de otimização.</p>
+</li>
+<li><p><a href="https://github.com/matthieugomez/LeastSquaresOptim.jl">matthieugomez/LeastSquaresOptim.jl</a>: também para a resolução de problemas de mínimos quadrados não lineares, via Levenberg-Marquardt ou Dogleg.</p>
+</li>
+<li><p><a href="https://github.com/robertfeldt/BlackBoxOptim.jl">robertfeldt/BlackBoxOptim.jl</a>: para otimizacões globais com métodos heurísticos/estocásticos, livres de derivada.</p>
+</li>
+<li><p><a href="https://github.com/JuliaNLSolvers/NLsolve.jl/">JuliaNLSolvers/NLsolve.jl</a>: Para resolver sistemas de equações.</p>
+</li>
+<li><p>Veja mais em <a href="https://www.juliaopt.org/packages/">JuliaOpt</a></p>
+</li>
+</ul>
+<pre><code class="language-julia"># using Plots
+using CairoMakie
+using Random
+using LsqFit
+using Optim</code></pre>
+<h2 id="exemplo_michaelis-menten_de_reação_enzimática"><a href="#exemplo_michaelis-menten_de_reação_enzimática" class="header-anchor">Exemplo Michaelis-Menten de reação enzimática</a></h2>
+<ul>
+<li><p>Michaelis-Menten é um modelo para a taxa de reação enzimática &#40;velocidade&#41; \(\nu\), dado por</p>
+</li>
+</ul>
+\[ \nu = \frac{\nu_m t}{K_M + t}
+\]
+<ul>
+<li><p>Onde \(t\) é a variável temporal, \(\nu_m\) é uma taxa máxima de velodidade, e \(K_M\) é um parâmetro de saturação da reação.</p>
+</li>
+<li><p>\(\nu_m\) e \(K_M\) são os parâmetros e, como de costume, denotamo-os por \(\beta=(\nu_m, K_m)\).</p>
+</li>
+</ul>
+<pre><code class="language-julia">function model&#40;t, β&#41;
+    ν_m &#61; β&#91;1&#93;
+    K_M &#61; β&#91;2&#93;
+    v &#61; &#40;ν_m .* t&#41; ./ &#40;K_M .&#43; t&#41;
+    return v
+end
+
+ν_m &#61; 0.3
+K_M &#61; 0.5
+β &#61; &#91;ν_m K_M&#93;
+nothing</code></pre>
+<h2 id="obtendo_uma_amostra_de_dados"><a href="#obtendo_uma_amostra_de_dados" class="header-anchor">Obtendo uma amostra de dados</a></h2>
+<ul>
+<li><p>Perturbamos os dados exatos para simular imprecisões na coleta de dados</p>
+</li>
+</ul>
+<pre><code class="language-julia">data_t &#61; &#91;0.03, 0.15, 0.3, 0.6, 1.3, 2.5, 3.5&#93;
+data_v &#61; model&#40;data_t, β&#41; .&#43; 0.05*&#40;rand&#40;MersenneTwister&#40;321&#41;, length&#40;data_t&#41;&#41; .- 0.5&#41;
+lines&#40;0:0.1:4, t -&gt; model&#40;t, β&#41;&#41;
+#lines&#40;0:0.1:4, t -&gt; model&#40;t, β&#41;, label&#61;&quot;taxa de reação&quot;, legend&#61;:bottomright&#41;
+scatter&#33;&#40;data_t, data_v&#41;
+#lines&#33;&#40;data_t, data_v, seriestype&#61;:scatter, label&#61;&quot;amostra com ruído&quot;&#41;
+current_figure&#40;&#41;</code></pre>
+<img src="/modelagem_matematica/assets/pages/jupytered/c04/0404-Exemplos_ajuste_naolinear/code/images/0404-Exemplos_ajuste_naolinear_3_1.png" alt="">
+<h3 id="ajuste_dos_dados_via_lsqfit"><a href="#ajuste_dos_dados_via_lsqfit" class="header-anchor">Ajuste dos dados via LsqFit</a></h3>
+<ul>
+<li><p>Otimizando com o <code>curve_fit</code> do <code>LsqFit</code></p>
+</li>
+<li><p>É necessário dar um &quot;chute&quot; inicial para os parâmetros.</p>
+</li>
+</ul>
+<pre><code class="language-julia">β₀ &#61; &#91;0.5, 0.5&#93;
+fit &#61; curve_fit&#40;model, data_t, data_v, β₀&#41;
+β_fit &#61; fit.param</code></pre>
+<pre><code class="language-julia">2-element Vector&#123;Float64&#125;:
+ 0.27385430554237405
+ 0.3573547044880839</code></pre>
+<h3 id="visualizando_o_resultado"><a href="#visualizando_o_resultado" class="header-anchor">Visualizando o resultado</a></h3>
+<pre><code class="language-julia">plot&#40;0:0.1:4, t -&gt; model&#40;t, β&#41;, label&#61;&quot;taxa de reação&quot;, legend&#61;:bottomright&#41;
+plot&#33;&#40;data_t, data_v, seriestype&#61;:scatter, label&#61;&quot;amostra com ruído&quot;&#41;
+plot&#33;&#40;0:0.1:4, t -&gt; model&#40;t, β_fit&#41;, label&#61;&quot;modelo ajustado&quot;, legend&#61;:bottomright&#41;</code></pre>
+<pre><code class="language-julia">Error: setting legend for scene via plot attribute not supported anymore</code></pre>
+<h3 id="ajuste_dos_dados_via_optim"><a href="#ajuste_dos_dados_via_optim" class="header-anchor">Ajuste dos dados via Optim</a></h3>
+<ul>
+<li><p>Aqui, usamos o método de gradiente descendente do <code>Optim</code>.</p>
+</li>
+<li><p>No <code>Optim</code>, precisamos explicitar a função custo.</p>
+</li>
+<li><p>Lembremos que queremos ajustar os parâmetros, ou seja, precisamos minimizar o custo em relação aos parâmetros.</p>
+</li>
+<li><p>Novamente, a função custo é da soma dos quadrados dos residuos, ou erro quadrático.</p>
+</li>
+</ul>
+<pre><code class="language-julia">custo&#40;β&#41; &#61; sum&#40;abs2,data_v - model&#40;data_t,β&#41;&#41;</code></pre>
+<pre><code class="language-julia">custo &#40;generic function with 1 method&#41;</code></pre>
+<pre><code class="language-julia">resultado &#61; optimize&#40;custo, β₀, GradientDescent&#40;&#41;&#41;</code></pre>
+<pre><code class="language-julia">* Status: success
+
+ * Candidate solution
+    Final objective value:     7.751687e-04
+
+ * Found with
+    Algorithm:     Gradient Descent
+
+ * Convergence measures
+    |x - x&#39;|               &#61; 7.31e-09 ≰ 0.0e&#43;00
+    |x - x&#39;|/|x&#39;|          &#61; 2.05e-08 ≰ 0.0e&#43;00
+    |f&#40;x&#41; - f&#40;x&#39;&#41;|         &#61; 1.55e-16 ≰ 0.0e&#43;00
+    |f&#40;x&#41; - f&#40;x&#39;&#41;|/|f&#40;x&#39;&#41;| &#61; 2.01e-13 ≰ 0.0e&#43;00
+    |g&#40;x&#41;|                 &#61; 7.10e-09 ≤ 1.0e-08
+
+ * Work counters
+    Seconds run:   0  &#40;vs limit Inf&#41;
+    Iterations:    72
+    f&#40;x&#41; calls:    220
+    ∇f&#40;x&#41; calls:   220</code></pre>
+<pre><code class="language-julia">β_optim &#61; Optim.minimizer&#40;resultado&#41;</code></pre>
+<pre><code class="language-julia">2-element Vector&#123;Float64&#125;:
+ 0.2738543232663811
+ 0.3573548106304591</code></pre>
+<h3 id="visualizando_o_resultado__2"><a href="#visualizando_o_resultado__2" class="header-anchor">Visualizando o resultado</a></h3>
+<pre><code class="language-julia">plot&#40;0:0.1:4, t -&gt; model&#40;t, β&#41;, label&#61;&quot;taxa de reação&quot;, legend&#61;:bottomright&#41;
+plot&#33;&#40;data_t, data_v, seriestype&#61;:scatter, label&#61;&quot;amostra com ruído&quot;&#41;
+plot&#33;&#40;0:0.1:4, t -&gt; model&#40;t, β_fit&#41;, label&#61;&quot;modelo ajustado via Levenberg-Marquardt do LsqFit&quot;, legend&#61;:bottomright&#41;
+plot&#33;&#40;0:0.1:4, t -&gt; model&#40;t, β_optim&#41;, seriestype&#61;:scatter, markershape&#61;:xcross, markersize&#61;2,
+        label&#61;&quot;modelo ajustado via gradiente descendente do Optim&quot;, legend&#61;:bottomright&#41;</code></pre>
+<pre><code class="language-julia">Error: setting legend for scene via plot attribute not supported anymore</code></pre>
+<h2 id="dados_espúrios_outliers"><a href="#dados_espúrios_outliers" class="header-anchor">Dados espúrios <em>&#40;outliers&#41;</em></a></h2>
+<ul>
+<li><p>É comum, por dificuldades no processo de amostragem ou de tratamento dos dados, termos dados &quot;espúrios&quot;, i.e. claramente fora do padrão.</p>
+</li>
+<li><p>São, também, denominados de <em>outliers</em>.</p>
+</li>
+<li><p>Podemos tentar filtrar os dados espúrios da amostra usando técnicas de estatística.</p>
+</li>
+<li><p>E/Ou podemos reduzir o impacto dos dados espúrios com funções de custo ligeiramente modificadas.</p>
+</li>
+</ul>
+<h3 id="dados_contaminados"><a href="#dados_contaminados" class="header-anchor">Dados contaminados</a></h3>
+<ul>
+<li><p>Vamos modificar a amostra anterior substituindo um dos dados por um dado espúrio.</p>
+</li>
+</ul>
+<pre><code class="language-julia">data_v_esp &#61; copy&#40;data_v&#41;
+data_v_esp&#91;5&#93; &#43;&#61; 0.15
+nothing</code></pre>
+<pre><code class="language-julia">plot&#40;0:0.1:4, t -&gt; model&#40;t, β&#41;, label&#61;&quot;taxa de reação&quot;, legend&#61;:bottomright&#41;
+plot&#33;&#40;data_t, data_v_esp, seriestype&#61;:scatter, label&#61;&quot;amostra com ruído espúrio&quot;&#41;</code></pre>
+<pre><code class="language-julia">Error: setting legend for scene via plot attribute not supported anymore</code></pre>
+<h3 id="ajuste"><a href="#ajuste" class="header-anchor">Ajuste</a></h3>
+<pre><code class="language-julia">custo_esp&#40;β&#41; &#61; sum&#40;abs2,data_v_esp - model&#40;data_t,β&#41;&#41;
+resultado_esp &#61; optimize&#40;custo_esp, β₀, GradientDescent&#40;&#41;&#41;
+β_optim_esp &#61; Optim.minimizer&#40;resultado_esp&#41;</code></pre>
+<pre><code class="language-julia">2-element Vector&#123;Float64&#125;:
+ 0.3150999020168445
+ 0.3607669696333052</code></pre>
+<pre><code class="language-julia">plot&#40;0:0.1:4, t -&gt; model&#40;t, β&#41;, label&#61;&quot;taxa de reação&quot;, legend&#61;:bottomright&#41;
+plot&#33;&#40;data_t, data_v_esp, seriestype&#61;:scatter, label&#61;&quot;amostra com ruído espúrio&quot;&#41;
+plot&#33;&#40;0:0.1:4, t -&gt; model&#40;t, β_optim_esp&#41;, linestyle&#61;:dash,
+        label&#61;&quot;modelo ajustado via gradiente descendente do Optim&quot;, legend&#61;:bottomright&#41;</code></pre>
+<pre><code class="language-julia">Error: setting legend for scene via plot attribute not supported anymore</code></pre>
+<h3 id="funções_de_custo_modificadas"><a href="#funções_de_custo_modificadas" class="header-anchor">Funções de custo modificadas</a></h3>
+<ul>
+<li><p>A ideia, aqui, é modificar a função quadrática de custo para uma em que resíduos relativamente grandes causem menos influência.</p>
+</li>
+<li><p>Vários tipos de modificações costumam ser usadas.</p>
+</li>
+</ul>
+<pre><code class="language-julia">mods_custo &#61; Dict&#40;
+    :linear &#61;&gt; &#40;r -&gt; @. r&#41;,
+    :soft_l1 &#61;&gt; &#40;r -&gt; @. 2*&#40;&#40;1 &#43; abs&#40;r&#41;&#41;^&#40;1/2&#41; - 1&#41;&#41;,
+    :huber &#61;&gt; &#40;r -&gt; @. min&#40;r, 2*&#40;&#40;1 &#43; abs&#40;r&#41;&#41;^&#40;1/2&#41; - 1&#41;&#41;&#41;,
+    :cauchy &#61;&gt; &#40;r -&gt; @. log.&#40;1 .&#43; abs&#40;r&#41;&#41;&#41;,
+    :arctan &#61;&gt; &#40;r -&gt; @. atan&#40;r&#41;&#41;
+&#41;</code></pre>
+<pre><code class="language-julia">Dict&#123;Symbol, Function&#125; with 5 entries:
+  :cauchy  &#61;&gt; #14
+  :arctan  &#61;&gt; #15
+  :soft_l1 &#61;&gt; #12
+  :huber   &#61;&gt; #13
+  :linear  &#61;&gt; #11</code></pre>
+<pre><code class="language-julia">plot&#40;title&#61;&quot;Diferentes modificadores para a função de custo&quot;, titlefont&#61;10&#41;
+for &#40;k,func&#41; in mods_custo
+    plot&#33;&#40;0:0.1:1.5, func, label&#61;&quot;função modificadora &#36;k&quot;, 
+        legendfont&#61;6, legend&#61;:topleft, subplot&#61;1&#41;
+end
+plot&#33;&#40;&#41;</code></pre>
+<pre><code class="language-julia">Error: MethodError: no method matching lift&#40;::typeof&#40;tuple&#41;&#41;
+Closest candidates are:
+  lift&#40;::Any, &#33;Matched::Observables.AbstractObservable, &#33;Matched::Any...; k
+w...&#41; at ~/.julia/packages/Makie/lgPZh/src/interaction/observables.jl:26
+  lift&#40;::Any, &#33;Matched::Type&#123;T&#125;, &#33;Matched::Observables.AbstractObservable, 
+&#33;Matched::Any...&#41; where T at ~/.julia/packages/Makie/lgPZh/src/interaction/
+observables.jl:37</code></pre>
+<pre><code class="language-julia">sq&#40;e&#41; &#61; sum&#40;abs2, e&#41;</code></pre>
+<pre><code class="language-julia">sq &#40;generic function with 1 method&#41;</code></pre>
+<pre><code class="language-julia">plot&#40;title&#61;&quot;Diferentes modificadores para a função de custo&quot;, titlefont&#61;10&#41;
+for &#40;k,func&#41; in mods_custo
+    plot&#33;&#40;0:0.1:1.5, sq∘func, label&#61;&quot;função modificadora &#36;k&quot;, 
+        legendfont&#61;6, legend&#61;:topleft, subplot&#61;1&#41;
+end
+plot&#33;&#40;&#41;</code></pre>
+<pre><code class="language-julia">Error: MethodError: no method matching lift&#40;::typeof&#40;tuple&#41;&#41;
+Closest candidates are:
+  lift&#40;::Any, &#33;Matched::Observables.AbstractObservable, &#33;Matched::Any...; k
+w...&#41; at ~/.julia/packages/Makie/lgPZh/src/interaction/observables.jl:26
+  lift&#40;::Any, &#33;Matched::Type&#123;T&#125;, &#33;Matched::Observables.AbstractObservable, 
+&#33;Matched::Any...&#41; where T at ~/.julia/packages/Makie/lgPZh/src/interaction/
+observables.jl:37</code></pre>
+<h3 id="ampliando_o_efeito_dos_modificadores"><a href="#ampliando_o_efeito_dos_modificadores" class="header-anchor">Ampliando o efeito dos modificadores</a></h3>
+<ul>
+<li><p>O efeito dos diferents modificadores pode ser amplificado com uma função de espalhamento:</p>
+</li>
+</ul>
+\[ s \mapsto \lambda s
+\]
+<pre><code class="language-julia">λ&#40;s&#41; &#61; 20*s</code></pre>
+<pre><code class="language-julia">λ &#40;generic function with 1 method&#41;</code></pre>
+<pre><code class="language-julia">plot&#40;title&#61;&quot;Diferentes modificadores para a função de custo&quot;, titlefont&#61;10&#41;
+for &#40;k,func&#41; in mods_custo
+    plot&#33;&#40;0:0.1:1.5, sq∘λ∘func, label&#61;&quot;função modificadora &#36;k&quot;, 
+        legendfont&#61;6, legend&#61;:topleft, subplot&#61;1&#41;
+end
+plot&#33;&#40;&#41;</code></pre>
+<pre><code class="language-julia">Error: MethodError: no method matching lift&#40;::typeof&#40;tuple&#41;&#41;
+Closest candidates are:
+  lift&#40;::Any, &#33;Matched::Observables.AbstractObservable, &#33;Matched::Any...; k
+w...&#41; at ~/.julia/packages/Makie/lgPZh/src/interaction/observables.jl:26
+  lift&#40;::Any, &#33;Matched::Type&#123;T&#125;, &#33;Matched::Observables.AbstractObservable, 
+&#33;Matched::Any...&#41; where T at ~/.julia/packages/Makie/lgPZh/src/interaction/
+observables.jl:37</code></pre>
+<h3 id="função_de_custo_modificada"><a href="#função_de_custo_modificada" class="header-anchor">Função de custo modificada</a></h3>
+<ul>
+<li><p>Assim, a função de custo é a composição </p>
+</li>
+</ul>
+\[ \text{função quadrática} \circ \text{modificador} \circ \text{espalhamento} \circ \text{resíduos}.
+\]
+<h3 id="fazendo_os_ajustes"><a href="#fazendo_os_ajustes" class="header-anchor">Fazendo os ajustes</a></h3>
+<pre><code class="language-julia">residuos_esp&#40;β&#41; &#61; data_v_esp - model&#40;data_t,β&#41;
+resultados_esp &#61; 
+    Dict&#40;k &#61;&gt; optimize&#40;sq∘func∘λ∘residuos_esp, β₀, GradientDescent&#40;&#41;&#41;
+        for &#40;k,func&#41; in mods_custo
+        &#41;
+nothing</code></pre>
+<h3 id="visualizando_os_resultados"><a href="#visualizando_os_resultados" class="header-anchor">Visualizando os resultados</a></h3>
+<pre><code class="language-julia">plot&#40;0:0.1:4, t -&gt; model&#40;t, β&#41;, label&#61;&quot;taxa de reação&quot;, legend&#61;:bottomright&#41;
+plot&#33;&#40;data_t, data_v_esp, seriestype&#61;:scatter, label&#61;&quot;amostra com ruído espúrio&quot;&#41;
+for k in keys&#40;mods_custo&#41;
+    plot&#33;&#40;0:0.1:4, t -&gt; model&#40;t, Optim.minimizer&#40;resultados_esp&#91;k&#93;&#41;&#41;, linestyle&#61;:dash,
+        label&#61;&quot;modelo ajustado com modificador de custo &#36;k&quot;, legend&#61;:bottomright&#41;
+end
+plot&#33;&#40;title&#61;&quot;Ajustes com diferentes modificadores da função de custo&quot;, titlefont&#61;10&#41;</code></pre>
+<pre><code class="language-julia">Error: setting legend for scene via plot attribute not supported anymore</code></pre>
+<h2 id="exercícios"><a href="#exercícios" class="header-anchor">Exercícios</a></h2>
+<ol>
+<li><p>Refaça os exemplos do caderno sobre <strong>Modelos redutíveis ao caso linear nos parâmetros e aplicações</strong> como problemas de otimização não-linear, sem usar as mudanças de variáveis feitas lá.</p>
+</li>
+</ol>
+
+    <div class="navbar">
+    <p id="nav">
+<span id="nav-prev" style="float: left;">
+<a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c04/0403-Minimos_quadrados_nao_linear">4.3. Mínimos quadrados não-linear <kbd>←</kbd></a>
+</span>
+<span id="nav-next" style="float: right;">
+    <a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c04/0405-Ajuste_em_redes_neurais"><kbd>→</kbd> 4.5. Ajuste de parâmetros em modelos de redes neurais (WIP)</a>
+</span>
+    </p>
+</div>
+</br></br>
+
+
+
+<div class="page-foot">
+    
+        <div class="license">
+            <a href=https://creativecommons.org/licenses/by-nc-nd/4.0/>(CC BY-NC-ND 4.0) Attribution-NonCommercial-NoDerivatives 4.0 International </a>
+            
+        </div>
+    
+
+    Last modified: April 14, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
+</div><!-- CONTENT ENDS HERE -->
+
+      </div> <!-- .books-content -->
+    </div> <!-- .books-container -->
+
+    
+        <script src="/modelagem_matematica/libs/katex/katex.min.js"></script>
+        <script src="/modelagem_matematica/libs/katex/auto-render.min.js"></script>
+        <script>renderMathInElement(document.body)</script>
+    
+
+    
+        <script src="/modelagem_matematica/libs/highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();hljs.configure({tabReplace: '    '});</script>
+    
+
+  </body>
+</html>

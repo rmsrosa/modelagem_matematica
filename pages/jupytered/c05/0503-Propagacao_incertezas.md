@@ -12,13 +12,6 @@ using LsqFit
 using Statistics
 ```
 
-```
-Error: ArgumentError: Package LsqFit [2fda8390-95c7-5789-9bda-21331edee243]
- is required but does not seem to be installed:
- - Run `Pkg.instantiate()` to install all recorded dependencies.
-```
-
-
 
 
 ## Introdução
@@ -135,7 +128,13 @@ fit = curve_fit(model, data_t, data_v, β₀)
 ```
 
 ```
-Error: UndefVarError: curve_fit not defined
+LsqFit.LsqFitResult{Vector{Float64}, Vector{Float64}, Matrix{Float64}, Vect
+or{Float64}}([0.33783348970420884, 0.752669332807861], [0.00228785846718963
+45, -0.003539069473125704, 0.007927265929843746, 0.0057232304999305095, -0.
+004370304010368059, -0.03195144785088161, 0.02798044147891704], [0.03833036
+346563923 -0.01654502087827302; 0.16617380755903713 -0.062192294860955295; 
+… ; 0.7685994929679778 -0.07982940235274255; 0.8230124954670534 -0.06538039
+090975993], true, Float64[])
 ```
 
 
@@ -160,7 +159,9 @@ Error: UndefVarError: curve_fit not defined
 ```
 
 ```
-Error: type #fit has no field param
+2-element Vector{Float64}:
+ 0.33783348970420884
+ 0.752669332807861
 ```
 
 
@@ -170,7 +171,9 @@ Error: type #fit has no field param
 ```
 
 ```
-Error: UndefVarError: stderror not defined
+2-element Vector{Float64}:
+ 0.029934302311150303
+ 0.19558628727278368
 ```
 
 
@@ -180,7 +183,9 @@ margin_of_error = margin_error(fit, 0.05)
 ```
 
 ```
-Error: UndefVarError: margin_error not defined
+2-element Vector{Float64}:
+ 0.0769485737834891
+ 0.5027705573629636
 ```
 
 
@@ -190,7 +195,9 @@ confidence_inter = confidence_interval(fit, 0.05)
 ```
 
 ```
-Error: UndefVarError: confidence_interval not defined
+2-element Vector{Tuple{Float64, Float64}}:
+ (0.2608849159207197, 0.41478206348769797)
+ (0.24989877544489736, 1.2554398901708246)
 ```
 
 
@@ -200,7 +207,9 @@ covar = estimate_covar(fit)
 ```
 
 ```
-Error: UndefVarError: estimate_covar not defined
+2×2 Matrix{Float64}:
+ 0.000896062  0.00517513
+ 0.00517513   0.038254
 ```
 
 
@@ -217,7 +226,9 @@ sqrt.([covar[1,1],covar[2,2]])
 ```
 
 ```
-Error: UndefVarError: covar not defined
+2-element Vector{Float64}:
+ 0.029934302311150303
+ 0.19558628727278368
 ```
 
 
@@ -227,7 +238,14 @@ jac = fit.jacobian
 ```
 
 ```
-Error: type #fit has no field jacobian
+7×2 Matrix{Float64}:
+ 0.0383304  -0.016545
+ 0.166174   -0.0621923
+ 0.28499    -0.0914619
+ 0.443567   -0.110782
+ 0.633322   -0.104234
+ 0.768599   -0.0798294
+ 0.823012   -0.0653804
 ```
 
 
@@ -237,7 +255,9 @@ mse(fit) * inv(jac' * jac)
 ```
 
 ```
-Error: UndefVarError: mse not defined
+2×2 Matrix{Float64}:
+ 0.000896062  0.00517513
+ 0.00517513   0.038254
 ```
 
 
@@ -254,7 +274,7 @@ mse(fit)
 ```
 
 ```
-Error: UndefVarError: mse not defined
+0.000387251180769009
 ```
 
 
@@ -264,7 +284,7 @@ length(data_v), length(β_fit)
 ```
 
 ```
-Error: UndefVarError: β_fit not defined
+(7, 2)
 ```
 
 
@@ -274,7 +294,7 @@ sum(abs2, data_v - model(data_t, β_fit)) / (length(data_v) - length(β_fit))
 ```
 
 ```
-Error: UndefVarError: β_fit not defined
+0.000387251180769009
 ```
 
 
@@ -297,11 +317,7 @@ scatter!((rand(Normal(β_fit[1],σ[1]),num_amostras),
         legend=:topleft)
 ```
 
-```
-Error: UndefVarError: β_fit not defined
-```
-
-
+\fig{images/0503-Propagacao_incertezas_16_1.png}
 
 
 ### Resultado da propagação de erro via Método de Monte Carlo
@@ -325,11 +341,7 @@ end
 plot!(t, mean(simulations, dims=2), color=4, label="média simulações")
 ```
 
-```
-Error: UndefVarError: β_fit not defined
-```
-
-
+\fig{images/0503-Propagacao_incertezas_17_1.png}
 
 
 ### Intervalo de confiança
@@ -359,11 +371,7 @@ plot!(t, mean(simulations, dims=2), yerror=2*sqrt.(var(simulations, dims=2)), co
     label="média simulações")
 ```
 
-```
-Error: UndefVarError: β_fit not defined
-```
-
-
+\fig{images/0503-Propagacao_incertezas_18_1.png}
 
 
 * Calculando os percentis a partir dos dados das simulações.
@@ -377,26 +385,26 @@ errorbar95 = quantiles95 .- mean(simulations, dims=2)
 
 ```
 41×2 Matrix{Float64}:
- 0.0  0.0
- 0.0  0.0
- 0.0  0.0
- 0.0  0.0
- 0.0  0.0
- 0.0  0.0
- 0.0  0.0
- 0.0  0.0
- 0.0  0.0
- 0.0  0.0
- ⋮    
- 0.0  0.0
- 0.0  0.0
- 0.0  0.0
- 0.0  0.0
- 0.0  0.0
- 0.0  0.0
- 0.0  0.0
- 0.0  0.0
- 0.0  0.0
+  0.0         0.0
+ -0.00911759  0.016708
+ -0.0138763   0.0244809
+ -0.0162127   0.0268753
+ -0.0171647   0.0263309
+ -0.0174861   0.0252796
+ -0.0173037   0.0235826
+ -0.0172024   0.0221576
+ -0.0169754   0.0199883
+ -0.0166392   0.0180607
+  ⋮           
+ -0.0292301   0.0297784
+ -0.0298128   0.0305654
+ -0.0303718   0.0313236
+ -0.0309084   0.0320544
+ -0.0314239   0.0327592
+ -0.0319195   0.0334393
+ -0.0323963   0.0340959
+ -0.0328554   0.0347302
+ -0.0332977   0.0353432
 ```
 
 
@@ -413,11 +421,7 @@ plot!(t, mean(simulations, dims=2), yerror=errorbar95, color=4,
     label="média simulações")
 ```
 
-```
-Error: UndefVarError: β_fit not defined
-```
-
-
+\fig{images/0503-Propagacao_incertezas_20_1.png}
 
 
 * Comparando os dois intervalos de confiança.
@@ -436,11 +440,7 @@ plot!(t, mean(simulations, dims=2) .- 2*sqrt.(var(simulations, dims=2)), color=6
     label=nothing)
 ```
 
-```
-Error: UndefVarError: β_fit not defined
-```
-
-
+\fig{images/0503-Propagacao_incertezas_21_1.png}
 
 
 ## Exercícios

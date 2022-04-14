@@ -1,0 +1,17 @@
+@media only screen and (min-width: calc(720px)) {
+    .books-container {
+      display: flex;
+    }
+  
+    .books-menu {
+      flex: 0 0 var(--menu-width);
+    }
+  
+    .books-menu label {
+      display: none !important;
+    }
+  
+    .books-menu-content {
+      max-height: 100%;
+    }
+  }
