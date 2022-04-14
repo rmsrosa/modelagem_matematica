@@ -470,9 +470,7 @@ println(readdir())
 ```
 
 ```
-["0401-Minimos_quadrados_ajuste.md", "0402-Modelos_redutiveis_linear_aplica
-coes.md", "0403-Minimos_quadrados_nao_linear.md", "0404-Exemplos_ajuste_nao
-linear.md", "0405-Ajuste_em_redes_neurais.md", "images"]
+["0401-Minimos_quadrados_ajuste.md", "images"]
 ```
 
 

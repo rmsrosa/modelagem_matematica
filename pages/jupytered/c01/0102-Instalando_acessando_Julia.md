@@ -263,10 +263,8 @@ readdir()
 ```
 
 ```
-4-element Vector{String}:
+2-element Vector{String}:
  "0101-Aspectos_curso.md"
- "0102-Instalando_acessando_Julia.md"
- "0103-Primeiros_passos_Julia.md"
  "images"
 ```
 

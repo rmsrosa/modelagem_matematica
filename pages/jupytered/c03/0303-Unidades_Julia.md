@@ -343,12 +343,8 @@ Closest candidates are:
 .7.app/Contents/Resources/julia/share/julia/base/operators.jl:655
   *(!Matched::ChainRulesCore.AbstractThunk, ::Any) at ~/.julia/packages/Cha
 inRulesCore/RbX5a/src/tangent_arithmetic.jl:125
-  *(::Number, !Matched::Union{SparseArrays.SparseVector{Tv, Ti}, SubArray{T
-v, 1, <:SparseArrays.AbstractSparseMatrixCSC{Tv, Ti}, Tuple{Base.Slice{Base
-.OneTo{Int64}}, Int64}, false}, SubArray{Tv, 1, <:SparseArrays.AbstractSpar
-seVector{Tv, Ti}, Tuple{Base.Slice{Base.OneTo{Int64}}}, false}} where {Tv, 
-Ti}) at /Applications/Julia-1.7.app/Contents/Resources/julia/share/julia/st
-dlib/v1.7/SparseArrays/src/sparsevector.jl:1475
+  *(!Matched::SpecialFunctions.SimplePoly, ::Any) at ~/.julia/packages/Spec
+ialFunctions/CQMHW/src/expint.jl:8
   ...
 ```
 
@@ -457,12 +453,8 @@ Closest candidates are:
 .7.app/Contents/Resources/julia/share/julia/base/operators.jl:655
   *(!Matched::ChainRulesCore.AbstractThunk, ::Any) at ~/.julia/packages/Cha
 inRulesCore/RbX5a/src/tangent_arithmetic.jl:125
-  *(::Number, !Matched::Union{SparseArrays.SparseVector{Tv, Ti}, SubArray{T
-v, 1, <:SparseArrays.AbstractSparseMatrixCSC{Tv, Ti}, Tuple{Base.Slice{Base
-.OneTo{Int64}}, Int64}, false}, SubArray{Tv, 1, <:SparseArrays.AbstractSpar
-seVector{Tv, Ti}, Tuple{Base.Slice{Base.OneTo{Int64}}}, false}} where {Tv, 
-Ti}) at /Applications/Julia-1.7.app/Contents/Resources/julia/share/julia/st
-dlib/v1.7/SparseArrays/src/sparsevector.jl:1475
+  *(!Matched::SpecialFunctions.SimplePoly, ::Any) at ~/.julia/packages/Spec
+ialFunctions/CQMHW/src/expint.jl:8
   ...
 ```
 
