@@ -154,14 +154,21 @@ Return the html code to display the link to the github repo.
 """
 function hfun_github_repo_link()
     github_repo = globvar(:github_repo)
+    github_branch = globvar(:github_branch)
     (github_repo === nothing || github_repo == "") && return ""
+
+    github_link = github_branch === nothing && github_branch == "" ?
+        github_repo :
+        startswith(github_repo, r"/?tree") ?
+        rstrip(github_repo, '/') * '/' * lstrip(github_branch, '/') :
+        rstrip(github_repo, '/') * "/tree/" * lstrip(github_branch, '/')
 
     io = IOBuffer()
 
     write(
         io,
         """
-        <a href="$github_repo"><img src="/assets/images/GitHub-Mark-32px.png" alt="GitHub repo" width="18" style="margin:5px 5px" align="left"></a>
+        <a href="$github_link"><img src="/assets/images/GitHub-Mark-32px.png" alt="GitHub repo" width="18" style="margin:5px 5px" align="left"></a>
         """,
     )
 

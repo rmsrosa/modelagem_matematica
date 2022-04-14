@@ -21,7 +21,8 @@ book_licensees = ""
 +++
 show_aside = true
 show_github = true
-github_repo = "https://github.com/rmsrosa/modelagem_matematica/tree/modmat2022p1"
+github_repo = "https://github.com/rmsrosa/modelagem_matematica"
+github_branch = "modmat2022p1"
 +++
 
 ## navigation links
