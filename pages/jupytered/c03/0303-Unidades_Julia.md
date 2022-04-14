@@ -16,6 +16,13 @@ using Plots
 using UnitfulRecipes
 ```
 
+```
+Error: ArgumentError: Package UnitfulBuckinghamPi [a5a2160c-bd99-4b31-b024-
+0885c747111f] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+```
+
+
 
 
 ## Quantidades, unidades e dimensão via Unitful.jl
@@ -184,7 +191,11 @@ nothing}}}:
 plot(t, t -> h(t, h0, v0))
 ```
 
-\fig{images/0303-Unidades_Julia_14_1.png}
+```
+Error: UndefVarError: plot not defined
+```
+
+
 
 
 ### Traçando o gráfico com os vetores/iteradores de quantidades
@@ -195,7 +206,11 @@ plot(t, t -> h(t, h0, v0))
 plot(t, h.(t, h0, v0))
 ```
 
-\fig{images/0303-Unidades_Julia_15_1.png}
+```
+Error: UndefVarError: plot not defined
+```
+
+
 
 
 ### Embelezando o gráfico
@@ -210,7 +225,11 @@ plot(t, h.(t, h0, v0), title="lançamento vertical de um objeto", titlefont=10,
     xlabel = "tempo", ylabel="altura")
 ```
 
-\fig{images/0303-Unidades_Julia_16_1.png}
+```
+Error: UndefVarError: plot not defined
+```
+
+
 
 
 ### Operações permitidas
@@ -320,11 +339,11 @@ Error: MethodError: no method matching +(::Unitful.FreeUnits{(m,), 𝐋, nothi
 ng}, ::Unitful.FreeUnits{(m,), 𝐋, nothing})
 Closest candidates are:
   +(::Any, ::Any, !Matched::Any, !Matched::Any...) at /Applications/Julia-1
-.8.app/Contents/Resources/julia/share/julia/base/operators.jl:591
-  +(!Matched::ChainRulesCore.AbstractThunk, ::Any) at ~/.julia/packages/Cha
-inRulesCore/IzITE/src/tangent_arithmetic.jl:122
+.7.app/Contents/Resources/julia/share/julia/base/operators.jl:655
   +(!Matched::ChainRulesCore.Tangent{P}, ::P) where P at ~/.julia/packages/
 ChainRulesCore/IzITE/src/tangent_arithmetic.jl:146
+  +(!Matched::ChainRulesCore.AbstractThunk, ::Any) at ~/.julia/packages/Cha
+inRulesCore/IzITE/src/tangent_arithmetic.jl:122
   ...
 ```
 
@@ -340,11 +359,11 @@ tful.FreeUnits{(m, s), 𝐋 𝐓, nothing}}, ::Unitful.Dimensions{(Unitful.Dimen
 ion{:Time}(1//1),)})
 Closest candidates are:
   *(::Any, ::Any, !Matched::Any, !Matched::Any...) at /Applications/Julia-1
-.8.app/Contents/Resources/julia/share/julia/base/operators.jl:591
+.7.app/Contents/Resources/julia/share/julia/base/operators.jl:655
+  *(!Matched::Unitful.Dimensions, ::Unitful.Dimensions...) at ~/.julia/pack
+ages/Unitful/SUQzL/src/dimensions.jl:25
   *(::Unitful.Quantity, !Matched::Unitful.Gain) at ~/.julia/packages/Unitfu
 l/SUQzL/src/logarithm.jl:222
-  *(::Unitful.Quantity, !Matched::Unitful.Level) at ~/.julia/packages/Unitf
-ul/SUQzL/src/logarithm.jl:211
   ...
 ```
 
@@ -398,6 +417,13 @@ nothing
 @setparameters ℓ g m T θ
 ```
 
+```
+Error: LoadError: UndefVarError: @setparameters not defined
+in expression starting at /Users/rrosa/Documents/git_repositories/modelagem
+_matematica/src/jupyter/c03/0303-Unidades_Julia.ipynb:3
+```
+
+
 
 ```julia
 # grupos adimensionais na forma de string
@@ -405,9 +431,7 @@ pi_groups(:String)
 ```
 
 ```
-2-element Vector{String}:
- "g^(1//2)*ℓ^(-1//2)*T^(1//1)"
- "θ^(1//1)"
+Error: UndefVarError: pi_groups not defined
 ```
 
 
@@ -418,9 +442,7 @@ pi_groups(:String)
 ```
 
 ```
-2-element Vector{Expr}:
- :(g ^ (1 // 2) * ℓ ^ (-1 // 2) * T ^ (1 // 1))
- :(θ ^ (1 // 1))
+Error: UndefVarError: pi_groups not defined
 ```
 
 
@@ -435,7 +457,7 @@ eval(Π[2])
 ```
 
 ```
-NoDims
+Error: UndefVarError: Π not defined
 ```
 
 
@@ -445,17 +467,7 @@ eval(Π[1])
 ```
 
 ```
-Error: MethodError: no method matching *(::Unitful.Quantity{Float64, 𝐓⁻¹, U
-nitful.FreeUnits{(s⁻¹,), 𝐓⁻¹, nothing}}, ::Unitful.Dimensions{(Unitful.Dime
-nsion{:Time}(1//1),)})
-Closest candidates are:
-  *(::Any, ::Any, !Matched::Any, !Matched::Any...) at /Applications/Julia-1
-.8.app/Contents/Resources/julia/share/julia/base/operators.jl:591
-  *(::Unitful.Quantity, !Matched::Unitful.Gain) at ~/.julia/packages/Unitfu
-l/SUQzL/src/logarithm.jl:222
-  *(::Unitful.Quantity, !Matched::Unitful.Level) at ~/.julia/packages/Unitf
-ul/SUQzL/src/logarithm.jl:211
-  ...
+Error: UndefVarError: Π not defined
 ```
 
 
@@ -477,15 +489,20 @@ s
 @setparameters ℓ g m τ θ
 ```
 
+```
+Error: LoadError: UndefVarError: @setparameters not defined
+in expression starting at /Users/rrosa/Documents/git_repositories/modelagem
+_matematica/src/jupyter/c03/0303-Unidades_Julia.ipynb:2
+```
+
+
 
 ```julia
 Π = pi_groups()
 ```
 
 ```
-2-element Vector{Expr}:
- :(g ^ (1 // 2) * ℓ ^ (-1 // 2) * τ ^ (1 // 1))
- :(θ ^ (1 // 1))
+Error: UndefVarError: pi_groups not defined
 ```
 
 
@@ -495,7 +512,7 @@ eval(Π[1])
 ```
 
 ```
-2.2135943621178655
+Error: UndefVarError: Π not defined
 ```
 
 
@@ -505,7 +522,7 @@ eval(Π[2])
 ```
 
 ```
-NoDims
+Error: UndefVarError: Π not defined
 ```
 
 
@@ -515,7 +532,7 @@ dimension(eval(Π[1]))
 ```
 
 ```
-NoDims
+Error: UndefVarError: Π not defined
 ```
 
 

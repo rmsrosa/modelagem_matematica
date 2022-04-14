@@ -182,7 +182,7 @@ x = A\y
 
 ```
 2-element Vector{Float64}:
- 284.5357142857144
+ 284.53571428571445
  201.9642857142857
 ```
 
@@ -226,8 +226,8 @@ using InteractiveUtils
 
 ```
 \(A::AbstractMatrix, B::AbstractVecOrMat) in LinearAlgebra at /Applications
-/Julia-1.8.app/Contents/Resources/julia/share/julia/stdlib/v1.8/LinearAlgeb
-ra/src/generic.jl:1097
+/Julia-1.7.app/Contents/Resources/julia/share/julia/stdlib/v1.7/LinearAlgeb
+ra/src/generic.jl:1128
 ```
 
 
@@ -354,8 +354,8 @@ A = [ones(length(ξ)) ξ]
 
 ```
 2-element Vector{Float64}:
- -3.9870885208722147
-  3.0933036703201364
+ -3.9870885208722124
+  3.093303670320135
 ```
 
 
@@ -368,7 +368,7 @@ A = [ones(length(ξ)) ξ]
 ```
 
 ```
-(0.018553654135861703, 3.0933036703201364)
+(0.018553654135861745, 3.093303670320135)
 ```
 
 
@@ -530,32 +530,32 @@ csv_data = CSV.File("../../../_assets/attachments/data/decaimento_plutonio241.cs
 
 ```
 13-element CSV.File:
- CSV.Row: (var"Data(ano/mês/dia)" = Dates.Date("1976-01-13"), var"Fração da
-s frações" = 6.5066)
- CSV.Row: (var"Data(ano/mês/dia)" = Dates.Date("1976-01-19"), var"Fração da
-s frações" = 6.4965)
- CSV.Row: (var"Data(ano/mês/dia)" = Dates.Date("1976-09-27"), var"Fração da
-s frações" = 6.2857)
- CSV.Row: (var"Data(ano/mês/dia)" = Dates.Date("1976-10-04"), var"Fração da
-s frações" = 6.282)
- CSV.Row: (var"Data(ano/mês/dia)" = Dates.Date("1977-03-08"), var"Fração da
-s frações" = 6.1526)
- CSV.Row: (var"Data(ano/mês/dia)" = Dates.Date("1977-03-22"), var"Fração da
-s frações" = 6.1435)
- CSV.Row: (var"Data(ano/mês/dia)" = Dates.Date("1977-11-23"), var"Fração da
-s frações" = 5.9406)
- CSV.Row: (var"Data(ano/mês/dia)" = Dates.Date("1978-12-05"), var"Fração da
-s frações" = 5.6599)
- CSV.Row: (var"Data(ano/mês/dia)" = Dates.Date("1981-06-02"), var"Fração da
-s frações" = 5.0133)
- CSV.Row: (var"Data(ano/mês/dia)" = Dates.Date("1993-12-13"), var"Fração da
-s frações" = 2.7387)
- CSV.Row: (var"Data(ano/mês/dia)" = Dates.Date("1994-08-25"), var"Fração da
-s frações" = 2.6498)
- CSV.Row: (var"Data(ano/mês/dia)" = Dates.Date("1996-10-28"), var"Fração da
-s frações" = 2.38517)
- CSV.Row: (var"Data(ano/mês/dia)" = Dates.Date("2006-11-13"), var"Fração da
-s frações" = 1.47161)
+ CSV.Row: (Data(ano/mês/dia) = Dates.Date("1976-01-13"), Fração das frações
+ = 6.5066)
+ CSV.Row: (Data(ano/mês/dia) = Dates.Date("1976-01-19"), Fração das frações
+ = 6.4965)
+ CSV.Row: (Data(ano/mês/dia) = Dates.Date("1976-09-27"), Fração das frações
+ = 6.2857)
+ CSV.Row: (Data(ano/mês/dia) = Dates.Date("1976-10-04"), Fração das frações
+ = 6.282)
+ CSV.Row: (Data(ano/mês/dia) = Dates.Date("1977-03-08"), Fração das frações
+ = 6.1526)
+ CSV.Row: (Data(ano/mês/dia) = Dates.Date("1977-03-22"), Fração das frações
+ = 6.1435)
+ CSV.Row: (Data(ano/mês/dia) = Dates.Date("1977-11-23"), Fração das frações
+ = 5.9406)
+ CSV.Row: (Data(ano/mês/dia) = Dates.Date("1978-12-05"), Fração das frações
+ = 5.6599)
+ CSV.Row: (Data(ano/mês/dia) = Dates.Date("1981-06-02"), Fração das frações
+ = 5.0133)
+ CSV.Row: (Data(ano/mês/dia) = Dates.Date("1993-12-13"), Fração das frações
+ = 2.7387)
+ CSV.Row: (Data(ano/mês/dia) = Dates.Date("1994-08-25"), Fração das frações
+ = 2.6498)
+ CSV.Row: (Data(ano/mês/dia) = Dates.Date("1996-10-28"), Fração das frações
+ = 2.38517)
+ CSV.Row: (Data(ano/mês/dia) = Dates.Date("2006-11-13"), Fração das frações
+ = 1.47161)
 ```
 
 
@@ -703,7 +703,7 @@ nothing
 ```
 
 ```
-(C, p) = (6.504114523362512, 0.04822245405624412)
+(C, p) = (6.504114523362512, 0.048222454056244105)
 ```
 
 
@@ -754,7 +754,7 @@ $$
 ```
 
 ```
-14.319763113242614
+14.319763113242617
 ```
 
 

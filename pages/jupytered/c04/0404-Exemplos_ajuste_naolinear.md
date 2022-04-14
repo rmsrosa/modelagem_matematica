@@ -34,6 +34,13 @@ using LsqFit
 using Optim
 ```
 
+```
+Error: ArgumentError: Package CairoMakie [13f3f980-e62b-5c42-98c6-ff1f3baf8
+8f0] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+```
+
+
 
 
 ## Exemplo Michaelis-Menten de reação enzimática
@@ -76,7 +83,11 @@ scatter!(data_t, data_v)
 current_figure()
 ```
 
-\fig{images/0404-Exemplos_ajuste_naolinear_3_1.png}
+```
+Error: UndefVarError: MersenneTwister not defined
+```
+
+
 
 
 ### Ajuste dos dados via LsqFit
@@ -92,9 +103,7 @@ fit = curve_fit(model, data_t, data_v, β₀)
 ```
 
 ```
-2-element Vector{Float64}:
- 0.2738543055425001
- 0.35735470448875417
+Error: UndefVarError: curve_fit not defined
 ```
 
 
@@ -109,7 +118,7 @@ plot!(0:0.1:4, t -> model(t, β_fit), label="modelo ajustado", legend=:bottomrig
 ```
 
 ```
-Error: setting legend for scene via plot attribute not supported anymore
+Error: UndefVarError: plot not defined
 ```
 
 
@@ -140,26 +149,7 @@ resultado = optimize(custo, β₀, GradientDescent())
 ```
 
 ```
-* Status: success
-
- * Candidate solution
-    Final objective value:     7.751687e-04
-
- * Found with
-    Algorithm:     Gradient Descent
-
- * Convergence measures
-    |x - x'|               = 7.31e-09 ≰ 0.0e+00
-    |x - x'|/|x'|          = 2.05e-08 ≰ 0.0e+00
-    |f(x) - f(x')|         = 1.54e-16 ≰ 0.0e+00
-    |f(x) - f(x')|/|f(x')| = 1.98e-13 ≰ 0.0e+00
-    |g(x)|                 = 7.10e-09 ≤ 1.0e-08
-
- * Work counters
-    Seconds run:   0  (vs limit Inf)
-    Iterations:    72
-    f(x) calls:    220
-    ∇f(x) calls:   220
+Error: UndefVarError: GradientDescent not defined
 ```
 
 
@@ -169,9 +159,7 @@ resultado = optimize(custo, β₀, GradientDescent())
 ```
 
 ```
-2-element Vector{Float64}:
- 0.2738543232677907
- 0.35735481063892505
+Error: UndefVarError: Optim not defined
 ```
 
 
@@ -188,7 +176,7 @@ plot!(0:0.1:4, t -> model(t, β_optim), seriestype=:scatter, markershape=:xcross
 ```
 
 ```
-Error: setting legend for scene via plot attribute not supported anymore
+Error: UndefVarError: plot not defined
 ```
 
 
@@ -215,6 +203,11 @@ data_v_esp[5] += 0.15
 nothing
 ```
 
+```
+Error: UndefVarError: data_v not defined
+```
+
+
 
 ```julia
 plot(0:0.1:4, t -> model(t, β), label="taxa de reação", legend=:bottomright)
@@ -222,7 +215,7 @@ plot!(data_t, data_v_esp, seriestype=:scatter, label="amostra com ruído espúri
 ```
 
 ```
-Error: setting legend for scene via plot attribute not supported anymore
+Error: UndefVarError: plot not defined
 ```
 
 
@@ -237,9 +230,7 @@ resultado_esp = optimize(custo_esp, β₀, GradientDescent())
 ```
 
 ```
-2-element Vector{Float64}:
- 0.3150999020259278
- 0.360766969680218
+Error: UndefVarError: GradientDescent not defined
 ```
 
 
@@ -252,7 +243,7 @@ plot!(0:0.1:4, t -> model(t, β_optim_esp), linestyle=:dash,
 ```
 
 ```
-Error: setting legend for scene via plot attribute not supported anymore
+Error: UndefVarError: plot not defined
 ```
 
 
@@ -276,11 +267,11 @@ mods_custo = Dict(
 
 ```
 Dict{Symbol, Function} with 5 entries:
-  :cauchy  => #14
-  :arctan  => #15
-  :soft_l1 => #12
-  :huber   => #13
-  :linear  => #11
+  :cauchy  => #12
+  :arctan  => #13
+  :soft_l1 => #10
+  :huber   => #11
+  :linear  => #9
 ```
 
 
@@ -295,13 +286,7 @@ plot!()
 ```
 
 ```
-Error: MethodError: no method matching lift(::typeof(tuple))
-Closest candidates are:
-  lift(::Any, !Matched::Observables.AbstractObservable, !Matched::Any...; k
-w...) at ~/.julia/packages/Makie/vwpRo/src/interaction/observables.jl:26
-  lift(::Any, !Matched::Type{T}, !Matched::Observables.AbstractObservable, 
-!Matched::Any...) where T at ~/.julia/packages/Makie/vwpRo/src/interaction/
-observables.jl:37
+Error: UndefVarError: plot not defined
 ```
 
 
@@ -326,13 +311,7 @@ plot!()
 ```
 
 ```
-Error: MethodError: no method matching lift(::typeof(tuple))
-Closest candidates are:
-  lift(::Any, !Matched::Observables.AbstractObservable, !Matched::Any...; k
-w...) at ~/.julia/packages/Makie/vwpRo/src/interaction/observables.jl:26
-  lift(::Any, !Matched::Type{T}, !Matched::Observables.AbstractObservable, 
-!Matched::Any...) where T at ~/.julia/packages/Makie/vwpRo/src/interaction/
-observables.jl:37
+Error: UndefVarError: plot not defined
 ```
 
 
@@ -364,13 +343,7 @@ plot!()
 ```
 
 ```
-Error: MethodError: no method matching lift(::typeof(tuple))
-Closest candidates are:
-  lift(::Any, !Matched::Observables.AbstractObservable, !Matched::Any...; k
-w...) at ~/.julia/packages/Makie/vwpRo/src/interaction/observables.jl:26
-  lift(::Any, !Matched::Type{T}, !Matched::Observables.AbstractObservable, 
-!Matched::Any...) where T at ~/.julia/packages/Makie/vwpRo/src/interaction/
-observables.jl:37
+Error: UndefVarError: plot not defined
 ```
 
 
@@ -394,6 +367,11 @@ resultados_esp =
 nothing
 ```
 
+```
+Error: UndefVarError: GradientDescent not defined
+```
+
+
 
 
 ### Visualizando os resultados
@@ -409,7 +387,7 @@ plot!(title="Ajustes com diferentes modificadores da função de custo", titlefo
 ```
 
 ```
-Error: setting legend for scene via plot attribute not supported anymore
+Error: UndefVarError: plot not defined
 ```
 
 
