@@ -145,10 +145,10 @@
       <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c05/0501-Erros_e_incertezas">5.1. Erros e incertezas <kbd>←</kbd></a>
+<a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c05/0501-Erros_e_incertezas">5.1. nothing <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c05/0503-Propagacao_incertezas"><kbd>→</kbd> 5.3. Propagação de incertezas</a>
+    <a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c05/0503-Propagacao_incertezas"><kbd>→</kbd> 5.3. nothing</a>
 </span>
     </p>
 </div>
@@ -159,15 +159,15 @@
     
       <div class="badges">
 <p>
-<a href="https://nbviewer.org/urls/rmsrosa.github.io/modelagem_matematica/tree/modmat2021p1/generated/notebooks/jupytered/c05/0502-Minimos_quadrados_verossimilhanca.ipynb"><img align="left" src="https://img.shields.io/badge/view%20in-nbviewer-orange" alt="View in NBViewer" title="View Jupyter notebook in NBViewer"></a>
-<a href="https://mybinder.org/v2/gh/rmsrosa/modelagem_matematica/julia-env-for-binder-2022p1?urlpath=git-pull%3Frepo%3Dhttps://github.com/rmsrosa/modelagem_matematica/tree/modmat2022p1%26urlpath%3Dlab/tree%252Fmodelagem_matematica/generated/notebooks/jupytered/c05/0502-Minimos_quadrados_verossimilhanca.ipynb%26branch%3Dgh-pages"><img align="left" src="https://mybinder.org/badge.svg" alt="Open in binder" title="Open in binder"></a>
-<a href="/modelagem_matematica/generated/notebooks/jupytered/c05/0502-Minimos_quadrados_verossimilhanca.ipynb"><img align="left" src="https://img.shields.io/badge/download-notebook-blue" alt="Download notebook" title="Download Jupyter notebook"></a>
-<a href="https://github.com/rmsrosa/modelagem_matematica/tree/modmat2022p1/blob/main/_src/jupyter/c05/0502-Minimos_quadrados_verossimilhanca.ipynb"><img align="left" src="https://img.shields.io/badge/view-source-lightblue" alt="View source" title="View source"></a>
+<a href="https://nbviewer.org/urls/rmsrosa.github.io/modelagem_matematica/tree/modmat2022p1/generated/jupytered/c05/0502-Minimos_quadrados_verossimilhanca.ipynb"><img align="left" src="https://img.shields.io/badge/view%20in-nbviewer-orange" alt="View in NBViewer" title="View Jupyter notebook in NBViewer"></a>
+<a href="https://mybinder.org/v2/gh/rmsrosa/modelagem_matematica/julia-env-for-binder-2022p1?urlpath=git-pull%3Frepo%3Dhttps://github.com/rmsrosa/modelagem_matematica/tree/modmat2022p1%26urlpath%3Dlab/tree%252Fmodelagem_matematica/generated/jupytered/c05/0502-Minimos_quadrados_verossimilhanca.ipynb%26branch%3Dgh-pages"><img align="left" src="https://mybinder.org/badge.svg" alt="Open in binder" title="Open in binder"></a>
+<a href="/modelagem_matematica/generated/jupytered/c05/0502-Minimos_quadrados_verossimilhanca.ipynb"><img align="left" src="https://img.shields.io/badge/download-notebook-blue" alt="Download notebook" title="Download Jupyter notebook"></a>
+<a href="/modelagem_matematica/src/jupyter/c05/0502-Minimos_quadrados_verossimilhanca.ipynb"><img align="left" src="https://img.shields.io/badge/view-source-lightblue" alt="View source" title="View source"></a>
 </p>
 </div></br>
 
     
-<h1 id="get_title"><a href="#get_title" class="header-anchor">5.2. Mínimos quadrados, maximização da verossimilhança e quantificação de incertezas em regressões lineares</a></h1>
+<h1 id="get_title"><a href="#get_title" class="header-anchor">pages/jupytered/c05/0502-Minimos_quadrados_verossimilhanca.md</a></h1>
 <ul>
 <li><p>Continuando o assunto de probabilidade, vamos ver o problema de mínimos quadrados linear como um problema de maximização da verossimilhança.</p>
 </li>
@@ -531,8 +531,8 @@ scatter&#33;&#40;data_x, data_y, markersize&#61;3, label&#61;&quot;amostra&quot;
 <pre><code class="language-julia">X &#61; &#91;ones&#40;N&#41; data_x&#93;
 β &#61; X \ data_y</code></pre>
 <pre><code class="language-julia">2-element Vector&#123;Float64&#125;:
- 1.198811710365565
- 0.14312335258411474</code></pre>
+ 1.1988117103655653
+ 0.1431233525841148</code></pre>
 <h3 id="visualizando_o_resultado"><a href="#visualizando_o_resultado" class="header-anchor">Visualizando o resultado</a></h3>
 <pre><code class="language-julia">plot&#40;x_org, y_org, label&#61;&quot;original&quot;, legend&#61;:topleft&#41;
 scatter&#33;&#40;data_x, data_y, markersize&#61;3, label&#61;&quot;amostra&quot;&#41;
@@ -561,21 +561,21 @@ CI 95&#37; para β₁: &#91;0.13, 0.15&#93;</code></pre>
  0.13472605333885973
  0.11383670913058842
  0.09548818390233765
- 0.08014032619999449
+ 0.08014032619999448
  0.06830466732393874
  0.05936414503671618
- 0.05325748751001499
- 0.05035707669772976
- 0.05032645779142902
+ 0.05325748751001498
+ 0.05035707669772975
+ 0.050326457791429025
  0.05354621420722602
- 0.05951342323078994
+ 0.059513423230789946
  0.0679696253583599
- 0.08049659618144064
- 0.09529307440702724
- 0.11444701290418932
- 0.13374704790809294
- 0.15834618382131763
- 0.18587335929487264</code></pre>
+ 0.08049659618144062
+ 0.09529307440702722
+ 0.11444701290418935
+ 0.13374704790809291
+ 0.15834618382131757
+ 0.18587335929487261</code></pre>
 <pre><code class="language-julia">plot&#40;x_org, y_org, label&#61;&quot;original&quot;, size&#61;&#40;600,300&#41;, titlefont&#61;10,
     title&#61;&quot;Reta original, amostra, modelo, CI 68&#37; &#40;sombreado&#41;, CI 95&#37; &#40;barras de erro&#41;&quot;, &#41;
 scatter&#33;&#40;data_x, data_y, markersize&#61;3, label&#61;&quot;amostra&quot;&#41;
@@ -609,20 +609,20 @@ Var_q &#61; &#91;&#91;1; x&#93; ⋅ &#40;Cov_q * &#91;1; x&#93;&#41; for x in da
  0.10342290001783529
  0.08675290222319419
  0.07280907017850202
- 0.06205614017962697
+ 0.062056140179626976
  0.05393349898874429
  0.04838547993890799
- 0.045750399394674124
- 0.04572258151317367
- 0.04864779384947512
+ 0.04575039939467411
+ 0.04572258151317366
+ 0.04864779384947511
  0.054069121178268606
- 0.06175174793241178
- 0.07313274849766523
- 0.08657564139072518
- 0.10397737305768066
- 0.12151183628833893
- 0.14386063742207586
- 0.16886962036367692</code></pre>
+ 0.061751747932411796
+ 0.07313274849766521
+ 0.08657564139072514
+ 0.10397737305768068
+ 0.12151183628833892
+ 0.14386063742207592
+ 0.1688696203636769</code></pre>
 <pre><code class="language-julia">plot&#40;x_org, y_org, label&#61;&quot;original&quot;, size&#61;&#40;600,300&#41;, titlefont&#61;10,
     title&#61;&quot;Reta original, amostra, modelo, CI 68&#37; &#40;sombreado&#41;, CI 95&#37; &#40;barras de erro&#41;\nusando o desvio padrão corrigido&quot;, &#41;
 scatter&#33;&#40;data_x, data_y, markersize&#61;3, label&#61;&quot;amostra&quot;&#41;
@@ -656,20 +656,20 @@ Cov_q &#61; s_q^2 * inv&#40;X&#39; * X&#41;
 Var_q &#61; &#91;&#91;1; x&#93; ⋅ &#40;Cov_q * &#91;1; x&#93;&#41; for x in data_x&#93;</code></pre>
 <pre><code class="language-julia">8-element Vector&#123;Float64&#125;:
  6169.9875992063535
- 4054.5632794784597
- 2644.280399659864
- 1939.1389597505668
- 1939.1389597505663
- 2644.280399659863
- 4054.5632794784583
- 6169.98759920635</code></pre>
+ 4054.563279478461
+ 2644.280399659866
+ 1939.1389597505686
+ 1939.1389597505686
+ 2644.2803996598677
+ 4054.5632794784633
+ 6169.987599206355</code></pre>
 <ul>
 <li><p>Observe que não há muita diferença ao usarmos o fator da distribuição de Student no caso do intervalo de confiança de 68\&#37;, mas há uma diferença razoável no de 95\&#37;.</p>
 </li>
 </ul>
 <pre><code class="language-julia">fator &#61; &#91;quantile&#40;TDist&#40;N-2&#41;,q&#41; for q &#61; &#40;0.84, 0.975&#41;&#93;</code></pre>
 <pre><code class="language-julia">2-element Vector&#123;Float64&#125;:
- 1.0839756791279642
+ 1.0839756791279644
  2.446911851144969</code></pre>
 <pre><code class="language-julia">plot&#40;data_y, seriestype &#61; :scatter, xlims&#61;&#40;0,N&#43;1&#41;, ylims&#61;&#40;0,2000&#41;, color&#61;2,
     xticks&#61;0:N&#43;1, xaxis &#61; &quot;nível de instrução&quot;, yaxis&#61;&quot;salário &#40;USD&#41;&quot;, 
@@ -708,10 +708,10 @@ plot&#33;&#40;data_x,β&#91;1&#93; .&#43; β&#91;2&#93; * data_x, grid&#61;false
     <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c05/0501-Erros_e_incertezas">5.1. Erros e incertezas <kbd>←</kbd></a>
+<a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c05/0501-Erros_e_incertezas">5.1. nothing <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c05/0503-Propagacao_incertezas"><kbd>→</kbd> 5.3. Propagação de incertezas</a>
+    <a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c05/0503-Propagacao_incertezas"><kbd>→</kbd> 5.3. nothing</a>
 </span>
     </p>
 </div>
@@ -727,7 +727,7 @@ plot&#33;&#40;data_x,β&#91;1&#93; .&#43; β&#91;2&#93; * data_x, grid&#61;false
         </div>
     
 
-    Last modified: March 10, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
+    Last modified: 0001-01-01. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

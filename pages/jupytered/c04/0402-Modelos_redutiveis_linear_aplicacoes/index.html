@@ -159,10 +159,10 @@
     
       <div class="badges">
 <p>
-<a href="https://nbviewer.org/urls/rmsrosa.github.io/modelagem_matematica/tree/modmat2021p1/generated/notebooks/jupytered/c04/0402-Modelos_redutiveis_linear_aplicacoes.ipynb"><img align="left" src="https://img.shields.io/badge/view%20in-nbviewer-orange" alt="View in NBViewer" title="View Jupyter notebook in NBViewer"></a>
-<a href="https://mybinder.org/v2/gh/rmsrosa/modelagem_matematica/julia-env-for-binder-2022p1?urlpath=git-pull%3Frepo%3Dhttps://github.com/rmsrosa/modelagem_matematica/tree/modmat2022p1%26urlpath%3Dlab/tree%252Fmodelagem_matematica/generated/notebooks/jupytered/c04/0402-Modelos_redutiveis_linear_aplicacoes.ipynb%26branch%3Dgh-pages"><img align="left" src="https://mybinder.org/badge.svg" alt="Open in binder" title="Open in binder"></a>
-<a href="/modelagem_matematica/generated/notebooks/jupytered/c04/0402-Modelos_redutiveis_linear_aplicacoes.ipynb"><img align="left" src="https://img.shields.io/badge/download-notebook-blue" alt="Download notebook" title="Download Jupyter notebook"></a>
-<a href="https://github.com/rmsrosa/modelagem_matematica/tree/modmat2022p1/blob/main/_src/jupyter/c04/0402-Modelos_redutiveis_linear_aplicacoes.ipynb"><img align="left" src="https://img.shields.io/badge/view-source-lightblue" alt="View source" title="View source"></a>
+<a href="https://nbviewer.org/urls/rmsrosa.github.io/modelagem_matematica/tree/modmat2022p1/generated/jupytered/c04/0402-Modelos_redutiveis_linear_aplicacoes.ipynb"><img align="left" src="https://img.shields.io/badge/view%20in-nbviewer-orange" alt="View in NBViewer" title="View Jupyter notebook in NBViewer"></a>
+<a href="https://mybinder.org/v2/gh/rmsrosa/modelagem_matematica/julia-env-for-binder-2022p1?urlpath=git-pull%3Frepo%3Dhttps://github.com/rmsrosa/modelagem_matematica/tree/modmat2022p1%26urlpath%3Dlab/tree%252Fmodelagem_matematica/generated/jupytered/c04/0402-Modelos_redutiveis_linear_aplicacoes.ipynb%26branch%3Dgh-pages"><img align="left" src="https://mybinder.org/badge.svg" alt="Open in binder" title="Open in binder"></a>
+<a href="/modelagem_matematica/generated/jupytered/c04/0402-Modelos_redutiveis_linear_aplicacoes.ipynb"><img align="left" src="https://img.shields.io/badge/download-notebook-blue" alt="Download notebook" title="Download Jupyter notebook"></a>
+<a href="/modelagem_matematica/src/jupyter/c04/0402-Modelos_redutiveis_linear_aplicacoes.ipynb"><img align="left" src="https://img.shields.io/badge/view-source-lightblue" alt="View source" title="View source"></a>
 </p>
 </div></br>
 
@@ -338,7 +338,7 @@ plot&#40;y, seriestype &#61; :scatter, xlims&#61;&#40;0,9&#41;, ylims&#61;&#40;0
 </ul>
 <pre><code class="language-julia">x &#61; A\y</code></pre>
 <pre><code class="language-julia">2-element Vector&#123;Float64&#125;:
- 284.5357142857144
+ 284.53571428571445
  201.9642857142857</code></pre>
 <ul>
 <li><p>Isso nos dá \(\beta_0=284.54\) e \(\beta_1=201.96\).</p>
@@ -371,8 +371,8 @@ plot&#33;&#40;&#91;&#40;0,x&#91;1&#93;&#41;, &#40;9,x&#91;2&#93;*9&#41;&#93;, la
 <pre><code class="language-julia">using InteractiveUtils
 @which A\y</code></pre>
 <pre><code class="language-julia">\&#40;A::AbstractMatrix, B::AbstractVecOrMat&#41; in LinearAlgebra at /Applications
-/Julia-1.8.app/Contents/Resources/julia/share/julia/stdlib/v1.8/LinearAlgeb
-ra/src/generic.jl:1097</code></pre>
+/Julia-1.7.app/Contents/Resources/julia/share/julia/stdlib/v1.7/LinearAlgeb
+ra/src/generic.jl:1128</code></pre>
 <ul>
 <li><p>A localização é em relação à instalação local do Julia.</p>
 </li>
@@ -462,14 +462,14 @@ y&#39; &#61; &#91;28.6 88.6 177.6 313.8 423.7 774.4&#93;
 </ul>
 <pre><code class="language-julia">β̃ &#61; A\η</code></pre>
 <pre><code class="language-julia">2-element Vector&#123;Float64&#125;:
- -3.9870885208722147
-  3.0933036703201364</code></pre>
+ -3.9870885208722124
+  3.093303670320135</code></pre>
 <ul>
 <li><p>Estes são os valores de \(\tilde\beta_0 = \ln\beta_0\) e \(\beta_1\), respectivamente. Assim, \(\beta_0 = e^{\tilde\beta_0}\).</p>
 </li>
 </ul>
 <pre><code class="language-julia">β₀, β₁ &#61; exp&#40;β̃&#91;1&#93;&#41;, β̃&#91;2&#93;</code></pre>
-<pre><code class="language-julia">&#40;0.018553654135861703, 3.0933036703201364&#41;</code></pre>
+<pre><code class="language-julia">&#40;0.018553654135861745, 3.093303670320135&#41;</code></pre>
 <ul>
 <li><p>Com os parâmetros encontrados, podemos fazer as visualizações, tanto na formulação transformada, quanto na original.</p>
 </li>
@@ -607,32 +607,32 @@ end</code></pre>
 </ul>
 <pre><code class="language-julia">csv_data &#61; CSV.File&#40;&quot;../../../_assets/attachments/data/decaimento_plutonio241.csv&quot;&#41;</code></pre>
 <pre><code class="language-julia">13-element CSV.File:
- CSV.Row: &#40;var&quot;Data&#40;ano/mês/dia&#41;&quot; &#61; Dates.Date&#40;&quot;1976-01-13&quot;&#41;, var&quot;Fração da
-s frações&quot; &#61; 6.5066&#41;
- CSV.Row: &#40;var&quot;Data&#40;ano/mês/dia&#41;&quot; &#61; Dates.Date&#40;&quot;1976-01-19&quot;&#41;, var&quot;Fração da
-s frações&quot; &#61; 6.4965&#41;
- CSV.Row: &#40;var&quot;Data&#40;ano/mês/dia&#41;&quot; &#61; Dates.Date&#40;&quot;1976-09-27&quot;&#41;, var&quot;Fração da
-s frações&quot; &#61; 6.2857&#41;
- CSV.Row: &#40;var&quot;Data&#40;ano/mês/dia&#41;&quot; &#61; Dates.Date&#40;&quot;1976-10-04&quot;&#41;, var&quot;Fração da
-s frações&quot; &#61; 6.282&#41;
- CSV.Row: &#40;var&quot;Data&#40;ano/mês/dia&#41;&quot; &#61; Dates.Date&#40;&quot;1977-03-08&quot;&#41;, var&quot;Fração da
-s frações&quot; &#61; 6.1526&#41;
- CSV.Row: &#40;var&quot;Data&#40;ano/mês/dia&#41;&quot; &#61; Dates.Date&#40;&quot;1977-03-22&quot;&#41;, var&quot;Fração da
-s frações&quot; &#61; 6.1435&#41;
- CSV.Row: &#40;var&quot;Data&#40;ano/mês/dia&#41;&quot; &#61; Dates.Date&#40;&quot;1977-11-23&quot;&#41;, var&quot;Fração da
-s frações&quot; &#61; 5.9406&#41;
- CSV.Row: &#40;var&quot;Data&#40;ano/mês/dia&#41;&quot; &#61; Dates.Date&#40;&quot;1978-12-05&quot;&#41;, var&quot;Fração da
-s frações&quot; &#61; 5.6599&#41;
- CSV.Row: &#40;var&quot;Data&#40;ano/mês/dia&#41;&quot; &#61; Dates.Date&#40;&quot;1981-06-02&quot;&#41;, var&quot;Fração da
-s frações&quot; &#61; 5.0133&#41;
- CSV.Row: &#40;var&quot;Data&#40;ano/mês/dia&#41;&quot; &#61; Dates.Date&#40;&quot;1993-12-13&quot;&#41;, var&quot;Fração da
-s frações&quot; &#61; 2.7387&#41;
- CSV.Row: &#40;var&quot;Data&#40;ano/mês/dia&#41;&quot; &#61; Dates.Date&#40;&quot;1994-08-25&quot;&#41;, var&quot;Fração da
-s frações&quot; &#61; 2.6498&#41;
- CSV.Row: &#40;var&quot;Data&#40;ano/mês/dia&#41;&quot; &#61; Dates.Date&#40;&quot;1996-10-28&quot;&#41;, var&quot;Fração da
-s frações&quot; &#61; 2.38517&#41;
- CSV.Row: &#40;var&quot;Data&#40;ano/mês/dia&#41;&quot; &#61; Dates.Date&#40;&quot;2006-11-13&quot;&#41;, var&quot;Fração da
-s frações&quot; &#61; 1.47161&#41;</code></pre>
+ CSV.Row: &#40;Data&#40;ano/mês/dia&#41; &#61; Dates.Date&#40;&quot;1976-01-13&quot;&#41;, Fração das frações
+ &#61; 6.5066&#41;
+ CSV.Row: &#40;Data&#40;ano/mês/dia&#41; &#61; Dates.Date&#40;&quot;1976-01-19&quot;&#41;, Fração das frações
+ &#61; 6.4965&#41;
+ CSV.Row: &#40;Data&#40;ano/mês/dia&#41; &#61; Dates.Date&#40;&quot;1976-09-27&quot;&#41;, Fração das frações
+ &#61; 6.2857&#41;
+ CSV.Row: &#40;Data&#40;ano/mês/dia&#41; &#61; Dates.Date&#40;&quot;1976-10-04&quot;&#41;, Fração das frações
+ &#61; 6.282&#41;
+ CSV.Row: &#40;Data&#40;ano/mês/dia&#41; &#61; Dates.Date&#40;&quot;1977-03-08&quot;&#41;, Fração das frações
+ &#61; 6.1526&#41;
+ CSV.Row: &#40;Data&#40;ano/mês/dia&#41; &#61; Dates.Date&#40;&quot;1977-03-22&quot;&#41;, Fração das frações
+ &#61; 6.1435&#41;
+ CSV.Row: &#40;Data&#40;ano/mês/dia&#41; &#61; Dates.Date&#40;&quot;1977-11-23&quot;&#41;, Fração das frações
+ &#61; 5.9406&#41;
+ CSV.Row: &#40;Data&#40;ano/mês/dia&#41; &#61; Dates.Date&#40;&quot;1978-12-05&quot;&#41;, Fração das frações
+ &#61; 5.6599&#41;
+ CSV.Row: &#40;Data&#40;ano/mês/dia&#41; &#61; Dates.Date&#40;&quot;1981-06-02&quot;&#41;, Fração das frações
+ &#61; 5.0133&#41;
+ CSV.Row: &#40;Data&#40;ano/mês/dia&#41; &#61; Dates.Date&#40;&quot;1993-12-13&quot;&#41;, Fração das frações
+ &#61; 2.7387&#41;
+ CSV.Row: &#40;Data&#40;ano/mês/dia&#41; &#61; Dates.Date&#40;&quot;1994-08-25&quot;&#41;, Fração das frações
+ &#61; 2.6498&#41;
+ CSV.Row: &#40;Data&#40;ano/mês/dia&#41; &#61; Dates.Date&#40;&quot;1996-10-28&quot;&#41;, Fração das frações
+ &#61; 2.38517&#41;
+ CSV.Row: &#40;Data&#40;ano/mês/dia&#41; &#61; Dates.Date&#40;&quot;2006-11-13&quot;&#41;, Fração das frações
+ &#61; 1.47161&#41;</code></pre>
 <ul>
 <li><p>Agora extraímos cada coluna de dados</p>
 </li>
@@ -734,7 +734,7 @@ C &#61; exp&#40;β̃&#91;1&#93;&#41;
 p &#61; -β̃&#91;2&#93;
 @show C, p
 nothing</code></pre>
-<pre><code class="language-julia">&#40;C, p&#41; &#61; &#40;6.504114523362512, 0.04822245405624412&#41;</code></pre>
+<pre><code class="language-julia">&#40;C, p&#41; &#61; &#40;6.504114523362512, 0.048222454056244105&#41;</code></pre>
 <pre><code class="language-julia">plot&#40;t, r, seriestype &#61; :scatter, xlims&#61;&#40;t&#91;1&#93;-1, t&#91;end&#93;&#43;1&#41;, ylims&#61;&#40;1,7&#41;, xticks&#61;t,
     xaxis &#61; &#40;&quot;log&#40;dias decorridos&#41;&quot;, :log10&#41;, yaxis&#61;&#40;&quot;log&#40;fração das frações&#41;&quot;, :log10&#41;, xrotation&#61;45,
     label&#61;&quot;dados&quot;, title&#61;&quot;Dados amostrais da fração das frações de isótopos de Plutônio&quot;, 
@@ -770,7 +770,7 @@ plot&#33;&#40;tt, C*exp.&#40;-p*tt&#41;, label&#61;&quot;modelo ajustado&quot;&#
 λ_240 &#61; log&#40;2&#41;/6563
 λ &#61; p &#43;2λ_240 - λ_239
 τ_meia &#61; log&#40;2&#41;/λ</code></pre>
-<pre><code class="language-julia">14.319763113242614</code></pre>
+<pre><code class="language-julia">14.319763113242617</code></pre>
 <h2 id="exercícios"><a href="#exercícios" class="header-anchor">Exercícios</a></h2>
 <ol>
 <li><p>Transforme o modelo \(y = \frac{\beta_0}{\beta_1 + x}\) em uma expressão que seja linear nos parâmetros.</p>
@@ -817,7 +817,7 @@ plot&#33;&#40;tt, C*exp.&#40;-p*tt&#41;, label&#61;&quot;modelo ajustado&quot;&#
         </div>
     
 
-    Last modified: March 10, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
+    Last modified: April 14, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

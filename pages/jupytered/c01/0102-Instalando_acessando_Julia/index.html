@@ -157,10 +157,10 @@
     
       <div class="badges">
 <p>
-<a href="https://nbviewer.org/urls/rmsrosa.github.io/modelagem_matematica/tree/modmat2021p1/generated/notebooks/jupytered/c01/0102-Instalando_acessando_Julia.ipynb"><img align="left" src="https://img.shields.io/badge/view%20in-nbviewer-orange" alt="View in NBViewer" title="View Jupyter notebook in NBViewer"></a>
-<a href="https://mybinder.org/v2/gh/rmsrosa/modelagem_matematica/julia-env-for-binder-2022p1?urlpath=git-pull%3Frepo%3Dhttps://github.com/rmsrosa/modelagem_matematica/tree/modmat2022p1%26urlpath%3Dlab/tree%252Fmodelagem_matematica/generated/notebooks/jupytered/c01/0102-Instalando_acessando_Julia.ipynb%26branch%3Dgh-pages"><img align="left" src="https://mybinder.org/badge.svg" alt="Open in binder" title="Open in binder"></a>
-<a href="/modelagem_matematica/generated/notebooks/jupytered/c01/0102-Instalando_acessando_Julia.ipynb"><img align="left" src="https://img.shields.io/badge/download-notebook-blue" alt="Download notebook" title="Download Jupyter notebook"></a>
-<a href="https://github.com/rmsrosa/modelagem_matematica/tree/modmat2022p1/blob/main/_src/jupyter/c01/0102-Instalando_acessando_Julia.ipynb"><img align="left" src="https://img.shields.io/badge/view-source-lightblue" alt="View source" title="View source"></a>
+<a href="https://nbviewer.org/urls/rmsrosa.github.io/modelagem_matematica/tree/modmat2022p1/generated/jupytered/c01/0102-Instalando_acessando_Julia.ipynb"><img align="left" src="https://img.shields.io/badge/view%20in-nbviewer-orange" alt="View in NBViewer" title="View Jupyter notebook in NBViewer"></a>
+<a href="https://mybinder.org/v2/gh/rmsrosa/modelagem_matematica/julia-env-for-binder-2022p1?urlpath=git-pull%3Frepo%3Dhttps://github.com/rmsrosa/modelagem_matematica/tree/modmat2022p1%26urlpath%3Dlab/tree%252Fmodelagem_matematica/generated/jupytered/c01/0102-Instalando_acessando_Julia.ipynb%26branch%3Dgh-pages"><img align="left" src="https://mybinder.org/badge.svg" alt="Open in binder" title="Open in binder"></a>
+<a href="/modelagem_matematica/generated/jupytered/c01/0102-Instalando_acessando_Julia.ipynb"><img align="left" src="https://img.shields.io/badge/download-notebook-blue" alt="Download notebook" title="Download Jupyter notebook"></a>
+<a href="/modelagem_matematica/src/jupyter/c01/0102-Instalando_acessando_Julia.ipynb"><img align="left" src="https://img.shields.io/badge/view-source-lightblue" alt="View source" title="View source"></a>
 </p>
 </div></br>
 
@@ -398,31 +398,32 @@ pkg&gt; build IJulia</code></pre>
 <p>Para isso, é preciso disponibilizar o pacote via <code>import</code> ou <code>using</code>. No caso, podemos fazer</p>
 <pre><code class="language-julia">using Pkg
 Pkg.status&#40;&#41;</code></pre>
-<pre><code class="language-julia">Status &#96;~/Documents/git_repositories/modelagem_matematica/Project.toml&#96;
+<pre><code class="language-julia">Status &#96;~/Dropbox/Mac/Documents/git-repositories/modelagem_matematica
+/Project.toml&#96;
   &#91;6e4b80f9&#93; BenchmarkTools v1.3.1
-  &#91;336ed68f&#93; CSV v0.10.3
-  &#91;13f3f980&#93; CairoMakie v0.7.4
+  &#91;336ed68f&#93; CSV v0.10.4
+  &#91;13f3f980&#93; CairoMakie v0.7.5
   &#91;717857b8&#93; DSP v0.7.5
   &#91;a93c6f00&#93; DataFrames v1.3.2
   &#91;0c46a032&#93; DifferentialEquations v7.1.0
-  &#91;31c24e10&#93; Distributions v0.25.49
+  &#91;31c24e10&#93; Distributions v0.25.53
   &#91;7a1cc6ca&#93; FFTW v1.4.6
   &#91;713c75ef&#93; Franklin v0.10.72
-  &#91;e9467ef8&#93; GLMakie v0.5.4
-  &#91;28b8d3ca&#93; GR v0.64.0
-  &#91;7073ff75&#93; IJulia v1.23.2
+  &#91;e9467ef8&#93; GLMakie v0.5.5
+  &#91;28b8d3ca&#93; GR v0.64.2
+  &#91;7073ff75&#93; IJulia v1.23.3
   &#91;4381153b&#93; ImageDraw v0.2.5
   &#91;82e4d734&#93; ImageIO v0.6.1
   &#91;6218d12a&#93; ImageMagick v1.2.2
-  &#91;916415d5&#93; Images v0.25.1
-  &#91;0f8b85d8&#93; JSON3 v1.9.3
+  &#91;916415d5&#93; Images v0.25.2
+  &#91;0f8b85d8&#93; JSON3 v1.9.4
   &#91;b964fa9f&#93; LaTeXStrings v1.3.0
-  &#91;98b081ad&#93; Literate v2.13.0
+  &#91;98b081ad&#93; Literate v2.13.1
   &#91;2fda8390&#93; LsqFit v0.12.1
-  &#91;ae8d54c2&#93; Luxor v3.1.1
+  &#91;ae8d54c2&#93; Luxor v3.2.0
   &#91;2bd173c7&#93; NodeJS v1.3.0
   &#91;429524aa&#93; Optim v1.6.2
-  &#91;91a5bcdd&#93; Plots v1.26.0
+  &#91;91a5bcdd&#93; Plots v1.27.5
   &#91;e6cf234a&#93; RandomNumbers v1.5.3
   &#91;bd7594eb&#93; SampledSignals v2.1.3
   &#91;2913bbd2&#93; StatsBase v0.33.16
@@ -436,17 +437,14 @@ Pkg.status&#40;&#41;</code></pre>
 <p>Para visualizar mais detalhes sobre a máquina e a versão do julia em uso, pode-se usar o comando <code>versioninfo&#40;&#41;</code></p>
 <pre><code class="language-julia">using InteractiveUtils
 versioninfo&#40;&#41;</code></pre>
-<pre><code class="language-julia">Julia Version 1.8.0-beta1
-Commit 7b711ce699 &#40;2022-02-23 15:09 UTC&#41;
+<pre><code class="language-julia">Julia Version 1.7.2
+Commit bf53498635 &#40;2022-02-06 15:21 UTC&#41;
 Platform Info:
-  OS: macOS &#40;arm64-apple-darwin21.2.0&#41;
-  CPU: 8 × Apple M1 Pro
+  OS: macOS &#40;x86_64-apple-darwin19.5.0&#41;
+  CPU: Intel&#40;R&#41; Core&#40;TM&#41; m5-6Y54 CPU @ 1.10GHz
   WORD_SIZE: 64
   LIBM: libopenlibm
-  LLVM: libLLVM-13.0.1 &#40;ORCJIT, apple-m1&#41;
-  Threads: 8 on 6 virtual cores
-Environment:
-  JULIA_NUM_THREADS &#61; 8</code></pre>
+  LLVM: libLLVM-12.0.1 &#40;ORCJIT, skylake&#41;</code></pre>
 <h2 id="utilizando_o_julia"><a href="#utilizando_o_julia" class="header-anchor">Utilizando o Julia</a></h2>
 <p>No próximo caderno, vamos investigar o uso da linguagem Julia propriamente.</p>
 
@@ -472,7 +470,7 @@ Environment:
         </div>
     
 
-    Last modified: March 10, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
+    Last modified: April 14, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
