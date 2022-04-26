@@ -262,14 +262,41 @@ $$
 
 * Além disso, nada na análise dimensional acima diz que o movimento do pêndulo é periódico.
 
-* Mas se intuímos, através da observação, que o movimento é (aproximadamente) periódico, então o período é uma grandeza característica do problema.
+* Mas se intuírmos, através da observação, que o movimento é (aproximadamente) periódico, então o período é uma grandeza característica do problema.
 
-* E se consideramos esse período $\tau$ como parâmetro no sistema, no lugar da variável $t$, então obtemos a relação adimensional (e constante dessa vez)
+* E se consideramos esse período $\tau$ como parâmetro no sistema, no lugar da variável $t$, então obtemos a relação adimensional
 $$ \pi_2 = \tau \sqrt{\frac{g}{\ell}}
 $$
 
 * Isso nos leva à relação para o período
 $$ \tau \propto \sqrt{\frac{\ell}{g}}.
+$$
+
+
+### Pêndulo com pequenos ângulos
+
+* Na análise acima, obtivemos as grandezas adimensionais $\pi_1 = \theta$ e $\pi_2 = \tau\sqrt{g/\ell}$. Nada afirma que elas sejam constantes.
+
+* Mas é razoável assumirmos que haja uma relação entre essas quantidades da forma
+$$
+f(\pi_1, \pi_2) = 0
+$$
+
+* Podemos fazer uma aproximação de primeira ordem em $\pi_2$ e obter
+$$
+0 = f(\pi_1, 0) + \pi_2\frac{\partial f}{\partial \pi_2}(\pi_1, 0).
+$$
+
+* Podemos escrever
+$$
+\pi_2 \approx -\frac{f(\pi_1, 0)}{\frac{\partial f}{\partial \pi_2}(\pi_1, 0)}
+$$
+
+* Isso nos dá $\pi_2 \approx A(\pi_1)$, para $A(\pi_1) = - f_{\pi_1}(\pi_1,0)/f_{\pi_2}(\pi_1, 0)$.
+
+* Portanto,
+$$
+\tau \approx A(\theta)\sqrt{\frac{\ell}{g}}.
 $$
 
 

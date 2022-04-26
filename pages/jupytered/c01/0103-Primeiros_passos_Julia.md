@@ -132,11 +132,11 @@ nothing
 ```
 
 ```
-pointer(a) = Ptr{Int64} @0x0000000150303010
-pointer(a) = Ptr{Int64} @0x00000001503037e0
-pointer(a) = Ptr{Int64} @0x0000000150303e70
-pointer(a) = Ptr{Int64} @0x0000000150303e70
-pointer(a) = Ptr{Int64} @0x0000000150303e70
+pointer(a) = Ptr{Int64} @0x0000000115975b70
+pointer(a) = Ptr{Int64} @0x0000000115f8c0e0
+pointer(a) = Ptr{Int64} @0x0000000115f8cf40
+pointer(a) = Ptr{Int64} @0x0000000115f8cf40
+pointer(a) = Ptr{Int64} @0x0000000115f8cf40
 ```
 
 
@@ -158,9 +158,9 @@ nothing
 ```
 
 ```
-pointer(s) = Ptr{UInt8} @0x0000000147a61008
-pointer(s) = Ptr{UInt8} @0x0000000147a61038
-pointer(s) = Ptr{UInt8} @0x0000000147a61ab8
+pointer(s) = Ptr{UInt8} @0x0000000115bd4408
+pointer(s) = Ptr{UInt8} @0x0000000115bd4438
+pointer(s) = Ptr{UInt8} @0x0000000115db32b8
 s = "Modelos Matemáticos"
 ```
 
@@ -257,8 +257,8 @@ nothing
 ```
 
 ```
-resultado = "203 é impar"
-resultado = "204 é par"
+resultado = "229 é impar"
+resultado = "230 é par"
 ```
 
 
@@ -511,9 +511,9 @@ R1, R2, R3, R4
 ```
 
 ```
-(Main.##WeaveSandBox#402.Retângulo(2.0, 3.0), Main.##WeaveSandBox#402.Retân
-gulo(1.5, 6.0), Main.##WeaveSandBox#402.Retângulo(1.2, 7.0), Main.##WeaveSa
-ndBox#402.Retângulo(3.0, 2.0))
+(Main.##WeaveSandBox#293.Retângulo(2.0, 3.0), Main.##WeaveSandBox#293.Retân
+gulo(1.5, 6.0), Main.##WeaveSandBox#293.Retângulo(1.2, 7.0), Main.##WeaveSa
+ndBox#293.Retângulo(3.0, 2.0))
 ```
 
 
@@ -598,10 +598,10 @@ end
 ```
 
 ```
-1ᵒ: Main.##WeaveSandBox#402.Retângulo(2.0, 3.0) com área 6.0
-2ᵒ: Main.##WeaveSandBox#402.Retângulo(3.0, 2.0) com área 6.0
-3ᵒ: Main.##WeaveSandBox#402.Retângulo(1.2, 7.0) com área 8.4
-4ᵒ: Main.##WeaveSandBox#402.Retângulo(1.5, 6.0) com área 9.0
+1ᵒ: Main.##WeaveSandBox#293.Retângulo(2.0, 3.0) com área 6.0
+2ᵒ: Main.##WeaveSandBox#293.Retângulo(3.0, 2.0) com área 6.0
+3ᵒ: Main.##WeaveSandBox#293.Retângulo(1.2, 7.0) com área 8.4
+4ᵒ: Main.##WeaveSandBox#293.Retângulo(1.5, 6.0) com área 9.0
 ```
 
 
@@ -614,7 +614,7 @@ println("Mínimo $(minimum([R1, R2, R3, R4])) em $(argmin([R1, R2, R3, R4]))")
 ```
 
 ```
-Mínimo Main.##WeaveSandBox#402.Retângulo(2.0, 3.0) em 1
+Mínimo Main.##WeaveSandBox#293.Retângulo(2.0, 3.0) em 1
 ```
 
 
@@ -804,8 +804,8 @@ nothing
 ```
 
 ```
-0.000039 seconds (1 allocation: 20.625 KiB)
-  0.000044 seconds (2 allocations: 20.641 KiB)
+0.000023 seconds (1 allocation: 20.625 KiB)
+  0.001017 seconds (23 allocations: 21.797 KiB, 95.10% compilation time)
 ```
 
 
@@ -826,24 +826,27 @@ vec2 = rand(100)
 escalar1(vec1, vec2) = sum(vec1 .* vec2)
 escalar2(vec1, vec2) = mapreduce(elem -> elem[1]*elem[2], +, zip(vec1, vec2))
 escalar3(vec1, vec2) = let p = 0; for i in 1:length(vec1) p += vec1[i]*vec2[i] end; p end
-escalar4(vec1, vec2) = vec1 ⋅ vec2
+escalar4(vec1, vec2) = let p = 0; for i in eachindex(vec1) @inbounds p += vec1[i]*vec2[i] end; p end
+escalar5(vec1, vec2) = vec1 ⋅ vec2
 
-@show escalar1(vec1, vec2) ≈ escalar2(vec1, vec2) ≈ escalar3(vec1, vec2) ≈ escalar4(vec1, vec2)
+@show escalar1(vec1, vec2) ≈ escalar2(vec1, vec2) ≈ escalar3(vec1, vec2) ≈ escalar4(vec1, vec2) ≈ escalar5(vec1, vec2)
 
 @btime escalar1($vec1, $vec2)
 @btime escalar2($vec1, $vec2)
 @btime escalar3($vec1, $vec2)
 @btime escalar4($vec1, $vec2)
+@btime escalar5($vec1, $vec2)
 nothing
 ```
 
 ```
 escalar1(vec1, vec2) ≈ escalar2(vec1, vec2) ≈ escalar3(vec1, vec2) ≈ escala
-r4(vec1, vec2) = true
-  139.597 ns (1 allocation: 896 bytes)
-  131.464 ns (0 allocations: 0 bytes)
-  269.343 ns (0 allocations: 0 bytes)
-  37.637 ns (0 allocations: 0 bytes)
+r4(vec1, vec2) ≈ escalar5(vec1, vec2) = true
+  74.316 ns (1 allocation: 896 bytes)
+  64.308 ns (0 allocations: 0 bytes)
+  274.479 ns (0 allocations: 0 bytes)
+  54.737 ns (0 allocations: 0 bytes)
+  27.806 ns (0 allocations: 0 bytes)
 ```
 
 
@@ -852,20 +855,18 @@ r4(vec1, vec2) = true
 Para uma estatística mais detalhada, usamos `@benchmark`.
 
 ```julia
-@benchmark escalar4(v, w) setup = (v=$vec1; w=$vec2)
+@benchmark escalar5(v, w) setup = (v=$vec1; w=$vec2)
 ```
 
 ```
-BenchmarkTools.Trial: 10000 samples with 989 evaluations.
- Range (min … max):  37.459 ns … 853.933 ns  ┊ GC (min … max): 0.00% … 0.00
-%
- Time  (median):     37.819 ns               ┊ GC (median):    0.00%
- Time  (mean ± σ):   43.161 ns ±  14.759 ns  ┊ GC (mean ± σ):  0.00% ± 0.00
-%
+BenchmarkTools.Trial: 10000 samples with 995 evaluations.
+ Range (min … max):  26.884 ns … 47.278 ns  ┊ GC (min … max): 0.00% … 0.00%
+ Time  (median):     27.010 ns              ┊ GC (median):    0.00%
+ Time  (mean ± σ):   27.061 ns ±  0.557 ns  ┊ GC (mean ± σ):  0.00% ± 0.00%
 
-  █▃ ▂▄▄▄ ▂▁ ▁ ▁  ▁  ▁  ▁                                      ▁
-  ██▆███████▇█▆████▇█████▇▆▆█▆▆▆▇▆▆▇▆▆▆▆▆▅▅▅▄▆▆▆▅▄▅▄▄▄▄▄▅▃▄▄▄▅ █
-  37.5 ns       Histogram: log(frequency) by time      97.5 ns <
+  ▄▇█▆▂▃▁                                                     ▂
+  ████████▇▅▁▁▃▃▁▁▁▃▃▆▃▁▁▃▁▃▁▁▁▁▁▁▁▁▁▁▁▁▁▁▃▁▁▁▁▁▃▁▃▁▁▃▁▁▁▁▁▁▅ █
+  26.9 ns      Histogram: log(frequency) by time      29.8 ns <
 
  Memory estimate: 0 bytes, allocs estimate: 0.
 ```

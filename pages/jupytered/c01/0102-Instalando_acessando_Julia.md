@@ -4,7 +4,7 @@
 # {{ get_title }}
 
 * Nessa edição da disciplina, vamos usar a [linguagem de programação Julia](https://julialang.org).
-* A [versão 1.6](https://julialang.org/blog/2021/03/julia-1.6-highlights/) foi recentemente lançada e está disponível para [download aqui](https://julialang.org/downloads/)
+* A [versão 1.7](https://julialang.org/blog/2021/11/julia-1.7-highlights/) foi lançada no final do ano passado e está disponível para [download aqui](https://julialang.org/downloads/).
 
 
 ## Informações e guias
@@ -263,8 +263,10 @@ readdir()
 ```
 
 ```
-2-element Vector{String}:
+4-element Vector{String}:
  "0101-Aspectos_curso.md"
+ "0102-Instalando_acessando_Julia.md"
+ "0103-Primeiros_passos_Julia.md"
  "images"
 ```
 
@@ -359,8 +361,8 @@ Pkg.status()
 ```
 
 ```
-Status `~/Dropbox/Mac/Documents/git-repositories/modelagem_matematica
-/Project.toml`
+Status `~/Documents/git_repositories/modelagem_matematica/Project.tom
+l`
   [6e4b80f9] BenchmarkTools v1.3.1
   [336ed68f] CSV v0.10.4
   [13f3f980] CairoMakie v0.7.5
@@ -413,10 +415,12 @@ Julia Version 1.7.2
 Commit bf53498635 (2022-02-06 15:21 UTC)
 Platform Info:
   OS: macOS (x86_64-apple-darwin19.5.0)
-  CPU: Intel(R) Core(TM) m5-6Y54 CPU @ 1.10GHz
+  CPU: Apple M1 Pro
   WORD_SIZE: 64
   LIBM: libopenlibm
-  LLVM: libLLVM-12.0.1 (ORCJIT, skylake)
+  LLVM: libLLVM-12.0.1 (ORCJIT, westmere)
+Environment:
+  JULIA_NUM_THREADS = 8
 ```
 
 

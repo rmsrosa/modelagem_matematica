@@ -257,11 +257,11 @@ a&#91;1&#93; &#61; 7 # modificando um elemento de &#96;a&#96;
 a&#91;1:3&#93; &#61; &#91;8,9,0&#93; # modificando todos os elementos de &#96;a&#96;
 @show pointer&#40;a&#41;
 nothing</code></pre>
-<pre><code class="language-julia">pointer&#40;a&#41; &#61; Ptr&#123;Int64&#125; @0x0000000150303010
-pointer&#40;a&#41; &#61; Ptr&#123;Int64&#125; @0x00000001503037e0
-pointer&#40;a&#41; &#61; Ptr&#123;Int64&#125; @0x0000000150303e70
-pointer&#40;a&#41; &#61; Ptr&#123;Int64&#125; @0x0000000150303e70
-pointer&#40;a&#41; &#61; Ptr&#123;Int64&#125; @0x0000000150303e70</code></pre>
+<pre><code class="language-julia">pointer&#40;a&#41; &#61; Ptr&#123;Int64&#125; @0x0000000115975b70
+pointer&#40;a&#41; &#61; Ptr&#123;Int64&#125; @0x0000000115f8c0e0
+pointer&#40;a&#41; &#61; Ptr&#123;Int64&#125; @0x0000000115f8cf40
+pointer&#40;a&#41; &#61; Ptr&#123;Int64&#125; @0x0000000115f8cf40
+pointer&#40;a&#41; &#61; Ptr&#123;Int64&#125; @0x0000000115f8cf40</code></pre>
 <h3 id="atribuição_de_strings"><a href="#atribuição_de_strings" class="header-anchor">Atribuição de strings</a></h3>
 <p><em>Strings</em> também são imutáveis.</p>
 <pre><code class="language-julia">s &#61; &quot;Equações diferenciais&quot;
@@ -272,9 +272,9 @@ s &#61; replace&#40;s, &quot;Modelagem&quot; &#61;&gt; &quot;Modelos&quot;&#41;&
 @show pointer&#40;s&#41;
 @show s
 nothing</code></pre>
-<pre><code class="language-julia">pointer&#40;s&#41; &#61; Ptr&#123;UInt8&#125; @0x0000000147a61008
-pointer&#40;s&#41; &#61; Ptr&#123;UInt8&#125; @0x0000000147a61038
-pointer&#40;s&#41; &#61; Ptr&#123;UInt8&#125; @0x0000000147a61ab8
+<pre><code class="language-julia">pointer&#40;s&#41; &#61; Ptr&#123;UInt8&#125; @0x0000000115bd4408
+pointer&#40;s&#41; &#61; Ptr&#123;UInt8&#125; @0x0000000115bd4438
+pointer&#40;s&#41; &#61; Ptr&#123;UInt8&#125; @0x0000000115db32b8
 s &#61; &quot;Modelos Matemáticos&quot;</code></pre>
 <h3 id="cuidados_com_a_atribuição_de_variáveis_imutáveis"><a href="#cuidados_com_a_atribuição_de_variáveis_imutáveis" class="header-anchor">Cuidados com a atribuição de variáveis imutáveis</a></h3>
 <p>No caso de um objeto imutável mas com elementos mutáveis &#40;e.g. <em>arrays</em>, <em>dicts</em>, <em>sets</em>&#41;, é preciso termos cuidado quando tentamos copiá-lo.</p>
@@ -328,8 +328,8 @@ test &#43;&#61; 1
 resultado &#61; isodd&#40;test&#41; ? &quot;&#36;test é impar&quot; : &quot;&#36;test é par&quot;
 @show resultado
 nothing</code></pre>
-<pre><code class="language-julia">resultado &#61; &quot;203 é impar&quot;
-resultado &#61; &quot;204 é par&quot;</code></pre>
+<pre><code class="language-julia">resultado &#61; &quot;229 é impar&quot;
+resultado &#61; &quot;230 é par&quot;</code></pre>
 <h2 id="interpolação"><a href="#interpolação" class="header-anchor">Interpolação</a></h2>
 <p>Observe que acima usamos o símbolo <code>&#36;</code> dentro de uma string. Ele é chamado de operador de <strong>interpolação</strong>. Ele substitui o valor da váriável na string.</p>
 <p>Se quisermos escrever <code>&#36;</code> precisamos &quot;escapá-lo&quot; com uma barra invertida:</p>
@@ -458,9 +458,9 @@ R3 &#61; Retângulo&#40;1.2,7&#41;
 R4 &#61; Retângulo&#40;3,2&#41;
 
 R1, R2, R3, R4</code></pre>
-<pre><code class="language-julia">&#40;Main.##WeaveSandBox#402.Retângulo&#40;2.0, 3.0&#41;, Main.##WeaveSandBox#402.Retân
-gulo&#40;1.5, 6.0&#41;, Main.##WeaveSandBox#402.Retângulo&#40;1.2, 7.0&#41;, Main.##WeaveSa
-ndBox#402.Retângulo&#40;3.0, 2.0&#41;&#41;</code></pre>
+<pre><code class="language-julia">&#40;Main.##WeaveSandBox#293.Retângulo&#40;2.0, 3.0&#41;, Main.##WeaveSandBox#293.Retân
+gulo&#40;1.5, 6.0&#41;, Main.##WeaveSandBox#293.Retângulo&#40;1.2, 7.0&#41;, Main.##WeaveSa
+ndBox#293.Retângulo&#40;3.0, 2.0&#41;&#41;</code></pre>
 <p>Para qualquer retângulo, podemos definir a sua área. Podemos fazer isso definindo uma função atuando em dois argumentos <strong>do tipo Retângulo</strong>.</p>
 <pre><code class="language-julia">area&#40;R::Retângulo&#41; &#61; R.lado1 * R.lado2
 
@@ -501,13 +501,13 @@ R1 &gt; R3 &#61; false</code></pre>
 for &#40;i,R&#41; in enumerate&#40;ordenados&#41;
     println&#40;&quot;&#36;&#40;i&#41;ᵒ: &#36;R com área &#36;&#40;area&#40;R&#41;&#41;&quot;&#41;
 end</code></pre>
-<pre><code class="language-julia">1ᵒ: Main.##WeaveSandBox#402.Retângulo&#40;2.0, 3.0&#41; com área 6.0
-2ᵒ: Main.##WeaveSandBox#402.Retângulo&#40;3.0, 2.0&#41; com área 6.0
-3ᵒ: Main.##WeaveSandBox#402.Retângulo&#40;1.2, 7.0&#41; com área 8.4
-4ᵒ: Main.##WeaveSandBox#402.Retângulo&#40;1.5, 6.0&#41; com área 9.0</code></pre>
+<pre><code class="language-julia">1ᵒ: Main.##WeaveSandBox#293.Retângulo&#40;2.0, 3.0&#41; com área 6.0
+2ᵒ: Main.##WeaveSandBox#293.Retângulo&#40;3.0, 2.0&#41; com área 6.0
+3ᵒ: Main.##WeaveSandBox#293.Retângulo&#40;1.2, 7.0&#41; com área 8.4
+4ᵒ: Main.##WeaveSandBox#293.Retângulo&#40;1.5, 6.0&#41; com área 9.0</code></pre>
 <p>Da mesma forma, podemos imediatamente obter os valores máximo, mínimos e os respectivos retângulos:</p>
 <pre><code class="language-julia">println&#40;&quot;Mínimo &#36;&#40;minimum&#40;&#91;R1, R2, R3, R4&#93;&#41;&#41; em &#36;&#40;argmin&#40;&#91;R1, R2, R3, R4&#93;&#41;&#41;&quot;&#41;</code></pre>
-<pre><code class="language-julia">Mínimo Main.##WeaveSandBox#402.Retângulo&#40;2.0, 3.0&#41; em 1</code></pre>
+<pre><code class="language-julia">Mínimo Main.##WeaveSandBox#293.Retângulo&#40;2.0, 3.0&#41; em 1</code></pre>
 <h2 id="álgebra_linear"><a href="#álgebra_linear" class="header-anchor">Álgebra linear</a></h2>
 <p>Várias ferramentas de álgebra linear estão diretamente disponíveis na <code>Base</code>. Outras no módulo <a href="https://docs.julialang.org/en/v1/stdlib/LinearAlgebra/">LinearAlgebra</a> da biblioteca padrão.</p>
 <p>Na <code>Base</code>, podemos multiplicar matrizes &#40;composição&#41; e resolver um sistema &#40;<code>A\v</code> nos dá o vetor <code>u</code> tal que<code>Av &#61; u</code>, caso seja possível, ou resolve o problema de mínimos quadrados associado&#41;.</p>
@@ -612,8 +612,8 @@ plot&#40;I, &#91;sin.&#40;I&#41;, cos.&#40;I&#41;&#93;, xaxis&#61;&quot;x&quot;,
     length&#40;s&#41;
 end
 nothing</code></pre>
-<pre><code class="language-julia">0.000039 seconds &#40;1 allocation: 20.625 KiB&#41;
-  0.000044 seconds &#40;2 allocations: 20.641 KiB&#41;</code></pre>
+<pre><code class="language-julia">0.000023 seconds &#40;1 allocation: 20.625 KiB&#41;
+  0.001017 seconds &#40;23 allocations: 21.797 KiB, 95.10&#37; compilation time&#41;</code></pre>
 <p>O pacote <a href="https://github.com/JuliaCI/BenchmarkTools.jl">JuliaCI/BenchmarkTools.jl</a> é mais completo e dá mais informações para avaliar a performance dos códigos.</p>
 <p>Em particular, ela executa o código várias vezes, para evitar ruído e retornar uma informação mais precisa sobre a performance.</p>
 <p>Por exemplo, podemos comparar as diversas maneiras de se calcular o produto escalar entre dois vetores.</p>
@@ -625,33 +625,34 @@ vec2 &#61; rand&#40;100&#41;
 escalar1&#40;vec1, vec2&#41; &#61; sum&#40;vec1 .* vec2&#41;
 escalar2&#40;vec1, vec2&#41; &#61; mapreduce&#40;elem -&gt; elem&#91;1&#93;*elem&#91;2&#93;, &#43;, zip&#40;vec1, vec2&#41;&#41;
 escalar3&#40;vec1, vec2&#41; &#61; let p &#61; 0; for i in 1:length&#40;vec1&#41; p &#43;&#61; vec1&#91;i&#93;*vec2&#91;i&#93; end; p end
-escalar4&#40;vec1, vec2&#41; &#61; vec1 ⋅ vec2
+escalar4&#40;vec1, vec2&#41; &#61; let p &#61; 0; for i in eachindex&#40;vec1&#41; @inbounds p &#43;&#61; vec1&#91;i&#93;*vec2&#91;i&#93; end; p end
+escalar5&#40;vec1, vec2&#41; &#61; vec1 ⋅ vec2
 
-@show escalar1&#40;vec1, vec2&#41; ≈ escalar2&#40;vec1, vec2&#41; ≈ escalar3&#40;vec1, vec2&#41; ≈ escalar4&#40;vec1, vec2&#41;
+@show escalar1&#40;vec1, vec2&#41; ≈ escalar2&#40;vec1, vec2&#41; ≈ escalar3&#40;vec1, vec2&#41; ≈ escalar4&#40;vec1, vec2&#41; ≈ escalar5&#40;vec1, vec2&#41;
 
 @btime escalar1&#40;&#36;vec1, &#36;vec2&#41;
 @btime escalar2&#40;&#36;vec1, &#36;vec2&#41;
 @btime escalar3&#40;&#36;vec1, &#36;vec2&#41;
 @btime escalar4&#40;&#36;vec1, &#36;vec2&#41;
+@btime escalar5&#40;&#36;vec1, &#36;vec2&#41;
 nothing</code></pre>
 <pre><code class="language-julia">escalar1&#40;vec1, vec2&#41; ≈ escalar2&#40;vec1, vec2&#41; ≈ escalar3&#40;vec1, vec2&#41; ≈ escala
-r4&#40;vec1, vec2&#41; &#61; true
-  139.597 ns &#40;1 allocation: 896 bytes&#41;
-  131.464 ns &#40;0 allocations: 0 bytes&#41;
-  269.343 ns &#40;0 allocations: 0 bytes&#41;
-  37.637 ns &#40;0 allocations: 0 bytes&#41;</code></pre>
+r4&#40;vec1, vec2&#41; ≈ escalar5&#40;vec1, vec2&#41; &#61; true
+  74.316 ns &#40;1 allocation: 896 bytes&#41;
+  64.308 ns &#40;0 allocations: 0 bytes&#41;
+  274.479 ns &#40;0 allocations: 0 bytes&#41;
+  54.737 ns &#40;0 allocations: 0 bytes&#41;
+  27.806 ns &#40;0 allocations: 0 bytes&#41;</code></pre>
 <p>Para uma estatística mais detalhada, usamos <code>@benchmark</code>.</p>
-<pre><code class="language-julia">@benchmark escalar4&#40;v, w&#41; setup &#61; &#40;v&#61;&#36;vec1; w&#61;&#36;vec2&#41;</code></pre>
-<pre><code class="language-julia">BenchmarkTools.Trial: 10000 samples with 989 evaluations.
- Range &#40;min … max&#41;:  37.459 ns … 853.933 ns  ┊ GC &#40;min … max&#41;: 0.00&#37; … 0.00
-&#37;
- Time  &#40;median&#41;:     37.819 ns               ┊ GC &#40;median&#41;:    0.00&#37;
- Time  &#40;mean ± σ&#41;:   43.161 ns ±  14.759 ns  ┊ GC &#40;mean ± σ&#41;:  0.00&#37; ± 0.00
-&#37;
+<pre><code class="language-julia">@benchmark escalar5&#40;v, w&#41; setup &#61; &#40;v&#61;&#36;vec1; w&#61;&#36;vec2&#41;</code></pre>
+<pre><code class="language-julia">BenchmarkTools.Trial: 10000 samples with 995 evaluations.
+ Range &#40;min … max&#41;:  26.884 ns … 47.278 ns  ┊ GC &#40;min … max&#41;: 0.00&#37; … 0.00&#37;
+ Time  &#40;median&#41;:     27.010 ns              ┊ GC &#40;median&#41;:    0.00&#37;
+ Time  &#40;mean ± σ&#41;:   27.061 ns ±  0.557 ns  ┊ GC &#40;mean ± σ&#41;:  0.00&#37; ± 0.00&#37;
 
-  █▃ ▂▄▄▄ ▂▁ ▁ ▁  ▁  ▁  ▁                                      ▁
-  ██▆███████▇█▆████▇█████▇▆▆█▆▆▆▇▆▆▇▆▆▆▆▆▅▅▅▄▆▆▆▅▄▅▄▄▄▄▄▅▃▄▄▄▅ █
-  37.5 ns       Histogram: log&#40;frequency&#41; by time      97.5 ns &lt;
+  ▄▇█▆▂▃▁                                                     ▂
+  ████████▇▅▁▁▃▃▁▁▁▃▃▆▃▁▁▃▁▃▁▁▁▁▁▁▁▁▁▁▁▁▁▁▃▁▁▁▁▁▃▁▃▁▁▃▁▁▁▁▁▁▅ █
+  26.9 ns      Histogram: log&#40;frequency&#41; by time      29.8 ns &lt;
 
  Memory estimate: 0 bytes, allocs estimate: 0.</code></pre>
 
@@ -677,7 +678,7 @@ r4&#40;vec1, vec2&#41; &#61; true
         </div>
     
 
-    Last modified: April 14, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
+    Last modified: April 26, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
