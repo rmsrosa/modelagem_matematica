@@ -128,7 +128,7 @@ plot(y, seriestype = :scatter, xlims=(0,9), ylims=(0,2000),
     xticks=0:9, xaxis = "nível de instrução", yaxis="salário (USD\$)", 
     label="salário", title="Média salarial semanal em função do grau de instrução", 
     titlefont=12, legend=:topleft)
-plot!([(0,x[1]), (9,x[2]*9)], label="modelo ajustado")
+plot!([(0,x[1]), (9,x[1] + x[2]*9)], label="modelo ajustado")
 ```
 
 \fig{images/0402-Exemplos_ajuste_linear_6_1.png}

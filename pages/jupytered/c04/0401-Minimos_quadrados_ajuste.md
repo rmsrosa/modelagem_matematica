@@ -182,7 +182,7 @@ $$
 * O gradiente da função $E=\sum_i |y_i - mx_i - b|^2$ é o vetor $\nabla E(m,b) = (\partial_m E, \partial_b E)$ das derivadas parciais
 $$ \frac{\partial E}{\partial m} = -2\sum_i (y_i - mx_i - b)x_i = 2(\sum_i x_i^2)m  + 2(\sum_i x_i)b -2\sum_i x_iy_i,
 $$
-$$ \frac{\partial E}{\partial b} = -2\sum_i (y_i - mx_i - b) = 2(\sum_i x_i)m + 2(\sum_i 1))b - 2\sum_i y_i.
+$$ \frac{\partial E}{\partial b} = -2\sum_i (y_i - mx_i - b) = 2(\sum_i x_i)m + 2(\sum_i 1)b - 2\sum_i y_i.
 $$
 
 * Portanto, os pontos críticos são dados pelo sistema, escrito em forma matricial,
