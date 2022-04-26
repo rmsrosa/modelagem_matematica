@@ -471,9 +471,9 @@ s_i = 0, \quad \text{para} \quad i = 1, \ldots, m.
 </li>
 <li><p>Além disso, nada na análise dimensional acima diz que o movimento do pêndulo é periódico.</p>
 </li>
-<li><p>Mas se intuímos, através da observação, que o movimento é &#40;aproximadamente&#41; periódico, então o período é uma grandeza característica do problema.</p>
+<li><p>Mas se intuírmos, através da observação, que o movimento é &#40;aproximadamente&#41; periódico, então o período é uma grandeza característica do problema.</p>
 </li>
-<li><p>E se consideramos esse período \(\tau\) como parâmetro no sistema, no lugar da variável \(t\), então obtemos a relação adimensional &#40;e constante dessa vez&#41;</p>
+<li><p>E se consideramos esse período \(\tau\) como parâmetro no sistema, no lugar da variável \(t\), então obtemos a relação adimensional</p>
 </li>
 </ul>
 \[ \pi_2 = \tau \sqrt{\frac{g}{\ell}}
@@ -483,6 +483,39 @@ s_i = 0, \quad \text{para} \quad i = 1, \ldots, m.
 </li>
 </ul>
 \[ \tau \propto \sqrt{\frac{\ell}{g}}.
+\]
+<h3 id="pêndulo_com_pequenos_ângulos"><a href="#pêndulo_com_pequenos_ângulos" class="header-anchor">Pêndulo com pequenos ângulos</a></h3>
+<ul>
+<li><p>Na análise acima, obtivemos as grandezas adimensionais \(\pi_1 = \theta\) e \(\pi_2 = \tau\sqrt{g/\ell}\). Nada afirma que elas sejam constantes.</p>
+</li>
+<li><p>Mas é razoável assumirmos que haja uma relação entre essas quantidades da forma</p>
+</li>
+</ul>
+\[
+f(\pi_1, \pi_2) = 0
+\]
+<ul>
+<li><p>Podemos fazer uma aproximação de primeira ordem em \(\pi_2\) e obter</p>
+</li>
+</ul>
+\[
+0 = f(\pi_1, 0) + \pi_2\frac{\partial f}{\partial \pi_2}(\pi_1, 0).
+\]
+<ul>
+<li><p>Podemos escrever</p>
+</li>
+</ul>
+\[
+\pi_2 \approx -\frac{f(\pi_1, 0)}{\frac{\partial f}{\partial \pi_2}(\pi_1, 0)}
+\]
+<ul>
+<li><p>Isso nos dá \(\pi_2 \approx A(\pi_1)\), para \(A(\pi_1) = - f_{\pi_1}(\pi_1,0)/f_{\pi_2}(\pi_1, 0)\).</p>
+</li>
+<li><p>Portanto,</p>
+</li>
+</ul>
+\[
+\tau \approx A(\theta)\sqrt{\frac{\ell}{g}}.
 \]
 <h3 id="velocidade_do_som"><a href="#velocidade_do_som" class="header-anchor">Velocidade do som</a></h3>
 <ul>
@@ -611,7 +644,7 @@ s_i = 0, \quad \text{para} \quad i = 1, \ldots, m.
         </div>
     
 
-    Last modified: April 14, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
+    Last modified: April 26, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

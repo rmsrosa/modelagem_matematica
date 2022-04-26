@@ -169,7 +169,7 @@
 <ul>
 <li><p>Nessa edição da disciplina, vamos usar a <a href="https://julialang.org">linguagem de programação Julia</a>.</p>
 </li>
-<li><p>A <a href="https://julialang.org/blog/2021/03/julia-1.6-highlights/">versão 1.6</a> foi recentemente lançada e está disponível para <a href="https://julialang.org/downloads/">download aqui</a></p>
+<li><p>A <a href="https://julialang.org/blog/2021/11/julia-1.7-highlights/">versão 1.7</a> foi lançada no final do ano passado e está disponível para <a href="https://julialang.org/downloads/">download aqui</a>.</p>
 </li>
 </ul>
 <h2 id="informações_e_guias"><a href="#informações_e_guias" class="header-anchor">Informações e guias</a></h2>
@@ -353,8 +353,10 @@ search: sin sinh sind sinc sinpi sincos sincosd sincospi asin using isinf asinh
 <pre><code class="language-julia">Error: UndefVarError: ls not defined</code></pre>
 <p>Também podemos ler o diretório com o comando julia <code>readdir&#40;&#41;</code>.</p>
 <pre><code class="language-julia">readdir&#40;&#41;</code></pre>
-<pre><code class="language-julia">2-element Vector&#123;String&#125;:
+<pre><code class="language-julia">4-element Vector&#123;String&#125;:
  &quot;0101-Aspectos_curso.md&quot;
+ &quot;0102-Instalando_acessando_Julia.md&quot;
+ &quot;0103-Primeiros_passos_Julia.md&quot;
  &quot;images&quot;</code></pre>
 <h2 id="o_ambiente_de_pacotes"><a href="#o_ambiente_de_pacotes" class="header-anchor">O ambiente de pacotes</a></h2>
 <p>Assim como no python e em várias outras linguagens, pacotes adicionais estão disponíveis com diversas ferramentas. Temos pacotes para álgebra linear, vários tipos de equações diferenciais, integração e diferenciação, otimização, redes neurais, gráficos, <em>benchmarking</em>, etc.</p>
@@ -398,8 +400,8 @@ pkg&gt; build IJulia</code></pre>
 <p>Para isso, é preciso disponibilizar o pacote via <code>import</code> ou <code>using</code>. No caso, podemos fazer</p>
 <pre><code class="language-julia">using Pkg
 Pkg.status&#40;&#41;</code></pre>
-<pre><code class="language-julia">Status &#96;~/Dropbox/Mac/Documents/git-repositories/modelagem_matematica
-/Project.toml&#96;
+<pre><code class="language-julia">Status &#96;~/Documents/git_repositories/modelagem_matematica/Project.tom
+l&#96;
   &#91;6e4b80f9&#93; BenchmarkTools v1.3.1
   &#91;336ed68f&#93; CSV v0.10.4
   &#91;13f3f980&#93; CairoMakie v0.7.5
@@ -441,10 +443,12 @@ versioninfo&#40;&#41;</code></pre>
 Commit bf53498635 &#40;2022-02-06 15:21 UTC&#41;
 Platform Info:
   OS: macOS &#40;x86_64-apple-darwin19.5.0&#41;
-  CPU: Intel&#40;R&#41; Core&#40;TM&#41; m5-6Y54 CPU @ 1.10GHz
+  CPU: Apple M1 Pro
   WORD_SIZE: 64
   LIBM: libopenlibm
-  LLVM: libLLVM-12.0.1 &#40;ORCJIT, skylake&#41;</code></pre>
+  LLVM: libLLVM-12.0.1 &#40;ORCJIT, westmere&#41;
+Environment:
+  JULIA_NUM_THREADS &#61; 8</code></pre>
 <h2 id="utilizando_o_julia"><a href="#utilizando_o_julia" class="header-anchor">Utilizando o Julia</a></h2>
 <p>No próximo caderno, vamos investigar o uso da linguagem Julia propriamente.</p>
 
@@ -470,7 +474,7 @@ Platform Info:
         </div>
     
 
-    Last modified: April 14, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
+    Last modified: April 26, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
