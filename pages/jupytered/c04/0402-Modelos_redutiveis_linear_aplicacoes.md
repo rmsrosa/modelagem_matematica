@@ -128,7 +128,7 @@ $$ \mathbf{x} = (x_i)_{i=1}^8 = (1,\ldots, 8) \quad \mathbf{y} = (y_i)_i = (592,
 $$
 
 
-* Solucionamos isso em julia com o operador [\](https://github.com/JuliaLang/julia/blob/master/stdlib/LinearAlgebra/src/generic.jl#L1144).
+* Solucionamos isso em julia com o operador [\\](https://github.com/JuliaLang/julia/blob/master/stdlib/LinearAlgebra/src/generic.jl#L1144).
 
 * Antes, definimos a matrix $A$.
 
@@ -470,7 +470,9 @@ println(readdir())
 ```
 
 ```
-["0401-Minimos_quadrados_ajuste.md", "images"]
+["0401-Minimos_quadrados_ajuste.md", "0402-Modelos_redutiveis_linear_aplica
+coes.md", "0403-Minimos_quadrados_nao_linear.md", "0404-Exemplos_ajuste_nao
+linear.md", "0405-Ajuste_em_redes_neurais.md", "images"]
 ```
 
 

@@ -172,7 +172,7 @@ $$
 $$  E(m,b) = \sum_{i=1}^N |y_i - \hat y_i|^2 = \sum_{i=1}^N |y_i - mx_i - b|^2
 $$
 
-* Portanto, existe pelo menos uma solução.
+* Logo, existe pelo menos uma solução.
 
 * As soluções podem ser encontradas procurando-se o ponto crítico da função
 $$ \nabla E(m,b) = (0,0).
