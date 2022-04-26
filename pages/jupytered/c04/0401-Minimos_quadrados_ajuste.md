@@ -180,7 +180,7 @@ $$
 
 
 * O gradiente da função $E=\sum_i |y_i - mx_i - b|^2$ é o vetor $\nabla E(m,b) = (\partial_m E, \partial_b E)$ das derivadas parciais
-$$ \frac{\partial E}{\partial m} = -2\sum_i (y_i - mx_i - b)x_i = 2(\sum_i x_i^2)m  + 2(\sum_i xi)b -2\sum_i x_iy_i,
+$$ \frac{\partial E}{\partial m} = -2\sum_i (y_i - mx_i - b)x_i = 2(\sum_i x_i^2)m  + 2(\sum_i x_i)b -2\sum_i x_iy_i,
 $$
 $$ \frac{\partial E}{\partial b} = -2\sum_i (y_i - mx_i - b) = 2(\sum_i x_i)m + 2(\sum_i 1))b - 2\sum_i y_i.
 $$
@@ -271,7 +271,7 @@ $$
 $$ A^tA = \left[\begin{matrix} 1 & 1 & \ldots & 1 \\ x_1 & x_2 & \ldots & x_N \\ \vdots & \vdots & \cdots & \vdots \\ x_1^m & x_N^m & \ldots & x_N^m \end{matrix}\right] \left[\begin{matrix} 1 & x_1 & \ldots & x_1^m \\ \vdots & \vdots & \cdots & \vdots \\ 1 & x_N & \ldots & x_N^m \end{matrix}\right]
 $$
 
-* Note que $A^tA$ é uma matriz quadrada $m\times m$, para exatamente $m$ parâmetros.
+* Observe que $A^tA$ é uma matriz quadrada $m\times m$, para exatamente $m$ parâmetros.
 
 * A sua invertibilidade depende do posto de $A$.
 
@@ -297,7 +297,8 @@ $$
   * Assim, $A\boldsymbol{\beta}$ tanto é ortogonal como pertence à imagem de $A$.
   * Logo, $A\boldsymbol{\beta} = 0$.
 * E obviamente, se $A\boldsymbol{\beta} = 0$, então $A^tA\boldsymbol{\beta} = 0$. Portanto, temos a equivalência
-$$ \text{Núcleo de } A^tA = \text{Núcleo de } A.
+$$
+\textrm{Núcleo de } A^tA = \textrm{Núcleo de } A.
 $$
 
 
@@ -313,7 +314,8 @@ $$
 * Para isso, é, primeiramente, necessário que o número de pontos da amostra seja maior do que o número de parâmetros: $N\geq m$.
 
 * Caso contrário, como o contradomínio de $A$ é $N$, o seu posto é limitado por $N$:
-$$\operatorname{posto} A \leq N<m.
+$$
+\mathrm{posto}(A) \leq N<m.
 $$
 
 
@@ -327,7 +329,7 @@ $$
 
 * $A_m$ é uma matriz quadrada $m\times m$.
 
-* $A_m$ nada mais é do que composição de $A$ com a projeção $P_m$ de $\mathbb{R}^N= \mathbb{R}^m \times \mathbb{R}^{N-m}$ nas $m$ primeiras coordenadas $\mathbb{R}^m$.
+* $A_m$ nada mais é do que composição de $A$ com a projeção $P_m$ de $\mathbb{R}^N= \mathbb{R}^m \times \mathbb{R}^{N-m}$, nas $m$ primeiras coordenadas $\mathbb{R}^m$.
 
 * Assim, se $A_m$ for invertível, então $A_m=P_mA$ tem posto $m$, logo $A$ também o tem.
 

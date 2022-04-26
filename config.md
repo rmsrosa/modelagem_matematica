@@ -54,10 +54,11 @@ menu = [
     ],
     "Ajuste de Parâmetros" => [
         "src/jupyter/c04/0401-Minimos_quadrados_ajuste.ipynb"
-        "src/jupyter/c04/0402-Modelos_redutiveis_linear_aplicacoes.ipynb"
-        "src/jupyter/c04/0403-Minimos_quadrados_nao_linear.ipynb"
-        "src/jupyter/c04/0404-Exemplos_ajuste_naolinear.ipynb"
-        "src/jupyter/c04/0405-Ajuste_em_redes_neurais.ipynb"
+        "src/jupyter/c04/0402-Exemplos_ajuste_linear.ipynb"
+        "src/jupyter/c04/0403-Modelos_redutiveis_linear_aplicacoes.ipynb"
+        "src/jupyter/c04/0404-Minimos_quadrados_nao_linear.ipynb"
+        "src/jupyter/c04/0405-Exemplos_ajuste_naolinear.ipynb"
+        "src/jupyter/c04/0406-Ajuste_em_redes_neurais.ipynb"
     ],
     "Erros e Incertezas" => [
         "src/jupyter/c05/0501-Erros_e_incertezas.ipynb"

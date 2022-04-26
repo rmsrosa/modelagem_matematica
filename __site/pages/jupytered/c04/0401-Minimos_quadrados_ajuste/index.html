@@ -94,16 +94,19 @@
     <li><a href="/modelagem_matematica/pages/jupytered/c04/0401-Minimos_quadrados_ajuste">4.1. Mínimos quadrados e o ajuste de parâmetros</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/modelagem_matematica/pages/jupytered/c04/0402-Modelos_redutiveis_linear_aplicacoes">4.2. Modelos redutíveis ao caso linear nos parâmetros e aplicações</a></li>
+    <li><a href="/modelagem_matematica/pages/jupytered/c04/0402-Exemplos_ajuste_linear">4.2. Exemplos de ajuste linear</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/modelagem_matematica/pages/jupytered/c04/0403-Minimos_quadrados_nao_linear">4.3. Mínimos quadrados não-linear</a></li>
+    <li><a href="/modelagem_matematica/pages/jupytered/c04/0403-Modelos_redutiveis_linear_aplicacoes">4.3. Modelos redutíveis ao caso linear nos parâmetros e aplicações</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/modelagem_matematica/pages/jupytered/c04/0404-Exemplos_ajuste_naolinear">4.4. Exemplos de ajuste não-linear de parâmetros</a></li>
+    <li><a href="/modelagem_matematica/pages/jupytered/c04/0404-Minimos_quadrados_nao_linear">4.4. Mínimos quadrados não-linear</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/modelagem_matematica/pages/jupytered/c04/0405-Ajuste_em_redes_neurais">4.5. Ajuste de parâmetros em modelos de redes neurais (WIP)</a></li>
+    <li><a href="/modelagem_matematica/pages/jupytered/c04/0405-Exemplos_ajuste_naolinear">4.5. Exemplos de ajuste não-linear de parâmetros</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c04/0406-Ajuste_em_redes_neurais">4.6. Ajuste de parâmetros em modelos de redes neurais (WIP)</a></li>
     </div>
     <div class="menu-level-1">
     <li>5. Erros e Incertezas</li>
@@ -137,7 +140,7 @@
 <a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c03/0303-Unidades_Julia">3.3. Trabalhando com unidades e dimensões em Julia <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c04/0402-Modelos_redutiveis_linear_aplicacoes"><kbd>→</kbd> 4.2. Modelos redutíveis ao caso linear nos parâmetros e aplicações</a>
+    <a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c04/0402-Exemplos_ajuste_linear"><kbd>→</kbd> 4.2. Exemplos de ajuste linear</a>
 </span>
     </p>
 </div>
@@ -363,7 +366,7 @@
 <li><p>O gradiente da função \(E=\sum_i |y_i - mx_i - b|^2\) é o vetor \(\nabla E(m,b) = (\partial_m E, \partial_b E)\) das derivadas parciais</p>
 </li>
 </ul>
-\[ \frac{\partial E}{\partial m} = -2\sum_i (y_i - mx_i - b)x_i = 2(\sum_i x_i^2)m  + 2(\sum_i xi)b -2\sum_i x_iy_i,
+\[ \frac{\partial E}{\partial m} = -2\sum_i (y_i - mx_i - b)x_i = 2(\sum_i x_i^2)m  + 2(\sum_i x_i)b -2\sum_i x_iy_i,
 \]
 \[ \frac{\partial E}{\partial b} = -2\sum_i (y_i - mx_i - b) = 2(\sum_i x_i)m + 2(\sum_i 1))b - 2\sum_i y_i.
 \]
@@ -483,7 +486,7 @@
 \[ A^tA = \left[\begin{matrix} 1 & 1 & \ldots & 1 \\ x_1 & x_2 & \ldots & x_N \\ \vdots & \vdots & \cdots & \vdots \\ x_1^m & x_N^m & \ldots & x_N^m \end{matrix}\right] \left[\begin{matrix} 1 & x_1 & \ldots & x_1^m \\ \vdots & \vdots & \cdots & \vdots \\ 1 & x_N & \ldots & x_N^m \end{matrix}\right]
 \]
 <ul>
-<li><p>Note que \(A^tA\) é uma matriz quadrada \(m\times m\), para exatamente \(m\) parâmetros.</p>
+<li><p>Observe que \(A^tA\) é uma matriz quadrada \(m\times m\), para exatamente \(m\) parâmetros.</p>
 </li>
 <li><p>A sua invertibilidade depende do posto de \(A\).</p>
 </li>
@@ -522,7 +525,8 @@
 <li><p>E obviamente, se \(A\boldsymbol{\beta} = 0\), então \(A^tA\boldsymbol{\beta} = 0\). Portanto, temos a equivalência</p>
 </li>
 </ul>
-\[ \text{Núcleo de } A^tA = \text{Núcleo de } A.
+\[
+\textrm{Núcleo de } A^tA = \textrm{Núcleo de } A.
 \]
 <ul>
 <li><p>Lembremos, nesse momento, que uma matriz quadrada é invertível se e somente se o seu núcleo se reduz à origem.</p>
@@ -540,7 +544,8 @@
 <li><p>Caso contrário, como o contradomínio de \(A\) é \(N\), o seu posto é limitado por \(N\):</p>
 </li>
 </ul>
-\[\operatorname{posto} A \leq N<m.
+\[
+\mathrm{posto}(A) \leq N<m.
 \]
 <ul>
 <li><p>Em segundo lugar, quando \(N \geq m\), precisamos que as amostras sejam obtidas em pelo menos \(m\) abscissas distintas \(x_i\).</p>
@@ -555,7 +560,7 @@
 <ul>
 <li><p>\(A_m\) é uma matriz quadrada \(m\times m\).</p>
 </li>
-<li><p>\(A_m\) nada mais é do que composição de \(A\) com a projeção \(P_m\) de \(\mathbb{R}^N= \mathbb{R}^m \times \mathbb{R}^{N-m}\) nas \(m\) primeiras coordenadas \(\mathbb{R}^m\).</p>
+<li><p>\(A_m\) nada mais é do que composição de \(A\) com a projeção \(P_m\) de \(\mathbb{R}^N= \mathbb{R}^m \times \mathbb{R}^{N-m}\), nas \(m\) primeiras coordenadas \(\mathbb{R}^m\).</p>
 </li>
 <li><p>Assim, se \(A_m\) for invertível, então \(A_m=P_mA\) tem posto \(m\), logo \(A\) também o tem.</p>
 </li>
@@ -635,7 +640,7 @@
 <a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c03/0303-Unidades_Julia">3.3. Trabalhando com unidades e dimensões em Julia <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c04/0402-Modelos_redutiveis_linear_aplicacoes"><kbd>→</kbd> 4.2. Modelos redutíveis ao caso linear nos parâmetros e aplicações</a>
+    <a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c04/0402-Exemplos_ajuste_linear"><kbd>→</kbd> 4.2. Exemplos de ajuste linear</a>
 </span>
     </p>
 </div>

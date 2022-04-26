@@ -361,7 +361,7 @@ Pkg.status()
 ```
 
 ```
-Status `~/Documents/git_repositories/modelagem_matematica/Project.tom
+Status `~/Documents/git-repositories/modelagem_matematica/Project.tom
 l`
   [6e4b80f9] BenchmarkTools v1.3.1
   [336ed68f] CSV v0.10.4
@@ -415,12 +415,10 @@ Julia Version 1.7.2
 Commit bf53498635 (2022-02-06 15:21 UTC)
 Platform Info:
   OS: macOS (x86_64-apple-darwin19.5.0)
-  CPU: Apple M1 Pro
+  CPU: Intel(R) Core(TM) m5-6Y54 CPU @ 1.10GHz
   WORD_SIZE: 64
   LIBM: libopenlibm
-  LLVM: libLLVM-12.0.1 (ORCJIT, westmere)
-Environment:
-  JULIA_NUM_THREADS = 8
+  LLVM: libLLVM-12.0.1 (ORCJIT, skylake)
 ```
 
 
