@@ -125,7 +125,7 @@ y' = [28.6 88.6 177.6 313.8 423.7 774.4]
 * Eles já foram convertidos implicitamente em quantidades adimensionais quando não incluímos as unidades em suas construções.
 
 * Para todos os efeitos, estamos considerando 
-$$ x=\frac{\text{comprimento em } \texttt{cm}}{1\,\texttt{cm}}, \qquad y = \frac{\text{comprimento em } \texttt{cm}}{1\,\texttt{cm}}
+$$ x=\frac{\text{comprimento em } \texttt{cm}}{1\,\texttt{cm}}, \qquad y = \frac{\text{massa em } \texttt{g}}{1\,\texttt{g}}
 $$
 
 
@@ -305,9 +305,10 @@ println(readdir())
 
 ```
 ["0401-Minimos_quadrados_ajuste.md", "0402-Exemplos_ajuste_linear.md", "040
-2-Modelos_redutiveis_linear_aplicacoes.md", "0403-Minimos_quadrados_nao_lin
-ear.md", "0404-Exemplos_ajuste_naolinear.md", "0405-Ajuste_em_redes_neurais
-.md", "0406-Ajuste_em_redes_neurais.md", "images"]
+3-Minimos_quadrados_nao_linear.md", "0403-Modelos_redutiveis_linear_aplicac
+oes.md", "0404-Exemplos_ajuste_naolinear.md", "0404-Minimos_quadrados_nao_l
+inear.md", "0405-Ajuste_em_redes_neurais.md", "0405-Exemplos_ajuste_naoline
+ar.md", "0406-Ajuste_em_redes_neurais.md", "images"]
 ```
 
 
