@@ -19,7 +19,7 @@ book_licensees = ""
 
 ## menu variables
 +++
-show_aside = true
+show_aside = false
 show_github = true
 github_repo = "https://github.com/rmsrosa/modelagem_matematica"
 github_branch = "modmat2022p1"
