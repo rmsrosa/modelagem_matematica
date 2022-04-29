@@ -170,7 +170,7 @@
     
 <h1 id="get_title"><a href="#get_title" class="header-anchor">4.3. Modelos redutíveis ao caso linear nos parâmetros e aplicações</a></h1>
 <ul>
-<li><p>Certos modelos não-lineares nos parâmetros podem ser reduzidos ao caso linear, de modo a permitir o uso do método de mínimos quadrados</p>
+<li><p>Certos modelos não-lineares nos parâmetros podem ser reduzidos ao caso linear, de modo a permitir o uso do método de mínimos quadrados.</p>
 </li>
 <li><p>Exemplos:</p>
 <ul>
@@ -185,7 +185,9 @@
 </ul>
 <pre><code class="language-julia">using CSV
 using Dates
-using Plots</code></pre>
+using Plots
+using Unitful
+using UnitfulRecipes</code></pre>
 <h2 id="modelo_exponencial"><a href="#modelo_exponencial" class="header-anchor">Modelo exponencial</a></h2>
 <ul>
 <li><p>Modelo \(y = \beta_0 e^{\beta_1 x}\).</p>
@@ -264,30 +266,35 @@ using Plots</code></pre>
 \[ (\xi_i, \eta_i) = \left(\frac{1}{x_i}, \frac{1}{y_i}\right).
 \]
 <h2 id="a_tilápia_do_nilo"><a href="#a_tilápia_do_nilo" class="header-anchor">A tilápia do Nilo</a></h2>
+<h3 id="dados"><a href="#dados" class="header-anchor">Dados</a></h3>
 <ul>
 <li><p>Lembremos dos seguintes dados da <em>Tilápia-do-nilo</em> criada em cativeiro &#40;fonte: </p>
 </li>
 </ul>
 <p><a href="https://www.scielo.br/scielo.php?script&#61;sci_arttext&amp;pid&#61;S1516-35982015000400133">T. S. de Castro Silva, L. D. dos Santos, L. C. R. da Silva, M. Michelato, V. R. B. Furuya, W. M. Furuya, Length-weight relationship and prediction equations of body composition for growing-finishing cage-farmed Nile tilapia, R. Bras. Zootec. vol.44 no.4 Viçosa Apr. 2015</a>&#41;:</p>
 <table><tr><th align="right">Days of culture</th><th align="right">1</th><th align="right">20</th><th align="right">40</th><th align="right">60</th><th align="right">80</th><th align="right">100</th></tr><tr><td align="right">Massa &#40;g&#41;</td><td align="right">28.6±4.2</td><td align="right">88.6±1.4</td><td align="right">177.6±3.6</td><td align="right">313.8±12.8</td><td align="right">423.7±12.7</td><td align="right">774.4±23.6</td></tr><tr><td align="right">Comprimento &#40;cm&#41;</td><td align="right">10.9±0.4</td><td align="right">15.3±0.4</td><td align="right">19.1±0.2</td><td align="right">22.8±0.5</td><td align="right">26.3±0.6</td><td align="right">31.3±0.4</td></tr></table>
+<p><img src="/modelagem_matematica/assets/attachments/img/NileTilapia_WeightLength_512x373.png" alt="Alometria tilápia-do-Nilo" /></p>
+<h3 id="modelo_para_o_ajuste"><a href="#modelo_para_o_ajuste" class="header-anchor">Modelo para o ajuste</a></h3>
 <ul>
 <li><p>Busquemos ajustar uma lei de potência &#40;equação alométrica&#41; \(y=\beta_0 x^{\beta_1}\) aos dados, onde \(y\) é a massa e \(x\), o comprimento.</p>
 </li>
 <li><p>No momento, vamos apenas considerar os valores médios.</p>
 </li>
 </ul>
+<h3 id="construção_dos_dados"><a href="#construção_dos_dados" class="header-anchor">Construção dos dados</a></h3>
 <ul>
 <li><p>Começamos construímos os vetores com os dados.</p>
 </li>
 </ul>
-<pre><code class="language-julia">x &#61; &#91;10.9, 15.3, 19.1, 22.8, 26.3, 31.3&#93;
-y &#61; &#91;28.6, 88.6, 177.6, 313.8, 423.7, 774.4&#93;
-@show x&#39;
-@show y&#39;</code></pre>
-<pre><code class="language-julia">x&#39; &#61; &#91;10.9 15.3 19.1 22.8 26.3 31.3&#93;
-y&#39; &#61; &#91;28.6 88.6 177.6 313.8 423.7 774.4&#93;
-1×6 adjoint&#40;::Vector&#123;Float64&#125;&#41; with eltype Float64:
- 28.6  88.6  177.6  313.8  423.7  774.4</code></pre>
+<pre><code class="language-julia">comprimentos &#61; &#91;10.9, 15.3, 19.1, 22.8, 26.3, 31.3&#93;u&quot;cm&quot;
+massas &#61; &#91;28.6, 88.6, 177.6, 313.8, 423.7, 774.4&#93;u&quot;g&quot;
+@show comprimentos&#39;
+@show massas&#39;
+nothing</code></pre>
+<pre><code class="language-julia">comprimentos&#39; &#61; Unitful.Quantity&#123;Float64, 𝐋, Unitful.FreeUnits&#123;&#40;cm,&#41;, 𝐋, no
+thing&#125;&#125;&#91;10.9 cm 15.3 cm 19.1 cm 22.8 cm 26.3 cm 31.3 cm&#93;
+massas&#39; &#61; Unitful.Quantity&#123;Float64, 𝐌, Unitful.FreeUnits&#123;&#40;g,&#41;, 𝐌, nothing&#125;&#125;
+&#91;28.6 g 88.6 g 177.6 g 313.8 g 423.7 g 774.4 g&#93;</code></pre>
 <ul>
 <li><p>E lembremos que o problema deve ser reformulado como \(\ln y = \ln\beta_0 + \beta_1\ln x\)</p>
 </li>
@@ -295,17 +302,26 @@ y&#39; &#61; &#91;28.6 88.6 177.6 313.8 423.7 774.4&#93;
 </li>
 <li><p>Na verdade, só faz sentido considerarmos logaritmos e exponenciais de quantidades adimensionais.</p>
 </li>
-<li><p>Assim, devemos considerar, a versão adimensionalizada dos dados, o que é exatamente o que estamos fazendo, já que os vetores <code>x</code> e <code>y</code> não tem unidades.</p>
-</li>
-<li><p>Eles já foram convertidos implicitamente em quantidades adimensionais quando não incluímos as unidades em suas construções.</p>
-</li>
-<li><p>Para todos os efeitos, estamos considerando </p>
+<li><p>Assim, devemos considerar, a versão adimensionalizada dos dados, ou seja, vamos considerar</p>
 </li>
 </ul>
 \[ x=\frac{\text{comprimento em } \texttt{cm}}{1\,\texttt{cm}}, \qquad y = \frac{\text{massa em } \texttt{g}}{1\,\texttt{g}}
 \]
+<h3 id="adimensionalização"><a href="#adimensionalização" class="header-anchor">Adimensionalização</a></h3>
 <ul>
-<li><p>Construímos, então</p>
+<li><p>Definimos, então, os seguintes vetores:</p>
+</li>
+</ul>
+<pre><code class="language-julia">x &#61; comprimentos/u&quot;cm&quot;
+y &#61; massas/u&quot;g&quot;
+@show x&#39;
+@show y&#39;
+nothing</code></pre>
+<pre><code class="language-julia">x&#39; &#61; &#91;10.9 15.3 19.1 22.8 26.3 31.3&#93;
+y&#39; &#61; &#91;28.6 88.6 177.6 313.8 423.7 774.4&#93;</code></pre>
+<h3 id="mudança_de_variáveis"><a href="#mudança_de_variáveis" class="header-anchor">Mudança de variáveis</a></h3>
+<ul>
+<li><p>Agora, transformamos os dados para as novas coordenadas:</p>
 </li>
 </ul>
 <pre><code class="language-julia">ξ &#61; log.&#40;x&#41;</code></pre>
@@ -324,6 +340,13 @@ y&#39; &#61; &#91;28.6 88.6 177.6 313.8 423.7 774.4&#93;
  5.748755840298932
  6.049025657632513
  6.652088535962367</code></pre>
+<h3 id="ajuste"><a href="#ajuste" class="header-anchor">Ajuste</a></h3>
+<ul>
+<li><p>Construímos a matriz de Vandermonde.</p>
+</li>
+<li><p>E, em seguida, usamos o método de mínimos quadrados para achar os parâmetros do ajuste.</p>
+</li>
+</ul>
 <pre><code class="language-julia">A &#61; &#91;ones&#40;length&#40;ξ&#41;&#41; ξ&#93;</code></pre>
 <pre><code class="language-julia">6×2 Matrix&#123;Float64&#125;:
  1.0  2.38876
@@ -332,10 +355,6 @@ y&#39; &#61; &#91;28.6 88.6 177.6 313.8 423.7 774.4&#93;
  1.0  3.12676
  1.0  3.26957
  1.0  3.44362</code></pre>
-<ul>
-<li><p>Agora resolvemos o problema de mínimos quadrados:</p>
-</li>
-</ul>
 <pre><code class="language-julia">β̃ &#61; A\η</code></pre>
 <pre><code class="language-julia">2-element Vector&#123;Float64&#125;:
  -3.9870885208722124
@@ -346,6 +365,7 @@ y&#39; &#61; &#91;28.6 88.6 177.6 313.8 423.7 774.4&#93;
 </ul>
 <pre><code class="language-julia">β₀, β₁ &#61; exp&#40;β̃&#91;1&#93;&#41;, β̃&#91;2&#93;</code></pre>
 <pre><code class="language-julia">&#40;0.018553654135861745, 3.093303670320135&#41;</code></pre>
+<h3 id="visualização_do_ajuste"><a href="#visualização_do_ajuste" class="header-anchor">Visualização do ajuste</a></h3>
 <ul>
 <li><p>Com os parâmetros encontrados, podemos fazer as visualizações, tanto na formulação transformada, quanto na original.</p>
 </li>
@@ -355,13 +375,42 @@ y&#39; &#61; &#91;28.6 88.6 177.6 313.8 423.7 774.4&#93;
     label&#61;&quot;dados&quot;, title&#61;&quot;Dados e ajuste do modelo de potência em escalas logarítmicas&quot;, 
     titlefont&#61;12, legend&#61;:topleft&#41;
 plot&#33;&#40;&#91;&#40;2, β̃&#91;1&#93; &#43; β̃&#91;2&#93;*2&#41;, &#40;4,β̃&#91;1&#93; &#43; β̃&#91;2&#93;*4&#41;&#93;, label&#61;&quot;modelo ajustado&quot;&#41;</code></pre>
-<img src="/modelagem_matematica/assets/pages/jupytered/c04/0403-Modelos_redutiveis_linear_aplicacoes/code/images/0403-Modelos_redutiveis_linear_aplicacoes_8_1.png" alt="">
+<img src="/modelagem_matematica/assets/pages/jupytered/c04/0403-Modelos_redutiveis_linear_aplicacoes/code/images/0403-Modelos_redutiveis_linear_aplicacoes_9_1.png" alt="">
 <pre><code class="language-julia">plot&#40;x, y, seriestype &#61; :scatter, xlims&#61;&#40;10,32&#41;, ylims&#61;&#40;0,800&#41;, xticks&#61;10:2:32,
-    xaxis &#61; &quot;comprimento &#40;cm&#41;&quot;, yaxis&#61;&quot;massa &#40;g&#41;&quot;,
+    xaxis &#61; &quot;comprimento/cm&quot;, yaxis&#61;&quot;massa/g&quot;,
     label&#61;&quot;dados&quot;, title&#61;&quot;Dados e ajuste do modelo de potência&quot;, 
     titlefont&#61;12, legend&#61;:topleft&#41;
 plot&#33;&#40;10:32, β₀*&#40;10:32&#41;.^β₁, label&#61;&quot;modelo ajustado&quot;&#41;</code></pre>
-<img src="/modelagem_matematica/assets/pages/jupytered/c04/0403-Modelos_redutiveis_linear_aplicacoes/code/images/0403-Modelos_redutiveis_linear_aplicacoes_9_1.png" alt="">
+<p><span style="color:red;">// Image matching '/assets/pages/jupytered/c04/0403-Modelos_redutiveis_linear_aplicacoes/code/images/0403-Modelos_redutiveis_linear_aplicacoes_10_1.png' not found. //</span></p>
+<h3 id="dimensões"><a href="#dimensões" class="header-anchor">Dimensões</a></h3>
+<ul>
+<li><p>Obtivemos os parâmetros \(\beta_0\) e \(\beta_1\) para o ajuste do modelo \(y = \beta_0 x^{\beta_1}\) dos dados adimensionalizados.</p>
+</li>
+<li><p>Ao voltamos para as variáveis dimensionais, temos</p>
+</li>
+</ul>
+\[
+\textrm{massa} = y \;\texttt{g} = \beta_0 x^{\beta_1} \;\texttt{g} = \beta_0 \left(x \texttt{cm}\right)^{\beta_1} \;\texttt{g}\;\texttt{cm}^{-\beta_1} = \beta_0 \left(\mathrm{comprimento}\right)^{\beta_1} \;\texttt{g}\;\texttt{cm}^{-\beta_1} = a \left(\mathrm{comprimento}\right)^p,
+\]
+<p>onde</p>
+\[
+p = \beta_1, \quad a = \beta_0\;\texttt{g}\;\texttt{cm}^{-\beta_1}
+\]
+<h3 id="visualização_com_variáveis_dimensionais"><a href="#visualização_com_variáveis_dimensionais" class="header-anchor">Visualização com variáveis dimensionais</a></h3>
+<ul>
+<li><p>Assim, podemos definir \(p\) e \(a\) como acima e montar a visualização com as variáveis e os parâmetros dimensionais.</p>
+</li>
+</ul>
+<pre><code class="language-julia">p &#61; β₁
+a &#61; β₀ * u&quot;g&quot; / u&quot;cm&quot;^p
+modelos&#40;l&#41; &#61; a * l^p</code></pre>
+<pre><code class="language-julia">modelos &#40;generic function with 1 method&#41;</code></pre>
+<pre><code class="language-julia">plot&#40;comprimentos, massas, seriestype &#61; :scatter, xlims&#61;&#40;10,32&#41;, ylims&#61;&#40;0,800&#41;, xticks&#61;10:2:32,
+    xaxis &#61; &quot;comprimento&quot;, yaxis&#61;&quot;massa&quot;,
+    label&#61;&quot;dados&quot;, title&#61;&quot;Dados e ajuste do modelo de potência&quot;, 
+    titlefont&#61;12, legend&#61;:topleft&#41;
+plot&#33;&#40;&#40;10:32&#41;u&quot;cm&quot;, modelos, label&#61;&quot;modelo ajustado&quot;&#41;</code></pre>
+<p><span style="color:red;">// Image matching '/assets/pages/jupytered/c04/0403-Modelos_redutiveis_linear_aplicacoes/code/images/0403-Modelos_redutiveis_linear_aplicacoes_12_1.png' not found. //</span></p>
 <h2 id="decaimento_radioativo_do_plutônio-241"><a href="#decaimento_radioativo_do_plutônio-241" class="header-anchor">Decaimento radioativo do Plutônio-241</a></h2>
 <ul>
 <li><p>Neste outro exemplo, vamos examinar o decaimento radioativo do Plutônio-241, que é um dos muitos isótopos do <a href="https://en.wikipedia.org/wiki/Plutonium">Plutônio</a>.</p>
@@ -551,7 +600,7 @@ end</code></pre>
     xaxis &#61; &quot;Data &#40;ano/mês/dia&#41;&quot;, yaxis&#61;&quot;fração das frações&quot;, xrotation&#61;45,
     label&#61;&quot;dados&quot;, title&#61;&quot;Dados amostrais da fração das frações de isótopos de Plutônio&quot;, 
     titlefont&#61;12, legend&#61;:topright&#41;</code></pre>
-<img src="/modelagem_matematica/assets/pages/jupytered/c04/0403-Modelos_redutiveis_linear_aplicacoes/code/images/0403-Modelos_redutiveis_linear_aplicacoes_16_1.png" alt="">
+<p><span style="color:red;">// Image matching '/assets/pages/jupytered/c04/0403-Modelos_redutiveis_linear_aplicacoes/code/images/0403-Modelos_redutiveis_linear_aplicacoes_19_1.png' not found. //</span></p>
 <ul>
 <li><p>Para fazer o ajuste, transformamos a data em anos decorridos desde o dia da primeira amostragem.</p>
 </li>
@@ -577,12 +626,12 @@ end</code></pre>
  18.61738535249829
  20.79397672826831
  30.836413415468858</code></pre>
-<pre><code class="language-julia">plot&#40;t, r, seriestype &#61; :scatter, xlims&#61;&#40;t&#91;1&#93;-1, t&#91;end&#93;&#43;1&#41;, ylims&#61;&#40;1,7&#41;, xticks&#61;t,
+<pre><code class="language-julia">plot&#40;t, r, seriestype &#61; :scatter, xlims&#61;&#40;t&#91;1&#93;, t&#91;end&#93;&#43;1&#41;, ylims&#61;&#40;1,7&#41;, xticks&#61;t,
     xaxis &#61; &#40;&quot;log&#40;anos decorridos&#41;&quot;, :log10&#41;, yaxis&#61;&#40;&quot;log&#40;fração das frações&#41;&quot;, :log10&#41;, xrotation&#61;45,
     label&#61;&quot;dados&quot;, title&#61;&quot;Dados amostrais da fração das frações de isótopos de Plutônio&quot;, 
     titlefont&#61;12, legend&#61;:topright&#41;</code></pre>
-<img src="/modelagem_matematica/assets/pages/jupytered/c04/0403-Modelos_redutiveis_linear_aplicacoes/code/images/0403-Modelos_redutiveis_linear_aplicacoes_18_1.png" alt="">
-<h3 id="ajuste"><a href="#ajuste" class="header-anchor">Ajuste</a></h3>
+<img src="/modelagem_matematica/assets/pages/jupytered/c04/0403-Modelos_redutiveis_linear_aplicacoes/code/images/0403-Modelos_redutiveis_linear_aplicacoes_21_1.png" alt="">
+<h3 id="ajuste__2"><a href="#ajuste__2" class="header-anchor">Ajuste</a></h3>
 <ul>
 <li><p>Transformamos os dados para a escala adequada.</p>
 </li>
@@ -615,24 +664,24 @@ p &#61; -β̃&#91;2&#93;
 @show C, p
 nothing</code></pre>
 <pre><code class="language-julia">&#40;C, p&#41; &#61; &#40;6.504114523362512, 0.048222454056244105&#41;</code></pre>
-<pre><code class="language-julia">plot&#40;t, r, seriestype &#61; :scatter, xlims&#61;&#40;t&#91;1&#93;-1, t&#91;end&#93;&#43;1&#41;, ylims&#61;&#40;1,7&#41;, xticks&#61;t,
+<pre><code class="language-julia">plot&#40;t, r, seriestype &#61; :scatter, xlims&#61;&#40;t&#91;1&#93;, t&#91;end&#93;&#43;1&#41;, ylims&#61;&#40;1,7&#41;, xticks&#61;t,
     xaxis &#61; &#40;&quot;log&#40;dias decorridos&#41;&quot;, :log10&#41;, yaxis&#61;&#40;&quot;log&#40;fração das frações&#41;&quot;, :log10&#41;, xrotation&#61;45,
     label&#61;&quot;dados&quot;, title&#61;&quot;Dados amostrais da fração das frações de isótopos de Plutônio&quot;, 
-    titlefont&#61;12, legend&#61;:topright&#41;
-tt &#61; t&#91;1&#93;:10:t&#91;end&#93;
+    titlefont&#61;12, legend&#61;:bottomleft&#41;
+tt &#61; t&#91;1&#93;:1:t&#91;end&#93;
 plot&#33;&#40;tt, C*exp.&#40;-p*tt&#41;, xaxis&#61;:log10, yaxis&#61;:log10, label&#61;&quot;modelo ajustado&quot;&#41;</code></pre>
-<img src="/modelagem_matematica/assets/pages/jupytered/c04/0403-Modelos_redutiveis_linear_aplicacoes/code/images/0403-Modelos_redutiveis_linear_aplicacoes_21_1.png" alt="">
+<p><span style="color:red;">// Image matching '/assets/pages/jupytered/c04/0403-Modelos_redutiveis_linear_aplicacoes/code/images/0403-Modelos_redutiveis_linear_aplicacoes_24_1.png' not found. //</span></p>
 <ul>
 <li><p>De volta às coordenadas originais</p>
 </li>
 </ul>
-<pre><code class="language-julia">plot&#40;t, r, seriestype &#61; :scatter, xlims&#61;&#40;t&#91;1&#93;-1, t&#91;end&#93;&#43;1&#41;, ylims&#61;&#40;1,7&#41;, xticks&#61;t&#91;1&#93;:t&#91;end&#93;,
+<pre><code class="language-julia">plot&#40;t, r, seriestype &#61; :scatter, xlims&#61;&#40;t&#91;1&#93;, t&#91;end&#93;&#43;1&#41;, ylims&#61;&#40;1,7&#41;,
     xaxis &#61; &quot;anos decorridos&quot;, yaxis&#61;&quot;fração das frações&quot;, xrotation&#61;45,
     label&#61;&quot;dados&quot;, title&#61;&quot;Dados amostrais e modelo da fração das frações&quot;, 
     titlefont&#61;12, legend&#61;:topright&#41;
-tt &#61; t&#91;1&#93;-1:1:t&#91;end&#93;&#43;1
+tt &#61; t&#91;1&#93;:1:t&#91;end&#93;&#43;1
 plot&#33;&#40;tt, C*exp.&#40;-p*tt&#41;, label&#61;&quot;modelo ajustado&quot;&#41;</code></pre>
-<img src="/modelagem_matematica/assets/pages/jupytered/c04/0403-Modelos_redutiveis_linear_aplicacoes/code/images/0403-Modelos_redutiveis_linear_aplicacoes_22_1.png" alt="">
+<p><span style="color:red;">// Image matching '/assets/pages/jupytered/c04/0403-Modelos_redutiveis_linear_aplicacoes/code/images/0403-Modelos_redutiveis_linear_aplicacoes_25_1.png' not found. //</span></p>
 <h2 id="meia-vida_do_plutônio-241"><a href="#meia-vida_do_plutônio-241" class="header-anchor">Meia-vida do Plutônio-241</a></h2>
 <ul>
 <li><p>A meia-vida do Plutônio-239 é tomada como sendo de 24110 anos.</p>
@@ -693,7 +742,7 @@ plot&#33;&#40;tt, C*exp.&#40;-p*tt&#41;, label&#61;&quot;modelo ajustado&quot;&#
         </div>
     
 
-    Last modified: April 28, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
+    Last modified: April 29, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
