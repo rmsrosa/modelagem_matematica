@@ -3,7 +3,8 @@
 
 # {{ get_title }}
 
-* Certos modelos não-lineares nos parâmetros podem ser reduzidos ao caso linear, de modo a permitir o uso do método de mínimos quadrados
+* Certos modelos não-lineares nos parâmetros podem ser reduzidos ao caso linear, de modo a permitir o uso do método de mínimos quadrados.
+
 * Exemplos:
   * $y = \beta_0 e^{\beta_1 x}$;
   * $y = \beta_0 x^{\beta_1}$;
@@ -13,6 +14,8 @@
 using CSV
 using Dates
 using Plots
+using Unitful
+using UnitfulRecipes
 ```
 
 
@@ -82,6 +85,8 @@ $$
 
 ## A tilápia do Nilo
 
+### Dados
+
 * Lembremos dos seguintes dados da *Tilápia-do-nilo* criada em cativeiro (fonte: 
 [T. S. de Castro Silva, L. D. dos Santos, L. C. R. da Silva, M. Michelato, V. R. B. Furuya, W. M. Furuya, Length-weight relationship and prediction equations of body composition for growing-finishing cage-farmed Nile tilapia, R. Bras. Zootec. vol.44 no.4 Viçosa Apr. 2015](https://www.scielo.br/scielo.php?script=sci_arttext&pid=S1516-35982015000400133)):
 
@@ -90,25 +95,35 @@ $$
 | Massa (g) | 28.6±4.2 | 88.6±1.4 | 177.6±3.6 | 313.8±12.8 | 423.7±12.7 | 774.4±23.6 |
 | Comprimento (cm) | 10.9±0.4 | 15.3±0.4 | 19.1±0.2 | 22.8±0.5 | 26.3±0.6 | 31.3±0.4 |
 
+
+
+![Alometria tilápia-do-Nilo](/assets/attachments/img/NileTilapia_WeightLength_512x373.png)
+
+
+### Modelo para o ajuste
+
 * Busquemos ajustar uma lei de potência (equação alométrica) $y=\beta_0 x^{\beta_1}$ aos dados, onde $y$ é a massa e $x$, o comprimento.
 
 * No momento, vamos apenas considerar os valores médios.
 
 
+### Construção dos dados
+
 * Começamos construímos os vetores com os dados.
 
 ```julia
-x = [10.9, 15.3, 19.1, 22.8, 26.3, 31.3]
-y = [28.6, 88.6, 177.6, 313.8, 423.7, 774.4]
-@show x'
-@show y'
+comprimentos = [10.9, 15.3, 19.1, 22.8, 26.3, 31.3]u"cm"
+massas = [28.6, 88.6, 177.6, 313.8, 423.7, 774.4]u"g"
+@show comprimentos'
+@show massas'
+nothing
 ```
 
 ```
-x' = [10.9 15.3 19.1 22.8 26.3 31.3]
-y' = [28.6 88.6 177.6 313.8 423.7 774.4]
-1×6 adjoint(::Vector{Float64}) with eltype Float64:
- 28.6  88.6  177.6  313.8  423.7  774.4
+comprimentos' = Unitful.Quantity{Float64, 𝐋, Unitful.FreeUnits{(cm,), 𝐋, no
+thing}}[10.9 cm 15.3 cm 19.1 cm 22.8 cm 26.3 cm 31.3 cm]
+massas' = Unitful.Quantity{Float64, 𝐌, Unitful.FreeUnits{(g,), 𝐌, nothing}}
+[28.6 g 88.6 g 177.6 g 313.8 g 423.7 g 774.4 g]
 ```
 
 
@@ -120,16 +135,34 @@ y' = [28.6 88.6 177.6 313.8 423.7 774.4]
 
 * Na verdade, só faz sentido considerarmos logaritmos e exponenciais de quantidades adimensionais.
 
-* Assim, devemos considerar, a versão adimensionalizada dos dados, o que é exatamente o que estamos fazendo, já que os vetores `x` e `y` não tem unidades.
-
-* Eles já foram convertidos implicitamente em quantidades adimensionais quando não incluímos as unidades em suas construções.
-
-* Para todos os efeitos, estamos considerando 
+* Assim, devemos considerar, a versão adimensionalizada dos dados, ou seja, vamos considerar
 $$ x=\frac{\text{comprimento em } \texttt{cm}}{1\,\texttt{cm}}, \qquad y = \frac{\text{massa em } \texttt{g}}{1\,\texttt{g}}
 $$
 
 
-* Construímos, então
+### Adimensionalização
+
+* Definimos, então, os seguintes vetores:
+
+```julia
+x = comprimentos/u"cm"
+y = massas/u"g"
+@show x'
+@show y'
+nothing
+```
+
+```
+x' = [10.9 15.3 19.1 22.8 26.3 31.3]
+y' = [28.6 88.6 177.6 313.8 423.7 774.4]
+```
+
+
+
+
+### Mudança de variáveis
+
+* Agora, transformamos os dados para as novas coordenadas:
 
 ```julia
 ξ = log.(x)
@@ -163,6 +196,13 @@ $$
 
 
 
+
+### Ajuste
+
+* Construímos a matriz de Vandermonde.
+
+* E, em seguida, usamos o método de mínimos quadrados para achar os parâmetros do ajuste.
+
 ```julia
 A = [ones(length(ξ)) ξ]
 ```
@@ -178,9 +218,6 @@ A = [ones(length(ξ)) ξ]
 ```
 
 
-
-
-* Agora resolvemos o problema de mínimos quadrados:
 
 ```julia
 β̃ = A\η
@@ -208,6 +245,8 @@ A = [ones(length(ξ)) ξ]
 
 
 
+### Visualização do ajuste
+
 * Com os parâmetros encontrados, podemos fazer as visualizações, tanto na formulação transformada, quanto na original.
 
 ```julia
@@ -218,17 +257,58 @@ plot(ξ, η, seriestype = :scatter, xlims=(2,4), ylims=(0,7), xticks=2:0.5:4,
 plot!([(2, β̃[1] + β̃[2]*2), (4,β̃[1] + β̃[2]*4)], label="modelo ajustado")
 ```
 
-\fig{images/0403-Modelos_redutiveis_linear_aplicacoes_8_1.png}
+\fig{images/0403-Modelos_redutiveis_linear_aplicacoes_9_1.png}
 
 ```julia
 plot(x, y, seriestype = :scatter, xlims=(10,32), ylims=(0,800), xticks=10:2:32,
-    xaxis = "comprimento (cm)", yaxis="massa (g)",
+    xaxis = "comprimento/cm", yaxis="massa/g",
     label="dados", title="Dados e ajuste do modelo de potência", 
     titlefont=12, legend=:topleft)
 plot!(10:32, β₀*(10:32).^β₁, label="modelo ajustado")
 ```
 
-\fig{images/0403-Modelos_redutiveis_linear_aplicacoes_9_1.png}
+\fig{images/0403-Modelos_redutiveis_linear_aplicacoes_10_1.png}
+
+
+### Dimensões
+
+* Obtivemos os parâmetros $\beta_0$ e $\beta_1$ para o ajuste do modelo $y = \beta_0 x^{\beta_1}$ dos dados adimensionalizados.
+
+* Ao voltamos para as variáveis dimensionais, temos
+$$
+\textrm{massa} = y \;\texttt{g} = \beta_0 x^{\beta_1} \;\texttt{g} = \beta_0 \left(x \texttt{cm}\right)^{\beta_1} \;\texttt{g}\;\texttt{cm}^{-\beta_1} = \beta_0 \left(\mathrm{comprimento}\right)^{\beta_1} \;\texttt{g}\;\texttt{cm}^{-\beta_1} = a \left(\mathrm{comprimento}\right)^p,
+$$
+onde
+$$
+p = \beta_1, \quad a = \beta_0\;\texttt{g}\;\texttt{cm}^{-\beta_1}
+$$
+
+
+### Visualização com variáveis dimensionais
+
+* Assim, podemos definir $p$ e $a$ como acima e montar a visualização com as variáveis e os parâmetros dimensionais.
+
+```julia
+p = β₁
+a = β₀ * u"g" / u"cm"^p
+modelos(l) = a * l^p
+```
+
+```
+modelos (generic function with 1 method)
+```
+
+
+
+```julia
+plot(comprimentos, massas, seriestype = :scatter, xlims=(10,32), ylims=(0,800), xticks=10:2:32,
+    xaxis = "comprimento", yaxis="massa",
+    label="dados", title="Dados e ajuste do modelo de potência", 
+    titlefont=12, legend=:topleft)
+plot!((10:32)u"cm", modelos, label="modelo ajustado")
+```
+
+\fig{images/0403-Modelos_redutiveis_linear_aplicacoes_12_1.png}
 
 
 ## Decaimento radioativo do Plutônio-241
@@ -454,7 +534,7 @@ plot(data, r, seriestype = :scatter, xlims=(data[1]-Dates.Year(1), data[end]+Dat
     titlefont=12, legend=:topright)
 ```
 
-\fig{images/0403-Modelos_redutiveis_linear_aplicacoes_16_1.png}
+\fig{images/0403-Modelos_redutiveis_linear_aplicacoes_19_1.png}
 
 
 * Para fazer o ajuste, transformamos a data em anos decorridos desde o dia da primeira amostragem.
@@ -489,13 +569,13 @@ t = (Dates.date2epochdays.(data) .- Dates.date2epochdays(data[1]) .+ 1)./365.25
 
 
 ```julia
-plot(t, r, seriestype = :scatter, xlims=(t[1]-1, t[end]+1), ylims=(1,7), xticks=t,
+plot(t, r, seriestype = :scatter, xlims=(t[1], t[end]+1), ylims=(1,7), xticks=t,
     xaxis = ("log(anos decorridos)", :log10), yaxis=("log(fração das frações)", :log10), xrotation=45,
     label="dados", title="Dados amostrais da fração das frações de isótopos de Plutônio", 
     titlefont=12, legend=:topright)
 ```
 
-\fig{images/0403-Modelos_redutiveis_linear_aplicacoes_18_1.png}
+\fig{images/0403-Modelos_redutiveis_linear_aplicacoes_21_1.png}
 
 
 ### Ajuste
@@ -547,29 +627,29 @@ nothing
 
 
 ```julia
-plot(t, r, seriestype = :scatter, xlims=(t[1]-1, t[end]+1), ylims=(1,7), xticks=t,
+plot(t, r, seriestype = :scatter, xlims=(t[1], t[end]+1), ylims=(1,7), xticks=t,
     xaxis = ("log(dias decorridos)", :log10), yaxis=("log(fração das frações)", :log10), xrotation=45,
     label="dados", title="Dados amostrais da fração das frações de isótopos de Plutônio", 
-    titlefont=12, legend=:topright)
-tt = t[1]:10:t[end]
+    titlefont=12, legend=:bottomleft)
+tt = t[1]:1:t[end]
 plot!(tt, C*exp.(-p*tt), xaxis=:log10, yaxis=:log10, label="modelo ajustado")
 ```
 
-\fig{images/0403-Modelos_redutiveis_linear_aplicacoes_21_1.png}
+\fig{images/0403-Modelos_redutiveis_linear_aplicacoes_24_1.png}
 
 
 * De volta às coordenadas originais
 
 ```julia
-plot(t, r, seriestype = :scatter, xlims=(t[1]-1, t[end]+1), ylims=(1,7), xticks=t[1]:t[end],
+plot(t, r, seriestype = :scatter, xlims=(t[1], t[end]+1), ylims=(1,7),
     xaxis = "anos decorridos", yaxis="fração das frações", xrotation=45,
     label="dados", title="Dados amostrais e modelo da fração das frações", 
     titlefont=12, legend=:topright)
-tt = t[1]-1:1:t[end]+1
+tt = t[1]:1:t[end]+1
 plot!(tt, C*exp.(-p*tt), label="modelo ajustado")
 ```
 
-\fig{images/0403-Modelos_redutiveis_linear_aplicacoes_22_1.png}
+\fig{images/0403-Modelos_redutiveis_linear_aplicacoes_25_1.png}
 
 
 ## Meia-vida do Plutônio-241
