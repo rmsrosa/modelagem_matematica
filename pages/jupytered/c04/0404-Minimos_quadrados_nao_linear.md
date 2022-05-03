@@ -3,9 +3,9 @@
 
 # {{ get_title }}
 
-* Modelos reais são raramente lineares.
+* Modelos reais raramente são lineares.
 
-* E nem todos os fenômenos lineares podem ser bem aproximados por modelos redutíveis a lineares, como vimos da última vez.
+* E nem todos os fenômenos podem ser bem aproximados por modelos redutíveis a lineares nos parâmetros, como vimos da última vez.
 
 * Como ajustar parâmetros de modelos genuinamente não lineares?
 
@@ -55,7 +55,7 @@ $$
 para $j=1, \ldots, m.$
 
 * Em termos matriciais, podemos escrever
-$$D\mathbf{r}(\hat{\boldsymbol\beta})^t \mathbf{r}(\hat{\boldsymbol\beta}) = 0. \quad\quad (2)
+$$\nabla E(\hat{\boldsymbol\beta}) = D\mathbf{r}(\hat{\boldsymbol\beta})^t \mathbf{r}(\hat{\boldsymbol\beta}) = 0. \quad\quad (2)
 $$
 onde $D\mathbf{r}(\boldsymbol\beta)^t$ é a transposta da matriz Jacobiana $D\mathbf{r}(\boldsymbol\beta)$, cujas linhas são os gradientes da função vetorial cujos componentes são os resíduos:
 $$ \mathbf{r}(\boldsymbol\beta) = \left(y_i - \varphi(x_i, \boldsymbol\beta)\right)_{i=1, \ldots, n}.
@@ -65,12 +65,18 @@ $$
 ### Interlúdio para o caso linear
 
 * Observe que, no caso linear, temos
-$$\mathbf{r}(\boldsymbol\beta) = A \boldsymbol\beta - \mathbf{b}$$
-e a equação acima se reduz à equação normal do problema de mínimos quadrados linear:
+$$\mathbf{r}(\boldsymbol\beta) = A \boldsymbol\beta - \mathbf{b}.
+$$
+
+* Nesse caso,
+$$ D\mathbf{r}(\boldsymbol\beta) = A.
+$$
+
+* Assim, equação $\nabla E(\hat{\boldsymbol\beta}) = D\mathbf{r}(\hat{\boldsymbol\beta})^t \mathbf{r}(\hat{\boldsymbol\beta}) = 0$ se reduz à equação normal do problema de mínimos quadrados linear:
 $$ A^t(A\boldsymbol\beta) = A^t\mathbf{b}.
 $$
 
-* Diferentemente do caso linear, onde a hipótese de $A$ ter posto completo (com $m$ colunas linearmente independentes) implica na convexidade de $\mathbf{r}$ (hessiana positiva-definida), e portanto na unicidade da solução de, o caso não-linear tem a condição acima apenas como **necessária**. Podem existir vários pontos de mínimo local.
+* Diferentemente do caso linear, onde a hipótese de $A$ ter posto completo (com $m$ colunas linearmente independentes) implica na convexidade de $\mathbf{r}$ (hessiana positiva-definida), e portanto na unicidade da solução do problema de mínimos quadrados, o caso não-linear tem a condição acima apenas como **necessária**. Podem existir vários pontos de mínimo local.
 
 
 ## Algoritmos
@@ -91,17 +97,15 @@ $$
 ### Gradiente descendente
 
 * Esse método é bastante intuitivo.
-
-* Assumindo que a função $E(\boldsymbol\beta)$ seja suave, a sua direção de maior decrescimento é a contrária ao seu gradiente.
-
+* Assumindo que a função $E(\boldsymbol\beta)$ seja suave, a sua direção de maior decrescimento é contrária ao seu gradiente.
 * A idéia, então, é dar um passo na direção contrária ao gradiente, em cada iteração:
 
-    1. Dado um ponto $\boldsymbol{\beta}^{(k)}$, em que o erro $E(\boldsymbol{\beta}^{(k)})$ ainda não é suficientemente pequeno (caso contrário já teríamos resolvido o problemo), calculamos o gradiente
-    $$ \nabla E(\boldsymbol{\beta}^{(k)})
-    $$
-    1. Dado um "tamanho de passo" $\eta$, "andamos" na direção contrária, escolhendo o próximo ponto $\boldsymbol{\beta}^{(k+1)}$ como
-    $$ \boldsymbol{\beta}^{(k+1)} = \boldsymbol{\beta}^{(k)} - \eta \nabla E(\boldsymbol{\beta}^{(k)}).
-    $$
+1. Dado um ponto $\boldsymbol{\beta}^{(k)}$, em que o erro $E(\boldsymbol{\beta}^{(k)})$ ainda não é suficientemente pequeno (caso contrário já teríamos resolvido o problemo), calculamos o gradiente
+$$ \nabla E(\boldsymbol{\beta}^{(k)})
+$$
+2. Dado um "tamanho de passo" $\eta$, "andamos" na direção contrária, escolhendo o próximo ponto $\boldsymbol{\beta}^{(k+1)}$ como
+$$ \boldsymbol{\beta}^{(k+1)} = \boldsymbol{\beta}^{(k)} - \eta \nabla E(\boldsymbol{\beta}^{(k)}).
+$$
 
 
 #### Deficiências do método de gradiente descendente
@@ -118,13 +122,14 @@ $$
 ### Gauss-Newton
 
 * O método consiste basicamente nos seguintes ingredientes:
-    1. Pensar no objetivo $E(\boldsymbol{\beta}) = \|\mathbf{r}\|^2 = 0$ como um **objetivo para os resíduos**:
-    $$ \mathbf{r}(\boldsymbol{\beta}) = \mathbf{0};
-    $$
-    1. Dado o $k$-ésimo termo da sequência, obter uma **aproximação afim** da função $\mathbf{r}$ perto do ponto $\boldsymbol{\beta}^{(k)}$;
-    1. Minimizar o erro quadrático da aproximação afim.
-    1. Olhar para essa solução como o novo termo $\boldsymbol{\beta}^{(k+1)}$ da sequência;
-    1. Repetir o processo até alcançar um dos critérios de parada.
+
+1. Pensar no objetivo $E(\boldsymbol{\beta}) = \|\mathbf{r}\|^2 = 0$ como um **objetivo para os resíduos**:
+$$ \mathbf{r}(\boldsymbol{\beta}) = \mathbf{0};
+$$
+2. Dado o $k$-ésimo termo da sequência, obter uma **aproximação afim** da função $\mathbf{r}$ perto do ponto $\boldsymbol{\beta}^{(k)}$;
+3. Minimizar o erro quadrático da aproximação afim.
+4. Olhar para essa solução como o novo termo $\boldsymbol{\beta}^{(k+1)}$ da sequência;
+5. Repetir o processo até alcançar um dos critérios de parada.
 
 
 #### Aproximação afim
@@ -222,16 +227,17 @@ $$\boldsymbol{\beta}^{(k+1)} = \boldsymbol{\beta}^{(k)} - \left( D\mathbf{r}(\bo
 
 #### Amortecimento
 
-* Reescrevemos
-$$\boldsymbol{\beta}^{(k+1)} = \boldsymbol{\beta}^{(k)} - \left( D\mathbf{r}(\boldsymbol{\beta}^{(k)})^t D\mathbf{r}(\boldsymbol{\beta}^{(k)}) + \lambda^{(k)}I \right)^{-1} D\mathbf{r}(\boldsymbol{\beta}^{(k)})^t \mathbf{r}(\boldsymbol{\beta}^{(k)})$$
-como
+* Obtivemos
+$$\boldsymbol{\beta}^{(k+1)} = \boldsymbol{\beta}^{(k)} - \left( D\mathbf{r}(\boldsymbol{\beta}^{(k)})^t D\mathbf{r}(\boldsymbol{\beta}^{(k)}) + \lambda^{(k)}I \right)^{-1} D\mathbf{r}(\boldsymbol{\beta}^{(k)})^t \mathbf{r}(\boldsymbol{\beta}^{(k)}).$$
+
+* Reescrevamos isso na forma
 $$\left( D\mathbf{r}(\boldsymbol{\beta}^{(k)})^t D\mathbf{r}(\boldsymbol{\beta}^{(k)}) + \lambda^{(k)}I \right)\left(\boldsymbol{\beta}^{(k+1)} - \boldsymbol{\beta}^{(k)}\right) = -  D\mathbf{r}(\boldsymbol{\beta}^{(k)})^t \mathbf{r}(\boldsymbol{\beta}^{(k)}).$$
 
 * Observe que $\lambda^{(k)}>0$ tem o papel de reduzir o passo $\boldsymbol{\beta}^{(k+1)} - \boldsymbol{\beta}^{(k)}$.
 
 * Por esse motivo ele é visto como um parâmetro de amortecimento.
 
-* Ele também busca evitar abrutos "buracos" locais.
+* Ele também busca evitar abruptos "buracos" locais.
 
 
 ### Sobre o parâmetro de amortecimento
@@ -246,7 +252,7 @@ Maiores informações podem ser encontradas em [Boyd]().
 
 ### Outros métodos
 
-* Há vários outros métodos, alguns sendo variações dos vistos acima (e.g gradiente estocástico), mas não é o nosso objetivo explorar os diversos métodos. Isso fica para um curso de otimização.
+* Há vários outros métodos, alguns sendo variações dos vistos acima (e.g. gradiente estocástico), mas não é o nosso objetivo explorar os diversos métodos. Isso fica para um curso de otimização.
 
 * Vários métodos não são especificos para mínimos quadrados (não-linear), mas se aplicam a minimização de funções não-lineares em geral, como o [método de Newton](https://en.wikipedia.org/wiki/Newton%27s_method_in_optimization), [Davidon–Fletcher–Powell (DFP)](https://en.wikipedia.org/wiki/Davidon–Fletcher–Powell_formula), [Broyden–Fletcher–Goldfarb–Shanno (BFGS)](https://en.wikipedia.org/wiki/Broyden–Fletcher–Goldfarb–Shanno_algorithm) e [Limited-memory BFGS](https://en.wikipedia.org/wiki/Limited-memory_BFGS), etc.
 
@@ -255,17 +261,17 @@ Maiores informações podem ser encontradas em [Boyd]().
 * Métodos para problemas com restrição podem ser modificados para levar a restrição em consideração ou para atacar um formulação via multiplicadores de Lagrange.
 
 
-### Métodos livre de derivada
+### Métodos livres de derivada
 
 * Devo ressaltar, ainda, os métodos **livres de derivada**, ou *derivative-free*.
 
 * São úteis quando não temos a derivada disponível ou ela é muito custosa de se calcular.
 
 * Exemplos notáveis são os seguintes.
-    * **Nelder-Mead:** busca através de polítopos com $m+1$ vértices (e.g. vértices de triângulos no plano). Avalia a função nos vértices de um polítopo, (que muda a cada iteração, exceto pelo ponto "base"), retendo o ponto de mínimo dentre os vértices omo um novo ponto base para a formação do próximo polítopo.
-    * **Algoritmos genéticos:** parte-se de vários pontos escolhidos aleatoriamente e busca-se reduzir o erro em cada ponto através de funções objetivo envolvendo outros critérios.
+    * **Nelder-Mead:** busca através de polítopos com $m+1$ vértices (e.g. vértices de triângulos no plano). Avalia a função nos vértices de um polítopo, (que muda a cada iteração, exceto pelo ponto "base"), retendo o ponto de mínimo dentre os vértices como um novo ponto base para a formação do próximo polítopo.
+    * **Algoritmos genéticos:** parte-se de vários pontos escolhidos aleatoriamente e busca-se reduzir o erro em cada ponto através de funções objetivo envolvendo diferentes critérios.
     * **Região de confiança:** busca-se modelos que aproximem bem localmente, aumentando-se aos poucos a região de busca.
-    * ***Simulated annealing:*** busca-se reduzir uma função "temperatura" de maneira probabilística.
+    * **Simulated annealing:** busca-se reduzir uma função "temperatura" de maneira probabilística.
 
 
 ## Exercícios
