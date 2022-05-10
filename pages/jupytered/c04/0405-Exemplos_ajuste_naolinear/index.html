@@ -194,8 +194,7 @@
 <li><p>Veja mais em <a href="https://www.juliaopt.org/packages/">JuliaOpt</a></p>
 </li>
 </ul>
-<pre><code class="language-julia"># using Plots
-using CairoMakie
+<pre><code class="language-julia">using Plots
 using Random
 using LsqFit
 using Optim</code></pre>
@@ -230,11 +229,9 @@ nothing</code></pre>
 </ul>
 <pre><code class="language-julia">data_t &#61; &#91;0.03, 0.15, 0.3, 0.6, 1.3, 2.5, 3.5&#93;
 data_v &#61; model&#40;data_t, β&#41; .&#43; 0.05*&#40;rand&#40;MersenneTwister&#40;321&#41;, length&#40;data_t&#41;&#41; .- 0.5&#41;
-lines&#40;0:0.1:4, t -&gt; model&#40;t, β&#41;&#41;
-#lines&#40;0:0.1:4, t -&gt; model&#40;t, β&#41;, label&#61;&quot;taxa de reação&quot;, legend&#61;:bottomright&#41;
+plot&#40;0:0.1:4, t -&gt; model&#40;t, β&#41;, label&#61;&quot;taxa de reação&quot;, legend&#61;:bottomright&#41;
 scatter&#33;&#40;data_t, data_v&#41;
-#lines&#33;&#40;data_t, data_v, seriestype&#61;:scatter, label&#61;&quot;amostra com ruído&quot;&#41;
-current_figure&#40;&#41;</code></pre>
+plot&#33;&#40;data_t, data_v, seriestype&#61;:scatter, label&#61;&quot;amostra com ruído&quot;&#41;</code></pre>
 <img src="/modelagem_matematica/assets/pages/jupytered/c04/0405-Exemplos_ajuste_naolinear/code/images/0405-Exemplos_ajuste_naolinear_3_1.png" alt="">
 <h3 id="ajuste_dos_dados_via_lsqfit"><a href="#ajuste_dos_dados_via_lsqfit" class="header-anchor">Ajuste dos dados via LsqFit</a></h3>
 <ul>
@@ -253,7 +250,7 @@ fit &#61; curve_fit&#40;model, data_t, data_v, β₀&#41;
 <pre><code class="language-julia">plot&#40;0:0.1:4, t -&gt; model&#40;t, β&#41;, label&#61;&quot;taxa de reação&quot;, legend&#61;:bottomright&#41;
 plot&#33;&#40;data_t, data_v, seriestype&#61;:scatter, label&#61;&quot;amostra com ruído&quot;&#41;
 plot&#33;&#40;0:0.1:4, t -&gt; model&#40;t, β_fit&#41;, label&#61;&quot;modelo ajustado&quot;, legend&#61;:bottomright&#41;</code></pre>
-<pre><code class="language-julia">Error: setting legend for scene via plot attribute not supported anymore</code></pre>
+<img src="/modelagem_matematica/assets/pages/jupytered/c04/0405-Exemplos_ajuste_naolinear/code/images/0405-Exemplos_ajuste_naolinear_5_1.png" alt="">
 <h3 id="ajuste_dos_dados_via_optim"><a href="#ajuste_dos_dados_via_optim" class="header-anchor">Ajuste dos dados via Optim</a></h3>
 <ul>
 <li><p>Aqui, usamos o método de gradiente descendente do <code>Optim</code>.</p>
@@ -284,7 +281,7 @@ plot&#33;&#40;0:0.1:4, t -&gt; model&#40;t, β_fit&#41;, label&#61;&quot;modelo 
     |g&#40;x&#41;|                 &#61; 7.10e-09 ≤ 1.0e-08
 
  * Work counters
-    Seconds run:   0  &#40;vs limit Inf&#41;
+    Seconds run:   1  &#40;vs limit Inf&#41;
     Iterations:    72
     f&#40;x&#41; calls:    220
     ∇f&#40;x&#41; calls:   220</code></pre>
@@ -298,7 +295,65 @@ plot&#33;&#40;data_t, data_v, seriestype&#61;:scatter, label&#61;&quot;amostra c
 plot&#33;&#40;0:0.1:4, t -&gt; model&#40;t, β_fit&#41;, label&#61;&quot;modelo ajustado via Levenberg-Marquardt do LsqFit&quot;, legend&#61;:bottomright&#41;
 plot&#33;&#40;0:0.1:4, t -&gt; model&#40;t, β_optim&#41;, seriestype&#61;:scatter, markershape&#61;:xcross, markersize&#61;2,
         label&#61;&quot;modelo ajustado via gradiente descendente do Optim&quot;, legend&#61;:bottomright&#41;</code></pre>
-<pre><code class="language-julia">Error: setting legend for scene via plot attribute not supported anymore</code></pre>
+<img src="/modelagem_matematica/assets/pages/jupytered/c04/0405-Exemplos_ajuste_naolinear/code/images/0405-Exemplos_ajuste_naolinear_9_1.png" alt="">
+<h3 id="outros_métodos_de_otimização"><a href="#outros_métodos_de_otimização" class="header-anchor">Outros métodos de otimização</a></h3>
+<ul>
+<li><p>No <code>Optim</code>, podemos usar diversos outros métodos, basta substituir o argumento <code>GradientDescent&#40;&#41;</code> pelo método desejado.</p>
+</li>
+<li><p>Podemos usar métodos que usam o gradiente: <a href="https://julianlsolvers.github.io/Optim.jl/stable/#algo/cg/">ConjugateGradient&#40;&#41;</a>, <a href="https://julianlsolvers.github.io/Optim.jl/stable/#algo/gradientdescent/">GradientDescent&#40;&#41;</a>, <a href="https://julianlsolvers.github.io/Optim.jl/stable/#algo/lbfgs/">BFGS&#40;&#41; e LBFSG&#40;&#41;</a>.</p>
+</li>
+<li><p>Métodos que usam a Hessiana: <a href="https://julianlsolvers.github.io/Optim.jl/stable/#algo/newton/">Newton&#40;&#41;</a>, <a href="https://julianlsolvers.github.io/Optim.jl/stable/#algo/newton_trust_region/">NewtonTrustRegion&#40;&#41;</a>, <a href="https://julianlsolvers.github.io/Optim.jl/stable/#algo/ipnewton/">IPNewton&#40;&#41; - interior point</a>.</p>
+</li>
+<li><p>Métodos livres de gradiente: <a href="https://julianlsolvers.github.io/Optim.jl/stable/#algo/nelder_mead/">NelderMead&#40;&#41;</a>, <a href="https://julianlsolvers.github.io/Optim.jl/stable/#algo/simulated_annealing/">SimulatedAnnealing&#40;&#41;</a>, <a href="https://julianlsolvers.github.io/Optim.jl/stable/#algo/samin/">SAMIN&#40;&#41; - simulated annealing with bounds</a>, <a href="https://julianlsolvers.github.io/Optim.jl/stable/#algo/particle_swarm/">ParticleSwarm&#40;&#41;</a>.</p>
+</li>
+<li><p>Cada construtor acima aceita diversos parâmetros.</p>
+</li>
+<li><p>Por <em>default</em>, diferenças finitas são usadas para calcular o gradiente e a Hessiana, quando necessário. Mas pode se passar a derivada expliciamente &#40;passando os argumentos opcionais <code>f&#33;</code> e <code>g&#33;</code>&#41; ou se usar derivação automática &#40;passando-se o argumento <code>autodiff</code>, e.g. <code>autodiff &#61; :forward</code>&#41;.</p>
+</li>
+</ul>
+<pre><code class="language-julia">optimize&#40;custo, β₀, LBFGS&#40;&#41;&#41;</code></pre>
+<pre><code class="language-julia">* Status: success
+
+ * Candidate solution
+    Final objective value:     7.751687e-04
+
+ * Found with
+    Algorithm:     L-BFGS
+
+ * Convergence measures
+    |x - x&#39;|               &#61; 6.46e-08 ≰ 0.0e&#43;00
+    |x - x&#39;|/|x&#39;|          &#61; 1.81e-07 ≰ 0.0e&#43;00
+    |f&#40;x&#41; - f&#40;x&#39;&#41;|         &#61; 2.28e-16 ≰ 0.0e&#43;00
+    |f&#40;x&#41; - f&#40;x&#39;&#41;|/|f&#40;x&#39;&#41;| &#61; 2.94e-13 ≰ 0.0e&#43;00
+    |g&#40;x&#41;|                 &#61; 3.31e-12 ≤ 1.0e-08
+
+ * Work counters
+    Seconds run:   0  &#40;vs limit Inf&#41;
+    Iterations:    9
+    f&#40;x&#41; calls:    25
+    ∇f&#40;x&#41; calls:   25</code></pre>
+<pre><code class="language-julia">optimize&#40;custo, β₀, Newton&#40;&#41;, autodiff &#61; :forward&#41;</code></pre>
+<pre><code class="language-julia">* Status: success
+
+ * Candidate solution
+    Final objective value:     7.751687e-04
+
+ * Found with
+    Algorithm:     Newton&#39;s Method
+
+ * Convergence measures
+    |x - x&#39;|               &#61; 2.34e-06 ≰ 0.0e&#43;00
+    |x - x&#39;|/|x&#39;|          &#61; 6.56e-06 ≰ 0.0e&#43;00
+    |f&#40;x&#41; - f&#40;x&#39;&#41;|         &#61; 1.11e-11 ≰ 0.0e&#43;00
+    |f&#40;x&#41; - f&#40;x&#39;&#41;|/|f&#40;x&#39;&#41;| &#61; 1.43e-08 ≰ 0.0e&#43;00
+    |g&#40;x&#41;|                 &#61; 2.39e-11 ≤ 1.0e-08
+
+ * Work counters
+    Seconds run:   1  &#40;vs limit Inf&#41;
+    Iterations:    6
+    f&#40;x&#41; calls:    20
+    ∇f&#40;x&#41; calls:   20
+    ∇²f&#40;x&#41; calls:  6</code></pre>
 <h2 id="dados_espúrios_outliers"><a href="#dados_espúrios_outliers" class="header-anchor">Dados espúrios <em>&#40;outliers&#41;</em></a></h2>
 <ul>
 <li><p>É comum, por dificuldades no processo de amostragem ou de tratamento dos dados, termos dados &quot;espúrios&quot;, i.e. claramente fora do padrão.</p>
@@ -320,7 +375,7 @@ data_v_esp&#91;5&#93; &#43;&#61; 0.15
 nothing</code></pre>
 <pre><code class="language-julia">plot&#40;0:0.1:4, t -&gt; model&#40;t, β&#41;, label&#61;&quot;taxa de reação&quot;, legend&#61;:bottomright&#41;
 plot&#33;&#40;data_t, data_v_esp, seriestype&#61;:scatter, label&#61;&quot;amostra com ruído espúrio&quot;&#41;</code></pre>
-<pre><code class="language-julia">Error: setting legend for scene via plot attribute not supported anymore</code></pre>
+<img src="/modelagem_matematica/assets/pages/jupytered/c04/0405-Exemplos_ajuste_naolinear/code/images/0405-Exemplos_ajuste_naolinear_13_1.png" alt="">
 <h3 id="ajuste"><a href="#ajuste" class="header-anchor">Ajuste</a></h3>
 <pre><code class="language-julia">custo_esp&#40;β&#41; &#61; sum&#40;abs2,data_v_esp - model&#40;data_t,β&#41;&#41;
 resultado_esp &#61; optimize&#40;custo_esp, β₀, GradientDescent&#40;&#41;&#41;
@@ -332,7 +387,7 @@ resultado_esp &#61; optimize&#40;custo_esp, β₀, GradientDescent&#40;&#41;&#41
 plot&#33;&#40;data_t, data_v_esp, seriestype&#61;:scatter, label&#61;&quot;amostra com ruído espúrio&quot;&#41;
 plot&#33;&#40;0:0.1:4, t -&gt; model&#40;t, β_optim_esp&#41;, linestyle&#61;:dash,
         label&#61;&quot;modelo ajustado via gradiente descendente do Optim&quot;, legend&#61;:bottomright&#41;</code></pre>
-<pre><code class="language-julia">Error: setting legend for scene via plot attribute not supported anymore</code></pre>
+<img src="/modelagem_matematica/assets/pages/jupytered/c04/0405-Exemplos_ajuste_naolinear/code/images/0405-Exemplos_ajuste_naolinear_15_1.png" alt="">
 <h3 id="funções_de_custo_modificadas"><a href="#funções_de_custo_modificadas" class="header-anchor">Funções de custo modificadas</a></h3>
 <ul>
 <li><p>A ideia, aqui, é modificar a função quadrática de custo para uma em que resíduos relativamente grandes causem menos influência.</p>
@@ -348,24 +403,18 @@ plot&#33;&#40;0:0.1:4, t -&gt; model&#40;t, β_optim_esp&#41;, linestyle&#61;:da
     :arctan &#61;&gt; &#40;r -&gt; @. atan&#40;r&#41;&#41;
 &#41;</code></pre>
 <pre><code class="language-julia">Dict&#123;Symbol, Function&#125; with 5 entries:
-  :cauchy  &#61;&gt; #14
-  :arctan  &#61;&gt; #15
-  :soft_l1 &#61;&gt; #12
-  :huber   &#61;&gt; #13
-  :linear  &#61;&gt; #11</code></pre>
+  :cauchy  &#61;&gt; #22
+  :arctan  &#61;&gt; #23
+  :soft_l1 &#61;&gt; #20
+  :huber   &#61;&gt; #21
+  :linear  &#61;&gt; #19</code></pre>
 <pre><code class="language-julia">plot&#40;title&#61;&quot;Diferentes modificadores para a função de custo&quot;, titlefont&#61;10&#41;
 for &#40;k,func&#41; in mods_custo
     plot&#33;&#40;0:0.1:1.5, func, label&#61;&quot;função modificadora &#36;k&quot;, 
         legendfont&#61;6, legend&#61;:topleft, subplot&#61;1&#41;
 end
 plot&#33;&#40;&#41;</code></pre>
-<pre><code class="language-julia">Error: MethodError: no method matching lift&#40;::typeof&#40;tuple&#41;&#41;
-Closest candidates are:
-  lift&#40;::Any, &#33;Matched::Observables.AbstractObservable, &#33;Matched::Any...; k
-w...&#41; at ~/.julia/packages/Makie/lgPZh/src/interaction/observables.jl:26
-  lift&#40;::Any, &#33;Matched::Type&#123;T&#125;, &#33;Matched::Observables.AbstractObservable, 
-&#33;Matched::Any...&#41; where T at ~/.julia/packages/Makie/lgPZh/src/interaction/
-observables.jl:37</code></pre>
+<img src="/modelagem_matematica/assets/pages/jupytered/c04/0405-Exemplos_ajuste_naolinear/code/images/0405-Exemplos_ajuste_naolinear_17_1.png" alt="">
 <pre><code class="language-julia">sq&#40;e&#41; &#61; sum&#40;abs2, e&#41;</code></pre>
 <pre><code class="language-julia">sq &#40;generic function with 1 method&#41;</code></pre>
 <pre><code class="language-julia">plot&#40;title&#61;&quot;Diferentes modificadores para a função de custo&quot;, titlefont&#61;10&#41;
@@ -374,13 +423,7 @@ for &#40;k,func&#41; in mods_custo
         legendfont&#61;6, legend&#61;:topleft, subplot&#61;1&#41;
 end
 plot&#33;&#40;&#41;</code></pre>
-<pre><code class="language-julia">Error: MethodError: no method matching lift&#40;::typeof&#40;tuple&#41;&#41;
-Closest candidates are:
-  lift&#40;::Any, &#33;Matched::Observables.AbstractObservable, &#33;Matched::Any...; k
-w...&#41; at ~/.julia/packages/Makie/lgPZh/src/interaction/observables.jl:26
-  lift&#40;::Any, &#33;Matched::Type&#123;T&#125;, &#33;Matched::Observables.AbstractObservable, 
-&#33;Matched::Any...&#41; where T at ~/.julia/packages/Makie/lgPZh/src/interaction/
-observables.jl:37</code></pre>
+<img src="/modelagem_matematica/assets/pages/jupytered/c04/0405-Exemplos_ajuste_naolinear/code/images/0405-Exemplos_ajuste_naolinear_19_1.png" alt="">
 <h3 id="ampliando_o_efeito_dos_modificadores"><a href="#ampliando_o_efeito_dos_modificadores" class="header-anchor">Ampliando o efeito dos modificadores</a></h3>
 <ul>
 <li><p>O efeito dos diferents modificadores pode ser amplificado com uma função de espalhamento:</p>
@@ -396,13 +439,7 @@ for &#40;k,func&#41; in mods_custo
         legendfont&#61;6, legend&#61;:topleft, subplot&#61;1&#41;
 end
 plot&#33;&#40;&#41;</code></pre>
-<pre><code class="language-julia">Error: MethodError: no method matching lift&#40;::typeof&#40;tuple&#41;&#41;
-Closest candidates are:
-  lift&#40;::Any, &#33;Matched::Observables.AbstractObservable, &#33;Matched::Any...; k
-w...&#41; at ~/.julia/packages/Makie/lgPZh/src/interaction/observables.jl:26
-  lift&#40;::Any, &#33;Matched::Type&#123;T&#125;, &#33;Matched::Observables.AbstractObservable, 
-&#33;Matched::Any...&#41; where T at ~/.julia/packages/Makie/lgPZh/src/interaction/
-observables.jl:37</code></pre>
+<img src="/modelagem_matematica/assets/pages/jupytered/c04/0405-Exemplos_ajuste_naolinear/code/images/0405-Exemplos_ajuste_naolinear_21_1.png" alt="">
 <h3 id="função_de_custo_modificada"><a href="#função_de_custo_modificada" class="header-anchor">Função de custo modificada</a></h3>
 <ul>
 <li><p>Assim, a função de custo é a composição </p>
@@ -425,7 +462,7 @@ for k in keys&#40;mods_custo&#41;
         label&#61;&quot;modelo ajustado com modificador de custo &#36;k&quot;, legend&#61;:bottomright&#41;
 end
 plot&#33;&#40;title&#61;&quot;Ajustes com diferentes modificadores da função de custo&quot;, titlefont&#61;10&#41;</code></pre>
-<pre><code class="language-julia">Error: setting legend for scene via plot attribute not supported anymore</code></pre>
+<img src="/modelagem_matematica/assets/pages/jupytered/c04/0405-Exemplos_ajuste_naolinear/code/images/0405-Exemplos_ajuste_naolinear_23_1.png" alt="">
 <h2 id="exercícios"><a href="#exercícios" class="header-anchor">Exercícios</a></h2>
 <ol>
 <li><p>Refaça os exemplos do caderno sobre <strong>Modelos redutíveis ao caso linear nos parâmetros e aplicações</strong> como problemas de otimização não-linear, sem usar as mudanças de variáveis feitas lá.</p>
@@ -454,7 +491,7 @@ plot&#33;&#40;title&#61;&quot;Ajustes com diferentes modificadores da função d
         </div>
     
 
-    Last modified: April 26, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
+    Last modified: May 10, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
