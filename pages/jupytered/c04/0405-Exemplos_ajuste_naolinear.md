@@ -27,8 +27,7 @@
 * Veja mais em [JuliaOpt](https://www.juliaopt.org/packages/)
 
 ```julia
-# using Plots
-using CairoMakie
+using Plots
 using Random
 using LsqFit
 using Optim
@@ -69,11 +68,9 @@ nothing
 ```julia
 data_t = [0.03, 0.15, 0.3, 0.6, 1.3, 2.5, 3.5]
 data_v = model(data_t, β) .+ 0.05*(rand(MersenneTwister(321), length(data_t)) .- 0.5)
-lines(0:0.1:4, t -> model(t, β))
-#lines(0:0.1:4, t -> model(t, β), label="taxa de reação", legend=:bottomright)
+plot(0:0.1:4, t -> model(t, β), label="taxa de reação", legend=:bottomright)
 scatter!(data_t, data_v)
-#lines!(data_t, data_v, seriestype=:scatter, label="amostra com ruído")
-current_figure()
+plot!(data_t, data_v, seriestype=:scatter, label="amostra com ruído")
 ```
 
 \fig{images/0405-Exemplos_ajuste_naolinear_3_1.png}
@@ -108,11 +105,7 @@ plot!(data_t, data_v, seriestype=:scatter, label="amostra com ruído")
 plot!(0:0.1:4, t -> model(t, β_fit), label="modelo ajustado", legend=:bottomright)
 ```
 
-```
-Error: setting legend for scene via plot attribute not supported anymore
-```
-
-
+\fig{images/0405-Exemplos_ajuste_naolinear_5_1.png}
 
 
 ### Ajuste dos dados via Optim
@@ -156,7 +149,7 @@ resultado = optimize(custo, β₀, GradientDescent())
     |g(x)|                 = 7.10e-09 ≤ 1.0e-08
 
  * Work counters
-    Seconds run:   0  (vs limit Inf)
+    Seconds run:   1  (vs limit Inf)
     Iterations:    72
     f(x) calls:    220
     ∇f(x) calls:   220
@@ -187,8 +180,78 @@ plot!(0:0.1:4, t -> model(t, β_optim), seriestype=:scatter, markershape=:xcross
         label="modelo ajustado via gradiente descendente do Optim", legend=:bottomright)
 ```
 
+\fig{images/0405-Exemplos_ajuste_naolinear_9_1.png}
+
+
+### Outros métodos de otimização
+
+* No `Optim`, podemos usar diversos outros métodos, basta substituir o argumento `GradientDescent()` pelo método desejado.
+
+* Podemos usar métodos que usam o gradiente: [ConjugateGradient()](https://julianlsolvers.github.io/Optim.jl/stable/#algo/cg/), [GradientDescent()](https://julianlsolvers.github.io/Optim.jl/stable/#algo/gradientdescent/), [BFGS() e LBFSG()](https://julianlsolvers.github.io/Optim.jl/stable/#algo/lbfgs/).
+
+* Métodos que usam a Hessiana: [Newton()](https://julianlsolvers.github.io/Optim.jl/stable/#algo/newton/), [NewtonTrustRegion()](https://julianlsolvers.github.io/Optim.jl/stable/#algo/newton_trust_region/), [IPNewton() - interior point](https://julianlsolvers.github.io/Optim.jl/stable/#algo/ipnewton/).
+
+* Métodos livres de gradiente: [NelderMead()](https://julianlsolvers.github.io/Optim.jl/stable/#algo/nelder_mead/), [SimulatedAnnealing()](https://julianlsolvers.github.io/Optim.jl/stable/#algo/simulated_annealing/), [SAMIN() - simulated annealing with bounds](https://julianlsolvers.github.io/Optim.jl/stable/#algo/samin/), [ParticleSwarm()](https://julianlsolvers.github.io/Optim.jl/stable/#algo/particle_swarm/).
+
+* Cada construtor acima aceita diversos parâmetros.
+
+* Por *default*, diferenças finitas são usadas para calcular o gradiente e a Hessiana, quando necessário. Mas pode se passar a derivada expliciamente (passando os argumentos opcionais `f!` e `g!`) ou se usar derivação automática (passando-se o argumento `autodiff`, e.g. `autodiff = :forward`).
+
+```julia
+optimize(custo, β₀, LBFGS())
 ```
-Error: setting legend for scene via plot attribute not supported anymore
+
+```
+* Status: success
+
+ * Candidate solution
+    Final objective value:     7.751687e-04
+
+ * Found with
+    Algorithm:     L-BFGS
+
+ * Convergence measures
+    |x - x'|               = 6.46e-08 ≰ 0.0e+00
+    |x - x'|/|x'|          = 1.81e-07 ≰ 0.0e+00
+    |f(x) - f(x')|         = 2.28e-16 ≰ 0.0e+00
+    |f(x) - f(x')|/|f(x')| = 2.94e-13 ≰ 0.0e+00
+    |g(x)|                 = 3.31e-12 ≤ 1.0e-08
+
+ * Work counters
+    Seconds run:   0  (vs limit Inf)
+    Iterations:    9
+    f(x) calls:    25
+    ∇f(x) calls:   25
+```
+
+
+
+```julia
+optimize(custo, β₀, Newton(), autodiff = :forward)
+```
+
+```
+* Status: success
+
+ * Candidate solution
+    Final objective value:     7.751687e-04
+
+ * Found with
+    Algorithm:     Newton's Method
+
+ * Convergence measures
+    |x - x'|               = 2.34e-06 ≰ 0.0e+00
+    |x - x'|/|x'|          = 6.56e-06 ≰ 0.0e+00
+    |f(x) - f(x')|         = 1.11e-11 ≰ 0.0e+00
+    |f(x) - f(x')|/|f(x')| = 1.43e-08 ≰ 0.0e+00
+    |g(x)|                 = 2.39e-11 ≤ 1.0e-08
+
+ * Work counters
+    Seconds run:   1  (vs limit Inf)
+    Iterations:    6
+    f(x) calls:    20
+    ∇f(x) calls:   20
+    ∇²f(x) calls:  6
 ```
 
 
@@ -221,11 +284,7 @@ plot(0:0.1:4, t -> model(t, β), label="taxa de reação", legend=:bottomright)
 plot!(data_t, data_v_esp, seriestype=:scatter, label="amostra com ruído espúrio")
 ```
 
-```
-Error: setting legend for scene via plot attribute not supported anymore
-```
-
-
+\fig{images/0405-Exemplos_ajuste_naolinear_13_1.png}
 
 
 ### Ajuste
@@ -251,11 +310,7 @@ plot!(0:0.1:4, t -> model(t, β_optim_esp), linestyle=:dash,
         label="modelo ajustado via gradiente descendente do Optim", legend=:bottomright)
 ```
 
-```
-Error: setting legend for scene via plot attribute not supported anymore
-```
-
-
+\fig{images/0405-Exemplos_ajuste_naolinear_15_1.png}
 
 
 ### Funções de custo modificadas
@@ -276,11 +331,11 @@ mods_custo = Dict(
 
 ```
 Dict{Symbol, Function} with 5 entries:
-  :cauchy  => #14
-  :arctan  => #15
-  :soft_l1 => #12
-  :huber   => #13
-  :linear  => #11
+  :cauchy  => #22
+  :arctan  => #23
+  :soft_l1 => #20
+  :huber   => #21
+  :linear  => #19
 ```
 
 
@@ -294,17 +349,7 @@ end
 plot!()
 ```
 
-```
-Error: MethodError: no method matching lift(::typeof(tuple))
-Closest candidates are:
-  lift(::Any, !Matched::Observables.AbstractObservable, !Matched::Any...; k
-w...) at ~/.julia/packages/Makie/lgPZh/src/interaction/observables.jl:26
-  lift(::Any, !Matched::Type{T}, !Matched::Observables.AbstractObservable, 
-!Matched::Any...) where T at ~/.julia/packages/Makie/lgPZh/src/interaction/
-observables.jl:37
-```
-
-
+\fig{images/0405-Exemplos_ajuste_naolinear_17_1.png}
 
 ```julia
 sq(e) = sum(abs2, e)
@@ -325,17 +370,7 @@ end
 plot!()
 ```
 
-```
-Error: MethodError: no method matching lift(::typeof(tuple))
-Closest candidates are:
-  lift(::Any, !Matched::Observables.AbstractObservable, !Matched::Any...; k
-w...) at ~/.julia/packages/Makie/lgPZh/src/interaction/observables.jl:26
-  lift(::Any, !Matched::Type{T}, !Matched::Observables.AbstractObservable, 
-!Matched::Any...) where T at ~/.julia/packages/Makie/lgPZh/src/interaction/
-observables.jl:37
-```
-
-
+\fig{images/0405-Exemplos_ajuste_naolinear_19_1.png}
 
 
 ### Ampliando o efeito dos modificadores
@@ -363,17 +398,7 @@ end
 plot!()
 ```
 
-```
-Error: MethodError: no method matching lift(::typeof(tuple))
-Closest candidates are:
-  lift(::Any, !Matched::Observables.AbstractObservable, !Matched::Any...; k
-w...) at ~/.julia/packages/Makie/lgPZh/src/interaction/observables.jl:26
-  lift(::Any, !Matched::Type{T}, !Matched::Observables.AbstractObservable, 
-!Matched::Any...) where T at ~/.julia/packages/Makie/lgPZh/src/interaction/
-observables.jl:37
-```
-
-
+\fig{images/0405-Exemplos_ajuste_naolinear_21_1.png}
 
 
 ### Função de custo modificada
@@ -408,11 +433,7 @@ end
 plot!(title="Ajustes com diferentes modificadores da função de custo", titlefont=10)
 ```
 
-```
-Error: setting legend for scene via plot attribute not supported anymore
-```
-
-
+\fig{images/0405-Exemplos_ajuste_naolinear_23_1.png}
 
 
 ## Exercícios
