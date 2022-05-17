@@ -115,7 +115,10 @@
     <li><a href="/modelagem_matematica/pages/jupytered/c04/0405-Exemplos_ajuste_naolinear">4.5. Exemplos de ajuste não-linear de parâmetros</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/modelagem_matematica/pages/jupytered/c04/0406-Ajuste_em_redes_neurais">4.6. Ajuste de parâmetros em modelos de redes neurais (WIP)</a></li>
+    <li><a href="/modelagem_matematica/pages/jupytered/c04/0406-Redes_neurais">4.6. Redes neurais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c04/0407-Ajuste_em_redes_neurais">4.7. Ajuste de parâmetros em modelos de redes neurais</a></li>
     </div>
     <div class="menu-level-1">
     <li>5. Erros e Incertezas</li>
@@ -149,7 +152,7 @@
 <a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c04/0404-Minimos_quadrados_nao_linear">4.4. Mínimos quadrados não-linear <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c04/0406-Ajuste_em_redes_neurais"><kbd>→</kbd> 4.6. Ajuste de parâmetros em modelos de redes neurais (WIP)</a>
+    <a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c04/0406-Redes_neurais"><kbd>→</kbd> 4.6. Redes neurais</a>
 </span>
     </p>
 </div>
@@ -243,14 +246,12 @@ plot&#33;&#40;data_t, data_v, seriestype&#61;:scatter, label&#61;&quot;amostra c
 <pre><code class="language-julia">β₀ &#61; &#91;0.5, 0.5&#93;
 fit &#61; curve_fit&#40;model, data_t, data_v, β₀&#41;
 β_fit &#61; fit.param</code></pre>
-<pre><code class="language-julia">2-element Vector&#123;Float64&#125;:
- 0.27385430554237405
- 0.3573547044880839</code></pre>
+<pre><code class="language-julia">Error: InterruptException:</code></pre>
 <h3 id="visualizando_o_resultado"><a href="#visualizando_o_resultado" class="header-anchor">Visualizando o resultado</a></h3>
 <pre><code class="language-julia">plot&#40;0:0.1:4, t -&gt; model&#40;t, β&#41;, label&#61;&quot;taxa de reação&quot;, legend&#61;:bottomright&#41;
 plot&#33;&#40;data_t, data_v, seriestype&#61;:scatter, label&#61;&quot;amostra com ruído&quot;&#41;
 plot&#33;&#40;0:0.1:4, t -&gt; model&#40;t, β_fit&#41;, label&#61;&quot;modelo ajustado&quot;, legend&#61;:bottomright&#41;</code></pre>
-<img src="/modelagem_matematica/assets/pages/jupytered/c04/0405-Exemplos_ajuste_naolinear/code/images/0405-Exemplos_ajuste_naolinear_5_1.png" alt="">
+<pre><code class="language-julia">Error: UndefVarError: β_fit not defined</code></pre>
 <h3 id="ajuste_dos_dados_via_optim"><a href="#ajuste_dos_dados_via_optim" class="header-anchor">Ajuste dos dados via Optim</a></h3>
 <ul>
 <li><p>Aqui, usamos o método de gradiente descendente do <code>Optim</code>.</p>
@@ -281,7 +282,7 @@ plot&#33;&#40;0:0.1:4, t -&gt; model&#40;t, β_fit&#41;, label&#61;&quot;modelo 
     |g&#40;x&#41;|                 &#61; 7.10e-09 ≤ 1.0e-08
 
  * Work counters
-    Seconds run:   1  &#40;vs limit Inf&#41;
+    Seconds run:   0  &#40;vs limit Inf&#41;
     Iterations:    72
     f&#40;x&#41; calls:    220
     ∇f&#40;x&#41; calls:   220</code></pre>
@@ -295,7 +296,7 @@ plot&#33;&#40;data_t, data_v, seriestype&#61;:scatter, label&#61;&quot;amostra c
 plot&#33;&#40;0:0.1:4, t -&gt; model&#40;t, β_fit&#41;, label&#61;&quot;modelo ajustado via Levenberg-Marquardt do LsqFit&quot;, legend&#61;:bottomright&#41;
 plot&#33;&#40;0:0.1:4, t -&gt; model&#40;t, β_optim&#41;, seriestype&#61;:scatter, markershape&#61;:xcross, markersize&#61;2,
         label&#61;&quot;modelo ajustado via gradiente descendente do Optim&quot;, legend&#61;:bottomright&#41;</code></pre>
-<img src="/modelagem_matematica/assets/pages/jupytered/c04/0405-Exemplos_ajuste_naolinear/code/images/0405-Exemplos_ajuste_naolinear_9_1.png" alt="">
+<pre><code class="language-julia">Error: UndefVarError: β_fit not defined</code></pre>
 <h3 id="outros_métodos_de_otimização"><a href="#outros_métodos_de_otimização" class="header-anchor">Outros métodos de otimização</a></h3>
 <ul>
 <li><p>No <code>Optim</code>, podemos usar diversos outros métodos, basta substituir o argumento <code>GradientDescent&#40;&#41;</code> pelo método desejado.</p>
@@ -403,11 +404,11 @@ plot&#33;&#40;0:0.1:4, t -&gt; model&#40;t, β_optim_esp&#41;, linestyle&#61;:da
     :arctan &#61;&gt; &#40;r -&gt; @. atan&#40;r&#41;&#41;
 &#41;</code></pre>
 <pre><code class="language-julia">Dict&#123;Symbol, Function&#125; with 5 entries:
-  :cauchy  &#61;&gt; #22
-  :arctan  &#61;&gt; #23
-  :soft_l1 &#61;&gt; #20
-  :huber   &#61;&gt; #21
-  :linear  &#61;&gt; #19</code></pre>
+  :cauchy  &#61;&gt; #20
+  :arctan  &#61;&gt; #21
+  :soft_l1 &#61;&gt; #18
+  :huber   &#61;&gt; #19
+  :linear  &#61;&gt; #17</code></pre>
 <pre><code class="language-julia">plot&#40;title&#61;&quot;Diferentes modificadores para a função de custo&quot;, titlefont&#61;10&#41;
 for &#40;k,func&#41; in mods_custo
     plot&#33;&#40;0:0.1:1.5, func, label&#61;&quot;função modificadora &#36;k&quot;, 
@@ -475,7 +476,7 @@ plot&#33;&#40;title&#61;&quot;Ajustes com diferentes modificadores da função d
 <a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c04/0404-Minimos_quadrados_nao_linear">4.4. Mínimos quadrados não-linear <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c04/0406-Ajuste_em_redes_neurais"><kbd>→</kbd> 4.6. Ajuste de parâmetros em modelos de redes neurais (WIP)</a>
+    <a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c04/0406-Redes_neurais"><kbd>→</kbd> 4.6. Redes neurais</a>
 </span>
     </p>
 </div>
@@ -491,7 +492,7 @@ plot&#33;&#40;title&#61;&quot;Ajustes com diferentes modificadores da função d
         </div>
     
 
-    Last modified: May 10, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
+    Last modified: May 17, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
