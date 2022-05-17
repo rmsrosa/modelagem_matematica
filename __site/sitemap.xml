@@ -3,7 +3,7 @@
 
 <url>
     <loc>pages/jupytered/c05/0501-Erros_e_incertezas/index.html</loc>
-    <lastmod>2022-04-14</lastmod>
+    <lastmod>2022-05-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
@@ -45,7 +45,7 @@
 </url>
 <url>
     <loc>pages/jupytered/c04/0405-Exemplos_ajuste_naolinear/index.html</loc>
-    <lastmod>2022-05-10</lastmod>
+    <lastmod>2022-05-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
@@ -68,6 +68,12 @@
     <priority>0.5</priority>
 </url>
 <url>
+    <loc>pages/jupytered/c04/0407-Ajuste_em_redes_neurais/index.html</loc>
+    <lastmod>2022-05-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
     <loc>pages/jupytered/c04/0403-Minimos_quadrados_nao_linear/index.html</loc>
     <lastmod>2022-04-14</lastmod>
     <changefreq>monthly</changefreq>
@@ -82,6 +88,12 @@
 <url>
     <loc>pages/intro/index.html</loc>
     <lastmod>2022-04-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/jupytered/c04/0406-Redes_neurais/index.html</loc>
+    <lastmod>2022-05-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>

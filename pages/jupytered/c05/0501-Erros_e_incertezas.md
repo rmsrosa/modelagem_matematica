@@ -9,7 +9,7 @@
 
 * Qual a consequência desses fatores numa modelagem?
 
-* Qual o grau de incerteza que isso acarreta num modelo?
+* Qual o grau de incerteza que isso acarreta nas previsões do modelo?
 
 ```julia
 using Distributions
@@ -23,13 +23,15 @@ using Random
 
 * É importante deixar clara a diferença entre esses dois conceitos.
 
-* O **erro** é a diferença entre o valor de uma medição e o valor exato da quantitade que queremos medir.
+* O **erro** é a diferença entre o valor de uma medição e o valor exato da quantidade que queremos medir.
 
 * A **incerteza** é uma quantificação da dúvida que temos sobre a medida feita.
 
 * Podemos saber, por exemplo, que um determinado termômetro está descalibrado e mede sempre dois grau acima do padrão e podemos corrigir esse *erro*.
 
 * Mas qualquer erro sobre o qual não sabemos a medida é uma fonte de *incerteza*.
+
+* Erros e incertezas podem se referir a medições experimentais de quantidades físicas ou a resultados de qualquer tipo de cálculo feito.
 
 
 ### Representando incertezas em medições
@@ -38,7 +40,7 @@ using Random
 $$ q = \bar q \pm \Delta q.
 $$
 
-* Isso é resultado de uma série de medidas, de onde obtemos o **valor médio** $\bar q$ e uma **margem de confiança** $\Delta q$.
+* Isso é, por exemplo, resultado de uma série de medidas, de onde obtemos o **valor médio** $\bar q$ e uma **margem de confiança** $\Delta q$.
 
 * A margem de confiança nos dá um **intervalo de confiança**
 $$ [\bar q - \Delta q, \bar q + \Delta q].
@@ -50,7 +52,7 @@ $$
 
 * Mais geralmente, podemos considerar $\Delta q$ como uma variável aleatória, com média zero, representando a incerteza em relação ao valor médio $\bar q$.
 
-* Vale ressaltar, no entanto, que, em alguns casos, o intervalo de "erro" exibido em alguns gráficos pode, simplesmente, ser em termos do desvio padrão.
+* Em geral, a margem de confiança é determinada pelo *erro padrão* da amostra, mas vale ressaltar que, em alguns casos, essa margem é dada, simplesmente, em termos do *desvio padrão*.
 
 
 ### Informações das medições
@@ -93,7 +95,7 @@ $$
 $$ \mu = E(q) = \int_X q\;d\rho(q), \quad \operatorname{Var}(q) = E((q-\mu)^2) = \int_X (q - \mu))^2 \;d\rho(q), \quad \sigma = \sqrt{\operatorname{Var}(q)}.
 $$
 
-* Se o espaço de probabilidades $X$ é um subconjunto de $\mathbb{R^n}$ e $f=f(q)$ é a distribuição de probabilidades de $\mathcal{P}$, então também podemos escrever
+* Se o espaço de probabilidades $X$ é um subconjunto de $\mathbb{R^n}$ e $f=f(q)$ é a função densidade de probabilidades de $\mathcal{P}$, então também podemos escrever
 $$ \mu = E(q) = \int_X q f(q)\;dq, \quad \operatorname{Var}(q) = E((q-\mu)^2) = \int_X (q - \mu)^2f(q) \;dq, \quad \sigma = \sqrt{\operatorname{Var}(q)}.
 $$
 
@@ -108,7 +110,7 @@ $$
 $$ \Delta q = \frac{s_q}{\sqrt{N}}.
 $$
 
-* A relação disso com a intervalo e nível de confiança é estabelecida pelo **Teorema do Limite Central**.
+* A relação disso com a intervalo e nível de confiança é estabelecida pelo **Teorema Central do Limite**.
 
 
 ### Visualizando intervalos de confiança
@@ -151,7 +153,7 @@ plot!()
 
 * Seja $\mathcal{Q}_N$ a distribuição de probabilidades das médias das amostras.
 
-* Então, temos a convergência (em probabilidade e quase sempre)
+* Então, temos a convergência (quase sempre e em probabilidade)
 $$ \sqrt{N}(\mathcal{Q}_N - \mu) \rightarrow \mathcal{N}(0,\sigma^2).
 $$
 
@@ -164,17 +166,21 @@ $$
 
 ### Aproximação prática e a correção de Bessel
 
-* No caso de $N$ ser "grande o suficiente", o desvio padrão $\sigma/\sqrt{N}$ é relativamente pequeno e há grande chance de uma amostra arbitrária ter média $\bar q_N$ muito próxima de $\mu$ e desvio padrão (sem correção) $\sigma_N$ próximo de $\sigma$.
+* No caso de $N$ ser "grande o suficiente", o desvio padrão $\sigma/\sqrt{N}$ é relativamente pequeno e há grandes chances de uma amostra arbitrária ter média $\bar q_N$ muito próxima de $\mu$ e desvio padrão (sem correção) $\sigma_N$ próximo de $\sigma$.
 
 * Nesse caso, é natural pensarmos em usar a aproximação
 $$ \mathcal{Q}_N \sim \mathcal{N}\left(\bar q_N,\frac{\sigma_N^2}{N}\right).
 $$
 
-* O desvio padrão não corrigido $\sigma_N$ tende a estimar por por baixo o desvio padrão $\sigma$, a menos que $\bar q_N$ coincida com $\mu$.
+* Porém, o desvio padrão não corrigido $\sigma_N$ tende a estimar por baixo o desvio padrão $\sigma$, a menos que $\bar q_N$ coincida com $\mu$.
+
+* Por esse motivo, usa-se a o desvio padrão corrigido da amostra:
+$$ s_q = \sqrt{\frac{1}{N-1}\sum_{i=1}^N (q_i - \bar q_N)^2}.
+$$
 
 * Esta correção é conhecida como **correção de Bessel**. Veja mais informações sobre isso em [Bessel's correction](https://en.wikipedia.org/wiki/Bessel%27s_correction).
 
-* A correção de Bessel evita essa distorção tendenciosa, o que nos leva a uma aproximação melhor pela normal com desvio padrão dado pelo erro padrão da amostra:
+* A correção de Bessel evita essa distorção tendenciosa, o que nos leva a uma aproximação melhor pela normal com desvio padrão dado pelo erro padrão $\Delta q = s_q/\sqrt{N}$ da amostra:
 $$ \mathcal{Q}_N \sim \mathcal{N}\left(\bar q_N, \Delta q_N \right).
 $$
 
@@ -221,7 +227,7 @@ Nível de confiança em [μ-3σ, μ+3σ]: 99.73%
 
 
 ```julia
-plot(-3.0:0.1:3.0, x -> pdf(Normal(), x), fill=true, color=3, label="95%")
+plot(-3.0:0.1:3.0, x -> pdf(Normal(), x), fill=true, color=3, label="99%")
 plot!(-2.0:0.1:2.0, x -> pdf(Normal(), x), fill=true, color=2, label="95%")
 plot!(-1.0:0.1:1.0, x -> pdf(Normal(), x), fill=true, color=1, label="68%")
 plot!([(0.0, 0.0), (0.0, 0.4)], color=7, label="valor médio")
@@ -418,6 +424,9 @@ histogram!(medias, nbins=div(M,4), normed=true, alpha=0.1, color=6, label="histo
 
 \fig{images/0501-Erros_e_incertezas_13_1.png}
 
+
+Ampliando o eixo $x$ ("zoom...")
+
 ```julia
 plot(-0.6:0.01:0.6, x -> pdf(Normal(0.0, 1.0/N), x), color=1, ylims=(0.0,1.1*pdf(Normal(0.0, 1.0/N), 0)),
     label="normal limite", title="Distribuição normal limite das médias, média das amostra e intervalos de confiança",
@@ -483,9 +492,9 @@ plot!()
 \fig{images/0501-Erros_e_incertezas_17_1.png}
 
 
-## Exemplos com outras distribuições "escondidas"
+## Exemplos com outras distribuições "desconhecidas"
 
-* Como visto no Teorema do Limite Central, a distribuição das médias das amostras se aproxima de uma normal, independentemente da distribuição desconhecida.
+* Como visto no Teorema Central do Limite, a distribuição das médias das amostras se aproxima de uma normal, independentemente da distribuição associada ao mecanismo de geração de dados.
 
 * Vejamos, então, alguns exemplos com outras distribuições.
 
@@ -627,7 +636,7 @@ plot!()
 
 ### O resultado de Student
 
-* O resultado de Student vale quando a distribuição desconhecida $\mathcal{P}$ é uma normal com media $\mu$.
+* O resultado de Student vale quando a distribuição desconhecida $\mathcal{P}$ é uma normal com média $\mu$.
 
 * Nesse caso, temos que a distribuição $\mathcal{Q}_N$ das médias $\bar q_N$ satisfaz
 $$ \frac{\sqrt{\nu}}{s_N} (\mathcal{Q}_N -\mu) = t_\nu,
@@ -661,7 +670,7 @@ for (k, int) in intervalos
     println("Normal IC $k: ", round.(quantile.(Normal(), int), digits=2))
 end
 println()
-for ν in (1, 2, 4, 20)
+for ν in (1, 2, 4, 10, 20, 50)
     for (k, int) in intervalos
         println("T-Dist(ν=$ν) IC $k: ", round.(quantile.(TDist(ν), int), digits=2))
     end
@@ -682,8 +691,14 @@ T-Dist(ν=2) IC 95%: [-4.3, 4.3]
 T-Dist(ν=4) IC 68%: [-1.13, 1.13]
 T-Dist(ν=4) IC 95%: [-2.78, 2.78]
 
+T-Dist(ν=10) IC 68%: [-1.05, 1.05]
+T-Dist(ν=10) IC 95%: [-2.23, 2.23]
+
 T-Dist(ν=20) IC 68%: [-1.02, 1.02]
 T-Dist(ν=20) IC 95%: [-2.09, 2.09]
+
+T-Dist(ν=50) IC 68%: [-1.0, 1.0]
+T-Dist(ν=50) IC 95%: [-2.01, 2.01]
 ```
 
 

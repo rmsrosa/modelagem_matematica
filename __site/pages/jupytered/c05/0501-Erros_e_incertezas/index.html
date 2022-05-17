@@ -115,7 +115,10 @@
     <li><a href="/modelagem_matematica/pages/jupytered/c04/0405-Exemplos_ajuste_naolinear">4.5. Exemplos de ajuste não-linear de parâmetros</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/modelagem_matematica/pages/jupytered/c04/0406-Ajuste_em_redes_neurais">4.6. Ajuste de parâmetros em modelos de redes neurais (WIP)</a></li>
+    <li><a href="/modelagem_matematica/pages/jupytered/c04/0406-Redes_neurais">4.6. Redes neurais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c04/0407-Ajuste_em_redes_neurais">4.7. Ajuste de parâmetros em modelos de redes neurais</a></li>
     </div>
     <div class="menu-level-1">
     <li>5. Erros e Incertezas</li>
@@ -146,7 +149,7 @@
       <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c04/0406-Ajuste_em_redes_neurais">4.6. Ajuste de parâmetros em modelos de redes neurais (WIP) <kbd>←</kbd></a>
+<a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c04/0407-Ajuste_em_redes_neurais">4.7. Ajuste de parâmetros em modelos de redes neurais <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
     <a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c05/0502-Minimos_quadrados_verossimilhanca"><kbd>→</kbd> 5.2. Mínimos quadrados, maximização da verossimilhança e quantificação de incertezas em regressões lineares</a>
@@ -176,7 +179,7 @@
 </li>
 <li><p>Qual a consequência desses fatores numa modelagem?</p>
 </li>
-<li><p>Qual o grau de incerteza que isso acarreta num modelo?</p>
+<li><p>Qual o grau de incerteza que isso acarreta nas previsões do modelo?</p>
 </li>
 </ul>
 <pre><code class="language-julia">using Distributions
@@ -186,13 +189,15 @@ using Random</code></pre>
 <ul>
 <li><p>É importante deixar clara a diferença entre esses dois conceitos.</p>
 </li>
-<li><p>O <strong>erro</strong> é a diferença entre o valor de uma medição e o valor exato da quantitade que queremos medir.</p>
+<li><p>O <strong>erro</strong> é a diferença entre o valor de uma medição e o valor exato da quantidade que queremos medir.</p>
 </li>
 <li><p>A <strong>incerteza</strong> é uma quantificação da dúvida que temos sobre a medida feita.</p>
 </li>
 <li><p>Podemos saber, por exemplo, que um determinado termômetro está descalibrado e mede sempre dois grau acima do padrão e podemos corrigir esse <em>erro</em>.</p>
 </li>
 <li><p>Mas qualquer erro sobre o qual não sabemos a medida é uma fonte de <em>incerteza</em>.</p>
+</li>
+<li><p>Erros e incertezas podem se referir a medições experimentais de quantidades físicas ou a resultados de qualquer tipo de cálculo feito.</p>
 </li>
 </ul>
 <h3 id="representando_incertezas_em_medições"><a href="#representando_incertezas_em_medições" class="header-anchor">Representando incertezas em medições</a></h3>
@@ -203,7 +208,7 @@ using Random</code></pre>
 \[ q = \bar q \pm \Delta q.
 \]
 <ul>
-<li><p>Isso é resultado de uma série de medidas, de onde obtemos o <strong>valor médio</strong> \(\bar q\) e uma <strong>margem de confiança</strong> \(\Delta q\).</p>
+<li><p>Isso é, por exemplo, resultado de uma série de medidas, de onde obtemos o <strong>valor médio</strong> \(\bar q\) e uma <strong>margem de confiança</strong> \(\Delta q\).</p>
 </li>
 <li><p>A margem de confiança nos dá um <strong>intervalo de confiança</strong></p>
 </li>
@@ -217,7 +222,7 @@ using Random</code></pre>
 </li>
 <li><p>Mais geralmente, podemos considerar \(\Delta q\) como uma variável aleatória, com média zero, representando a incerteza em relação ao valor médio \(\bar q\).</p>
 </li>
-<li><p>Vale ressaltar, no entanto, que, em alguns casos, o intervalo de &quot;erro&quot; exibido em alguns gráficos pode, simplesmente, ser em termos do desvio padrão.</p>
+<li><p>Em geral, a margem de confiança é determinada pelo <em>erro padrão</em> da amostra, mas vale ressaltar que, em alguns casos, essa margem é dada, simplesmente, em termos do <em>desvio padrão</em>.</p>
 </li>
 </ul>
 <h3 id="informações_das_medições"><a href="#informações_das_medições" class="header-anchor">Informações das medições</a></h3>
@@ -270,7 +275,7 @@ using Random</code></pre>
 \[ \mu = E(q) = \int_X q\;d\rho(q), \quad \operatorname{Var}(q) = E((q-\mu)^2) = \int_X (q - \mu))^2 \;d\rho(q), \quad \sigma = \sqrt{\operatorname{Var}(q)}.
 \]
 <ul>
-<li><p>Se o espaço de probabilidades \(X\) é um subconjunto de \(\mathbb{R^n}\) e \(f=f(q)\) é a distribuição de probabilidades de \(\mathcal{P}\), então também podemos escrever</p>
+<li><p>Se o espaço de probabilidades \(X\) é um subconjunto de \(\mathbb{R^n}\) e \(f=f(q)\) é a função densidade de probabilidades de \(\mathcal{P}\), então também podemos escrever</p>
 </li>
 </ul>
 \[ \mu = E(q) = \int_X q f(q)\;dq, \quad \operatorname{Var}(q) = E((q-\mu)^2) = \int_X (q - \mu)^2f(q) \;dq, \quad \sigma = \sqrt{\operatorname{Var}(q)}.
@@ -287,7 +292,7 @@ using Random</code></pre>
 \[ \Delta q = \frac{s_q}{\sqrt{N}}.
 \]
 <ul>
-<li><p>A relação disso com a intervalo e nível de confiança é estabelecida pelo <strong>Teorema do Limite Central</strong>.</p>
+<li><p>A relação disso com a intervalo e nível de confiança é estabelecida pelo <strong>Teorema Central do Limite</strong>.</p>
 </li>
 </ul>
 <h3 id="visualizando_intervalos_de_confiança"><a href="#visualizando_intervalos_de_confiança" class="header-anchor">Visualizando intervalos de confiança</a></h3>
@@ -325,7 +330,7 @@ plot&#33;&#40;&#41;</code></pre>
 </li>
 <li><p>Seja \(\mathcal{Q}_N\) a distribuição de probabilidades das médias das amostras.</p>
 </li>
-<li><p>Então, temos a convergência &#40;em probabilidade e quase sempre&#41;</p>
+<li><p>Então, temos a convergência &#40;quase sempre e em probabilidade&#41;</p>
 </li>
 </ul>
 \[ \sqrt{N}(\mathcal{Q}_N - \mu) \rightarrow \mathcal{N}(0,\sigma^2).
@@ -342,7 +347,7 @@ plot&#33;&#40;&#41;</code></pre>
 </ul>
 <h3 id="aproximação_prática_e_a_correção_de_bessel"><a href="#aproximação_prática_e_a_correção_de_bessel" class="header-anchor">Aproximação prática e a correção de Bessel</a></h3>
 <ul>
-<li><p>No caso de \(N\) ser &quot;grande o suficiente&quot;, o desvio padrão \(\sigma/\sqrt{N}\) é relativamente pequeno e há grande chance de uma amostra arbitrária ter média \(\bar q_N\) muito próxima de \(\mu\) e desvio padrão &#40;sem correção&#41; \(\sigma_N\) próximo de \(\sigma\).</p>
+<li><p>No caso de \(N\) ser &quot;grande o suficiente&quot;, o desvio padrão \(\sigma/\sqrt{N}\) é relativamente pequeno e há grandes chances de uma amostra arbitrária ter média \(\bar q_N\) muito próxima de \(\mu\) e desvio padrão &#40;sem correção&#41; \(\sigma_N\) próximo de \(\sigma\).</p>
 </li>
 <li><p>Nesse caso, é natural pensarmos em usar a aproximação</p>
 </li>
@@ -350,11 +355,17 @@ plot&#33;&#40;&#41;</code></pre>
 \[ \mathcal{Q}_N \sim \mathcal{N}\left(\bar q_N,\frac{\sigma_N^2}{N}\right).
 \]
 <ul>
-<li><p>O desvio padrão não corrigido \(\sigma_N\) tende a estimar por por baixo o desvio padrão \(\sigma\), a menos que \(\bar q_N\) coincida com \(\mu\).</p>
+<li><p>Porém, o desvio padrão não corrigido \(\sigma_N\) tende a estimar por baixo o desvio padrão \(\sigma\), a menos que \(\bar q_N\) coincida com \(\mu\).</p>
 </li>
+<li><p>Por esse motivo, usa-se a o desvio padrão corrigido da amostra:</p>
+</li>
+</ul>
+\[ s_q = \sqrt{\frac{1}{N-1}\sum_{i=1}^N (q_i - \bar q_N)^2}.
+\]
+<ul>
 <li><p>Esta correção é conhecida como <strong>correção de Bessel</strong>. Veja mais informações sobre isso em <a href="https://en.wikipedia.org/wiki/Bessel&#37;27s_correction">Bessel&#39;s correction</a>.</p>
 </li>
-<li><p>A correção de Bessel evita essa distorção tendenciosa, o que nos leva a uma aproximação melhor pela normal com desvio padrão dado pelo erro padrão da amostra:</p>
+<li><p>A correção de Bessel evita essa distorção tendenciosa, o que nos leva a uma aproximação melhor pela normal com desvio padrão dado pelo erro padrão \(\Delta q = s_q/\sqrt{N}\) da amostra:</p>
 </li>
 </ul>
 \[ \mathcal{Q}_N \sim \mathcal{N}\left(\bar q_N, \Delta q_N \right).
@@ -397,7 +408,7 @@ Normal IC 99&#37;: &#91;-2.576, 2.576&#93;
 Nível de confiança em &#91;μ-1σ, μ&#43;1σ&#93;: 68.27&#37;
 Nível de confiança em &#91;μ-2σ, μ&#43;2σ&#93;: 95.45&#37;
 Nível de confiança em &#91;μ-3σ, μ&#43;3σ&#93;: 99.73&#37;</code></pre>
-<pre><code class="language-julia">plot&#40;-3.0:0.1:3.0, x -&gt; pdf&#40;Normal&#40;&#41;, x&#41;, fill&#61;true, color&#61;3, label&#61;&quot;95&#37;&quot;&#41;
+<pre><code class="language-julia">plot&#40;-3.0:0.1:3.0, x -&gt; pdf&#40;Normal&#40;&#41;, x&#41;, fill&#61;true, color&#61;3, label&#61;&quot;99&#37;&quot;&#41;
 plot&#33;&#40;-2.0:0.1:2.0, x -&gt; pdf&#40;Normal&#40;&#41;, x&#41;, fill&#61;true, color&#61;2, label&#61;&quot;95&#37;&quot;&#41;
 plot&#33;&#40;-1.0:0.1:1.0, x -&gt; pdf&#40;Normal&#40;&#41;, x&#41;, fill&#61;true, color&#61;1, label&#61;&quot;68&#37;&quot;&#41;
 plot&#33;&#40;&#91;&#40;0.0, 0.0&#41;, &#40;0.0, 0.4&#41;&#93;, color&#61;7, label&#61;&quot;valor médio&quot;&#41;
@@ -553,6 +564,7 @@ vline&#33;&#40;&#91;0.0&#93;, color&#61;:black, label&#61;&quot;média da normal
 vline&#33;&#40;&#91;mean&#40;medias&#41;&#93;, color&#61;3, label&#61;&quot;média das médias&quot;&#41;
 histogram&#33;&#40;medias, nbins&#61;div&#40;M,4&#41;, normed&#61;true, alpha&#61;0.1, color&#61;6, label&#61;&quot;histograma dos dados&quot;&#41;</code></pre>
 <img src="/modelagem_matematica/assets/pages/jupytered/c05/0501-Erros_e_incertezas/code/images/0501-Erros_e_incertezas_13_1.png" alt="">
+<p>Ampliando o eixo \(x\) &#40;&quot;zoom...&quot;&#41;</p>
 <pre><code class="language-julia">plot&#40;-0.6:0.01:0.6, x -&gt; pdf&#40;Normal&#40;0.0, 1.0/N&#41;, x&#41;, color&#61;1, ylims&#61;&#40;0.0,1.1*pdf&#40;Normal&#40;0.0, 1.0/N&#41;, 0&#41;&#41;,
     label&#61;&quot;normal limite&quot;, title&#61;&quot;Distribuição normal limite das médias, média das amostra e intervalos de confiança&quot;,
     titlefont&#61;8, size&#61;&#40;600,300&#41;&#41;
@@ -591,9 +603,9 @@ for j &#61; 1:M̄
 end
 plot&#33;&#40;&#41;</code></pre>
 <img src="/modelagem_matematica/assets/pages/jupytered/c05/0501-Erros_e_incertezas/code/images/0501-Erros_e_incertezas_17_1.png" alt="">
-<h2 id="exemplos_com_outras_distribuições_escondidas"><a href="#exemplos_com_outras_distribuições_escondidas" class="header-anchor">Exemplos com outras distribuições &quot;escondidas&quot;</a></h2>
+<h2 id="exemplos_com_outras_distribuições_desconhecidas"><a href="#exemplos_com_outras_distribuições_desconhecidas" class="header-anchor">Exemplos com outras distribuições &quot;desconhecidas&quot;</a></h2>
 <ul>
-<li><p>Como visto no Teorema do Limite Central, a distribuição das médias das amostras se aproxima de uma normal, independentemente da distribuição desconhecida.</p>
+<li><p>Como visto no Teorema Central do Limite, a distribuição das médias das amostras se aproxima de uma normal, independentemente da distribuição associada ao mecanismo de geração de dados.</p>
 </li>
 <li><p>Vejamos, então, alguns exemplos com outras distribuições.</p>
 </li>
@@ -703,7 +715,7 @@ plot&#33;&#40;&#41;</code></pre>
 <img src="/modelagem_matematica/assets/pages/jupytered/c05/0501-Erros_e_incertezas/code/images/0501-Erros_e_incertezas_24_1.png" alt="">
 <h3 id="o_resultado_de_student"><a href="#o_resultado_de_student" class="header-anchor">O resultado de Student</a></h3>
 <ul>
-<li><p>O resultado de Student vale quando a distribuição desconhecida \(\mathcal{P}\) é uma normal com media \(\mu\).</p>
+<li><p>O resultado de Student vale quando a distribuição desconhecida \(\mathcal{P}\) é uma normal com média \(\mu\).</p>
 </li>
 <li><p>Nesse caso, temos que a distribuição \(\mathcal{Q}_N\) das médias \(\bar q_N\) satisfaz</p>
 </li>
@@ -738,7 +750,7 @@ for &#40;k, int&#41; in intervalos
     println&#40;&quot;Normal IC &#36;k: &quot;, round.&#40;quantile.&#40;Normal&#40;&#41;, int&#41;, digits&#61;2&#41;&#41;
 end
 println&#40;&#41;
-for ν in &#40;1, 2, 4, 20&#41;
+for ν in &#40;1, 2, 4, 10, 20, 50&#41;
     for &#40;k, int&#41; in intervalos
         println&#40;&quot;T-Dist&#40;ν&#61;&#36;ν&#41; IC &#36;k: &quot;, round.&#40;quantile.&#40;TDist&#40;ν&#41;, int&#41;, digits&#61;2&#41;&#41;
     end
@@ -756,8 +768,14 @@ T-Dist&#40;ν&#61;2&#41; IC 95&#37;: &#91;-4.3, 4.3&#93;
 T-Dist&#40;ν&#61;4&#41; IC 68&#37;: &#91;-1.13, 1.13&#93;
 T-Dist&#40;ν&#61;4&#41; IC 95&#37;: &#91;-2.78, 2.78&#93;
 
+T-Dist&#40;ν&#61;10&#41; IC 68&#37;: &#91;-1.05, 1.05&#93;
+T-Dist&#40;ν&#61;10&#41; IC 95&#37;: &#91;-2.23, 2.23&#93;
+
 T-Dist&#40;ν&#61;20&#41; IC 68&#37;: &#91;-1.02, 1.02&#93;
-T-Dist&#40;ν&#61;20&#41; IC 95&#37;: &#91;-2.09, 2.09&#93;</code></pre>
+T-Dist&#40;ν&#61;20&#41; IC 95&#37;: &#91;-2.09, 2.09&#93;
+
+T-Dist&#40;ν&#61;50&#41; IC 68&#37;: &#91;-1.0, 1.0&#93;
+T-Dist&#40;ν&#61;50&#41; IC 95&#37;: &#91;-2.01, 2.01&#93;</code></pre>
 <h3 id="visualizando_os_intervalos_de_confiança"><a href="#visualizando_os_intervalos_de_confiança" class="header-anchor">Visualizando os intervalos de confiança</a></h3>
 <pre><code class="language-julia">intervalo &#61; -7.5:0.05:7.5
 plot&#40;intervalo, pdf.&#40;Normal&#40;&#41;, intervalo&#41;, label&#61;&quot;Normal&quot;, xlims&#61;&#40;minimum&#40;intervalo&#41;,maximum&#40;intervalo&#41;&#41;, size&#61;&#40;600,300&#41;,
@@ -795,7 +813,7 @@ plot&#33;&#40;&#41;</code></pre>
     <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c04/0406-Ajuste_em_redes_neurais">4.6. Ajuste de parâmetros em modelos de redes neurais (WIP) <kbd>←</kbd></a>
+<a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c04/0407-Ajuste_em_redes_neurais">4.7. Ajuste de parâmetros em modelos de redes neurais <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
     <a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c05/0502-Minimos_quadrados_verossimilhanca"><kbd>→</kbd> 5.2. Mínimos quadrados, maximização da verossimilhança e quantificação de incertezas em regressões lineares</a>
@@ -814,7 +832,7 @@ plot&#33;&#40;&#41;</code></pre>
         </div>
     
 
-    Last modified: April 14, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
+    Last modified: May 17, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
