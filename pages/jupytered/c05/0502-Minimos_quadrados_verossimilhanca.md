@@ -40,7 +40,9 @@ $$
 $$ \mathcal{P}(y|x) \sim \mathcal{N}(\beta_0 + \beta_1 x, \sigma^2).
 $$
 
-* Além disso, assumimos que os erros são independentes entre si. Ou seja, em quaisquer dois pontos $x_i, x_j$, os erros $\epsilon_i, \epsilon_j$ nesses pontos são independentes entre si, ou seja, não são correlacionados, o que pode ser expresso por $E(\epsilon_i\epsilon_j)=0$.
+* Além disso, assumimos que os erros são independentes entre si. Ou seja, em quaisquer dois pontos $x_i, x_j$, os erros $\epsilon_i, \epsilon_j$ nesses pontos são independentes entre si.
+
+* Como os erros são normais, serem independentes é equivalente a não estarem correlacionados, o que pode ser expresso por $E(\epsilon_i\epsilon_j)=0$.
 
 
 ## Verossimilhança
@@ -64,7 +66,7 @@ $$
 
 ## Função de verossimilhança em um conjunto de observações
 
-* Dado um conjunto de observações $(\mathbf{x}, \mathbf{y}) = (x_i, y_i)_{i=1}^N$, a probabilidade conjunta é o produto das probabilidades, $\mathcal{P}(y_1|x_1)\mathcal{P}(y_2|x_2)\cdots\mathcal{P}(y_N|x_N)$.
+* Dado um conjunto de observações (independentes) $(\mathbf{x}, \mathbf{y}) = (x_i, y_i)_{i=1}^N$, a probabilidade conjunta é o produto das probabilidades, $\mathcal{P}(y_1|x_1)\mathcal{P}(y_2|x_2)\cdots\mathcal{P}(y_N|x_N)$.
 
 * Em relação à função densidade de probabilidades, obtemos
 $$ f_N(\mathbf{y},\boldsymbol\beta) = \frac{1}{\displaystyle (2\pi \sigma^2)^{N/2}}e^{\displaystyle -\frac{1}{2\sigma^2}\sum_{i=1}^N(y_i - \beta_0 - \beta_1 x_i)^2}.
@@ -112,7 +114,7 @@ $$
 $$ \hat{\boldsymbol\beta} = \operatorname{argmax}_{\boldsymbol\beta} \mathcal{L}_N(\boldsymbol\beta) = \operatorname{argmax}_{\boldsymbol\beta} \ell_N(\boldsymbol\beta) = \operatorname{argmin}_{\boldsymbol\beta} \operatorname{RSS}(\boldsymbol\beta).
 $$
 
-* Essa equivalência vale quando o erro é uma normal, com média zero, e desvio padrão uniforme ao longo de $x$.
+* Essa equivalência vale quando os erros são normais independentes, com média zero, e desvio padrão uniforme ao longo de $x$ (ou seja, são normais i.i.d. com média zero).
 
 
 ## Estimativa sobre a determinação nos parâmetros
@@ -144,7 +146,7 @@ $$
 
 * Se $X$ e $\epsilon$ fossem escalares, seria fácil deduzir que $\operatorname{Var}(\beta) = (X^TX)^{-1}X^T\operatorname{Var}(\epsilon)X(X^TX)^{-1}$. Mas não é o caso.
 
-* No caso multidimensional, em que $X$ é de fato uma matriz e $\boldsymbol\epsilon$ e $\boldsymbol\beta$ são vetores, temos o valor esperado nos dando um vetor com os valores esperados de cada coordenada e temos a variância sendo estendida a uma **matrix de variância-covariância**, nos dando não apenas a variação de cada coordenada, mas também uma variação conjunto entre cada par de coordenadas. E a variância de $\boldsymbol\beta$ envolve tudo isso.
+* No caso multidimensional, em que $X$ é de fato uma matriz e $\boldsymbol\epsilon$ e $\boldsymbol\beta$ são vetores, temos o valor esperado nos dando um vetor com os valores esperados de cada coordenada e temos a variância sendo estendida a uma **matrix de variância-covariância**, nos dando não apenas a variação de cada coordenada, mas também uma variação conjunta entre cada par de coordenadas. E a variância de $\boldsymbol\beta$ envolve tudo isso.
 
 
 ## Valor esperado e variância-covariância de variáveis aleatórias multidimensionais
@@ -304,7 +306,7 @@ x_org = [0.0, 10.0]
 y_org = b .+ m * x_org
 data_x = collect(range(0.0,10.0, length=N)) + rand(N)/N
 data_y = b .+ m * data_x .+ rand(Normal(0,σ), N)
-plot(x_org, y_org)
+plot(x_org, y_org, label = "y = b + mx", title = "Dados perturbados aleatoriamente, em um exemplo sintético", titlefont = 10)
 scatter!(data_x, data_y, markersize=3, label="amostra")
 ```
 
@@ -312,6 +314,8 @@ scatter!(data_x, data_y, markersize=3, label="amostra")
 
 
 ### Determinando os parâmetros
+
+* Montamos a matriz de Vandermonde e resolvemos o problema de mínimos quadrados linear.
 
 ```julia
 X = [ones(N) data_x]
@@ -330,7 +334,7 @@ X = [ones(N) data_x]
 ### Visualizando o resultado
 
 ```julia
-plot(x_org, y_org, label="original", legend=:topleft)
+plot(x_org, y_org, label="original", legend=:topleft, title = "Ajuste aos dados", titlefont = 10)
 scatter!(data_x, data_y, markersize=3, label="amostra")
 plot!(x_org, β[1] .+ β[2] * x_org, label="modelo")
 ```
@@ -379,26 +383,26 @@ Var_y = [[1; x] ⋅ (Cov_β * [1; x]) for x in data_x]
 
 ```
 20-element Vector{Float64}:
- 0.1850690674998656
- 0.15989728825520982
- 0.13472605333885973
- 0.11383670913058842
- 0.09548818390233765
- 0.08014032619999448
- 0.06830466732393874
- 0.05936414503671618
- 0.05325748751001498
- 0.05035707669772975
- 0.050326457791429025
- 0.05354621420722602
- 0.059513423230789946
- 0.0679696253583599
- 0.08049659618144062
- 0.09529307440702722
- 0.11444701290418935
- 0.13374704790809291
- 0.15834618382131757
- 0.18587335929487261
+ 0.18506906749986532
+ 0.1598972882552096
+ 0.13472605333885954
+ 0.1138367091305883
+ 0.09548818390233753
+ 0.08014032619999441
+ 0.0683046673239387
+ 0.059364145036716144
+ 0.053257487510014974
+ 0.05035707669772974
+ 0.05032645779142901
+ 0.053546214207226044
+ 0.059513423230789925
+ 0.06796962535835986
+ 0.08049659618144059
+ 0.09529307440702718
+ 0.11444701290418924
+ 0.13374704790809286
+ 0.15834618382131746
+ 0.18587335929487245
 ```
 
 
@@ -446,26 +450,26 @@ Var_q = [[1; x] ⋅ (Cov_q * [1; x]) for x in data_x]
 
 ```
 20-element Vector{Float64}:
- 0.1681389053725685
- 0.1452698464549866
- 0.1224012820704281
- 0.10342290001783529
- 0.08675290222319419
- 0.07280907017850202
- 0.062056140179626976
- 0.05393349898874429
+ 0.16813890537256826
+ 0.14526984645498642
+ 0.12240128207042794
+ 0.10342290001783515
+ 0.0867529022231941
+ 0.07280907017850197
+ 0.06205614017962694
+ 0.05393349898874427
  0.04838547993890799
- 0.04575039939467411
- 0.04572258151317366
- 0.04864779384947511
+ 0.045750399394674124
+ 0.045722581513173675
+ 0.04864779384947513
  0.054069121178268606
- 0.061751747932411796
- 0.07313274849766521
- 0.08657564139072514
- 0.10397737305768068
- 0.12151183628833892
- 0.14386063742207592
- 0.1688696203636769
+ 0.06175174793241178
+ 0.07313274849766525
+ 0.08657564139072518
+ 0.10397737305768065
+ 0.12151183628833889
+ 0.14386063742207578
+ 0.16886962036367678
 ```
 
 

@@ -214,7 +214,9 @@ using LinearAlgebra: ⋅</code></pre>
 \[ \mathcal{P}(y|x) \sim \mathcal{N}(\beta_0 + \beta_1 x, \sigma^2).
 \]
 <ul>
-<li><p>Além disso, assumimos que os erros são independentes entre si. Ou seja, em quaisquer dois pontos \(x_i, x_j\), os erros \(\epsilon_i, \epsilon_j\) nesses pontos são independentes entre si, ou seja, não são correlacionados, o que pode ser expresso por \(E(\epsilon_i\epsilon_j)=0\).</p>
+<li><p>Além disso, assumimos que os erros são independentes entre si. Ou seja, em quaisquer dois pontos \(x_i, x_j\), os erros \(\epsilon_i, \epsilon_j\) nesses pontos são independentes entre si.</p>
+</li>
+<li><p>Como os erros são normais, serem independentes é equivalente a não estarem correlacionados, o que pode ser expresso por \(E(\epsilon_i\epsilon_j)=0\).</p>
 </li>
 </ul>
 <h2 id="verossimilhança"><a href="#verossimilhança" class="header-anchor">Verossimilhança</a></h2>
@@ -244,7 +246,7 @@ using LinearAlgebra: ⋅</code></pre>
 </ul>
 <h2 id="função_de_verossimilhança_em_um_conjunto_de_observações"><a href="#função_de_verossimilhança_em_um_conjunto_de_observações" class="header-anchor">Função de verossimilhança em um conjunto de observações</a></h2>
 <ul>
-<li><p>Dado um conjunto de observações \((\mathbf{x}, \mathbf{y}) = (x_i, y_i)_{i=1}^N\), a probabilidade conjunta é o produto das probabilidades, \(\mathcal{P}(y_1|x_1)\mathcal{P}(y_2|x_2)\cdots\mathcal{P}(y_N|x_N)\).</p>
+<li><p>Dado um conjunto de observações &#40;independentes&#41; \((\mathbf{x}, \mathbf{y}) = (x_i, y_i)_{i=1}^N\), a probabilidade conjunta é o produto das probabilidades, \(\mathcal{P}(y_1|x_1)\mathcal{P}(y_2|x_2)\cdots\mathcal{P}(y_N|x_N)\).</p>
 </li>
 <li><p>Em relação à função densidade de probabilidades, obtemos</p>
 </li>
@@ -306,7 +308,7 @@ using LinearAlgebra: ⋅</code></pre>
 \[ \hat{\boldsymbol\beta} = \operatorname{argmax}_{\boldsymbol\beta} \mathcal{L}_N(\boldsymbol\beta) = \operatorname{argmax}_{\boldsymbol\beta} \ell_N(\boldsymbol\beta) = \operatorname{argmin}_{\boldsymbol\beta} \operatorname{RSS}(\boldsymbol\beta).
 \]
 <ul>
-<li><p>Essa equivalência vale quando o erro é uma normal, com média zero, e desvio padrão uniforme ao longo de \(x\).</p>
+<li><p>Essa equivalência vale quando os erros são normais independentes, com média zero, e desvio padrão uniforme ao longo de \(x\) &#40;ou seja, são normais i.i.d. com média zero&#41;.</p>
 </li>
 </ul>
 <h2 id="estimativa_sobre_a_determinação_nos_parâmetros"><a href="#estimativa_sobre_a_determinação_nos_parâmetros" class="header-anchor">Estimativa sobre a determinação nos parâmetros</a></h2>
@@ -344,7 +346,7 @@ using LinearAlgebra: ⋅</code></pre>
 <ul>
 <li><p>Se \(X\) e \(\epsilon\) fossem escalares, seria fácil deduzir que \(\operatorname{Var}(\beta) = (X^TX)^{-1}X^T\operatorname{Var}(\epsilon)X(X^TX)^{-1}\). Mas não é o caso.</p>
 </li>
-<li><p>No caso multidimensional, em que \(X\) é de fato uma matriz e \(\boldsymbol\epsilon\) e \(\boldsymbol\beta\) são vetores, temos o valor esperado nos dando um vetor com os valores esperados de cada coordenada e temos a variância sendo estendida a uma <strong>matrix de variância-covariância</strong>, nos dando não apenas a variação de cada coordenada, mas também uma variação conjunto entre cada par de coordenadas. E a variância de \(\boldsymbol\beta\) envolve tudo isso.</p>
+<li><p>No caso multidimensional, em que \(X\) é de fato uma matriz e \(\boldsymbol\epsilon\) e \(\boldsymbol\beta\) são vetores, temos o valor esperado nos dando um vetor com os valores esperados de cada coordenada e temos a variância sendo estendida a uma <strong>matrix de variância-covariância</strong>, nos dando não apenas a variação de cada coordenada, mas também uma variação conjunta entre cada par de coordenadas. E a variância de \(\boldsymbol\beta\) envolve tudo isso.</p>
 </li>
 </ul>
 <h2 id="valor_esperado_e_variância-covariância_de_variáveis_aleatórias_multidimensionais"><a href="#valor_esperado_e_variância-covariância_de_variáveis_aleatórias_multidimensionais" class="header-anchor">Valor esperado e variância-covariância de variáveis aleatórias multidimensionais</a></h2>
@@ -528,17 +530,21 @@ x_org &#61; &#91;0.0, 10.0&#93;
 y_org &#61; b .&#43; m * x_org
 data_x &#61; collect&#40;range&#40;0.0,10.0, length&#61;N&#41;&#41; &#43; rand&#40;N&#41;/N
 data_y &#61; b .&#43; m * data_x .&#43; rand&#40;Normal&#40;0,σ&#41;, N&#41;
-plot&#40;x_org, y_org&#41;
+plot&#40;x_org, y_org, label &#61; &quot;y &#61; b &#43; mx&quot;, title &#61; &quot;Dados perturbados aleatoriamente, em um exemplo sintético&quot;, titlefont &#61; 10&#41;
 scatter&#33;&#40;data_x, data_y, markersize&#61;3, label&#61;&quot;amostra&quot;&#41;</code></pre>
 <img src="/modelagem_matematica/assets/pages/jupytered/c05/0502-Minimos_quadrados_verossimilhanca/code/images/0502-Minimos_quadrados_verossimilhanca_3_1.png" alt="">
 <h3 id="determinando_os_parâmetros"><a href="#determinando_os_parâmetros" class="header-anchor">Determinando os parâmetros</a></h3>
+<ul>
+<li><p>Montamos a matriz de Vandermonde e resolvemos o problema de mínimos quadrados linear.</p>
+</li>
+</ul>
 <pre><code class="language-julia">X &#61; &#91;ones&#40;N&#41; data_x&#93;
 β &#61; X \ data_y</code></pre>
 <pre><code class="language-julia">2-element Vector&#123;Float64&#125;:
  1.1988117103655653
  0.1431233525841148</code></pre>
 <h3 id="visualizando_o_resultado"><a href="#visualizando_o_resultado" class="header-anchor">Visualizando o resultado</a></h3>
-<pre><code class="language-julia">plot&#40;x_org, y_org, label&#61;&quot;original&quot;, legend&#61;:topleft&#41;
+<pre><code class="language-julia">plot&#40;x_org, y_org, label&#61;&quot;original&quot;, legend&#61;:topleft, title &#61; &quot;Ajuste aos dados&quot;, titlefont &#61; 10&#41;
 scatter&#33;&#40;data_x, data_y, markersize&#61;3, label&#61;&quot;amostra&quot;&#41;
 plot&#33;&#40;x_org, β&#91;1&#93; .&#43; β&#91;2&#93; * x_org, label&#61;&quot;modelo&quot;&#41;</code></pre>
 <img src="/modelagem_matematica/assets/pages/jupytered/c05/0502-Minimos_quadrados_verossimilhanca/code/images/0502-Minimos_quadrados_verossimilhanca_5_1.png" alt="">
@@ -560,26 +566,26 @@ CI 95&#37; para β₁: &#91;0.13, 0.15&#93;</code></pre>
 <h3 id="variância_do_modelo_e_intervalos_de_confiança"><a href="#variância_do_modelo_e_intervalos_de_confiança" class="header-anchor">Variância do modelo e intervalos de confiança</a></h3>
 <pre><code class="language-julia">Var_y &#61; &#91;&#91;1; x&#93; ⋅ &#40;Cov_β * &#91;1; x&#93;&#41; for x in data_x&#93;</code></pre>
 <pre><code class="language-julia">20-element Vector&#123;Float64&#125;:
- 0.1850690674998656
- 0.15989728825520982
- 0.13472605333885973
- 0.11383670913058842
- 0.09548818390233765
- 0.08014032619999448
- 0.06830466732393874
- 0.05936414503671618
- 0.05325748751001498
- 0.05035707669772975
- 0.050326457791429025
- 0.05354621420722602
- 0.059513423230789946
- 0.0679696253583599
- 0.08049659618144062
- 0.09529307440702722
- 0.11444701290418935
- 0.13374704790809291
- 0.15834618382131757
- 0.18587335929487261</code></pre>
+ 0.18506906749986532
+ 0.1598972882552096
+ 0.13472605333885954
+ 0.1138367091305883
+ 0.09548818390233753
+ 0.08014032619999441
+ 0.0683046673239387
+ 0.059364145036716144
+ 0.053257487510014974
+ 0.05035707669772974
+ 0.05032645779142901
+ 0.053546214207226044
+ 0.059513423230789925
+ 0.06796962535835986
+ 0.08049659618144059
+ 0.09529307440702718
+ 0.11444701290418924
+ 0.13374704790809286
+ 0.15834618382131746
+ 0.18587335929487245</code></pre>
 <pre><code class="language-julia">plot&#40;x_org, y_org, label&#61;&quot;original&quot;, size&#61;&#40;600,300&#41;, titlefont&#61;10,
     title&#61;&quot;Reta original, amostra, modelo, CI 68&#37; &#40;sombreado&#41;, CI 95&#37; &#40;barras de erro&#41;&quot;, &#41;
 scatter&#33;&#40;data_x, data_y, markersize&#61;3, label&#61;&quot;amostra&quot;&#41;
@@ -607,26 +613,26 @@ Desvio padrão não corrigido da amostra: 0.904</code></pre>
 <pre><code class="language-julia">Cov_q &#61; s_q^2 * inv&#40;X&#39; * X&#41;
 Var_q &#61; &#91;&#91;1; x&#93; ⋅ &#40;Cov_q * &#91;1; x&#93;&#41; for x in data_x&#93;</code></pre>
 <pre><code class="language-julia">20-element Vector&#123;Float64&#125;:
- 0.1681389053725685
- 0.1452698464549866
- 0.1224012820704281
- 0.10342290001783529
- 0.08675290222319419
- 0.07280907017850202
- 0.062056140179626976
- 0.05393349898874429
+ 0.16813890537256826
+ 0.14526984645498642
+ 0.12240128207042794
+ 0.10342290001783515
+ 0.0867529022231941
+ 0.07280907017850197
+ 0.06205614017962694
+ 0.05393349898874427
  0.04838547993890799
- 0.04575039939467411
- 0.04572258151317366
- 0.04864779384947511
+ 0.045750399394674124
+ 0.045722581513173675
+ 0.04864779384947513
  0.054069121178268606
- 0.061751747932411796
- 0.07313274849766521
- 0.08657564139072514
- 0.10397737305768068
- 0.12151183628833892
- 0.14386063742207592
- 0.1688696203636769</code></pre>
+ 0.06175174793241178
+ 0.07313274849766525
+ 0.08657564139072518
+ 0.10397737305768065
+ 0.12151183628833889
+ 0.14386063742207578
+ 0.16886962036367678</code></pre>
 <pre><code class="language-julia">plot&#40;x_org, y_org, label&#61;&quot;original&quot;, size&#61;&#40;600,300&#41;, titlefont&#61;10,
     title&#61;&quot;Reta original, amostra, modelo, CI 68&#37; &#40;sombreado&#41;, CI 95&#37; &#40;barras de erro&#41;\nusando o desvio padrão corrigido&quot;, &#41;
 scatter&#33;&#40;data_x, data_y, markersize&#61;3, label&#61;&quot;amostra&quot;&#41;
@@ -731,7 +737,7 @@ plot&#33;&#40;data_x,β&#91;1&#93; .&#43; β&#91;2&#93; * data_x, grid&#61;false
         </div>
     
 
-    Last modified: April 14, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
+    Last modified: May 19, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

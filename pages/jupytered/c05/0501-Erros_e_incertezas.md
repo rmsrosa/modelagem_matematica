@@ -121,12 +121,13 @@ N = 10
 M = 10
 amostras = rand(Normal(), M, N)
 vline([0.0], xlims=(-4,4), ylims=(0,M+1), yticks=1:M, label=false, titlefont=10,
-    color=:black, title="Média real e intervalos de 68% e 95% de cada amostra de $N dados")
+    color=:black, title="Dados, média real e intervalos de 68% e 95% de cada amostra de $N dados")
 for j = 1:M
     q̄ = mean(amostras[j,:])
     Δ_q = std(amostras[j,:])/√N
     plot!([q̄-Δ_q, q̄+Δ_q], [j+0.1, j+0.1], label=false, color=2)
     plot!([q̄-2Δ_q, q̄+2Δ_q], [j-0.1, j-0.1], label=false, color=3)
+    scatter!(amostras[j,:], [j], markersize = 2, color = 5, label = false)
 end
 plot!()
 ```
@@ -134,7 +135,7 @@ plot!()
 \fig{images/0501-Erros_e_incertezas_2_1.png}
 
 
-### O Teorema do Limite Central
+### O Teorema Central do Limite
 
 * Considere uma distribuição de probabilidades qualquer, como na situação descrita anteriormente.
 
@@ -142,7 +143,7 @@ plot!()
 
 * Tome a média aritmética de cada uma dessas amostras, que denotamos, aqui, por $\bar q_N$, para explicitar a dependência em $N$.
 
-* Então, o **Teorema do Limite Central** garante que 
+* Então, o **Teorema Central do Limite** garante que 
 
 > A distribuição de probabilidades dessas médias $\bar q_N$ se aproxima de uma normal, conforme $N$ aumenta.
 
@@ -246,7 +247,7 @@ $$
 
 * Esses intervalos estão associados à porcentagem de amostras baseadas nessa normal estaram em cada intervalo.
 
-* Mas, baseado no Teorema do Limite Central, vamos interpretá-los como intervalos de confiança para a localização da média "real" da probabilidade desconhecida.
+* Mas, baseado no Teorema Central do Limite, vamos interpretá-los como intervalos de confiança para a localização da média "real" da probabilidade desconhecida.
 
 
 * De fato, se 
@@ -727,17 +728,17 @@ plot!()
 
 * Uma espécie de resumo:
 
-* Quando temos um número razoável de dados, podemos considerar $\Delta q$ e $2\Delta q$ como os meios-comprimentos dos intervalos de $68\%$ e $95\%$ de confiança, respectivamente. Isso é feito tendo como base o Teorema do Limite Central.
+* Quando temos um número razoável de dados, podemos considerar $\Delta q$ e $2\Delta q$ como os meios-comprimentos dos intervalos de $68\%$ e $95\%$ de confiança, respectivamente. Isso é feito tendo como base o Teorema Central do Limite.
 
 * Quando temos poucos dados, o mais garantido é usar um múltiplo apropriado de $\Delta q$ dado pelos intervalos de probabilidade da distribuição t.
 
 * Nesse último caso, também é comum se usar $\Delta q$ e $2\Delta q$, mas explicitar que isso corresponde a outros níveis de confiança.
 
-* Quanto à teoria, o Teorema do Limite Central vale para uma distribuição desconhecida qualquer, enquanto que o resultado de Student vale apenas no caso dessa distribuição desconhecida ser uma normal.
+* Quanto à teoria, o Teorema Central do Limite vale para uma distribuição desconhecida qualquer, enquanto que o resultado de Student vale apenas no caso dessa distribuição desconhecida ser uma normal.
 
 
 ## Exercícios
 
 1. Aumente e diminua o número $M$ de amostras e o número $N$ de dados em cada amostra e veja o efeito disso nos gráficos correspondentes.
 
-1. Pesquisa sobre as demonstrações do Teorema do Limite Central e do resultado de Student.
+1. Pesquisa sobre as demonstrações do Teorema Central do Limite e do resultado de Student.

@@ -305,20 +305,20 @@ methods(Dense) # métodos para a construção do tipo composto
 
 ```
 # 7 methods for type constructor:
-[1] Flux.Dense(in::Integer, out::Integer) in Flux at /Users/rmsrosa/.julia/
-packages/Flux/6Q5r4/src/deprecations.jl:63
-[2] Flux.Dense(in::Integer, out::Integer, σ; kw...) in Flux at /Users/rmsro
-sa/.julia/packages/Flux/6Q5r4/src/deprecations.jl:63
-[3] Flux.Dense(::Pair{<:Integer, <:Integer}) in Flux at /Users/rmsrosa/.jul
-ia/packages/Flux/6Q5r4/src/layers/basic.jl:150
+[1] Flux.Dense(in::Integer, out::Integer) in Flux at /Users/rrosa/.julia/pa
+ckages/Flux/6Q5r4/src/deprecations.jl:63
+[2] Flux.Dense(in::Integer, out::Integer, σ; kw...) in Flux at /Users/rrosa
+/.julia/packages/Flux/6Q5r4/src/deprecations.jl:63
+[3] Flux.Dense(::Pair{<:Integer, <:Integer}) in Flux at /Users/rrosa/.julia
+/packages/Flux/6Q5r4/src/layers/basic.jl:150
 [4] Flux.Dense(::Pair{<:Integer, <:Integer}, σ; init, bias) in Flux at /Use
-rs/rmsrosa/.julia/packages/Flux/6Q5r4/src/layers/basic.jl:150
-[5] Flux.Dense(W::M) where M<:(AbstractMatrix) in Flux at /Users/rmsrosa/.j
-ulia/packages/Flux/6Q5r4/src/layers/basic.jl:144
-[6] Flux.Dense(W::M, bias) where M<:(AbstractMatrix) in Flux at /Users/rmsr
-osa/.julia/packages/Flux/6Q5r4/src/layers/basic.jl:144
+rs/rrosa/.julia/packages/Flux/6Q5r4/src/layers/basic.jl:150
+[5] Flux.Dense(W::M) where M<:(AbstractMatrix) in Flux at /Users/rrosa/.jul
+ia/packages/Flux/6Q5r4/src/layers/basic.jl:144
+[6] Flux.Dense(W::M, bias) where M<:(AbstractMatrix) in Flux at /Users/rros
+a/.julia/packages/Flux/6Q5r4/src/layers/basic.jl:144
 [7] Flux.Dense(W::M, bias, σ::F) where {M<:(AbstractMatrix), F} in Flux at 
-/Users/rmsrosa/.julia/packages/Flux/6Q5r4/src/layers/basic.jl:144
+/Users/rrosa/.julia/packages/Flux/6Q5r4/src/layers/basic.jl:144
 ```
 
 
@@ -329,10 +329,10 @@ methods(m) # métodos definidos
 
 ```
 # 2 methods:
-[1] (a::Flux.Dense)(x::AbstractVecOrMat) in Flux at /Users/rmsrosa/.julia/p
-ackages/Flux/6Q5r4/src/layers/basic.jl:157
-[2] (a::Flux.Dense)(x::AbstractArray) in Flux at /Users/rmsrosa/.julia/pack
-ages/Flux/6Q5r4/src/layers/basic.jl:162
+[1] (a::Flux.Dense)(x::AbstractVecOrMat) in Flux at /Users/rrosa/.julia/pac
+kages/Flux/6Q5r4/src/layers/basic.jl:157
+[2] (a::Flux.Dense)(x::AbstractArray) in Flux at /Users/rrosa/.julia/packag
+es/Flux/6Q5r4/src/layers/basic.jl:162
 ```
 
 
@@ -408,8 +408,8 @@ Params([[1.0 1.0 … 1.0 1.0; 1.0 1.0 … 1.0 1.0]])
 
 ```
 Error: LoadError: UndefVarError: @which not defined
-in expression starting at /Users/rmsrosa/Documents/git-repositories/modelag
-em_matematica/src/jupyter/c04/0406-Redes_neurais.ipynb:2
+in expression starting at /Users/rrosa/Documents/git_repositories/modelagem
+_matematica/src/jupyter/c04/0406-Redes_neurais.ipynb:2
 ```
 
 

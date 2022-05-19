@@ -388,7 +388,8 @@ println(readdir())
 3-Minimos_quadrados_nao_linear.md", "0403-Modelos_redutiveis_linear_aplicac
 oes.md", "0404-Exemplos_ajuste_naolinear.md", "0404-Minimos_quadrados_nao_l
 inear.md", "0405-Ajuste_em_redes_neurais.md", "0405-Exemplos_ajuste_naoline
-ar.md", "0406-Ajuste_em_redes_neurais.md", "images"]
+ar.md", "0406-Ajuste_em_redes_neurais.md", "0406-Redes_neurais.md", "0407-A
+juste_em_redes_neurais.md", "images"]
 ```
 
 

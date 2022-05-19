@@ -301,16 +301,17 @@ N &#61; 10
 M &#61; 10
 amostras &#61; rand&#40;Normal&#40;&#41;, M, N&#41;
 vline&#40;&#91;0.0&#93;, xlims&#61;&#40;-4,4&#41;, ylims&#61;&#40;0,M&#43;1&#41;, yticks&#61;1:M, label&#61;false, titlefont&#61;10,
-    color&#61;:black, title&#61;&quot;Média real e intervalos de 68&#37; e 95&#37; de cada amostra de &#36;N dados&quot;&#41;
+    color&#61;:black, title&#61;&quot;Dados, média real e intervalos de 68&#37; e 95&#37; de cada amostra de &#36;N dados&quot;&#41;
 for j &#61; 1:M
     q̄ &#61; mean&#40;amostras&#91;j,:&#93;&#41;
     Δ_q &#61; std&#40;amostras&#91;j,:&#93;&#41;/√N
     plot&#33;&#40;&#91;q̄-Δ_q, q̄&#43;Δ_q&#93;, &#91;j&#43;0.1, j&#43;0.1&#93;, label&#61;false, color&#61;2&#41;
     plot&#33;&#40;&#91;q̄-2Δ_q, q̄&#43;2Δ_q&#93;, &#91;j-0.1, j-0.1&#93;, label&#61;false, color&#61;3&#41;
+    scatter&#33;&#40;amostras&#91;j,:&#93;, &#91;j&#93;, markersize &#61; 2, color &#61; 5, label &#61; false&#41;
 end
 plot&#33;&#40;&#41;</code></pre>
 <img src="/modelagem_matematica/assets/pages/jupytered/c05/0501-Erros_e_incertezas/code/images/0501-Erros_e_incertezas_2_1.png" alt="">
-<h3 id="o_teorema_do_limite_central"><a href="#o_teorema_do_limite_central" class="header-anchor">O Teorema do Limite Central</a></h3>
+<h3 id="o_teorema_central_do_limite"><a href="#o_teorema_central_do_limite" class="header-anchor">O Teorema Central do Limite</a></h3>
 <ul>
 <li><p>Considere uma distribuição de probabilidades qualquer, como na situação descrita anteriormente.</p>
 </li>
@@ -318,7 +319,7 @@ plot&#33;&#40;&#41;</code></pre>
 </li>
 <li><p>Tome a média aritmética de cada uma dessas amostras, que denotamos, aqui, por \(\bar q_N\), para explicitar a dependência em \(N\).</p>
 </li>
-<li><p>Então, o <strong>Teorema do Limite Central</strong> garante que </p>
+<li><p>Então, o <strong>Teorema Central do Limite</strong> garante que </p>
 </li>
 </ul>
 <blockquote>
@@ -425,7 +426,7 @@ plot&#33;&#40;-4.0:0.1:4.0, x -&gt; pdf&#40;Normal&#40;&#41;, x&#41;, color&#61;
 <ul>
 <li><p>Esses intervalos estão associados à porcentagem de amostras baseadas nessa normal estaram em cada intervalo.</p>
 </li>
-<li><p>Mas, baseado no Teorema do Limite Central, vamos interpretá-los como intervalos de confiança para a localização da média &quot;real&quot; da probabilidade desconhecida.</p>
+<li><p>Mas, baseado no Teorema Central do Limite, vamos interpretá-los como intervalos de confiança para a localização da média &quot;real&quot; da probabilidade desconhecida.</p>
 </li>
 </ul>
 <ul>
@@ -793,20 +794,20 @@ plot&#33;&#40;&#41;</code></pre>
 <ul>
 <li><p>Uma espécie de resumo:</p>
 </li>
-<li><p>Quando temos um número razoável de dados, podemos considerar \(\Delta q\) e \(2\Delta q\) como os meios-comprimentos dos intervalos de \(68\%\) e \(95\%\) de confiança, respectivamente. Isso é feito tendo como base o Teorema do Limite Central.</p>
+<li><p>Quando temos um número razoável de dados, podemos considerar \(\Delta q\) e \(2\Delta q\) como os meios-comprimentos dos intervalos de \(68\%\) e \(95\%\) de confiança, respectivamente. Isso é feito tendo como base o Teorema Central do Limite.</p>
 </li>
 <li><p>Quando temos poucos dados, o mais garantido é usar um múltiplo apropriado de \(\Delta q\) dado pelos intervalos de probabilidade da distribuição t.</p>
 </li>
 <li><p>Nesse último caso, também é comum se usar \(\Delta q\) e \(2\Delta q\), mas explicitar que isso corresponde a outros níveis de confiança.</p>
 </li>
-<li><p>Quanto à teoria, o Teorema do Limite Central vale para uma distribuição desconhecida qualquer, enquanto que o resultado de Student vale apenas no caso dessa distribuição desconhecida ser uma normal.</p>
+<li><p>Quanto à teoria, o Teorema Central do Limite vale para uma distribuição desconhecida qualquer, enquanto que o resultado de Student vale apenas no caso dessa distribuição desconhecida ser uma normal.</p>
 </li>
 </ul>
 <h2 id="exercícios"><a href="#exercícios" class="header-anchor">Exercícios</a></h2>
 <ol>
 <li><p>Aumente e diminua o número \(M\) de amostras e o número \(N\) de dados em cada amostra e veja o efeito disso nos gráficos correspondentes.</p>
 </li>
-<li><p>Pesquisa sobre as demonstrações do Teorema do Limite Central e do resultado de Student.</p>
+<li><p>Pesquisa sobre as demonstrações do Teorema Central do Limite e do resultado de Student.</p>
 </li>
 </ol>
 
@@ -832,7 +833,7 @@ plot&#33;&#40;&#41;</code></pre>
         </div>
     
 
-    Last modified: May 17, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
+    Last modified: May 19, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
