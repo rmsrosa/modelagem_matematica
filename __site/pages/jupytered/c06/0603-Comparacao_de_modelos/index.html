@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="" />
+  <meta name="author" content="and contributors" />
+   <title>Comparação de modelos</title>  
+  <link rel="shortcut icon" type="image/png" href="/modelagem_matematica/assets/images/favicon.png"/>
+  <link rel="stylesheet" href="/modelagem_matematica/css/base.css"/>
+  
+  <script src="/modelagem_matematica/libs/mousetrap/mousetrap.min.js"></script>
+
+  
+    <link rel="stylesheet" href="/modelagem_matematica/libs/highlight/github.min.css">
+    <script src="/modelagem_matematica/libs/highlight/highlight.pack.js"></script>
+    <script src="/modelagem_matematica/libs/highlight/julia.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', (event) => {
+        document.querySelectorAll('pre').forEach((el) => {
+          hljs.highlightElement(el);
+        });
+      });
+    </script>
+  
+
+  
+    <link rel="stylesheet" href="/modelagem_matematica/libs/katex/katex.min.css">
+  
+</head>
+
+<body>
+
+  <div class="books-container">
+
+  <aside class="books-menu">
+  <input type="checkbox" id="menu">
+  <label for="menu">☰</label>
+
+  <div class="books-title">
+    <a href="/modelagem_matematica/">Modelagem Matemática</a>
+  </div>
+
+  <br />
+
+  <div class="books-subtitle">
+    Notas de aula
+  </div>
+
+  <br />
+
+  <div class="books-author">
+    <a href="https://rmsrosa.github.io">Ricardo M. S. Rosa</a>
+  </div>
+
+  <div class="books-menu-content">
+    <div class="menu-level-1">
+    <li><a href="/modelagem_matematica/pages/intro">Introdução</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>PARTE I</li>
+    </div>
+    <div class="menu-level-1">
+    <li>1. Preliminares</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c01/0101-Aspectos_curso">1.1. Aspectos do curso</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c01/0102-Instalando_acessando_Julia">1.2. Instalando e acessando o Julia</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c01/0103-Primeiros_passos_Julia">1.3. Primeiros passos em Julia</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>PARTE II</li>
+    </div>
+    <div class="menu-level-1">
+    <li>2. Princípios de Modelagem Matemática</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c02/0201-Principios_basicos">2.1. Princípios básicos de modelagem</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c02/0202-Exemplos_tipos_modelagem">2.2. Exemplos de tipos de modelagem</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>3. Análise Dimensional</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c03/0301-Quantidades_unidades_dimensoes">3.1. Quantidades, unidades e dimensões</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c03/0302-BuckinghamPi">3.2. Análise dimensional e o Teorema de Buckingham-Pi</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c03/0303-Unidades_Julia">3.3. Trabalhando com unidades e dimensões em Julia</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>4. Ajuste de Parâmetros</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c04/0401-Minimos_quadrados_ajuste">4.1. Mínimos quadrados e o ajuste de parâmetros</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c04/0402-Exemplos_ajuste_linear">4.2. Exemplos de ajuste linear</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c04/0403-Modelos_redutiveis_linear_aplicacoes">4.3. Modelos redutíveis ao caso linear nos parâmetros e aplicações</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c04/0404-Minimos_quadrados_nao_linear">4.4. Mínimos quadrados não-linear</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c04/0405-Exemplos_ajuste_naolinear">4.5. Exemplos de ajuste não-linear de parâmetros</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c04/0406-Redes_neurais">4.6. Redes neurais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c04/0407-Ajuste_em_redes_neurais">4.7. Ajuste de parâmetros em modelos de redes neurais</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>5. Erros e Incertezas</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c05/0501-Erros_e_incertezas">5.1. Erros e incertezas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c05/0502-Minimos_quadrados_verossimilhanca">5.2. Mínimos quadrados, maximização da verossimilhança e quantificação de incertezas em regressões lineares</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c05/0503-Propagacao_incertezas">5.3. Propagação de incertezas</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>6. Avaliação de Modelos</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c06/0601-Qualidade_do_modelo">6.1. Qualidade do ajuste</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c06/0602-Validacao_do_modelo">6.2. Validação de modelos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c06/0603-Comparacao_de_modelos">6.3. Comparação de modelos</a></li>
+    </div>
+<div>
+
+
+  
+    <a href="https://github.com/rmsrosa/modelagem_matematica/tree/modmat2022p1"><img src="/modelagem_matematica/assets/images/GitHub-Mark-32px.png" alt="GitHub repo" width="18" style="margin:5px 5px" align="left"></a>
+
+  
+
+</aside>
+
+
+  <div class="books-content">
+
+    
+      <div class="navbar">
+    <p id="nav">
+<span id="nav-prev" style="float: left;">
+<a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c06/0602-Validacao_do_modelo">6.2. Validação de modelos <kbd>←</kbd></a>
+</span>
+    </p>
+</div>
+</br></br>
+
+    
+
+    
+      <div class="badges">
+<p>
+<a href="https://nbviewer.org/urls/rmsrosa.github.io/modelagem_matematica/generated/jupytered/c06/0603-Comparacao_de_modelos.ipynb"><img align="left" src="https://img.shields.io/badge/view%20in-nbviewer-orange" alt="View in NBViewer" title="View Jupyter notebook in NBViewer"></a>
+<a href="https://mybinder.org/v2/gh/rmsrosa/modelagem_matematica/julia-env-for-binder-2022p1?urlpath=git-pull%3Frepo%3Dhttps://github.com/rmsrosa/modelagem_matematica%26urlpath%3Dlab/tree%252Fmodelagem_matematica/generated/jupytered/c06/0603-Comparacao_de_modelos.ipynb%26branch%3Dgh-pages"><img align="left" src="https://mybinder.org/badge.svg" alt="Open in binder" title="Open in binder"></a>
+<a href="/modelagem_matematica/generated/jupytered/c06/0603-Comparacao_de_modelos.ipynb"><img align="left" src="https://img.shields.io/badge/download-notebook-blue" alt="Download notebook" title="Download Jupyter notebook"></a>
+<a href="/modelagem_matematica/src/jupyter/c06/0603-Comparacao_de_modelos.ipynb"><img align="left" src="https://img.shields.io/badge/view-source-lightblue" alt="View source" title="View source"></a>
+</p>
+</div></br>
+
+    
+<h1 id="get_title"><a href="#get_title" class="header-anchor">6.3. Comparação de modelos</a></h1>
+<ul>
+<li><p>Entropia</p>
+</li>
+<li><p>AIC</p>
+</li>
+<li><p>AICc</p>
+</li>
+<li><p>BIC</p>
+</li>
+</ul>
+<pre><code class="language-julia">using Random
+using Statistics
+using LinearAlgebra
+using Plots
+theme&#40;:ggplot2&#41;</code></pre>
+<h2 id="critérios_de_informação"><a href="#critérios_de_informação" class="header-anchor">Critérios de informação</a></h2>
+<h3 id="critério_de_aic"><a href="#critério_de_aic" class="header-anchor">Critério de AIC</a></h3>
+<ul>
+<li><p>O critério de informação de Akaike <em>&#40;Akaike Information Criteria&#41;</em> é uma medida relativa da qualidade do ajuste.</p>
+</li>
+<li><p>Ele penaliza modelos com muitos parâmetros.</p>
+</li>
+<li><p>Entre modelos com RMS próximos, o critério ajuda a selecionar o que tem menos parâmetros &#40;menos custoso&#41;.</p>
+</li>
+<li><p>É definido por</p>
+</li>
+</ul>
+\[ \mathrm{AIC} = N\ln E + 2m,
+\]
+<p>onde \(m\) é o número de parâmetros do modelo e \(E\) é o <strong>erro quadrático médio</strong> do mesmo:</p>
+\[ E = \frac{1}{N}\sum_{j=1}^N (\hat y_j - y_j)^2 = \mathrm{RMS}(r_j)^2 = \frac{\mathrm{SS}(r_i)}{N},
+\]
+<ul>
+<li><p>É comum vermos escrito na forma</p>
+</li>
+</ul>
+\[ \mathrm{AIC} = N\ln\left(\frac{\mathrm{SS}(r_i)}{N}\right) + 2m.
+\]
+<ul>
+<li><p>A definição acima, na verdade, é estritamente para modelos lineares nos parâmetros, ajustados via mínimos quadrados e com erros distribuidos normalmente e com variância constante.</p>
+</li>
+<li><p>Em situações mais gerais, no entanto, a função de log-verosimilhança deve ser utilizada.</p>
+</li>
+</ul>
+<h4 id="dependência_na_quantidade_de_dados_e_de_parâmetros"><a href="#dependência_na_quantidade_de_dados_e_de_parâmetros" class="header-anchor">Dependência na quantidade de dados e de parâmetros</a></h4>
+<ul>
+<li><p>O critério AIC vem de Teoria da Informação:</p>
+<ul>
+<li><p>Assumindo que os dados são gerados por um certo processo desconhecido \(\mathcal{P}\);    </p>
+</li>
+<li><p>E que há \(J\) candidatos a modelos do processo, \(\mathcal{M}_j\), \(j=1, \ldots, N\);</p>
+</li>
+<li><p>\(\mathrm{AIC}_j\) é uma medida da perda de informação obtida usando-se o modelo \(j\).</p>
+</li>
+<li><p>O modelo com o menor AIC é o modelo com a menor perda de informação.</p>
+</li>
+</ul>
+</li>
+<li><p>Mas, como tal, ele vem de um resultado assintótico e é mais utilizado quando há um número relativamente grande de dados, da ordem de</p>
+</li>
+</ul>
+\[ \frac{N}{M} \gtrsim 40,
+\]
+<p>onde \(M=\max_j\{m_j\}\) é o número de parâmetros do modelo com mais parâmetros dentre os modelos considerados.</p>
+<h3 id="aic_corrigido"><a href="#aic_corrigido" class="header-anchor">AIC corrigido</a></h3>
+<ul>
+<li><p>Caso não haja dados suficientes, utiliza-se o <strong>AIC corrigido:</strong></p>
+</li>
+</ul>
+\[ \mathrm{AICc} = N\ln\left(\frac{\mathrm{SS}(r_i)}{N}\right) + \frac{2m(m+1)}{N-m-1}.
+\]
+<ul>
+<li><p>Assintoticamente, quando \(N\rightarrow \infty\), a correção decai pra zero e os dois critérios coincidem.</p>
+</li>
+</ul>
+<h3 id="bic_bayesian_information_criteria"><a href="#bic_bayesian_information_criteria" class="header-anchor">BIC &#40;Bayesian Information Criteria&#41;</a></h3>
+<ul>
+<li><p>Este é um outro critério muito próximo do AIC e é definido por</p>
+</li>
+</ul>
+\[ \mathrm{BIC} = N\ln(E) + m\ln(N).
+\]
+<ul>
+<li><p>Foi proposto por Gideon Schwarz &#40;1978&#41;.</p>
+</li>
+<li><p>A inclusão do termo multiplicativo \(\ln(N)\) tem mais efeito no caso de um número grande de dados, mas em termos teóricos ele tem uma diferença significativa: se o modelo correto for incluído na comparação, este critério é garantido de selecioná-lo como o &quot;melhor&quot;. Por outro lado, em certos casos patológicos, o critério de AIC pode selecionar um modelo diferente.</p>
+</li>
+</ul>
+<h2 id="informação_e_entropia"><a href="#informação_e_entropia" class="header-anchor">Informação e entropia</a></h2>
+<ul>
+<li><p>No caso de uma distribuição de probabilidades \(\rho\) em um conjunto finito \(\mathcal{X}\), a <strong>informação</strong> \(I(x)\) de um possível evento \(x\in\mathcal{X}\) e a <strong>entropia da informação ou entropia de Shannon</strong> \(H(\rho)\) da distribuição são dadas por</p>
+</li>
+</ul>
+\[ I(x) = - \ln \rho(x), \qquad H(\rho) = - \sum_{x\in \mathcal{X}} \rho(x)\ln \rho(x).
+\]
+<ul>
+<li><p>No caso de uma distribuição de probabilidades \(\rho\) em \(\mathcal{X} = \mathbb{R}\) &#40;ou em várias variáveis ou em subconjutos de um ou de outro&#41;, com função densidade de probabilidades \(f\), temos a <strong>informação</strong> e a <strong>entropia diferencial</strong> definidas por</p>
+</li>
+</ul>
+\[ I(x) = - \ln f(x), \qquad H(\rho) = - \int_\mathcal{X} f(x) \ln f(x) \;dx.
+\]
+<ul>
+<li><p>No caso contínuo, \(I(x)\) está mais para uma <em>densidade de informação</em>, com a informação de um evento \(x\) em um intervalo &quot;infinitesimal&quot; de tamanho \(dx\) sendo \(I(x)dx\). E a <em>entropia diferencial</em> não tem as mesmas interpretações e propriedades da entropia de Shannon. Em muitos casos, trabalha-se com <em>entropia relativa</em>, baseada na <em>divergência de Kullback-Leibler</em>.</p>
+</li>
+</ul>
+<h3 id="interpretação_da_informação"><a href="#interpretação_da_informação" class="header-anchor">Interpretação da informação</a></h3>
+<ul>
+<li><p>A ideia da informação é representar uma medida do &quot;ganho de informação&quot;, ou da &quot;surpresa&quot;, obtida com a realização de um evento \(x\).</p>
+</li>
+<li><p>Quanto menor a probabilidade \(\rho(x)\) de \(x\), maior a surpresa. Por isso a razão da informação conter uma função decrescente em \(x\).</p>
+</li>
+<li><p>Se a probabilidade do evento for \(\rho(x) = 1\), ou seja, é um evento &quot;certo&quot;, então não há surpresa e a informação é nula, \(I(x) = \ln \rho(x) = - \ln 1 = 0.\)</p>
+</li>
+<li><p>Já se \(\rho(x) = 0\), ou seja, o evento \(x\) é totalmente improvável, então a surpresa com a sua realização é infinita.</p>
+</li>
+</ul>
+<pre><code class="language-julia">probvalues &#61; range&#40;0.0001, 1.0, length&#61;200&#41;
+plot&#40;probvalues, ρ -&gt; -log&#40;ρ&#41;, xlabel&#61;&quot;probabilidade de um evento&quot;, ylabel&#61;&quot;informação&quot;,
+    label&#61;&quot;ρ ↦ -ln ρ&quot;,
+    title&#61;&quot;Informação como função da probabilidade de um evento&quot;, titlefont&#61;10&#41;</code></pre>
+<img src="/modelagem_matematica/assets/pages/jupytered/c06/0603-Comparacao_de_modelos/code/images/0603-Comparacao_de_modelos_2_1.png" alt="">
+<h3 id="informação_no_caso_de_componentes_independentes"><a href="#informação_no_caso_de_componentes_independentes" class="header-anchor">Informação no caso de componentes independentes</a></h3>
+<ul>
+<li><p>Mas por que o logaritmo?</p>
+</li>
+<li><p>Pela sua propriedade de \(\ln(a + b) = \ln a + \ln b\).</p>
+</li>
+<li><p>Caso tenhamos componentes independentes \(\mathcal{X} = \mathcal{X}_1 \times \mathcal{X}_2\), com uma distribuição de probabilidade \(\rho = \rho_1 \otimes \rho_2\), então</p>
+</li>
+</ul>
+\[ I_\rho(x) = I_\rho(x_1, x_2) = -\ln (\rho_1(x_1)\rho_2(x_2)) = - \ln\rho_1(x_1) - \ln\rho_2(x_2) = I_{\rho_1}(x_1) + I_{\rho_2}(x_2).
+\]
+<ul>
+<li><p>Ou seja, o ganho de informação com a ocorrência de um evento com componentes de naturezas diferentes é a soma do ganho de informações com cada componente.</p>
+</li>
+</ul>
+<h3 id="informação_no_caso_contínuo"><a href="#informação_no_caso_contínuo" class="header-anchor">Informação no caso contínuo</a></h3>
+<ul>
+<li><p>No caso contínuo, a interpretação não é bem a mesma, já que a função densidade de probabilidade \(f=f(x)\) não precisa assumir valores entre zero e um, como ocorre com \(\rho(x)\) no caso discreto.</p>
+</li>
+<li><p>Assim, \(I(x)\) pode ser negativo.</p>
+</li>
+<li><p>O mais preciso seria considerar a informação \(I(x)dx\) de um evento ocorrer em um intervalo contendo \(x\) e de comprimento \(dx\). Ou, mais precisamente, \(\int_J I(x)\;dx\) como sendo o ganho de informação, ou a surpresa, de um evento ocorrer em um intervalo \(J\).</p>
+</li>
+</ul>
+<h3 id="interpretação_da_entropia"><a href="#interpretação_da_entropia" class="header-anchor">Interpretação da entropia</a></h3>
+<ul>
+<li><p>Tanto no caso discreto como no contínuo, vemos que a entropia é o valor esperado da informação:</p>
+</li>
+</ul>
+\[ H(\rho) = \int_\mathcal{X} I(x) f(x) dx = \mathbb{E}(I), \qquad H(\rho) = \sum_{x\in \mathcal{X}} I(x)\rho(x) = \mathbb{E}(I).
+\]
+<ul>
+<li><p>Ela representa o nível médio de informação, ou de surpresa, associada às possíveis ocorrências de eventos.</p>
+</li>
+<li><p>Distribuições de probabilidades com a informação mais &quot;espalhada&quot; tem maior entropia, ou maior surpresa, ao passo que informações mais &quot;concentradas&quot; levam a uma menor entropia, ou menor surpresa.</p>
+</li>
+<li><p>No caso de \(\rho(x) = 0\), temos \(I(\rho) = +\infty\), mas o valor de \(-\rho\ln \rho\) é tomado como sendo nulo, acompanhando o limite de quando \(\rho\searrow 0\):</p>
+</li>
+</ul>
+\[ - 0 \ln 0 = \lim_{\rho \rightarrow 0^+} -\rho \ln(\rho) = 0.
+\]
+<ul>
+<li><p>A definição de entropia da informação é idêntica à da entropia em termodinâmica, onde a informação é substituída pela energia dos &quot;microestados&quot;, que são os diferentes modos de distribuição da energia interna do sistema.</p>
+</li>
+<li><p>No caso contínuo, a interpretação da entropia também é mais delicada, como consequência das ponderações feitas acima sobre a interpretação da informação neste caso.</p>
+</li>
+</ul>
+<h3 id="distribuições_de_bernouilli"><a href="#distribuições_de_bernouilli" class="header-anchor">Distribuições de Bernouilli</a></h3>
+<ul>
+<li><p>Para efeito de ilustração, considere uma distribuição de Bernouilli \(\rho_p\) com probabilidades \(p\) e \(1-p\).</p>
+</li>
+<li><p>Ou seja, o espaço de probabilidades contém apenas dois elementos, digamos \(\mathcal{X}=\{x_1, x_2\}\), com probabilidades \(\rho_p(x_1) = p\) e \(\rho_p(x_2) = 1 - p\), onde \(0 \leq p \leq 1\).</p>
+</li>
+</ul>
+<ul>
+<li><p>Nesse caso,</p>
+</li>
+</ul>
+\[ H(\rho_p) = - p\ln p - (1-p)\ln(1-p).
+\]
+<ul>
+<li><p>Caso \(p=1\) &#40;ou \(p=0\)&#41;, temos entropia nula:</p>
+</li>
+</ul>
+\[ H(\rho_{p=1}) = -1\ln 1 - 0\ln 0 = 0 + 0 = 0.
+\]
+<ul>
+<li><p>Caso \(p=1/2\), a entropia é</p>
+</li>
+</ul>
+\[ H(\rho_{p=1/2}) = - 2 \frac{1}{2}\ln\left(\frac{1}{2}\right) = \ln 2.
+\]
+<ul>
+<li><p>O caso \(p=1/2\) nos dá entropia máxima. Verifique&#33;</p>
+</li>
+<li><p>Observe que, nesse caso \(p=1/2\), a informação está igualmente distribuída nos dois elementos do espaço, ou seja, está a mais espalhada possível.</p>
+</li>
+</ul>
+<ul>
+<li><p>Distribuições de Bernouilli estão relacionadas a eventos com respostas binárias, como sim ou não, ou como a possibilidade de um único evento ocorrer ou não.</p>
+</li>
+<li><p>É clássico mencionar que, em um questionário com respostas sim ou não, ganha-se mais informação com perguntas que tem probabilidades iguais de respostas sim e não.</p>
+</li>
+</ul>
+<h2 id="divergência_de_kullback-leibler"><a href="#divergência_de_kullback-leibler" class="header-anchor">Divergência de Kullback-Leibler</a></h2>
+<ul>
+<li><p>A divergência, ou informação, de Kullback-Leibler é a informação de um modelo relativa ao &quot;modelo real&quot;.</p>
+</li>
+<li><p>Supondo que \(\mu\) represente o fenômeno real e que \(\rho\) seja a distribuição de probabilidades de um modelo, a divergência de Kullback-Leibler do modelo \(\rho\) é</p>
+</li>
+</ul>
+\[ D_{KL}(\rho \| \mu) = \sum_{x\in \mathcal{X}} \mu(x)\ln\left(\frac{\mu(x)}{\rho(x)}\right).
+\]
+<ul>
+<li><p>No caso discreto, com distribuições \(g\) e \(f\) de \(\mu\) e \(\rho\), respectivamente, temos</p>
+</li>
+</ul>
+\[ D_{KL}(\rho \| \mu) = \int_{\mathcal{X}} g(x) \ln\left(\frac{g(x)}{f(x)}\right)\;dx.
+\]
+<ul>
+<li><p>Em termos práticos, \(D_{KL}\) não pode ser utilizado diretamente, pois \(\mu\) é desconhecida. É justamente \(\mu\) que queremos inferir.</p>
+</li>
+<li><p>Mas ele pode ser explorado para se comparar dois modelos diferentes. Isso é o que foi feito por Akaike.</p>
+</li>
+</ul>
+<h3 id="comparando_modelos_através_da_divergência_de_kullback-leibler"><a href="#comparando_modelos_através_da_divergência_de_kullback-leibler" class="header-anchor">Comparando modelos através da divergência de Kullback-Leibler</a></h3>
+<ul>
+<li><p>Podemos reescrever</p>
+</li>
+</ul>
+\[ D_{KL}(\rho \| \mu) = \int_{\mathcal{X}} g(x) \ln\left(\frac{g(x)}{f(x)}\right)\;dx = \int_{\mathcal{X}} g(x) \ln g(x) \;dx - \int_{\mathcal{X}} g(x) \ln f(x) \;dx.
+\]
+<ul>
+<li><p>Observe a semelhança com a entropia.</p>
+</li>
+<li><p>Observe, ainda, que o primeiro termo é independente do modelo.</p>
+</li>
+<li><p>Se tivermos dois modelos, \(\rho_1\) e \(\rho_2\), então podemos comparar as respectivas discrepâncias:</p>
+</li>
+</ul>
+\[ D_{KL}(\rho_1 \| \mu) = \int_{\mathcal{X}} g(x) \ln g(x) \;dx - \int_{\mathcal{X}} g(x) \ln f_1(x) \;dx.
+\]
+\[ D_{KL}(\rho_2 \| \mu) = \int_{\mathcal{X}} g(x) \ln g(x) \;dx - \int_{\mathcal{X}} g(x) \ln f_2(x) \;dx.
+\]
+<ul>
+<li><p>Para vermos qual é a de menor discrepância, podemos comparar apenas o último termo de cada um:</p>
+</li>
+</ul>
+\[ - \int_{\mathcal{X}} g(x) \ln f_1(x) \;dx \qquad \text{e} \qquad - \int_{\mathcal{X}} g(x) \ln f_2(x) \;dx
+\]
+<ul>
+<li><p>O que tiver a menor discrepância, nos dará o modelo mais próximo &quot;da realidade&quot;.</p>
+</li>
+</ul>
+<h3 id="conexão_com_o_critério_de_akaike"><a href="#conexão_com_o_critério_de_akaike" class="header-anchor">Conexão com o critério de Akaike</a></h3>
+<ul>
+<li><p>Mesmo o termo restante não pode ser calculado, pois ainda contém o termo desconhecido \(g\).</p>
+</li>
+<li><p>Akaike mostrou que, assintoticamente, em relação ao número de dados da amostra, e sob certas condições, vale a aproximação deste termo por</p>
+</li>
+</ul>
+\[ N\ln\left(\frac{\mathrm{SS}(r_i)}{N}\right) + 2m,
+\]
+<p>onde \(N\) é o número de dados e \(m\) é o número de parâmetros do modelo.</p>
+<h2 id="exemplo_sintético"><a href="#exemplo_sintético" class="header-anchor">Exemplo sintético</a></h2>
+<p>Neste exemplo sintético, vamos </p>
+<ul>
+<li><p>Construir dados sintéticos a partir de perturbações aleatórias em torno de uma determinada função.</p>
+</li>
+<li><p>Perturbações uniformemente distribuídas entre \(\pm 0.3\) na abscissa.</p>
+</li>
+<li><p>Perturbações uniformemente distribuídas entre \(\pm 1\) na ordenada.</p>
+</li>
+<li><p>Em seguida, usaremos mínimos quadrados para ajustar um polinômio de grau três.</p>
+</li>
+<li><p>Posteriormente, mínimos quadrados para ajustar polinômios de diversos graus.</p>
+</li>
+</ul>
+<h3 id="função_para_cálculo_das_medidas_de_qualidade_do_modelo"><a href="#função_para_cálculo_das_medidas_de_qualidade_do_modelo" class="header-anchor">Função para cálculo das medidas de qualidade do modelo</a></h3>
+<pre><code class="language-julia">function info_ajuste2&#40;dados_x, dados_y, model_y, m&#41;
+    N &#61; length&#40;dados_x&#41;
+    y_mean &#61; mean&#40;dados_y&#41;
+    residuos &#61; model_y - dados_y
+    ss &#61; norm&#40;residuos&#41;^2
+    rms &#61; sqrt&#40;ss/N&#41;
+    ss_y &#61; norm&#40;dados_y&#41;^ 2
+    rms_y &#61; sqrt&#40;ss_y/N&#41;
+
+    ss_rel &#61; ss/ss_y
+    rms_rel &#61; sqrt&#40;ss_rel&#41;
+    ss_tot &#61; N*var&#40;dados_y&#41;
+    ss_reg &#61; norm&#40;model_y .- y_mean&#41;^2
+    r_sq &#61; ss_reg/ss_tot
+    r_sq_aj &#61; 1 - &#40;1 - r_sq&#41;*&#40;N-1&#41;/&#40;N-m&#41;
+    
+    aic &#61; N*log&#40;ss/N&#41; &#43; 2*m
+    aicc &#61; N*log&#40;ss/N&#41; &#43; &#40;2*m*&#40;m&#43;1&#41;&#41;/&#40;N-m-1&#41;
+    bic &#61;  N*log&#40;ss/N&#41; &#43; 2*log&#40;N&#41;*m
+    
+    return &#40;
+        residuos&#61;residuos, rms&#61;rms, rms_rel&#61;rms_rel, ss&#61;ss, ss_rel&#61;ss_rel,
+        r_sq&#61;r_sq, r_sq_aj&#61;r_sq_aj, aic&#61;aic, aicc&#61;aicc, bic&#61;bic
+    &#41;
+end</code></pre>
+<pre><code class="language-julia">info_ajuste2 &#40;generic function with 1 method&#41;</code></pre>
+<h3 id="definição_do_modelos_e_dos_dados"><a href="#definição_do_modelos_e_dos_dados" class="header-anchor">Definição do modelos e dos dados</a></h3>
+<pre><code class="language-julia">f_modelo&#40;x, β&#41; &#61; β ⋅ &#91;x^j for j in 0:length&#40;β&#41;-1&#93;
+f_dados&#40;x,β&#41; &#61; exp&#40;β&#91;4&#93;*x&#41; * &#40;β&#91;1&#93; &#43; β&#91;2&#93;*x &#43; β&#91;3&#93;*x^2 &#43; β&#91;4&#93;*x^3&#41;
+β̲ &#61; &#91;5.2, 0.5, -0.45, 0.05&#93;
+x &#61; -1.0:0.1:8.0
+nothing</code></pre>
+<pre><code class="language-julia">dados_x &#61; collect&#40;0.0:0.4:7.6&#41; .&#43; 0.1 * randn&#40;MersenneTwister&#40;15001&#41;, 20&#41;
+dados_y &#61; f_dados.&#40;dados_x, Ref&#40;β̲&#41;&#41; .&#43; 0.5 * randn&#40;MersenneTwister&#40;15021&#41;, 20&#41;
+nothing</code></pre>
+<pre><code class="language-julia">plot&#40;xlim&#61;&#40;-1,8&#41;, ylim&#61;&#40;1,9&#41;, legend&#61;:topleft,
+    titlefont&#61;10, title&#61;&quot;função para a amostra e dados sintéticos&quot;&#41;
+plot&#33;&#40;dados_x, dados_y, seriestype&#61;:scatter, label&#61;&quot;amostra&quot;&#41;
+plot&#33;&#40;x, x-&gt;f_dados&#40;x,β̲&#41;, label&#61;&quot;função para a amostra&quot;&#41;</code></pre>
+<img src="/modelagem_matematica/assets/pages/jupytered/c06/0603-Comparacao_de_modelos/code/images/0603-Comparacao_de_modelos_6_1.png" alt="">
+<h3 id="modelos_polinomiais"><a href="#modelos_polinomiais" class="header-anchor">Modelos polinomiais</a></h3>
+<pre><code class="language-julia">max_grau &#61; 12
+β̂ &#61; &#91;&#93;
+info &#61; &#91;&#93;
+for grau in 0:max_grau
+    A &#61; reduce&#40;hcat, &#91;dados_x.^j for j&#61;0:grau&#93;&#41;
+    push&#33;&#40;β̂, A \ dados_y&#41;
+    push&#33;&#40;info, info_ajuste2&#40;
+            dados_x, dados_y, 
+            f_modelo.&#40;dados_x, Ref&#40;β̂&#91;grau&#43;1&#93;&#41;&#41;, length&#40;β̂&#91;grau&#43;1&#93;&#41;
+            &#41;
+        &#41;
+end</code></pre>
+<pre><code class="language-julia">plot&#40;xlim&#61;&#40;-1,8&#41;, ylim&#61;&#40;1,14&#41;, legend&#61;:topleft,
+    titlefont&#61;10, title&#61;&quot;modelos ajustados e dados sintéticos&quot;&#41;
+plot&#33;&#40;dados_x, dados_y, seriestype&#61;:scatter, label&#61;&quot;amostra&quot;&#41;
+for grau in 0:4
+    plot&#33;&#40;x, x -&gt; f_modelo&#40;x, β̂&#91;grau&#43;1&#93;&#41;,
+        label&#61;&quot;modelo grau &#36;grau &#40;RMS &#61; &#36;&#40;round&#40;info&#91;grau&#43;1&#93;.rms_rel,digits&#61;3&#41;&#41;, &quot; *
+            &quot;R² &#61; &#36;&#40;round&#40;info&#91;grau&#43;1&#93;.r_sq,digits&#61;3&#41;&#41;, &quot; *
+            &quot;R²_aj &#61; &#36;&#40;round&#40;info&#91;grau&#43;1&#93;.r_sq_aj,digits&#61;3&#41;&#41;&#41;&quot;,
+        linestyle&#61;:dash&#41;
+end
+plot&#33;&#40;&#41;</code></pre>
+<img src="/modelagem_matematica/assets/pages/jupytered/c06/0603-Comparacao_de_modelos/code/images/0603-Comparacao_de_modelos_8_1.png" alt="">
+<pre><code class="language-julia">plot&#40;xlim&#61;&#40;-1,8&#41;, ylim&#61;&#40;1,14&#41;, legend&#61;:topleft,
+    titlefont&#61;10, title&#61;&quot;modelos ajustados e dados sintéticos&quot;&#41;
+plot&#33;&#40;dados_x, dados_y, seriestype&#61;:scatter, label&#61;&quot;amostra&quot;&#41;
+for grau in 5:8
+    plot&#33;&#40;x,x-&gt;f_modelo&#40;x,β̂&#91;grau&#43;1&#93;&#41;,
+        label&#61;&quot;modelo grau &#36;grau &#40;RMS &#61; &#36;&#40;round&#40;info&#91;grau&#43;1&#93;.rms_rel,digits&#61;3&#41;&#41;, &quot; *
+            &quot;R² &#61; &#36;&#40;round&#40;info&#91;grau&#43;1&#93;.r_sq,digits&#61;3&#41;&#41;, &quot; *
+            &quot;R²_aj &#61; &#36;&#40;round&#40;info&#91;grau&#43;1&#93;.r_sq_aj,digits&#61;3&#41;&#41;&#41;&quot;,
+        linestyle&#61;:dash&#41;
+end
+plot&#33;&#40;&#41;</code></pre>
+<img src="/modelagem_matematica/assets/pages/jupytered/c06/0603-Comparacao_de_modelos/code/images/0603-Comparacao_de_modelos_9_1.png" alt="">
+<pre><code class="language-julia">plot&#40;xlim&#61;&#40;-1,8&#41;, ylim&#61;&#40;1,14&#41;, legend&#61;:topright,
+    titlefont&#61;10, title&#61;&quot;modelos ajustados e dados sintéticos&quot;&#41;
+plot&#33;&#40;dados_x, dados_y, seriestype&#61;:scatter, label&#61;&quot;amostra&quot;&#41;
+for grau in 9:max_grau
+    plot&#33;&#40;x,x-&gt;f_modelo&#40;x,β̂&#91;grau&#43;1&#93;&#41;,
+        label&#61;&quot;modelo grau &#36;grau &#40;RMS &#61; &#36;&#40;round&#40;info&#91;grau&#43;1&#93;.rms_rel,digits&#61;3&#41;&#41;, &quot; *
+            &quot;R² &#61; &#36;&#40;round&#40;info&#91;grau&#43;1&#93;.r_sq,digits&#61;3&#41;&#41;, &quot; *
+            &quot;R²_aj &#61; &#36;&#40;round&#40;info&#91;grau&#43;1&#93;.r_sq_aj,digits&#61;3&#41;&#41;&#41;&quot;,
+        linestyle&#61;:dash&#41;
+end
+plot&#33;&#40;&#41;</code></pre>
+<img src="/modelagem_matematica/assets/pages/jupytered/c06/0603-Comparacao_de_modelos/code/images/0603-Comparacao_de_modelos_10_1.png" alt="">
+<h3 id="visualização_dos_fatores_de_qualidade_de_ajuste_em_funcão_do_grau_do_modelo"><a href="#visualização_dos_fatores_de_qualidade_de_ajuste_em_funcão_do_grau_do_modelo" class="header-anchor">Visualização dos fatores de qualidade de ajuste em funcão do grau do modelo</a></h3>
+<pre><code class="language-julia">plot&#40;title&#61;&quot;R^2 e R^2 ajustado&quot;, titlefont&#61;10, ylims&#61;&#40;0,1.1&#41;, legend&#61;:bottomright,
+    xlabel&#61;&quot;grau&quot;, xticks&#61;0:max_grau&#41;
+hline&#33;&#40;&#91;1.0&#93;, label&#61;&quot;limite 1&quot;&#41;
+plot&#33;&#40;0:max_grau, &#91;info&#91;j&#43;1&#93;.r_sq for j in 0:max_grau&#93;, label&#61;&quot;R^2&quot;&#41;
+plot&#33;&#40;0:max_grau, &#91;info&#91;j&#43;1&#93;.r_sq_aj for j in 0:max_grau&#93;, label&#61;&quot;R^2 ajustado&quot;&#41;</code></pre>
+<img src="/modelagem_matematica/assets/pages/jupytered/c06/0603-Comparacao_de_modelos/code/images/0603-Comparacao_de_modelos_11_1.png" alt="">
+<pre><code class="language-julia">plot&#40;title&#61;&quot;RMS e SS&quot;, titlefont&#61;10, xlabel&#61;&quot;grau&quot;, xticks&#61;0:max_grau&#41;
+plot&#33;&#40;0:max_grau, &#91;info&#91;j&#43;1&#93;.rms for j in 0:max_grau&#93;, label&#61;&quot;RMS&quot;&#41;
+plot&#33;&#40;0:max_grau, &#91;info&#91;j&#43;1&#93;.ss for j in 0:max_grau&#93;, label&#61;&quot;SS&quot;&#41;</code></pre>
+<img src="/modelagem_matematica/assets/pages/jupytered/c06/0603-Comparacao_de_modelos/code/images/0603-Comparacao_de_modelos_12_1.png" alt="">
+<pre><code class="language-julia">plot&#40;title&#61;&quot;RMS relativo e SS relativo&quot;, titlefont&#61;10, xlabel&#61;&quot;grau&quot;, xticks&#61;0:max_grau&#41;
+plot&#33;&#40;0:max_grau, &#91;info&#91;j&#43;1&#93;.rms_rel for j in 0:max_grau&#93;, label&#61;&quot;RMS_rel&quot;&#41;
+plot&#33;&#40;0:max_grau, &#91;info&#91;j&#43;1&#93;.ss_rel for j in 0:max_grau&#93;, label&#61;&quot;SS_rel&quot;&#41;</code></pre>
+<img src="/modelagem_matematica/assets/pages/jupytered/c06/0603-Comparacao_de_modelos/code/images/0603-Comparacao_de_modelos_13_1.png" alt="">
+<pre><code class="language-julia">plot&#40;title&#61;&quot;AIC, AICc, BIC&quot;, titlefont&#61;10, xlabel&#61;&quot;grau&quot;, xticks&#61;0:max_grau&#41;
+plot&#33;&#40;0:max_grau, &#91;info&#91;j&#43;1&#93;.aic for j in 0:max_grau&#93;, label&#61;&quot;AIC&quot;&#41;
+plot&#33;&#40;0:max_grau, &#91;info&#91;j&#43;1&#93;.aicc for j in 0:max_grau&#93;, label&#61;&quot;AICc&quot;&#41;
+plot&#33;&#40;0:max_grau, &#91;info&#91;j&#43;1&#93;.bic for j in 0:max_grau&#93;, label&#61;&quot;BIC&quot;&#41;</code></pre>
+<img src="/modelagem_matematica/assets/pages/jupytered/c06/0603-Comparacao_de_modelos/code/images/0603-Comparacao_de_modelos_14_1.png" alt="">
+<h2 id="referências"><a href="#referências" class="header-anchor">Referências</a></h2>
+<ol>
+<li><p>K. B. Burnham, D. R. Anderson, Model Selection and Multimodel Inference: A Practical Information-Theoretic Approach, 2nd edition, Springer, 2002.</p>
+</li>
+<li><p>S. L. Brunton, J. N. Kutz, Data-Driven Science and Engineering: Machine Learning, Dynamical Systems, and Control, Cambridge University Press, 2019.</p>
+</li>
+<li><p>G. Schwarz, Estimating the dimension of a model, The Annals of Statistics, 6&#40;2&#41; &#40;1978&#41;, 461-464.</p>
+</li>
+<li><p>T. J. Sullivan, Introduction to Uncertainty Quantification, Texts in Applied Mathematics, vol. 63, Springer International Publishing, 1995.</p>
+</li>
+</ol>
+<h2 id="exercícios"><a href="#exercícios" class="header-anchor">Exercícios</a></h2>
+<ol>
+<li><p>Mostre, no caso de uma distribuição de Bernouille como descrita acima, a entropia é máxima em \(p=1/2\), ou seja, mostre que o máximo de \( H(\rho_p) = - p\ln p - (1-p)\ln(1-p)\) em \(0\leq p \leq 1\) ocorrem em \(p=1/2\).</p>
+</li>
+<li><p>Considere o problema de modelagem de reação enzimática em fígados de porcos, discutido no caderno 8, sobre <strong>Modelos redutíveis ao caso linear nos parâmetros e aplicações</strong>. Calcule os fatores de qualidade de ajuste &#40;RMS, SS, RMS relativo, SS relativo, R quadrado, R quadrado ajustado, AIC, AICc, BIC&#41; do modelo do tipo Michaelis-Mentem. Calcule também esses fatores para modelos polinomiais de diferentes ordens.</p>
+</li>
+</ol>
+
+    <div class="navbar">
+    <p id="nav">
+<span id="nav-prev" style="float: left;">
+<a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c06/0602-Validacao_do_modelo">6.2. Validação de modelos <kbd>←</kbd></a>
+</span>
+    </p>
+</div>
+</br></br>
+
+
+
+<div class="page-foot">
+    
+        <div class="license">
+            <a href=https://creativecommons.org/licenses/by-nc-nd/4.0/>(CC BY-NC-ND 4.0) Attribution-NonCommercial-NoDerivatives 4.0 International </a>
+            
+        </div>
+    
+
+    Last modified: May 24, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
+</div><!-- CONTENT ENDS HERE -->
+
+      </div> <!-- .books-content -->
+    </div> <!-- .books-container -->
+
+    
+        <script src="/modelagem_matematica/libs/katex/katex.min.js"></script>
+        <script src="/modelagem_matematica/libs/katex/auto-render.min.js"></script>
+        <script>renderMathInElement(document.body)</script>
+    
+
+    
+        <script src="/modelagem_matematica/libs/highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();hljs.configure({tabReplace: '    '});</script>
+    
+
+  </body>
+</html>
