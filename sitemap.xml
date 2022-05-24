@@ -3,13 +3,13 @@
 
 <url>
     <loc>pages/appendix/index.html</loc>
-    <lastmod>2022-05-19</lastmod>
+    <lastmod>2022-02-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
     <loc>pages/jupytered/c03/0301-Quantidades_unidades_dimensoes/index.html</loc>
-    <lastmod>2022-05-19</lastmod>
+    <lastmod>2022-04-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
@@ -22,6 +22,12 @@
 <url>
     <loc>pages/jupytered/c02/0201-Principios_basicos/index.html</loc>
     <lastmod>2022-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/jupytered/c06/0602-Validacao_do_modelo/index.html</loc>
+    <lastmod>2022-05-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
@@ -45,7 +51,7 @@
 </url>
 <url>
     <loc>pages/jupytered/c05/0503-Propagacao_incertezas/index.html</loc>
-    <lastmod>2022-04-14</lastmod>
+    <lastmod>2022-05-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
@@ -92,8 +98,14 @@
     <priority>0.5</priority>
 </url>
 <url>
+    <loc>pages/jupytered/c06/0603-Comparacao_de_modelos/index.html</loc>
+    <lastmod>2022-05-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
     <loc>pages/jupytered/c05/0501-Erros_e_incertezas/index.html</loc>
-    <lastmod>2022-05-19</lastmod>
+    <lastmod>2022-05-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
@@ -136,6 +148,12 @@
 <url>
     <loc>pages/jupytered/c05/0502-Minimos_quadrados_verossimilhanca/index.html</loc>
     <lastmod>2022-05-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/jupytered/c06/0601-Qualidade_do_modelo/index.html</loc>
+    <lastmod>2022-05-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
