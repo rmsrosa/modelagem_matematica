@@ -183,15 +183,15 @@
 </div></br>
 
     
-<h1>5.3. Propagação de incertezas</h1>
-<p>using Plots
+<h1 id="get_title"><a href="#get_title" class="header-anchor">5.3. Propagação de incertezas</a></h1>
+<pre><code class="language-julia">using Plots
 using Distributions
 using Random
 using LsqFit
-using Statistics</p>
-<h2>Introdução</h2>
+using Statistics</code></pre>
+<h2 id="introdução"><a href="#introdução" class="header-anchor">Introdução</a></h2>
 <ul>
-<li><p>Dado um modelo &#36;y&#61;f&#40;\boldsymbol\beta, \mathbf&#123;x&#125;&#41;&#36;, onde \(\beta\) indica um vetor de parâmetros do modelo e \(x\) um vetor de variáveis independentes, buscamos estimar as incertezas em \(y\) em termos de incertezas em \(\boldsymbol\beta\) e em \(\mathbf{x}\).</p>
+<li><p>Dado um modelo \(y=f(\boldsymbol\beta, \mathbf{x})\), onde \(\beta\) indica um vetor de parâmetros do modelo e \(x\) um vetor de variáveis independentes, buscamos estimar as incertezas em \(y\) em termos de incertezas em \(\boldsymbol\beta\) e em \(\mathbf{x}\).</p>
 </li>
 <li><p>De maneira análoga, podemos buscar entender quão sensível a resposta \(y\) é a  variações em \(\boldsymbol\beta\) e em \(\mathbf x\).</p>
 </li>
@@ -204,7 +204,7 @@ using Statistics</p>
 </ul>
 <h2 id="incertezas"><a href="#incertezas" class="header-anchor">Incertezas</a></h2>
 <ul>
-<li><p>Nessa quantificação de incertezas, ou de análise de sensibilidade, tanto os parâmetros \(\boldsymbol\beta\) como as variáveis independentes \(\mathbf x\) são consideradas variáveis aleatórias.</p>
+<li><p>Nessa <em>quantificação de incertezas</em>, ou de <em>análise de sensibilidade</em>, tanto os parâmetros \(\boldsymbol\beta\) como as variáveis independentes \(\mathbf x\) são consideradas variáveis aleatórias.</p>
 </li>
 <li><p>Vamos denotar as incertezas nessas quantidades por \(\delta\boldsymbol\beta\) e \(\delta\mathbf x\).</p>
 </li>
@@ -291,12 +291,12 @@ plot&#33;&#40;data_t, data_v, seriestype&#61;:scatter, label&#61;&quot;amostra c
 <pre><code class="language-julia">β₀ &#61; &#91;0.5, 0.5&#93;
 fit &#61; curve_fit&#40;model, data_t, data_v, β₀&#41;</code></pre>
 <pre><code class="language-julia">LsqFit.LsqFitResult&#123;Vector&#123;Float64&#125;, Vector&#123;Float64&#125;, Matrix&#123;Float64&#125;, Vect
-or&#123;Float64&#125;&#125;&#40;&#91;0.33783348970420884, 0.752669332807861&#93;, &#91;0.00228785846718963
-45, -0.003539069473125704, 0.007927265929843746, 0.0057232304999305095, -0.
-004370304010368059, -0.03195144785088161, 0.02798044147891704&#93;, &#91;0.03833036
-346563923 -0.01654502087827302; 0.16617380755903713 -0.062192294860955295; 
-… ; 0.7685994929679778 -0.07982940235274255; 0.8230124954670534 -0.06538039
-090975993&#93;, true, Float64&#91;&#93;&#41;</code></pre>
+or&#123;Float64&#125;&#125;&#40;&#91;0.33783348970169996, 0.7526693327901114&#93;, &#91;0.0022878584673871
+345, -0.003539069472438726, 0.007927265930752145, 0.005723230500783993, -0.
+004370304010106824, -0.03195144785139303, 0.027980441478012763&#93;, &#91;0.0383303
+6346635541 -0.016545020878989205; 0.16617380756190187 -0.06219229486324708;
+ … ; 0.7685994929725614 -0.07982940235274255; 0.8230124954670534 -0.0653803
+9091892706&#93;, true, Float64&#91;&#93;&#41;</code></pre>
 <h3 id="estatísticas_do_ajuste"><a href="#estatísticas_do_ajuste" class="header-anchor">Estatísticas do ajuste</a></h3>
 <ul>
 <li><p>Abaixo, obtemos</p>
@@ -316,35 +316,37 @@ or&#123;Float64&#125;&#125;&#40;&#91;0.33783348970420884, 0.752669332807861&#93;
 </ul>
 <pre><code class="language-julia">β_fit &#61; fit.param</code></pre>
 <pre><code class="language-julia">2-element Vector&#123;Float64&#125;:
- 0.33783348970420884
- 0.752669332807861</code></pre>
+ 0.33783348970169996
+ 0.7526693327901114</code></pre>
 <pre><code class="language-julia">σ &#61; stderror&#40;fit&#41;</code></pre>
 <pre><code class="language-julia">2-element Vector&#123;Float64&#125;:
- 0.029934302311150303
- 0.19558628727278368</code></pre>
+ 0.029934302312525682
+ 0.195586287280632</code></pre>
 <pre><code class="language-julia">margin_of_error &#61; margin_error&#40;fit, 0.05&#41;</code></pre>
 <pre><code class="language-julia">2-element Vector&#123;Float64&#125;:
- 0.0769485737834891
- 0.5027705573629636</code></pre>
+ 0.07694857378702462
+ 0.5027705573831384</code></pre>
 <pre><code class="language-julia">confidence_inter &#61; confidence_interval&#40;fit, 0.05&#41;</code></pre>
 <pre><code class="language-julia">2-element Vector&#123;Tuple&#123;Float64, Float64&#125;&#125;:
- &#40;0.2608849159207197, 0.41478206348769797&#41;
- &#40;0.24989877544489736, 1.2554398901708246&#41;</code></pre>
+ &#40;0.26088491591467533, 0.4147820634887246&#41;
+ &#40;0.24989877540697303, 1.2554398901732498&#41;</code></pre>
 <pre><code class="language-julia">covar &#61; estimate_covar&#40;fit&#41;</code></pre>
 <pre><code class="language-julia">2×2 Matrix&#123;Float64&#125;:
  0.000896062  0.00517513
  0.00517513   0.038254</code></pre>
 <h3 id="observações"><a href="#observações" class="header-anchor">Observações</a></h3>
 <ul>
-<li><p>O erro padrão é a raiz quadrada dos elementos da diagonal da matriz de variância-covariância.</p>
+<li><p>O erro padrão informado via <code>LsqFit.stderror&#40;&#41;</code> é a raiz quadrada dos elementos da diagonal da matriz de variância-covariância.</p>
 </li>
-<li><p>A matriz de variância-covariância é obtida via aproximação local, a partir da matriz jacobiana e do erro quadrático médio ajustado pelo número de parâmetros.</p>
+<li><p>A matriz de variância-covariância <code>LsqFit.estimate_covar&#40;&#41;</code> é obtida via aproximação local, a partir da matriz jacobiana e do erro quadrático médio ajustado pelo número de parâmetros.</p>
+</li>
+<li><p>Vamos verificar isso&#33;</p>
 </li>
 </ul>
 <pre><code class="language-julia">sqrt.&#40;&#91;covar&#91;1,1&#93;,covar&#91;2,2&#93;&#93;&#41;</code></pre>
 <pre><code class="language-julia">2-element Vector&#123;Float64&#125;:
- 0.029934302311150303
- 0.19558628727278368</code></pre>
+ 0.029934302312525682
+ 0.195586287280632</code></pre>
 <pre><code class="language-julia">jac &#61; fit.jacobian</code></pre>
 <pre><code class="language-julia">7×2 Matrix&#123;Float64&#125;:
  0.0383304  -0.016545
@@ -366,11 +368,11 @@ or&#123;Float64&#125;&#125;&#40;&#91;0.33783348970420884, 0.752669332807861&#93;
 </li>
 </ul>
 <pre><code class="language-julia">mse&#40;fit&#41;</code></pre>
-<pre><code class="language-julia">0.000387251180769009</code></pre>
+<pre><code class="language-julia">0.0003872511807690104</code></pre>
 <pre><code class="language-julia">length&#40;data_v&#41;, length&#40;β_fit&#41;</code></pre>
 <pre><code class="language-julia">&#40;7, 2&#41;</code></pre>
 <pre><code class="language-julia">sum&#40;abs2, data_v - model&#40;data_t, β_fit&#41;&#41; / &#40;length&#40;data_v&#41; - length&#40;β_fit&#41;&#41;</code></pre>
-<pre><code class="language-julia">0.000387251180769009</code></pre>
+<pre><code class="language-julia">0.0003872511807690104</code></pre>
 <h3 id="amostragem_dos_parâmetros"><a href="#amostragem_dos_parâmetros" class="header-anchor">Amostragem dos parâmetros</a></h3>
 <ul>
 <li><p>Pelo método de Monte Carlo, fazemos uma amostragem nos parâmetros e observamos as estatísticas do resultado do modelo com esses parâmetros.</p>
@@ -415,7 +417,7 @@ plot&#33;&#40;t, mean&#40;simulations, dims&#61;2&#41;, color&#61;4, label&#61;&
 </li>
 <li><p>Por esse motivo, não podemos apelar para o Teorema do Limite Central para definir o intervalo de confiança.</p>
 </li>
-<li><p>Os intervalos de confiança devem ser obtidos diretamente através dos percentis das simulações.</p>
+<li><p>Os intervalos de confiança devem ser obtidos diretamente dos percentis das simulações.</p>
 </li>
 <li><p>Dessa forma, é natural que os intervalos de confiança não sejam simétricos em relação à média.</p>
 </li>
@@ -518,7 +520,7 @@ plot&#33;&#40;t, mean&#40;simulations, dims&#61;2&#41; .- 2*sqrt.&#40;var&#40;si
         </div>
     
 
-    Last modified: April 14, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
+    Last modified: May 24, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

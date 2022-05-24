@@ -29,7 +29,7 @@ using Statistics
 
 ## Incertezas
 
-* Nessa quantificação de incertezas, ou de análise de sensibilidade, tanto os parâmetros $\boldsymbol\beta$ como as variáveis independentes $\mathbf x$ são consideradas variáveis aleatórias.
+* Nessa *quantificação de incertezas*, ou de *análise de sensibilidade*, tanto os parâmetros $\boldsymbol\beta$ como as variáveis independentes $\mathbf x$ são consideradas variáveis aleatórias.
 
 * Vamos denotar as incertezas nessas quantidades por $\delta\boldsymbol\beta$ e $\delta\mathbf x$.
 
@@ -129,12 +129,12 @@ fit = curve_fit(model, data_t, data_v, β₀)
 
 ```
 LsqFit.LsqFitResult{Vector{Float64}, Vector{Float64}, Matrix{Float64}, Vect
-or{Float64}}([0.33783348970420884, 0.752669332807861], [0.00228785846718963
-45, -0.003539069473125704, 0.007927265929843746, 0.0057232304999305095, -0.
-004370304010368059, -0.03195144785088161, 0.02798044147891704], [0.03833036
-346563923 -0.01654502087827302; 0.16617380755903713 -0.062192294860955295; 
-… ; 0.7685994929679778 -0.07982940235274255; 0.8230124954670534 -0.06538039
-090975993], true, Float64[])
+or{Float64}}([0.33783348970169996, 0.7526693327901114], [0.0022878584673871
+345, -0.003539069472438726, 0.007927265930752145, 0.005723230500783993, -0.
+004370304010106824, -0.03195144785139303, 0.027980441478012763], [0.0383303
+6346635541 -0.016545020878989205; 0.16617380756190187 -0.06219229486324708;
+ … ; 0.7685994929725614 -0.07982940235274255; 0.8230124954670534 -0.0653803
+9091892706], true, Float64[])
 ```
 
 
@@ -144,15 +144,15 @@ or{Float64}}([0.33783348970420884, 0.752669332807861], [0.00228785846718963
 
 * Abaixo, obtemos
 
-    * os parâmetros ajustados;
+  * os parâmetros ajustados;
 
-    * o erro padrão;
+  * o erro padrão;
 
-    * a margem de 95% de erro;
+  * a margem de 95% de erro;
 
-    * o intervalo de 95% de confiança;
+  * o intervalo de 95% de confiança;
 
-    * a matriz variância-covariância.
+  * a matriz variância-covariância.
 
 ```julia
 β_fit = fit.param
@@ -160,8 +160,8 @@ or{Float64}}([0.33783348970420884, 0.752669332807861], [0.00228785846718963
 
 ```
 2-element Vector{Float64}:
- 0.33783348970420884
- 0.752669332807861
+ 0.33783348970169996
+ 0.7526693327901114
 ```
 
 
@@ -172,8 +172,8 @@ or{Float64}}([0.33783348970420884, 0.752669332807861], [0.00228785846718963
 
 ```
 2-element Vector{Float64}:
- 0.029934302311150303
- 0.19558628727278368
+ 0.029934302312525682
+ 0.195586287280632
 ```
 
 
@@ -184,8 +184,8 @@ margin_of_error = margin_error(fit, 0.05)
 
 ```
 2-element Vector{Float64}:
- 0.0769485737834891
- 0.5027705573629636
+ 0.07694857378702462
+ 0.5027705573831384
 ```
 
 
@@ -196,8 +196,8 @@ confidence_inter = confidence_interval(fit, 0.05)
 
 ```
 2-element Vector{Tuple{Float64, Float64}}:
- (0.2608849159207197, 0.41478206348769797)
- (0.24989877544489736, 1.2554398901708246)
+ (0.26088491591467533, 0.4147820634887246)
+ (0.24989877540697303, 1.2554398901732498)
 ```
 
 
@@ -217,9 +217,11 @@ covar = estimate_covar(fit)
 
 ### Observações
 
-* O erro padrão é a raiz quadrada dos elementos da diagonal da matriz de variância-covariância.
+* O erro padrão informado via `LsqFit.stderror()` é a raiz quadrada dos elementos da diagonal da matriz de variância-covariância.
 
-* A matriz de variância-covariância é obtida via aproximação local, a partir da matriz jacobiana e do erro quadrático médio ajustado pelo número de parâmetros.
+* A matriz de variância-covariância `LsqFit.estimate_covar()` é obtida via aproximação local, a partir da matriz jacobiana e do erro quadrático médio ajustado pelo número de parâmetros.
+
+* Vamos verificar isso!
 
 ```julia
 sqrt.([covar[1,1],covar[2,2]])
@@ -227,8 +229,8 @@ sqrt.([covar[1,1],covar[2,2]])
 
 ```
 2-element Vector{Float64}:
- 0.029934302311150303
- 0.19558628727278368
+ 0.029934302312525682
+ 0.195586287280632
 ```
 
 
@@ -274,7 +276,7 @@ mse(fit)
 ```
 
 ```
-0.000387251180769009
+0.0003872511807690104
 ```
 
 
@@ -294,7 +296,7 @@ sum(abs2, data_v - model(data_t, β_fit)) / (length(data_v) - length(β_fit))
 ```
 
 ```
-0.000387251180769009
+0.0003872511807690104
 ```
 
 
@@ -352,7 +354,7 @@ plot!(t, mean(simulations, dims=2), color=4, label="média simulações")
 
 * Por esse motivo, não podemos apelar para o Teorema do Limite Central para definir o intervalo de confiança.
 
-* Os intervalos de confiança devem ser obtidos diretamente através dos percentis das simulações.
+* Os intervalos de confiança devem ser obtidos diretamente dos percentis das simulações.
 
 * Dessa forma, é natural que os intervalos de confiança não sejam simétricos em relação à média.
 
