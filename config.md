@@ -66,13 +66,13 @@ menu = [
         "src/jupyter/c05/0502-Minimos_quadrados_verossimilhanca.ipynb"
         "src/jupyter/c05/0503-Propagacao_incertezas.ipynb"
     ],
-]
-menu_left = [
     "Avaliação de Modelos" => [
         "src/jupyter/c06/0601-Qualidade_do_modelo.ipynb"
         "src/jupyter/c06/0602-Validacao_do_modelo.ipynb"
         "src/jupyter/c06/0603-Comparacao_de_modelos.ipynb"
     ],
+]
+menu_left = [
     "*PARTE III",
     "Mecânica" => [
         "src/jupyter/c07/0700-Mecanica.ipynb"
