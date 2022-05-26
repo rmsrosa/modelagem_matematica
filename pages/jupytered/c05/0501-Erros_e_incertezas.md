@@ -190,6 +190,54 @@ $$
 * Ou seja, conhecendo-se $\bar q_N$, o conjunto $q_1 - \bar q_N, \ldots, q_N-\bar q_N$ possui apenas $N-1$ graus de liberdade.
 
 
+### Correção de Bessel
+
+* A correção de Bessel vem do fato de que o valor esperado da desvio padrão corrigido da amostra (considerando conjuntos arbitrários de amostras) é exatamente o desvio padrão $\sigma^2$:
+$$
+E(s_q^2) = \sigma^2
+$$
+
+* De fato, lembremos que
+$$
+s_q^2 = \frac{1}{N-1}\sum_{i=1}^N (q_i - \bar q_N)^2, \qquad \bar q_N = \frac{1}{N}\sum_{i=1}^N q_i.
+$$
+
+* Então,
+$$
+\begin{align*}
+E(s_q^2) & = E\left( \frac{1}{N-1}\sum_{i=1}^N (q_i - \bar q_N)^2\right) \\
+  & = \frac{1}{N-1} \sum_{i=1}^N E\left( q_i^2 - 2q_i\bar q_N + {\bar q_N}^2\right) \\
+  & = \frac{1}{N-1} \sum_{i=1}^N E\left( q_i^2 - 2q_i\left(\frac{1}{N}\sum_{j=1}^N q_j\right) + \left(\frac{1}{N}\sum_{j=1}^N q_j\right)^2\right) \\
+  & = \frac{1}{N-1} \sum_{i=1}^N E\left( q_i^2\right) - \frac{2}{N-1}\frac{1}{N}\sum_{i,j=1}^N E(q_iq_j) + \frac{1}{N-1}\frac{1}{N^2}\sum_{i,j,k=1}^N E(q_jq_k) \\
+  & = \frac{1}{N-1} \sum_{i=1}^N E\left( q_i^2\right) - \frac{1}{N-1}\frac{1}{N}\sum_{i,j=1}^N E(q_iq_j)
+\end{align*}
+$$
+
+* Como as amostras $q_i$ são independentes e identicamente distribuídas com média $\mu$ e desvio padrão $\sigma$, temos
+$$
+E\left( q_i^2\right) = \mu^2 + \sigma^2, \qquad E(q_iq_j) = \mu^2, \quad i \neq j.
+$$
+
+* Com isso, temos, para o primeiro somatório,
+$$
+\sum_{i=1}^N E\left( q_i^2\right) = N(\mu^2 + \sigma^2).
+$$
+
+* Além disso, separando o segundo somatório em $i=j$ e $i\neq j$,
+$$
+\sum_{i,j=1}^N E(q_iq_j) = N(\mu^2 + \sigma^2) + N(N-1)\mu^2 = N^2\mu^2 + N\sigma^2.
+$$
+
+* Dessa forma,
+$$
+\begin{align*}
+E(s_q^2) & = \frac{1}{N-1}N(\mu^2 + \sigma^2) - \frac{1}{N-1}\frac{1}{N}\left(N^2\mu^2 + N\sigma^2\right) \\
+  & = \frac{N}{N-1}\sigma^2 - \frac{1}{N-1}\sigma^2 \\
+  & = \sigma^2.
+\end{align*}
+$$
+
+
 ### Interlúdio sobre a distribuição normal
 
 * Uma normal $\mathcal{N}(\mu, \sigma^2)$ é uma distribuição caracterizada por uma média $\mu$ e um desvio padrão $\sigma$ e associada à função densidade de probabilidades
