@@ -53,7 +53,7 @@ $$
 - O critério AIC vem de Teoria da Informação:
 
   - Assumindo que os dados são gerados por um certo processo desconhecido $\mathcal{P}$;    
-  - E que há $J$ candidatos a modelos do processo, $\mathcal{M}_j$, $j=1, \ldots, N$;
+  - E que há $J$ candidatos a modelos do processo, $\mathcal{M}_j$, $j=1, \ldots, J$;
   - $\mathrm{AIC}_j$ é uma medida da perda de informação obtida usando-se o modelo $j$.
   - O modelo com o menor AIC é o modelo com a menor perda de informação.
     
@@ -133,7 +133,7 @@ plot(probvalues, ρ -> -log(ρ), xlabel="probabilidade de um evento", ylabel="in
 $$ I_\rho(x) = I_\rho(x_1, x_2) = -\ln (\rho_1(x_1)\rho_2(x_2)) = - \ln\rho_1(x_1) - \ln\rho_2(x_2) = I_{\rho_1}(x_1) + I_{\rho_2}(x_2).
 $$
 
-* Ou seja, o ganho de informação com a ocorrência de um evento com componentes de naturezas diferentes é a soma do ganho de informações com cada componente.
+* Ou seja, o ganho de informação com a ocorrência de um evento com componentes de naturezas diferentes e independentes é a soma do ganho de informações com cada componente.
 
 
 ### Informação no caso contínuo
@@ -178,14 +178,14 @@ $$
 $$ H(\rho_p) = - p\ln p - (1-p)\ln(1-p).
 $$
 
-* Caso $p=1$ (ou $p=0$), temos entropia nula:
+* Caso $p=1$ ou $p=0$, não há surpresa e temos entropia nula:
 
-$$ H(\rho_{p=1}) = -1\ln 1 - 0\ln 0 = 0 + 0 = 0.
+$$ H(\rho_1) = H(\rho_0) = -1\ln 1 - 0\ln 0 = 0 + 0 = 0.
 $$
 
 * Caso $p=1/2$, a entropia é
 
-$$ H(\rho_{p=1/2}) = - 2 \frac{1}{2}\ln\left(\frac{1}{2}\right) = \ln 2.
+$$ H(\rho_{1/2}) = - 2 \frac{1}{2}\ln\left(\frac{1}{2}\right) = \ln 2.
 $$
 
 
@@ -242,11 +242,12 @@ $$
 
 * O que tiver a menor discrepância, nos dará o modelo mais próximo "da realidade".
 
+* Mas observe que esse termo também não é, em geral, conhecido plenamente, pois a função densidade de probabilidade $g(x)$ de $\mu$ é desconhecida.
+
 
 ### Conexão com o critério de Akaike
 
-
-* Mesmo o termo restante não pode ser calculado, pois ainda contém o termo desconhecido $g$.
+* Mas apesar do termo restante não poder ser calculado, podemos estimar assintociamente essa divergência.
 
 * Akaike mostrou que, assintoticamente, em relação ao número de dados da amostra, e sob certas condições, vale a aproximação deste termo por
 
@@ -254,6 +255,8 @@ $$ N\ln\left(\frac{\mathrm{SS}(r_i)}{N}\right) + 2m,
 $$
 
 onde $N$ é o número de dados e $m$ é o número de parâmetros do modelo.
+
+* Assim, o modelo com o menor índice AIC seria um forte candidato a ser o mais próximo do real.
 
 
 ## Exemplo sintético
@@ -454,6 +457,6 @@ plot!(0:max_grau, [info[j+1].bic for j in 0:max_grau], label="BIC")
 
 ## Exercícios
 
-1. Mostre, no caso de uma distribuição de Bernouille como descrita acima, a entropia é máxima em $p=1/2$, ou seja, mostre que o máximo de $ H(\rho_p) = - p\ln p - (1-p)\ln(1-p)$ em $0\leq p \leq 1$ ocorrem em $p=1/2$.
+1. Mostre, no caso de uma distribuição de Bernouille como descrita acima, a entropia é máxima em $p=1/2$, ou seja, mostre que o máximo de $ H(\rho_p) = - p\ln p - (1-p)\ln(1-p)$ em $0\leq p \leq 1$ ocorre em $p=1/2$.
 
 1. Considere o problema de modelagem de reação enzimática em fígados de porcos, discutido no caderno 8, sobre **Modelos redutíveis ao caso linear nos parâmetros e aplicações**. Calcule os fatores de qualidade de ajuste (RMS, SS, RMS relativo, SS relativo, R quadrado, R quadrado ajustado, AIC, AICc, BIC) do modelo do tipo Michaelis-Mentem. Calcule também esses fatores para modelos polinomiais de diferentes ordens.
