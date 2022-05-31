@@ -71,13 +71,14 @@ menu = [
         "src/jupyter/c06/0602-Validacao_do_modelo.ipynb"
         "src/jupyter/c06/0603-Comparacao_de_modelos.ipynb"
     ],
-]
-menu_left = [
     "*PARTE III",
     "Mecânica" => [
-        "src/jupyter/c07/0700-Mecanica.ipynb"
         "src/jupyter/c07/0701-Mecanica_Newtoniana.ipynb"
         "src/jupyter/c07/0702-Mecanica_Lagrangiana.ipynb"
+    ],
+]
+menu_left = [
+    "Mecânica" => [
         "src/jupyter/c07/0703-Conservacao_contexto_Newtoniano.ipynb"
         "src/jupyter/c07/0704-Conservacao_contexto_Lagrangiano.ipynb"
         "src/jupyter/c07/0705-Hamiltonianos.ipynb"

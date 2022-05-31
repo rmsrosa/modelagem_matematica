@@ -3,25 +3,25 @@
 
 <url>
     <loc>pages/jupytered/c05/0501-Erros_e_incertezas/index.html</loc>
-    <lastmod>2022-05-31</lastmod>
+    <lastmod>2022-05-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
     <loc>pages/jupytered/c01/0102-Instalando_acessando_Julia/index.html</loc>
-    <lastmod>2022-05-31</lastmod>
+    <lastmod>2022-04-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
     <loc>pages/jupytered/c01/0103-Primeiros_passos_Julia/index.html</loc>
-    <lastmod>2022-05-31</lastmod>
+    <lastmod>2022-04-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
     <loc>pages/jupytered/c03/0302-BuckinghamPi/index.html</loc>
-    <lastmod>2022-05-31</lastmod>
+    <lastmod>2022-04-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
@@ -76,6 +76,12 @@
 <url>
     <loc>pages/jupytered/c06/0602-Validacao_do_modelo/index.html</loc>
     <lastmod>2022-05-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/jupytered/c07/0702-Mecanica_Lagrangiana/index.html</loc>
+    <lastmod>2022-05-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
@@ -136,6 +142,12 @@
 <url>
     <loc>pages/jupytered/c03/0303-Unidades_Julia/index.html</loc>
     <lastmod>2022-04-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/jupytered/c07/0701-Mecanica_Newtoniana/index.html</loc>
+    <lastmod>2022-05-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>

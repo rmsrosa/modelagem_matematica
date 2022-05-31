@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="" />
+  <meta name="author" content="and contributors" />
+   <title>Mecânica Newtoniana</title>  
+  <link rel="shortcut icon" type="image/png" href="/modelagem_matematica/assets/images/favicon.png"/>
+  <link rel="stylesheet" href="/modelagem_matematica/css/base.css"/>
+  
+  <script src="/modelagem_matematica/libs/mousetrap/mousetrap.min.js"></script>
+
+  
+
+  
+    <link rel="stylesheet" href="/modelagem_matematica/libs/katex/katex.min.css">
+  
+</head>
+
+<body>
+
+  <div class="books-container">
+
+  <aside class="books-menu">
+  <input type="checkbox" id="menu">
+  <label for="menu">☰</label>
+
+  <div class="books-title">
+    <a href="/modelagem_matematica/">Modelagem Matemática</a>
+  </div>
+
+  <br />
+
+  <div class="books-subtitle">
+    Notas de aula
+  </div>
+
+  <br />
+
+  <div class="books-author">
+    <a href="https://rmsrosa.github.io">Ricardo M. S. Rosa</a>
+  </div>
+
+  <div class="books-menu-content">
+    <div class="menu-level-1">
+    <li><a href="/modelagem_matematica/pages/intro">Introdução</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>PARTE I</li>
+    </div>
+    <div class="menu-level-1">
+    <li>1. Preliminares</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c01/0101-Aspectos_curso">1.1. Aspectos do curso</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c01/0102-Instalando_acessando_Julia">1.2. Instalando e acessando o Julia</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c01/0103-Primeiros_passos_Julia">1.3. Primeiros passos em Julia</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>PARTE II</li>
+    </div>
+    <div class="menu-level-1">
+    <li>2. Princípios de Modelagem Matemática</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c02/0201-Principios_basicos">2.1. Princípios básicos de modelagem</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c02/0202-Exemplos_tipos_modelagem">2.2. Exemplos de tipos de modelagem</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>3. Análise Dimensional</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c03/0301-Quantidades_unidades_dimensoes">3.1. Quantidades, unidades e dimensões</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c03/0302-BuckinghamPi">3.2. Análise dimensional e o Teorema de Buckingham-Pi</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c03/0303-Unidades_Julia">3.3. Trabalhando com unidades e dimensões em Julia</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>4. Ajuste de Parâmetros</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c04/0401-Minimos_quadrados_ajuste">4.1. Mínimos quadrados e o ajuste de parâmetros</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c04/0402-Exemplos_ajuste_linear">4.2. Exemplos de ajuste linear</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c04/0403-Modelos_redutiveis_linear_aplicacoes">4.3. Modelos redutíveis ao caso linear nos parâmetros e aplicações</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c04/0404-Minimos_quadrados_nao_linear">4.4. Mínimos quadrados não-linear</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c04/0405-Exemplos_ajuste_naolinear">4.5. Exemplos de ajuste não-linear de parâmetros</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c04/0406-Redes_neurais">4.6. Redes neurais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c04/0407-Ajuste_em_redes_neurais">4.7. Ajuste de parâmetros em modelos de redes neurais</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>5. Erros e Incertezas</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c05/0501-Erros_e_incertezas">5.1. Erros e incertezas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c05/0502-Minimos_quadrados_verossimilhanca">5.2. Mínimos quadrados, maximização da verossimilhança e quantificação de incertezas em regressões lineares</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c05/0503-Propagacao_incertezas">5.3. Propagação de incertezas</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>6. Avaliação de Modelos</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c06/0601-Qualidade_do_modelo">6.1. Qualidade do ajuste</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c06/0602-Validacao_do_modelo">6.2. Validação de modelos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c06/0603-Comparacao_de_modelos">6.3. Comparação de modelos</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>PARTE III</li>
+    </div>
+    <div class="menu-level-1">
+    <li>7. Mecânica</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c07/0701-Mecanica_Newtoniana">7.1. Mecânica Newtoniana</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c07/0702-Mecanica_Lagrangiana">7.2. Mecânica Lagrangiana</a></li>
+    </div>
+<div>
+
+
+  
+    <a href="https://github.com/rmsrosa/modelagem_matematica/tree/modmat2022p1"><img src="/modelagem_matematica/assets/images/GitHub-Mark-32px.png" alt="GitHub repo" width="18" style="margin:5px 5px" align="left"></a>
+
+  
+
+</aside>
+
+
+  <div class="books-content">
+
+    
+      <div class="navbar">
+    <p id="nav">
+<span id="nav-prev" style="float: left;">
+<a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c06/0603-Comparacao_de_modelos">6.3. Comparação de modelos <kbd>←</kbd></a>
+</span>
+<span id="nav-next" style="float: right;">
+    <a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c07/0702-Mecanica_Lagrangiana"><kbd>→</kbd> 7.2. Mecânica Lagrangiana</a>
+</span>
+    </p>
+</div>
+</br></br>
+
+    
+
+    
+      <div class="badges">
+<p>
+<a href="https://nbviewer.org/urls/rmsrosa.github.io/modelagem_matematica/generated/jupytered/c07/0701-Mecanica_Newtoniana.ipynb"><img align="left" src="https://img.shields.io/badge/view%20in-nbviewer-orange" alt="View in NBViewer" title="View Jupyter notebook in NBViewer"></a>
+<a href="https://mybinder.org/v2/gh/rmsrosa/modelagem_matematica/julia-env-for-binder-2022p1?urlpath=git-pull%3Frepo%3Dhttps://github.com/rmsrosa/modelagem_matematica%26urlpath%3Dlab/tree%252Fmodelagem_matematica/generated/jupytered/c07/0701-Mecanica_Newtoniana.ipynb%26branch%3Dgh-pages"><img align="left" src="https://mybinder.org/badge.svg" alt="Open in binder" title="Open in binder"></a>
+<a href="/modelagem_matematica/generated/jupytered/c07/0701-Mecanica_Newtoniana.ipynb"><img align="left" src="https://img.shields.io/badge/download-notebook-blue" alt="Download notebook" title="Download Jupyter notebook"></a>
+<a href="/modelagem_matematica/src/jupyter/c07/0701-Mecanica_Newtoniana.ipynb"><img align="left" src="https://img.shields.io/badge/view-source-lightblue" alt="View source" title="View source"></a>
+</p>
+</div></br>
+
+    
+<h1 id="get_title"><a href="#get_title" class="header-anchor">7.1. Mecânica Newtoniana</a></h1>
+<h2 id="fundamentos"><a href="#fundamentos" class="header-anchor">Fundamentos</a></h2>
+<ul>
+<li><p>A base da mecânica clássica é a formulação Newtoniana de um sistema formado por \(n\in\mathbb{N}\) partículas de massa \(m_i>0\), \(i=1,\ldots, n\), cujas coordenadas espaciais são dadas por</p>
+</li>
+</ul>
+\[ \mathbf{r}_i=\mathbf{r}_i(t)=(x_i(t),y_i(t),z_i(t))\in\mathbb{R}^3,
+\]
+<p>em cada instante \(t\in\mathbb{R}\).</p>
+<ul>
+<li><p>Cada partícula é sujeita a uma força \(\mathbf{F}_i\in\mathbb{R}^3\).</p>
+</li>
+<li><p>Em um referencial inercial, esse sistema satisfaz as equações diferenciais &#40;segunda lei de Newton&#41;</p>
+</li>
+</ul>
+\[
+  m_i \mathbf{\ddot r}_i = \mathbf{F}_i, \qquad i=1,\ldots,n,
+\]
+<p>onde \(\mathbf{\ddot r}_i\) indica a aceleração da \(i\)-ésima partícula, ou seja a segunda derivada do vetor posição \(\mathbf{r}_i(t)\) em relação à variável temporal \(t\).</p>
+<ul>
+<li><p>Essas equações são as <em>leis de movimento</em> do sistema.</p>
+</li>
+<li><p>A força \(\mathbf{F}_i\) em cada partícula pode depender do instante de tempo \(t\) e da posição das várias partículas, representando forças externas ao sistema e forças de interação entre a \(i\)-ésima partícula e as outras, de modo que em geral temos </p>
+</li>
+</ul>
+\[ \mathbf{F}_i=\mathbf{F}_i(t,\mathbf{r}), 
+\]
+<p>onde </p>
+\[ \mathbf{r}=(\mathbf{r}_1,\mathbf{r}_2,\ldots,\mathbf{r}_n)\in \mathbb{R}^{3n}
+\]
+<p>são as coordenadas do sistema, ou seja, um vetor de dimensão \(3n\) com as coordenadas espaciais de todas as partículas.</p>
+<h2 id="tipos_de_forças"><a href="#tipos_de_forças" class="header-anchor">Tipos de forças</a></h2>
+<ul>
+<li><p>Há vários tipos de forças: gravitacional, elétrica, magnética, elásticas, etc.</p>
+</li>
+<li><p>Podemos, no entanto, separar alguns tipos de força segundo a sua natureza.</p>
+</li>
+<li><p>Algumas forças são <em>internas</em>, decorrentes da interação entre as diversas particulas do próprio sistema.</p>
+</li>
+<li><p>Outras são <em>externas</em>, provenientes de um &quot;campo de força&quot;, associada a fatores externos ao sistema, muitas vezes correspondendo a uma situação aproximada em que as partículas consideradas no sistema não influenciam no movimento das partículas consideradas externas. Vamos ver alguns exemplos.</p>
+</li>
+<li><p>Um exemplo típico de força extena é o campo gravitacional gerado por um corpo relativamente muito maciço e que não é incluído no conjunto de partículas do sistema, como na análise de um corpo em queda livre próximo à superfície da Terra ou mesmo na de um satélite artificial em órbita terrestre.</p>
+</li>
+<li><p>Da mesma forma, podemos ter campos magnéticos e campos eletromagnéticos, onde certos objetos gerando esses campos não são incluídos no sistema de partículas do modelo.</p>
+</li>
+</ul>
+<h2 id="exemplos_de_forças"><a href="#exemplos_de_forças" class="header-anchor">Exemplos de forças</a></h2>
+<ul>
+<li><p>Há quatro forças fundamentais: fraca, forte, eletromagnética e gravitacional. O tratamento mais geral delas, no entanto, não é através de um sistema finito de partículas pontuais, mas sim através de teorias de campo. </p>
+</li>
+<li><p>Contudo, algumas situação podem ser bem aproximadas por um sistema discreto, como as que envolvem forças gravitacionais agindo entre partículas que se movem a velocidades bem inferiores à velocidade da luz, ou então entre partículas carregadas eletricamente.</p>
+</li>
+<li><p>Essas forças podem ser entre partículas elementares ou entre conjuntos de partículas, como no caso da atração gravitacional entre corpos celestes.</p>
+</li>
+<li><p>Há também forças ditas macroscópicas e provenientes da ação das forças fundamentais em certos conjuntos de partículas tratados como um único objeto, como no caso de forças elásticas entre duas massas ligados por uma mola.</p>
+</li>
+<li><p>Várias forças de ligações químicas também entram nessa categoria, como a força de van der Walls e forças de torção.</p>
+</li>
+</ul>
+<h2 id="forças_internas"><a href="#forças_internas" class="header-anchor">Forças internas</a></h2>
+<ul>
+<li><p>Vamos ver alguns exemplos de forças internas.</p>
+</li>
+<li><p>Veremos posteriormente que todas essas forças são <em>conservativas</em>, ou seja, provenientes de <em>potenciais</em>.</p>
+</li>
+</ul>
+<h3 id="força_gravitacional_entre_dois_corpos"><a href="#força_gravitacional_entre_dois_corpos" class="header-anchor">Força gravitacional entre dois corpos </a></h3>
+<ul>
+<li><p>Sejam \(\mathbf{r}_1, \mathbf{r}_2\in \mathbb{R}^3\) as coordenadas do centro de massa, em algum referencial inercial, de dois corpos com massas \(m_1, m_2>0\), respectivamente.</p>
+</li>
+<li><p>Cada corpo exerce uma <em>força de atração gravitacional</em> no outro, que depende das coordenadas dos dois corpos.</p>
+</li>
+<li><p>Denotando \(\mathbf{F}_{i,j}(\mathbf{r}_1,\mathbf{r}_2)\) a força que o corpo \(j\) exerce no corpo \(i\), para \(i,j=1,2\), \(i\neq j\), temos</p>
+</li>
+</ul>
+\[
+    \begin{align*}
+      \mathbf{F}_{1,2}(\mathbf{r}_1,\mathbf{r}_2)& =-Gm_1m_2\frac{\mathbf{r}_1-\mathbf{r}_2}{\|\mathbf{r}_1-\mathbf{r}_2\|^3}, \\
+      \mathbf{F}_{2,1}(\mathbf{r}_1,\mathbf{r}_2)&=-Gm_1m_2\frac{\mathbf{r}_2-\mathbf{r}_1}{\|\mathbf{r}_2-\mathbf{r}_1\|^3}.
+    \end{align*}
+\]
+<h3 id="força_eletrostática_entre_dois_corpos_carregados"><a href="#força_eletrostática_entre_dois_corpos_carregados" class="header-anchor">Força eletrostática entre dois corpos carregados</a></h3>
+<ul>
+<li><p>Sejam \(\mathbf{r}_1,\mathbf{r}_2\in \mathbb{R}^3\) as coordenadas do centro de massa, em algum referencial inercial, de dois corpos carregados eletricamente com cargas \(q_1, q_2\in \mathbb{R}\), respectivamente.</p>
+</li>
+<li><p>Cada corpo exerce uma força elétrostática no outro, de acordo com a <strong>lei de Coulomb</strong>.</p>
+</li>
+<li><p>Denotando \(\mathbf{F}_{i,j}(\mathbf{r}_1,\mathbf{r}_2)\) a força que o corpo \(j\) exerce no corpo \(i\), para \(i,j=1,2\), \(i\neq j\), temos</p>
+</li>
+</ul>
+\[
+    \begin{align*}
+      \mathbf{F}_{1,2}(\mathbf{r}_1,\mathbf{r}_2)& =Cq_1q_2\frac{\mathbf{r}_1-\mathbf{r}_2}{\|\mathbf{r}_1-\mathbf{r}_2\|^3}, \\
+      \mathbf{F}_{2,1}(\mathbf{r}_1,\mathbf{r}_2)&=Cq_1q_2\frac{\mathbf{r}_2-\mathbf{r}_1}{\|\mathbf{r}_2-\mathbf{r}_1\|^3}.
+    \end{align*}
+\]
+<h3 id="força_elástica_harmônica"><a href="#força_elástica_harmônica" class="header-anchor">Força elástica harmônica</a></h3>
+<ul>
+<li><p>Sejam \(\mathbf{r}_1,\mathbf{r}_2\in \mathbb{R}^3\) as coordenadas do centro de massa, em algum referencial inercial, de dois corpos com massas \(m_1, m_2>0\), respectivamente.</p>
+</li>
+<li><p>Suponha que esses dois corpos estejam ligados por uma mola harmônica de comprimento de equilíbrio \(\ell>0\) e coeficiente de restituição \(k>0\).</p>
+</li>
+<li><p>Cada corpo sofre uma <strong>força de restituição</strong> proporcional ao deslocamento da mola em relação à posição de equilíbrio.</p>
+</li>
+<li><p>Denotando por \(\mathbf{F}_{i,j}(\mathbf{r}_1,\mathbf{r}_2)\) a força exercida no corpo \(i\) pela mola que a liga ao corpo \(j\), para \(i,j=1,2\), \(i\neq j\), temos</p>
+</li>
+</ul>
+\[
+    \begin{align*}
+      \mathbf{F}_{1,2}(\mathbf{r}_1,\mathbf{r}_2)& = -k(\|\mathbf{r}_1-\mathbf{r}_2\|-d)\frac{\mathbf{r}_1-\mathbf{r}_2}{\|\mathbf{r}_1-\mathbf{r}_2\|}, \\
+      \mathbf{F}_{2,1}(\mathbf{r}_1,\mathbf{r}_2)&=-k(\|\mathbf{r}_2-\mathbf{r}_1\|-d)\frac{\mathbf{r}_2-\mathbf{r}_1}{\|\mathbf{r}_2-\mathbf{r}_1\|}.
+    \end{align*}
+\]
+<h2 id="campos_de_força_externos"><a href="#campos_de_força_externos" class="header-anchor">Campos de força externos</a></h2>
+<ul>
+<li><p>No caso de forças gravitacionais, há situações em que um corpo é muito mais massivo que outro e a influência do menos massivo no mais massivo pode ser desprezada.</p>
+</li>
+<li><p>Nesse caso, o sistema consiste apenas do menos massivo e a influência do mais massivo pode ser representada por um campo de forças externas.</p>
+</li>
+<li><p>Mais precisamente, suponha, por exemplo, um objeto próximo à superfície da Terra. Considerando as coordenadas do objeto como \(\mathbf{r}=(x,y,z)\), com a coordenada \(z\) perpendicular à superfície da Terra e com o sentido de crescimento indicando um afastamento da superfície, então a força gravitacional exercida pela Terra nesse corpo que assumimos de massa \(m>0\) é dada por</p>
+</li>
+</ul>
+\[ \mathbf{F} = m\mathbf{g},
+\]
+<p>onde \(\mathbf{g}=(0,0,-g)\) e \(g\) é a aceleração gravitacional próxima à superfície da Terra.</p>
+<ul>
+<li><p>Observe que essa força pode ser escrita na forma</p>
+</li>
+</ul>
+\[ \mathbf{F} = m\mathbf{G}(\mathbf{r}),
+\]
+<p>onde</p>
+\[ \mathbf{G} = \mathbf{g}
+\]
+<p>é chamado de <strong>campo gravitacional uniforme</strong> próximo à superfície da Terra.</p>
+<ul>
+<li><p>A vantagem de escrever a força dessa forma é que se tivermos \(n\) objetos de massas \(m_1,\ldots,m_n\), então basta considerarmos o campo \(\mathbf{G}(\mathbf{r})=\mathbf{g}\), de forma que a força gravitacional em cada objeto é dada por</p>
+</li>
+</ul>
+\[ \mathbf{F}_i = m_i \mathbf{G}.
+\]
+<ul>
+<li><p>Há vários tipos de <em>campos de força</em>, correspondentes aos tipos de força.</p>
+</li>
+<li><p>De fato, podemos ter campos gravitacionais, campos elétricos, campos magnéticos, campos eletro-magnéticos, etc.</p>
+</li>
+</ul>
+<h3 id="campo_gravitacional"><a href="#campo_gravitacional" class="header-anchor">Campo gravitacional</a></h3>
+<ul>
+<li><p>Um campo de vetores \(\mathbf{G}=\mathbf{G}(\mathbf{r})\) de \(\mathbb{R}^3\)em \(\mathbb{R}^3\) pode ser interpretado como um campo gravitacional quando a força exercida por esse campo em uma partícula de massa \(m>0\) e posição \(\mathbf{r}\in \mathbb{R}^3\) é dada por</p>
+</li>
+</ul>
+\[ \mathbf{F}(\mathbf{r}) = m\mathbf{G}(\mathbf{r}).
+\]
+<ul>
+<li><p>É claro que \(n\) partículas de massas \(m_i\) e coordenadas \(\mathbf{r}_i\), \(i=1,\ldots, n\), sofrem forças</p>
+</li>
+</ul>
+\[ \mathbf{F}_i(\mathbf{r}_i) = m_i\mathbf{G}(\mathbf{r}_i),
+\]
+<p>respectivamente.</p>
+<ul>
+<li><p>Há vários casos partículares interessantes:</p>
+</li>
+</ul>
+<h4 id="campo_gravitacional_uniforme"><a href="#campo_gravitacional_uniforme" class="header-anchor">Campo gravitacional uniforme</a></h4>
+<ul>
+<li><p>Esse é um caso partícular em que \(\mathbf{G}\) é constante, geralmente denotado \(\mathbf{G}(\mathbf{r})=\mathbf{g}\), para algum vetor \(\mathbf{g}\in \mathbb{R}\) representando a aceleração gravitacional.</p>
+</li>
+<li><p>No caso clássico em que \(\mathbf{r}=(x,y,z)\) e \(z\) representa a altura em relação à superfície da Terra, temos \(\mathbf{g}=(0,0,-g)\), onde \(g\) é a aceleração gravitacional próxima à superfície da Terra.</p>
+</li>
+</ul>
+<h4 id="campo_gravitacional_de_um_corpo_celeste"><a href="#campo_gravitacional_de_um_corpo_celeste" class="header-anchor">Campo gravitacional de um corpo celeste</a></h4>
+<ul>
+<li><p>Considerando um corpo de massa \(M\) e posição \(\mathbf{r}_0\in \mathbb{R}^3\), em algum referencial inercial, o campo gravitacional gerado por esse corpo é dado por</p>
+</li>
+</ul>
+\[ \mathbf{G}(\mathbf{r}) = -GM\frac{\mathbf{r}-\mathbf{r}_0}{\|\mathbf{r}-\mathbf{r}_0\|^3}.
+\]
+<ul>
+<li><p>Considerando um corpo de massa \(m\), a força exercida neste corpo por esse campo gravitacional é</p>
+</li>
+</ul>
+\[ \mathbf{F}(\mathbf{r}) = m\mathbf{G}(\mathbf{r}).
+\]
+<h4 id="campo_elétrico"><a href="#campo_elétrico" class="header-anchor">Campo elétrico</a></h4>
+<ul>
+<li><p>De maneira análoga, um campo de vetores \(\mathbf{E} = \mathbf{E}(\mathbf{r})\) de \(\mathbb{R}^3\) em \(\mathbb{R}^3\) pode ser interpretado como um campo elétrico quando a força exercida por esse campo em uma partícula de carga \(q>0\) e posição \(\mathbf{r}\in \mathbb{R}^3\) é dada por</p>
+</li>
+</ul>
+\[ \mathbf{F}(\mathbf{r}) = q\mathbf{E}(\mathbf{r}).
+\]
+<ul>
+<li><p>Um capacitor de placa paralela, por exemplo, gera um campo elétrico uniforme semelhante ao campo gravitacional uniforme.</p>
+</li>
+</ul>
+<h4 id="campo_magnético_agindo_em_partículas_carregadas_eletricamente"><a href="#campo_magnético_agindo_em_partículas_carregadas_eletricamente" class="header-anchor">Campo magnético agindo em partículas carregadas eletricamente</a></h4>
+<ul>
+<li><p>Um campo magnético \(\mathbf{B} = \mathbf{B}(\mathbf{r})\) de \(\mathbb{R}^3\) em \(\mathbb{R}^3\) exerce uma força em uma partícula carregada eletricamente que é de uma natureza um pouco mais complicada que às anteriores.</p>
+</li>
+<li><p>Sendo \(q\) a carga elétrica, \(\mathbf{r}\in \mathbb{R}^3\) a posição, e \(\mathbf{\dot r}\in \mathbb{R}^3\) a velocidade, então essa força é dada por</p>
+</li>
+</ul>
+\[ \mathbf{F}(\mathbf{r},\mathbf{\dot r}) = q\mathbf{\dot r} \times \mathbf{B}(\mathbf{r}).
+\]
+<ul>
+<li><p>Campos magnéticos uniformes aparecem, por exemplo, em aceleradores circulares de partícula, com o plano em que as partículas circulam sendo perpendicular ao campo magnético. </p>
+</li>
+</ul>
+<h4 id="campo_eletromagnético"><a href="#campo_eletromagnético" class="header-anchor">Campo eletromagnético</a></h4>
+<ul>
+<li><p>Um campo eletromagnético \((\mathbf{E}, \mathbf{B})\) age em uma partícula carregada eletricamente através de uma força chamada de <strong>força de Lorentz</strong>, que é dada por</p>
+</li>
+</ul>
+\[ \mathbf{F}(\mathbf{r},\mathbf{\dot r}, t) = q(\mathbf{E}(\mathbf{r}, t) + \mathbf{\dot r}\times \mathbf{B}(\mathbf{r},t)).
+\]
+<h2 id="campos_conservativos"><a href="#campos_conservativos" class="header-anchor">Campos conservativos</a></h2>
+<ul>
+<li><p>Vamos considerar agora o caso em que as forças no sistema são conservativas, provenientes de um campo potencial escalar.</p>
+</li>
+<li><p>No caso em que as forças dependem apenas da posição das partículas do sistema, um campo de forças é conservativo quando é menos o gradiente de uma função escalar, dita potencial do campo.</p>
+</li>
+<li><p>Mais precisamente, \(\mathbf{F} =(\mathbf{F}_1, \mathbf{F}_2,\ldots, \mathbf{F}_n)\) é um <strong>campo conservativo</strong> quando existe uma função escalar \(V\), chamada de <strong>potencial</strong> do campo, tal que</p>
+</li>
+</ul>
+\[ \mathbf{F}(t,\mathbf{r})=-\frac{\partial V}{\partial\mathbf{r}}(t,\mathbf{r}),
+\]
+<p>onde \(\partial/\partial\mathbf{r}\) indica as derivadas parciais apenas em relação às coordenadas espaciais</p>
+\[ \mathbf{r}=(\mathbf{r}_1,\mathbf{r}_2,\ldots,\mathbf{r}_n).
+\]
+<ul>
+<li><p>Lembramos que cada \(\mathbf{r}_i=(x_i,y_i,z_i)\) tem três coordenadas, ou seja,</p>
+</li>
+</ul>
+\[ \frac{\partial V}{\partial\mathbf{r}} = 
+     \left(\frac{\partial V}{\partial\mathbf{r}_1}, \ldots, \frac{\partial V}{\partial\mathbf{r}_n}\right)
+     = \left(\frac{\partial V}{\partial x_1}, \frac{\partial V}{\partial y_1}, 
+           \frac{\partial V}{\partial z_1}, \ldots, \frac{\partial V}{\partial x_n}, 
+           \frac{\partial V}{\partial y_n}, \frac{\partial V}{\partial z_n} \right).
+\]
+<ul>
+<li><p>A força em cada partícula \(i\) tem a forma</p>
+</li>
+</ul>
+\[ \mathbf{F}_i(t,\mathbf{r}) = - \frac{\partial V}{\partial\mathbf{r}_i}(t,\mathbf{r})
+     = - \left(\frac{\partial V}{\partial x_i}, \frac{\partial V}{\partial y_i}, \frac{\partial V}{\partial z_i}\right).
+\]
+<h3 id="exemplos_de_campos_conservativos"><a href="#exemplos_de_campos_conservativos" class="header-anchor">Exemplos de campos conservativos</a></h3>
+<ul>
+<li><p><strong>Campo gravitacional uniforme:</strong> Em coordenadas \(xyz\), o campo gravitacional uniforme \(\mathbf{F}(x, y, z) = m\mathbf{g}\), \(\mathbf{g} = (0, 0, -g)\) possui como potencial a função escalar \(V(x,y,z) = mgz\).</p>
+</li>
+<li><p><strong>Campo gravitacional:</strong> Um sistema gravitacional de \(n\in \mathbf{N}\) corpos de massas \(m_i>0\) e posições \(\mathbf{r}_i\in \mathbb{R}^3\), \(i=1,\ldots, n\), é um sistema conservativo com potencial gravitacional </p>
+</li>
+</ul>
+\[
+    \begin{align*}
+      V(\mathbf{r}) & = -\frac{1}{2}\sum_{\genfrac{}{}{0pt}{}{j,k=1, \ldots, n}{j\neq k}} 
+         \frac{Gm_jm_k}{\|\mathbf{r}_j-\mathbf{r}_k\|} \\
+         & = -\sum_{\genfrac{}{}{0pt}{}{j,k=1, \ldots, n}{j< k}} \frac{Gm_jm_k}{\|\mathbf{r}_j-\mathbf{r}_k\|} \\
+         & = - \sum_{j=1}^{n-1} \sum_{k=j+1}^n \frac{Gm_jm_k}{\|\mathbf{r}_j-\mathbf{r}_k\|}.
+    \end{align*}
+\]
+<ul>
+<li><p><strong>Mola harmônica:</strong> A força de restituição de uma mola harmônica ligando duas massas \(m_1\) e \(m_2\) em posições \(\mathbf{r}_1\) e \(\mathbf{r}_2\) é uma força conservativa com potencial</p>
+</li>
+</ul>
+\[ V_{ij}(\mathbf{r}) =\frac{1}{2} \kappa(|\mathbf{r}_i - \mathbf{r}_j|-\ell_0)^2,
+\]
+<p>onde \(\kappa\) é o coeficiente de restituição da mola, \(\ell_0\) é o comprimento de equilíbrio da mola livre e \(\mathbf{r} = (\mathbf{r}_1, \mathbf{r}_2) \in \mathbb{R}^{6}\).</p>
+<ul>
+<li><p><strong>Campo elétrico:</strong> A força elétrica que age entre dois corpos carregados eletricamente com cargas \(q_1, q_2\neq 0\) e posições \(\mathbf{r}_1, \mathbf{r}_2\), tem a forma</p>
+</li>
+</ul>
+\[ \mathbf{F}_{ij}(\mathbf{r}) = \frac{q_iq_j}{4\pi\epsilon_0}\frac{\mathbf{r}_i-\mathbf{r}_j}{\|\mathbf{r}_i-\mathbf{r}_j\|^3},
+\]
+<p>onde \(\epsilon_0\) é a constante de permissividade do meio. O potencial elétrico correspondente é costumeiramente denotado por \(\phi\), ao invés de \(V\), e tem a forma</p>
+\[ \phi(\mathbf{r}) = \frac{1}{4\pi \epsilon_0}\frac{q_iq_j}{\|\mathbf{r}_i-\mathbf{r}_j\|},
+\]
+<p>onde \(\mathbf{r} = (\mathbf{r}_1, \mathbf{r}_2) \in \mathbb{R}^{6}\). No caso de várias partículas carregadas eletricamente, basta somar o potencial para cada par de cargas, com a mesma ressalva feita no caso gravitacional, para evitar contar cada potencial duas vezes.</p>
+<h3 id="potenciais_vetoriais"><a href="#potenciais_vetoriais" class="header-anchor">Potenciais vetoriais</a></h3>
+<ul>
+<li><p>Os campos magnético e eletromagnético também possuem campos potenciais, mas os seus potenciais não são mais funções escalares; são potenciais vetoriais.</p>
+</li>
+<li><p>O <strong>potencial magnético</strong> é um campo vetorial \(\mathbf{A}\) cujo rotacional é igual ao campo magnético:</p>
+</li>
+</ul>
+\[ \boldsymbol{\nabla} \times \mathbf{A} = \mathbf{B}.
+\]
+<ul>
+<li><p>No caso de um campo eletromagnético \((\mathbf{B}, \mathbf{E})\), o potencial magnético \(\mathbf{A}\) pode ser combinado com o potencial elétrico \(\phi\) visto anteriormente para nos dar o <strong>potencial eletromagnético</strong>.</p>
+</li>
+<li><p>Nesse caso, o campo eletromagnético são obtidos do potencial eletromagnético por</p>
+</li>
+</ul>
+\[ \mathbf{B} = \boldsymbol{\nabla} \times \mathbf{A}, \qquad \mathbf{E} = - \boldsymbol{\nabla} \phi - \frac{\partial \mathbf{A}}{\partial t}.
+\]
+<ul>
+<li><p>Esses tipos de campos serão mais explorados na parte de Mecânica Lagrangiana.</p>
+</li>
+</ul>
+<h2 id="exercícios"><a href="#exercícios" class="header-anchor">Exercícios</a></h2>
+<ol>
+<li><p>Verifique que uma força \(\mathbf{F}(\mathbf{r})=(F_x,F_y,F_z)\in \mathbb{R}^3\) de um sistema de uma única partícula com coordenadas \(\mathbf{F}=(x,y,z)\in\mathbb{R}^3\) é conservativo se, e somente se, o rotacional de \(\mathbf{F}(\mathbf{r})\) se anula para todo \(\mathbf{r}\in \mathbb{R}^3\), i.e.</p>
+</li>
+</ol>
+\[ \boldsymbol{\nabla} \times \mathbf{F}(\mathbf{r}) = (0,0,0), \qquad \forall\;\mathbf{r}\in \mathbb{R}^3.
+\]
+<ol>
+<li><p>Verifique que uma força \(\mathbf{F}(\mathbf{r})\in \mathbf{R}^3\) de um sistema de uma única partícula com coordenadas \(\mathbf{r}\in \mathbb{R}^3\) é conservativo se, e somente, se o trabalho</p>
+</li>
+</ol>
+\[ \int_\gamma \mathbf{F}(\mathbf{r})\cdot \mathrm{d} \mathbf{r} = 0, 
+\]
+<p>ao longo de qualquer caminho fechado suave \(\gamma\) &#40;i.e. \(\gamma\) é uma curva parametrizada suave \(\mathbf{r}:[t_0,t_1]\rightarrow \mathbb{R}^3\) com \(\mathbf{r}(t_0)=\mathbf{r}(t_1)\).&#41;</p>
+<ol>
+<li><p>Escreva o potencial gravitacional uniforme em um referencial inclinado de uma ângulo \(\alpha\), apropriado para o movimento de uma partícula deslizando sobre um plano inclinado próximo à superfície da Terra. </p>
+</li>
+<li><p>Escreva o potencial associado a três molas harmônicas, ligando cada par de uma série de três partículas de massa \(m_i\) no espaço, como em um triângulo, e onde cada mola tem um coeficiente de restituição \(k_i\) e um comprimento de equilíbrio \(\ell_i\), \(i=1,2,3\).     </p>
+</li>
+<li><p>Mostre que se as forças entre duas partículas i&#41; atuam na direção que une essas duas partículas; ii&#41; têm sentidos contrários; iii&#41; têm a mesma magnitude; e iv&#41; essa magnitude dependente apenas da distância entre essas duas partículas, então esse conjunto de forças  é conservativo. Mais precisamente, assuma que \(\mathbf{F}_{ij}(\mathbf{r})\) tem a forma</p>
+</li>
+</ol>
+\[ \mathbf{F}_{ij}(\mathbf{r}) = -\varphi(\|\mathbf{r}_i-\mathbf{r}_j\|)\frac{\mathbf{r}_i-\mathbf{r}_j}{\|\mathbf{r}_i-\mathbf{r}_j\|},
+\]
+<p>onde \(\varphi:(0,\infty)\rightarrow \mathbb{R}\), e mostre que o potencial é dado por </p>
+\[ V_{ij}(\mathbf{r})=\psi(\|\mathbf{r}_i-\mathbf{r}_j\|),
+\]
+<p>para uma determinada função escalar \(\psi\).</p>
+
+    <div class="navbar">
+    <p id="nav">
+<span id="nav-prev" style="float: left;">
+<a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c06/0603-Comparacao_de_modelos">6.3. Comparação de modelos <kbd>←</kbd></a>
+</span>
+<span id="nav-next" style="float: right;">
+    <a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c07/0702-Mecanica_Lagrangiana"><kbd>→</kbd> 7.2. Mecânica Lagrangiana</a>
+</span>
+    </p>
+</div>
+</br></br>
+
+
+
+<div class="page-foot">
+    
+        <div class="license">
+            <a href=https://creativecommons.org/licenses/by-nc-nd/4.0/>(CC BY-NC-ND 4.0) Attribution-NonCommercial-NoDerivatives 4.0 International </a>
+            
+        </div>
+    
+
+    Last modified: May 31, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
+</div><!-- CONTENT ENDS HERE -->
+
+      </div> <!-- .books-content -->
+    </div> <!-- .books-container -->
+
+    
+        <script src="/modelagem_matematica/libs/katex/katex.min.js"></script>
+        <script src="/modelagem_matematica/libs/katex/auto-render.min.js"></script>
+        <script>renderMathInElement(document.body)</script>
+    
+
+    
+
+  </body>
+</html>
