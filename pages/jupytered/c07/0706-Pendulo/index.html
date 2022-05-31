@@ -153,6 +153,24 @@
     <div class="menu-level-2">
     <li><a href="/modelagem_matematica/pages/jupytered/c07/0701-Mecanica_Newtoniana">7.1. Mecânica Newtoniana</a></li>
     </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c07/0702-Mecanica_Lagrangiana">7.2. Mecânica Lagrangiana</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c07/0703-Conservacao_contexto_Newtoniano">7.3. Leis de conservação em um contexto Newtoniano</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c07/0704-Conservacao_contexto_Lagrangiano">7.4. Leis de conservação em um contexto Lagrangiano</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c07/0705-Hamiltonianos">7.5. Hamiltonianos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c07/0706-Pendulo">7.6. Análise do período de um pêndulo planar simples</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c07/0707-Pendulo_angulos_grandes">7.7. Experimentos com pêndulos</a></li>
+    </div>
 <div>
 
 
@@ -167,7 +185,18 @@
   <div class="books-content">
 
     
-      
+      <div class="navbar">
+    <p id="nav">
+<span id="nav-prev" style="float: left;">
+<a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c07/0705-Hamiltonianos">7.5. Hamiltonianos <kbd>←</kbd></a>
+</span>
+<span id="nav-next" style="float: right;">
+    <a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c07/0707-Pendulo_angulos_grandes"><kbd>→</kbd> 7.7. Experimentos com pêndulos</a>
+</span>
+    </p>
+</div>
+</br></br>
+
     
 
     
@@ -176,12 +205,12 @@
 <a href="https://nbviewer.org/urls/rmsrosa.github.io/modelagem_matematica/generated/jupytered/c07/0706-Pendulo.ipynb"><img align="left" src="https://img.shields.io/badge/view%20in-nbviewer-orange" alt="View in NBViewer" title="View Jupyter notebook in NBViewer"></a>
 <a href="https://mybinder.org/v2/gh/rmsrosa/modelagem_matematica/julia-env-for-binder-2022p1?urlpath=git-pull%3Frepo%3Dhttps://github.com/rmsrosa/modelagem_matematica%26urlpath%3Dlab/tree%252Fmodelagem_matematica/generated/jupytered/c07/0706-Pendulo.ipynb%26branch%3Dgh-pages"><img align="left" src="https://mybinder.org/badge.svg" alt="Open in binder" title="Open in binder"></a>
 <a href="/modelagem_matematica/generated/jupytered/c07/0706-Pendulo.ipynb"><img align="left" src="https://img.shields.io/badge/download-notebook-blue" alt="Download notebook" title="Download Jupyter notebook"></a>
-<a href="nothing"><img align="left" src="https://img.shields.io/badge/view-source-lightblue" alt="View source" title="View source"></a>
+<a href="/modelagem_matematica/src/jupyter/c07/0706-Pendulo.ipynb"><img align="left" src="https://img.shields.io/badge/view-source-lightblue" alt="View source" title="View source"></a>
 </p>
 </div></br>
 
     
-<h1 id="get_title"><a href="#get_title" class="header-anchor">Title not found</a></h1>
+<h1 id="get_title"><a href="#get_title" class="header-anchor">7.6. Análise do período de um pêndulo planar simples</a></h1>
 <h3 id="importando_bibliotecas_e_definindo_funções_a_serem_usadas_abaixo"><a href="#importando_bibliotecas_e_definindo_funções_a_serem_usadas_abaixo" class="header-anchor">Importando bibliotecas e definindo funções a serem usadas abaixo</a></h3>
 <pre><code class="language-julia">using Images
 using Plots
@@ -345,12 +374,12 @@ plot&#33;&#40;-π:0.01:π, &#91;θ -&gt; sin&#40;θ&#41;; θ -&gt; θ&#93;, labe
 <ul>
 <li><p>Outra forma de obter a relação acima para o período é via mudança de escala no modelo não linear.</p>
 </li>
-<li><p>Seja \(\theta(t; \theta_\max, \ell, g)\) uma solução de </p>
+<li><p>Seja \(\theta(t; \theta_{\textrm{max}}, \ell, g)\) uma solução de </p>
 </li>
 </ul>
 \[ \ell\ddot\theta = - g \sin(\theta).
 \]
-<p>com ângulo máximo de oscilação \(\theta_\max\) e período de oscilação \(T = T(\theta_\max, \ell, g)\)</p>
+<p>com ângulo máximo de oscilação \(\theta_{\textrm{max}}\) e período de oscilação \(T = T(\theta_{\textrm{max}}, \ell, g)\)</p>
 <ul>
 <li><p>Defina, agora,</p>
 </li>
@@ -382,20 +411,20 @@ plot&#33;&#40;-π:0.01:π, &#91;θ -&gt; sin&#40;θ&#41;; θ -&gt; θ&#93;, labe
 \[ \phi'' = -\sin(\phi).
 \]
 <ul>
-<li><p>Esta equação não tem parâmetro, o único parâmetro envolvido <em>na solução</em> \(\phi\) é o ângulo de oscilação máxima \(\theta_\max\). Portanto, o seu período de oscilação só pode depender de \(\theta_\max\), digamos</p>
+<li><p>Esta equação não tem parâmetro, o único parâmetro envolvido <em>na solução</em> \(\phi\) é o ângulo de oscilação máxima \(\theta_{\textrm{max}}\). Portanto, o seu período de oscilação só pode depender de \(\theta_{\textrm{max}}\), digamos</p>
 </li>
 </ul>
-\[ \mathcal T(\theta_\max).
+\[ \mathcal T(\theta_{\textrm{max}}).
 \]
 <h3 id="período"><a href="#período" class="header-anchor">Período</a></h3>
 <ul>
 <li><p>Assim, obtemos a relação</p>
 </li>
 </ul>
-\[ T\sqrt{\frac{g}{\ell}} = \mathcal T(\theta_\max),
+\[ T\sqrt{\frac{g}{\ell}} = \mathcal T(\theta_{\textrm{max}}),
 \]
 <p>ou seja</p>
-\[ T(\theta_\max, \ell, g) = \mathcal T(\theta_\max) \sqrt{\frac{\ell}{g}}.
+\[ T(\theta_{\textrm{max}}, \ell, g) = \mathcal T(\theta_{\textrm{max}}) \sqrt{\frac{\ell}{g}}.
 \]
 <h3 id="conservação_de_energia_e_hamiltoniano"><a href="#conservação_de_energia_e_hamiltoniano" class="header-anchor">Conservação de energia e Hamiltoniano</a></h3>
 <ul>
@@ -427,25 +456,25 @@ plot&#33;&#40;-π:0.01:π, &#91;θ -&gt; sin&#40;θ&#41;; θ -&gt; θ&#93;, labe
 </ul>
 \[ H(\theta(t), \omega(t)) = \textrm{constante em } t\in\mathbb{R}.
 \]
-<p>com a constante dependendo da órbita, ou seja, dependendo do ângulo máximo \(\theta_\max\) &#40;caso ele, de fato, oscile, ao invés de girar continuamente em torno do extremo fixo&#41;.</p>
+<p>com a constante dependendo da órbita, ou seja, dependendo do ângulo máximo \(\theta_{\textrm{max}}\) &#40;caso ele, de fato, oscile, ao invés de girar continuamente em torno do extremo fixo&#41;.</p>
 <h3 id="fórmula_para_a_velocidade_angular"><a href="#fórmula_para_a_velocidade_angular" class="header-anchor">Fórmula para a velocidade angular</a></h3>
 <ul>
-<li><p>Considerando o caso em que o pêndulo oscile com ângulo máximo \(\theta_\max\), temos que a velocidade angular \(\omega\) se anula no momento em que esse ângulo é alcançado, de modo que</p>
+<li><p>Considerando o caso em que o pêndulo oscile com ângulo máximo \(\theta_{\textrm{max}}\), temos que a velocidade angular \(\omega\) se anula no momento em que esse ângulo é alcançado, de modo que</p>
 </li>
 </ul>
-\[ H(\theta(t), \omega(t)) = H(\theta_\max, 0) = - \frac{g}{\ell}\cos\theta_\max.
+\[ H(\theta(t), \omega(t)) = H(\theta_{\textrm{max}}, 0) = - \frac{g}{\ell}\cos\theta_{\textrm{max}}.
 \]
 <ul>
 <li><p>Portanto,</p>
 </li>
 </ul>
-\[ \frac{1}{2}\omega(t)^2 - \frac{g}{\ell}\cos\theta(t) = - \frac{g}{\ell}\cos\theta_\max.
+\[ \frac{1}{2}\omega(t)^2 - \frac{g}{\ell}\cos\theta(t) = - \frac{g}{\ell}\cos\theta_{\textrm{max}}.
 \]
 <ul>
 <li><p>Isso nos leva a</p>
 </li>
 </ul>
-\[ \frac{\mathrm{d}\theta}{\mathrm{d}t}(t) = \omega(t) = \pm \sqrt{ \frac{2g}{\ell}\left(\cos(\theta(t)) - \cos(\theta_\max)\right)}
+\[ \frac{\mathrm{d}\theta}{\mathrm{d}t}(t) = \omega(t) = \pm \sqrt{ \frac{2g}{\ell}\left(\cos(\theta(t)) - \cos(\theta_{\textrm{max}})\right)}
 \]
 <h3 id="fórmula_para_o_período"><a href="#fórmula_para_o_período" class="header-anchor">Fórmula para o período</a></h3>
 <ul>
@@ -460,52 +489,52 @@ plot&#33;&#40;-π:0.01:π, &#91;θ -&gt; sin&#40;θ&#41;; θ -&gt; θ&#93;, labe
 <li><p>Da fórmula para a velocidade angular, e usando que \(\theta(t(\theta)) = \theta\), obtemos</p>
 </li>
 </ul>
-\[ \frac{\mathrm{d}t}{\mathrm{d}\theta}(\theta) = \pm \frac{1}{\displaystyle \sqrt{ \frac{2g}{\ell}\left(\cos\theta - \cos\theta_\max\right)}}.
+\[ \frac{\mathrm{d}t}{\mathrm{d}\theta}(\theta) = \pm \frac{1}{\displaystyle \sqrt{ \frac{2g}{\ell}\left(\cos\theta - \cos\theta_{\textrm{max}}\right)}}.
 \]
 <ul>
-<li><p>Quando o ângulo varia de \(\theta_\max > 0\) a \(0\), o tempo decorre um quarto do período. Assim, o período é dado por</p>
+<li><p>Quando o ângulo varia de \(\theta_{\textrm{max}} > 0\) a \(0\), o tempo decorre um quarto do período. Assim, o período é dado por</p>
 </li>
 </ul>
-\[ T(\theta_\max, \ell, g) = 4 \int_{\theta_\max}^0 \frac{\mathrm{d}t}{\mathrm{d}\theta}(\theta) \;\mathrm{d}\theta.
+\[ T(\theta_{\textrm{max}}, \ell, g) = 4 \int_{\theta_{\textrm{max}}}^0 \frac{\mathrm{d}t}{\mathrm{d}\theta}(\theta) \;\mathrm{d}\theta.
 \]
 <ul>
 <li><p>Nesse intervalo, a velocidade angular é negativa. Assim, usando a fórmula para a velocidade angular, escrevemos</p>
 </li>
 </ul>
-\[ T(\theta_\max, \ell, g) = - 4 \int_{\theta_\max}^0 \frac{1}{\displaystyle \sqrt{ \frac{2g}{\ell}\left(\cos\theta - \cos\theta_\max\right)}} \;\mathrm{d}\theta.
+\[ T(\theta_{\textrm{max}}, \ell, g) = - 4 \int_{\theta_{\textrm{max}}}^0 \frac{1}{\displaystyle \sqrt{ \frac{2g}{\ell}\left(\cos\theta - \cos\theta_{\textrm{max}}\right)}} \;\mathrm{d}\theta.
 \]
 <ul>
 <li><p>Podemos reescrever isso e obter a fórmula final para o período:</p>
 </li>
 </ul>
-\[ T(\theta_\max, \ell, g) = 4 \sqrt{\frac{\ell}{2g}}\int_0^{\theta_\max} \frac{1}{\displaystyle \sqrt{\cos\theta - \cos\theta_\max}} \;\mathrm{d}\theta.
+\[ T(\theta_{\textrm{max}}, \ell, g) = 4 \sqrt{\frac{\ell}{2g}}\int_0^{\theta_{\textrm{max}}} \frac{1}{\displaystyle \sqrt{\cos\theta - \cos\theta_{\textrm{max}}}} \;\mathrm{d}\theta.
 \]
 <ul>
 <li><p>Mais uma vez, observe que isso é da forma</p>
 </li>
 </ul>
-\[ T(\theta_\max, \ell, g) = \sqrt{\frac{\ell}{g}} \mathcal T(\theta_\max),
+\[ T(\theta_{\textrm{max}}, \ell, g) = \sqrt{\frac{\ell}{g}} \mathcal T(\theta_{\textrm{max}}),
 \]
 <p>com</p>
-\[ \mathcal T(\theta_\max) = 2\sqrt{2}\int_0^{\theta_\max} \frac{1}{\displaystyle \sqrt{\cos\theta - \cos\theta_\max}} \;\mathrm{d}\theta.
+\[ \mathcal T(\theta_{\textrm{max}}) = 2\sqrt{2}\int_0^{\theta_{\textrm{max}}} \frac{1}{\displaystyle \sqrt{\cos\theta - \cos\theta_{\textrm{max}}}} \;\mathrm{d}\theta.
 \]
 <h3 id="aproximando_a_fórmula_integral_do_período"><a href="#aproximando_a_fórmula_integral_do_período" class="header-anchor">Aproximando a fórmula integral do período</a></h3>
 <ul>
-<li><p>A fórmula de \(\mathcal T(\theta_\max)\) envolve uma integral elíptica completa, do primeiro tipo.</p>
+<li><p>A fórmula de \(\mathcal T(\theta_{\textrm{max}})\) envolve uma integral elíptica completa, do primeiro tipo.</p>
 </li>
 <li><p>Existem expressões em termos de expansão em séries de potências ou de cossenos ou de quadrados de senos ou de polinômios de Legendre, etc., mas não existem fórmulas fechadas em termos de funções elementares.</p>
 </li>
 <li><p>Outra fórmula é via média aritmética-geométrica:</p>
 </li>
 </ul>
-\[ \mathcal T(\theta_\max) = \frac{2\pi}{\mathop{AGM}(1, \cos(\theta_\max/2))},
+\[ \mathcal T(\theta_{\textrm{max}}) = \frac{2\pi}{\mathop{AGM}(1, \cos(\theta_{\textrm{max}}/2))},
 \]
 <p>onde \(\mathop{AGM}(a, b)\) é a função média aritmética-geométrica entre \(a\) e \(b\).</p>
 <ul>
 <li><p>Mais geralmente, </p>
 </li>
 </ul>
-\[ T(\theta_\max) = \frac{T_p}{\mathop{AGM}(1, \cos(\theta_\max/2))},
+\[ T(\theta_{\textrm{max}}) = \frac{T_p}{\mathop{AGM}(1, \cos(\theta_{\textrm{max}}/2))},
 \]
 <p>onde</p>
 \[ T_p = 2\pi \sqrt{\frac{\ell}{g}}.
@@ -621,13 +650,13 @@ for N in 1:5
 end
 @btime 𝒯&#40;&#36;&#40;π/4&#41;&#41;
 nothing</code></pre>
-<pre><code class="language-julia">2.145 ns &#40;0 allocations: 0 bytes&#41;
-  34.315 ns &#40;0 allocations: 0 bytes&#41;
-  93.692 ns &#40;0 allocations: 0 bytes&#41;
-  141.787 ns &#40;0 allocations: 0 bytes&#41;
-  188.914 ns &#40;0 allocations: 0 bytes&#41;
-  237.257 ns &#40;0 allocations: 0 bytes&#41;
-  25.890 ns &#40;0 allocations: 0 bytes&#41;</code></pre>
+<pre><code class="language-julia">2.340 ns &#40;0 allocations: 0 bytes&#41;
+  42.925 ns &#40;0 allocations: 0 bytes&#41;
+  115.150 ns &#40;0 allocations: 0 bytes&#41;
+  173.631 ns &#40;0 allocations: 0 bytes&#41;
+  188.302 ns &#40;0 allocations: 0 bytes&#41;
+  241.511 ns &#40;0 allocations: 0 bytes&#41;
+  31.105 ns &#40;0 allocations: 0 bytes&#41;</code></pre>
 <h3 id="comparando_as_aproximações_via_agm_e_via_linear"><a href="#comparando_as_aproximações_via_agm_e_via_linear" class="header-anchor">Comparando as aproximações via AGM e via linear</a></h3>
 <pre><code class="language-julia">plot&#40;θ, θ -&gt; &#40;𝒯&#40;θ&#41; - 2π&#41;/2π, label&#61;nothing&#41;</code></pre>
 <img src="/modelagem_matematica/assets/pages/jupytered/c07/0706-Pendulo/code/images/0706-Pendulo_13_1.png" alt="">
@@ -672,11 +701,11 @@ println&#40;sol.retcode&#41;</code></pre>
 <pre><code class="language-julia">angulos &#61; &#40;π / 20, π / 14, π / 10, π / 8, π / 6, π / 4, π / 3&#41;
 for θ₀ in angulos
     prob &#61; SecondOrderODEProblem&#40;f_pendulo&#33;, &#91;ω₀&#93;, &#91;θ₀&#93;, tspan, &#91;ℓ, g&#93;&#41;
-    sol &#61; solve&#40;prob, KahanLi8&#40;&#41;, dt &#61; 0.02&#41;
+    lsol &#61; solve&#40;prob, KahanLi8&#40;&#41;, dt &#61; 0.02&#41;
     p &#61; plot&#40;title &#61; &quot;angulo em graus: &#36;&#40;round&#40;rad2deg&#40;θ₀&#41;, digits &#61; 2&#41;&#41;°&quot;, titlefont &#61; 10,
         xaxis &#61; &quot;t&quot;, yaxis &#61; &quot;θ &#40;rad&#41;&quot;, size &#61; &#40;600, 200&#41;, legend &#61; :bottomleft&#41;
-    plot&#33;&#40;p, sol, vars &#61; 2, label &#61; &quot;modelo não linear&quot;&#41;
-    plot&#33;&#40;p, sol.t, θ₀ * cos.&#40; √&#40;g/ℓ&#41; * sol.t &#41;, label &#61; &quot;modelo linear&quot;&#41;
+    plot&#33;&#40;p, lsol, vars &#61; 2, label &#61; &quot;modelo não linear&quot;&#41;
+    plot&#33;&#40;p, lsol.t, θ₀ * cos.&#40; √&#40;g/ℓ&#41; * lsol.t &#41;, label &#61; &quot;modelo linear&quot;&#41;
     display&#40;p&#41;
 end</code></pre>
 <p><img src="/modelagem_matematica/assets/pages/jupytered/c07/0706-Pendulo/code/images/0706-Pendulo_18_1.png" alt=""> <img src="/modelagem_matematica/assets/pages/jupytered/c07/0706-Pendulo/code/images/0706-Pendulo_18_2.png" alt=""> <img src="/modelagem_matematica/assets/pages/jupytered/c07/0706-Pendulo/code/images/0706-Pendulo_18_3.png" alt=""> <img src="/modelagem_matematica/assets/pages/jupytered/c07/0706-Pendulo/code/images/0706-Pendulo_18_4.png" alt=""> <img src="/modelagem_matematica/assets/pages/jupytered/c07/0706-Pendulo/code/images/0706-Pendulo_18_5.png" alt=""> <img src="/modelagem_matematica/assets/pages/jupytered/c07/0706-Pendulo/code/images/0706-Pendulo_18_6.png" alt=""> <img src="/modelagem_matematica/assets/pages/jupytered/c07/0706-Pendulo/code/images/0706-Pendulo_18_7.png" alt=""></p>
@@ -685,15 +714,26 @@ end</code></pre>
 <li><p>Usando a fórmula</p>
 </li>
 </ol>
-\[ \mathcal T(\theta_\max) = 2\sqrt{2}\int_0^{\theta_\max} \frac{1}{\displaystyle \sqrt{\cos\theta - \cos\theta_\max}} \;\mathrm{d}\theta.
+\[ \mathcal T(\theta_{\textrm{max}}) = 2\sqrt{2}\int_0^{\theta_{\textrm{max}}} \frac{1}{\displaystyle \sqrt{\cos\theta - \cos\theta_{\textrm{max}}}} \;\mathrm{d}\theta.
 \]
-<p>mostre que \(\lim_{\theta_\max \searrow 0} \mathcal{T}(\theta_\max) = 2\pi\).</p>
+<p>mostre que \(\lim_{\theta_{\textrm{max}} \searrow 0} \mathcal{T}(\theta_{\textrm{max}}) = 2\pi\).</p>
 <ol>
 <li><p>Mostre que \(AGM(\lambda a, \lambda b) = \lambda AGM(a,b)\), para todo \(\lambda > 0\).</p>
 </li>
 </ol>
 
-    
+    <div class="navbar">
+    <p id="nav">
+<span id="nav-prev" style="float: left;">
+<a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c07/0705-Hamiltonianos">7.5. Hamiltonianos <kbd>←</kbd></a>
+</span>
+<span id="nav-next" style="float: right;">
+    <a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c07/0707-Pendulo_angulos_grandes"><kbd>→</kbd> 7.7. Experimentos com pêndulos</a>
+</span>
+    </p>
+</div>
+</br></br>
+
 
 
 <div class="page-foot">

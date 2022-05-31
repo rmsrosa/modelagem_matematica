@@ -151,6 +151,24 @@
     <div class="menu-level-2">
     <li><a href="/modelagem_matematica/pages/jupytered/c07/0701-Mecanica_Newtoniana">7.1. Mecânica Newtoniana</a></li>
     </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c07/0702-Mecanica_Lagrangiana">7.2. Mecânica Lagrangiana</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c07/0703-Conservacao_contexto_Newtoniano">7.3. Leis de conservação em um contexto Newtoniano</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c07/0704-Conservacao_contexto_Lagrangiano">7.4. Leis de conservação em um contexto Lagrangiano</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c07/0705-Hamiltonianos">7.5. Hamiltonianos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c07/0706-Pendulo">7.6. Análise do período de um pêndulo planar simples</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c07/0707-Pendulo_angulos_grandes">7.7. Experimentos com pêndulos</a></li>
+    </div>
 <div>
 
 
@@ -165,7 +183,15 @@
   <div class="books-content">
 
     
-      
+      <div class="navbar">
+    <p id="nav">
+<span id="nav-prev" style="float: left;">
+<a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c07/0706-Pendulo">7.6. Análise do período de um pêndulo planar simples <kbd>←</kbd></a>
+</span>
+    </p>
+</div>
+</br></br>
+
     
 
     
@@ -174,12 +200,12 @@
 <a href="https://nbviewer.org/urls/rmsrosa.github.io/modelagem_matematica/generated/jupytered/c07/0707-Pendulo_angulos_grandes.ipynb"><img align="left" src="https://img.shields.io/badge/view%20in-nbviewer-orange" alt="View in NBViewer" title="View Jupyter notebook in NBViewer"></a>
 <a href="https://mybinder.org/v2/gh/rmsrosa/modelagem_matematica/julia-env-for-binder-2022p1?urlpath=git-pull%3Frepo%3Dhttps://github.com/rmsrosa/modelagem_matematica%26urlpath%3Dlab/tree%252Fmodelagem_matematica/generated/jupytered/c07/0707-Pendulo_angulos_grandes.ipynb%26branch%3Dgh-pages"><img align="left" src="https://mybinder.org/badge.svg" alt="Open in binder" title="Open in binder"></a>
 <a href="/modelagem_matematica/generated/jupytered/c07/0707-Pendulo_angulos_grandes.ipynb"><img align="left" src="https://img.shields.io/badge/download-notebook-blue" alt="Download notebook" title="Download Jupyter notebook"></a>
-<a href="nothing"><img align="left" src="https://img.shields.io/badge/view-source-lightblue" alt="View source" title="View source"></a>
+<a href="/modelagem_matematica/src/jupyter/c07/0707-Pendulo_angulos_grandes.ipynb"><img align="left" src="https://img.shields.io/badge/view-source-lightblue" alt="View source" title="View source"></a>
 </p>
 </div></br>
 
     
-<h1 id="get_title"><a href="#get_title" class="header-anchor">Title not found</a></h1>
+<h1 id="get_title"><a href="#get_title" class="header-anchor">7.7. Experimentos com pêndulos</a></h1>
 <pre><code class="language-julia">using Base64
 using StatsBase
 using CSV
@@ -191,22 +217,21 @@ using VideoIO</code></pre>
 <pre><code class="language-julia">using Optim</code></pre>
 <pre><code class="language-julia">using DifferentialEquations.OrdinaryDiffEq
 using DifferentialEquations.RecursiveArrayTools</code></pre>
-<pre><code class="language-julia">include&#40;&quot;scripts/DisplayMovie.jl&quot;&#41;
-include&#40;&quot;scripts/VideoTracking.jl&quot;&#41;</code></pre>
-<pre><code class="language-julia">Error: SystemError: opening file &quot;/Users/rmsrosa/Documents/git-repositories
-/modelagem_matematica/src/jupyter/c07/scripts/DisplayMovie.jl&quot;: No such fil
-e or directory</code></pre>
-<pre><code class="language-julia">filename &#61; &quot;img/pendulo_70cm_1_reduzido_curto.mp4&quot;
-vd &#61; VideoIO.load&#40;filename&#41;</code></pre>
-<pre><code class="language-julia">Error: Could not open img/pendulo_70cm_1_reduzido_curto.mp4. avformat_open_
-input error code -2</code></pre>
+<pre><code class="language-julia">include&#40;&quot;../../../_assets/attachments/scripts/DisplayMovie.jl&quot;&#41;
+include&#40;&quot;../../../_assets/attachments/scripts/VideoTracking.jl&quot;&#41;</code></pre>
+<pre><code class="language-julia">Main.##WeaveSandBox#578.VideoTracking</code></pre>
+<pre><code class="language-julia">filename &#61; &quot;../../../_assets/attachments/img/pendulo_70cm_1_reduzido_curto.mp4&quot;
+vd &#61; VideoIO.load&#40;filename&#41;
+nothing</code></pre>
 <pre><code class="language-julia">typeof&#40;copy&#40;vd&#91;1&#93;&#41;&#41;</code></pre>
-<pre><code class="language-julia">Error: UndefVarError: vd not defined</code></pre>
+<pre><code class="language-julia">Matrix&#123;RGB&#123;N0f8&#125;&#125; &#40;alias for Array&#123;ColorTypes.RGB&#123;FixedPointNumbers.Normed&#123;
+UInt8, 8&#125;&#125;, 2&#125;&#41;</code></pre>
 <pre><code class="language-julia">println&#40;&quot;Duração do vídeo: &#36;&#40;VideoIO.get_duration&#40;filename&#41;&#41; s&quot;&#41;
 println&#40;&quot;Número de quadros: &#36;&#40;length&#40;vd&#41;&#41;&quot;&#41;
 println&#40;&quot;Número médio de quadros por segundo: &#36;&#40;length&#40;vd&#41;/VideoIO.get_duration&#40;filename&#41;&#41;&quot;&#41;</code></pre>
-<pre><code class="language-julia">Error: Could not open img/pendulo_70cm_1_reduzido_curto.mp4. avformat_open_
-input error code -2</code></pre>
+<pre><code class="language-julia">Duração do vídeo: 5.086 s
+Número de quadros: 150
+Número médio de quadros por segundo: 29.49272512780181</code></pre>
 <pre><code class="language-julia"># video completo
 filename_completo &#61; &quot;img/pendulo_70cm_1_reduzido.mov&quot;
 vd_completo &#61; VideoIO.load&#40;filename_completo&#41;
@@ -216,15 +241,26 @@ println&#40;&quot;&quot;&quot;Número médio de quadros por segundo: &#36;&#40;l
 <pre><code class="language-julia">Error: Could not open img/pendulo_70cm_1_reduzido.mov. avformat_open_input 
 error code -2</code></pre>
 <pre><code class="language-julia">vd&#91;1&#93;</code></pre>
-<pre><code class="language-julia">Error: UndefVarError: vd not defined</code></pre>
-<pre><code class="language-julia">DisplayMovie.display_movie&#40;&quot;img/pendulo_70cm_1_reduzido_curto.mp4&quot;&#41;</code></pre>
-<pre><code class="language-julia">Error: UndefVarError: DisplayMovie not defined</code></pre>
+<p><span style="color:red;">// Image matching '/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_11_1.png' not found. //</span></p>
+<pre><code class="language-julia">DisplayMovie.display_movie&#40;&quot;../../../_assets/attachments/img/pendulo_70cm_1_reduzido_curto.mp4&quot;&#41;</code></pre>
+<pre><code class="language-julia">Error: MethodError: no method matching show&#40;::IOContext&#123;IOBuffer&#125;, ::MIME&#123;S
+ymbol&#40;&quot;text/html&quot;&#41;&#125;, ::String&#41;
+Closest candidates are:
+  show&#40;::IO, ::MIME&#123;Symbol&#40;&quot;text/html&quot;&#41;&#125;, &#33;Matched::DataFrames.DataFrameRow
+; summary, eltypes&#41; at ~/.julia/packages/DataFrames/MA4YO/src/abstractdataf
+rame/io.jl:268
+  show&#40;::IO, ::MIME&#123;Symbol&#40;&quot;text/html&quot;&#41;&#125;, &#33;Matched::DataFrames.DataFrameRow
+s; summary, eltypes&#41; at ~/.julia/packages/DataFrames/MA4YO/src/abstractdata
+frame/io.jl:275
+  show&#40;::IO, ::MIME&#123;Symbol&#40;&quot;text/html&quot;&#41;&#125;, &#33;Matched::DataFrames.GroupedDataF
+rame&#41; at ~/.julia/packages/DataFrames/MA4YO/src/abstractdataframe/io.jl:291
+  ...</code></pre>
 <pre><code class="language-julia">background &#61; convert.&#40;RGB&#123;Float16&#125;, vd&#91;1&#93;&#41;</code></pre>
-<pre><code class="language-julia">Error: UndefVarError: vd not defined</code></pre>
+<p><span style="color:red;">// Image matching '/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_13_1.png' not found. //</span></p>
 <pre><code class="language-julia">convert.&#40;RGB&#123;Float16&#125;, vd&#91;54&#93;&#41;</code></pre>
-<pre><code class="language-julia">Error: UndefVarError: vd not defined</code></pre>
+<p><span style="color:red;">// Image matching '/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_14_1.png' not found. //</span></p>
 <pre><code class="language-julia">convert.&#40;Gray&#123;Float16&#125;, abs.&#40;convert.&#40;RGB&#123;Float16&#125;, vd&#91;54&#93;&#41; - background&#41;&#41;</code></pre>
-<pre><code class="language-julia">Error: UndefVarError: vd not defined</code></pre>
+<p><span style="color:red;">// Image matching '/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_15_1.png' not found. //</span></p>
 <pre><code class="language-julia">threshold &#61; 0.1
 mask &#61; convert.&#40;
     Gray&#123;Float16&#125;,
@@ -233,73 +269,315 @@ mask &#61; convert.&#40;
         background
     &#41;
 &#41; .&gt; threshold</code></pre>
-<pre><code class="language-julia">Error: UndefVarError: vd not defined</code></pre>
+<pre><code class="language-julia">480×854 BitMatrix:
+ 0  0  0  0  0  0  0  0  0  0  0  0  0  …  0  0  0  0  0  0  0  0  0  0  0 
+ 1
+ 0  0  0  0  0  0  0  0  0  0  0  0  0     0  0  0  0  0  0  0  0  0  0  0 
+ 0
+ 0  0  0  0  0  0  0  0  0  0  0  0  0     0  0  0  0  0  0  0  0  0  0  0 
+ 0
+ 0  0  0  0  0  0  0  0  0  0  0  0  0     0  0  0  0  0  0  0  0  0  0  0 
+ 0
+ 0  0  0  0  0  0  0  0  0  0  0  0  0     0  0  0  0  0  0  0  0  0  0  0 
+ 0
+ 0  0  0  0  0  0  0  0  0  0  0  0  0  …  0  0  0  0  0  0  0  0  0  0  0 
+ 0
+ 0  0  0  0  0  0  0  0  0  0  0  0  0     0  0  0  0  0  0  0  0  0  0  0 
+ 0
+ 0  0  0  0  0  0  0  0  0  0  0  0  0     1  0  0  0  0  0  0  0  0  0  0 
+ 0
+ 0  0  0  0  0  0  0  0  0  0  0  0  0     1  0  0  0  0  0  0  0  0  0  0 
+ 0
+ 0  0  0  0  0  0  0  0  0  0  0  0  0     1  0  0  0  0  0  0  0  0  0  0 
+ 0
+ ⋮              ⋮              ⋮        ⋱           ⋮              ⋮       
+ 
+ 0  0  0  0  0  0  0  0  0  0  0  0  0     0  0  0  0  0  0  0  0  0  0  0 
+ 0
+ 0  0  0  0  0  0  0  0  0  0  0  0  0     0  0  0  0  0  0  0  0  0  0  0 
+ 0
+ 0  0  0  0  0  0  0  0  0  0  0  0  0     0  0  0  0  0  0  0  0  0  0  0 
+ 0
+ 0  0  0  0  0  0  0  0  0  0  0  0  0     0  0  0  0  0  0  0  0  0  0  0 
+ 0
+ 0  0  0  0  0  0  0  0  0  0  0  0  0  …  0  0  0  0  0  0  0  0  0  0  0 
+ 0
+ 0  0  0  0  0  0  0  0  0  0  0  0  0     0  0  0  0  0  0  0  0  0  0  0 
+ 0
+ 0  0  0  0  0  0  0  0  0  0  0  0  0     0  0  0  0  0  0  0  0  0  0  0 
+ 0
+ 0  0  0  0  0  0  0  0  0  0  0  0  0     0  0  0  0  0  0  0  0  0  0  0 
+ 0
+ 0  0  0  0  0  0  0  0  0  0  0  0  0     0  0  0  0  0  0  0  0  0  0  0 
+ 0</code></pre>
 <pre><code class="language-julia">convert.&#40;Gray&#123;Float16&#125;, mask&#41;</code></pre>
-<pre><code class="language-julia">Error: UndefVarError: mask not defined</code></pre>
+<p><span style="color:red;">// Image matching '/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_17_1.png' not found. //</span></p>
 <pre><code class="language-julia">labeled_components &#61; label_components&#40;mask&#41;</code></pre>
-<pre><code class="language-julia">Error: UndefVarError: mask not defined</code></pre>
+<pre><code class="language-julia">480×854 Matrix&#123;Int64&#125;:
+ 0  0  0  0  0  0  0  0  0  0  0  0  …  0  0  0  0  0  0  0  0  0  0  0  18
+ 0  0  0  0  0  0  0  0  0  0  0  0     0  0  0  0  0  0  0  0  0  0  0   0
+ 0  0  0  0  0  0  0  0  0  0  0  0     0  0  0  0  0  0  0  0  0  0  0   0
+ 0  0  0  0  0  0  0  0  0  0  0  0     0  0  0  0  0  0  0  0  0  0  0   0
+ 0  0  0  0  0  0  0  0  0  0  0  0     0  0  0  0  0  0  0  0  0  0  0   0
+ 0  0  0  0  0  0  0  0  0  0  0  0  …  0  0  0  0  0  0  0  0  0  0  0   0
+ 0  0  0  0  0  0  0  0  0  0  0  0     0  0  0  0  0  0  0  0  0  0  0   0
+ 0  0  0  0  0  0  0  0  0  0  0  0     8  0  0  0  0  0  0  0  0  0  0   0
+ 0  0  0  0  0  0  0  0  0  0  0  0     8  0  0  0  0  0  0  0  0  0  0   0
+ 0  0  0  0  0  0  0  0  0  0  0  0     8  0  0  0  0  0  0  0  0  0  0   0
+ ⋮              ⋮              ⋮     ⋱           ⋮              ⋮        
+ 0  0  0  0  0  0  0  0  0  0  0  0     0  0  0  0  0  0  0  0  0  0  0   0
+ 0  0  0  0  0  0  0  0  0  0  0  0     0  0  0  0  0  0  0  0  0  0  0   0
+ 0  0  0  0  0  0  0  0  0  0  0  0     0  0  0  0  0  0  0  0  0  0  0   0
+ 0  0  0  0  0  0  0  0  0  0  0  0     0  0  0  0  0  0  0  0  0  0  0   0
+ 0  0  0  0  0  0  0  0  0  0  0  0  …  0  0  0  0  0  0  0  0  0  0  0   0
+ 0  0  0  0  0  0  0  0  0  0  0  0     0  0  0  0  0  0  0  0  0  0  0   0
+ 0  0  0  0  0  0  0  0  0  0  0  0     0  0  0  0  0  0  0  0  0  0  0   0
+ 0  0  0  0  0  0  0  0  0  0  0  0     0  0  0  0  0  0  0  0  0  0  0   0
+ 0  0  0  0  0  0  0  0  0  0  0  0     0  0  0  0  0  0  0  0  0  0  0   0</code></pre>
 <pre><code class="language-julia">@which label_components&#40;mask&#41;</code></pre>
 <pre><code class="language-julia">Error: LoadError: UndefVarError: @which not defined
 in expression starting at /Users/rmsrosa/Documents/git-repositories/modelag
 em_matematica/src/jupyter/c07/0707-Pendulo_angulos_grandes.ipynb:2</code></pre>
-<pre><code class="language-julia">?label_components</code></pre>
-<pre><code class="language-julia">Error: syntax: invalid identifier name &quot;?&quot;</code></pre>
+<pre><code class="language-julia">show&#40;Docs.doc&#40;label_components&#41;&#41;</code></pre>
+
+<p>label &#61; label<em>components&#40;A; bkg &#61; zero&#40;eltype&#40;A&#41;&#41;, dims&#61;coords</em>spatial&#40;A&#41;&#41; label &#61; label_components&#40;A, connectivity; bkg &#61; zero&#40;eltype&#40;A&#41;&#41;&#41;</p>
+<pre><code class="language-julia">Find the connected components in an array &#96;A&#96;. Components are defined as co
+nnected voxels that all have the same value distinct from &#96;bkg&#96;, which corr
+esponds to the &quot;background&quot; component.
+
+Specify connectivity in one of three ways:
+
+  * A list indicating which dimensions are used to determine connectivity. 
+For example, &#96;dims &#61; &#40;1,3&#41;&#96; would not test neighbors along dimension 2 for 
+connectivity. This corresponds to just the nearest neighbors, i.e., default
+ 4-connectivity in 2d and 6-connectivity in 3d.
+  * An iterable &#96;connectivity&#96; object with &#96;CartesianIndex&#96; elements encodi
+ng the displacement of each checked neighbor.
+  * A symmetric boolean array of the same dimensionality as &#96;A&#96;, of size 1 
+or 3 along each dimension. Each entry in the array determines whether a giv
+en neighbor is used for connectivity analyses. For example, in two dimensio
+ns &#96;connectivity &#61; trues&#40;3,3&#41;&#96; would include all pixels that touch the curr
+ent one, even the corners.
+
+The output &#96;label&#96; is an integer array, where &#96;bkg&#96; elements get a value of
+ 0.
+
+# Examples
+
+&#96;&#96;&#96;jldoctest; setup&#61;:&#40;using ImageMorphology&#41;
+julia&gt; A &#61; &#91;true false false true  false;
+            true false true  true  true&#93;
+2×5 Matrix&#123;Bool&#125;:
+ 1  0  0  1  0
+ 1  0  1  1  1
+
+julia&gt; label_components&#40;A&#41;
+2×5 Matrix&#123;Int64&#125;:
+ 1  0  0  2  0
+ 1  0  2  2  2
+
+julia&gt; label_components&#40;A; dims&#61;2&#41;
+2×5 Matrix&#123;Int64&#125;:
+ 1  0  0  4  0
+ 2  0  3  3  3
+&#96;&#96;&#96;
+
+With &#96;dims&#61;2&#96;, entries in &#96;A&#96; are connected if they are in the same row, bu
+t not if they are in the same column.</code></pre>
 <pre><code class="language-julia">colorset &#61; distinguishable_colors&#40;maximum&#40;labeled_components&#41;&#43;1, colorant&quot;black&quot;, dropseed &#61; false&#41;</code></pre>
-<pre><code class="language-julia">Error: UndefVarError: labeled_components not defined</code></pre>
+<p><span style="color:red;">// Image matching '/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_21_1.svg' not found. //</span></p>
 <pre><code class="language-julia">labeled_components</code></pre>
-<pre><code class="language-julia">Error: UndefVarError: labeled_components not defined</code></pre>
+<pre><code class="language-julia">480×854 Matrix&#123;Int64&#125;:
+ 0  0  0  0  0  0  0  0  0  0  0  0  …  0  0  0  0  0  0  0  0  0  0  0  18
+ 0  0  0  0  0  0  0  0  0  0  0  0     0  0  0  0  0  0  0  0  0  0  0   0
+ 0  0  0  0  0  0  0  0  0  0  0  0     0  0  0  0  0  0  0  0  0  0  0   0
+ 0  0  0  0  0  0  0  0  0  0  0  0     0  0  0  0  0  0  0  0  0  0  0   0
+ 0  0  0  0  0  0  0  0  0  0  0  0     0  0  0  0  0  0  0  0  0  0  0   0
+ 0  0  0  0  0  0  0  0  0  0  0  0  …  0  0  0  0  0  0  0  0  0  0  0   0
+ 0  0  0  0  0  0  0  0  0  0  0  0     0  0  0  0  0  0  0  0  0  0  0   0
+ 0  0  0  0  0  0  0  0  0  0  0  0     8  0  0  0  0  0  0  0  0  0  0   0
+ 0  0  0  0  0  0  0  0  0  0  0  0     8  0  0  0  0  0  0  0  0  0  0   0
+ 0  0  0  0  0  0  0  0  0  0  0  0     8  0  0  0  0  0  0  0  0  0  0   0
+ ⋮              ⋮              ⋮     ⋱           ⋮              ⋮        
+ 0  0  0  0  0  0  0  0  0  0  0  0     0  0  0  0  0  0  0  0  0  0  0   0
+ 0  0  0  0  0  0  0  0  0  0  0  0     0  0  0  0  0  0  0  0  0  0  0   0
+ 0  0  0  0  0  0  0  0  0  0  0  0     0  0  0  0  0  0  0  0  0  0  0   0
+ 0  0  0  0  0  0  0  0  0  0  0  0     0  0  0  0  0  0  0  0  0  0  0   0
+ 0  0  0  0  0  0  0  0  0  0  0  0  …  0  0  0  0  0  0  0  0  0  0  0   0
+ 0  0  0  0  0  0  0  0  0  0  0  0     0  0  0  0  0  0  0  0  0  0  0   0
+ 0  0  0  0  0  0  0  0  0  0  0  0     0  0  0  0  0  0  0  0  0  0  0   0
+ 0  0  0  0  0  0  0  0  0  0  0  0     0  0  0  0  0  0  0  0  0  0  0   0
+ 0  0  0  0  0  0  0  0  0  0  0  0     0  0  0  0  0  0  0  0  0  0  0   0</code></pre>
 <pre><code class="language-julia">coloredmask &#61; map&#40; n -&gt; colorset&#91;n&#43;1&#93;, labeled_components&#41;</code></pre>
-<pre><code class="language-julia">Error: UndefVarError: labeled_components not defined</code></pre>
+<p><span style="color:red;">// Image matching '/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_23_1.png' not found. //</span></p>
 <pre><code class="language-julia">maximum&#40;labeled_components&#41;</code></pre>
-<pre><code class="language-julia">Error: UndefVarError: labeled_components not defined</code></pre>
+<pre><code class="language-julia">18</code></pre>
 <pre><code class="language-julia">components_location &#61; VideoTracking.locate_components&#40;labeled_components&#41;
 min_area &#61; 1
 filter&#33;&#40;p -&gt; p.area ≥ min_area, components_location&#41;
 length&#40;components_location&#41;</code></pre>
-<pre><code class="language-julia">Error: UndefVarError: VideoTracking not defined</code></pre>
+<pre><code class="language-julia">18</code></pre>
 <pre><code class="language-julia">components_location &#61; VideoTracking.locate_components&#40;labeled_components&#41;
 min_area &#61; 10
 filter&#33;&#40;p -&gt; p.area ≥ min_area, components_location&#41;
 length&#40;components_location&#41;</code></pre>
-<pre><code class="language-julia">Error: UndefVarError: VideoTracking not defined</code></pre>
+<pre><code class="language-julia">2</code></pre>
 <pre><code class="language-julia">vd54 &#61; copy&#40;vd&#91;54&#93;&#41;
 for p in components_location
     draw&#33;&#40;vd54, Polygon&#40;VideoTracking.RectanglePoints&#40;p&#41;&#41;, colorant&quot;red&quot;&#41;
 end
 vd54</code></pre>
-<pre><code class="language-julia">Error: UndefVarError: vd not defined</code></pre>
+<p><span style="color:red;">// Image matching '/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_27_1.png' not found. //</span></p>
 <pre><code class="language-julia">components_location &#61; VideoTracking.locate_components&#40;labeled_components&#41;
 min_area &#61; 100
 filter&#33;&#40;p -&gt; p.area ≥ min_area, components_location&#41;</code></pre>
-<pre><code class="language-julia">Error: UndefVarError: VideoTracking not defined</code></pre>
+<pre><code class="language-julia">1-element Vector&#123;Main.##WeaveSandBox#578.VideoTracking.Blob&#125;:
+ Blob Object
+  Centroid coordinates: &#40;x, y&#41; &#61; &#40;670.0722713864307, 387.4906588003933&#41;
+  Span values: &#40;xspan, yspan&#41; &#61; &#40;644:697, 364:412&#41;
+  Occupied: area &#61; 2034</code></pre>
 <pre><code class="language-julia">vd54 &#61; copy&#40;vd&#91;54&#93;&#41;
 for p in components_location
     draw&#33;&#40;vd54, Polygon&#40;VideoTracking.RectanglePoints&#40;p&#41;&#41;, colorant&quot;red&quot;&#41;
 end
 vd54</code></pre>
-<pre><code class="language-julia">Error: UndefVarError: vd not defined</code></pre>
+<p><span style="color:red;">// Image matching '/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_29_1.png' not found. //</span></p>
 <pre><code class="language-julia">components_location &#61; VideoTracking.locate_components&#40;labeled_components&#41;
 min_area &#61; 200
 filter&#33;&#40;p -&gt; p.area ≥ min_area, components_location&#41;</code></pre>
-<pre><code class="language-julia">Error: UndefVarError: VideoTracking not defined</code></pre>
+<pre><code class="language-julia">1-element Vector&#123;Main.##WeaveSandBox#578.VideoTracking.Blob&#125;:
+ Blob Object
+  Centroid coordinates: &#40;x, y&#41; &#61; &#40;670.0722713864307, 387.4906588003933&#41;
+  Span values: &#40;xspan, yspan&#41; &#61; &#40;644:697, 364:412&#41;
+  Occupied: area &#61; 2034</code></pre>
 <pre><code class="language-julia">p &#61; components_location&#91;1&#93;
 draw&#40;vd&#91;54&#93;, Polygon&#40;VideoTracking.RectanglePoints&#40;p&#41;&#41;, colorant&quot;red&quot;&#41;</code></pre>
-<pre><code class="language-julia">Error: UndefVarError: components_location not defined</code></pre>
-<pre><code class="language-julia">filename &#61; &quot;img/pendulo_70cm_1_reduzido_curto.mp4&quot;
+<p><span style="color:red;">// Image matching '/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_31_1.png' not found. //</span></p>
+<pre><code class="language-julia">filename &#61; &quot;../../../_assets/attachments/img/pendulo_70cm_1_reduzido_curto.mp4&quot;
 tracks_70cm1 &#61; VideoTracking.find_tracks&#40;filename&#41;</code></pre>
-<pre><code class="language-julia">Error: UndefVarError: VideoTracking not defined</code></pre>
+<pre><code class="language-julia">1-element Vector&#123;Main.##WeaveSandBox#578.VideoTracking.Track&#125;:
+ Tracked blob with framespan nspan &#61; 13:55</code></pre>
 <pre><code class="language-julia">VideoTracking.tracks_on_video&#40;filename, tracks_70cm1&#41;</code></pre>
-<pre><code class="language-julia">Error: UndefVarError: VideoTracking not defined</code></pre>
-<pre><code class="language-julia">DisplayMovie.display_movie&#40;&quot;img/pendulo_70cm_1_reduzido_curto_tracked.mp4&quot;&#41;</code></pre>
-<pre><code class="language-julia">Error: UndefVarError: DisplayMovie not defined</code></pre>
+<pre><code class="language-julia">DisplayMovie.display_movie&#40;&quot;../../../_assets/attachments/img/pendulo_70cm_1_reduzido_curto_tracked.mp4&quot;&#41;</code></pre>
+<pre><code class="language-julia">Error: MethodError: no method matching show&#40;::IOContext&#123;IOBuffer&#125;, ::MIME&#123;S
+ymbol&#40;&quot;text/html&quot;&#41;&#125;, ::String&#41;
+Closest candidates are:
+  show&#40;::IO, ::MIME&#123;Symbol&#40;&quot;text/html&quot;&#41;&#125;, &#33;Matched::DataFrames.DataFrameRow
+; summary, eltypes&#41; at ~/.julia/packages/DataFrames/MA4YO/src/abstractdataf
+rame/io.jl:268
+  show&#40;::IO, ::MIME&#123;Symbol&#40;&quot;text/html&quot;&#41;&#125;, &#33;Matched::DataFrames.DataFrameRow
+s; summary, eltypes&#41; at ~/.julia/packages/DataFrames/MA4YO/src/abstractdata
+frame/io.jl:275
+  show&#40;::IO, ::MIME&#123;Symbol&#40;&quot;text/html&quot;&#41;&#125;, &#33;Matched::DataFrames.GroupedDataF
+rame&#41; at ~/.julia/packages/DataFrames/MA4YO/src/abstractdataframe/io.jl:291
+  ...</code></pre>
 <pre><code class="language-julia">tracks_70cm1</code></pre>
-<pre><code class="language-julia">Error: UndefVarError: tracks_70cm1 not defined</code></pre>
+<pre><code class="language-julia">1-element Vector&#123;Main.##WeaveSandBox#578.VideoTracking.Track&#125;:
+ Tracked blob with framespan nspan &#61; 13:55</code></pre>
 <pre><code class="language-julia">tracks_70cm1&#91;1&#93;.nspan</code></pre>
-<pre><code class="language-julia">Error: UndefVarError: tracks_70cm1 not defined</code></pre>
+<pre><code class="language-julia">13:55</code></pre>
 <pre><code class="language-julia">tracks_70cm1&#91;1&#93;.path</code></pre>
-<pre><code class="language-julia">Error: UndefVarError: tracks_70cm1 not defined</code></pre>
+<pre><code class="language-julia">43-element Vector&#123;Main.##WeaveSandBox#578.VideoTracking.Blob&#125;:
+ Blob Object
+  Centroid coordinates: &#40;x, y&#41; &#61; &#40;849.1062271062272, 208.7948717948718&#41;
+  Span values: &#40;xspan, yspan&#41; &#61; &#40;840:854, 177:240&#41;
+  Occupied: area &#61; 546
+
+ Blob Object
+  Centroid coordinates: &#40;x, y&#41; &#61; &#40;847.6581769436997, 214.25067024128685&#41;
+  Span values: &#40;xspan, yspan&#41; &#61; &#40;837:854, 183:247&#41;
+  Occupied: area &#61; 746
+
+ Blob Object
+  Centroid coordinates: &#40;x, y&#41; &#61; &#40;846.3590285110877, 217.86061246040126&#41;
+  Span values: &#40;xspan, yspan&#41; &#61; &#40;834:854, 183:253&#41;
+  Occupied: area &#61; 947
+
+ Blob Object
+  Centroid coordinates: &#40;x, y&#41; &#61; &#40;845.1462585034013, 220.17942176870747&#41;
+  Span values: &#40;xspan, yspan&#41; &#61; &#40;831:854, 183:256&#41;
+  Occupied: area &#61; 1176
+
+ Blob Object
+  Centroid coordinates: &#40;x, y&#41; &#61; &#40;843.8523297491039, 222.40071684587812&#41;
+  Span values: &#40;xspan, yspan&#41; &#61; &#40;829:854, 179:257&#41;
+  Occupied: area &#61; 1395
+
+ Blob Object
+  Centroid coordinates: &#40;x, y&#41; &#61; &#40;843.0366013071896, 223.26797385620915&#41;
+  Span values: &#40;xspan, yspan&#41; &#61; &#40;827:854, 179:258&#41;
+  Occupied: area &#61; 1530
+
+ Blob Object
+  Centroid coordinates: &#40;x, y&#41; &#61; &#40;843.1176084099868, 222.32982917214193&#41;
+  Span values: &#40;xspan, yspan&#41; &#61; &#40;827:854, 179:258&#41;
+  Occupied: area &#61; 1522
+
+ Blob Object
+  Centroid coordinates: &#40;x, y&#41; &#61; &#40;843.275722932078, 221.93678547410894&#41;
+  Span values: &#40;xspan, yspan&#41; &#61; &#40;827:854, 179:258&#41;
+  Occupied: area &#61; 1487
+
+ Blob Object
+  Centroid coordinates: &#40;x, y&#41; &#61; &#40;843.2882273342354, 222.37753721244925&#41;
+  Span values: &#40;xspan, yspan&#41; &#61; &#40;827:854, 180:258&#41;
+  Occupied: area &#61; 1478
+
+ Blob Object
+  Centroid coordinates: &#40;x, y&#41; &#61; &#40;843.3896648044692, 223.02932960893855&#41;
+  Span values: &#40;xspan, yspan&#41; &#61; &#40;827:854, 180:257&#41;
+  Occupied: area &#61; 1432
+
+ ⋮
+ Blob Object
+  Centroid coordinates: &#40;x, y&#41; &#61; &#40;837.734181689643, 233.8221986567692&#41;
+  Span values: &#40;xspan, yspan&#41; &#61; &#40;813:854, 176:276&#41;
+  Occupied: area &#61; 2829
+
+ Blob Object
+  Centroid coordinates: &#40;x, y&#41; &#61; &#40;836.0925600468659, 241.8945518453427&#41;
+  Span values: &#40;xspan, yspan&#41; &#61; &#40;807:854, 178:289&#41;
+  Occupied: area &#61; 3414
+
+ Blob Object
+  Centroid coordinates: &#40;x, y&#41; &#61; &#40;832.6118686868687, 255.65984848484848&#41;
+  Span values: &#40;xspan, yspan&#41; &#61; &#40;802:854, 184:306&#41;
+  Occupied: area &#61; 3960
+
+ Blob Object
+  Centroid coordinates: &#40;x, y&#41; &#61; &#40;804.2969808995687, 302.09303758471964&#41;
+  Span values: &#40;xspan, yspan&#41; &#61; &#40;782:827, 281:325&#41;
+  Occupied: area &#61; 1623
+
+ Blob Object
+  Centroid coordinates: &#40;x, y&#41; &#61; &#40;778.301724137931, 322.82635467980293&#41;
+  Span values: &#40;xspan, yspan&#41; &#61; &#40;756:802, 301:345&#41;
+  Occupied: area &#61; 1624
+
+ Blob Object
+  Centroid coordinates: &#40;x, y&#41; &#61; &#40;747.879472693032, 345.85310734463275&#41;
+  Span values: &#40;xspan, yspan&#41; &#61; &#40;726:771, 324:367&#41;
+  Occupied: area &#61; 1593
+
+ Blob Object
+  Centroid coordinates: &#40;x, y&#41; &#61; &#40;711.4871007371007, 367.28132678132675&#41;
+  Span values: &#40;xspan, yspan&#41; &#61; &#40;690:735, 345:390&#41;
+  Occupied: area &#61; 1628
+
+ Blob Object
+  Centroid coordinates: &#40;x, y&#41; &#61; &#40;670.0882352941177, 387.8469387755102&#41;
+  Span values: &#40;xspan, yspan&#41; &#61; &#40;648:693, 366:411&#41;
+  Occupied: area &#61; 1666
+
+ Blob Object
+  Centroid coordinates: &#40;x, y&#41; &#61; &#40;624.7634730538922, 405.8550898203593&#41;
+  Span values: &#40;xspan, yspan&#41; &#61; &#40;603:648, 384:428&#41;
+  Occupied: area &#61; 1670</code></pre>
 <pre><code class="language-julia">tracks_70cm1&#91;1&#93;.path&#91;1&#93;</code></pre>
-<pre><code class="language-julia">Error: UndefVarError: tracks_70cm1 not defined</code></pre>
+<pre><code class="language-julia">Blob Object
+  Centroid coordinates: &#40;x, y&#41; &#61; &#40;849.1062271062272, 208.7948717948718&#41;
+  Span values: &#40;xspan, yspan&#41; &#61; &#40;840:854, 177:240&#41;
+  Occupied: area &#61; 546</code></pre>
 <pre><code class="language-julia">plt &#61; plot&#40;title &#61; &quot;Paths of &#36;&#40;length&#40;tracks_70cm1&#41;&#41; track&#40;s&#41;&quot;, titlefont &#61; 10,
     xlims &#61; &#40;1,854&#41;, ylims &#61; &#40;1, 480&#41;,
     size &#61; &#40;854, 480&#41;, aspect &#61; :equal, legend&#61;:topright&#41;
@@ -307,25 +585,24 @@ for &#40;n, tr&#41; in enumerate&#40;tracks_70cm1&#41;
     scatter&#33;&#40;plt, getfield.&#40;tr.path, :x&#41;, 481 .- getfield.&#40;tr.path, :y&#41;, label&#61;&quot;track &#36;n&quot;&#41;
 end
 display&#40;plt&#41;</code></pre>
-<pre><code class="language-julia">Error: UndefVarError: tracks_70cm1 not defined</code></pre>
+<p><span style="color:red;">// Image matching '/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_39_1.png' not found. //</span></p>
 <pre><code class="language-julia">plt &#61; plot&#40;title &#61; &quot;Coordinate x of &#36;&#40;length&#40;tracks_70cm1&#41;&#41; tracks&quot;, titlefont &#61; 10, legend&#61;:topleft&#41;
 for &#40;n, tr&#41; in enumerate&#40;tracks_70cm1&#41;
     scatter&#33;&#40;plt, tr.nspan, getfield.&#40;tr.path, :x&#41;, label&#61;&quot;track &#36;n&quot;&#41;
 end
 display&#40;plt&#41;</code></pre>
-<pre><code class="language-julia">Error: UndefVarError: tracks_70cm1 not defined</code></pre>
+<p><span style="color:red;">// Image matching '/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_40_1.png' not found. //</span></p>
 <pre><code class="language-julia">plt &#61; plot&#40;title &#61; &quot;Coordinate y of &#36;&#40;length&#40;tracks_70cm1&#41;&#41; tracks&quot;, titlefont &#61; 10, legend&#61;:topright&#41;
 for &#40;n, tr&#41; in enumerate&#40;tracks_70cm1&#41;
     scatter&#33;&#40;plt, tr.nspan, - getfield.&#40;tr.path, :y&#41;, label&#61;&quot;track &#36;n&quot;&#41;
 end
 display&#40;plt&#41;</code></pre>
-<pre><code class="language-julia">Error: UndefVarError: tracks_70cm1 not defined</code></pre>
+<p><span style="color:red;">// Image matching '/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_41_1.png' not found. //</span></p>
 <pre><code class="language-julia">size&#40;vd&#91;1&#93;&#41;</code></pre>
-<pre><code class="language-julia">Error: UndefVarError: vd not defined</code></pre>
+<pre><code class="language-julia">&#40;480, 854&#41;</code></pre>
 <pre><code class="language-julia">data_x &#61; getfield.&#40;tracks_70cm1&#91;1&#93;.path, :x&#41;
 data_y &#61; size&#40;vd&#91;1&#93;, 1&#41; &#43; 1 .- getfield.&#40;tracks_70cm1&#91;1&#93;.path, :y&#41;
 nothing</code></pre>
-<pre><code class="language-julia">Error: UndefVarError: tracks_70cm1 not defined</code></pre>
 <pre><code class="language-julia">n_minima &#61; Int&#91;&#93;
 for j in 40:length&#40;data_x&#41;-1
     if data_x&#91;j-1&#93; &gt; data_x&#91;j&#93; &lt; data_x&#91;j&#43;1&#93;
@@ -333,14 +610,15 @@ for j in 40:length&#40;data_x&#41;-1
     end
 end
 n_minima</code></pre>
-<pre><code class="language-julia">Error: UndefVarError: data_x not defined</code></pre>
+<pre><code class="language-julia">Int64&#91;&#93;</code></pre>
 <pre><code class="language-julia">plt &#61; plot&#40;title &#61; &quot;Coordinate x of &#36;&#40;length&#40;tracks_70cm1&#41;&#41; tracks&quot;, titlefont &#61; 10, legend&#61;:topleft&#41;
 for &#40;n, tr&#41; in enumerate&#40;tracks_70cm1&#41;
     scatter&#33;&#40;plt, tr.nspan, getfield.&#40;tr.path, :x&#41;, label&#61;&quot;track &#36;n&quot;&#41;
 end
 vline&#33;&#40;plt, n_minima, label &#61; &quot;minima&quot;&#41;
 display&#40;plt&#41;</code></pre>
-<pre><code class="language-julia">Error: UndefVarError: tracks_70cm1 not defined</code></pre>
+<pre><code class="language-julia">Error: BoundsError: attempt to access 0-element Vector&#123;Float64&#125; at index &#91;1
+&#93;</code></pre>
 <pre><code class="language-julia">&#40;n_minima&#91;2:end&#93; - n_minima&#91;1:end-1&#93;&#41; / 29.5</code></pre>
 <pre><code class="language-julia">Float64&#91;&#93;</code></pre>
 <pre><code class="language-julia">g &#61; 9.8 # m/s
@@ -380,11 +658,28 @@ T_p / agm&#40;1, cos&#40;θ₀ / 2&#41;&#41;&#91;1&#93;</code></pre>
     &#41; / length&#40;data_x&#41;</code></pre>
 <pre><code class="language-julia">error &#40;generic function with 1 method&#41;</code></pre>
 <pre><code class="language-julia">center_point &#61; Optim.optimize&#40;error, &#91;400.0, 800.0, 500&#93;&#41;</code></pre>
-<pre><code class="language-julia">Error: UndefVarError: data_x not defined</code></pre>
+<pre><code class="language-julia">* Status: success
+
+ * Candidate solution
+    Final objective value:     0.000000e&#43;00
+
+ * Found with
+    Algorithm:     Nelder-Mead
+
+ * Convergence measures
+    √&#40;Σ&#40;yᵢ-ȳ&#41;²&#41;/n ≤ 1.0e-08
+
+ * Work counters
+    Seconds run:   0  &#40;vs limit Inf&#41;
+    Iterations:    0
+    f&#40;x&#41; calls:    5</code></pre>
 <pre><code class="language-julia">Optim.minimum&#40;center_point&#41;</code></pre>
-<pre><code class="language-julia">Error: UndefVarError: center_point not defined</code></pre>
+<pre><code class="language-julia">0.0</code></pre>
 <pre><code class="language-julia">center_nx, center_ny, radius_n &#61; Optim.minimizer&#40;center_point&#41;</code></pre>
-<pre><code class="language-julia">Error: UndefVarError: center_point not defined</code></pre>
+<pre><code class="language-julia">3-element Vector&#123;Float64&#125;:
+ 400.0
+ 800.0
+ 500.0</code></pre>
 <pre><code class="language-julia">plt &#61; plot&#40;title &#61; &quot;Paths of &#36;&#40;length&#40;tracks_70cm1&#41;&#41; track&#40;s&#41;&quot;, titlefont &#61; 10,
     xlims &#61; &#40;1,854&#41;, ylims &#61; &#40;1, 600&#41;,
     size &#61; &#40;854, 600&#41;, aspect &#61; :equal, legend&#61;:topright&#41;
@@ -394,12 +689,32 @@ end
 scatter&#33;&#40;plt, &#40;center_nx, center_ny&#41;, markersize &#61; 10&#41;
 plot&#33;&#40;plt, 1:854, nx -&gt; center_ny - √&#40;radius_n^2 - &#40;nx - center_nx&#41;^2&#41;, linestyle &#61; :dash&#41;
 display&#40;plt&#41;</code></pre>
-<pre><code class="language-julia">Error: UndefVarError: tracks_70cm1 not defined</code></pre>
+<p><span style="color:red;">// Image matching '/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_54_1.png' not found. //</span></p>
 <pre><code class="language-julia">scale &#61; radius_n / l # points per meter</code></pre>
-<pre><code class="language-julia">Error: UndefVarError: radius_n not defined</code></pre>
+<pre><code class="language-julia">714.2857142857143</code></pre>
 <pre><code class="language-julia">data_scaled_x &#61; &#40;data_x .- center_nx&#41; / scale
 data_scaled_y &#61; &#40;data_y .- center_ny&#41; / scale</code></pre>
-<pre><code class="language-julia">Error: UndefVarError: data_x not defined</code></pre>
+<pre><code class="language-julia">43-element Vector&#123;Float64&#125;:
+ -0.7389128205128205
+ -0.7465509383378015
+ -0.7516048574445617
+ -0.7548511904761904
+ -0.7579610035842294
+ -0.7591751633986928
+ -0.7578617608409987
+ -0.7573114996637526
+ -0.7579285520974289
+ -0.7588410614525138
+  ⋮
+ -0.7739510781194767
+ -0.7852523725834797
+ -0.8045237878787878
+ -0.8695302526186075
+ -0.8985568965517241
+ -0.9307943502824857
+ -0.9607938574938573
+ -0.9895857142857141
+ -1.0147971257485031</code></pre>
 <pre><code class="language-julia">function dudt_pendulum&#33;&#40;du, u, p, t&#41;
     θ, ω &#61; u
     l, g, α &#61; p
@@ -474,7 +789,7 @@ display&#40;plot&#40;sol, vars &#61; 1, label &#61; &quot;θ&#40;t&#41;&quot;&#4
 plt &#61; plot&#40;sol, vars &#61; 1, label &#61; &quot;θ&#40;t&#41;&quot;&#41;
 scatter&#33;&#40;plt, &#40;0:length&#40;data_x&#41;-n0&#41; ./ 29.5, data_scaled_x&#91;n0:end&#93;, label&#61;&quot;tracked&quot;&#41;
 display&#40;plt&#41;</code></pre>
-<pre><code class="language-julia">Error: UndefVarError: data_x not defined</code></pre>
+<p><span style="color:red;">// Image matching '/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_62_1.png' not found. //</span></p>
 <pre><code class="language-julia">df &#61; CSV.read&#40;&quot;data/pendulo_70cm_reduzido.csv&quot;, DataFrame&#41;</code></pre>
 <pre><code class="language-julia">Error: ArgumentError: &quot;data/pendulo_70cm_reduzido.csv&quot; is not a valid file 
 or doesn&#39;t exist</code></pre>
@@ -637,7 +952,15 @@ sol_2nd.retcode</code></pre>
 scatter&#33;&#40;data2_scaled_t, data2_scaled_x, label &#61; &quot;data&quot;&#41;</code></pre>
 <pre><code class="language-julia">Error: UndefVarError: data2_scaled_t not defined</code></pre>
 
-    
+    <div class="navbar">
+    <p id="nav">
+<span id="nav-prev" style="float: left;">
+<a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c07/0706-Pendulo">7.6. Análise do período de um pêndulo planar simples <kbd>←</kbd></a>
+</span>
+    </p>
+</div>
+</br></br>
+
 
 
 <div class="page-foot">
