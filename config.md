@@ -75,15 +75,15 @@ menu = [
     "Mecânica" => [
         "src/jupyter/c07/0701-Mecanica_Newtoniana.ipynb"
         "src/jupyter/c07/0702-Mecanica_Lagrangiana.ipynb"
-    ],
-]
-menu_left = [
-    "Mecânica" => [
         "src/jupyter/c07/0703-Conservacao_contexto_Newtoniano.ipynb"
         "src/jupyter/c07/0704-Conservacao_contexto_Lagrangiano.ipynb"
         "src/jupyter/c07/0705-Hamiltonianos.ipynb"
         "src/jupyter/c07/0706-Pendulo.ipynb"
         "src/jupyter/c07/0707-Pendulo_angulos_grandes.ipynb"
+    ],
+]
+menu_left = [
+    "Mecânica" => [
     ],
     "Modelos em Eletrônica" => [
         "src/jupyter/c08/0800-Eletronica.ipynb"
