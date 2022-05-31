@@ -126,7 +126,7 @@ plot(probvalues, ρ -> -log(ρ), xlabel="probabilidade de um evento", ylabel="in
 
 * Mas por que o logaritmo?
 
-* Pela sua propriedade de $\ln(a + b) = \ln a + \ln b$.
+* Pela sua propriedade de $\ln(ab) = \ln a + \ln b$.
 
 * Caso tenhamos componentes independentes $\mathcal{X} = \mathcal{X}_1 \times \mathcal{X}_2$, com uma distribuição de probabilidade $\rho = \rho_1 \otimes \rho_2$, então
 
@@ -166,9 +166,9 @@ $$
 * No caso contínuo, a interpretação da entropia também é mais delicada, como consequência das ponderações feitas acima sobre a interpretação da informação neste caso.
 
 
-### Distribuições de Bernouilli
+### Distribuições de Bernoulli
 
-* Para efeito de ilustração, considere uma distribuição de Bernouilli $\rho_p$ com probabilidades $p$ e $1-p$.
+* Para efeito de ilustração, considere uma distribuição de Bernoulli $\rho_p$ com probabilidades $p$ e $1-p$.
 
 * Ou seja, o espaço de probabilidades contém apenas dois elementos, digamos $\mathcal{X}=\{x_1, x_2\}$, com probabilidades $\rho_p(x_1) = p$ e $\rho_p(x_2) = 1 - p$, onde $0 \leq p \leq 1$.
 

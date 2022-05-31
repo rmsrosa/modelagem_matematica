@@ -42,7 +42,7 @@ são as coordenadas do sistema, ou seja, um vetor de dimensão $3n$ com as coord
 
 * Outras são *externas*, provenientes de um "campo de força", associada a fatores externos ao sistema, muitas vezes correspondendo a uma situação aproximada em que as partículas consideradas no sistema não influenciam no movimento das partículas consideradas externas. Vamos ver alguns exemplos.
 
-* Um exemplo típico de força extena é o campo gravitacional gerado por um corpo relativamente muito maciço e que não é incluído no conjunto de partículas do sistema, como na análise de um corpo em queda livre próximo à superfície da Terra ou mesmo na de um satélite artificial em órbita terrestre.
+* Um exemplo típico de força externa é o campo gravitacional gerado por um corpo relativamente muito maciço e que não é incluído no conjunto de partículas do sistema, como na análise de um corpo em queda livre próximo à superfície da Terra ou mesmo na de um satélite artificial em órbita terrestre.
 
 * Da mesma forma, podemos ter campos magnéticos e campos eletromagnéticos, onde certos objetos gerando esses campos não são incluídos no sistema de partículas do modelo.
 
