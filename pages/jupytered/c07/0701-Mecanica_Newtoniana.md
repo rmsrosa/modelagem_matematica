@@ -30,6 +30,9 @@ $$ \mathbf{r}=(\mathbf{r}_1,\mathbf{r}_2,\ldots,\mathbf{r}_n)\in \mathbb{R}^{3n}
 $$
 são as coordenadas do sistema, ou seja, um vetor de dimensão $3n$ com as coordenadas espaciais de todas as partículas.
 
+* Mais geralmente, para incluir efeitos eletromagnéticos, a força também pode depender da velocidade das partículas:
+$$ \mathbf{F}_i=\mathbf{F}_i(t,\mathbf{r}, \mathbf{\dot r}), 
+$$
 
 
 ## Tipos de forças

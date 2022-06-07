@@ -52,9 +52,11 @@ $$
         \qquad \varphi_{ij}(\mathbf{r}_i,\mathbf{r}_j) = \varphi_{ji}(\mathbf{r}_j,\mathbf{r}_i).
     $$
 
-Não assumimos nada de especial em relação à força externa, mas em geral ela depende apenas da posição da partícula em questão, ou seja $\mathbf{F}_i^{(e)}=\mathbf{F}_i^{(e)}(\mathbf{r}_i,t)$.
+* Forças eletromagnéticas entre partículas carregadas, por exemplo, não seguem a forma forte da terceira lei de Newton.
 
-A terceira lei de Newton é relevante para a conservação dos momentos linear e angular do sistema. Para a conservação de energia, fazemos a hipótese de que as forças são conservativas, i.e. provenientes de um potencial $V(t,\mathbf{r})$:
+* Não assumimos nada de especial em relação à força externa, mas em geral ela depende apenas da posição da partícula em questão, ou seja $\mathbf{F}_i^{(e)}=\mathbf{F}_i^{(e)}(\mathbf{r}_i,t)$.
+
+* A terceira lei de Newton é relevante para a conservação dos momentos linear e angular do sistema. Para a conservação de energia, fazemos a hipótese de que as forças são conservativas, i.e. provenientes de um potencial $V(t,\mathbf{r})$:
 
 $$ \mathbf{F}_i(\mathbf{r}) = -\frac{\partial V}{\partial\mathbf{r}_i}(t,\mathbf{r}), \qquad i=1,\ldots, n.
 $$
