@@ -22,6 +22,13 @@ using VideoIO
 using Plots
 ```
 
+```
+Your GR installation is incomplete. Rerunning build step for GR package.
+Error: Failed to precompile Plots [91a5bcdd-55d7-5caf-9e0b-520d859cae80] to
+ /Users/rmsrosa/.julia/compiled/v1.7/Plots/jl_vGXhqI.
+```
+
+
 
 ```julia
 using Optim
@@ -40,7 +47,7 @@ include("../../../_assets/attachments/scripts/VideoTracking.jl")
 ```
 
 ```
-Main.##WeaveSandBox#578.VideoTracking
+Main.##WeaveSandBox#292.VideoTracking
 ```
 
 
@@ -107,14 +114,14 @@ DisplayMovie.display_movie("../../../_assets/attachments/img/pendulo_70cm_1_redu
 Error: MethodError: no method matching show(::IOContext{IOBuffer}, ::MIME{S
 ymbol("text/html")}, ::String)
 Closest candidates are:
-  show(::IO, ::MIME{Symbol("text/html")}, !Matched::DataFrames.DataFrameRow
-; summary, eltypes) at ~/.julia/packages/DataFrames/MA4YO/src/abstractdataf
-rame/io.jl:268
-  show(::IO, ::MIME{Symbol("text/html")}, !Matched::DataFrames.DataFrameRow
-s; summary, eltypes) at ~/.julia/packages/DataFrames/MA4YO/src/abstractdata
-frame/io.jl:275
   show(::IO, ::MIME{Symbol("text/html")}, !Matched::DataFrames.GroupedDataF
-rame) at ~/.julia/packages/DataFrames/MA4YO/src/abstractdataframe/io.jl:291
+rame) at ~/.julia/packages/DataFrames/zqFGs/src/abstractdataframe/io.jl:291
+  show(::IO, ::MIME{Symbol("text/html")}, !Matched::DataFrames.DataFrameRow
+; summary, eltypes) at ~/.julia/packages/DataFrames/zqFGs/src/abstractdataf
+rame/io.jl:268
+  show(::IO, ::MIME{Symbol("text/html")}, !Matched::DataFrames.AbstractData
+Frame; summary, eltypes) at ~/.julia/packages/DataFrames/zqFGs/src/abstract
+dataframe/io.jl:130
   ...
 ```
 
@@ -395,7 +402,7 @@ filter!(p -> p.area ≥ min_area, components_location)
 ```
 
 ```
-1-element Vector{Main.##WeaveSandBox#578.VideoTracking.Blob}:
+1-element Vector{Main.##WeaveSandBox#292.VideoTracking.Blob}:
  Blob Object
   Centroid coordinates: (x, y) = (670.0722713864307, 387.4906588003933)
   Span values: (xspan, yspan) = (644:697, 364:412)
@@ -421,7 +428,7 @@ filter!(p -> p.area ≥ min_area, components_location)
 ```
 
 ```
-1-element Vector{Main.##WeaveSandBox#578.VideoTracking.Blob}:
+1-element Vector{Main.##WeaveSandBox#292.VideoTracking.Blob}:
  Blob Object
   Centroid coordinates: (x, y) = (670.0722713864307, 387.4906588003933)
   Span values: (xspan, yspan) = (644:697, 364:412)
@@ -443,7 +450,7 @@ tracks_70cm1 = VideoTracking.find_tracks(filename)
 ```
 
 ```
-1-element Vector{Main.##WeaveSandBox#578.VideoTracking.Track}:
+1-element Vector{Main.##WeaveSandBox#292.VideoTracking.Track}:
  Tracked blob with framespan nspan = 13:55
 ```
 
@@ -462,14 +469,14 @@ DisplayMovie.display_movie("../../../_assets/attachments/img/pendulo_70cm_1_redu
 Error: MethodError: no method matching show(::IOContext{IOBuffer}, ::MIME{S
 ymbol("text/html")}, ::String)
 Closest candidates are:
-  show(::IO, ::MIME{Symbol("text/html")}, !Matched::DataFrames.DataFrameRow
-; summary, eltypes) at ~/.julia/packages/DataFrames/MA4YO/src/abstractdataf
-rame/io.jl:268
-  show(::IO, ::MIME{Symbol("text/html")}, !Matched::DataFrames.DataFrameRow
-s; summary, eltypes) at ~/.julia/packages/DataFrames/MA4YO/src/abstractdata
-frame/io.jl:275
   show(::IO, ::MIME{Symbol("text/html")}, !Matched::DataFrames.GroupedDataF
-rame) at ~/.julia/packages/DataFrames/MA4YO/src/abstractdataframe/io.jl:291
+rame) at ~/.julia/packages/DataFrames/zqFGs/src/abstractdataframe/io.jl:291
+  show(::IO, ::MIME{Symbol("text/html")}, !Matched::DataFrames.DataFrameRow
+; summary, eltypes) at ~/.julia/packages/DataFrames/zqFGs/src/abstractdataf
+rame/io.jl:268
+  show(::IO, ::MIME{Symbol("text/html")}, !Matched::DataFrames.AbstractData
+Frame; summary, eltypes) at ~/.julia/packages/DataFrames/zqFGs/src/abstract
+dataframe/io.jl:130
   ...
 ```
 
@@ -480,7 +487,7 @@ tracks_70cm1
 ```
 
 ```
-1-element Vector{Main.##WeaveSandBox#578.VideoTracking.Track}:
+1-element Vector{Main.##WeaveSandBox#292.VideoTracking.Track}:
  Tracked blob with framespan nspan = 13:55
 ```
 
@@ -501,7 +508,7 @@ tracks_70cm1[1].path
 ```
 
 ```
-43-element Vector{Main.##WeaveSandBox#578.VideoTracking.Blob}:
+43-element Vector{Main.##WeaveSandBox#292.VideoTracking.Blob}:
  Blob Object
   Centroid coordinates: (x, y) = (849.1062271062272, 208.7948717948718)
   Span values: (xspan, yspan) = (840:854, 177:240)
@@ -624,7 +631,11 @@ end
 display(plt)
 ```
 
-\fig{images/0707-Pendulo_angulos_grandes_39_1.png}
+```
+Error: UndefVarError: plot not defined
+```
+
+
 
 ```julia
 plt = plot(title = "Coordinate x of $(length(tracks_70cm1)) tracks", titlefont = 10, legend=:topleft)
@@ -634,7 +645,11 @@ end
 display(plt)
 ```
 
-\fig{images/0707-Pendulo_angulos_grandes_40_1.png}
+```
+Error: UndefVarError: plot not defined
+```
+
+
 
 ```julia
 plt = plot(title = "Coordinate y of $(length(tracks_70cm1)) tracks", titlefont = 10, legend=:topright)
@@ -644,7 +659,11 @@ end
 display(plt)
 ```
 
-\fig{images/0707-Pendulo_angulos_grandes_41_1.png}
+```
+Error: UndefVarError: plot not defined
+```
+
+
 
 ```julia
 size(vd[1])
@@ -689,8 +708,7 @@ display(plt)
 ```
 
 ```
-Error: BoundsError: attempt to access 0-element Vector{Float64} at index [1
-]
+Error: UndefVarError: plot not defined
 ```
 
 
@@ -832,7 +850,11 @@ plot!(plt, 1:854, nx -> center_ny - √(radius_n^2 - (nx - center_nx)^2), linest
 display(plt)
 ```
 
-\fig{images/0707-Pendulo_angulos_grandes_54_1.png}
+```
+Error: UndefVarError: plot not defined
+```
+
+
 
 ```julia
 scale = radius_n / l # points per meter
@@ -974,8 +996,11 @@ display(plot(sol, label = ["θ(t)" "ω(t)"]))
 display(plot(sol, vars = 1, label = "θ(t)"))
 ```
 
-\fig{images/0707-Pendulo_angulos_grandes_61_1.png}
-\fig{images/0707-Pendulo_angulos_grandes_61_2.png}
+```
+Error: UndefVarError: plot not defined
+```
+
+
 
 ```julia
 n0 = 34
@@ -984,7 +1009,11 @@ scatter!(plt, (0:length(data_x)-n0) ./ 29.5, data_scaled_x[n0:end], label="track
 display(plt)
 ```
 
-\fig{images/0707-Pendulo_angulos_grandes_62_1.png}
+```
+Error: UndefVarError: plot not defined
+```
+
+
 
 ```julia
 df = CSV.read("data/pendulo_70cm_reduzido.csv", DataFrame)
@@ -1008,7 +1037,7 @@ display(plt)
 ```
 
 ```
-Error: UndefVarError: df not defined
+Error: UndefVarError: plot not defined
 ```
 
 
@@ -1071,7 +1100,7 @@ display(plt)
 ```
 
 ```
-Error: UndefVarError: df not defined
+Error: UndefVarError: plot not defined
 ```
 
 

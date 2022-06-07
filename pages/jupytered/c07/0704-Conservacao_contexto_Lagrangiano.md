@@ -193,7 +193,7 @@ $$
 
 * No caso em que o Lagrangiano é invariante por translações, temos a transformação das variáveis generalizadas
 
-$$(\mathbf{q},\mathbf{\dot q},t) \mapsto (\mathbf{q}_s,\mathbf{\dot q}_s,t)=(\mathbf{q}+s\mathbf{h},\mathbf{q},t).
+$$(\mathbf{q},\mathbf{\dot q},t) \mapsto (\mathbf{q}_s,\mathbf{\dot q}_s,t)=(\mathbf{q}+s\mathbf{h},\mathbf{\dot q},t).
 $$
 
 * A condição do Lagrangiano ser invariante por translações significa que ele não se altera sob essas transformações:
@@ -334,28 +334,28 @@ $$
 
 * Mais precisamente, dado um vetor unitário $\boldsymbol{\omega}\in \mathbb{R}^3$, consideramos o conjunto de rotações de um ângulo $\theta\in \mathbb{R}$ em torno do eixo gerado por $\boldsymbol{\omega}$ e no sentido da "regra da mão direita", com o polegar apontado no sentido de $\boldsymbol{\omega}$.
 
-* Denotemos essa rotação por $R_\boldsymbol{\omega}(\theta)$.
+* Denotemos essa rotação por $R_{\boldsymbol{\omega}}(\theta)$.
 
 * Podemos escrever essa rotação explicitamente na forma
-
-$$ R_\boldsymbol{\omega}(\theta)\mathbf{r} = (\mathbf{r}\cdot\boldsymbol{\omega})\boldsymbol{\omega} 
+$$
+R_{\boldsymbol{\omega}}(\theta)\mathbf{r} = (\mathbf{r}\cdot\boldsymbol{\omega})\boldsymbol{\omega} 
        + (\cos\theta) (\mathbf{r}-(\mathbf{r}\cdot\boldsymbol{\omega})\boldsymbol{\omega})
        + (\sin\theta) \boldsymbol{\omega}\times\mathbf{r}, \qquad \forall \mathbf{r}\in \mathbb{R}^3.
 $$
 
-* Temos, assim, o grupo de transformações $\{R_\boldsymbol{\omega}(\theta)\}_{\theta\in \mathbb{R}}$ em $\mathbb{R}^3$.
+* Temos, assim, o grupo de transformações $\{R_{\boldsymbol{\omega}}(\theta)\}_{\theta\in \mathbb{R}}$ em $\mathbb{R}^3$.
 
 * Observe que, por uma questão de interpretação física, o parâmetro que denotamos anteriormente por $s$ está sendo denotado agora por $\theta$.
 
 * Se forem $n$ partículas com coordenadas $\mathbf{r} =(\mathbf{r}_1,\ldots,\mathbf{r}_n)$, o grupo de transformações age nas coordenadas de cada partícula, i.e.
-$$ R^n_\boldsymbol{\omega}(\theta)\mathbf{r} = (R_\boldsymbol{\omega}(\theta)\mathbf{r}_1,\ldots,R_\boldsymbol{\omega}(\theta)\mathbf{r}_n),
+$$ R^n_{\boldsymbol{\omega}}(\theta)\mathbf{r} = (R_{\boldsymbol{\omega}}(\theta)\mathbf{r}_1,\ldots,R_{\boldsymbol{\omega}}(\theta)\mathbf{r}_n),
     \qquad \theta\in \mathbb{R}.
 $$
 
 * Considere, agora, um Lagrangiano $L(\mathbf{r},\mathbf{\dot r})$ invariante por 
-$\{R^n_\boldsymbol{\omega}(\theta)\}_{\theta\in \mathbb{R}}$, i.e.
+$\{R^n_{\boldsymbol{\omega}}(\theta)\}_{\theta\in \mathbb{R}}$, i.e.
 
-$$ L(R^n_\boldsymbol{\omega}(\theta)\mathbf{r},\frac{\mathrm{d}}{\mathrm{d} t} R^n_\boldsymbol{\omega}(\theta)\mathbf{q}) 
+$$ L(R^n_{\boldsymbol{\omega}}(\theta)\mathbf{r},\frac{\mathrm{d}}{\mathrm{d} t} R^n_{\boldsymbol{\omega}}(\theta)\mathbf{q}) 
      = L(\mathbf{r},\mathbf{\dot r}), \qquad \forall \;\theta\in \mathbb{R},
 $$
 
@@ -366,7 +366,7 @@ $$
 
 * Sendo que, nesse caso, temos
 
-$$ \mathbf{a}(\mathbf{r}) = \left. \frac{\mathrm{d}}{\mathrm{d} \theta} R^n_\boldsymbol{\omega}(\theta)\mathbf{r} \right|_{\theta=0}
+$$ \mathbf{a}(\mathbf{r}) = \left. \frac{\mathrm{d}}{\mathrm{d} \theta} R^n_{\boldsymbol{\omega}}(\theta)\mathbf{r} \right|_{\theta=0}
 $$
 
 
@@ -374,14 +374,14 @@ $$
 
 * Mais exatamente, temos
 
-$$ \frac{\mathrm{d}}{\mathrm{d} \theta} R^n_\boldsymbol{\omega}(\theta)\mathbf{r}
-     = ( \frac{\mathrm{d}}{\mathrm{d} \theta} R_\boldsymbol{\omega}(\theta)\mathbf{r}_1, \ldots,
-         \frac{\mathrm{d}}{\mathrm{d} \theta} R_\boldsymbol{\omega}(\theta)\mathbf{r}_n)
+$$ \frac{\mathrm{d}}{\mathrm{d} \theta} R^n_{\boldsymbol{\omega}}(\theta)\mathbf{r}
+     = ( \frac{\mathrm{d}}{\mathrm{d} \theta} R_{\boldsymbol{\omega}}(\theta)\mathbf{r}_1, \ldots,
+         \frac{\mathrm{d}}{\mathrm{d} \theta} R_{\boldsymbol{\omega}}(\theta)\mathbf{r}_n)
 $$
 
 * Sendo que
 
-$$ \frac{\mathrm{d}}{\mathrm{d} \theta} R_\boldsymbol{\omega}(\theta)\mathbf{r}_i = \boldsymbol{\omega}\times \mathbf{r}_i,
+$$ \frac{\mathrm{d}}{\mathrm{d} \theta} R_{\boldsymbol{\omega}}(\theta)\mathbf{r}_i = \boldsymbol{\omega}\times \mathbf{r}_i,
 $$
 
 * Logo
@@ -540,8 +540,8 @@ $$
 forma uma base ortonormal de $\mathbb{R}^3$. Chamando essa base de $\epsilon$, observe que $\mathbf{r}$ pode ser representado nessa base simplesmente por 
 $$ [\mathbf{r}]_\epsilon = (\|\mathbf{r}-(\mathbf{r}\cdot\mathbf{r})\boldsymbol{\omega}\|,0,\mathbf{r}\cdot\boldsymbol{\omega}).
 $$
-Nesse base, também podemos representar o operator rotação $R_\boldsymbol{\omega}(\theta)$ por
-$$ [R_\boldsymbol{\omega}(\theta)]_\epsilon = \left[ 
+Nesse base, também podemos representar o operator rotação $R_{\boldsymbol{\omega}}(\theta)$ por
+$$ [R_{\boldsymbol{\omega}}(\theta)]_\epsilon = \left[ 
         \begin{matrix} 
             \cos\theta & -\sin\theta & 0 \\
             \sin\theta & \cos\theta & 0 \\
@@ -550,19 +550,19 @@ $$ [R_\boldsymbol{\omega}(\theta)]_\epsilon = \left[
         \right].
 $$
 Assim,
-$$ [R_\boldsymbol{\omega}(\theta)\mathbf{r}]_\epsilon = [R_\boldsymbol{\omega}(\theta)]_\epsilon[\mathbf{r}]_\epsilon
+$$ [R_{\boldsymbol{\omega}}(\theta)\mathbf{r}]_\epsilon = [R_{\boldsymbol{\omega}}(\theta)]_\epsilon[\mathbf{r}]_\epsilon
         = (\cos\theta\|\mathbf{r}-(\mathbf{r}\cdot\mathbf{r})\boldsymbol{\omega}\|, 
             \sin\theta\|\mathbf{r}-(\mathbf{r}\cdot\mathbf{r})\boldsymbol{\omega}\|,
             \mathbf{r}\cdot\boldsymbol{\omega}).
 $$
 Conclua, finalmente, que, de fato,
-$$ R_\boldsymbol{\omega}(\theta)\mathbf{r} = (\mathbf{r}\cdot\boldsymbol{\omega})\boldsymbol{\omega} 
+$$ R_{\boldsymbol{\omega}}(\theta)\mathbf{r} = (\mathbf{r}\cdot\boldsymbol{\omega})\boldsymbol{\omega} 
     + (\cos\theta) (\mathbf{r}-(\mathbf{r}\cdot\boldsymbol{\omega})\boldsymbol{\omega})
     + (\sin\theta) \boldsymbol{\omega}\times\mathbf{r}.
 $$
 
 1. Continuando o exercício acima, mostre que 
-$$ \frac{\mathrm{d}}{\mathrm{d} \theta} R_\boldsymbol{\omega}(\theta)\mathbf{r} = \boldsymbol{\omega}\times\mathbf{r}.
+$$ \frac{\mathrm{d}}{\mathrm{d} \theta} R_{\boldsymbol{\omega}}(\theta)\mathbf{r} = \boldsymbol{\omega}\times\mathbf{r}.
 $$
 
 1. Ache a integral de Jacobi nos seguintes casos e verifique se ela coincide com a energia total.
