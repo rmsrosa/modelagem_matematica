@@ -399,7 +399,7 @@
 <li><p>No caso em que o Lagrangiano é invariante por translações, temos a transformação das variáveis generalizadas</p>
 </li>
 </ul>
-\[(\mathbf{q},\mathbf{\dot q},t) \mapsto (\mathbf{q}_s,\mathbf{\dot q}_s,t)=(\mathbf{q}+s\mathbf{h},\mathbf{q},t).
+\[(\mathbf{q},\mathbf{\dot q},t) \mapsto (\mathbf{q}_s,\mathbf{\dot q}_s,t)=(\mathbf{q}+s\mathbf{h},\mathbf{\dot q},t).
 \]
 <ul>
 <li><p>A condição do Lagrangiano ser invariante por translações significa que ele não se altera sob essas transformações:</p>
@@ -555,32 +555,33 @@
 </li>
 <li><p>Mais precisamente, dado um vetor unitário \(\boldsymbol{\omega}\in \mathbb{R}^3\), consideramos o conjunto de rotações de um ângulo \(\theta\in \mathbb{R}\) em torno do eixo gerado por \(\boldsymbol{\omega}\) e no sentido da &quot;regra da mão direita&quot;, com o polegar apontado no sentido de \(\boldsymbol{\omega}\).</p>
 </li>
-<li><p>Denotemos essa rotação por \(R_\boldsymbol{\omega}(\theta)\).</p>
+<li><p>Denotemos essa rotação por \(R_{\boldsymbol{\omega}}(\theta)\).</p>
 </li>
 <li><p>Podemos escrever essa rotação explicitamente na forma</p>
 </li>
 </ul>
-\[ R_\boldsymbol{\omega}(\theta)\mathbf{r} = (\mathbf{r}\cdot\boldsymbol{\omega})\boldsymbol{\omega} 
+\[
+R_{\boldsymbol{\omega}}(\theta)\mathbf{r} = (\mathbf{r}\cdot\boldsymbol{\omega})\boldsymbol{\omega} 
        + (\cos\theta) (\mathbf{r}-(\mathbf{r}\cdot\boldsymbol{\omega})\boldsymbol{\omega})
        + (\sin\theta) \boldsymbol{\omega}\times\mathbf{r}, \qquad \forall \mathbf{r}\in \mathbb{R}^3.
 \]
 <ul>
-<li><p>Temos, assim, o grupo de transformações \(\{R_\boldsymbol{\omega}(\theta)\}_{\theta\in \mathbb{R}}\) em \(\mathbb{R}^3\).</p>
+<li><p>Temos, assim, o grupo de transformações \(\{R_{\boldsymbol{\omega}}(\theta)\}_{\theta\in \mathbb{R}}\) em \(\mathbb{R}^3\).</p>
 </li>
 <li><p>Observe que, por uma questão de interpretação física, o parâmetro que denotamos anteriormente por \(s\) está sendo denotado agora por \(\theta\).</p>
 </li>
 <li><p>Se forem \(n\) partículas com coordenadas \(\mathbf{r} =(\mathbf{r}_1,\ldots,\mathbf{r}_n)\), o grupo de transformações age nas coordenadas de cada partícula, i.e.</p>
 </li>
 </ul>
-\[ R^n_\boldsymbol{\omega}(\theta)\mathbf{r} = (R_\boldsymbol{\omega}(\theta)\mathbf{r}_1,\ldots,R_\boldsymbol{\omega}(\theta)\mathbf{r}_n),
+\[ R^n_{\boldsymbol{\omega}}(\theta)\mathbf{r} = (R_{\boldsymbol{\omega}}(\theta)\mathbf{r}_1,\ldots,R_{\boldsymbol{\omega}}(\theta)\mathbf{r}_n),
     \qquad \theta\in \mathbb{R}.
 \]
 <ul>
 <li><p>Considere, agora, um Lagrangiano \(L(\mathbf{r},\mathbf{\dot r})\) invariante por </p>
 </li>
 </ul>
-<p>\(\{R^n_\boldsymbol{\omega}(\theta)\}_{\theta\in \mathbb{R}}\), i.e.</p>
-\[ L(R^n_\boldsymbol{\omega}(\theta)\mathbf{r},\frac{\mathrm{d}}{\mathrm{d} t} R^n_\boldsymbol{\omega}(\theta)\mathbf{q}) 
+<p>\(\{R^n_{\boldsymbol{\omega}}(\theta)\}_{\theta\in \mathbb{R}}\), i.e.</p>
+\[ L(R^n_{\boldsymbol{\omega}}(\theta)\mathbf{r},\frac{\mathrm{d}}{\mathrm{d} t} R^n_{\boldsymbol{\omega}}(\theta)\mathbf{q}) 
      = L(\mathbf{r},\mathbf{\dot r}), \qquad \forall \;\theta\in \mathbb{R},
 \]
 <ul>
@@ -593,22 +594,22 @@
 <li><p>Sendo que, nesse caso, temos</p>
 </li>
 </ul>
-\[ \mathbf{a}(\mathbf{r}) = \left. \frac{\mathrm{d}}{\mathrm{d} \theta} R^n_\boldsymbol{\omega}(\theta)\mathbf{r} \right|_{\theta=0}
+\[ \mathbf{a}(\mathbf{r}) = \left. \frac{\mathrm{d}}{\mathrm{d} \theta} R^n_{\boldsymbol{\omega}}(\theta)\mathbf{r} \right|_{\theta=0}
 \]
 <h3 id="explicitando_a_quantidade_conservada"><a href="#explicitando_a_quantidade_conservada" class="header-anchor">Explicitando a quantidade conservada</a></h3>
 <ul>
 <li><p>Mais exatamente, temos</p>
 </li>
 </ul>
-\[ \frac{\mathrm{d}}{\mathrm{d} \theta} R^n_\boldsymbol{\omega}(\theta)\mathbf{r}
-     = ( \frac{\mathrm{d}}{\mathrm{d} \theta} R_\boldsymbol{\omega}(\theta)\mathbf{r}_1, \ldots,
-         \frac{\mathrm{d}}{\mathrm{d} \theta} R_\boldsymbol{\omega}(\theta)\mathbf{r}_n)
+\[ \frac{\mathrm{d}}{\mathrm{d} \theta} R^n_{\boldsymbol{\omega}}(\theta)\mathbf{r}
+     = ( \frac{\mathrm{d}}{\mathrm{d} \theta} R_{\boldsymbol{\omega}}(\theta)\mathbf{r}_1, \ldots,
+         \frac{\mathrm{d}}{\mathrm{d} \theta} R_{\boldsymbol{\omega}}(\theta)\mathbf{r}_n)
 \]
 <ul>
 <li><p>Sendo que</p>
 </li>
 </ul>
-\[ \frac{\mathrm{d}}{\mathrm{d} \theta} R_\boldsymbol{\omega}(\theta)\mathbf{r}_i = \boldsymbol{\omega}\times \mathbf{r}_i,
+\[ \frac{\mathrm{d}}{\mathrm{d} \theta} R_{\boldsymbol{\omega}}(\theta)\mathbf{r}_i = \boldsymbol{\omega}\times \mathbf{r}_i,
 \]
 <ul>
 <li><p>Logo</p>
@@ -787,8 +788,8 @@
 <p>forma uma base ortonormal de \(\mathbb{R}^3\). Chamando essa base de \(\epsilon\), observe que \(\mathbf{r}\) pode ser representado nessa base simplesmente por </p>
 \[ [\mathbf{r}]_\epsilon = (\|\mathbf{r}-(\mathbf{r}\cdot\mathbf{r})\boldsymbol{\omega}\|,0,\mathbf{r}\cdot\boldsymbol{\omega}).
 \]
-<p>Nesse base, também podemos representar o operator rotação \(R_\boldsymbol{\omega}(\theta)\) por</p>
-\[ [R_\boldsymbol{\omega}(\theta)]_\epsilon = \left[ 
+<p>Nesse base, também podemos representar o operator rotação \(R_{\boldsymbol{\omega}}(\theta)\) por</p>
+\[ [R_{\boldsymbol{\omega}}(\theta)]_\epsilon = \left[ 
         \begin{matrix} 
             \cos\theta & -\sin\theta & 0 \\
             \sin\theta & \cos\theta & 0 \\
@@ -797,13 +798,13 @@
         \right].
 \]
 <p>Assim,</p>
-\[ [R_\boldsymbol{\omega}(\theta)\mathbf{r}]_\epsilon = [R_\boldsymbol{\omega}(\theta)]_\epsilon[\mathbf{r}]_\epsilon
+\[ [R_{\boldsymbol{\omega}}(\theta)\mathbf{r}]_\epsilon = [R_{\boldsymbol{\omega}}(\theta)]_\epsilon[\mathbf{r}]_\epsilon
         = (\cos\theta\|\mathbf{r}-(\mathbf{r}\cdot\mathbf{r})\boldsymbol{\omega}\|, 
             \sin\theta\|\mathbf{r}-(\mathbf{r}\cdot\mathbf{r})\boldsymbol{\omega}\|,
             \mathbf{r}\cdot\boldsymbol{\omega}).
 \]
 <p>Conclua, finalmente, que, de fato,</p>
-\[ R_\boldsymbol{\omega}(\theta)\mathbf{r} = (\mathbf{r}\cdot\boldsymbol{\omega})\boldsymbol{\omega} 
+\[ R_{\boldsymbol{\omega}}(\theta)\mathbf{r} = (\mathbf{r}\cdot\boldsymbol{\omega})\boldsymbol{\omega} 
     + (\cos\theta) (\mathbf{r}-(\mathbf{r}\cdot\boldsymbol{\omega})\boldsymbol{\omega})
     + (\sin\theta) \boldsymbol{\omega}\times\mathbf{r}.
 \]
@@ -811,7 +812,7 @@
 <li><p>Continuando o exercício acima, mostre que </p>
 </li>
 </ol>
-\[ \frac{\mathrm{d}}{\mathrm{d} \theta} R_\boldsymbol{\omega}(\theta)\mathbf{r} = \boldsymbol{\omega}\times\mathbf{r}.
+\[ \frac{\mathrm{d}}{\mathrm{d} \theta} R_{\boldsymbol{\omega}}(\theta)\mathbf{r} = \boldsymbol{\omega}\times\mathbf{r}.
 \]
 <ol>
 <li><p>Ache a integral de Jacobi nos seguintes casos e verifique se ela coincide com a energia total.</p>
@@ -868,7 +869,7 @@
         </div>
     
 
-    Last modified: May 31, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
+    Last modified: June 07, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
