@@ -249,9 +249,9 @@
 </ul>
 <h3 id="hamiltoniano_a_partir_da_integral_de_jacobi"><a href="#hamiltoniano_a_partir_da_integral_de_jacobi" class="header-anchor">Hamiltoniano a partir da integral de Jacobi</a></h3>
 <ul>
-<li><p>Em vários exemplos o hamiltoniano é essencialmente a energia total do sistema.</p>
+<li><p>Em vários exemplos o hamiltoniano é essencialmente a energia total do sistema. Mas nem sempre.</p>
 </li>
-<li><p>Dessa forma, partindo de uma formulação Lagrangiana de um problema com um grau de liberdade, onde conhecemos o Lagrangiano \(L(q,\dot q)\), é natural procurarmos o Hamiltoniano como sendo a integral de Jacobi do sistema, que é uma quantidade conservada, nesse caso de invariância temporal do Lagrangiano. </p>
+<li><p>Em geral, partindo de uma formulação Lagrangiana de um problema com um grau de liberdade, onde conhecemos o Lagrangiano \(L(q,\dot q)\), é natural procurarmos o Hamiltoniano como sendo a integral de Jacobi do sistema, que é uma quantidade conservada, nesse caso de invariância temporal do Lagrangiano. </p>
 </li>
 <li><p>A integral de Jacobi tem a forma</p>
 </li>
@@ -281,32 +281,32 @@
 </li>
 </ul>
 \[
-\begin{multline*}
-  \frac{\partial H}{\partial p}(q,p) = 
+\begin{align*}
+  \frac{\partial H}{\partial p}(q,p) & = 
       \dot q(q,p) + p\frac{\partial \dot q}{\partial p}(q,p) 
          - \frac{\partial L}{\partial \dot q}(q,\dot q(q,p))\frac{\partial \dot q}{\partial p}(q,p) \\
-         = \dot q + p\frac{\partial \dot q}{\partial p}(q,p) - p\frac{\partial \dot q}{\partial p}(q,p)
-         = \dot q.
-\end{multline*}
+         & = \dot q + p\frac{\partial \dot q}{\partial p}(q,p) - p\frac{\partial \dot q}{\partial p}(q,p) \\
+         & = \dot q.
+\end{align*}
 \]
 <ul>
 <li><p>Usando as equações de Euler-Lagrange,</p>
 </li>
 </ul>
 \[
-\begin{multline*}
+\begin{align*}
   \frac{\partial H}{\partial q}(q,p)
-    = p\frac{\partial \dot q}{\partial q}(q,p)
+    & = p\frac{\partial \dot q}{\partial q}(q,p)
          - \frac{\partial L}{\partial q}(q,\dot q(q,p))
          - \frac{\partial L}{\partial \dot q}(q,\dot q(q,p))\frac{\partial \dot q}{\partial q}(q,p) \\
-    = p\frac{\partial \dot q}{\partial q}(q,p)
+    & = p\frac{\partial \dot q}{\partial q}(q,p)
          - \frac{\partial L}{\partial q}(q,\dot q(q,p))
-         - p\frac{\partial \dot q}{\partial q}(q,p)
-    = - \frac{\partial L}{\partial q}(q,\dot q(q,p)) \\
-    = - \frac{\mathrm{d}}{\mathrm{d} t} \frac{\partial L}{\partial \dot q}(q,\dot q(q,p))
-    = - \frac{\mathrm{d}}{\mathrm{d} t} p
-    = - \dot p.
-\end{multline*}
+         - p\frac{\partial \dot q}{\partial q}(q,p) \\
+    & = - \frac{\partial L}{\partial q}(q,\dot q(q,p)) \\
+    & = - \frac{\mathrm{d}}{\mathrm{d} t} \frac{\partial L}{\partial \dot q}(q,\dot q(q,p)) \\
+    & = - \frac{\mathrm{d}}{\mathrm{d} t} p \\
+    & = - \dot p.
+\end{align*}
 \]
 <ul>
 <li><p>Logo, chegamos ao sistema hamiltoniano</p>
@@ -371,7 +371,7 @@
 \[ L(\mathbf{q},\mathbf{\dot q}).
 \]
 <ul>
-<li><p>Temos a integral de Jacobi, onde, novamente, \(\mathbf{p}\) o momento generalizado do sistema:</p>
+<li><p>Temos a integral de Jacobi, onde, novamente, \(\mathbf{p}\) é o momento generalizado do sistema:</p>
 </li>
 </ul>
 \[ h(\mathbf{q},\mathbf{\dot q}) = \mathbf{\dot q}\cdot\mathbf{p} - L(\mathbf{q},\mathbf{\dot q}), \qquad \mathbf{p} = \nabla_{\mathbf{\dot q}} L(\mathbf{q},\mathbf{\dot q})
@@ -431,10 +431,10 @@
 \[ L(\mathbf{q},\mathbf{\dot q}) = \mathbf{\dot q}\cdot\mathbf{p} - H(\mathbf{q},\mathbf{p}), \qquad\mathbf{p}=\mathbf{P}(\mathbf{q},\mathbf{\dot q})
 \]
 <ul>
-<li><p>Nesse caso, \(\mathbf{p} = \mathbf{P}(\mathbf{q},\mathbf{\dot q})\) é solução da primeira equação do sistema Hamiltoniano,</p>
+<li><p>Nesse caso, \(\mathbf{p} = \mathbf{P}(\mathbf{q},\mathbf{\dot q})\) é solução da segunda equação do sistema Hamiltoniano,</p>
 </li>
 </ul>
-\[ \mathbf{\dot q} = \frac{\partial H}{\partial\mathbf{p}}(\mathbf{q},\mathbf{p}).
+\[ \mathbf{\dot p} = - \frac{\partial H}{\partial\mathbf{q}}(\mathbf{q},\mathbf{p}).
 \]
 <h3 id="obtendo_o_lagrangiano_do_hamiltoniano_no_caso_do_pêndulo_planar"><a href="#obtendo_o_lagrangiano_do_hamiltoniano_no_caso_do_pêndulo_planar" class="header-anchor">Obtendo o Lagrangiano do Hamiltoniano no caso do pêndulo planar </a></h3>
 <ul>
@@ -460,10 +460,13 @@
 <li><p>Substituindo essa relação na fórmula para o Lagrangiano a partir do Hamiltoniano, obtemos</p>
 </li>
 </ul>
-\[ L(\theta,\dot\theta) = \dot\theta\psi - H(\theta,\psi)
-       = m\ell^2 \dot\theta^2 
-          - \left(\frac{1}{2m\ell^2}(m\ell^2\dot\theta)^2 - mg\ell\cos\theta\right)
-       = \frac{1}{2}m\ell^2\dot\theta^2 + mg\ell\cos\theta,
+\[
+\begin{align*}
+L(\theta,\dot\theta) & = \dot\theta\psi - H(\theta,\psi) \\
+       & = m\ell^2 \dot\theta^2 
+          - \left(\frac{1}{2m\ell^2}(m\ell^2\dot\theta)^2 - mg\ell\cos\theta\right) \\
+       & = \frac{1}{2}m\ell^2\dot\theta^2 + mg\ell\cos\theta,
+\end{align*}
 \]
 <ul>
 <li><p>Recuperamos, assim, o Lagrangiano desse sistema.</p>
@@ -546,7 +549,7 @@
 </ul>
 <h3 id="reescrevendo_a_transformada_de_legendre"><a href="#reescrevendo_a_transformada_de_legendre" class="header-anchor">Reescrevendo a transformada de Legendre</a></h3>
 <ul>
-<li><p>Note, agora, como mencionado acima, que, formalmente, a transformação \(g^*(s) = sr - g(r)\), onde \(r=r(s)\) é a inversa de \(s=g'(r)\), pode ser escrita como</p>
+<li><p>Note, agora, como mencionado acima, que, formalmente, a transformação \(g^*(s) = sr - g(r),\) onde \(r=r(s)\) é a inversa de \(s=g'(r),\) pode ser escrita como</p>
 </li>
 </ul>
 \[ g^*(s) = \max_{r\in \mathbb{R}} \left\{ sr - g(r) \right\}.
@@ -558,7 +561,7 @@
 \[ \frac{\partial}{\partial r} \left\{ sr - g(r) \right\} = s - g'(r) = 0,
 \]
 <ul>
-<li><p>Ou seja, quando \(r\) é tal que \(s = g'(r)\).</p>
+<li><p>Ou seja, quando \(r\) é tal que \(s = g'(r).\)</p>
 </li>
 <li><p>No caso em que esse máximo existe e é único, isso define a função \(r=r(s)\) que é inversa de \(g'\). </p>
 </li>
@@ -570,9 +573,9 @@
 \[ \frac{g(r)}{|r|} \rightarrow \infty, \qquad \text{quando } |r|\rightarrow \infty.
 \]
 <ul>
-<li><p>Esse crescimento implica em \(sr-g(r)\) ser limitada superiormente em relação a \(r\), para todo \(s\in\mathbb{R}\) fixo e, com isso, que o supremo de \(sr-g(r)\) em \(r\) seja limitado. E a continuidade implica que esse supremo é um máximo.</p>
+<li><p>Esse crescimento implica em \(sr-g(r)\) ser limitada superiormente em relação a \(r,\) para todo \(s\in\mathbb{R}\) fixo e, com isso, que o supremo de \(sr-g(r)\) em \(r\) seja limitado. E a continuidade implica que esse supremo é um máximo.</p>
 </li>
-<li><p>Vejam, nos exercícios, condições para que \(g^*\) seja contínua e com crescimento superlinear e, com isso, que a transformada de Legendre possa ser aplicada em \(g^*\), nos dando uma função \(g^{**}\). E, ainda, que \(g^{**}\) concide com \(g\). </p>
+<li><p>Vejam, nos exercícios, condições para que \(g^*\) seja contínua e com crescimento superlinear e, com isso, que a transformada de Legendre possa ser aplicada em \(g^*,\) nos dando uma função \(g^{**}.\) E, ainda, que \(g^{**}\) concide com \(g\). </p>
 </li>
 </ul>
 <h2 id="exercícios"><a href="#exercícios" class="header-anchor">Exercícios</a></h2>
@@ -735,7 +738,7 @@
         </div>
     
 
-    Last modified: June 02, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
+    Last modified: June 09, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
