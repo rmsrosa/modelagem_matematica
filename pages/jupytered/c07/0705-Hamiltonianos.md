@@ -49,9 +49,9 @@ $$
 
 ### Hamiltoniano a partir da integral de Jacobi
 
-* Em vários exemplos o hamiltoniano é essencialmente a energia total do sistema.
+* Em vários exemplos o hamiltoniano é essencialmente a energia total do sistema. Mas nem sempre.
 
-* Dessa forma, partindo de uma formulação Lagrangiana de um problema com um grau de liberdade, onde conhecemos o Lagrangiano $L(q,\dot q)$, é natural procurarmos o Hamiltoniano como sendo a integral de Jacobi do sistema, que é uma quantidade conservada, nesse caso de invariância temporal do Lagrangiano. 
+* Em geral, partindo de uma formulação Lagrangiana de um problema com um grau de liberdade, onde conhecemos o Lagrangiano $L(q,\dot q)$, é natural procurarmos o Hamiltoniano como sendo a integral de Jacobi do sistema, que é uma quantidade conservada, nesse caso de invariância temporal do Lagrangiano. 
 
 * A integral de Jacobi tem a forma
 
@@ -76,31 +76,30 @@ $$
 * Temos
 
 $$
-\begin{multline*}
-  \frac{\partial H}{\partial p}(q,p) = 
+\begin{align*}
+  \frac{\partial H}{\partial p}(q,p) & = 
       \dot q(q,p) + p\frac{\partial \dot q}{\partial p}(q,p) 
          - \frac{\partial L}{\partial \dot q}(q,\dot q(q,p))\frac{\partial \dot q}{\partial p}(q,p) \\
-         = \dot q + p\frac{\partial \dot q}{\partial p}(q,p) - p\frac{\partial \dot q}{\partial p}(q,p)
-         = \dot q.
-\end{multline*}
+         & = \dot q + p\frac{\partial \dot q}{\partial p}(q,p) - p\frac{\partial \dot q}{\partial p}(q,p) \\
+         & = \dot q.
+\end{align*}
 $$
 
 * Usando as equações de Euler-Lagrange,
-
 $$
-\begin{multline*}
+\begin{align*}
   \frac{\partial H}{\partial q}(q,p)
-    = p\frac{\partial \dot q}{\partial q}(q,p)
+    & = p\frac{\partial \dot q}{\partial q}(q,p)
          - \frac{\partial L}{\partial q}(q,\dot q(q,p))
          - \frac{\partial L}{\partial \dot q}(q,\dot q(q,p))\frac{\partial \dot q}{\partial q}(q,p) \\
-    = p\frac{\partial \dot q}{\partial q}(q,p)
+    & = p\frac{\partial \dot q}{\partial q}(q,p)
          - \frac{\partial L}{\partial q}(q,\dot q(q,p))
-         - p\frac{\partial \dot q}{\partial q}(q,p)
-    = - \frac{\partial L}{\partial q}(q,\dot q(q,p)) \\
-    = - \frac{\mathrm{d}}{\mathrm{d} t} \frac{\partial L}{\partial \dot q}(q,\dot q(q,p))
-    = - \frac{\mathrm{d}}{\mathrm{d} t} p
-    = - \dot p.
-\end{multline*}
+         - p\frac{\partial \dot q}{\partial q}(q,p) \\
+    & = - \frac{\partial L}{\partial q}(q,\dot q(q,p)) \\
+    & = - \frac{\mathrm{d}}{\mathrm{d} t} \frac{\partial L}{\partial \dot q}(q,\dot q(q,p)) \\
+    & = - \frac{\mathrm{d}}{\mathrm{d} t} p \\
+    & = - \dot p.
+\end{align*}
 $$
 
 * Logo, chegamos ao sistema hamiltoniano
@@ -159,7 +158,7 @@ $$
 $$ L(\mathbf{q},\mathbf{\dot q}).
 $$
 
-* Temos a integral de Jacobi, onde, novamente, $\mathbf{p}$ o momento generalizado do sistema:
+* Temos a integral de Jacobi, onde, novamente, $\mathbf{p}$ é o momento generalizado do sistema:
 
 $$ h(\mathbf{q},\mathbf{\dot q}) = \mathbf{\dot q}\cdot\mathbf{p} - L(\mathbf{q},\mathbf{\dot q}), \qquad \mathbf{p} = \nabla_{\mathbf{\dot q}} L(\mathbf{q},\mathbf{\dot q})
 $$
@@ -213,9 +212,9 @@ $$
 $$ L(\mathbf{q},\mathbf{\dot q}) = \mathbf{\dot q}\cdot\mathbf{p} - H(\mathbf{q},\mathbf{p}), \qquad\mathbf{p}=\mathbf{P}(\mathbf{q},\mathbf{\dot q})
 $$
 
-* Nesse caso, $\mathbf{p} = \mathbf{P}(\mathbf{q},\mathbf{\dot q})$ é solução da primeira equação do sistema Hamiltoniano,
+* Nesse caso, $\mathbf{p} = \mathbf{P}(\mathbf{q},\mathbf{\dot q})$ é solução da segunda equação do sistema Hamiltoniano,
 
-$$ \mathbf{\dot q} = \frac{\partial H}{\partial\mathbf{p}}(\mathbf{q},\mathbf{p}).
+$$ \mathbf{\dot p} = - \frac{\partial H}{\partial\mathbf{q}}(\mathbf{q},\mathbf{p}).
 $$
 
 
@@ -239,10 +238,13 @@ $$
 
 * Substituindo essa relação na fórmula para o Lagrangiano a partir do Hamiltoniano, obtemos
 
-$$ L(\theta,\dot\theta) = \dot\theta\psi - H(\theta,\psi)
-       = m\ell^2 \dot\theta^2 
-          - \left(\frac{1}{2m\ell^2}(m\ell^2\dot\theta)^2 - mg\ell\cos\theta\right)
-       = \frac{1}{2}m\ell^2\dot\theta^2 + mg\ell\cos\theta,
+$$
+\begin{align*}
+L(\theta,\dot\theta) & = \dot\theta\psi - H(\theta,\psi) \\
+       & = m\ell^2 \dot\theta^2 
+          - \left(\frac{1}{2m\ell^2}(m\ell^2\dot\theta)^2 - mg\ell\cos\theta\right) \\
+       & = \frac{1}{2}m\ell^2\dot\theta^2 + mg\ell\cos\theta,
+\end{align*}
 $$
 
 * Recuperamos, assim, o Lagrangiano desse sistema.
@@ -319,7 +321,7 @@ $$
 
 ### Reescrevendo a transformada de Legendre
 
-* Note, agora, como mencionado acima, que, formalmente, a transformação $g^*(s) = sr - g(r)$, onde $r=r(s)$ é a inversa de $s=g'(r)$, pode ser escrita como
+* Note, agora, como mencionado acima, que, formalmente, a transformação $g^*(s) = sr - g(r),$ onde $r=r(s)$ é a inversa de $s=g'(r),$ pode ser escrita como
 
 $$ g^*(s) = \max_{r\in \mathbb{R}} \left\{ sr - g(r) \right\}.
 $$
@@ -329,7 +331,7 @@ $$
 $$ \frac{\partial}{\partial r} \left\{ sr - g(r) \right\} = s - g'(r) = 0,
 $$
 
-* Ou seja, quando $r$ é tal que $s = g'(r)$.
+* Ou seja, quando $r$ é tal que $s = g'(r).$
 
 * No caso em que esse máximo existe e é único, isso define a função $r=r(s)$ que é inversa de $g'$. 
 
@@ -340,9 +342,9 @@ $$
 $$ \frac{g(r)}{|r|} \rightarrow \infty, \qquad \text{quando } |r|\rightarrow \infty.
 $$
 
-* Esse crescimento implica em $sr-g(r)$ ser limitada superiormente em relação a $r$, para todo $s\in\mathbb{R}$ fixo e, com isso, que o supremo de $sr-g(r)$ em $r$ seja limitado. E a continuidade implica que esse supremo é um máximo.
+* Esse crescimento implica em $sr-g(r)$ ser limitada superiormente em relação a $r,$ para todo $s\in\mathbb{R}$ fixo e, com isso, que o supremo de $sr-g(r)$ em $r$ seja limitado. E a continuidade implica que esse supremo é um máximo.
 
-* Vejam, nos exercícios, condições para que $g^*$ seja contínua e com crescimento superlinear e, com isso, que a transformada de Legendre possa ser aplicada em $g^*$, nos dando uma função $g^{**}$. E, ainda, que $g^{**}$ concide com $g$. 
+* Vejam, nos exercícios, condições para que $g^*$ seja contínua e com crescimento superlinear e, com isso, que a transformada de Legendre possa ser aplicada em $g^*,$ nos dando uma função $g^{**}.$ E, ainda, que $g^{**}$ concide com $g$. 
 
 
 ## Exercícios
