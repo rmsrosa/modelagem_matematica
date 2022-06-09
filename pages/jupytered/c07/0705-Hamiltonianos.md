@@ -36,7 +36,7 @@ $$
 
 * Uma forma mais compacta de escrever um sistema Hamiltoniano faz uso do gradiente de $H(q,p)$ e de uma matriz antisimétrica $J$, dados por 
 
-$$ \nabla H(q,p) = \left( \frac{\partial H}{\partial p}(q,p), \frac{\partial H}{\partial p}(q,p) \right), \qquad J = \left[ \begin{matrix} 0 & 1 \\ -1 & 0 \end{matrix} \right].
+$$ \nabla H(q,p) = \left( \frac{\partial H}{\partial q}(q,p), \frac{\partial H}{\partial p}(q,p) \right), \qquad J = \left[ \begin{matrix} 0 & 1 \\ -1 & 0 \end{matrix} \right].
 $$
 
 * Assim, podemos escrever
