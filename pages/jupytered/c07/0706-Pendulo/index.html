@@ -648,13 +648,13 @@ for N in 1:5
 end
 @btime 𝒯&#40;&#36;&#40;π/4&#41;&#41;
 nothing</code></pre>
-<pre><code class="language-julia">1.500 ns &#40;0 allocations: 0 bytes&#41;
-  29.061 ns &#40;0 allocations: 0 bytes&#41;
-  74.331 ns &#40;0 allocations: 0 bytes&#41;
-  100.698 ns &#40;0 allocations: 0 bytes&#41;
-  143.952 ns &#40;0 allocations: 0 bytes&#41;
-  171.586 ns &#40;0 allocations: 0 bytes&#41;
-  15.948 ns &#40;0 allocations: 0 bytes&#41;</code></pre>
+<pre><code class="language-julia">2.146 ns &#40;0 allocations: 0 bytes&#41;
+  35.775 ns &#40;0 allocations: 0 bytes&#41;
+  94.555 ns &#40;0 allocations: 0 bytes&#41;
+  142.832 ns &#40;0 allocations: 0 bytes&#41;
+  190.322 ns &#40;0 allocations: 0 bytes&#41;
+  238.798 ns &#40;0 allocations: 0 bytes&#41;
+  25.790 ns &#40;0 allocations: 0 bytes&#41;</code></pre>
 <h3 id="comparando_as_aproximações_via_agm_e_via_linear"><a href="#comparando_as_aproximações_via_agm_e_via_linear" class="header-anchor">Comparando as aproximações via AGM e via linear</a></h3>
 <pre><code class="language-julia">plot&#40;θ, θ -&gt; &#40;𝒯&#40;θ&#41; - 2π&#41;/2π, label&#61;nothing&#41;</code></pre>
 <img src="/modelagem_matematica/assets/pages/jupytered/c07/0706-Pendulo/code/images/0706-Pendulo_13_1.png" alt="">

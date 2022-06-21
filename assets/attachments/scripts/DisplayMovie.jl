@@ -18,8 +18,7 @@ function display_movie(filename; width = 512, embed = false)
         display(
             "text/html",
             string(
-                """<video autoplay controls width="$width">
-                <source src="$src" type="video/$fmt">
+                """<video autoplay controls width="$width" src="$src" type="video/$fmt">
                 Sorry, your browser doesn't support embedded videos.
                 </video>"""
                 )
