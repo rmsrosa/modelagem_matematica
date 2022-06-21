@@ -89,7 +89,9 @@ fit = curve_fit(model, data_t, data_v, β₀)
 ```
 
 ```
-Error: InterruptException:
+2-element Vector{Float64}:
+ 0.2738543055421006
+ 0.35735470448638956
 ```
 
 
@@ -103,11 +105,7 @@ plot!(data_t, data_v, seriestype=:scatter, label="amostra com ruído")
 plot!(0:0.1:4, t -> model(t, β_fit), label="modelo ajustado", legend=:bottomright)
 ```
 
-```
-Error: UndefVarError: β_fit not defined
-```
-
-
+\fig{images/0405-Exemplos_ajuste_naolinear_5_1.png}
 
 
 ### Ajuste dos dados via Optim
@@ -182,11 +180,7 @@ plot!(0:0.1:4, t -> model(t, β_optim), seriestype=:scatter, markershape=:xcross
         label="modelo ajustado via gradiente descendente do Optim", legend=:bottomright)
 ```
 
-```
-Error: UndefVarError: β_fit not defined
-```
-
-
+\fig{images/0405-Exemplos_ajuste_naolinear_9_1.png}
 
 
 ### Outros métodos de otimização
@@ -253,7 +247,7 @@ optimize(custo, β₀, Newton(), autodiff = :forward)
     |g(x)|                 = 2.39e-11 ≤ 1.0e-08
 
  * Work counters
-    Seconds run:   1  (vs limit Inf)
+    Seconds run:   0  (vs limit Inf)
     Iterations:    6
     f(x) calls:    20
     ∇f(x) calls:   20
@@ -337,11 +331,11 @@ mods_custo = Dict(
 
 ```
 Dict{Symbol, Function} with 5 entries:
-  :cauchy  => #20
-  :arctan  => #21
-  :soft_l1 => #18
-  :huber   => #19
-  :linear  => #17
+  :cauchy  => #22
+  :arctan  => #23
+  :soft_l1 => #20
+  :huber   => #21
+  :linear  => #19
 ```
 
 

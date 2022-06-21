@@ -258,7 +258,7 @@ m = Dense(n, 1)
 ```
 
 ```
-Dense(2 => 1)       # 3 parameters
+Dense(2, 1)         # 3 parameters
 ```
 
 
@@ -304,21 +304,17 @@ methods(Dense) # métodos para a construção do tipo composto
 ```
 
 ```
-# 7 methods for type constructor:
+# 5 methods for type constructor:
 [1] Flux.Dense(in::Integer, out::Integer) in Flux at /Users/rrosa/.julia/pa
-ckages/Flux/6Q5r4/src/deprecations.jl:63
-[2] Flux.Dense(in::Integer, out::Integer, σ; kw...) in Flux at /Users/rrosa
-/.julia/packages/Flux/6Q5r4/src/deprecations.jl:63
-[3] Flux.Dense(::Pair{<:Integer, <:Integer}) in Flux at /Users/rrosa/.julia
-/packages/Flux/6Q5r4/src/layers/basic.jl:150
-[4] Flux.Dense(::Pair{<:Integer, <:Integer}, σ; init, bias) in Flux at /Use
-rs/rrosa/.julia/packages/Flux/6Q5r4/src/layers/basic.jl:150
-[5] Flux.Dense(W::M) where M<:(AbstractMatrix) in Flux at /Users/rrosa/.jul
-ia/packages/Flux/6Q5r4/src/layers/basic.jl:144
-[6] Flux.Dense(W::M, bias) where M<:(AbstractMatrix) in Flux at /Users/rros
-a/.julia/packages/Flux/6Q5r4/src/layers/basic.jl:144
-[7] Flux.Dense(W::M, bias, σ::F) where {M<:(AbstractMatrix), F} in Flux at 
-/Users/rrosa/.julia/packages/Flux/6Q5r4/src/layers/basic.jl:144
+ckages/Flux/7nTyc/src/layers/basic.jl:133
+[2] Flux.Dense(in::Integer, out::Integer, σ; initW, initb, init, bias) in F
+lux at /Users/rrosa/.julia/packages/Flux/7nTyc/src/layers/basic.jl:133
+[3] Flux.Dense(W::M) where M<:(AbstractMatrix) in Flux at /Users/rrosa/.jul
+ia/packages/Flux/7nTyc/src/layers/basic.jl:127
+[4] Flux.Dense(W::M, bias) where M<:(AbstractMatrix) in Flux at /Users/rros
+a/.julia/packages/Flux/7nTyc/src/layers/basic.jl:127
+[5] Flux.Dense(W::M, bias, σ::F) where {M<:(AbstractMatrix), F} in Flux at 
+/Users/rrosa/.julia/packages/Flux/7nTyc/src/layers/basic.jl:127
 ```
 
 
@@ -330,9 +326,9 @@ methods(m) # métodos definidos
 ```
 # 2 methods:
 [1] (a::Flux.Dense)(x::AbstractVecOrMat) in Flux at /Users/rrosa/.julia/pac
-kages/Flux/6Q5r4/src/layers/basic.jl:157
+kages/Flux/7nTyc/src/layers/basic.jl:156
 [2] (a::Flux.Dense)(x::AbstractArray) in Flux at /Users/rrosa/.julia/packag
-es/Flux/6Q5r4/src/layers/basic.jl:162
+es/Flux/7nTyc/src/layers/basic.jl:161
 ```
 
 
@@ -353,11 +349,11 @@ show(Docs.doc(Dense))
 
 ```
 ```
-Dense(in => out, σ=identity; bias=true, init=glorot_uniform)
+Dense(in, out, σ=identity; bias=true, init=glorot_uniform)
 Dense(W::AbstractMatrix, [bias, σ])
 ```
 
-Create a traditional fully connected layer, whose forward pass is given by:
+Create a traditional `Dense` layer, whose forward pass is given by:
 
 ```
 y = σ.(W * x .+ bias)
@@ -377,8 +373,8 @@ lso be provided explicitly.
 # Examples
 
 ```jldoctest
-julia> d = Dense(5 => 2)
-Dense(5 => 2)       # 12 parameters
+julia> d = Dense(5, 2)
+Dense(5, 2)         # 12 parameters
 
 julia> d(rand(Float32, 5, 64)) |> size
 (2, 64)
@@ -388,7 +384,7 @@ nsions
 (2, 1, 1, 64)
 
 julia> d1 = Dense(ones(2, 5), false, tanh)  # using provided weight matrix
-Dense(5 => 2, tanh; bias=false)  # 10 parameters
+Dense(5, 2, tanh; bias=false)  # 10 parameters
 
 julia> d1(ones(5))
 2-element Vector{Float64}:
@@ -450,9 +446,9 @@ m = Chain(Dense(2, 4, σ), Dense(4, 8, tanh), Dense(8, 1, relu))
 
 ```
 Chain(
-  Dense(2 => 4, σ),                     # 12 parameters
-  Dense(4 => 8, tanh),                  # 40 parameters
-  Dense(8 => 1, relu),                  # 9 parameters
+  Dense(2, 4, σ),                       # 12 parameters
+  Dense(4, 8, tanh),                    # 40 parameters
+  Dense(8, 1, relu),                    # 9 parameters
 )                   # Total: 6 arrays, 61 parameters, 628 bytes.
 ```
 

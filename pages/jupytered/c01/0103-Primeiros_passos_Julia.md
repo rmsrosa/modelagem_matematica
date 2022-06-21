@@ -132,11 +132,11 @@ nothing
 ```
 
 ```
-pointer(a) = Ptr{Int64} @0x00000001307d6890
-pointer(a) = Ptr{Int64} @0x00000001307d71f0
-pointer(a) = Ptr{Int64} @0x00000001307d7b00
-pointer(a) = Ptr{Int64} @0x00000001307d7b00
-pointer(a) = Ptr{Int64} @0x00000001307d7b00
+pointer(a) = Ptr{Int64} @0x000000017423e200
+pointer(a) = Ptr{Int64} @0x000000017423f0b0
+pointer(a) = Ptr{Int64} @0x00000001742489a0
+pointer(a) = Ptr{Int64} @0x00000001742489a0
+pointer(a) = Ptr{Int64} @0x00000001742489a0
 ```
 
 
@@ -158,9 +158,9 @@ nothing
 ```
 
 ```
-pointer(s) = Ptr{UInt8} @0x000000012ebce8f8
-pointer(s) = Ptr{UInt8} @0x000000012ebce9b8
-pointer(s) = Ptr{UInt8} @0x000000012ebcf648
+pointer(s) = Ptr{UInt8} @0x0000000170866fe8
+pointer(s) = Ptr{UInt8} @0x0000000170867048
+pointer(s) = Ptr{UInt8} @0x0000000170867d08
 s = "Modelos Matemáticos"
 ```
 
@@ -257,8 +257,8 @@ nothing
 ```
 
 ```
-resultado = "118 é par"
-resultado = "119 é impar"
+resultado = "167 é impar"
+resultado = "168 é par"
 ```
 
 
@@ -804,8 +804,8 @@ nothing
 ```
 
 ```
-0.000030 seconds (1 allocation: 20.625 KiB)
-  0.002747 seconds (23 allocations: 21.797 KiB, 98.54% compilation time)
+0.000298 seconds (1 allocation: 20.625 KiB)
+  0.001734 seconds (23 allocations: 21.797 KiB, 95.95% compilation time)
 ```
 
 
@@ -842,11 +842,11 @@ nothing
 ```
 escalar1(vec1, vec2) ≈ escalar2(vec1, vec2) ≈ escalar3(vec1, vec2) ≈ escala
 r4(vec1, vec2) ≈ escalar5(vec1, vec2) = true
-  145.588 ns (1 allocation: 896 bytes)
-  130.773 ns (0 allocations: 0 bytes)
-  267.166 ns (0 allocations: 0 bytes)
-  121.370 ns (0 allocations: 0 bytes)
-  39.858 ns (0 allocations: 0 bytes)
+  78.254 ns (1 allocation: 896 bytes)
+  64.521 ns (0 allocations: 0 bytes)
+  276.564 ns (0 allocations: 0 bytes)
+  55.174 ns (0 allocations: 0 bytes)
+  32.151 ns (0 allocations: 0 bytes)
 ```
 
 
@@ -859,16 +859,16 @@ Para uma estatística mais detalhada, usamos `@benchmark`.
 ```
 
 ```
-BenchmarkTools.Trial: 10000 samples with 988 evaluations.
- Range (min … max):  37.786 ns … 174.564 ns  ┊ GC (min … max): 0.00% … 0.00
+BenchmarkTools.Trial: 10000 samples with 995 evaluations.
+ Range (min … max):  29.689 ns … 124.163 ns  ┊ GC (min … max): 0.00% … 0.00
 %
- Time  (median):     38.226 ns               ┊ GC (median):    0.00%
- Time  (mean ± σ):   41.135 ns ±   7.942 ns  ┊ GC (mean ± σ):  0.00% ± 0.00
+ Time  (median):     29.816 ns               ┊ GC (median):    0.00%
+ Time  (mean ± σ):   30.023 ns ±   1.102 ns  ┊ GC (mean ± σ):  0.00% ± 0.00
 %
 
-  █ ▄  ▁ ▅▁ ▃  ▄                                               ▁
-  ███▇▇█▇████▇▆█▇▆██▆▆▇▇▆▆▇▇▆▇▇▇▇▇▇▆█▆▆▅▅▆▇▆▅▁▅▆▅▄▅▅▄▅▄▆▅▅▅▃▅▅ █
-  37.8 ns       Histogram: log(frequency) by time      77.5 ns <
+    █▇                                                          
+  ▂███▇▄▄▃▃▂▂▂▂▂▂▂▂▂▂▁▂▂▂▂▂▂▃▃▃▂▃▃▂▂▂▂▂▂▂▁▂▂▂▂▂▂▂▂▂▁▂▂▂▂▂▂▂▂▂▂ ▃
+  29.7 ns         Histogram: frequency by time           32 ns <
 
  Memory estimate: 0 bytes, allocs estimate: 0.
 ```

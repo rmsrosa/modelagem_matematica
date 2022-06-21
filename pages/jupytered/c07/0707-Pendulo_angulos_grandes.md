@@ -22,13 +22,6 @@ using VideoIO
 using Plots
 ```
 
-```
-Your GR installation is incomplete. Rerunning build step for GR package.
-Error: Failed to precompile Plots [91a5bcdd-55d7-5caf-9e0b-520d859cae80] to
- /Users/rmsrosa/.julia/compiled/v1.7/Plots/jl_vGXhqI.
-```
-
-
 
 ```julia
 using Optim
@@ -47,7 +40,7 @@ include("../../../_assets/attachments/scripts/VideoTracking.jl")
 ```
 
 ```
-Main.##WeaveSandBox#292.VideoTracking
+Main.##WeaveSandBox#592.VideoTracking
 ```
 
 
@@ -114,14 +107,15 @@ DisplayMovie.display_movie("../../../_assets/attachments/img/pendulo_70cm_1_redu
 Error: MethodError: no method matching show(::IOContext{IOBuffer}, ::MIME{S
 ymbol("text/html")}, ::String)
 Closest candidates are:
-  show(::IO, ::MIME{Symbol("text/html")}, !Matched::DataFrames.GroupedDataF
-rame) at ~/.julia/packages/DataFrames/zqFGs/src/abstractdataframe/io.jl:291
   show(::IO, ::MIME{Symbol("text/html")}, !Matched::DataFrames.DataFrameRow
 ; summary, eltypes) at ~/.julia/packages/DataFrames/zqFGs/src/abstractdataf
 rame/io.jl:268
   show(::IO, ::MIME{Symbol("text/html")}, !Matched::DataFrames.AbstractData
 Frame; summary, eltypes) at ~/.julia/packages/DataFrames/zqFGs/src/abstract
 dataframe/io.jl:130
+  show(::IO, ::MIME{Symbol("text/html")}, !Matched::DataFrames.DataFrameRow
+s; summary, eltypes) at ~/.julia/packages/DataFrames/zqFGs/src/abstractdata
+frame/io.jl:275
   ...
 ```
 
@@ -244,8 +238,8 @@ labeled_components = label_components(mask)
 
 ```
 Error: LoadError: UndefVarError: @which not defined
-in expression starting at /Users/rmsrosa/Documents/git-repositories/modelag
-em_matematica/src/jupyter/c07/0707-Pendulo_angulos_grandes.ipynb:2
+in expression starting at /Users/rrosa/Documents/git_repositories/modelagem
+_matematica/src/jupyter/c07/0707-Pendulo_angulos_grandes.ipynb:2
 ```
 
 
@@ -402,7 +396,7 @@ filter!(p -> p.area ≥ min_area, components_location)
 ```
 
 ```
-1-element Vector{Main.##WeaveSandBox#292.VideoTracking.Blob}:
+1-element Vector{Main.##WeaveSandBox#592.VideoTracking.Blob}:
  Blob Object
   Centroid coordinates: (x, y) = (670.0722713864307, 387.4906588003933)
   Span values: (xspan, yspan) = (644:697, 364:412)
@@ -428,7 +422,7 @@ filter!(p -> p.area ≥ min_area, components_location)
 ```
 
 ```
-1-element Vector{Main.##WeaveSandBox#292.VideoTracking.Blob}:
+1-element Vector{Main.##WeaveSandBox#592.VideoTracking.Blob}:
  Blob Object
   Centroid coordinates: (x, y) = (670.0722713864307, 387.4906588003933)
   Span values: (xspan, yspan) = (644:697, 364:412)
@@ -450,7 +444,7 @@ tracks_70cm1 = VideoTracking.find_tracks(filename)
 ```
 
 ```
-1-element Vector{Main.##WeaveSandBox#292.VideoTracking.Track}:
+1-element Vector{Main.##WeaveSandBox#592.VideoTracking.Track}:
  Tracked blob with framespan nspan = 13:55
 ```
 
@@ -469,14 +463,15 @@ DisplayMovie.display_movie("../../../_assets/attachments/img/pendulo_70cm_1_redu
 Error: MethodError: no method matching show(::IOContext{IOBuffer}, ::MIME{S
 ymbol("text/html")}, ::String)
 Closest candidates are:
-  show(::IO, ::MIME{Symbol("text/html")}, !Matched::DataFrames.GroupedDataF
-rame) at ~/.julia/packages/DataFrames/zqFGs/src/abstractdataframe/io.jl:291
   show(::IO, ::MIME{Symbol("text/html")}, !Matched::DataFrames.DataFrameRow
 ; summary, eltypes) at ~/.julia/packages/DataFrames/zqFGs/src/abstractdataf
 rame/io.jl:268
   show(::IO, ::MIME{Symbol("text/html")}, !Matched::DataFrames.AbstractData
 Frame; summary, eltypes) at ~/.julia/packages/DataFrames/zqFGs/src/abstract
 dataframe/io.jl:130
+  show(::IO, ::MIME{Symbol("text/html")}, !Matched::DataFrames.DataFrameRow
+s; summary, eltypes) at ~/.julia/packages/DataFrames/zqFGs/src/abstractdata
+frame/io.jl:275
   ...
 ```
 
@@ -487,7 +482,7 @@ tracks_70cm1
 ```
 
 ```
-1-element Vector{Main.##WeaveSandBox#292.VideoTracking.Track}:
+1-element Vector{Main.##WeaveSandBox#592.VideoTracking.Track}:
  Tracked blob with framespan nspan = 13:55
 ```
 
@@ -508,7 +503,7 @@ tracks_70cm1[1].path
 ```
 
 ```
-43-element Vector{Main.##WeaveSandBox#292.VideoTracking.Blob}:
+43-element Vector{Main.##WeaveSandBox#592.VideoTracking.Blob}:
  Blob Object
   Centroid coordinates: (x, y) = (849.1062271062272, 208.7948717948718)
   Span values: (xspan, yspan) = (840:854, 177:240)
@@ -631,11 +626,7 @@ end
 display(plt)
 ```
 
-```
-Error: UndefVarError: plot not defined
-```
-
-
+\fig{images/0707-Pendulo_angulos_grandes_39_1.png}
 
 ```julia
 plt = plot(title = "Coordinate x of $(length(tracks_70cm1)) tracks", titlefont = 10, legend=:topleft)
@@ -645,11 +636,7 @@ end
 display(plt)
 ```
 
-```
-Error: UndefVarError: plot not defined
-```
-
-
+\fig{images/0707-Pendulo_angulos_grandes_40_1.png}
 
 ```julia
 plt = plot(title = "Coordinate y of $(length(tracks_70cm1)) tracks", titlefont = 10, legend=:topright)
@@ -659,11 +646,7 @@ end
 display(plt)
 ```
 
-```
-Error: UndefVarError: plot not defined
-```
-
-
+\fig{images/0707-Pendulo_angulos_grandes_41_1.png}
 
 ```julia
 size(vd[1])
@@ -708,7 +691,8 @@ display(plt)
 ```
 
 ```
-Error: UndefVarError: plot not defined
+Error: BoundsError: attempt to access 0-element Vector{Float64} at index [1
+]
 ```
 
 
@@ -850,11 +834,7 @@ plot!(plt, 1:854, nx -> center_ny - √(radius_n^2 - (nx - center_nx)^2), linest
 display(plt)
 ```
 
-```
-Error: UndefVarError: plot not defined
-```
-
-
+\fig{images/0707-Pendulo_angulos_grandes_54_1.png}
 
 ```julia
 scale = radius_n / l # points per meter
@@ -949,40 +929,40 @@ t: 32-element Vector{Float64}:
  0.05520287578278107
  0.1186994834079412
  0.20021318382712075
- 0.3059148580456768
- 0.4289016257510082
- 0.556918677400161
+ 0.30591484896808435
+ 0.4289016061113905
+ 0.5569186555915231
  ⋮
- 3.336085982741865
- 3.5798111245515645
- 3.789943545334064
- 4.033677951692835
- 4.248777445772274
- 4.4897245954065665
- 4.712943195270591
- 4.948794481749135
+ 3.3360855745835023
+ 3.5798106962143854
+ 3.7899430036121617
+ 4.033677409516851
+ 4.248776802620724
+ 4.489724053643603
+ 4.712942542004417
+ 4.948793974730231
  5.0
 u: 32-element Vector{Vector{Float64}}:
  [0.5235987755982988, 0.0]
- [0.5235987044417862, -0.000998093740288535]
- [0.5235901656815024, -0.01097897701799843]
- [0.52272227807514, -0.1107323314966049]
- [0.5129658631370241, -0.3840406425996626]
- [0.4749871723737738, -0.8072478724104671]
- [0.38897468427160925, -1.2882714483013225]
- [0.22681172050256487, -1.7418841189469372]
- [-0.0034489023047863383, -1.936781391381158]
- [-0.24165889846355013, -1.7139642610036754]
+ [0.5235987044417862, -0.0009980937402885351]
+ [0.5235901656815024, -0.010978977017998427]
+ [0.52272227807514, -0.11073233149660491]
+ [0.5129658631370241, -0.38404064259966264]
+ [0.4749871723737738, -0.8072478724104674]
+ [0.3889746842716092, -1.2882714483013231]
+ [0.22681173631479296, -1.7418840903686386]
+ [-0.0034488642665777836, -1.9367813923292037]
+ [-0.24165886108376364, -1.7139643340721666]
  ⋮
- [0.5009792538381039, 0.5577247215218519]
- [0.43312617648070506, -1.0800631782759451]
- [0.10380905787269706, -1.8977493321783012]
- [-0.33772189369520583, -1.4733195325856954]
- [-0.5219374197998773, -0.15523391826013316]
- [-0.36422595366369465, 1.3840456727974355]
- [0.02882117308366698, 1.9341610901039223]
- [0.41822224613478143, 1.157201337942282]
- [0.4697150850563418, 0.8484644241876123]
+ [0.5009790261865464, 0.5577274667872847]
+ [0.43312663917777644, -1.0800606609666108]
+ [0.10381008615004722, -1.8977485458829486]
+ [-0.33772109481584195, -1.4733220488166103]
+ [-0.5219373201122955, -0.15523840887687057]
+ [-0.3642267037960671, 1.384042971093617]
+ [0.028819909227411733, 1.9341613541835863]
+ [0.4182216594902942, 1.1572042219330516]
+ [0.46971508519163835, 0.8484644252456572]
 ```
 
 
@@ -996,11 +976,8 @@ display(plot(sol, label = ["θ(t)" "ω(t)"]))
 display(plot(sol, vars = 1, label = "θ(t)"))
 ```
 
-```
-Error: UndefVarError: plot not defined
-```
-
-
+\fig{images/0707-Pendulo_angulos_grandes_61_1.png}
+\fig{images/0707-Pendulo_angulos_grandes_61_2.png}
 
 ```julia
 n0 = 34
@@ -1009,11 +986,7 @@ scatter!(plt, (0:length(data_x)-n0) ./ 29.5, data_scaled_x[n0:end], label="track
 display(plt)
 ```
 
-```
-Error: UndefVarError: plot not defined
-```
-
-
+\fig{images/0707-Pendulo_angulos_grandes_62_1.png}
 
 ```julia
 df = CSV.read("data/pendulo_70cm_reduzido.csv", DataFrame)
@@ -1037,7 +1010,7 @@ display(plt)
 ```
 
 ```
-Error: UndefVarError: plot not defined
+Error: UndefVarError: df not defined
 ```
 
 
@@ -1100,7 +1073,7 @@ display(plt)
 ```
 
 ```
-Error: UndefVarError: plot not defined
+Error: UndefVarError: df not defined
 ```
 
 
@@ -1229,37 +1202,37 @@ t: 81-element Vector{Float64}:
   0.4361696895237713
   0.5660126318578794
   ⋮
- 14.757103758523856
- 14.975837242139237
- 15.220528172168207
- 15.435739323889688
- 15.681990504266405
- 15.899891324886354
- 16.144987068343934
- 16.367029004899734
+ 14.75710393351784
+ 14.975837376148979
+ 15.220528314715068
+ 15.4357394488737
+ 15.68199060915447
+ 15.899891437531256
+ 16.14498715319801
+ 16.367029104543224
  16.45
 u: 81-element Vector{RecursiveArrayTools.ArrayPartition{Float64, Tuple{Vect
 or{Float64}, Vector{Float64}}}}:
  ([0.0], [0.5235987755982988])
  ([-0.0009980900796482302], [0.523598702408922])
  ([-0.010978532676025766], [0.5235899199226164])
- ([-0.11068567653652728], [0.5226974863498236])
- ([-0.3813143284771497], [0.5127947624143488])
- ([-0.7977890197442175], [0.4745408968992312])
- ([-1.268356249332695], [0.38830121752424207])
- ([-1.7078585641373931], [0.22627879083954483])
- ([-1.8891348315194079], [-0.0020668325633487585])
- ([-1.6627067086680587], [-0.23711503637629103])
+ ([-0.1106856765365273], [0.5226974863498236])
+ ([-0.38131432847714974], [0.5127947624143487])
+ ([-0.7977890197442177], [0.47454089689923107])
+ ([-1.2683562493326956], [0.38830121752424207])
+ ([-1.7078585641373936], [0.22627879083954466])
+ ([-1.8891348315194052], [-0.0020668325633489415])
+ ([-1.6627067086680574], [-0.2371150363762909])
  ⋮
- ([0.49103571221118436], [-0.3359401762753514])
- ([1.2181504266325172], [-0.13835450159398452])
- ([1.1421234168083245], [0.17172686806385645])
- ([0.35132874328089825], [0.3409458558094231])
- ([-0.7548617910520811], [0.28745266963945754])
- ([-1.2735027218362773], [0.053843944407130785])
- ([-0.93261168688129], [-0.2363744318904869])
- ([-0.008989184610849575], [-0.34667806040764854])
- ([0.36875503600834453], [-0.33163121749061913])
+ ([0.4910364935793956], [-0.3359400903659479])
+ ([1.2181506703554332], [-0.13835433828158172])
+ ([1.1421230770911266], [0.17172703098371234])
+ ([0.3513281719783554], [0.34094589979533435])
+ ([-0.7548621921063656], [0.2874525904670078])
+ ([-1.2735027973864756], [0.053843800899205596])
+ ([-0.9326114124256897], [-0.23637451107073632])
+ ([-0.008988723570449997], [-0.34667806133206513])
+ ([0.36875503620207184], [-0.3316312175041112])
 ```
 
 

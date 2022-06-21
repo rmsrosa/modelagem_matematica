@@ -18,29 +18,19 @@ using DifferentialEquations.OrdinaryDiffEq
 ## O pêndulo
 
 ```julia
-imresize(load(joinpath("img","pendulo_museu_politecnica.jpg")), ratio = 3/4)
+imresize(load("../../../_assets/attachments/img/pendulo_museu_politecnica.jpg"), ratio = 3/4)
 ```
 
-```
-Error: ArgumentError: No file exists at given path: img/pendulo_museu_polit
-ecnica.jpg
-```
-
-
+\fig{images/0706-Pendulo_2_1.png}
 
 
 ## Um pêndulo esquematizado
 
 ```julia
-load(joinpath("img","pendulum_256x256.png"))
+load("../../../_assets/attachments/img/pendulum_256x256.png")
 ```
 
-```
-Error: ArgumentError: No file exists at given path: img/pendulum_256x256.pn
-g
-```
-
-
+\fig{images/0706-Pendulo_3_1.png}
 
 
 ## O modelo clássico
@@ -68,14 +58,10 @@ g
 - A componente tangencial causa o movimento circular.
 
 ```julia
-imresize(load(joinpath("img","pendulo_forcas.png")), ratio = 2/3)
+imresize(load("../../../_assets/attachments/img/pendulo_forcas.png"), ratio = 2/3)
 ```
 
-```
-Error: ArgumentError: No file exists at given path: img/pendulo_forcas.png
-```
-
-
+\fig{images/0706-Pendulo_4_1.png}
 
 
 ## Modelo via leis de Newton
@@ -494,7 +480,7 @@ println(agm(1,1000))
 
 
 ```julia
-𝒯(θ_max) = 2π / agm(1, cos(θ_max / 2))[1]
+𝒯(θ_max) = 2π / first(agm(1, cos(θ_max / 2)))
 ```
 
 ```
@@ -528,13 +514,13 @@ nothing
 ```
 
 ```
-2.340 ns (0 allocations: 0 bytes)
-  42.925 ns (0 allocations: 0 bytes)
-  115.150 ns (0 allocations: 0 bytes)
-  173.631 ns (0 allocations: 0 bytes)
-  188.302 ns (0 allocations: 0 bytes)
-  241.511 ns (0 allocations: 0 bytes)
-  31.105 ns (0 allocations: 0 bytes)
+1.500 ns (0 allocations: 0 bytes)
+  29.061 ns (0 allocations: 0 bytes)
+  74.331 ns (0 allocations: 0 bytes)
+  100.698 ns (0 allocations: 0 bytes)
+  143.952 ns (0 allocations: 0 bytes)
+  171.586 ns (0 allocations: 0 bytes)
+  15.948 ns (0 allocations: 0 bytes)
 ```
 
 
@@ -589,7 +575,7 @@ end
 ℓ = 1.0
 g = 9.8
 
-tspan = 6 * 2π * √(ℓ / g) # aproximadamente seis ciclos
+tspan = 12 * 2π * √(ℓ / g) # aproximadamente doze ciclos
 
 θ₀ = π / 4
 ω₀ = 0.0

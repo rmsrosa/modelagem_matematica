@@ -265,7 +265,7 @@ end</code></pre>
 <pre><code class="language-julia">m.&#40;&#91;1;2;3&#93;, Ref&#40;β&#41;&#41;</code></pre>
 <pre><code class="language-julia">3-element Vector&#123;Matrix&#123;Float64&#125;&#125;:
  &#91;4.953150043530006;;&#93;
- &#91;4.999682214919083;;&#93;
+ &#91;4.999682214919084;;&#93;
  &#91;4.999997858684411;;&#93;</code></pre>
 <pre><code class="language-julia">m&#40;data_x&#39;, β&#41;</code></pre>
 <pre><code class="language-julia">1×21 Matrix&#123;Float64&#125;:
@@ -291,25 +291,25 @@ end</code></pre>
     |g&#40;x&#41;|                 &#61; 9.05e-04 ≰ 1.0e-08
 
  * Work counters
-    Seconds run:   13  &#40;vs limit Inf&#41;
+    Seconds run:   6  &#40;vs limit Inf&#41;
     Iterations:    50000
     f&#40;x&#41; calls:    125002
     ∇f&#40;x&#41; calls:   125002</code></pre>
 <pre><code class="language-julia">β_optim &#61; Optim.minimizer&#40;res&#41;</code></pre>
 <pre><code class="language-julia">13-element Vector&#123;Float64&#125;:
-  5.454551526082603
- -5.638713851388211
- -9.090098165334595
- -6.419036411226366
-  0.8848412881034556
- -0.7706952702076004
-  1.0057506882986715
- -0.5153291320267191
-  2.5671944105046114
- -2.1304189706824337
-  4.741349508363411
- -5.255036423728864
- -2.3752153146018387</code></pre>
+  5.454551526010049
+ -5.638713851313843
+ -9.090098165087907
+ -6.419036411042341
+  0.8848412879671522
+ -0.7706952701232694
+  1.0057506882447982
+ -0.5153291321941634
+  2.5671944105768447
+ -2.1304189708225416
+  4.741349508448337
+ -5.255036423841777
+ -2.3752153146700943</code></pre>
 <pre><code class="language-julia">plot&#40;data_x, data_y,
     seriestype&#61;:scatter, size&#61;&#40;540,400&#41;, label&#61;&quot;dados&quot;, legend&#61;:bottomleft,
     xaxis &#61; &quot;x&quot;, yaxis &#61; &quot;y&quot;,
@@ -333,7 +333,7 @@ plot&#33;&#40;0:0.01:1, x -&gt; first&#40;m&#40;x, β_optim&#41;&#41;, size&#61;
     |g&#40;x&#41;|                 &#61; 2.12e-03 ≰ 1.0e-08
 
  * Work counters
-    Seconds run:   12  &#40;vs limit Inf&#41;
+    Seconds run:   5  &#40;vs limit Inf&#41;
     Iterations:    50000
     f&#40;x&#41; calls:    125167
     ∇f&#40;x&#41; calls:   125167</code></pre>
@@ -379,7 +379,7 @@ res &#61; optimize&#40;β -&gt; loss&#40;β, data_x, data_y&#41;, β₀,  Gradie
     |g&#40;x&#41;|                 &#61; 3.10e-03 ≰ 1.0e-08
 
  * Work counters
-    Seconds run:   2  &#40;vs limit Inf&#41;
+    Seconds run:   1  &#40;vs limit Inf&#41;
     Iterations:    10000
     f&#40;x&#41; calls:    25160
     ∇f&#40;x&#41; calls:   25160</code></pre>
@@ -392,19 +392,19 @@ plot&#33;&#40;0:0.01:1, x -&gt; first&#40;m&#40;x, β_optim&#41;&#41;, size&#61;
 <img src="/modelagem_matematica/assets/pages/jupytered/c04/0407-Ajuste_em_redes_neurais/code/images/0407-Ajuste_em_redes_neurais_21_1.png" alt="">
 <pre><code class="language-julia">β_optim &#61; Optim.minimizer&#40;res&#41;</code></pre>
 <pre><code class="language-julia">13-element Vector&#123;Float64&#125;:
- 10.259870502951724
- -9.987978890569389
- -6.686741116884923
- -7.485267865761106
- -5.283264685796137
- -1.9209102951942805
-  3.6287364046962076
-  8.431726320308227
-  7.134910335339276
- -4.402911976810412
- 10.027014094861293
- -7.184538978947643
- -1.765013023451029</code></pre>
+ 10.259870504139423
+ -9.987978890707508
+ -6.68674111457598
+ -7.485267868338371
+ -5.2832646876948575
+ -1.920910295063961
+  3.6287364051156055
+  8.431726321078285
+  7.134910333611416
+ -4.402911976816514
+ 10.02701409722966
+ -7.1845389806920075
+ -1.7650130240161424</code></pre>
 <pre><code class="language-julia">plot&#40;data_x, data_y,
     seriestype&#61;:scatter, size&#61;&#40;540,400&#41;, label&#61;&quot;dados&quot;, legend&#61;:bottomleft,
     xaxis &#61; &quot;x&quot;, yaxis &#61; &quot;y&quot;,
@@ -420,8 +420,8 @@ plot&#33;&#40;0:0.01:1, x -&gt; first&#40;m&#40;x, β_flx&#41;&#41;, size&#61;&#
 <img src="/modelagem_matematica/assets/pages/jupytered/c04/0407-Ajuste_em_redes_neurais/code/images/0407-Ajuste_em_redes_neurais_24_1.png" alt="">
 <pre><code class="language-julia">mf &#61; Chain&#40;Dense&#40;reshape&#40;W1, :, 1&#41;, b1, σ&#41;, Dense&#40;reshape&#40;W2, 1, :&#41;, &#91;b2&#93;&#41;&#41;</code></pre>
 <pre><code class="language-julia">Chain&#40;
-  Dense&#40;1 &#61;&gt; 4, σ&#41;,                     # 8 parameters
-  Dense&#40;4 &#61;&gt; 1&#41;,                        # 5 parameters
+  Dense&#40;1, 4, σ&#41;,                       # 8 parameters
+  Dense&#40;4, 1&#41;,                          # 5 parameters
 &#41;                   # Total: 4 arrays, 13 parameters, 360 bytes.</code></pre>
 <pre><code class="language-julia">mf &#61; Chain&#40;Dense&#40;reshape&#40;β_flx&#91;1:4&#93;, :, 1&#41;, β_flx&#91;5:8&#93;, σ&#41;, Dense&#40;reshape&#40;β_flx&#91;9:12&#93;, 1, :&#41;, β_flx&#91;end:end&#93;&#41;&#41;
 plot&#40;data_x, data_y,
@@ -432,7 +432,7 @@ plot&#33;&#40;0:0.01:1, x -&gt; mf&#40;&#91;x&#93;&#41;&#91;1&#93;, size&#61;&#4
 <img src="/modelagem_matematica/assets/pages/jupytered/c04/0407-Ajuste_em_redes_neurais/code/images/0407-Ajuste_em_redes_neurais_26_1.png" alt="">
 <pre><code class="language-julia">mf&#40;&#91;1&#93;&#41;</code></pre>
 <pre><code class="language-julia">1-element Vector&#123;Float64&#125;:
- 0.6157228257632166</code></pre>
+ 0.6157228257632175</code></pre>
 
 
 
@@ -458,7 +458,7 @@ plot&#33;&#40;0:0.01:1, x -&gt; mf&#40;&#91;x&#93;&#41;&#91;1&#93;, size&#61;&#4
         </div>
     
 
-    Last modified: June 05, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
+    Last modified: June 21, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

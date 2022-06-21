@@ -443,39 +443,42 @@ pkg&gt; build IJulia</code></pre>
 <p>Para isso, é preciso disponibilizar o pacote via <code>import</code> ou <code>using</code>. No caso, podemos fazer</p>
 <pre><code class="language-julia">using Pkg
 Pkg.status&#40;&#41;</code></pre>
-<pre><code class="language-julia">Status &#96;~/Documents/git-repositories/modelagem_matematica/Project.tom
+<pre><code class="language-julia">Status &#96;~/Documents/git_repositories/modelagem_matematica/Project.tom
 l&#96;
   &#91;6e4b80f9&#93; BenchmarkTools v1.3.1
   &#91;336ed68f&#93; CSV v0.10.4
-  &#91;13f3f980&#93; CairoMakie v0.7.5
-  &#91;717857b8&#93; DSP v0.7.5
-  &#91;a93c6f00&#93; DataFrames v1.3.2
+  &#91;13f3f980&#93; CairoMakie v0.8.7
+  &#91;43761bbe&#93; ChainPlots v0.1.0
+  &#91;717857b8&#93; DSP v0.7.6
+  &#91;a93c6f00&#93; DataFrames v1.3.4
   &#91;0c46a032&#93; DifferentialEquations v7.1.0
-  &#91;31c24e10&#93; Distributions v0.25.53
+  &#91;31c24e10&#93; Distributions v0.25.62
   &#91;7a1cc6ca&#93; FFTW v1.4.6
-  &#91;713c75ef&#93; Franklin v0.10.72
-  &#91;e9467ef8&#93; GLMakie v0.5.5
-  &#91;28b8d3ca&#93; GR v0.64.2
+  &#91;587475ba&#93; Flux v0.12.10
+  &#91;713c75ef&#93; Franklin v0.10.74
+  &#91;e9467ef8&#93; GLMakie v0.6.7
+  &#91;28b8d3ca&#93; GR v0.64.4
   &#91;7073ff75&#93; IJulia v1.23.3
   &#91;4381153b&#93; ImageDraw v0.2.5
-  &#91;82e4d734&#93; ImageIO v0.6.1
+  &#91;82e4d734&#93; ImageIO v0.6.5
   &#91;6218d12a&#93; ImageMagick v1.2.2
   &#91;916415d5&#93; Images v0.25.2
-  &#91;0f8b85d8&#93; JSON3 v1.9.4
+  &#91;0f8b85d8&#93; JSON3 v1.9.5
   &#91;b964fa9f&#93; LaTeXStrings v1.3.0
-  &#91;98b081ad&#93; Literate v2.13.1
+  &#91;98b081ad&#93; Literate v2.13.4
   &#91;2fda8390&#93; LsqFit v0.12.1
-  &#91;ae8d54c2&#93; Luxor v3.2.0
+  &#91;ae8d54c2&#93; Luxor v3.3.0
   &#91;2bd173c7&#93; NodeJS v1.3.0
-  &#91;429524aa&#93; Optim v1.6.2
-  &#91;91a5bcdd&#93; Plots v1.27.5
+  &#91;429524aa&#93; Optim v1.7.0
+  &#91;91a5bcdd&#93; Plots v1.30.1
+  &#91;92933f4c&#93; ProgressMeter v1.7.2
   &#91;e6cf234a&#93; RandomNumbers v1.5.3
   &#91;bd7594eb&#93; SampledSignals v2.1.3
   &#91;2913bbd2&#93; StatsBase v0.33.16
   &#91;1986cc42&#93; Unitful v1.11.0
-  &#91;a5a2160c&#93; UnitfulBuckinghamPi v0.1.0
+  &#91;a5a2160c&#93; UnitfulBuckinghamPi v0.2.0
   &#91;42071c24&#93; UnitfulRecipes v1.5.3
-  &#91;d6d074c3&#93; VideoIO v1.0.0
+  &#91;d6d074c3&#93; VideoIO v1.0.3
   &#91;8149f6b0&#93; WAV v1.2.0
   &#91;44d3d7a6&#93; Weave v0.10.10</code></pre>
 <h3 id="versão_do_julia"><a href="#versão_do_julia" class="header-anchor">Versão do Julia</a></h3>
@@ -486,10 +489,12 @@ versioninfo&#40;&#41;</code></pre>
 Commit bf53498635 &#40;2022-02-06 15:21 UTC&#41;
 Platform Info:
   OS: macOS &#40;x86_64-apple-darwin19.5.0&#41;
-  CPU: Intel&#40;R&#41; Core&#40;TM&#41; m5-6Y54 CPU @ 1.10GHz
+  CPU: Apple M1 Pro
   WORD_SIZE: 64
   LIBM: libopenlibm
-  LLVM: libLLVM-12.0.1 &#40;ORCJIT, skylake&#41;</code></pre>
+  LLVM: libLLVM-12.0.1 &#40;ORCJIT, westmere&#41;
+Environment:
+  JULIA_NUM_THREADS &#61; 8</code></pre>
 <h2 id="utilizando_o_julia"><a href="#utilizando_o_julia" class="header-anchor">Utilizando o Julia</a></h2>
 <p>No próximo caderno, vamos investigar o uso da linguagem Julia propriamente.</p>
 
@@ -515,7 +520,7 @@ Platform Info:
         </div>
     
 
-    Last modified: June 05, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
+    Last modified: June 21, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
