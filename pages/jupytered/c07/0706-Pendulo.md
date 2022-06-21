@@ -514,13 +514,13 @@ nothing
 ```
 
 ```
-1.500 ns (0 allocations: 0 bytes)
-  29.061 ns (0 allocations: 0 bytes)
-  74.331 ns (0 allocations: 0 bytes)
-  100.698 ns (0 allocations: 0 bytes)
-  143.952 ns (0 allocations: 0 bytes)
-  171.586 ns (0 allocations: 0 bytes)
-  15.948 ns (0 allocations: 0 bytes)
+2.146 ns (0 allocations: 0 bytes)
+  35.775 ns (0 allocations: 0 bytes)
+  94.555 ns (0 allocations: 0 bytes)
+  142.832 ns (0 allocations: 0 bytes)
+  190.322 ns (0 allocations: 0 bytes)
+  238.798 ns (0 allocations: 0 bytes)
+  25.790 ns (0 allocations: 0 bytes)
 ```
 
 

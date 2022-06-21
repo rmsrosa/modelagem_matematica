@@ -40,16 +40,159 @@ include("../../../_assets/attachments/scripts/VideoTracking.jl")
 ```
 
 ```
-Main.##WeaveSandBox#592.VideoTracking
+Main.##WeaveSandBox#416.VideoTracking
 ```
 
 
+
+
+<video src="../../../_assets/attachments/img/pendulo_70cm_1_reduzido_curto.mp4" controls="controls" style="max-width: 730px;">
+</video>
 
 ```julia
 filename = "../../../_assets/attachments/img/pendulo_70cm_1_reduzido_curto.mp4"
 vd = VideoIO.load(filename)
-nothing
 ```
+
+```
+150-element Vector{PermutedDimsArray{ColorTypes.RGB{FixedPointNumbers.N0f8}
+, 2, (2, 1), (2, 1), Matrix{ColorTypes.RGB{FixedPointNumbers.N0f8}}}}:
+ [RGB{N0f8}(0.227,0.184,0.184) RGB{N0f8}(0.227,0.184,0.184) … RGB{N0f8}(0.1
+14,0.114,0.106) RGB{N0f8}(0.114,0.114,0.106); RGB{N0f8}(0.227,0.184,0.184) 
+RGB{N0f8}(0.227,0.184,0.184) … RGB{N0f8}(0.114,0.114,0.106) RGB{N0f8}(0.114
+,0.114,0.106); … ; RGB{N0f8}(0.302,0.263,0.239) RGB{N0f8}(0.302,0.263,0.239
+) … RGB{N0f8}(0.576,0.533,0.494) RGB{N0f8}(0.58,0.537,0.498); RGB{N0f8}(0.3
+02,0.263,0.239) RGB{N0f8}(0.302,0.263,0.239) … RGB{N0f8}(0.584,0.541,0.502)
+ RGB{N0f8}(0.584,0.541,0.502)]
+ [RGB{N0f8}(0.227,0.184,0.184) RGB{N0f8}(0.227,0.184,0.184) … RGB{N0f8}(0.1
+14,0.114,0.106) RGB{N0f8}(0.114,0.114,0.106); RGB{N0f8}(0.227,0.184,0.184) 
+RGB{N0f8}(0.227,0.184,0.184) … RGB{N0f8}(0.114,0.114,0.106) RGB{N0f8}(0.114
+,0.114,0.106); … ; RGB{N0f8}(0.302,0.263,0.239) RGB{N0f8}(0.302,0.263,0.239
+) … RGB{N0f8}(0.576,0.533,0.494) RGB{N0f8}(0.58,0.537,0.498); RGB{N0f8}(0.3
+02,0.263,0.239) RGB{N0f8}(0.302,0.263,0.239) … RGB{N0f8}(0.584,0.541,0.502)
+ RGB{N0f8}(0.584,0.541,0.502)]
+ [RGB{N0f8}(0.227,0.184,0.184) RGB{N0f8}(0.227,0.184,0.184) … RGB{N0f8}(0.1
+14,0.114,0.106) RGB{N0f8}(0.114,0.114,0.106); RGB{N0f8}(0.227,0.184,0.184) 
+RGB{N0f8}(0.227,0.184,0.184) … RGB{N0f8}(0.114,0.114,0.106) RGB{N0f8}(0.114
+,0.114,0.106); … ; RGB{N0f8}(0.302,0.263,0.239) RGB{N0f8}(0.302,0.263,0.239
+) … RGB{N0f8}(0.576,0.533,0.494) RGB{N0f8}(0.58,0.537,0.498); RGB{N0f8}(0.3
+02,0.263,0.239) RGB{N0f8}(0.302,0.263,0.239) … RGB{N0f8}(0.584,0.541,0.502)
+ RGB{N0f8}(0.584,0.541,0.502)]
+ [RGB{N0f8}(0.227,0.184,0.184) RGB{N0f8}(0.227,0.184,0.184) … RGB{N0f8}(0.1
+14,0.114,0.106) RGB{N0f8}(0.114,0.114,0.106); RGB{N0f8}(0.227,0.184,0.184) 
+RGB{N0f8}(0.227,0.184,0.184) … RGB{N0f8}(0.114,0.114,0.106) RGB{N0f8}(0.114
+,0.114,0.106); … ; RGB{N0f8}(0.302,0.263,0.239) RGB{N0f8}(0.302,0.263,0.239
+) … RGB{N0f8}(0.576,0.533,0.494) RGB{N0f8}(0.58,0.537,0.498); RGB{N0f8}(0.3
+02,0.263,0.239) RGB{N0f8}(0.302,0.263,0.239) … RGB{N0f8}(0.584,0.541,0.502)
+ RGB{N0f8}(0.584,0.541,0.502)]
+ [RGB{N0f8}(0.227,0.184,0.184) RGB{N0f8}(0.227,0.184,0.184) … RGB{N0f8}(0.1
+14,0.114,0.106) RGB{N0f8}(0.114,0.114,0.106); RGB{N0f8}(0.227,0.184,0.184) 
+RGB{N0f8}(0.227,0.184,0.184) … RGB{N0f8}(0.114,0.114,0.106) RGB{N0f8}(0.114
+,0.114,0.106); … ; RGB{N0f8}(0.302,0.263,0.239) RGB{N0f8}(0.302,0.263,0.239
+) … RGB{N0f8}(0.576,0.533,0.494) RGB{N0f8}(0.58,0.537,0.498); RGB{N0f8}(0.3
+02,0.263,0.239) RGB{N0f8}(0.302,0.263,0.239) … RGB{N0f8}(0.584,0.541,0.502)
+ RGB{N0f8}(0.584,0.541,0.502)]
+ [RGB{N0f8}(0.227,0.184,0.184) RGB{N0f8}(0.227,0.184,0.184) … RGB{N0f8}(0.1
+14,0.114,0.106) RGB{N0f8}(0.114,0.114,0.106); RGB{N0f8}(0.227,0.184,0.184) 
+RGB{N0f8}(0.227,0.184,0.184) … RGB{N0f8}(0.114,0.114,0.106) RGB{N0f8}(0.114
+,0.114,0.106); … ; RGB{N0f8}(0.302,0.263,0.239) RGB{N0f8}(0.302,0.263,0.239
+) … RGB{N0f8}(0.576,0.533,0.494) RGB{N0f8}(0.58,0.537,0.498); RGB{N0f8}(0.3
+02,0.263,0.239) RGB{N0f8}(0.302,0.263,0.239) … RGB{N0f8}(0.58,0.537,0.498) 
+RGB{N0f8}(0.58,0.537,0.498)]
+ [RGB{N0f8}(0.227,0.184,0.184) RGB{N0f8}(0.227,0.184,0.184) … RGB{N0f8}(0.1
+1,0.11,0.102) RGB{N0f8}(0.11,0.11,0.102); RGB{N0f8}(0.227,0.184,0.184) RGB{
+N0f8}(0.227,0.184,0.184) … RGB{N0f8}(0.11,0.11,0.102) RGB{N0f8}(0.11,0.11,0
+.102); … ; RGB{N0f8}(0.302,0.263,0.239) RGB{N0f8}(0.302,0.263,0.239) … RGB{
+N0f8}(0.576,0.533,0.494) RGB{N0f8}(0.576,0.533,0.494); RGB{N0f8}(0.302,0.26
+3,0.239) RGB{N0f8}(0.302,0.263,0.239) … RGB{N0f8}(0.576,0.533,0.494) RGB{N0
+f8}(0.576,0.533,0.494)]
+ [RGB{N0f8}(0.227,0.184,0.184) RGB{N0f8}(0.227,0.184,0.184) … RGB{N0f8}(0.1
+1,0.11,0.102) RGB{N0f8}(0.11,0.11,0.102); RGB{N0f8}(0.227,0.184,0.184) RGB{
+N0f8}(0.227,0.184,0.184) … RGB{N0f8}(0.11,0.11,0.102) RGB{N0f8}(0.11,0.11,0
+.102); … ; RGB{N0f8}(0.302,0.263,0.239) RGB{N0f8}(0.302,0.263,0.239) … RGB{
+N0f8}(0.573,0.529,0.49) RGB{N0f8}(0.576,0.533,0.494); RGB{N0f8}(0.302,0.263
+,0.239) RGB{N0f8}(0.302,0.263,0.239) … RGB{N0f8}(0.576,0.533,0.494) RGB{N0f
+8}(0.576,0.533,0.494)]
+ [RGB{N0f8}(0.227,0.184,0.184) RGB{N0f8}(0.227,0.184,0.184) … RGB{N0f8}(0.1
+1,0.11,0.102) RGB{N0f8}(0.11,0.11,0.102); RGB{N0f8}(0.227,0.184,0.184) RGB{
+N0f8}(0.227,0.184,0.184) … RGB{N0f8}(0.11,0.11,0.102) RGB{N0f8}(0.11,0.11,0
+.102); … ; RGB{N0f8}(0.302,0.263,0.239) RGB{N0f8}(0.302,0.263,0.239) … RGB{
+N0f8}(0.569,0.525,0.486) RGB{N0f8}(0.573,0.529,0.49); RGB{N0f8}(0.302,0.263
+,0.239) RGB{N0f8}(0.302,0.263,0.239) … RGB{N0f8}(0.573,0.529,0.49) RGB{N0f8
+}(0.573,0.529,0.49)]
+ [RGB{N0f8}(0.227,0.184,0.184) RGB{N0f8}(0.227,0.184,0.184) … RGB{N0f8}(0.1
+14,0.114,0.106) RGB{N0f8}(0.114,0.114,0.106); RGB{N0f8}(0.227,0.184,0.184) 
+RGB{N0f8}(0.227,0.184,0.184) … RGB{N0f8}(0.114,0.114,0.106) RGB{N0f8}(0.114
+,0.114,0.106); … ; RGB{N0f8}(0.298,0.271,0.243) RGB{N0f8}(0.302,0.275,0.247
+) … RGB{N0f8}(0.573,0.529,0.49) RGB{N0f8}(0.576,0.533,0.494); RGB{N0f8}(0.2
+98,0.271,0.243) RGB{N0f8}(0.302,0.275,0.247) … RGB{N0f8}(0.576,0.533,0.494)
+ RGB{N0f8}(0.576,0.533,0.494)]
+ ⋮
+ [RGB{N0f8}(0.231,0.2,0.196) RGB{N0f8}(0.231,0.2,0.196) … RGB{N0f8}(0.133,0
+.118,0.118) RGB{N0f8}(0.133,0.118,0.118); RGB{N0f8}(0.235,0.204,0.2) RGB{N0
+f8}(0.235,0.204,0.2) … RGB{N0f8}(0.133,0.118,0.118) RGB{N0f8}(0.133,0.118,0
+.118); … ; RGB{N0f8}(0.31,0.282,0.255) RGB{N0f8}(0.31,0.282,0.255) … RGB{N0
+f8}(0.573,0.537,0.494) RGB{N0f8}(0.573,0.537,0.494); RGB{N0f8}(0.31,0.282,0
+.255) RGB{N0f8}(0.31,0.282,0.255) … RGB{N0f8}(0.573,0.537,0.494) RGB{N0f8}(
+0.573,0.537,0.494)]
+ [RGB{N0f8}(0.231,0.2,0.196) RGB{N0f8}(0.231,0.2,0.196) … RGB{N0f8}(0.133,0
+.118,0.118) RGB{N0f8}(0.133,0.118,0.118); RGB{N0f8}(0.235,0.204,0.2) RGB{N0
+f8}(0.235,0.204,0.2) … RGB{N0f8}(0.133,0.118,0.118) RGB{N0f8}(0.133,0.118,0
+.118); … ; RGB{N0f8}(0.31,0.282,0.255) RGB{N0f8}(0.31,0.282,0.255) … RGB{N0
+f8}(0.573,0.537,0.494) RGB{N0f8}(0.573,0.537,0.494); RGB{N0f8}(0.31,0.282,0
+.255) RGB{N0f8}(0.31,0.282,0.255) … RGB{N0f8}(0.573,0.537,0.494) RGB{N0f8}(
+0.573,0.537,0.494)]
+ [RGB{N0f8}(0.231,0.2,0.196) RGB{N0f8}(0.231,0.2,0.196) … RGB{N0f8}(0.133,0
+.118,0.118) RGB{N0f8}(0.133,0.118,0.118); RGB{N0f8}(0.235,0.204,0.2) RGB{N0
+f8}(0.235,0.204,0.2) … RGB{N0f8}(0.133,0.118,0.118) RGB{N0f8}(0.133,0.118,0
+.118); … ; RGB{N0f8}(0.31,0.282,0.255) RGB{N0f8}(0.31,0.282,0.255) … RGB{N0
+f8}(0.576,0.541,0.498) RGB{N0f8}(0.576,0.541,0.498); RGB{N0f8}(0.31,0.282,0
+.255) RGB{N0f8}(0.31,0.282,0.255) … RGB{N0f8}(0.576,0.541,0.498) RGB{N0f8}(
+0.576,0.541,0.498)]
+ [RGB{N0f8}(0.231,0.2,0.196) RGB{N0f8}(0.231,0.2,0.196) … RGB{N0f8}(0.133,0
+.118,0.118) RGB{N0f8}(0.133,0.118,0.118); RGB{N0f8}(0.235,0.204,0.2) RGB{N0
+f8}(0.235,0.204,0.2) … RGB{N0f8}(0.133,0.118,0.118) RGB{N0f8}(0.133,0.118,0
+.118); … ; RGB{N0f8}(0.31,0.282,0.255) RGB{N0f8}(0.31,0.282,0.255) … RGB{N0
+f8}(0.576,0.541,0.498) RGB{N0f8}(0.576,0.541,0.498); RGB{N0f8}(0.31,0.282,0
+.255) RGB{N0f8}(0.31,0.282,0.255) … RGB{N0f8}(0.576,0.541,0.498) RGB{N0f8}(
+0.576,0.541,0.498)]
+ [RGB{N0f8}(0.231,0.2,0.196) RGB{N0f8}(0.231,0.2,0.196) … RGB{N0f8}(0.133,0
+.118,0.118) RGB{N0f8}(0.133,0.118,0.118); RGB{N0f8}(0.235,0.204,0.2) RGB{N0
+f8}(0.235,0.204,0.2) … RGB{N0f8}(0.133,0.118,0.118) RGB{N0f8}(0.133,0.118,0
+.118); … ; RGB{N0f8}(0.31,0.282,0.255) RGB{N0f8}(0.314,0.286,0.259) … RGB{N
+0f8}(0.576,0.541,0.498) RGB{N0f8}(0.576,0.541,0.498); RGB{N0f8}(0.31,0.282,
+0.255) RGB{N0f8}(0.314,0.286,0.259) … RGB{N0f8}(0.576,0.541,0.498) RGB{N0f8
+}(0.576,0.541,0.498)]
+ [RGB{N0f8}(0.231,0.2,0.196) RGB{N0f8}(0.231,0.2,0.196) … RGB{N0f8}(0.133,0
+.118,0.118) RGB{N0f8}(0.133,0.118,0.118); RGB{N0f8}(0.235,0.204,0.2) RGB{N0
+f8}(0.235,0.204,0.2) … RGB{N0f8}(0.133,0.118,0.118) RGB{N0f8}(0.133,0.118,0
+.118); … ; RGB{N0f8}(0.31,0.282,0.255) RGB{N0f8}(0.314,0.286,0.259) … RGB{N
+0f8}(0.576,0.541,0.498) RGB{N0f8}(0.576,0.541,0.498); RGB{N0f8}(0.31,0.282,
+0.255) RGB{N0f8}(0.314,0.286,0.259) … RGB{N0f8}(0.576,0.541,0.498) RGB{N0f8
+}(0.576,0.541,0.498)]
+ [RGB{N0f8}(0.231,0.2,0.196) RGB{N0f8}(0.231,0.2,0.196) … RGB{N0f8}(0.133,0
+.118,0.118) RGB{N0f8}(0.133,0.118,0.118); RGB{N0f8}(0.235,0.204,0.2) RGB{N0
+f8}(0.235,0.204,0.2) … RGB{N0f8}(0.133,0.118,0.118) RGB{N0f8}(0.133,0.118,0
+.118); … ; RGB{N0f8}(0.31,0.282,0.255) RGB{N0f8}(0.314,0.286,0.259) … RGB{N
+0f8}(0.576,0.533,0.486) RGB{N0f8}(0.576,0.533,0.486); RGB{N0f8}(0.31,0.282,
+0.255) RGB{N0f8}(0.314,0.286,0.259) … RGB{N0f8}(0.576,0.533,0.486) RGB{N0f8
+}(0.576,0.533,0.486)]
+ [RGB{N0f8}(0.231,0.2,0.196) RGB{N0f8}(0.231,0.2,0.196) … RGB{N0f8}(0.133,0
+.118,0.118) RGB{N0f8}(0.133,0.118,0.118); RGB{N0f8}(0.235,0.204,0.2) RGB{N0
+f8}(0.235,0.204,0.2) … RGB{N0f8}(0.133,0.118,0.118) RGB{N0f8}(0.133,0.118,0
+.118); … ; RGB{N0f8}(0.31,0.282,0.255) RGB{N0f8}(0.314,0.286,0.259) … RGB{N
+0f8}(0.576,0.533,0.486) RGB{N0f8}(0.576,0.533,0.486); RGB{N0f8}(0.31,0.282,
+0.255) RGB{N0f8}(0.314,0.286,0.259) … RGB{N0f8}(0.576,0.533,0.486) RGB{N0f8
+}(0.576,0.533,0.486)]
+ [RGB{N0f8}(0.231,0.2,0.196) RGB{N0f8}(0.231,0.2,0.196) … RGB{N0f8}(0.133,0
+.118,0.118) RGB{N0f8}(0.133,0.118,0.118); RGB{N0f8}(0.235,0.204,0.2) RGB{N0
+f8}(0.235,0.204,0.2) … RGB{N0f8}(0.133,0.118,0.118) RGB{N0f8}(0.133,0.118,0
+.118); … ; RGB{N0f8}(0.306,0.278,0.251) RGB{N0f8}(0.306,0.278,0.251) … RGB{
+N0f8}(0.592,0.549,0.502) RGB{N0f8}(0.592,0.549,0.502); RGB{N0f8}(0.306,0.27
+8,0.251) RGB{N0f8}(0.306,0.278,0.251) … RGB{N0f8}(0.592,0.549,0.502) RGB{N0
+f8}(0.592,0.549,0.502)]
+```
+
 
 
 ```julia
@@ -79,7 +222,7 @@ Número médio de quadros por segundo: 29.49272512780181
 
 ```julia
 # video completo
-filename_completo = "img/pendulo_70cm_1_reduzido.mov"
+filename_completo = "../../../_assets/attachments/img/pendulo_70cm_1_reduzido.mov"
 vd_completo = VideoIO.load(filename_completo)
 println("""Duração do vídeo: $(VideoIO.get_duration(filename_completo)) s""")
 println("Número de quadros: $(length(vd_completo))")
@@ -87,8 +230,9 @@ println("""Número médio de quadros por segundo: $(length(vd_completo)/VideoIO.
 ```
 
 ```
-Error: Could not open img/pendulo_70cm_1_reduzido.mov. avformat_open_input 
-error code -2
+Duração do vídeo: 16.45 s
+Número de quadros: 493
+Número médio de quadros por segundo: 29.969604863221885
 ```
 
 
@@ -100,22 +244,21 @@ vd[1]
 \fig{images/0707-Pendulo_angulos_grandes_11_1.png}
 
 ```julia
-DisplayMovie.display_movie("../../../_assets/attachments/img/pendulo_70cm_1_reduzido_curto.mp4")
+DisplayMovie.display_movie("../../../_assets/attachments/img/pendulo_70cm_1_reduzido_curto.mp4", embed=false)
 ```
 
 ```
 Error: MethodError: no method matching show(::IOContext{IOBuffer}, ::MIME{S
 ymbol("text/html")}, ::String)
 Closest candidates are:
+  show(::IO, ::MIME{Symbol("text/html")}, !Matched::DataFrames.GroupedDataF
+rame) at ~/.julia/packages/DataFrames/zqFGs/src/abstractdataframe/io.jl:291
   show(::IO, ::MIME{Symbol("text/html")}, !Matched::DataFrames.DataFrameRow
 ; summary, eltypes) at ~/.julia/packages/DataFrames/zqFGs/src/abstractdataf
 rame/io.jl:268
   show(::IO, ::MIME{Symbol("text/html")}, !Matched::DataFrames.AbstractData
 Frame; summary, eltypes) at ~/.julia/packages/DataFrames/zqFGs/src/abstract
 dataframe/io.jl:130
-  show(::IO, ::MIME{Symbol("text/html")}, !Matched::DataFrames.DataFrameRow
-s; summary, eltypes) at ~/.julia/packages/DataFrames/zqFGs/src/abstractdata
-frame/io.jl:275
   ...
 ```
 
@@ -238,8 +381,8 @@ labeled_components = label_components(mask)
 
 ```
 Error: LoadError: UndefVarError: @which not defined
-in expression starting at /Users/rrosa/Documents/git_repositories/modelagem
-_matematica/src/jupyter/c07/0707-Pendulo_angulos_grandes.ipynb:2
+in expression starting at /Users/rmsrosa/Documents/git-repositories/modelag
+em_matematica/src/jupyter/c07/0707-Pendulo_angulos_grandes.ipynb:2
 ```
 
 
@@ -396,7 +539,7 @@ filter!(p -> p.area ≥ min_area, components_location)
 ```
 
 ```
-1-element Vector{Main.##WeaveSandBox#592.VideoTracking.Blob}:
+1-element Vector{Main.##WeaveSandBox#416.VideoTracking.Blob}:
  Blob Object
   Centroid coordinates: (x, y) = (670.0722713864307, 387.4906588003933)
   Span values: (xspan, yspan) = (644:697, 364:412)
@@ -422,7 +565,7 @@ filter!(p -> p.area ≥ min_area, components_location)
 ```
 
 ```
-1-element Vector{Main.##WeaveSandBox#592.VideoTracking.Blob}:
+1-element Vector{Main.##WeaveSandBox#416.VideoTracking.Blob}:
  Blob Object
   Centroid coordinates: (x, y) = (670.0722713864307, 387.4906588003933)
   Span values: (xspan, yspan) = (644:697, 364:412)
@@ -444,7 +587,7 @@ tracks_70cm1 = VideoTracking.find_tracks(filename)
 ```
 
 ```
-1-element Vector{Main.##WeaveSandBox#592.VideoTracking.Track}:
+1-element Vector{Main.##WeaveSandBox#416.VideoTracking.Track}:
  Tracked blob with framespan nspan = 13:55
 ```
 
@@ -463,15 +606,14 @@ DisplayMovie.display_movie("../../../_assets/attachments/img/pendulo_70cm_1_redu
 Error: MethodError: no method matching show(::IOContext{IOBuffer}, ::MIME{S
 ymbol("text/html")}, ::String)
 Closest candidates are:
+  show(::IO, ::MIME{Symbol("text/html")}, !Matched::DataFrames.GroupedDataF
+rame) at ~/.julia/packages/DataFrames/zqFGs/src/abstractdataframe/io.jl:291
   show(::IO, ::MIME{Symbol("text/html")}, !Matched::DataFrames.DataFrameRow
 ; summary, eltypes) at ~/.julia/packages/DataFrames/zqFGs/src/abstractdataf
 rame/io.jl:268
   show(::IO, ::MIME{Symbol("text/html")}, !Matched::DataFrames.AbstractData
 Frame; summary, eltypes) at ~/.julia/packages/DataFrames/zqFGs/src/abstract
 dataframe/io.jl:130
-  show(::IO, ::MIME{Symbol("text/html")}, !Matched::DataFrames.DataFrameRow
-s; summary, eltypes) at ~/.julia/packages/DataFrames/zqFGs/src/abstractdata
-frame/io.jl:275
   ...
 ```
 
@@ -482,7 +624,7 @@ tracks_70cm1
 ```
 
 ```
-1-element Vector{Main.##WeaveSandBox#592.VideoTracking.Track}:
+1-element Vector{Main.##WeaveSandBox#416.VideoTracking.Track}:
  Tracked blob with framespan nspan = 13:55
 ```
 
@@ -503,7 +645,7 @@ tracks_70cm1[1].path
 ```
 
 ```
-43-element Vector{Main.##WeaveSandBox#592.VideoTracking.Blob}:
+43-element Vector{Main.##WeaveSandBox#416.VideoTracking.Blob}:
  Blob Object
   Centroid coordinates: (x, y) = (849.1062271062272, 208.7948717948718)
   Span values: (xspan, yspan) = (840:854, 177:240)
@@ -929,46 +1071,42 @@ t: 32-element Vector{Float64}:
  0.05520287578278107
  0.1186994834079412
  0.20021318382712075
- 0.30591484896808435
- 0.4289016061113905
- 0.5569186555915231
+ 0.3059148580456768
+ 0.4289016257510082
+ 0.556918677400161
  ⋮
- 3.3360855745835023
- 3.5798106962143854
- 3.7899430036121617
- 4.033677409516851
- 4.248776802620724
- 4.489724053643603
- 4.712942542004417
- 4.948793974730231
+ 3.336085982741865
+ 3.5798111245515645
+ 3.789943545334064
+ 4.033677951692835
+ 4.248777445772274
+ 4.4897245954065665
+ 4.712943195270591
+ 4.948794481749135
  5.0
 u: 32-element Vector{Vector{Float64}}:
  [0.5235987755982988, 0.0]
- [0.5235987044417862, -0.0009980937402885351]
- [0.5235901656815024, -0.010978977017998427]
- [0.52272227807514, -0.11073233149660491]
- [0.5129658631370241, -0.38404064259966264]
- [0.4749871723737738, -0.8072478724104674]
- [0.3889746842716092, -1.2882714483013231]
- [0.22681173631479296, -1.7418840903686386]
- [-0.0034488642665777836, -1.9367813923292037]
- [-0.24165886108376364, -1.7139643340721666]
+ [0.5235987044417862, -0.000998093740288535]
+ [0.5235901656815024, -0.01097897701799843]
+ [0.52272227807514, -0.1107323314966049]
+ [0.5129658631370241, -0.3840406425996626]
+ [0.4749871723737738, -0.8072478724104671]
+ [0.38897468427160925, -1.2882714483013225]
+ [0.22681172050256487, -1.7418841189469372]
+ [-0.0034489023047863383, -1.936781391381158]
+ [-0.24165889846355013, -1.7139642610036754]
  ⋮
- [0.5009790261865464, 0.5577274667872847]
- [0.43312663917777644, -1.0800606609666108]
- [0.10381008615004722, -1.8977485458829486]
- [-0.33772109481584195, -1.4733220488166103]
- [-0.5219373201122955, -0.15523840887687057]
- [-0.3642267037960671, 1.384042971093617]
- [0.028819909227411733, 1.9341613541835863]
- [0.4182216594902942, 1.1572042219330516]
- [0.46971508519163835, 0.8484644252456572]
+ [0.5009792538381039, 0.5577247215218519]
+ [0.43312617648070506, -1.0800631782759451]
+ [0.10380905787269706, -1.8977493321783012]
+ [-0.33772189369520583, -1.4733195325856954]
+ [-0.5219374197998773, -0.15523391826013316]
+ [-0.36422595366369465, 1.3840456727974355]
+ [0.02882117308366698, 1.9341610901039223]
+ [0.41822224613478143, 1.157201337942282]
+ [0.4697150850563418, 0.8484644241876123]
 ```
 
-
-
-```julia
-```
 
 
 ```julia
@@ -976,8 +1114,8 @@ display(plot(sol, label = ["θ(t)" "ω(t)"]))
 display(plot(sol, vars = 1, label = "θ(t)"))
 ```
 
-\fig{images/0707-Pendulo_angulos_grandes_61_1.png}
-\fig{images/0707-Pendulo_angulos_grandes_61_2.png}
+\fig{images/0707-Pendulo_angulos_grandes_60_1.png}
+\fig{images/0707-Pendulo_angulos_grandes_60_2.png}
 
 ```julia
 n0 = 34
@@ -986,15 +1124,34 @@ scatter!(plt, (0:length(data_x)-n0) ./ 29.5, data_scaled_x[n0:end], label="track
 display(plt)
 ```
 
-\fig{images/0707-Pendulo_angulos_grandes_62_1.png}
+\fig{images/0707-Pendulo_angulos_grandes_61_1.png}
 
 ```julia
-df = CSV.read("data/pendulo_70cm_reduzido.csv", DataFrame)
+df = CSV.read("../../../_assets/attachments/data/pendulo_70cm_reduzido.csv", DataFrame)
 ```
 
 ```
-Error: ArgumentError: "data/pendulo_70cm_reduzido.csv" is not a valid file 
-or doesn't exist
+481×3 DataFrame
+ Row │ nf     nx       ny
+     │ Int64  Float64  Float64
+─────┼─────────────────────────
+   1 │    13  848.727  209.073
+   2 │    14  847.362  212.843
+   3 │    15  846.127  216.006
+   4 │    16  844.89   218.281
+   5 │    17  843.577  220.369
+   6 │    18  842.701  221.178
+   7 │    19  842.682  220.634
+   8 │    20  842.833  220.468
+  ⋮  │   ⋮       ⋮        ⋮
+ 475 │   487  236.224  348.115
+ 476 │   488  211.528  329.685
+ 477 │   489  190.97   312.452
+ 478 │   490  174.485  297.065
+ 479 │   491  162.013  283.93
+ 480 │   492  154.255  274.632
+ 481 │   493  150.403  268.847
+               466 rows omitted
 ```
 
 
@@ -1009,11 +1166,8 @@ scatter!(plt, df.nf, size(vd[1], 1) .+ 1 .- df.ny, label = nothing)
 display(plt)
 ```
 
-```
-Error: UndefVarError: df not defined
-```
-
-
+\fig{images/0707-Pendulo_angulos_grandes_63_1.png}
+\fig{images/0707-Pendulo_angulos_grandes_63_2.png}
 
 ```julia
 data2_scaled_t = (df.nf[n0:end] .- df.nf[n0]) / 29.97
@@ -1023,11 +1177,8 @@ display(scatter(data2_scaled_t, data2_scaled_x))
 display(scatter(data2_scaled_t, data2_scaled_y))
 ```
 
-```
-Error: UndefVarError: df not defined
-```
-
-
+\fig{images/0707-Pendulo_angulos_grandes_64_1.png}
+\fig{images/0707-Pendulo_angulos_grandes_64_2.png}
 
 ```julia
 n_minima2 = Int[]
@@ -1040,7 +1191,15 @@ n_minima2
 ```
 
 ```
-Error: UndefVarError: df not defined
+8-element Vector{Int64}:
+  72
+ 125
+ 178
+ 231
+ 283
+ 336
+ 389
+ 441
 ```
 
 
@@ -1050,7 +1209,14 @@ Error: UndefVarError: df not defined
 ```
 
 ```
-Float64[]
+7-element Vector{Float64}:
+ 1.7666666666666666
+ 1.7666666666666666
+ 1.7666666666666666
+ 1.7333333333333334
+ 1.7666666666666666
+ 1.7666666666666666
+ 1.7333333333333334
 ```
 
 
@@ -1060,7 +1226,7 @@ sum(n_minima2[2:end] - n_minima2[1:end-1])/7/30
 ```
 
 ```
-0.0
+1.7571428571428571
 ```
 
 
@@ -1072,11 +1238,7 @@ vline!(plt, n_minima2, label = "minima")
 display(plt)
 ```
 
-```
-Error: UndefVarError: df not defined
-```
-
-
+\fig{images/0707-Pendulo_angulos_grandes_68_1.png}
 
 ```julia
 g = 9.8 # 9,8 m/s^2
@@ -1101,12 +1263,11 @@ u0: 2-element Vector{Float64}:
 
 
 ```julia
-VideoIO.get_duration("img/pendulo_70cm_1_reduzido.mov")
+VideoIO.get_duration("../../../_assets/attachments/img/pendulo_70cm_1_reduzido.mov")
 ```
 
 ```
-Error: Could not open img/pendulo_70cm_1_reduzido.mov. avformat_open_input 
-error code -2
+16.45
 ```
 
 
@@ -1123,7 +1284,48 @@ sol(data2_scaled_t)
 ```
 
 ```
-Error: UndefVarError: data2_scaled_x not defined
+t: 448-element Vector{Float64}:
+  0.0
+  0.033366700033366704
+  0.06673340006673341
+  0.1001001001001001
+  0.13346680013346682
+  0.16683350016683351
+  0.2002002002002002
+  0.2335669002335669
+  0.26693360026693363
+  0.3003003003003003
+  ⋮
+ 14.647981314647982
+ 14.68134801468135
+ 14.714714714714715
+ 14.748081414748082
+ 14.78144811478145
+ 14.814814814814815
+ 14.848181514848182
+ 14.88154821488155
+ 14.914914914914915
+u: 448-element Vector{Vector{Float64}}:
+ [0.5235987755982988, 0.0]
+ [0.5197064819391027, -0.23304144136133412]
+ [0.5080822001687986, -0.4629302691579846]
+ [0.4888836986777478, -0.6865155884298499]
+ [0.4623737395236549, -0.9006563907399178]
+ [0.4289196227578826, -1.102237149997166]
+ [0.38899141026001216, -1.2882025121646734]
+ [0.3431598607272609, -1.4556077279107655]
+ [0.292091806799435, -1.6016605695364805]
+ [0.2365413522541745, -1.7238352335086886]
+ ⋮
+ [28090.07891643648, 34866.91338648441]
+ [28488.192435986246, 35311.92111707113]
+ [28890.514850955977, 35761.12504741425]
+ [29297.075665576012, 36214.55110628541]
+ [29707.90448809942, 36672.225310044014]
+ [30123.031029820882, 37134.1737250366]
+ [30542.48510451509, 37600.42252594703]
+ [30966.29663012595, 38070.99794359826]
+ [31394.495623644285, 38545.92630662419]
 ```
 
 
@@ -1133,11 +1335,7 @@ plot(data2_scaled_t, sol2(data2_scaled_t)[1,:], label = "ODE", ylims=(-1,1))
 scatter!(data2_scaled_t, data2_scaled_x, label = "data")
 ```
 
-```
-Error: UndefVarError: data2_scaled_t not defined
-```
-
-
+\fig{images/0707-Pendulo_angulos_grandes_72_1.png}
 
 ```julia
 function ddu_pendulum!(ddu, du, u, p, t)
@@ -1176,11 +1374,7 @@ plot(data2_scaled_t, sol_2nd(data2_scaled_t)[2,:], label = "ODE", ylims=(-1,1))
 scatter!(data2_scaled_t, data2_scaled_x, label = "data")
 ```
 
-```
-Error: UndefVarError: data2_scaled_t not defined
-```
-
-
+\fig{images/0707-Pendulo_angulos_grandes_75_1.png}
 
 ```julia
 prob_rmk = remake(prob_pendulum_2nd; u0 = ArrayPartition([0.0], [θ₀]), p = [l, g, α])
@@ -1202,37 +1396,37 @@ t: 81-element Vector{Float64}:
   0.4361696895237713
   0.5660126318578794
   ⋮
- 14.75710393351784
- 14.975837376148979
- 15.220528314715068
- 15.4357394488737
- 15.68199060915447
- 15.899891437531256
- 16.14498715319801
- 16.367029104543224
+ 14.757103758523856
+ 14.975837242139237
+ 15.220528172168207
+ 15.435739323889688
+ 15.681990504266405
+ 15.899891324886354
+ 16.144987068343934
+ 16.367029004899734
  16.45
 u: 81-element Vector{RecursiveArrayTools.ArrayPartition{Float64, Tuple{Vect
 or{Float64}, Vector{Float64}}}}:
  ([0.0], [0.5235987755982988])
  ([-0.0009980900796482302], [0.523598702408922])
  ([-0.010978532676025766], [0.5235899199226164])
- ([-0.1106856765365273], [0.5226974863498236])
- ([-0.38131432847714974], [0.5127947624143487])
- ([-0.7977890197442177], [0.47454089689923107])
- ([-1.2683562493326956], [0.38830121752424207])
- ([-1.7078585641373936], [0.22627879083954466])
- ([-1.8891348315194052], [-0.0020668325633489415])
- ([-1.6627067086680574], [-0.2371150363762909])
+ ([-0.11068567653652728], [0.5226974863498236])
+ ([-0.3813143284771497], [0.5127947624143488])
+ ([-0.7977890197442175], [0.4745408968992312])
+ ([-1.268356249332695], [0.38830121752424207])
+ ([-1.7078585641373931], [0.22627879083954483])
+ ([-1.8891348315194079], [-0.0020668325633487585])
+ ([-1.6627067086680587], [-0.23711503637629103])
  ⋮
- ([0.4910364935793956], [-0.3359400903659479])
- ([1.2181506703554332], [-0.13835433828158172])
- ([1.1421230770911266], [0.17172703098371234])
- ([0.3513281719783554], [0.34094589979533435])
- ([-0.7548621921063656], [0.2874525904670078])
- ([-1.2735027973864756], [0.053843800899205596])
- ([-0.9326114124256897], [-0.23637451107073632])
- ([-0.008988723570449997], [-0.34667806133206513])
- ([0.36875503620207184], [-0.3316312175041112])
+ ([0.49103571221118436], [-0.3359401762753514])
+ ([1.2181504266325172], [-0.13835450159398452])
+ ([1.1421234168083245], [0.17172686806385645])
+ ([0.35132874328089825], [0.3409458558094231])
+ ([-0.7548617910520811], [0.28745266963945754])
+ ([-1.2735027218362773], [0.053843944407130785])
+ ([-0.93261168688129], [-0.2363744318904869])
+ ([-0.008989184610849575], [-0.34667806040764854])
+ ([0.36875503600834453], [-0.33163121749061913])
 ```
 
 
@@ -1263,7 +1457,21 @@ res = Optim.optimize(objective, [π / 3, 0.7, 0.0])
 ```
 
 ```
-Error: UndefVarError: data2_scaled_t not defined
+* Status: success
+
+ * Candidate solution
+    Final objective value:     6.611662e-03
+
+ * Found with
+    Algorithm:     Nelder-Mead
+
+ * Convergence measures
+    √(Σ(yᵢ-ȳ)²)/n ≤ 1.0e-08
+
+ * Work counters
+    Seconds run:   0  (vs limit Inf)
+    Iterations:    79
+    f(x) calls:    151
 ```
 
 
@@ -1273,7 +1481,10 @@ Error: UndefVarError: data2_scaled_t not defined
 ```
 
 ```
-Error: UndefVarError: res not defined
+3-element Vector{Float64}:
+ 0.5593021113003932
+ 0.7423176561595073
+ 0.03619218099878478
 ```
 
 
@@ -1283,7 +1494,7 @@ Error: UndefVarError: res not defined
 ```
 
 ```
-6.0
+5.616986938035155
 ```
 
 
@@ -1293,7 +1504,7 @@ Error: UndefVarError: res not defined
 ```
 
 ```
--0.032150070761939875
+0.0035532649401545102
 ```
 
 
@@ -1306,7 +1517,7 @@ prob_rmk = remake(prob_pendulum_2nd, u0 = ArrayPartition([0.0], [θ₀]), p = [l
 ODEProblem with uType RecursiveArrayTools.ArrayPartition{Float64, Tuple{Vec
 tor{Float64}, Vector{Float64}}} and tType Float64. In-place: true
 timespan: (0.0, 16.45)
-u0: ([0.0], [0.5235987755982988])
+u0: ([0.0], [0.5593021113003932])
 ```
 
 
@@ -1327,8 +1538,4 @@ plot(data2_scaled_t, sol_2nd(data2_scaled_t)[2,:], label = "ODE", ylims=(-1,1))
 scatter!(data2_scaled_t, data2_scaled_x, label = "data")
 ```
 
-```
-Error: UndefVarError: data2_scaled_t not defined
-```
-
-
+\fig{images/0707-Pendulo_angulos_grandes_84_1.png}
