@@ -351,9 +351,9 @@ Closest candidates are:
   &#43;&#40;::Any, ::Any, &#33;Matched::Any, &#33;Matched::Any...&#41; at /Applications/Julia-1
 .7.app/Contents/Resources/julia/share/julia/base/operators.jl:655
   &#43;&#40;&#33;Matched::ChainRulesCore.Tangent&#123;P&#125;, ::P&#41; where P at ~/.julia/packages/
-ChainRulesCore/RbX5a/src/tangent_arithmetic.jl:146
+ChainRulesCore/GUvJT/src/tangent_arithmetic.jl:146
   &#43;&#40;&#33;Matched::ChainRulesCore.AbstractThunk, ::Any&#41; at ~/.julia/packages/Cha
-inRulesCore/RbX5a/src/tangent_arithmetic.jl:122
+inRulesCore/GUvJT/src/tangent_arithmetic.jl:122
   ...</code></pre>
 <pre><code class="language-julia">1u&quot;m&quot; * u&quot;s&quot; * u&quot;𝐓&quot;</code></pre>
 <pre><code class="language-julia">Error: MethodError: no method matching *&#40;::Unitful.Quantity&#123;Int64, 𝐋 𝐓, Uni
@@ -362,10 +362,10 @@ ion&#123;:Time&#125;&#40;1//1&#41;,&#41;&#125;&#41;
 Closest candidates are:
   *&#40;::Any, ::Any, &#33;Matched::Any, &#33;Matched::Any...&#41; at /Applications/Julia-1
 .7.app/Contents/Resources/julia/share/julia/base/operators.jl:655
-  *&#40;&#33;Matched::ChainRulesCore.AbstractThunk, ::Any&#41; at ~/.julia/packages/Cha
-inRulesCore/RbX5a/src/tangent_arithmetic.jl:125
+  *&#40;&#33;Matched::Unitful.Dimensions, ::Unitful.Dimensions...&#41; at ~/.julia/pack
+ages/Unitful/SUQzL/src/dimensions.jl:25
   *&#40;&#33;Matched::SpecialFunctions.SimplePoly, ::Any&#41; at ~/.julia/packages/Spec
-ialFunctions/CQMHW/src/expint.jl:8
+ialFunctions/oPGFg/src/expint.jl:8
   ...</code></pre>
 <pre><code class="language-julia">uconvert&#40;u&quot;g&quot;, 10u&quot;m&quot;&#41;</code></pre>
 <pre><code class="language-julia">Error: DimensionError: g and m are not dimensionally compatible.</code></pre>
@@ -425,10 +425,10 @@ nsion&#123;:Time&#125;&#40;1//1&#41;,&#41;&#125;&#41;
 Closest candidates are:
   *&#40;::Any, ::Any, &#33;Matched::Any, &#33;Matched::Any...&#41; at /Applications/Julia-1
 .7.app/Contents/Resources/julia/share/julia/base/operators.jl:655
-  *&#40;&#33;Matched::ChainRulesCore.AbstractThunk, ::Any&#41; at ~/.julia/packages/Cha
-inRulesCore/RbX5a/src/tangent_arithmetic.jl:125
+  *&#40;&#33;Matched::Unitful.Dimensions, ::Unitful.Dimensions...&#41; at ~/.julia/pack
+ages/Unitful/SUQzL/src/dimensions.jl:25
   *&#40;&#33;Matched::SpecialFunctions.SimplePoly, ::Any&#41; at ~/.julia/packages/Spec
-ialFunctions/CQMHW/src/expint.jl:8
+ialFunctions/oPGFg/src/expint.jl:8
   ...</code></pre>
 <ul>
 <li><p>Para resolver esse problema com \(\Pi[1]\), podemos substituir a dimensão <code>T&#61;u&quot;𝐓&quot;</code> por uma unidade, que denotamos por \(\tau\).</p>
@@ -489,7 +489,7 @@ ialFunctions/CQMHW/src/expint.jl:8
         </div>
     
 
-    Last modified: June 05, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
+    Last modified: June 21, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

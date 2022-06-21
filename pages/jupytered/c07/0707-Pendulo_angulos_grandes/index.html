@@ -214,15 +214,12 @@ using DataFrames</code></pre>
 using ImageDraw
 using VideoIO</code></pre>
 <pre><code class="language-julia">using Plots</code></pre>
-<pre><code class="language-julia">Your GR installation is incomplete. Rerunning build step for GR package.
-Error: Failed to precompile Plots &#91;91a5bcdd-55d7-5caf-9e0b-520d859cae80&#93; to
- /Users/rmsrosa/.julia/compiled/v1.7/Plots/jl_vGXhqI.</code></pre>
 <pre><code class="language-julia">using Optim</code></pre>
 <pre><code class="language-julia">using DifferentialEquations.OrdinaryDiffEq
 using DifferentialEquations.RecursiveArrayTools</code></pre>
 <pre><code class="language-julia">include&#40;&quot;../../../_assets/attachments/scripts/DisplayMovie.jl&quot;&#41;
 include&#40;&quot;../../../_assets/attachments/scripts/VideoTracking.jl&quot;&#41;</code></pre>
-<pre><code class="language-julia">Main.##WeaveSandBox#292.VideoTracking</code></pre>
+<pre><code class="language-julia">Main.##WeaveSandBox#592.VideoTracking</code></pre>
 <pre><code class="language-julia">filename &#61; &quot;../../../_assets/attachments/img/pendulo_70cm_1_reduzido_curto.mp4&quot;
 vd &#61; VideoIO.load&#40;filename&#41;
 nothing</code></pre>
@@ -249,14 +246,15 @@ error code -2</code></pre>
 <pre><code class="language-julia">Error: MethodError: no method matching show&#40;::IOContext&#123;IOBuffer&#125;, ::MIME&#123;S
 ymbol&#40;&quot;text/html&quot;&#41;&#125;, ::String&#41;
 Closest candidates are:
-  show&#40;::IO, ::MIME&#123;Symbol&#40;&quot;text/html&quot;&#41;&#125;, &#33;Matched::DataFrames.GroupedDataF
-rame&#41; at ~/.julia/packages/DataFrames/zqFGs/src/abstractdataframe/io.jl:291
   show&#40;::IO, ::MIME&#123;Symbol&#40;&quot;text/html&quot;&#41;&#125;, &#33;Matched::DataFrames.DataFrameRow
 ; summary, eltypes&#41; at ~/.julia/packages/DataFrames/zqFGs/src/abstractdataf
 rame/io.jl:268
   show&#40;::IO, ::MIME&#123;Symbol&#40;&quot;text/html&quot;&#41;&#125;, &#33;Matched::DataFrames.AbstractData
 Frame; summary, eltypes&#41; at ~/.julia/packages/DataFrames/zqFGs/src/abstract
 dataframe/io.jl:130
+  show&#40;::IO, ::MIME&#123;Symbol&#40;&quot;text/html&quot;&#41;&#125;, &#33;Matched::DataFrames.DataFrameRow
+s; summary, eltypes&#41; at ~/.julia/packages/DataFrames/zqFGs/src/abstractdata
+frame/io.jl:275
   ...</code></pre>
 <pre><code class="language-julia">background &#61; convert.&#40;RGB&#123;Float16&#125;, vd&#91;1&#93;&#41;</code></pre>
 <img src="/modelagem_matematica/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_13_1.png" alt="">
@@ -339,8 +337,8 @@ mask &#61; convert.&#40;
  0  0  0  0  0  0  0  0  0  0  0  0     0  0  0  0  0  0  0  0  0  0  0   0</code></pre>
 <pre><code class="language-julia">@which label_components&#40;mask&#41;</code></pre>
 <pre><code class="language-julia">Error: LoadError: UndefVarError: @which not defined
-in expression starting at /Users/rmsrosa/Documents/git-repositories/modelag
-em_matematica/src/jupyter/c07/0707-Pendulo_angulos_grandes.ipynb:2</code></pre>
+in expression starting at /Users/rrosa/Documents/git_repositories/modelagem
+_matematica/src/jupyter/c07/0707-Pendulo_angulos_grandes.ipynb:2</code></pre>
 <pre><code class="language-julia">show&#40;Docs.doc&#40;label_components&#41;&#41;</code></pre>
 
 <p>label &#61; label<em>components&#40;A; bkg &#61; zero&#40;eltype&#40;A&#41;&#41;, dims&#61;coords</em>spatial&#40;A&#41;&#41; label &#61; label_components&#40;A, connectivity; bkg &#61; zero&#40;eltype&#40;A&#41;&#41;&#41;</p>
@@ -434,7 +432,7 @@ vd54</code></pre>
 <pre><code class="language-julia">components_location &#61; VideoTracking.locate_components&#40;labeled_components&#41;
 min_area &#61; 100
 filter&#33;&#40;p -&gt; p.area ≥ min_area, components_location&#41;</code></pre>
-<pre><code class="language-julia">1-element Vector&#123;Main.##WeaveSandBox#292.VideoTracking.Blob&#125;:
+<pre><code class="language-julia">1-element Vector&#123;Main.##WeaveSandBox#592.VideoTracking.Blob&#125;:
  Blob Object
   Centroid coordinates: &#40;x, y&#41; &#61; &#40;670.0722713864307, 387.4906588003933&#41;
   Span values: &#40;xspan, yspan&#41; &#61; &#40;644:697, 364:412&#41;
@@ -448,7 +446,7 @@ vd54</code></pre>
 <pre><code class="language-julia">components_location &#61; VideoTracking.locate_components&#40;labeled_components&#41;
 min_area &#61; 200
 filter&#33;&#40;p -&gt; p.area ≥ min_area, components_location&#41;</code></pre>
-<pre><code class="language-julia">1-element Vector&#123;Main.##WeaveSandBox#292.VideoTracking.Blob&#125;:
+<pre><code class="language-julia">1-element Vector&#123;Main.##WeaveSandBox#592.VideoTracking.Blob&#125;:
  Blob Object
   Centroid coordinates: &#40;x, y&#41; &#61; &#40;670.0722713864307, 387.4906588003933&#41;
   Span values: &#40;xspan, yspan&#41; &#61; &#40;644:697, 364:412&#41;
@@ -458,29 +456,30 @@ draw&#40;vd&#91;54&#93;, Polygon&#40;VideoTracking.RectanglePoints&#40;p&#41;&#4
 <img src="/modelagem_matematica/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_31_1.png" alt="">
 <pre><code class="language-julia">filename &#61; &quot;../../../_assets/attachments/img/pendulo_70cm_1_reduzido_curto.mp4&quot;
 tracks_70cm1 &#61; VideoTracking.find_tracks&#40;filename&#41;</code></pre>
-<pre><code class="language-julia">1-element Vector&#123;Main.##WeaveSandBox#292.VideoTracking.Track&#125;:
+<pre><code class="language-julia">1-element Vector&#123;Main.##WeaveSandBox#592.VideoTracking.Track&#125;:
  Tracked blob with framespan nspan &#61; 13:55</code></pre>
 <pre><code class="language-julia">VideoTracking.tracks_on_video&#40;filename, tracks_70cm1&#41;</code></pre>
 <pre><code class="language-julia">DisplayMovie.display_movie&#40;&quot;../../../_assets/attachments/img/pendulo_70cm_1_reduzido_curto_tracked.mp4&quot;&#41;</code></pre>
 <pre><code class="language-julia">Error: MethodError: no method matching show&#40;::IOContext&#123;IOBuffer&#125;, ::MIME&#123;S
 ymbol&#40;&quot;text/html&quot;&#41;&#125;, ::String&#41;
 Closest candidates are:
-  show&#40;::IO, ::MIME&#123;Symbol&#40;&quot;text/html&quot;&#41;&#125;, &#33;Matched::DataFrames.GroupedDataF
-rame&#41; at ~/.julia/packages/DataFrames/zqFGs/src/abstractdataframe/io.jl:291
   show&#40;::IO, ::MIME&#123;Symbol&#40;&quot;text/html&quot;&#41;&#125;, &#33;Matched::DataFrames.DataFrameRow
 ; summary, eltypes&#41; at ~/.julia/packages/DataFrames/zqFGs/src/abstractdataf
 rame/io.jl:268
   show&#40;::IO, ::MIME&#123;Symbol&#40;&quot;text/html&quot;&#41;&#125;, &#33;Matched::DataFrames.AbstractData
 Frame; summary, eltypes&#41; at ~/.julia/packages/DataFrames/zqFGs/src/abstract
 dataframe/io.jl:130
+  show&#40;::IO, ::MIME&#123;Symbol&#40;&quot;text/html&quot;&#41;&#125;, &#33;Matched::DataFrames.DataFrameRow
+s; summary, eltypes&#41; at ~/.julia/packages/DataFrames/zqFGs/src/abstractdata
+frame/io.jl:275
   ...</code></pre>
 <pre><code class="language-julia">tracks_70cm1</code></pre>
-<pre><code class="language-julia">1-element Vector&#123;Main.##WeaveSandBox#292.VideoTracking.Track&#125;:
+<pre><code class="language-julia">1-element Vector&#123;Main.##WeaveSandBox#592.VideoTracking.Track&#125;:
  Tracked blob with framespan nspan &#61; 13:55</code></pre>
 <pre><code class="language-julia">tracks_70cm1&#91;1&#93;.nspan</code></pre>
 <pre><code class="language-julia">13:55</code></pre>
 <pre><code class="language-julia">tracks_70cm1&#91;1&#93;.path</code></pre>
-<pre><code class="language-julia">43-element Vector&#123;Main.##WeaveSandBox#292.VideoTracking.Blob&#125;:
+<pre><code class="language-julia">43-element Vector&#123;Main.##WeaveSandBox#592.VideoTracking.Blob&#125;:
  Blob Object
   Centroid coordinates: &#40;x, y&#41; &#61; &#40;849.1062271062272, 208.7948717948718&#41;
   Span values: &#40;xspan, yspan&#41; &#61; &#40;840:854, 177:240&#41;
@@ -588,19 +587,19 @@ for &#40;n, tr&#41; in enumerate&#40;tracks_70cm1&#41;
     scatter&#33;&#40;plt, getfield.&#40;tr.path, :x&#41;, 481 .- getfield.&#40;tr.path, :y&#41;, label&#61;&quot;track &#36;n&quot;&#41;
 end
 display&#40;plt&#41;</code></pre>
-<pre><code class="language-julia">Error: UndefVarError: plot not defined</code></pre>
+<img src="/modelagem_matematica/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_39_1.png" alt="">
 <pre><code class="language-julia">plt &#61; plot&#40;title &#61; &quot;Coordinate x of &#36;&#40;length&#40;tracks_70cm1&#41;&#41; tracks&quot;, titlefont &#61; 10, legend&#61;:topleft&#41;
 for &#40;n, tr&#41; in enumerate&#40;tracks_70cm1&#41;
     scatter&#33;&#40;plt, tr.nspan, getfield.&#40;tr.path, :x&#41;, label&#61;&quot;track &#36;n&quot;&#41;
 end
 display&#40;plt&#41;</code></pre>
-<pre><code class="language-julia">Error: UndefVarError: plot not defined</code></pre>
+<img src="/modelagem_matematica/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_40_1.png" alt="">
 <pre><code class="language-julia">plt &#61; plot&#40;title &#61; &quot;Coordinate y of &#36;&#40;length&#40;tracks_70cm1&#41;&#41; tracks&quot;, titlefont &#61; 10, legend&#61;:topright&#41;
 for &#40;n, tr&#41; in enumerate&#40;tracks_70cm1&#41;
     scatter&#33;&#40;plt, tr.nspan, - getfield.&#40;tr.path, :y&#41;, label&#61;&quot;track &#36;n&quot;&#41;
 end
 display&#40;plt&#41;</code></pre>
-<pre><code class="language-julia">Error: UndefVarError: plot not defined</code></pre>
+<img src="/modelagem_matematica/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_41_1.png" alt="">
 <pre><code class="language-julia">size&#40;vd&#91;1&#93;&#41;</code></pre>
 <pre><code class="language-julia">&#40;480, 854&#41;</code></pre>
 <pre><code class="language-julia">data_x &#61; getfield.&#40;tracks_70cm1&#91;1&#93;.path, :x&#41;
@@ -620,7 +619,8 @@ for &#40;n, tr&#41; in enumerate&#40;tracks_70cm1&#41;
 end
 vline&#33;&#40;plt, n_minima, label &#61; &quot;minima&quot;&#41;
 display&#40;plt&#41;</code></pre>
-<pre><code class="language-julia">Error: UndefVarError: plot not defined</code></pre>
+<pre><code class="language-julia">Error: BoundsError: attempt to access 0-element Vector&#123;Float64&#125; at index &#91;1
+&#93;</code></pre>
 <pre><code class="language-julia">&#40;n_minima&#91;2:end&#93; - n_minima&#91;1:end-1&#93;&#41; / 29.5</code></pre>
 <pre><code class="language-julia">Float64&#91;&#93;</code></pre>
 <pre><code class="language-julia">g &#61; 9.8 # m/s
@@ -691,7 +691,7 @@ end
 scatter&#33;&#40;plt, &#40;center_nx, center_ny&#41;, markersize &#61; 10&#41;
 plot&#33;&#40;plt, 1:854, nx -&gt; center_ny - √&#40;radius_n^2 - &#40;nx - center_nx&#41;^2&#41;, linestyle &#61; :dash&#41;
 display&#40;plt&#41;</code></pre>
-<pre><code class="language-julia">Error: UndefVarError: plot not defined</code></pre>
+<img src="/modelagem_matematica/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_54_1.png" alt="">
 <pre><code class="language-julia">scale &#61; radius_n / l # points per meter</code></pre>
 <pre><code class="language-julia">714.2857142857143</code></pre>
 <pre><code class="language-julia">data_scaled_x &#61; &#40;data_x .- center_nx&#41; / scale
@@ -749,49 +749,49 @@ t: 32-element Vector&#123;Float64&#125;:
  0.05520287578278107
  0.1186994834079412
  0.20021318382712075
- 0.3059148580456768
- 0.4289016257510082
- 0.556918677400161
+ 0.30591484896808435
+ 0.4289016061113905
+ 0.5569186555915231
  ⋮
- 3.336085982741865
- 3.5798111245515645
- 3.789943545334064
- 4.033677951692835
- 4.248777445772274
- 4.4897245954065665
- 4.712943195270591
- 4.948794481749135
+ 3.3360855745835023
+ 3.5798106962143854
+ 3.7899430036121617
+ 4.033677409516851
+ 4.248776802620724
+ 4.489724053643603
+ 4.712942542004417
+ 4.948793974730231
  5.0
 u: 32-element Vector&#123;Vector&#123;Float64&#125;&#125;:
  &#91;0.5235987755982988, 0.0&#93;
- &#91;0.5235987044417862, -0.000998093740288535&#93;
- &#91;0.5235901656815024, -0.01097897701799843&#93;
- &#91;0.52272227807514, -0.1107323314966049&#93;
- &#91;0.5129658631370241, -0.3840406425996626&#93;
- &#91;0.4749871723737738, -0.8072478724104671&#93;
- &#91;0.38897468427160925, -1.2882714483013225&#93;
- &#91;0.22681172050256487, -1.7418841189469372&#93;
- &#91;-0.0034489023047863383, -1.936781391381158&#93;
- &#91;-0.24165889846355013, -1.7139642610036754&#93;
+ &#91;0.5235987044417862, -0.0009980937402885351&#93;
+ &#91;0.5235901656815024, -0.010978977017998427&#93;
+ &#91;0.52272227807514, -0.11073233149660491&#93;
+ &#91;0.5129658631370241, -0.38404064259966264&#93;
+ &#91;0.4749871723737738, -0.8072478724104674&#93;
+ &#91;0.3889746842716092, -1.2882714483013231&#93;
+ &#91;0.22681173631479296, -1.7418840903686386&#93;
+ &#91;-0.0034488642665777836, -1.9367813923292037&#93;
+ &#91;-0.24165886108376364, -1.7139643340721666&#93;
  ⋮
- &#91;0.5009792538381039, 0.5577247215218519&#93;
- &#91;0.43312617648070506, -1.0800631782759451&#93;
- &#91;0.10380905787269706, -1.8977493321783012&#93;
- &#91;-0.33772189369520583, -1.4733195325856954&#93;
- &#91;-0.5219374197998773, -0.15523391826013316&#93;
- &#91;-0.36422595366369465, 1.3840456727974355&#93;
- &#91;0.02882117308366698, 1.9341610901039223&#93;
- &#91;0.41822224613478143, 1.157201337942282&#93;
- &#91;0.4697150850563418, 0.8484644241876123&#93;</code></pre>
+ &#91;0.5009790261865464, 0.5577274667872847&#93;
+ &#91;0.43312663917777644, -1.0800606609666108&#93;
+ &#91;0.10381008615004722, -1.8977485458829486&#93;
+ &#91;-0.33772109481584195, -1.4733220488166103&#93;
+ &#91;-0.5219373201122955, -0.15523840887687057&#93;
+ &#91;-0.3642267037960671, 1.384042971093617&#93;
+ &#91;0.028819909227411733, 1.9341613541835863&#93;
+ &#91;0.4182216594902942, 1.1572042219330516&#93;
+ &#91;0.46971508519163835, 0.8484644252456572&#93;</code></pre>
 
 <pre><code class="language-julia">display&#40;plot&#40;sol, label &#61; &#91;&quot;θ&#40;t&#41;&quot; &quot;ω&#40;t&#41;&quot;&#93;&#41;&#41;
 display&#40;plot&#40;sol, vars &#61; 1, label &#61; &quot;θ&#40;t&#41;&quot;&#41;&#41;</code></pre>
-<pre><code class="language-julia">Error: UndefVarError: plot not defined</code></pre>
+<p><img src="/modelagem_matematica/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_61_1.png" alt=""> <img src="/modelagem_matematica/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_61_2.png" alt=""></p>
 <pre><code class="language-julia">n0 &#61; 34
 plt &#61; plot&#40;sol, vars &#61; 1, label &#61; &quot;θ&#40;t&#41;&quot;&#41;
 scatter&#33;&#40;plt, &#40;0:length&#40;data_x&#41;-n0&#41; ./ 29.5, data_scaled_x&#91;n0:end&#93;, label&#61;&quot;tracked&quot;&#41;
 display&#40;plt&#41;</code></pre>
-<pre><code class="language-julia">Error: UndefVarError: plot not defined</code></pre>
+<img src="/modelagem_matematica/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_62_1.png" alt="">
 <pre><code class="language-julia">df &#61; CSV.read&#40;&quot;data/pendulo_70cm_reduzido.csv&quot;, DataFrame&#41;</code></pre>
 <pre><code class="language-julia">Error: ArgumentError: &quot;data/pendulo_70cm_reduzido.csv&quot; is not a valid file 
 or doesn&#39;t exist</code></pre>
@@ -802,7 +802,7 @@ display&#40;plt&#41;
 plt &#61; plot&#40;title &#61; &quot;Coordinate y&quot;, titlefont &#61; 10, legend&#61;:topleft&#41;
 scatter&#33;&#40;plt, df.nf, size&#40;vd&#91;1&#93;, 1&#41; .&#43; 1 .- df.ny, label &#61; nothing&#41;
 display&#40;plt&#41;</code></pre>
-<pre><code class="language-julia">Error: UndefVarError: plot not defined</code></pre>
+<pre><code class="language-julia">Error: UndefVarError: df not defined</code></pre>
 <pre><code class="language-julia">data2_scaled_t &#61; &#40;df.nf&#91;n0:end&#93; .- df.nf&#91;n0&#93;&#41; / 29.97
 data2_scaled_x &#61; &#40;df.nx&#91;n0:end&#93; .- center_nx&#41; / scale
 data2_scaled_y &#61; &#40;size&#40;vd&#91;1&#93;, 1&#41; .&#43; 1 .- df.ny&#91;n0:end&#93; .- center_ny &#41; / scale
@@ -825,7 +825,7 @@ n_minima2</code></pre>
 scatter&#33;&#40;plt, df.nf, df.nx, label &#61; &quot;data&quot;&#41;
 vline&#33;&#40;plt, n_minima2, label &#61; &quot;minima&quot;&#41;
 display&#40;plt&#41;</code></pre>
-<pre><code class="language-julia">Error: UndefVarError: plot not defined</code></pre>
+<pre><code class="language-julia">Error: UndefVarError: df not defined</code></pre>
 <pre><code class="language-julia">g &#61; 9.8 # 9,8 m/s^2
 l &#61; 0.7 # 70 cm
 α &#61; 0
@@ -890,37 +890,37 @@ t: 81-element Vector&#123;Float64&#125;:
   0.4361696895237713
   0.5660126318578794
   ⋮
- 14.757103758523856
- 14.975837242139237
- 15.220528172168207
- 15.435739323889688
- 15.681990504266405
- 15.899891324886354
- 16.144987068343934
- 16.367029004899734
+ 14.75710393351784
+ 14.975837376148979
+ 15.220528314715068
+ 15.4357394488737
+ 15.68199060915447
+ 15.899891437531256
+ 16.14498715319801
+ 16.367029104543224
  16.45
 u: 81-element Vector&#123;RecursiveArrayTools.ArrayPartition&#123;Float64, Tuple&#123;Vect
 or&#123;Float64&#125;, Vector&#123;Float64&#125;&#125;&#125;&#125;:
  &#40;&#91;0.0&#93;, &#91;0.5235987755982988&#93;&#41;
  &#40;&#91;-0.0009980900796482302&#93;, &#91;0.523598702408922&#93;&#41;
  &#40;&#91;-0.010978532676025766&#93;, &#91;0.5235899199226164&#93;&#41;
- &#40;&#91;-0.11068567653652728&#93;, &#91;0.5226974863498236&#93;&#41;
- &#40;&#91;-0.3813143284771497&#93;, &#91;0.5127947624143488&#93;&#41;
- &#40;&#91;-0.7977890197442175&#93;, &#91;0.4745408968992312&#93;&#41;
- &#40;&#91;-1.268356249332695&#93;, &#91;0.38830121752424207&#93;&#41;
- &#40;&#91;-1.7078585641373931&#93;, &#91;0.22627879083954483&#93;&#41;
- &#40;&#91;-1.8891348315194079&#93;, &#91;-0.0020668325633487585&#93;&#41;
- &#40;&#91;-1.6627067086680587&#93;, &#91;-0.23711503637629103&#93;&#41;
+ &#40;&#91;-0.1106856765365273&#93;, &#91;0.5226974863498236&#93;&#41;
+ &#40;&#91;-0.38131432847714974&#93;, &#91;0.5127947624143487&#93;&#41;
+ &#40;&#91;-0.7977890197442177&#93;, &#91;0.47454089689923107&#93;&#41;
+ &#40;&#91;-1.2683562493326956&#93;, &#91;0.38830121752424207&#93;&#41;
+ &#40;&#91;-1.7078585641373936&#93;, &#91;0.22627879083954466&#93;&#41;
+ &#40;&#91;-1.8891348315194052&#93;, &#91;-0.0020668325633489415&#93;&#41;
+ &#40;&#91;-1.6627067086680574&#93;, &#91;-0.2371150363762909&#93;&#41;
  ⋮
- &#40;&#91;0.49103571221118436&#93;, &#91;-0.3359401762753514&#93;&#41;
- &#40;&#91;1.2181504266325172&#93;, &#91;-0.13835450159398452&#93;&#41;
- &#40;&#91;1.1421234168083245&#93;, &#91;0.17172686806385645&#93;&#41;
- &#40;&#91;0.35132874328089825&#93;, &#91;0.3409458558094231&#93;&#41;
- &#40;&#91;-0.7548617910520811&#93;, &#91;0.28745266963945754&#93;&#41;
- &#40;&#91;-1.2735027218362773&#93;, &#91;0.053843944407130785&#93;&#41;
- &#40;&#91;-0.93261168688129&#93;, &#91;-0.2363744318904869&#93;&#41;
- &#40;&#91;-0.008989184610849575&#93;, &#91;-0.34667806040764854&#93;&#41;
- &#40;&#91;0.36875503600834453&#93;, &#91;-0.33163121749061913&#93;&#41;</code></pre>
+ &#40;&#91;0.4910364935793956&#93;, &#91;-0.3359400903659479&#93;&#41;
+ &#40;&#91;1.2181506703554332&#93;, &#91;-0.13835433828158172&#93;&#41;
+ &#40;&#91;1.1421230770911266&#93;, &#91;0.17172703098371234&#93;&#41;
+ &#40;&#91;0.3513281719783554&#93;, &#91;0.34094589979533435&#93;&#41;
+ &#40;&#91;-0.7548621921063656&#93;, &#91;0.2874525904670078&#93;&#41;
+ &#40;&#91;-1.2735027973864756&#93;, &#91;0.053843800899205596&#93;&#41;
+ &#40;&#91;-0.9326114124256897&#93;, &#91;-0.23637451107073632&#93;&#41;
+ &#40;&#91;-0.008988723570449997&#93;, &#91;-0.34667806133206513&#93;&#41;
+ &#40;&#91;0.36875503620207184&#93;, &#91;-0.3316312175041112&#93;&#41;</code></pre>
 <pre><code class="language-julia">function objective&#40;β&#41;
     g &#61; 9.8
     ω₀ &#61; 0.0
@@ -973,7 +973,7 @@ scatter&#33;&#40;data2_scaled_t, data2_scaled_x, label &#61; &quot;data&quot;&#4
         </div>
     
 
-    Last modified: June 07, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
+    Last modified: June 21, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

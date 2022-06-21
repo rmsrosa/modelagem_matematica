@@ -217,13 +217,11 @@ using Plots
 using BenchmarkTools
 using DifferentialEquations.OrdinaryDiffEq</code></pre>
 <h2 id="o_pêndulo"><a href="#o_pêndulo" class="header-anchor">O pêndulo</a></h2>
-<pre><code class="language-julia">imresize&#40;load&#40;joinpath&#40;&quot;img&quot;,&quot;pendulo_museu_politecnica.jpg&quot;&#41;&#41;, ratio &#61; 3/4&#41;</code></pre>
-<pre><code class="language-julia">Error: ArgumentError: No file exists at given path: img/pendulo_museu_polit
-ecnica.jpg</code></pre>
+<pre><code class="language-julia">imresize&#40;load&#40;&quot;../../../_assets/attachments/img/pendulo_museu_politecnica.jpg&quot;&#41;, ratio &#61; 3/4&#41;</code></pre>
+<img src="/modelagem_matematica/assets/pages/jupytered/c07/0706-Pendulo/code/images/0706-Pendulo_2_1.png" alt="">
 <h2 id="um_pêndulo_esquematizado"><a href="#um_pêndulo_esquematizado" class="header-anchor">Um pêndulo esquematizado</a></h2>
-<pre><code class="language-julia">load&#40;joinpath&#40;&quot;img&quot;,&quot;pendulum_256x256.png&quot;&#41;&#41;</code></pre>
-<pre><code class="language-julia">Error: ArgumentError: No file exists at given path: img/pendulum_256x256.pn
-g</code></pre>
+<pre><code class="language-julia">load&#40;&quot;../../../_assets/attachments/img/pendulum_256x256.png&quot;&#41;</code></pre>
+<img src="/modelagem_matematica/assets/pages/jupytered/c07/0706-Pendulo/code/images/0706-Pendulo_3_1.png" alt="">
 <h2 id="o_modelo_clássico"><a href="#o_modelo_clássico" class="header-anchor">O modelo clássico</a></h2>
 <ul>
 <li><p>O modelo clássico para a oscilação do pêndulo é obtida assumindo-se que o movimento do pêndulo é planar e considerando-se o estado do sistema como definido unicamente pelo ângulo \(\theta\), no sentido trigonométrico, que a haste faz com o eixo \(y\) no sentido negativo, ou seja, com o vetor \(-\mathbf{e}_2 = (0, -1)\).</p>
@@ -256,8 +254,8 @@ g</code></pre>
 <li><p>A componente tangencial causa o movimento circular.</p>
 </li>
 </ul>
-<pre><code class="language-julia">imresize&#40;load&#40;joinpath&#40;&quot;img&quot;,&quot;pendulo_forcas.png&quot;&#41;&#41;, ratio &#61; 2/3&#41;</code></pre>
-<pre><code class="language-julia">Error: ArgumentError: No file exists at given path: img/pendulo_forcas.png</code></pre>
+<pre><code class="language-julia">imresize&#40;load&#40;&quot;../../../_assets/attachments/img/pendulo_forcas.png&quot;&#41;, ratio &#61; 2/3&#41;</code></pre>
+<img src="/modelagem_matematica/assets/pages/jupytered/c07/0706-Pendulo/code/images/0706-Pendulo_4_1.png" alt="">
 <h2 id="modelo_via_leis_de_newton"><a href="#modelo_via_leis_de_newton" class="header-anchor">Modelo via leis de Newton</a></h2>
 <ul>
 <li><p>\(\omega=\dot\theta\) é a <strong>velocidade angular</strong> e \(\dot\omega = \ddot\theta\) é a <strong>aceleração angular</strong>.</p>
@@ -631,7 +629,7 @@ println&#40;agm&#40;1,1000&#41;&#41;</code></pre>
 &#40;44.63812979234222, 4.441749013039953e-8, 4&#41;
 &#40;0.9999997500000053, 3.11972669919669e-14, 1&#41;
 &#40;189.38830240995088, 2.842170943040401e-14, 6&#41;</code></pre>
-<pre><code class="language-julia">𝒯&#40;θ_max&#41; &#61; 2π / agm&#40;1, cos&#40;θ_max / 2&#41;&#41;&#91;1&#93;</code></pre>
+<pre><code class="language-julia">𝒯&#40;θ_max&#41; &#61; 2π / first&#40;agm&#40;1, cos&#40;θ_max / 2&#41;&#41;&#41;</code></pre>
 <pre><code class="language-julia">𝒯 &#40;generic function with 1 method&#41;</code></pre>
 <pre><code class="language-julia">θ &#61; 0:0.01:π/2
 plot&#40;title &#61; &quot;Período x ângulo de oscilação&quot;, titlefont &#61; 10,
@@ -650,13 +648,13 @@ for N in 1:5
 end
 @btime 𝒯&#40;&#36;&#40;π/4&#41;&#41;
 nothing</code></pre>
-<pre><code class="language-julia">2.340 ns &#40;0 allocations: 0 bytes&#41;
-  42.925 ns &#40;0 allocations: 0 bytes&#41;
-  115.150 ns &#40;0 allocations: 0 bytes&#41;
-  173.631 ns &#40;0 allocations: 0 bytes&#41;
-  188.302 ns &#40;0 allocations: 0 bytes&#41;
-  241.511 ns &#40;0 allocations: 0 bytes&#41;
-  31.105 ns &#40;0 allocations: 0 bytes&#41;</code></pre>
+<pre><code class="language-julia">1.500 ns &#40;0 allocations: 0 bytes&#41;
+  29.061 ns &#40;0 allocations: 0 bytes&#41;
+  74.331 ns &#40;0 allocations: 0 bytes&#41;
+  100.698 ns &#40;0 allocations: 0 bytes&#41;
+  143.952 ns &#40;0 allocations: 0 bytes&#41;
+  171.586 ns &#40;0 allocations: 0 bytes&#41;
+  15.948 ns &#40;0 allocations: 0 bytes&#41;</code></pre>
 <h3 id="comparando_as_aproximações_via_agm_e_via_linear"><a href="#comparando_as_aproximações_via_agm_e_via_linear" class="header-anchor">Comparando as aproximações via AGM e via linear</a></h3>
 <pre><code class="language-julia">plot&#40;θ, θ -&gt; &#40;𝒯&#40;θ&#41; - 2π&#41;/2π, label&#61;nothing&#41;</code></pre>
 <img src="/modelagem_matematica/assets/pages/jupytered/c07/0706-Pendulo/code/images/0706-Pendulo_13_1.png" alt="">
@@ -687,7 +685,7 @@ end
 ℓ &#61; 1.0
 g &#61; 9.8
 
-tspan &#61; 6 * 2π * √&#40;ℓ / g&#41; # aproximadamente seis ciclos
+tspan &#61; 12 * 2π * √&#40;ℓ / g&#41; # aproximadamente doze ciclos
 
 θ₀ &#61; π / 4
 ω₀ &#61; 0.0
@@ -744,7 +742,7 @@ end</code></pre>
         </div>
     
 
-    Last modified: June 05, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
+    Last modified: June 21, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

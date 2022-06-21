@@ -431,7 +431,7 @@ plot&#40;ativacoes, layout &#61; grid&#40;nlinhas, ncols&#41;, legend&#61;false,
 </ul>
 <pre><code class="language-julia">n &#61; 2
 m &#61; Dense&#40;n, 1&#41;</code></pre>
-<pre><code class="language-julia">Dense&#40;2 &#61;&gt; 1&#41;       # 3 parameters</code></pre>
+<pre><code class="language-julia">Dense&#40;2, 1&#41;         # 3 parameters</code></pre>
 <h2 id="visualização_da_rede"><a href="#visualização_da_rede" class="header-anchor">Visualização da rede</a></h2>
 <ul>
 <li><p>A visualização dessa rede pode ser feita com o pacote <a href="https://github.com/rmsrosa/ChainPlots.jl">ChainPlots.jl</a>.</p>
@@ -453,33 +453,29 @@ m &#61; Dense&#40;n, 1&#41;</code></pre>
 <pre><code class="language-julia">fieldnames&#40;Dense&#41; # nomes dos campos do tipo composto</code></pre>
 <pre><code class="language-julia">&#40;:weight, :bias, :σ&#41;</code></pre>
 <pre><code class="language-julia">methods&#40;Dense&#41; # métodos para a construção do tipo composto</code></pre>
-<pre><code class="language-julia"># 7 methods for type constructor:
+<pre><code class="language-julia"># 5 methods for type constructor:
 &#91;1&#93; Flux.Dense&#40;in::Integer, out::Integer&#41; in Flux at /Users/rrosa/.julia/pa
-ckages/Flux/6Q5r4/src/deprecations.jl:63
-&#91;2&#93; Flux.Dense&#40;in::Integer, out::Integer, σ; kw...&#41; in Flux at /Users/rrosa
-/.julia/packages/Flux/6Q5r4/src/deprecations.jl:63
-&#91;3&#93; Flux.Dense&#40;::Pair&#123;&lt;:Integer, &lt;:Integer&#125;&#41; in Flux at /Users/rrosa/.julia
-/packages/Flux/6Q5r4/src/layers/basic.jl:150
-&#91;4&#93; Flux.Dense&#40;::Pair&#123;&lt;:Integer, &lt;:Integer&#125;, σ; init, bias&#41; in Flux at /Use
-rs/rrosa/.julia/packages/Flux/6Q5r4/src/layers/basic.jl:150
-&#91;5&#93; Flux.Dense&#40;W::M&#41; where M&lt;:&#40;AbstractMatrix&#41; in Flux at /Users/rrosa/.jul
-ia/packages/Flux/6Q5r4/src/layers/basic.jl:144
-&#91;6&#93; Flux.Dense&#40;W::M, bias&#41; where M&lt;:&#40;AbstractMatrix&#41; in Flux at /Users/rros
-a/.julia/packages/Flux/6Q5r4/src/layers/basic.jl:144
-&#91;7&#93; Flux.Dense&#40;W::M, bias, σ::F&#41; where &#123;M&lt;:&#40;AbstractMatrix&#41;, F&#125; in Flux at 
-/Users/rrosa/.julia/packages/Flux/6Q5r4/src/layers/basic.jl:144</code></pre>
+ckages/Flux/7nTyc/src/layers/basic.jl:133
+&#91;2&#93; Flux.Dense&#40;in::Integer, out::Integer, σ; initW, initb, init, bias&#41; in F
+lux at /Users/rrosa/.julia/packages/Flux/7nTyc/src/layers/basic.jl:133
+&#91;3&#93; Flux.Dense&#40;W::M&#41; where M&lt;:&#40;AbstractMatrix&#41; in Flux at /Users/rrosa/.jul
+ia/packages/Flux/7nTyc/src/layers/basic.jl:127
+&#91;4&#93; Flux.Dense&#40;W::M, bias&#41; where M&lt;:&#40;AbstractMatrix&#41; in Flux at /Users/rros
+a/.julia/packages/Flux/7nTyc/src/layers/basic.jl:127
+&#91;5&#93; Flux.Dense&#40;W::M, bias, σ::F&#41; where &#123;M&lt;:&#40;AbstractMatrix&#41;, F&#125; in Flux at 
+/Users/rrosa/.julia/packages/Flux/7nTyc/src/layers/basic.jl:127</code></pre>
 <pre><code class="language-julia">methods&#40;m&#41; # métodos definidos</code></pre>
 <pre><code class="language-julia"># 2 methods:
 &#91;1&#93; &#40;a::Flux.Dense&#41;&#40;x::AbstractVecOrMat&#41; in Flux at /Users/rrosa/.julia/pac
-kages/Flux/6Q5r4/src/layers/basic.jl:157
+kages/Flux/7nTyc/src/layers/basic.jl:156
 &#91;2&#93; &#40;a::Flux.Dense&#41;&#40;x::AbstractArray&#41; in Flux at /Users/rrosa/.julia/packag
-es/Flux/6Q5r4/src/layers/basic.jl:162</code></pre>
+es/Flux/7nTyc/src/layers/basic.jl:161</code></pre>
 <pre><code class="language-julia">methodswith&#40;Dense&#41;</code></pre>
 <pre><code class="language-julia">Error: UndefVarError: methodswith not defined</code></pre>
 <pre><code class="language-julia">show&#40;Docs.doc&#40;Dense&#41;&#41;</code></pre>
 
-<p>Dense&#40;in &#61;&gt; out, σ&#61;identity; bias&#61;true, init&#61;glorot_uniform&#41; Dense&#40;W::AbstractMatrix, &#91;bias, σ&#93;&#41;</p>
-<pre><code class="language-julia">Create a traditional fully connected layer, whose forward pass is given by:</code></pre>
+<p>Dense&#40;in, out, σ&#61;identity; bias&#61;true, init&#61;glorot_uniform&#41; Dense&#40;W::AbstractMatrix, &#91;bias, σ&#93;&#41;</p>
+<pre><code class="language-julia">Create a traditional &#96;Dense&#96; layer, whose forward pass is given by:</code></pre>
 <p>y &#61; σ.&#40;W * x .&#43; bias&#41;</p>
 <pre><code class="language-julia">The input &#96;x&#96; should be a vector of length &#96;in&#96;, or batch of vectors repres
 ented as an &#96;in × N&#96; matrix, or any array with &#96;size&#40;x,1&#41; &#61;&#61; in&#96;. The out &#96;
@@ -495,8 +491,8 @@ lso be provided explicitly.
 # Examples
 
 &#96;&#96;&#96;jldoctest
-julia&gt; d &#61; Dense&#40;5 &#61;&gt; 2&#41;
-Dense&#40;5 &#61;&gt; 2&#41;       # 12 parameters
+julia&gt; d &#61; Dense&#40;5, 2&#41;
+Dense&#40;5, 2&#41;         # 12 parameters
 
 julia&gt; d&#40;rand&#40;Float32, 5, 64&#41;&#41; |&gt; size
 &#40;2, 64&#41;
@@ -506,7 +502,7 @@ nsions
 &#40;2, 1, 1, 64&#41;
 
 julia&gt; d1 &#61; Dense&#40;ones&#40;2, 5&#41;, false, tanh&#41;  # using provided weight matrix
-Dense&#40;5 &#61;&gt; 2, tanh; bias&#61;false&#41;  # 10 parameters
+Dense&#40;5, 2, tanh; bias&#61;false&#41;  # 10 parameters
 
 julia&gt; d1&#40;ones&#40;5&#41;&#41;
 2-element Vector&#123;Float64&#125;:
@@ -551,9 +547,9 @@ end</code></pre>
 </ul>
 <pre><code class="language-julia">m &#61; Chain&#40;Dense&#40;2, 4, σ&#41;, Dense&#40;4, 8, tanh&#41;, Dense&#40;8, 1, relu&#41;&#41;</code></pre>
 <pre><code class="language-julia">Chain&#40;
-  Dense&#40;2 &#61;&gt; 4, σ&#41;,                     # 12 parameters
-  Dense&#40;4 &#61;&gt; 8, tanh&#41;,                  # 40 parameters
-  Dense&#40;8 &#61;&gt; 1, relu&#41;,                  # 9 parameters
+  Dense&#40;2, 4, σ&#41;,                       # 12 parameters
+  Dense&#40;4, 8, tanh&#41;,                    # 40 parameters
+  Dense&#40;8, 1, relu&#41;,                    # 9 parameters
 &#41;                   # Total: 6 arrays, 61 parameters, 628 bytes.</code></pre>
 <pre><code class="language-julia">plot&#40;m, title &#61; &quot;&#36;m&quot;, titlefont &#61; 10&#41;</code></pre>
 <pre><code class="language-julia">Error: UndefVarError: Plots not defined</code></pre>
@@ -595,7 +591,7 @@ end</code></pre>
         </div>
     
 
-    Last modified: June 05, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
+    Last modified: June 21, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

@@ -300,11 +300,11 @@ a&#91;1&#93; &#61; 7 # modificando um elemento de &#96;a&#96;
 a&#91;1:3&#93; &#61; &#91;8,9,0&#93; # modificando todos os elementos de &#96;a&#96;
 @show pointer&#40;a&#41;
 nothing</code></pre>
-<pre><code class="language-julia">pointer&#40;a&#41; &#61; Ptr&#123;Int64&#125; @0x00000001307d6890
-pointer&#40;a&#41; &#61; Ptr&#123;Int64&#125; @0x00000001307d71f0
-pointer&#40;a&#41; &#61; Ptr&#123;Int64&#125; @0x00000001307d7b00
-pointer&#40;a&#41; &#61; Ptr&#123;Int64&#125; @0x00000001307d7b00
-pointer&#40;a&#41; &#61; Ptr&#123;Int64&#125; @0x00000001307d7b00</code></pre>
+<pre><code class="language-julia">pointer&#40;a&#41; &#61; Ptr&#123;Int64&#125; @0x000000017423e200
+pointer&#40;a&#41; &#61; Ptr&#123;Int64&#125; @0x000000017423f0b0
+pointer&#40;a&#41; &#61; Ptr&#123;Int64&#125; @0x00000001742489a0
+pointer&#40;a&#41; &#61; Ptr&#123;Int64&#125; @0x00000001742489a0
+pointer&#40;a&#41; &#61; Ptr&#123;Int64&#125; @0x00000001742489a0</code></pre>
 <h3 id="atribuição_de_strings"><a href="#atribuição_de_strings" class="header-anchor">Atribuição de strings</a></h3>
 <p><em>Strings</em> também são imutáveis.</p>
 <pre><code class="language-julia">s &#61; &quot;Equações diferenciais&quot;
@@ -315,9 +315,9 @@ s &#61; replace&#40;s, &quot;Modelagem&quot; &#61;&gt; &quot;Modelos&quot;&#41;&
 @show pointer&#40;s&#41;
 @show s
 nothing</code></pre>
-<pre><code class="language-julia">pointer&#40;s&#41; &#61; Ptr&#123;UInt8&#125; @0x000000012ebce8f8
-pointer&#40;s&#41; &#61; Ptr&#123;UInt8&#125; @0x000000012ebce9b8
-pointer&#40;s&#41; &#61; Ptr&#123;UInt8&#125; @0x000000012ebcf648
+<pre><code class="language-julia">pointer&#40;s&#41; &#61; Ptr&#123;UInt8&#125; @0x0000000170866fe8
+pointer&#40;s&#41; &#61; Ptr&#123;UInt8&#125; @0x0000000170867048
+pointer&#40;s&#41; &#61; Ptr&#123;UInt8&#125; @0x0000000170867d08
 s &#61; &quot;Modelos Matemáticos&quot;</code></pre>
 <h3 id="cuidados_com_a_atribuição_de_variáveis_imutáveis"><a href="#cuidados_com_a_atribuição_de_variáveis_imutáveis" class="header-anchor">Cuidados com a atribuição de variáveis imutáveis</a></h3>
 <p>No caso de um objeto imutável mas com elementos mutáveis &#40;e.g. <em>arrays</em>, <em>dicts</em>, <em>sets</em>&#41;, é preciso termos cuidado quando tentamos copiá-lo.</p>
@@ -371,8 +371,8 @@ test &#43;&#61; 1
 resultado &#61; isodd&#40;test&#41; ? &quot;&#36;test é impar&quot; : &quot;&#36;test é par&quot;
 @show resultado
 nothing</code></pre>
-<pre><code class="language-julia">resultado &#61; &quot;118 é par&quot;
-resultado &#61; &quot;119 é impar&quot;</code></pre>
+<pre><code class="language-julia">resultado &#61; &quot;167 é impar&quot;
+resultado &#61; &quot;168 é par&quot;</code></pre>
 <h2 id="interpolação"><a href="#interpolação" class="header-anchor">Interpolação</a></h2>
 <p>Observe que acima usamos o símbolo <code>&#36;</code> dentro de uma string. Ele é chamado de operador de <strong>interpolação</strong>. Ele substitui o valor da váriável na string.</p>
 <p>Se quisermos escrever <code>&#36;</code> precisamos &quot;escapá-lo&quot; com uma barra invertida:</p>
@@ -655,8 +655,8 @@ plot&#40;I, &#91;sin.&#40;I&#41;, cos.&#40;I&#41;&#93;, xaxis&#61;&quot;x&quot;,
     length&#40;s&#41;
 end
 nothing</code></pre>
-<pre><code class="language-julia">0.000030 seconds &#40;1 allocation: 20.625 KiB&#41;
-  0.002747 seconds &#40;23 allocations: 21.797 KiB, 98.54&#37; compilation time&#41;</code></pre>
+<pre><code class="language-julia">0.000298 seconds &#40;1 allocation: 20.625 KiB&#41;
+  0.001734 seconds &#40;23 allocations: 21.797 KiB, 95.95&#37; compilation time&#41;</code></pre>
 <p>O pacote <a href="https://github.com/JuliaCI/BenchmarkTools.jl">JuliaCI/BenchmarkTools.jl</a> é mais completo e dá mais informações para avaliar a performance dos códigos.</p>
 <p>Em particular, ela executa o código várias vezes, para evitar ruído e retornar uma informação mais precisa sobre a performance.</p>
 <p>Por exemplo, podemos comparar as diversas maneiras de se calcular o produto escalar entre dois vetores.</p>
@@ -681,23 +681,23 @@ escalar5&#40;vec1, vec2&#41; &#61; vec1 ⋅ vec2
 nothing</code></pre>
 <pre><code class="language-julia">escalar1&#40;vec1, vec2&#41; ≈ escalar2&#40;vec1, vec2&#41; ≈ escalar3&#40;vec1, vec2&#41; ≈ escala
 r4&#40;vec1, vec2&#41; ≈ escalar5&#40;vec1, vec2&#41; &#61; true
-  145.588 ns &#40;1 allocation: 896 bytes&#41;
-  130.773 ns &#40;0 allocations: 0 bytes&#41;
-  267.166 ns &#40;0 allocations: 0 bytes&#41;
-  121.370 ns &#40;0 allocations: 0 bytes&#41;
-  39.858 ns &#40;0 allocations: 0 bytes&#41;</code></pre>
+  78.254 ns &#40;1 allocation: 896 bytes&#41;
+  64.521 ns &#40;0 allocations: 0 bytes&#41;
+  276.564 ns &#40;0 allocations: 0 bytes&#41;
+  55.174 ns &#40;0 allocations: 0 bytes&#41;
+  32.151 ns &#40;0 allocations: 0 bytes&#41;</code></pre>
 <p>Para uma estatística mais detalhada, usamos <code>@benchmark</code>.</p>
 <pre><code class="language-julia">@benchmark escalar5&#40;v, w&#41; setup &#61; &#40;v&#61;&#36;vec1; w&#61;&#36;vec2&#41;</code></pre>
-<pre><code class="language-julia">BenchmarkTools.Trial: 10000 samples with 988 evaluations.
- Range &#40;min … max&#41;:  37.786 ns … 174.564 ns  ┊ GC &#40;min … max&#41;: 0.00&#37; … 0.00
+<pre><code class="language-julia">BenchmarkTools.Trial: 10000 samples with 995 evaluations.
+ Range &#40;min … max&#41;:  29.689 ns … 124.163 ns  ┊ GC &#40;min … max&#41;: 0.00&#37; … 0.00
 &#37;
- Time  &#40;median&#41;:     38.226 ns               ┊ GC &#40;median&#41;:    0.00&#37;
- Time  &#40;mean ± σ&#41;:   41.135 ns ±   7.942 ns  ┊ GC &#40;mean ± σ&#41;:  0.00&#37; ± 0.00
+ Time  &#40;median&#41;:     29.816 ns               ┊ GC &#40;median&#41;:    0.00&#37;
+ Time  &#40;mean ± σ&#41;:   30.023 ns ±   1.102 ns  ┊ GC &#40;mean ± σ&#41;:  0.00&#37; ± 0.00
 &#37;
 
-  █ ▄  ▁ ▅▁ ▃  ▄                                               ▁
-  ███▇▇█▇████▇▆█▇▆██▆▆▇▇▆▆▇▇▆▇▇▇▇▇▇▆█▆▆▅▅▆▇▆▅▁▅▆▅▄▅▅▄▅▄▆▅▅▅▃▅▅ █
-  37.8 ns       Histogram: log&#40;frequency&#41; by time      77.5 ns &lt;
+    █▇                                                          
+  ▂███▇▄▄▃▃▂▂▂▂▂▂▂▂▂▂▁▂▂▂▂▂▂▃▃▃▂▃▃▂▂▂▂▂▂▂▁▂▂▂▂▂▂▂▂▂▁▂▂▂▂▂▂▂▂▂▂ ▃
+  29.7 ns         Histogram: frequency by time           32 ns &lt;
 
  Memory estimate: 0 bytes, allocs estimate: 0.</code></pre>
 
@@ -723,7 +723,7 @@ r4&#40;vec1, vec2&#41; ≈ escalar5&#40;vec1, vec2&#41; &#61; true
         </div>
     
 
-    Last modified: June 05, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
+    Last modified: June 21, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

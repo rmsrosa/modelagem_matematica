@@ -605,26 +605,26 @@ CI 95&#37; para β₁: &#91;0.13, 0.15&#93;</code></pre>
 <h3 id="variância_do_modelo_e_intervalos_de_confiança"><a href="#variância_do_modelo_e_intervalos_de_confiança" class="header-anchor">Variância do modelo e intervalos de confiança</a></h3>
 <pre><code class="language-julia">Var_y &#61; &#91;&#91;1; x&#93; ⋅ &#40;Cov_β * &#91;1; x&#93;&#41; for x in data_x&#93;</code></pre>
 <pre><code class="language-julia">20-element Vector&#123;Float64&#125;:
- 0.1850690674998656
- 0.15989728825520982
- 0.13472605333885973
- 0.11383670913058842
- 0.09548818390233765
- 0.08014032619999448
- 0.06830466732393874
- 0.05936414503671618
- 0.05325748751001498
- 0.05035707669772975
- 0.050326457791429025
- 0.05354621420722602
- 0.059513423230789946
- 0.0679696253583599
- 0.08049659618144062
- 0.09529307440702722
- 0.11444701290418935
- 0.13374704790809291
- 0.15834618382131757
- 0.18587335929487261</code></pre>
+ 0.18506906749986532
+ 0.1598972882552096
+ 0.13472605333885954
+ 0.1138367091305883
+ 0.09548818390233753
+ 0.08014032619999441
+ 0.0683046673239387
+ 0.059364145036716144
+ 0.053257487510014974
+ 0.05035707669772974
+ 0.05032645779142901
+ 0.053546214207226044
+ 0.059513423230789925
+ 0.06796962535835986
+ 0.08049659618144059
+ 0.09529307440702718
+ 0.11444701290418924
+ 0.13374704790809286
+ 0.15834618382131746
+ 0.18587335929487245</code></pre>
 <pre><code class="language-julia">plot&#40;x_org, y_org, label&#61;&quot;original&quot;, size&#61;&#40;600,300&#41;, titlefont&#61;10,
     title&#61;&quot;Reta original, amostra, modelo, CI 68&#37; &#40;sombreado&#41;, CI 95&#37; &#40;barras de erro&#41;&quot;, &#41;
 scatter&#33;&#40;data_x, data_y, markersize&#61;3, label&#61;&quot;amostra&quot;&#41;
@@ -652,26 +652,26 @@ Desvio padrão não corrigido da amostra: 0.904</code></pre>
 <pre><code class="language-julia">Cov_q &#61; s_q^2 * inv&#40;X&#39; * X&#41;
 Var_q &#61; &#91;&#91;1; x&#93; ⋅ &#40;Cov_q * &#91;1; x&#93;&#41; for x in data_x&#93;</code></pre>
 <pre><code class="language-julia">20-element Vector&#123;Float64&#125;:
- 0.1681389053725685
- 0.1452698464549866
- 0.1224012820704281
- 0.10342290001783529
- 0.08675290222319419
- 0.07280907017850202
- 0.062056140179626976
- 0.05393349898874429
+ 0.16813890537256826
+ 0.14526984645498642
+ 0.12240128207042794
+ 0.10342290001783515
+ 0.0867529022231941
+ 0.07280907017850197
+ 0.06205614017962694
+ 0.05393349898874427
  0.04838547993890799
- 0.04575039939467411
- 0.04572258151317366
- 0.04864779384947511
+ 0.045750399394674124
+ 0.045722581513173675
+ 0.04864779384947513
  0.054069121178268606
- 0.061751747932411796
- 0.07313274849766521
- 0.08657564139072514
- 0.10397737305768068
- 0.12151183628833892
- 0.14386063742207592
- 0.1688696203636769</code></pre>
+ 0.06175174793241178
+ 0.07313274849766525
+ 0.08657564139072518
+ 0.10397737305768065
+ 0.12151183628833889
+ 0.14386063742207578
+ 0.16886962036367678</code></pre>
 <pre><code class="language-julia">plot&#40;x_org, y_org, label&#61;&quot;original&quot;, size&#61;&#40;600,300&#41;, titlefont&#61;10,
     title&#61;&quot;Reta original, amostra, modelo, CI 68&#37; &#40;sombreado&#41;, CI 95&#37; &#40;barras de erro&#41;\nusando o desvio padrão corrigido&quot;, &#41;
 scatter&#33;&#40;data_x, data_y, markersize&#61;3, label&#61;&quot;amostra&quot;&#41;
@@ -776,7 +776,7 @@ plot&#33;&#40;data_x,β&#91;1&#93; .&#43; β&#91;2&#93; * data_x, grid&#61;false
         </div>
     
 
-    Last modified: June 05, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
+    Last modified: June 21, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
