@@ -216,11 +216,17 @@ using VideoIO</code></pre>
 <pre><code class="language-julia">using Plots</code></pre>
 <pre><code class="language-julia">using Optim</code></pre>
 <pre><code class="language-julia">using DifferentialEquations.OrdinaryDiffEq
-import DifferentialEquations.RecursiveArrayTools</code></pre>
+using DifferentialEquations.RecursiveArrayTools</code></pre>
 <pre><code class="language-julia">include&#40;&quot;../../../_assets/attachments/scripts/DisplayMovie.jl&quot;&#41;
 include&#40;&quot;../../../_assets/attachments/scripts/VideoTracking.jl&quot;&#41;</code></pre>
-<pre><code class="language-julia">Main.##WeaveSandBox#624.VideoTracking</code></pre>
+<pre><code class="language-julia">Main.##WeaveSandBox#644.VideoTracking</code></pre>
+<p><img src="/modelagem_matematica/assets/attachments/img/pendulo_70cm_1_reduzido_curto.mp4" alt="pendulo" /></p>
 <p>&lt;video src&#61;&quot;../../../<em>assets/attachments/img/pendulo</em>70cm<em>1</em>reduzido_curto.mp4&quot; controls&#61;&quot;controls&quot; style&#61;&quot;max-width: 730px;&quot;&gt; &lt;/video&gt;</p>
+<pre><code class="language-julia">html&quot;&quot;&quot;&lt;video src&#61;&quot;../../../_assets/attachments/img/pendulo_70cm_1_reduzido_curto.mp4&quot; controls&#61;&quot;controls&quot; style&#61;&quot;max-width: 730px;&quot;&gt;
+&lt;/video&gt;&quot;&quot;&quot;</code></pre>
+<pre><code class="language-julia">HTML&#123;String&#125;&#40;&quot;&lt;video src&#61;\&quot;../../../_assets/attachments/img/pendulo_70cm_1_
+reduzido_curto.mp4\&quot; controls&#61;\&quot;controls\&quot; style&#61;\&quot;max-width: 730px;\&quot;&gt;\n&lt;/
+video&gt;&quot;&#41;</code></pre>
 <pre><code class="language-julia">filename &#61; &quot;../../../_assets/attachments/img/pendulo_70cm_1_reduzido_curto.mp4&quot;
 vd &#61; VideoIO.load&#40;filename&#41;</code></pre>
 <pre><code class="language-julia">150-element Vector&#123;PermutedDimsArray&#123;ColorTypes.RGB&#123;FixedPointNumbers.N0f8&#125;
@@ -378,7 +384,7 @@ println&#40;&quot;&quot;&quot;Número médio de quadros por segundo: &#36;&#40;l
 Número de quadros: 493
 Número médio de quadros por segundo: 29.969604863221885</code></pre>
 <pre><code class="language-julia">vd&#91;1&#93;</code></pre>
-<img src="/modelagem_matematica/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_11_1.png" alt="">
+<p><span style="color:red;">// Image matching '/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_12_1.png' not found. //</span></p>
 <pre><code class="language-julia">DisplayMovie.display_movie&#40;&quot;../../../_assets/attachments/img/pendulo_70cm_1_reduzido_curto.mp4&quot;, embed&#61;false&#41;</code></pre>
 <pre><code class="language-julia">Error: MethodError: no method matching show&#40;::IOContext&#123;IOBuffer&#125;, ::MIME&#123;S
 ymbol&#40;&quot;text/html&quot;&#41;&#125;, ::String&#41;
@@ -394,11 +400,11 @@ s; summary, eltypes&#41; at ~/.julia/packages/DataFrames/zqFGs/src/abstractdata
 frame/io.jl:275
   ...</code></pre>
 <pre><code class="language-julia">background &#61; convert.&#40;RGB&#123;Float16&#125;, vd&#91;1&#93;&#41;</code></pre>
-<img src="/modelagem_matematica/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_13_1.png" alt="">
-<pre><code class="language-julia">convert.&#40;RGB&#123;Float16&#125;, vd&#91;54&#93;&#41;</code></pre>
 <img src="/modelagem_matematica/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_14_1.png" alt="">
-<pre><code class="language-julia">convert.&#40;Gray&#123;Float16&#125;, abs.&#40;convert.&#40;RGB&#123;Float16&#125;, vd&#91;54&#93;&#41; - background&#41;&#41;</code></pre>
+<pre><code class="language-julia">convert.&#40;RGB&#123;Float16&#125;, vd&#91;54&#93;&#41;</code></pre>
 <img src="/modelagem_matematica/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_15_1.png" alt="">
+<pre><code class="language-julia">convert.&#40;Gray&#123;Float16&#125;, abs.&#40;convert.&#40;RGB&#123;Float16&#125;, vd&#91;54&#93;&#41; - background&#41;&#41;</code></pre>
+<p><span style="color:red;">// Image matching '/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_16_1.png' not found. //</span></p>
 <pre><code class="language-julia">threshold &#61; 0.1
 mask &#61; convert.&#40;
     Gray&#123;Float16&#125;,
@@ -449,7 +455,7 @@ mask &#61; convert.&#40;
  0  0  0  0  0  0  0  0  0  0  0  0  0     0  0  0  0  0  0  0  0  0  0  0 
  0</code></pre>
 <pre><code class="language-julia">convert.&#40;Gray&#123;Float16&#125;, mask&#41;</code></pre>
-<img src="/modelagem_matematica/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_17_1.png" alt="">
+<p><span style="color:red;">// Image matching '/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_18_1.png' not found. //</span></p>
 <pre><code class="language-julia">labeled_components &#61; label_components&#40;mask&#41;</code></pre>
 <pre><code class="language-julia">480×854 Matrix&#123;Int64&#125;:
  0  0  0  0  0  0  0  0  0  0  0  0  …  0  0  0  0  0  0  0  0  0  0  0  18
@@ -523,7 +529,7 @@ julia&gt; label_components&#40;A; dims&#61;2&#41;
 With &#96;dims&#61;2&#96;, entries in &#96;A&#96; are connected if they are in the same row, bu
 t not if they are in the same column.</code></pre>
 <pre><code class="language-julia">colorset &#61; distinguishable_colors&#40;maximum&#40;labeled_components&#41;&#43;1, colorant&quot;black&quot;, dropseed &#61; false&#41;</code></pre>
-<img src="/modelagem_matematica/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_21_1.svg" alt="">
+<p><span style="color:red;">// Image matching '/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_22_1.svg' not found. //</span></p>
 <pre><code class="language-julia">labeled_components</code></pre>
 <pre><code class="language-julia">480×854 Matrix&#123;Int64&#125;:
  0  0  0  0  0  0  0  0  0  0  0  0  …  0  0  0  0  0  0  0  0  0  0  0  18
@@ -547,7 +553,7 @@ t not if they are in the same column.</code></pre>
  0  0  0  0  0  0  0  0  0  0  0  0     0  0  0  0  0  0  0  0  0  0  0   0
  0  0  0  0  0  0  0  0  0  0  0  0     0  0  0  0  0  0  0  0  0  0  0   0</code></pre>
 <pre><code class="language-julia">coloredmask &#61; map&#40; n -&gt; colorset&#91;n&#43;1&#93;, labeled_components&#41;</code></pre>
-<img src="/modelagem_matematica/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_23_1.png" alt="">
+<p><span style="color:red;">// Image matching '/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_24_1.png' not found. //</span></p>
 <pre><code class="language-julia">maximum&#40;labeled_components&#41;</code></pre>
 <pre><code class="language-julia">18</code></pre>
 <pre><code class="language-julia">components_location &#61; VideoTracking.locate_components&#40;labeled_components&#41;
@@ -565,30 +571,30 @@ for p in components_location
     draw&#33;&#40;vd54, Polygon&#40;VideoTracking.RectanglePoints&#40;p&#41;&#41;, colorant&quot;red&quot;&#41;
 end
 vd54</code></pre>
-<img src="/modelagem_matematica/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_27_1.png" alt="">
+<p><span style="color:red;">// Image matching '/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_28_1.png' not found. //</span></p>
 <pre><code class="language-julia">components_location &#61; VideoTracking.locate_components&#40;labeled_components&#41;
 min_area &#61; 100
 filter&#33;&#40;p -&gt; p.area ≥ min_area, components_location&#41;</code></pre>
-<pre><code class="language-julia">1-element Vector&#123;Main.##WeaveSandBox#624.VideoTracking.Blob&#125;:
+<pre><code class="language-julia">1-element Vector&#123;Main.##WeaveSandBox#644.VideoTracking.Blob&#125;:
  &#40;xspan, yspan&#41; &#61; &#40;644:697, 364:412&#41;</code></pre>
 <pre><code class="language-julia">vd54 &#61; copy&#40;vd&#91;54&#93;&#41;
 for p in components_location
     draw&#33;&#40;vd54, Polygon&#40;VideoTracking.RectanglePoints&#40;p&#41;&#41;, colorant&quot;red&quot;&#41;
 end
 vd54</code></pre>
-<img src="/modelagem_matematica/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_29_1.png" alt="">
+<p><span style="color:red;">// Image matching '/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_30_1.png' not found. //</span></p>
 <pre><code class="language-julia">components_location &#61; VideoTracking.locate_components&#40;labeled_components&#41;
 min_area &#61; 200
 filter&#33;&#40;p -&gt; p.area ≥ min_area, components_location&#41;</code></pre>
-<pre><code class="language-julia">1-element Vector&#123;Main.##WeaveSandBox#624.VideoTracking.Blob&#125;:
+<pre><code class="language-julia">1-element Vector&#123;Main.##WeaveSandBox#644.VideoTracking.Blob&#125;:
  &#40;xspan, yspan&#41; &#61; &#40;644:697, 364:412&#41;</code></pre>
 <pre><code class="language-julia">p &#61; components_location&#91;1&#93;
 draw&#40;vd&#91;54&#93;, Polygon&#40;VideoTracking.RectanglePoints&#40;p&#41;&#41;, colorant&quot;red&quot;&#41;</code></pre>
-<img src="/modelagem_matematica/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_31_1.png" alt="">
+<p><span style="color:red;">// Image matching '/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_32_1.png' not found. //</span></p>
 <pre><code class="language-julia">filename &#61; &quot;../../../_assets/attachments/img/pendulo_70cm_1_reduzido_curto.mp4&quot;
 # filename &#61; &quot;../../../_assets/attachments/img/pendulo_70cm_1_reduzido.mov&quot;
 tracks_70cm1 &#61; VideoTracking.find_tracks&#40;filename, lag &#61; 10&#41;</code></pre>
-<pre><code class="language-julia">3-element Vector&#123;Main.##WeaveSandBox#624.VideoTracking.Track&#125;:
+<pre><code class="language-julia">3-element Vector&#123;Main.##WeaveSandBox#644.VideoTracking.Track&#125;:
  Tracked blob with framespan nspan &#61; 13:150
 
  Tracked blob with framespan nspan &#61; 82:150
@@ -612,7 +618,7 @@ frame/io.jl:275
 <p>&lt;video src&#61;&quot;../../../<em>assets/attachments/img/pendulo</em>70cm<em>1</em>reduzido<em>curto</em>tracked.mp4&quot; controls&#61;&quot;controls&quot; style&#61;&quot;max-width: 730px;&quot;&gt; &lt;/video&gt;</p>
 <p><img src="/modelagem_matematica/assets/attachments/img/pendulo_70cm_1_reduzido_curto_tracked.mp4" alt="video" /></p>
 <pre><code class="language-julia">tracks_70cm1</code></pre>
-<pre><code class="language-julia">3-element Vector&#123;Main.##WeaveSandBox#624.VideoTracking.Track&#125;:
+<pre><code class="language-julia">3-element Vector&#123;Main.##WeaveSandBox#644.VideoTracking.Track&#125;:
  Tracked blob with framespan nspan &#61; 13:150
 
  Tracked blob with framespan nspan &#61; 82:150
@@ -621,7 +627,7 @@ frame/io.jl:275
 <pre><code class="language-julia">tracks_70cm1&#91;1&#93;.nspan</code></pre>
 <pre><code class="language-julia">13:150</code></pre>
 <pre><code class="language-julia">tracks_70cm1&#91;1&#93;.path</code></pre>
-<pre><code class="language-julia">138-element Vector&#123;Main.##WeaveSandBox#624.VideoTracking.Blob&#125;:
+<pre><code class="language-julia">138-element Vector&#123;Main.##WeaveSandBox#644.VideoTracking.Blob&#125;:
  &#40;xspan, yspan&#41; &#61; &#40;840:854, 177:240&#41;
  &#40;xspan, yspan&#41; &#61; &#40;837:854, 183:247&#41;
  &#40;xspan, yspan&#41; &#61; &#40;834:854, 183:253&#41;
@@ -651,19 +657,19 @@ for &#40;n, tr&#41; in enumerate&#40;tracks_70cm1&#41;
     scatter&#33;&#40;plt, getfield.&#40;tr.path, :x&#41;, 481 .- getfield.&#40;tr.path, :y&#41;, label&#61;&quot;track &#36;n&quot;&#41;
 end
 display&#40;plt&#41;</code></pre>
-<img src="/modelagem_matematica/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_39_1.png" alt="">
+<img src="/modelagem_matematica/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_40_1.png" alt="">
 <pre><code class="language-julia">plt &#61; plot&#40;title &#61; &quot;Coordinate x of &#36;&#40;length&#40;tracks_70cm1&#41;&#41; tracks&quot;, titlefont &#61; 10, legend&#61;:topleft&#41;
 for &#40;n, tr&#41; in enumerate&#40;tracks_70cm1&#41;
     scatter&#33;&#40;plt, tr.nspan, getfield.&#40;tr.path, :x&#41;, label&#61;&quot;track &#36;n&quot;&#41;
 end
 display&#40;plt&#41;</code></pre>
-<img src="/modelagem_matematica/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_40_1.png" alt="">
+<img src="/modelagem_matematica/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_41_1.png" alt="">
 <pre><code class="language-julia">plt &#61; plot&#40;title &#61; &quot;Coordinate y of &#36;&#40;length&#40;tracks_70cm1&#41;&#41; tracks&quot;, titlefont &#61; 10, legend&#61;:topright&#41;
 for &#40;n, tr&#41; in enumerate&#40;tracks_70cm1&#41;
     scatter&#33;&#40;plt, tr.nspan, - getfield.&#40;tr.path, :y&#41;, label&#61;&quot;track &#36;n&quot;&#41;
 end
 display&#40;plt&#41;</code></pre>
-<img src="/modelagem_matematica/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_41_1.png" alt="">
+<p><span style="color:red;">// Image matching '/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_42_1.png' not found. //</span></p>
 <pre><code class="language-julia">size&#40;vd&#91;1&#93;&#41;</code></pre>
 <pre><code class="language-julia">&#40;480, 854&#41;</code></pre>
 <pre><code class="language-julia">data_x &#61; getfield.&#40;tracks_70cm1&#91;1&#93;.path, :x&#41;
@@ -685,7 +691,7 @@ for &#40;n, tr&#41; in enumerate&#40;tracks_70cm1&#41;
 end
 vline&#33;&#40;plt, n_minima, label &#61; &quot;minima&quot;&#41;
 display&#40;plt&#41;</code></pre>
-<img src="/modelagem_matematica/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_45_1.png" alt="">
+<p><span style="color:red;">// Image matching '/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_46_1.png' not found. //</span></p>
 <pre><code class="language-julia">&#40;n_minima&#91;2:end&#93; - n_minima&#91;1:end-1&#93;&#41; / 29.5</code></pre>
 <pre><code class="language-julia">1-element Vector&#123;Float64&#125;:
  1.7966101694915255</code></pre>
@@ -757,7 +763,7 @@ end
 scatter&#33;&#40;plt, &#40;center_nx, center_ny&#41;, markersize &#61; 10&#41;
 plot&#33;&#40;plt, 1:854, nx -&gt; center_ny - √&#40;radius_n^2 - &#40;nx - center_nx&#41;^2&#41;, linestyle &#61; :dash&#41;
 display&#40;plt&#41;</code></pre>
-<img src="/modelagem_matematica/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_54_1.png" alt="">
+<p><span style="color:red;">// Image matching '/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_55_1.png' not found. //</span></p>
 <pre><code class="language-julia">scale &#61; radius_n / l # points per meter</code></pre>
 <pre><code class="language-julia">720.9810182918685</code></pre>
 <pre><code class="language-julia">data_scaled_x &#61; &#40;data_x .- center_nx&#41; / scale
@@ -851,12 +857,12 @@ u: 32-element Vector&#123;Vector&#123;Float64&#125;&#125;:
  &#91;0.46971508519163835, 0.8484644252456572&#93;</code></pre>
 <pre><code class="language-julia">display&#40;plot&#40;sol, label &#61; &#91;&quot;θ&#40;t&#41;&quot; &quot;ω&#40;t&#41;&quot;&#93;&#41;&#41;
 display&#40;plot&#40;sol, vars &#61; 1, label &#61; &quot;θ&#40;t&#41;&quot;&#41;&#41;</code></pre>
-<p><img src="/modelagem_matematica/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_60_1.png" alt=""> <img src="/modelagem_matematica/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_60_2.png" alt=""></p>
+<p><img src="/modelagem_matematica/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_61_1.png" alt=""> <img src="/modelagem_matematica/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_61_2.png" alt=""></p>
 <pre><code class="language-julia">n0 &#61; 34
 plt &#61; plot&#40;sol, vars &#61; 1, label &#61; &quot;θ&#40;t&#41;&quot;&#41;
 scatter&#33;&#40;plt, &#40;0:length&#40;data_x&#41;-n0&#41; ./ 29.5, data_scaled_x&#91;n0:end&#93;, label&#61;&quot;tracked&quot;&#41;
 display&#40;plt&#41;</code></pre>
-<img src="/modelagem_matematica/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_61_1.png" alt="">
+<img src="/modelagem_matematica/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_62_1.png" alt="">
 <pre><code class="language-julia">df &#61; CSV.read&#40;&quot;../../../_assets/attachments/data/pendulo_70cm_reduzido.csv&quot;, DataFrame&#41;</code></pre>
 <pre><code class="language-julia">481×3 DataFrame
  Row │ nf     nx       ny
@@ -886,13 +892,13 @@ display&#40;plt&#41;
 plt &#61; plot&#40;title &#61; &quot;Coordinate y&quot;, titlefont &#61; 10, legend&#61;:topleft&#41;
 scatter&#33;&#40;plt, df.nf, size&#40;vd&#91;1&#93;, 1&#41; .&#43; 1 .- df.ny, label &#61; nothing&#41;
 display&#40;plt&#41;</code></pre>
-<p><img src="/modelagem_matematica/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_63_1.png" alt=""> <img src="/modelagem_matematica/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_63_2.png" alt=""></p>
+<p><img src="/modelagem_matematica/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_64_1.png" alt=""> <img src="/modelagem_matematica/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_64_2.png" alt=""></p>
 <pre><code class="language-julia">data2_scaled_t &#61; &#40;df.nf&#91;n0:end&#93; .- df.nf&#91;n0&#93;&#41; / 29.97
 data2_scaled_x &#61; &#40;df.nx&#91;n0:end&#93; .- center_nx&#41; / scale
 data2_scaled_y &#61; &#40;size&#40;vd&#91;1&#93;, 1&#41; .&#43; 1 .- df.ny&#91;n0:end&#93; .- center_ny &#41; / scale
 display&#40;scatter&#40;data2_scaled_t, data2_scaled_x&#41;&#41;
 display&#40;scatter&#40;data2_scaled_t, data2_scaled_y&#41;&#41;</code></pre>
-<p><img src="/modelagem_matematica/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_64_1.png" alt=""> <img src="/modelagem_matematica/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_64_2.png" alt=""></p>
+<p><p><span style="color:red;">// Image matching '/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_65_1.png' not found. //</span></p> <p><span style="color:red;">// Image matching '/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_65_2.png' not found. //</span></p></p>
 <pre><code class="language-julia">n_minima2 &#61; Int&#91;&#93;
 for j in 40:length&#40;df.nx&#41;-1
     if df.nx&#91;j-1&#93; &gt; df.nx&#91;j&#93; &lt; df.nx&#91;j&#43;1&#93;
@@ -924,7 +930,7 @@ n_minima2</code></pre>
 scatter&#33;&#40;plt, df.nf, df.nx, label &#61; &quot;data&quot;&#41;
 vline&#33;&#40;plt, n_minima2, label &#61; &quot;minima&quot;&#41;
 display&#40;plt&#41;</code></pre>
-<img src="/modelagem_matematica/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_68_1.png" alt="">
+<p><span style="color:red;">// Image matching '/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_69_1.png' not found. //</span></p>
 <pre><code class="language-julia">g &#61; 9.8 # 9,8 m/s^2
 l &#61; 0.7 # 70 cm
 α &#61; 0
@@ -993,7 +999,7 @@ u: 448-element Vector&#123;Vector&#123;Float64&#125;&#125;:
  &#91;31394.492499643053, 38546.05182533289&#93;</code></pre>
 <pre><code class="language-julia">plot&#40;data2_scaled_t, sol2&#40;data2_scaled_t&#41;&#91;1,:&#93;, label &#61; &quot;ODE&quot;, ylims&#61;&#40;-1,1&#41;&#41;
 scatter&#33;&#40;data2_scaled_t, data2_scaled_x, label &#61; &quot;data&quot;&#41;</code></pre>
-<img src="/modelagem_matematica/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_72_1.png" alt="">
+<p><span style="color:red;">// Image matching '/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_73_1.png' not found. //</span></p>
 <pre><code class="language-julia">function ddu_pendulum&#33;&#40;ddu, du, u, p, t&#41;
     θ &#61; u&#91;1&#93;
     ω &#61; du&#91;1&#93;
@@ -1012,10 +1018,54 @@ sol_2nd.retcode</code></pre>
 <pre><code class="language-julia">:Success</code></pre>
 <pre><code class="language-julia">plot&#40;data2_scaled_t, sol_2nd&#40;data2_scaled_t&#41;&#91;2,:&#93;, label &#61; &quot;ODE&quot;, ylims&#61;&#40;-1,1&#41;&#41;
 scatter&#33;&#40;data2_scaled_t, data2_scaled_x, label &#61; &quot;data&quot;&#41;</code></pre>
-<img src="/modelagem_matematica/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_75_1.png" alt="">
+<p><span style="color:red;">// Image matching '/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_76_1.png' not found. //</span></p>
 <pre><code class="language-julia">prob_rmk &#61; remake&#40;prob_pendulum_2nd; u0 &#61; ArrayPartition&#40;&#91;0.0&#93;, &#91;θ₀&#93;&#41;, p &#61; &#91;l, g, α&#93;&#41;
 sol_rmk &#61; solve&#40;prob_rmk&#41;</code></pre>
-<pre><code class="language-julia">Error: UndefVarError: ArrayPartition not defined</code></pre>
+<pre><code class="language-julia">retcode: Success
+Interpolation: specialized 4th order &quot;free&quot; interpolation
+t: 81-element Vector&#123;Float64&#125;:
+  0.0
+  0.00014665867806746294
+  0.0016132454587420922
+  0.016279113265488386
+  0.05646261671975408
+  0.1210661584895972
+  0.20394094443174465
+  0.3114428714445593
+  0.4361696895237713
+  0.5660126318578794
+  ⋮
+ 14.75710393351784
+ 14.975837376148979
+ 15.220528314715068
+ 15.4357394488737
+ 15.68199060915447
+ 15.899891437531256
+ 16.14498715319801
+ 16.367029104543224
+ 16.45
+u: 81-element Vector&#123;RecursiveArrayTools.ArrayPartition&#123;Float64, Tuple&#123;Vect
+or&#123;Float64&#125;, Vector&#123;Float64&#125;&#125;&#125;&#125;:
+ &#40;&#91;0.0&#93;, &#91;0.5235987755982988&#93;&#41;
+ &#40;&#91;-0.0009980900796482302&#93;, &#91;0.523598702408922&#93;&#41;
+ &#40;&#91;-0.010978532676025766&#93;, &#91;0.5235899199226164&#93;&#41;
+ &#40;&#91;-0.1106856765365273&#93;, &#91;0.5226974863498236&#93;&#41;
+ &#40;&#91;-0.38131432847714974&#93;, &#91;0.5127947624143487&#93;&#41;
+ &#40;&#91;-0.7977890197442177&#93;, &#91;0.47454089689923107&#93;&#41;
+ &#40;&#91;-1.2683562493326956&#93;, &#91;0.38830121752424207&#93;&#41;
+ &#40;&#91;-1.7078585641373936&#93;, &#91;0.22627879083954466&#93;&#41;
+ &#40;&#91;-1.8891348315194052&#93;, &#91;-0.0020668325633489415&#93;&#41;
+ &#40;&#91;-1.6627067086680574&#93;, &#91;-0.2371150363762909&#93;&#41;
+ ⋮
+ &#40;&#91;0.4910364935793956&#93;, &#91;-0.3359400903659479&#93;&#41;
+ &#40;&#91;1.2181506703554332&#93;, &#91;-0.13835433828158172&#93;&#41;
+ &#40;&#91;1.1421230770911266&#93;, &#91;0.17172703098371234&#93;&#41;
+ &#40;&#91;0.3513281719783554&#93;, &#91;0.34094589979533435&#93;&#41;
+ &#40;&#91;-0.7548621921063656&#93;, &#91;0.2874525904670078&#93;&#41;
+ &#40;&#91;-1.2735027973864756&#93;, &#91;0.053843800899205596&#93;&#41;
+ &#40;&#91;-0.9326114124256897&#93;, &#91;-0.23637451107073632&#93;&#41;
+ &#40;&#91;-0.008988723570449997&#93;, &#91;-0.34667806133206513&#93;&#41;
+ &#40;&#91;0.36875503620207184&#93;, &#91;-0.3316312175041112&#93;&#41;</code></pre>
 <pre><code class="language-julia">function objective&#40;β&#41;
     g &#61; 9.8
     ω₀ &#61; 0.0
@@ -1030,21 +1080,41 @@ sol_rmk &#61; solve&#40;prob_rmk&#41;</code></pre>
 end</code></pre>
 <pre><code class="language-julia">objective &#40;generic function with 1 method&#41;</code></pre>
 <pre><code class="language-julia">res &#61; Optim.optimize&#40;objective, &#91;π / 3, 0.7, 0.0&#93;&#41;</code></pre>
-<pre><code class="language-julia">Error: UndefVarError: ArrayPartition not defined</code></pre>
+<pre><code class="language-julia">* Status: success
+
+ * Candidate solution
+    Final objective value:     1.323686e-03
+
+ * Found with
+    Algorithm:     Nelder-Mead
+
+ * Convergence measures
+    √&#40;Σ&#40;yᵢ-ȳ&#41;²&#41;/n ≤ 1.0e-08
+
+ * Work counters
+    Seconds run:   0  &#40;vs limit Inf&#41;
+    Iterations:    71
+    f&#40;x&#41; calls:    135</code></pre>
 <pre><code class="language-julia">θ₀, l, α &#61; Optim.minimizer&#40;res&#41;</code></pre>
-<pre><code class="language-julia">Error: UndefVarError: res not defined</code></pre>
+<pre><code class="language-julia">3-element Vector&#123;Float64&#125;:
+ 0.5566387971294271
+ 0.7420963830767683
+ 0.03745649548388733</code></pre>
 <pre><code class="language-julia">π / θ₀</code></pre>
-<pre><code class="language-julia">6.0</code></pre>
+<pre><code class="language-julia">5.6438621773956665</code></pre>
 <pre><code class="language-julia">θ₀ - π / 5.6529</code></pre>
-<pre><code class="language-julia">-0.032150070761939875</code></pre>
+<pre><code class="language-julia">0.0008899507691884079</code></pre>
 <pre><code class="language-julia">prob_rmk &#61; remake&#40;prob_pendulum_2nd, u0 &#61; ArrayPartition&#40;&#91;0.0&#93;, &#91;θ₀&#93;&#41;, p &#61; &#91;l, g, α&#93;&#41;</code></pre>
-<pre><code class="language-julia">Error: UndefVarError: ArrayPartition not defined</code></pre>
+<pre><code class="language-julia">ODEProblem with uType RecursiveArrayTools.ArrayPartition&#123;Float64, Tuple&#123;Vec
+tor&#123;Float64&#125;, Vector&#123;Float64&#125;&#125;&#125; and tType Float64. In-place: true
+timespan: &#40;0.0, 16.45&#41;
+u0: &#40;&#91;0.0&#93;, &#91;0.5566387971294271&#93;&#41;</code></pre>
 <pre><code class="language-julia">sol_2nd &#61; solve&#40;prob_rmk&#41;
 sol_2nd.retcode</code></pre>
-<pre><code class="language-julia">Error: UndefVarError: prob_rmk not defined</code></pre>
+<pre><code class="language-julia">:Success</code></pre>
 <pre><code class="language-julia">plot&#40;data2_scaled_t, sol_2nd&#40;data2_scaled_t&#41;&#91;2,:&#93;, label &#61; &quot;ODE&quot;, ylims&#61;&#40;-1,1&#41;&#41;
 scatter&#33;&#40;data2_scaled_t, data2_scaled_x, label &#61; &quot;data&quot;&#41;</code></pre>
-<img src="/modelagem_matematica/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_84_1.png" alt="">
+<p><span style="color:red;">// Image matching '/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_85_1.png' not found. //</span></p>
 
     <div class="navbar">
     <p id="nav">

@@ -30,7 +30,7 @@ using Optim
 
 ```julia
 using DifferentialEquations.OrdinaryDiffEq
-import DifferentialEquations.RecursiveArrayTools
+using DifferentialEquations.RecursiveArrayTools
 ```
 
 
@@ -40,14 +40,30 @@ include("../../../_assets/attachments/scripts/VideoTracking.jl")
 ```
 
 ```
-Main.##WeaveSandBox#624.VideoTracking
+Main.##WeaveSandBox#644.VideoTracking
 ```
 
 
 
 
+![pendulo](/assets/attachments/img/pendulo_70cm_1_reduzido_curto.mp4)
+
+
 <video src="../../../_assets/attachments/img/pendulo_70cm_1_reduzido_curto.mp4" controls="controls" style="max-width: 730px;">
 </video>
+
+```julia
+html"""<video src="../../../_assets/attachments/img/pendulo_70cm_1_reduzido_curto.mp4" controls="controls" style="max-width: 730px;">
+</video>"""
+```
+
+```
+HTML{String}("<video src=\"../../../_assets/attachments/img/pendulo_70cm_1_
+reduzido_curto.mp4\" controls=\"controls\" style=\"max-width: 730px;\">\n</
+video>")
+```
+
+
 
 ```julia
 filename = "../../../_assets/attachments/img/pendulo_70cm_1_reduzido_curto.mp4"
@@ -241,7 +257,7 @@ Número médio de quadros por segundo: 29.969604863221885
 vd[1]
 ```
 
-\fig{images/0707-Pendulo_angulos_grandes_11_1.png}
+\fig{images/0707-Pendulo_angulos_grandes_12_1.png}
 
 ```julia
 DisplayMovie.display_movie("../../../_assets/attachments/img/pendulo_70cm_1_reduzido_curto.mp4", embed=false)
@@ -269,19 +285,19 @@ frame/io.jl:275
 background = convert.(RGB{Float16}, vd[1])
 ```
 
-\fig{images/0707-Pendulo_angulos_grandes_13_1.png}
+\fig{images/0707-Pendulo_angulos_grandes_14_1.png}
 
 ```julia
 convert.(RGB{Float16}, vd[54])
 ```
 
-\fig{images/0707-Pendulo_angulos_grandes_14_1.png}
+\fig{images/0707-Pendulo_angulos_grandes_15_1.png}
 
 ```julia
 convert.(Gray{Float16}, abs.(convert.(RGB{Float16}, vd[54]) - background))
 ```
 
-\fig{images/0707-Pendulo_angulos_grandes_15_1.png}
+\fig{images/0707-Pendulo_angulos_grandes_16_1.png}
 
 ```julia
 threshold = 0.1
@@ -344,7 +360,7 @@ mask = convert.(
 convert.(Gray{Float16}, mask)
 ```
 
-\fig{images/0707-Pendulo_angulos_grandes_17_1.png}
+\fig{images/0707-Pendulo_angulos_grandes_18_1.png}
 
 ```julia
 labeled_components = label_components(mask)
@@ -449,7 +465,7 @@ t not if they are in the same column.
 colorset = distinguishable_colors(maximum(labeled_components)+1, colorant"black", dropseed = false)
 ```
 
-\fig{images/0707-Pendulo_angulos_grandes_21_1.svg}
+\fig{images/0707-Pendulo_angulos_grandes_22_1.svg}
 
 ```julia
 labeled_components
@@ -485,7 +501,7 @@ labeled_components
 coloredmask = map( n -> colorset[n+1], labeled_components)
 ```
 
-\fig{images/0707-Pendulo_angulos_grandes_23_1.png}
+\fig{images/0707-Pendulo_angulos_grandes_24_1.png}
 
 ```julia
 maximum(labeled_components)
@@ -531,7 +547,7 @@ end
 vd54
 ```
 
-\fig{images/0707-Pendulo_angulos_grandes_27_1.png}
+\fig{images/0707-Pendulo_angulos_grandes_28_1.png}
 
 ```julia
 components_location = VideoTracking.locate_components(labeled_components)
@@ -540,7 +556,7 @@ filter!(p -> p.area ≥ min_area, components_location)
 ```
 
 ```
-1-element Vector{Main.##WeaveSandBox#624.VideoTracking.Blob}:
+1-element Vector{Main.##WeaveSandBox#644.VideoTracking.Blob}:
  (xspan, yspan) = (644:697, 364:412)
 ```
 
@@ -554,7 +570,7 @@ end
 vd54
 ```
 
-\fig{images/0707-Pendulo_angulos_grandes_29_1.png}
+\fig{images/0707-Pendulo_angulos_grandes_30_1.png}
 
 ```julia
 components_location = VideoTracking.locate_components(labeled_components)
@@ -563,7 +579,7 @@ filter!(p -> p.area ≥ min_area, components_location)
 ```
 
 ```
-1-element Vector{Main.##WeaveSandBox#624.VideoTracking.Blob}:
+1-element Vector{Main.##WeaveSandBox#644.VideoTracking.Blob}:
  (xspan, yspan) = (644:697, 364:412)
 ```
 
@@ -574,7 +590,7 @@ p = components_location[1]
 draw(vd[54], Polygon(VideoTracking.RectanglePoints(p)), colorant"red")
 ```
 
-\fig{images/0707-Pendulo_angulos_grandes_31_1.png}
+\fig{images/0707-Pendulo_angulos_grandes_32_1.png}
 
 ```julia
 filename = "../../../_assets/attachments/img/pendulo_70cm_1_reduzido_curto.mp4"
@@ -583,7 +599,7 @@ tracks_70cm1 = VideoTracking.find_tracks(filename, lag = 10)
 ```
 
 ```
-3-element Vector{Main.##WeaveSandBox#624.VideoTracking.Track}:
+3-element Vector{Main.##WeaveSandBox#644.VideoTracking.Track}:
  Tracked blob with framespan nspan = 13:150
 
  Tracked blob with framespan nspan = 82:150
@@ -632,7 +648,7 @@ tracks_70cm1
 ```
 
 ```
-3-element Vector{Main.##WeaveSandBox#624.VideoTracking.Track}:
+3-element Vector{Main.##WeaveSandBox#644.VideoTracking.Track}:
  Tracked blob with framespan nspan = 13:150
 
  Tracked blob with framespan nspan = 82:150
@@ -657,7 +673,7 @@ tracks_70cm1[1].path
 ```
 
 ```
-138-element Vector{Main.##WeaveSandBox#624.VideoTracking.Blob}:
+138-element Vector{Main.##WeaveSandBox#644.VideoTracking.Blob}:
  (xspan, yspan) = (840:854, 177:240)
  (xspan, yspan) = (837:854, 183:247)
  (xspan, yspan) = (834:854, 183:253)
@@ -702,7 +718,7 @@ end
 display(plt)
 ```
 
-\fig{images/0707-Pendulo_angulos_grandes_39_1.png}
+\fig{images/0707-Pendulo_angulos_grandes_40_1.png}
 
 ```julia
 plt = plot(title = "Coordinate x of $(length(tracks_70cm1)) tracks", titlefont = 10, legend=:topleft)
@@ -712,7 +728,7 @@ end
 display(plt)
 ```
 
-\fig{images/0707-Pendulo_angulos_grandes_40_1.png}
+\fig{images/0707-Pendulo_angulos_grandes_41_1.png}
 
 ```julia
 plt = plot(title = "Coordinate y of $(length(tracks_70cm1)) tracks", titlefont = 10, legend=:topright)
@@ -722,7 +738,7 @@ end
 display(plt)
 ```
 
-\fig{images/0707-Pendulo_angulos_grandes_41_1.png}
+\fig{images/0707-Pendulo_angulos_grandes_42_1.png}
 
 ```julia
 size(vd[1])
@@ -768,7 +784,7 @@ vline!(plt, n_minima, label = "minima")
 display(plt)
 ```
 
-\fig{images/0707-Pendulo_angulos_grandes_45_1.png}
+\fig{images/0707-Pendulo_angulos_grandes_46_1.png}
 
 ```julia
 (n_minima[2:end] - n_minima[1:end-1]) / 29.5
@@ -908,7 +924,7 @@ plot!(plt, 1:854, nx -> center_ny - √(radius_n^2 - (nx - center_nx)^2), linest
 display(plt)
 ```
 
-\fig{images/0707-Pendulo_angulos_grandes_54_1.png}
+\fig{images/0707-Pendulo_angulos_grandes_55_1.png}
 
 ```julia
 scale = radius_n / l # points per meter
@@ -1046,8 +1062,8 @@ display(plot(sol, label = ["θ(t)" "ω(t)"]))
 display(plot(sol, vars = 1, label = "θ(t)"))
 ```
 
-\fig{images/0707-Pendulo_angulos_grandes_60_1.png}
-\fig{images/0707-Pendulo_angulos_grandes_60_2.png}
+\fig{images/0707-Pendulo_angulos_grandes_61_1.png}
+\fig{images/0707-Pendulo_angulos_grandes_61_2.png}
 
 ```julia
 n0 = 34
@@ -1056,7 +1072,7 @@ scatter!(plt, (0:length(data_x)-n0) ./ 29.5, data_scaled_x[n0:end], label="track
 display(plt)
 ```
 
-\fig{images/0707-Pendulo_angulos_grandes_61_1.png}
+\fig{images/0707-Pendulo_angulos_grandes_62_1.png}
 
 ```julia
 df = CSV.read("../../../_assets/attachments/data/pendulo_70cm_reduzido.csv", DataFrame)
@@ -1098,8 +1114,8 @@ scatter!(plt, df.nf, size(vd[1], 1) .+ 1 .- df.ny, label = nothing)
 display(plt)
 ```
 
-\fig{images/0707-Pendulo_angulos_grandes_63_1.png}
-\fig{images/0707-Pendulo_angulos_grandes_63_2.png}
+\fig{images/0707-Pendulo_angulos_grandes_64_1.png}
+\fig{images/0707-Pendulo_angulos_grandes_64_2.png}
 
 ```julia
 data2_scaled_t = (df.nf[n0:end] .- df.nf[n0]) / 29.97
@@ -1109,8 +1125,8 @@ display(scatter(data2_scaled_t, data2_scaled_x))
 display(scatter(data2_scaled_t, data2_scaled_y))
 ```
 
-\fig{images/0707-Pendulo_angulos_grandes_64_1.png}
-\fig{images/0707-Pendulo_angulos_grandes_64_2.png}
+\fig{images/0707-Pendulo_angulos_grandes_65_1.png}
+\fig{images/0707-Pendulo_angulos_grandes_65_2.png}
 
 ```julia
 n_minima2 = Int[]
@@ -1170,7 +1186,7 @@ vline!(plt, n_minima2, label = "minima")
 display(plt)
 ```
 
-\fig{images/0707-Pendulo_angulos_grandes_68_1.png}
+\fig{images/0707-Pendulo_angulos_grandes_69_1.png}
 
 ```julia
 g = 9.8 # 9,8 m/s^2
@@ -1267,7 +1283,7 @@ plot(data2_scaled_t, sol2(data2_scaled_t)[1,:], label = "ODE", ylims=(-1,1))
 scatter!(data2_scaled_t, data2_scaled_x, label = "data")
 ```
 
-\fig{images/0707-Pendulo_angulos_grandes_72_1.png}
+\fig{images/0707-Pendulo_angulos_grandes_73_1.png}
 
 ```julia
 function ddu_pendulum!(ddu, du, u, p, t)
@@ -1306,7 +1322,7 @@ plot(data2_scaled_t, sol_2nd(data2_scaled_t)[2,:], label = "ODE", ylims=(-1,1))
 scatter!(data2_scaled_t, data2_scaled_x, label = "data")
 ```
 
-\fig{images/0707-Pendulo_angulos_grandes_75_1.png}
+\fig{images/0707-Pendulo_angulos_grandes_76_1.png}
 
 ```julia
 prob_rmk = remake(prob_pendulum_2nd; u0 = ArrayPartition([0.0], [θ₀]), p = [l, g, α])
@@ -1314,7 +1330,51 @@ sol_rmk = solve(prob_rmk)
 ```
 
 ```
-Error: UndefVarError: ArrayPartition not defined
+retcode: Success
+Interpolation: specialized 4th order "free" interpolation
+t: 81-element Vector{Float64}:
+  0.0
+  0.00014665867806746294
+  0.0016132454587420922
+  0.016279113265488386
+  0.05646261671975408
+  0.1210661584895972
+  0.20394094443174465
+  0.3114428714445593
+  0.4361696895237713
+  0.5660126318578794
+  ⋮
+ 14.75710393351784
+ 14.975837376148979
+ 15.220528314715068
+ 15.4357394488737
+ 15.68199060915447
+ 15.899891437531256
+ 16.14498715319801
+ 16.367029104543224
+ 16.45
+u: 81-element Vector{RecursiveArrayTools.ArrayPartition{Float64, Tuple{Vect
+or{Float64}, Vector{Float64}}}}:
+ ([0.0], [0.5235987755982988])
+ ([-0.0009980900796482302], [0.523598702408922])
+ ([-0.010978532676025766], [0.5235899199226164])
+ ([-0.1106856765365273], [0.5226974863498236])
+ ([-0.38131432847714974], [0.5127947624143487])
+ ([-0.7977890197442177], [0.47454089689923107])
+ ([-1.2683562493326956], [0.38830121752424207])
+ ([-1.7078585641373936], [0.22627879083954466])
+ ([-1.8891348315194052], [-0.0020668325633489415])
+ ([-1.6627067086680574], [-0.2371150363762909])
+ ⋮
+ ([0.4910364935793956], [-0.3359400903659479])
+ ([1.2181506703554332], [-0.13835433828158172])
+ ([1.1421230770911266], [0.17172703098371234])
+ ([0.3513281719783554], [0.34094589979533435])
+ ([-0.7548621921063656], [0.2874525904670078])
+ ([-1.2735027973864756], [0.053843800899205596])
+ ([-0.9326114124256897], [-0.23637451107073632])
+ ([-0.008988723570449997], [-0.34667806133206513])
+ ([0.36875503620207184], [-0.3316312175041112])
 ```
 
 
@@ -1345,7 +1405,21 @@ res = Optim.optimize(objective, [π / 3, 0.7, 0.0])
 ```
 
 ```
-Error: UndefVarError: ArrayPartition not defined
+* Status: success
+
+ * Candidate solution
+    Final objective value:     1.323686e-03
+
+ * Found with
+    Algorithm:     Nelder-Mead
+
+ * Convergence measures
+    √(Σ(yᵢ-ȳ)²)/n ≤ 1.0e-08
+
+ * Work counters
+    Seconds run:   0  (vs limit Inf)
+    Iterations:    71
+    f(x) calls:    135
 ```
 
 
@@ -1355,7 +1429,10 @@ Error: UndefVarError: ArrayPartition not defined
 ```
 
 ```
-Error: UndefVarError: res not defined
+3-element Vector{Float64}:
+ 0.5566387971294271
+ 0.7420963830767683
+ 0.03745649548388733
 ```
 
 
@@ -1365,7 +1442,7 @@ Error: UndefVarError: res not defined
 ```
 
 ```
-6.0
+5.6438621773956665
 ```
 
 
@@ -1375,7 +1452,7 @@ Error: UndefVarError: res not defined
 ```
 
 ```
--0.032150070761939875
+0.0008899507691884079
 ```
 
 
@@ -1385,7 +1462,10 @@ prob_rmk = remake(prob_pendulum_2nd, u0 = ArrayPartition([0.0], [θ₀]), p = [l
 ```
 
 ```
-Error: UndefVarError: ArrayPartition not defined
+ODEProblem with uType RecursiveArrayTools.ArrayPartition{Float64, Tuple{Vec
+tor{Float64}, Vector{Float64}}} and tType Float64. In-place: true
+timespan: (0.0, 16.45)
+u0: ([0.0], [0.5566387971294271])
 ```
 
 
@@ -1396,7 +1476,7 @@ sol_2nd.retcode
 ```
 
 ```
-Error: UndefVarError: prob_rmk not defined
+:Success
 ```
 
 
@@ -1406,4 +1486,4 @@ plot(data2_scaled_t, sol_2nd(data2_scaled_t)[2,:], label = "ODE", ylims=(-1,1))
 scatter!(data2_scaled_t, data2_scaled_x, label = "data")
 ```
 
-\fig{images/0707-Pendulo_angulos_grandes_84_1.png}
+\fig{images/0707-Pendulo_angulos_grandes_85_1.png}
