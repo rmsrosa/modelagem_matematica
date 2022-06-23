@@ -13,7 +13,7 @@ using ProgressMeter
 import Base: intersect, show
 import ImageDraw: RectanglePoints
 
-export intersect
+# export intersect
 export RectanglePoints
 
 struct Blob
@@ -25,10 +25,14 @@ struct Blob
 end
 
 function show(io::IO, p::Blob)
-    print(io, "Blob Object\n")
-    print(io, "  Centroid coordinates: (x, y) = ($(p.x), $(p.y))\n")
-    print(io, "  Span values: (xspan, yspan) = ($(p.xspan), $(p.yspan))\n")
-    print(io, "  Occupied: area = $(p.area)\n")
+    if get(io, :compact, true)
+        print(io, "(xspan, yspan) = ($(p.xspan), $(p.yspan))")
+    else
+        print(io, "Blob Object\n")
+        print(io, "  Centroid coordinates: (x, y) = ($(p.x), $(p.y))\n")
+        print(io, "  Span values: (xspan, yspan) = ($(p.xspan), $(p.yspan))\n")
+        print(io, "  Occupied: area = $(p.area)\n")
+    end
     return nothing
 end
 
@@ -38,9 +42,16 @@ RectanglePoints(p::Blob) =
         Point(last(p.xspan), last(p.yspan))
     )
 
-intersect(p1::Blob, p2::Blob) = 
-    length(intersect(p1.xspan, p2.xspan)) > 0 && length(intersect(p1.yspan, p2.yspan)) > 0
+#intersect(p1::Blob, p2::Blob) = 
+#    length(intersect(p1.xspan, p2.xspan)) > 0 && length(intersect(p1.yspan, p2.yspan)) > 0
 
+intersect(p1::Blob, p2::Blob, lag = 0) = 
+    (
+        last(p1.xspan) - first(p2.xspan) + lag ≥ 0 || last(p1.xspan) - first(p2.xspan) + lag ≥ 0
+    ) &&
+    (
+        last(p1.yspan) - first(p2.yspan) + lag ≥ 0 || last(p1.yspan) - first(p2.yspan) + lag ≥ 0
+    )
 mutable struct Track
     nspan::UnitRange{Int}
     path::Vector{Blob}
@@ -72,12 +83,13 @@ function locate_components(labeled)
     return positions
 end
 
-function find_tracks(filename; threshold = 0.15, min_area = 500, min_span = 30)
+function find_tracks(filename; threshold = 0.15, min_area = 500, min_span = 30, lag = 0)
     video = VideoIO.load(filename)
     position_list = Vector{Vector{Blob}}()
     background = convert.(RGB{Float16}, video[1])
     mask = convert.(Gray{Float16}, background) .> 1
-    @showprogress "Processing $(length(video)) frames ..." for vd in video
+#    @showprogress "Processing $(length(video)) frames ..." for vd in video
+    for vd in video
         mask .= convert.(
             Gray{Float16},
             abs.(
@@ -95,12 +107,13 @@ function find_tracks(filename; threshold = 0.15, min_area = 500, min_span = 30)
 
     tracks = Vector{Track}()
 
-    @showprogress "Gathering tracks ..." for n in 2:length(video)
+#    @showprogress "Gathering tracks ..." for n in 2:length(video)
+    for n in 2:length(video)
         for t in position_list[n]
 
             new = true
             for v in tracks
-                if last(v.nspan) == n - 1 && intersect(t, v.path[end]) == true
+                if last(v.nspan) == n - 1 && intersect(t, v.path[end], lag) == true
                     cs = v.nspan
                     v.nspan = first(cs):last(cs) + 1
                     push!(v.path, t) # append path
@@ -128,7 +141,8 @@ function tracks_on_video(
     trackedvideo = copy(video)
     colorset = distinguishable_colors(length(tracks), colorant"black", dropseed = true)
 
-    @showprogress "Drawing tracks ..." for (k, v) in enumerate(tracks)
+#    @showprogress "Drawing tracks ..." for (k, v) in enumerate(tracks)
+    for (k, v) in enumerate(tracks)
         for (n, p) in zip(v.nspan, v.path)
             draw!(trackedvideo[n], Polygon(RectanglePoints(p)), colorset[k]) 
         end
