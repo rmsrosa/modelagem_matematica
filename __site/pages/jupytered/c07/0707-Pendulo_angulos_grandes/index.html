@@ -219,7 +219,7 @@ using VideoIO</code></pre>
 using DifferentialEquations.RecursiveArrayTools</code></pre>
 <pre><code class="language-julia">include&#40;&quot;../../../_assets/attachments/scripts/DisplayMovie.jl&quot;&#41;
 include&#40;&quot;../../../_assets/attachments/scripts/VideoTracking.jl&quot;&#41;</code></pre>
-<pre><code class="language-julia">Main.##WeaveSandBox#416.VideoTracking</code></pre>
+<pre><code class="language-julia">Main.##WeaveSandBox#607.VideoTracking</code></pre>
 <p>&lt;video src&#61;&quot;../../../<em>assets/attachments/img/pendulo</em>70cm<em>1</em>reduzido_curto.mp4&quot; controls&#61;&quot;controls&quot; style&#61;&quot;max-width: 730px;&quot;&gt; &lt;/video&gt;</p>
 <pre><code class="language-julia">filename &#61; &quot;../../../_assets/attachments/img/pendulo_70cm_1_reduzido_curto.mp4&quot;
 vd &#61; VideoIO.load&#40;filename&#41;</code></pre>
@@ -383,14 +383,15 @@ Número médio de quadros por segundo: 29.969604863221885</code></pre>
 <pre><code class="language-julia">Error: MethodError: no method matching show&#40;::IOContext&#123;IOBuffer&#125;, ::MIME&#123;S
 ymbol&#40;&quot;text/html&quot;&#41;&#125;, ::String&#41;
 Closest candidates are:
-  show&#40;::IO, ::MIME&#123;Symbol&#40;&quot;text/html&quot;&#41;&#125;, &#33;Matched::DataFrames.GroupedDataF
-rame&#41; at ~/.julia/packages/DataFrames/zqFGs/src/abstractdataframe/io.jl:291
   show&#40;::IO, ::MIME&#123;Symbol&#40;&quot;text/html&quot;&#41;&#125;, &#33;Matched::DataFrames.DataFrameRow
 ; summary, eltypes&#41; at ~/.julia/packages/DataFrames/zqFGs/src/abstractdataf
 rame/io.jl:268
   show&#40;::IO, ::MIME&#123;Symbol&#40;&quot;text/html&quot;&#41;&#125;, &#33;Matched::DataFrames.AbstractData
 Frame; summary, eltypes&#41; at ~/.julia/packages/DataFrames/zqFGs/src/abstract
 dataframe/io.jl:130
+  show&#40;::IO, ::MIME&#123;Symbol&#40;&quot;text/html&quot;&#41;&#125;, &#33;Matched::DataFrames.DataFrameRow
+s; summary, eltypes&#41; at ~/.julia/packages/DataFrames/zqFGs/src/abstractdata
+frame/io.jl:275
   ...</code></pre>
 <pre><code class="language-julia">background &#61; convert.&#40;RGB&#123;Float16&#125;, vd&#91;1&#93;&#41;</code></pre>
 <img src="/modelagem_matematica/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_13_1.png" alt="">
@@ -473,8 +474,8 @@ mask &#61; convert.&#40;
  0  0  0  0  0  0  0  0  0  0  0  0     0  0  0  0  0  0  0  0  0  0  0   0</code></pre>
 <pre><code class="language-julia">@which label_components&#40;mask&#41;</code></pre>
 <pre><code class="language-julia">Error: LoadError: UndefVarError: @which not defined
-in expression starting at /Users/rmsrosa/Documents/git-repositories/modelag
-em_matematica/src/jupyter/c07/0707-Pendulo_angulos_grandes.ipynb:2</code></pre>
+in expression starting at /Users/rrosa/Documents/git_repositories/modelagem
+_matematica/src/jupyter/c07/0707-Pendulo_angulos_grandes.ipynb:2</code></pre>
 <pre><code class="language-julia">show&#40;Docs.doc&#40;label_components&#41;&#41;</code></pre>
 
 <p>label &#61; label<em>components&#40;A; bkg &#61; zero&#40;eltype&#40;A&#41;&#41;, dims&#61;coords</em>spatial&#40;A&#41;&#41; label &#61; label_components&#40;A, connectivity; bkg &#61; zero&#40;eltype&#40;A&#41;&#41;&#41;</p>
@@ -568,11 +569,8 @@ vd54</code></pre>
 <pre><code class="language-julia">components_location &#61; VideoTracking.locate_components&#40;labeled_components&#41;
 min_area &#61; 100
 filter&#33;&#40;p -&gt; p.area ≥ min_area, components_location&#41;</code></pre>
-<pre><code class="language-julia">1-element Vector&#123;Main.##WeaveSandBox#416.VideoTracking.Blob&#125;:
- Blob Object
-  Centroid coordinates: &#40;x, y&#41; &#61; &#40;670.0722713864307, 387.4906588003933&#41;
-  Span values: &#40;xspan, yspan&#41; &#61; &#40;644:697, 364:412&#41;
-  Occupied: area &#61; 2034</code></pre>
+<pre><code class="language-julia">1-element Vector&#123;Main.##WeaveSandBox#607.VideoTracking.Blob&#125;:
+ &#40;xspan, yspan&#41; &#61; &#40;644:697, 364:412&#41;</code></pre>
 <pre><code class="language-julia">vd54 &#61; copy&#40;vd&#91;54&#93;&#41;
 for p in components_location
     draw&#33;&#40;vd54, Polygon&#40;VideoTracking.RectanglePoints&#40;p&#41;&#41;, colorant&quot;red&quot;&#41;
@@ -582,139 +580,68 @@ vd54</code></pre>
 <pre><code class="language-julia">components_location &#61; VideoTracking.locate_components&#40;labeled_components&#41;
 min_area &#61; 200
 filter&#33;&#40;p -&gt; p.area ≥ min_area, components_location&#41;</code></pre>
-<pre><code class="language-julia">1-element Vector&#123;Main.##WeaveSandBox#416.VideoTracking.Blob&#125;:
- Blob Object
-  Centroid coordinates: &#40;x, y&#41; &#61; &#40;670.0722713864307, 387.4906588003933&#41;
-  Span values: &#40;xspan, yspan&#41; &#61; &#40;644:697, 364:412&#41;
-  Occupied: area &#61; 2034</code></pre>
+<pre><code class="language-julia">1-element Vector&#123;Main.##WeaveSandBox#607.VideoTracking.Blob&#125;:
+ &#40;xspan, yspan&#41; &#61; &#40;644:697, 364:412&#41;</code></pre>
 <pre><code class="language-julia">p &#61; components_location&#91;1&#93;
 draw&#40;vd&#91;54&#93;, Polygon&#40;VideoTracking.RectanglePoints&#40;p&#41;&#41;, colorant&quot;red&quot;&#41;</code></pre>
 <img src="/modelagem_matematica/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_31_1.png" alt="">
 <pre><code class="language-julia">filename &#61; &quot;../../../_assets/attachments/img/pendulo_70cm_1_reduzido_curto.mp4&quot;
-tracks_70cm1 &#61; VideoTracking.find_tracks&#40;filename&#41;</code></pre>
-<pre><code class="language-julia">1-element Vector&#123;Main.##WeaveSandBox#416.VideoTracking.Track&#125;:
- Tracked blob with framespan nspan &#61; 13:55</code></pre>
+# filename &#61; &quot;../../../_assets/attachments/img/pendulo_70cm_1_reduzido.mov&quot;
+tracks_70cm1 &#61; VideoTracking.find_tracks&#40;filename, lag &#61; 10&#41;</code></pre>
+<pre><code class="language-julia">3-element Vector&#123;Main.##WeaveSandBox#607.VideoTracking.Track&#125;:
+ Tracked blob with framespan nspan &#61; 13:150
+
+ Tracked blob with framespan nspan &#61; 82:150
+
+ Tracked blob with framespan nspan &#61; 114:150</code></pre>
 <pre><code class="language-julia">VideoTracking.tracks_on_video&#40;filename, tracks_70cm1&#41;</code></pre>
 <pre><code class="language-julia">DisplayMovie.display_movie&#40;&quot;../../../_assets/attachments/img/pendulo_70cm_1_reduzido_curto_tracked.mp4&quot;&#41;</code></pre>
 <pre><code class="language-julia">Error: MethodError: no method matching show&#40;::IOContext&#123;IOBuffer&#125;, ::MIME&#123;S
 ymbol&#40;&quot;text/html&quot;&#41;&#125;, ::String&#41;
 Closest candidates are:
-  show&#40;::IO, ::MIME&#123;Symbol&#40;&quot;text/html&quot;&#41;&#125;, &#33;Matched::DataFrames.GroupedDataF
-rame&#41; at ~/.julia/packages/DataFrames/zqFGs/src/abstractdataframe/io.jl:291
   show&#40;::IO, ::MIME&#123;Symbol&#40;&quot;text/html&quot;&#41;&#125;, &#33;Matched::DataFrames.DataFrameRow
 ; summary, eltypes&#41; at ~/.julia/packages/DataFrames/zqFGs/src/abstractdataf
 rame/io.jl:268
   show&#40;::IO, ::MIME&#123;Symbol&#40;&quot;text/html&quot;&#41;&#125;, &#33;Matched::DataFrames.AbstractData
 Frame; summary, eltypes&#41; at ~/.julia/packages/DataFrames/zqFGs/src/abstract
 dataframe/io.jl:130
+  show&#40;::IO, ::MIME&#123;Symbol&#40;&quot;text/html&quot;&#41;&#125;, &#33;Matched::DataFrames.DataFrameRow
+s; summary, eltypes&#41; at ~/.julia/packages/DataFrames/zqFGs/src/abstractdata
+frame/io.jl:275
   ...</code></pre>
 <pre><code class="language-julia">tracks_70cm1</code></pre>
-<pre><code class="language-julia">1-element Vector&#123;Main.##WeaveSandBox#416.VideoTracking.Track&#125;:
- Tracked blob with framespan nspan &#61; 13:55</code></pre>
+<pre><code class="language-julia">3-element Vector&#123;Main.##WeaveSandBox#607.VideoTracking.Track&#125;:
+ Tracked blob with framespan nspan &#61; 13:150
+
+ Tracked blob with framespan nspan &#61; 82:150
+
+ Tracked blob with framespan nspan &#61; 114:150</code></pre>
 <pre><code class="language-julia">tracks_70cm1&#91;1&#93;.nspan</code></pre>
-<pre><code class="language-julia">13:55</code></pre>
+<pre><code class="language-julia">13:150</code></pre>
 <pre><code class="language-julia">tracks_70cm1&#91;1&#93;.path</code></pre>
-<pre><code class="language-julia">43-element Vector&#123;Main.##WeaveSandBox#416.VideoTracking.Blob&#125;:
- Blob Object
-  Centroid coordinates: &#40;x, y&#41; &#61; &#40;849.1062271062272, 208.7948717948718&#41;
-  Span values: &#40;xspan, yspan&#41; &#61; &#40;840:854, 177:240&#41;
-  Occupied: area &#61; 546
-
- Blob Object
-  Centroid coordinates: &#40;x, y&#41; &#61; &#40;847.6581769436997, 214.25067024128685&#41;
-  Span values: &#40;xspan, yspan&#41; &#61; &#40;837:854, 183:247&#41;
-  Occupied: area &#61; 746
-
- Blob Object
-  Centroid coordinates: &#40;x, y&#41; &#61; &#40;846.3590285110877, 217.86061246040126&#41;
-  Span values: &#40;xspan, yspan&#41; &#61; &#40;834:854, 183:253&#41;
-  Occupied: area &#61; 947
-
- Blob Object
-  Centroid coordinates: &#40;x, y&#41; &#61; &#40;845.1462585034013, 220.17942176870747&#41;
-  Span values: &#40;xspan, yspan&#41; &#61; &#40;831:854, 183:256&#41;
-  Occupied: area &#61; 1176
-
- Blob Object
-  Centroid coordinates: &#40;x, y&#41; &#61; &#40;843.8523297491039, 222.40071684587812&#41;
-  Span values: &#40;xspan, yspan&#41; &#61; &#40;829:854, 179:257&#41;
-  Occupied: area &#61; 1395
-
- Blob Object
-  Centroid coordinates: &#40;x, y&#41; &#61; &#40;843.0366013071896, 223.26797385620915&#41;
-  Span values: &#40;xspan, yspan&#41; &#61; &#40;827:854, 179:258&#41;
-  Occupied: area &#61; 1530
-
- Blob Object
-  Centroid coordinates: &#40;x, y&#41; &#61; &#40;843.1176084099868, 222.32982917214193&#41;
-  Span values: &#40;xspan, yspan&#41; &#61; &#40;827:854, 179:258&#41;
-  Occupied: area &#61; 1522
-
- Blob Object
-  Centroid coordinates: &#40;x, y&#41; &#61; &#40;843.275722932078, 221.93678547410894&#41;
-  Span values: &#40;xspan, yspan&#41; &#61; &#40;827:854, 179:258&#41;
-  Occupied: area &#61; 1487
-
- Blob Object
-  Centroid coordinates: &#40;x, y&#41; &#61; &#40;843.2882273342354, 222.37753721244925&#41;
-  Span values: &#40;xspan, yspan&#41; &#61; &#40;827:854, 180:258&#41;
-  Occupied: area &#61; 1478
-
- Blob Object
-  Centroid coordinates: &#40;x, y&#41; &#61; &#40;843.3896648044692, 223.02932960893855&#41;
-  Span values: &#40;xspan, yspan&#41; &#61; &#40;827:854, 180:257&#41;
-  Occupied: area &#61; 1432
-
+<pre><code class="language-julia">138-element Vector&#123;Main.##WeaveSandBox#607.VideoTracking.Blob&#125;:
+ &#40;xspan, yspan&#41; &#61; &#40;840:854, 177:240&#41;
+ &#40;xspan, yspan&#41; &#61; &#40;837:854, 183:247&#41;
+ &#40;xspan, yspan&#41; &#61; &#40;834:854, 183:253&#41;
+ &#40;xspan, yspan&#41; &#61; &#40;831:854, 183:256&#41;
+ &#40;xspan, yspan&#41; &#61; &#40;829:854, 179:257&#41;
+ &#40;xspan, yspan&#41; &#61; &#40;827:854, 179:258&#41;
+ &#40;xspan, yspan&#41; &#61; &#40;827:854, 179:258&#41;
+ &#40;xspan, yspan&#41; &#61; &#40;827:854, 179:258&#41;
+ &#40;xspan, yspan&#41; &#61; &#40;827:854, 180:258&#41;
+ &#40;xspan, yspan&#41; &#61; &#40;827:854, 180:257&#41;
  ⋮
- Blob Object
-  Centroid coordinates: &#40;x, y&#41; &#61; &#40;837.734181689643, 233.8221986567692&#41;
-  Span values: &#40;xspan, yspan&#41; &#61; &#40;813:854, 176:276&#41;
-  Occupied: area &#61; 2829
-
- Blob Object
-  Centroid coordinates: &#40;x, y&#41; &#61; &#40;836.0925600468659, 241.8945518453427&#41;
-  Span values: &#40;xspan, yspan&#41; &#61; &#40;807:854, 178:289&#41;
-  Occupied: area &#61; 3414
-
- Blob Object
-  Centroid coordinates: &#40;x, y&#41; &#61; &#40;832.6118686868687, 255.65984848484848&#41;
-  Span values: &#40;xspan, yspan&#41; &#61; &#40;802:854, 184:306&#41;
-  Occupied: area &#61; 3960
-
- Blob Object
-  Centroid coordinates: &#40;x, y&#41; &#61; &#40;804.2969808995687, 302.09303758471964&#41;
-  Span values: &#40;xspan, yspan&#41; &#61; &#40;782:827, 281:325&#41;
-  Occupied: area &#61; 1623
-
- Blob Object
-  Centroid coordinates: &#40;x, y&#41; &#61; &#40;778.301724137931, 322.82635467980293&#41;
-  Span values: &#40;xspan, yspan&#41; &#61; &#40;756:802, 301:345&#41;
-  Occupied: area &#61; 1624
-
- Blob Object
-  Centroid coordinates: &#40;x, y&#41; &#61; &#40;747.879472693032, 345.85310734463275&#41;
-  Span values: &#40;xspan, yspan&#41; &#61; &#40;726:771, 324:367&#41;
-  Occupied: area &#61; 1593
-
- Blob Object
-  Centroid coordinates: &#40;x, y&#41; &#61; &#40;711.4871007371007, 367.28132678132675&#41;
-  Span values: &#40;xspan, yspan&#41; &#61; &#40;690:735, 345:390&#41;
-  Occupied: area &#61; 1628
-
- Blob Object
-  Centroid coordinates: &#40;x, y&#41; &#61; &#40;670.0882352941177, 387.8469387755102&#41;
-  Span values: &#40;xspan, yspan&#41; &#61; &#40;648:693, 366:411&#41;
-  Occupied: area &#61; 1666
-
- Blob Object
-  Centroid coordinates: &#40;x, y&#41; &#61; &#40;624.7634730538922, 405.8550898203593&#41;
-  Span values: &#40;xspan, yspan&#41; &#61; &#40;603:648, 384:428&#41;
-  Occupied: area &#61; 1670</code></pre>
+ &#40;xspan, yspan&#41; &#61; &#40;651:695, 367:410&#41;
+ &#40;xspan, yspan&#41; &#61; &#40;686:731, 350:392&#41;
+ &#40;xspan, yspan&#41; &#61; &#40;717:760, 332:373&#41;
+ &#40;xspan, yspan&#41; &#61; &#40;742:785, 314:355&#41;
+ &#40;xspan, yspan&#41; &#61; &#40;762:806, 299:337&#41;
+ &#40;xspan, yspan&#41; &#61; &#40;778:821, 284:323&#41;
+ &#40;xspan, yspan&#41; &#61; &#40;789:833, 271:310&#41;
+ &#40;xspan, yspan&#41; &#61; &#40;797:840, 262:300&#41;
+ &#40;xspan, yspan&#41; &#61; &#40;801:845, 256:294&#41;</code></pre>
 <pre><code class="language-julia">tracks_70cm1&#91;1&#93;.path&#91;1&#93;</code></pre>
-<pre><code class="language-julia">Blob Object
-  Centroid coordinates: &#40;x, y&#41; &#61; &#40;849.1062271062272, 208.7948717948718&#41;
-  Span values: &#40;xspan, yspan&#41; &#61; &#40;840:854, 177:240&#41;
-  Occupied: area &#61; 546</code></pre>
+<pre><code class="language-julia">&#40;xspan, yspan&#41; &#61; &#40;840:854, 177:240&#41;</code></pre>
 <pre><code class="language-julia">plt &#61; plot&#40;title &#61; &quot;Paths of &#36;&#40;length&#40;tracks_70cm1&#41;&#41; track&#40;s&#41;&quot;, titlefont &#61; 10,
     xlims &#61; &#40;1,854&#41;, ylims &#61; &#40;1, 480&#41;,
     size &#61; &#40;854, 480&#41;, aspect &#61; :equal, legend&#61;:topright&#41;
@@ -747,17 +674,19 @@ for j in 40:length&#40;data_x&#41;-1
     end
 end
 n_minima</code></pre>
-<pre><code class="language-julia">Int64&#91;&#93;</code></pre>
+<pre><code class="language-julia">2-element Vector&#123;Int64&#125;:
+  72
+ 125</code></pre>
 <pre><code class="language-julia">plt &#61; plot&#40;title &#61; &quot;Coordinate x of &#36;&#40;length&#40;tracks_70cm1&#41;&#41; tracks&quot;, titlefont &#61; 10, legend&#61;:topleft&#41;
 for &#40;n, tr&#41; in enumerate&#40;tracks_70cm1&#41;
     scatter&#33;&#40;plt, tr.nspan, getfield.&#40;tr.path, :x&#41;, label&#61;&quot;track &#36;n&quot;&#41;
 end
 vline&#33;&#40;plt, n_minima, label &#61; &quot;minima&quot;&#41;
 display&#40;plt&#41;</code></pre>
-<pre><code class="language-julia">Error: BoundsError: attempt to access 0-element Vector&#123;Float64&#125; at index &#91;1
-&#93;</code></pre>
+<p><span style="color:red;">// Image matching '/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_45_1.png' not found. //</span></p>
 <pre><code class="language-julia">&#40;n_minima&#91;2:end&#93; - n_minima&#91;1:end-1&#93;&#41; / 29.5</code></pre>
-<pre><code class="language-julia">Float64&#91;&#93;</code></pre>
+<pre><code class="language-julia">1-element Vector&#123;Float64&#125;:
+ 1.7966101694915255</code></pre>
 <pre><code class="language-julia">g &#61; 9.8 # m/s
 l &#61; 0.7 # m
 T_p &#61; 2π * √&#40;l / g&#41;</code></pre>
@@ -798,7 +727,7 @@ T_p / agm&#40;1, cos&#40;θ₀ / 2&#41;&#41;&#91;1&#93;</code></pre>
 <pre><code class="language-julia">* Status: success
 
  * Candidate solution
-    Final objective value:     0.000000e&#43;00
+    Final objective value:     4.747098e&#43;06
 
  * Found with
     Algorithm:     Nelder-Mead
@@ -808,15 +737,15 @@ T_p / agm&#40;1, cos&#40;θ₀ / 2&#41;&#41;&#91;1&#93;</code></pre>
 
  * Work counters
     Seconds run:   0  &#40;vs limit Inf&#41;
-    Iterations:    0
-    f&#40;x&#41; calls:    5</code></pre>
+    Iterations:    151
+    f&#40;x&#41; calls:    280</code></pre>
 <pre><code class="language-julia">Optim.minimum&#40;center_point&#41;</code></pre>
-<pre><code class="language-julia">0.0</code></pre>
+<pre><code class="language-julia">4.74709830356046e6</code></pre>
 <pre><code class="language-julia">center_nx, center_ny, radius_n &#61; Optim.minimizer&#40;center_point&#41;</code></pre>
 <pre><code class="language-julia">3-element Vector&#123;Float64&#125;:
- 400.0
- 800.0
- 500.0</code></pre>
+ 466.4527735778014
+ 556.9310990759983
+ 504.68671280430794</code></pre>
 <pre><code class="language-julia">plt &#61; plot&#40;title &#61; &quot;Paths of &#36;&#40;length&#40;tracks_70cm1&#41;&#41; track&#40;s&#41;&quot;, titlefont &#61; 10,
     xlims &#61; &#40;1,854&#41;, ylims &#61; &#40;1, 600&#41;,
     size &#61; &#40;854, 600&#41;, aspect &#61; :equal, legend&#61;:topright&#41;
@@ -828,30 +757,30 @@ plot&#33;&#40;plt, 1:854, nx -&gt; center_ny - √&#40;radius_n^2 - &#40;nx - ce
 display&#40;plt&#41;</code></pre>
 <img src="/modelagem_matematica/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_54_1.png" alt="">
 <pre><code class="language-julia">scale &#61; radius_n / l # points per meter</code></pre>
-<pre><code class="language-julia">714.2857142857143</code></pre>
+<pre><code class="language-julia">720.9810182918685</code></pre>
 <pre><code class="language-julia">data_scaled_x &#61; &#40;data_x .- center_nx&#41; / scale
 data_scaled_y &#61; &#40;data_y .- center_ny&#41; / scale</code></pre>
-<pre><code class="language-julia">43-element Vector&#123;Float64&#125;:
- -0.7389128205128205
- -0.7465509383378015
- -0.7516048574445617
- -0.7548511904761904
- -0.7579610035842294
- -0.7591751633986928
- -0.7578617608409987
- -0.7573114996637526
- -0.7579285520974289
- -0.7588410614525138
+<pre><code class="language-julia">138-element Vector&#123;Float64&#125;:
+ -0.3949146560688051
+ -0.4024818434260268
+ -0.40748882991738683
+ -0.4107050162655377
+ -0.41378595046604316
+ -0.4149888351305877
+ -0.41368762932867925
+ -0.4131424780860513
+ -0.4137538003360941
+ -0.4146578357821777
   ⋮
- -0.7739510781194767
- -0.7852523725834797
- -0.8045237878787878
- -0.8695302526186075
- -0.8985568965517241
- -0.9307943502824857
- -0.9607938574938573
- -0.9895857142857141
- -1.0147971257485031</code></pre>
+ -0.6432782364647945
+ -0.6194322054302688
+ -0.5943266060424751
+ -0.5693437498002181
+ -0.5457688568949555
+ -0.5250531928206692
+ -0.5073704469891157
+ -0.4948678346300161
+ -0.4867289226758497</code></pre>
 <pre><code class="language-julia">function dudt_pendulum&#33;&#40;du, u, p, t&#41;
     θ, ω &#61; u
     l, g, α &#61; p
@@ -884,40 +813,40 @@ t: 32-element Vector&#123;Float64&#125;:
  0.05520287578278107
  0.1186994834079412
  0.20021318382712075
- 0.3059148580456768
- 0.4289016257510082
- 0.556918677400161
+ 0.30591484896808435
+ 0.4289016061113905
+ 0.5569186555915231
  ⋮
- 3.336085982741865
- 3.5798111245515645
- 3.789943545334064
- 4.033677951692835
- 4.248777445772274
- 4.4897245954065665
- 4.712943195270591
- 4.948794481749135
+ 3.3360855745835023
+ 3.5798106962143854
+ 3.7899430036121617
+ 4.033677409516851
+ 4.248776802620724
+ 4.489724053643603
+ 4.712942542004417
+ 4.948793974730231
  5.0
 u: 32-element Vector&#123;Vector&#123;Float64&#125;&#125;:
  &#91;0.5235987755982988, 0.0&#93;
- &#91;0.5235987044417862, -0.000998093740288535&#93;
- &#91;0.5235901656815024, -0.01097897701799843&#93;
- &#91;0.52272227807514, -0.1107323314966049&#93;
- &#91;0.5129658631370241, -0.3840406425996626&#93;
- &#91;0.4749871723737738, -0.8072478724104671&#93;
- &#91;0.38897468427160925, -1.2882714483013225&#93;
- &#91;0.22681172050256487, -1.7418841189469372&#93;
- &#91;-0.0034489023047863383, -1.936781391381158&#93;
- &#91;-0.24165889846355013, -1.7139642610036754&#93;
+ &#91;0.5235987044417862, -0.0009980937402885351&#93;
+ &#91;0.5235901656815024, -0.010978977017998427&#93;
+ &#91;0.52272227807514, -0.11073233149660491&#93;
+ &#91;0.5129658631370241, -0.38404064259966264&#93;
+ &#91;0.4749871723737738, -0.8072478724104674&#93;
+ &#91;0.3889746842716092, -1.2882714483013231&#93;
+ &#91;0.22681173631479296, -1.7418840903686386&#93;
+ &#91;-0.0034488642665777836, -1.9367813923292037&#93;
+ &#91;-0.24165886108376364, -1.7139643340721666&#93;
  ⋮
- &#91;0.5009792538381039, 0.5577247215218519&#93;
- &#91;0.43312617648070506, -1.0800631782759451&#93;
- &#91;0.10380905787269706, -1.8977493321783012&#93;
- &#91;-0.33772189369520583, -1.4733195325856954&#93;
- &#91;-0.5219374197998773, -0.15523391826013316&#93;
- &#91;-0.36422595366369465, 1.3840456727974355&#93;
- &#91;0.02882117308366698, 1.9341610901039223&#93;
- &#91;0.41822224613478143, 1.157201337942282&#93;
- &#91;0.4697150850563418, 0.8484644241876123&#93;</code></pre>
+ &#91;0.5009790261865464, 0.5577274667872847&#93;
+ &#91;0.43312663917777644, -1.0800606609666108&#93;
+ &#91;0.10381008615004722, -1.8977485458829486&#93;
+ &#91;-0.33772109481584195, -1.4733220488166103&#93;
+ &#91;-0.5219373201122955, -0.15523840887687057&#93;
+ &#91;-0.3642267037960671, 1.384042971093617&#93;
+ &#91;0.028819909227411733, 1.9341613541835863&#93;
+ &#91;0.4182216594902942, 1.1572042219330516&#93;
+ &#91;0.46971508519163835, 0.8484644252456572&#93;</code></pre>
 <pre><code class="language-julia">display&#40;plot&#40;sol, label &#61; &#91;&quot;θ&#40;t&#41;&quot; &quot;ω&#40;t&#41;&quot;&#93;&#41;&#41;
 display&#40;plot&#40;sol, vars &#61; 1, label &#61; &quot;θ&#40;t&#41;&quot;&#41;&#41;</code></pre>
 <p><img src="/modelagem_matematica/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_60_1.png" alt=""> <img src="/modelagem_matematica/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_60_2.png" alt=""></p>
@@ -955,13 +884,13 @@ display&#40;plt&#41;
 plt &#61; plot&#40;title &#61; &quot;Coordinate y&quot;, titlefont &#61; 10, legend&#61;:topleft&#41;
 scatter&#33;&#40;plt, df.nf, size&#40;vd&#91;1&#93;, 1&#41; .&#43; 1 .- df.ny, label &#61; nothing&#41;
 display&#40;plt&#41;</code></pre>
-<p><p><span style="color:red;">// Image matching '/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_63_1.png' not found. //</span></p> <p><span style="color:red;">// Image matching '/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_63_2.png' not found. //</span></p></p>
+<p><img src="/modelagem_matematica/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_63_1.png" alt=""> <img src="/modelagem_matematica/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_63_2.png" alt=""></p>
 <pre><code class="language-julia">data2_scaled_t &#61; &#40;df.nf&#91;n0:end&#93; .- df.nf&#91;n0&#93;&#41; / 29.97
 data2_scaled_x &#61; &#40;df.nx&#91;n0:end&#93; .- center_nx&#41; / scale
 data2_scaled_y &#61; &#40;size&#40;vd&#91;1&#93;, 1&#41; .&#43; 1 .- df.ny&#91;n0:end&#93; .- center_ny &#41; / scale
 display&#40;scatter&#40;data2_scaled_t, data2_scaled_x&#41;&#41;
 display&#40;scatter&#40;data2_scaled_t, data2_scaled_y&#41;&#41;</code></pre>
-<p><p><span style="color:red;">// Image matching '/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_64_1.png' not found. //</span></p> <p><span style="color:red;">// Image matching '/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_64_2.png' not found. //</span></p></p>
+<p><img src="/modelagem_matematica/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_64_1.png" alt=""> <img src="/modelagem_matematica/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_64_2.png" alt=""></p>
 <pre><code class="language-julia">n_minima2 &#61; Int&#91;&#93;
 for j in 40:length&#40;df.nx&#41;-1
     if df.nx&#91;j-1&#93; &gt; df.nx&#91;j&#93; &lt; df.nx&#91;j&#43;1&#93;
@@ -993,7 +922,7 @@ n_minima2</code></pre>
 scatter&#33;&#40;plt, df.nf, df.nx, label &#61; &quot;data&quot;&#41;
 vline&#33;&#40;plt, n_minima2, label &#61; &quot;minima&quot;&#41;
 display&#40;plt&#41;</code></pre>
-<p><span style="color:red;">// Image matching '/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_68_1.png' not found. //</span></p>
+<img src="/modelagem_matematica/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_68_1.png" alt="">
 <pre><code class="language-julia">g &#61; 9.8 # 9,8 m/s^2
 l &#61; 0.7 # 70 cm
 α &#61; 0
@@ -1041,28 +970,28 @@ sol&#40;data2_scaled_t&#41;</code></pre>
  14.914914914914915
 u: 448-element Vector&#123;Vector&#123;Float64&#125;&#125;:
  &#91;0.5235987755982988, 0.0&#93;
- &#91;0.5197064819391027, -0.23304144136133412&#93;
- &#91;0.5080822001687986, -0.4629302691579846&#93;
- &#91;0.4888836986777478, -0.6865155884298499&#93;
- &#91;0.4623737395236549, -0.9006563907399178&#93;
+ &#91;0.5197064819391027, -0.23304144136133448&#93;
+ &#91;0.5080822001687986, -0.46293026915798463&#93;
+ &#91;0.4888836986777477, -0.6865155884298502&#93;
+ &#91;0.4623737395236549, -0.9006563907399179&#93;
  &#91;0.4289196227578826, -1.102237149997166&#93;
- &#91;0.38899141026001216, -1.2882025121646734&#93;
- &#91;0.3431598607272609, -1.4556077279107655&#93;
- &#91;0.292091806799435, -1.6016605695364805&#93;
- &#91;0.2365413522541745, -1.7238352335086886&#93;
+ &#91;0.38899141026001216, -1.2882025121646739&#93;
+ &#91;0.3431598607272918, -1.4556077279088206&#93;
+ &#91;0.29209180679930413, -1.6016605695348598&#93;
+ &#91;0.2365413522541491, -1.723835233508896&#93;
  ⋮
- &#91;28090.07891643648, 34866.91338648441&#93;
- &#91;28488.192435986246, 35311.92111707113&#93;
- &#91;28890.514850955977, 35761.12504741425&#93;
- &#91;29297.075665576012, 36214.55110628541&#93;
- &#91;29707.90448809942, 36672.225310044014&#93;
- &#91;30123.031029820882, 37134.1737250366&#93;
- &#91;30542.48510451509, 37600.42252594703&#93;
- &#91;30966.29663012595, 38070.99794359826&#93;
- &#91;31394.495623644285, 38545.92630662419&#93;</code></pre>
+ &#91;28090.076115343432, 34867.02594964842&#93;
+ &#91;28488.189596449276, 35312.03523725597&#93;
+ &#91;28890.51197192504, 35761.24074459752&#93;
+ &#91;29297.072746048078, 36214.66840753737&#93;
+ &#91;29707.901529797746, 36672.34420745299&#93;
+ &#91;30123.028031235135, 37134.294248783204&#93;
+ &#91;30542.482064244345, 37600.54470140422&#93;
+ &#91;30966.293547238365, 38071.1217838308&#93;
+ &#91;31394.492499643053, 38546.05182533289&#93;</code></pre>
 <pre><code class="language-julia">plot&#40;data2_scaled_t, sol2&#40;data2_scaled_t&#41;&#91;1,:&#93;, label &#61; &quot;ODE&quot;, ylims&#61;&#40;-1,1&#41;&#41;
 scatter&#33;&#40;data2_scaled_t, data2_scaled_x, label &#61; &quot;data&quot;&#41;</code></pre>
-<p><span style="color:red;">// Image matching '/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_72_1.png' not found. //</span></p>
+<img src="/modelagem_matematica/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_72_1.png" alt="">
 <pre><code class="language-julia">function ddu_pendulum&#33;&#40;ddu, du, u, p, t&#41;
     θ &#61; u&#91;1&#93;
     ω &#61; du&#91;1&#93;
@@ -1081,7 +1010,7 @@ sol_2nd.retcode</code></pre>
 <pre><code class="language-julia">:Success</code></pre>
 <pre><code class="language-julia">plot&#40;data2_scaled_t, sol_2nd&#40;data2_scaled_t&#41;&#91;2,:&#93;, label &#61; &quot;ODE&quot;, ylims&#61;&#40;-1,1&#41;&#41;
 scatter&#33;&#40;data2_scaled_t, data2_scaled_x, label &#61; &quot;data&quot;&#41;</code></pre>
-<p><span style="color:red;">// Image matching '/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_75_1.png' not found. //</span></p>
+<img src="/modelagem_matematica/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_75_1.png" alt="">
 <pre><code class="language-julia">prob_rmk &#61; remake&#40;prob_pendulum_2nd; u0 &#61; ArrayPartition&#40;&#91;0.0&#93;, &#91;θ₀&#93;&#41;, p &#61; &#91;l, g, α&#93;&#41;
 sol_rmk &#61; solve&#40;prob_rmk&#41;</code></pre>
 <pre><code class="language-julia">retcode: Success
@@ -1098,37 +1027,37 @@ t: 81-element Vector&#123;Float64&#125;:
   0.4361696895237713
   0.5660126318578794
   ⋮
- 14.757103758523856
- 14.975837242139237
- 15.220528172168207
- 15.435739323889688
- 15.681990504266405
- 15.899891324886354
- 16.144987068343934
- 16.367029004899734
+ 14.75710393351784
+ 14.975837376148979
+ 15.220528314715068
+ 15.4357394488737
+ 15.68199060915447
+ 15.899891437531256
+ 16.14498715319801
+ 16.367029104543224
  16.45
 u: 81-element Vector&#123;RecursiveArrayTools.ArrayPartition&#123;Float64, Tuple&#123;Vect
 or&#123;Float64&#125;, Vector&#123;Float64&#125;&#125;&#125;&#125;:
  &#40;&#91;0.0&#93;, &#91;0.5235987755982988&#93;&#41;
  &#40;&#91;-0.0009980900796482302&#93;, &#91;0.523598702408922&#93;&#41;
  &#40;&#91;-0.010978532676025766&#93;, &#91;0.5235899199226164&#93;&#41;
- &#40;&#91;-0.11068567653652728&#93;, &#91;0.5226974863498236&#93;&#41;
- &#40;&#91;-0.3813143284771497&#93;, &#91;0.5127947624143488&#93;&#41;
- &#40;&#91;-0.7977890197442175&#93;, &#91;0.4745408968992312&#93;&#41;
- &#40;&#91;-1.268356249332695&#93;, &#91;0.38830121752424207&#93;&#41;
- &#40;&#91;-1.7078585641373931&#93;, &#91;0.22627879083954483&#93;&#41;
- &#40;&#91;-1.8891348315194079&#93;, &#91;-0.0020668325633487585&#93;&#41;
- &#40;&#91;-1.6627067086680587&#93;, &#91;-0.23711503637629103&#93;&#41;
+ &#40;&#91;-0.1106856765365273&#93;, &#91;0.5226974863498236&#93;&#41;
+ &#40;&#91;-0.38131432847714974&#93;, &#91;0.5127947624143487&#93;&#41;
+ &#40;&#91;-0.7977890197442177&#93;, &#91;0.47454089689923107&#93;&#41;
+ &#40;&#91;-1.2683562493326956&#93;, &#91;0.38830121752424207&#93;&#41;
+ &#40;&#91;-1.7078585641373936&#93;, &#91;0.22627879083954466&#93;&#41;
+ &#40;&#91;-1.8891348315194052&#93;, &#91;-0.0020668325633489415&#93;&#41;
+ &#40;&#91;-1.6627067086680574&#93;, &#91;-0.2371150363762909&#93;&#41;
  ⋮
- &#40;&#91;0.49103571221118436&#93;, &#91;-0.3359401762753514&#93;&#41;
- &#40;&#91;1.2181504266325172&#93;, &#91;-0.13835450159398452&#93;&#41;
- &#40;&#91;1.1421234168083245&#93;, &#91;0.17172686806385645&#93;&#41;
- &#40;&#91;0.35132874328089825&#93;, &#91;0.3409458558094231&#93;&#41;
- &#40;&#91;-0.7548617910520811&#93;, &#91;0.28745266963945754&#93;&#41;
- &#40;&#91;-1.2735027218362773&#93;, &#91;0.053843944407130785&#93;&#41;
- &#40;&#91;-0.93261168688129&#93;, &#91;-0.2363744318904869&#93;&#41;
- &#40;&#91;-0.008989184610849575&#93;, &#91;-0.34667806040764854&#93;&#41;
- &#40;&#91;0.36875503600834453&#93;, &#91;-0.33163121749061913&#93;&#41;</code></pre>
+ &#40;&#91;0.4910364935793956&#93;, &#91;-0.3359400903659479&#93;&#41;
+ &#40;&#91;1.2181506703554332&#93;, &#91;-0.13835433828158172&#93;&#41;
+ &#40;&#91;1.1421230770911266&#93;, &#91;0.17172703098371234&#93;&#41;
+ &#40;&#91;0.3513281719783554&#93;, &#91;0.34094589979533435&#93;&#41;
+ &#40;&#91;-0.7548621921063656&#93;, &#91;0.2874525904670078&#93;&#41;
+ &#40;&#91;-1.2735027973864756&#93;, &#91;0.053843800899205596&#93;&#41;
+ &#40;&#91;-0.9326114124256897&#93;, &#91;-0.23637451107073632&#93;&#41;
+ &#40;&#91;-0.008988723570449997&#93;, &#91;-0.34667806133206513&#93;&#41;
+ &#40;&#91;0.36875503620207184&#93;, &#91;-0.3316312175041112&#93;&#41;</code></pre>
 <pre><code class="language-julia">function objective&#40;β&#41;
     g &#61; 9.8
     ω₀ &#61; 0.0
@@ -1146,7 +1075,7 @@ end</code></pre>
 <pre><code class="language-julia">* Status: success
 
  * Candidate solution
-    Final objective value:     6.611662e-03
+    Final objective value:     1.323686e-03
 
  * Found with
     Algorithm:     Nelder-Mead
@@ -1156,28 +1085,28 @@ end</code></pre>
 
  * Work counters
     Seconds run:   0  &#40;vs limit Inf&#41;
-    Iterations:    79
-    f&#40;x&#41; calls:    151</code></pre>
+    Iterations:    71
+    f&#40;x&#41; calls:    135</code></pre>
 <pre><code class="language-julia">θ₀, l, α &#61; Optim.minimizer&#40;res&#41;</code></pre>
 <pre><code class="language-julia">3-element Vector&#123;Float64&#125;:
- 0.5593021113003932
- 0.7423176561595073
- 0.03619218099878478</code></pre>
+ 0.5566387971294271
+ 0.7420963830767683
+ 0.03745649548388733</code></pre>
 <pre><code class="language-julia">π / θ₀</code></pre>
-<pre><code class="language-julia">5.616986938035155</code></pre>
+<pre><code class="language-julia">5.6438621773956665</code></pre>
 <pre><code class="language-julia">θ₀ - π / 5.6529</code></pre>
-<pre><code class="language-julia">0.0035532649401545102</code></pre>
+<pre><code class="language-julia">0.0008899507691884079</code></pre>
 <pre><code class="language-julia">prob_rmk &#61; remake&#40;prob_pendulum_2nd, u0 &#61; ArrayPartition&#40;&#91;0.0&#93;, &#91;θ₀&#93;&#41;, p &#61; &#91;l, g, α&#93;&#41;</code></pre>
 <pre><code class="language-julia">ODEProblem with uType RecursiveArrayTools.ArrayPartition&#123;Float64, Tuple&#123;Vec
 tor&#123;Float64&#125;, Vector&#123;Float64&#125;&#125;&#125; and tType Float64. In-place: true
 timespan: &#40;0.0, 16.45&#41;
-u0: &#40;&#91;0.0&#93;, &#91;0.5593021113003932&#93;&#41;</code></pre>
+u0: &#40;&#91;0.0&#93;, &#91;0.5566387971294271&#93;&#41;</code></pre>
 <pre><code class="language-julia">sol_2nd &#61; solve&#40;prob_rmk&#41;
 sol_2nd.retcode</code></pre>
 <pre><code class="language-julia">:Success</code></pre>
 <pre><code class="language-julia">plot&#40;data2_scaled_t, sol_2nd&#40;data2_scaled_t&#41;&#91;2,:&#93;, label &#61; &quot;ODE&quot;, ylims&#61;&#40;-1,1&#41;&#41;
 scatter&#33;&#40;data2_scaled_t, data2_scaled_x, label &#61; &quot;data&quot;&#41;</code></pre>
-<p><span style="color:red;">// Image matching '/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_84_1.png' not found. //</span></p>
+<img src="/modelagem_matematica/assets/pages/jupytered/c07/0707-Pendulo_angulos_grandes/code/images/0707-Pendulo_angulos_grandes_84_1.png" alt="">
 
     <div class="navbar">
     <p id="nav">
@@ -1198,7 +1127,7 @@ scatter&#33;&#40;data2_scaled_t, data2_scaled_x, label &#61; &quot;data&quot;&#4
         </div>
     
 
-    Last modified: June 21, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
+    Last modified: June 23, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

@@ -40,7 +40,7 @@ include("../../../_assets/attachments/scripts/VideoTracking.jl")
 ```
 
 ```
-Main.##WeaveSandBox#416.VideoTracking
+Main.##WeaveSandBox#607.VideoTracking
 ```
 
 
@@ -251,14 +251,15 @@ DisplayMovie.display_movie("../../../_assets/attachments/img/pendulo_70cm_1_redu
 Error: MethodError: no method matching show(::IOContext{IOBuffer}, ::MIME{S
 ymbol("text/html")}, ::String)
 Closest candidates are:
-  show(::IO, ::MIME{Symbol("text/html")}, !Matched::DataFrames.GroupedDataF
-rame) at ~/.julia/packages/DataFrames/zqFGs/src/abstractdataframe/io.jl:291
   show(::IO, ::MIME{Symbol("text/html")}, !Matched::DataFrames.DataFrameRow
 ; summary, eltypes) at ~/.julia/packages/DataFrames/zqFGs/src/abstractdataf
 rame/io.jl:268
   show(::IO, ::MIME{Symbol("text/html")}, !Matched::DataFrames.AbstractData
 Frame; summary, eltypes) at ~/.julia/packages/DataFrames/zqFGs/src/abstract
 dataframe/io.jl:130
+  show(::IO, ::MIME{Symbol("text/html")}, !Matched::DataFrames.DataFrameRow
+s; summary, eltypes) at ~/.julia/packages/DataFrames/zqFGs/src/abstractdata
+frame/io.jl:275
   ...
 ```
 
@@ -381,8 +382,8 @@ labeled_components = label_components(mask)
 
 ```
 Error: LoadError: UndefVarError: @which not defined
-in expression starting at /Users/rmsrosa/Documents/git-repositories/modelag
-em_matematica/src/jupyter/c07/0707-Pendulo_angulos_grandes.ipynb:2
+in expression starting at /Users/rrosa/Documents/git_repositories/modelagem
+_matematica/src/jupyter/c07/0707-Pendulo_angulos_grandes.ipynb:2
 ```
 
 
@@ -539,11 +540,8 @@ filter!(p -> p.area ≥ min_area, components_location)
 ```
 
 ```
-1-element Vector{Main.##WeaveSandBox#416.VideoTracking.Blob}:
- Blob Object
-  Centroid coordinates: (x, y) = (670.0722713864307, 387.4906588003933)
-  Span values: (xspan, yspan) = (644:697, 364:412)
-  Occupied: area = 2034
+1-element Vector{Main.##WeaveSandBox#607.VideoTracking.Blob}:
+ (xspan, yspan) = (644:697, 364:412)
 ```
 
 
@@ -565,11 +563,8 @@ filter!(p -> p.area ≥ min_area, components_location)
 ```
 
 ```
-1-element Vector{Main.##WeaveSandBox#416.VideoTracking.Blob}:
- Blob Object
-  Centroid coordinates: (x, y) = (670.0722713864307, 387.4906588003933)
-  Span values: (xspan, yspan) = (644:697, 364:412)
-  Occupied: area = 2034
+1-element Vector{Main.##WeaveSandBox#607.VideoTracking.Blob}:
+ (xspan, yspan) = (644:697, 364:412)
 ```
 
 
@@ -583,12 +578,17 @@ draw(vd[54], Polygon(VideoTracking.RectanglePoints(p)), colorant"red")
 
 ```julia
 filename = "../../../_assets/attachments/img/pendulo_70cm_1_reduzido_curto.mp4"
-tracks_70cm1 = VideoTracking.find_tracks(filename)
+# filename = "../../../_assets/attachments/img/pendulo_70cm_1_reduzido.mov"
+tracks_70cm1 = VideoTracking.find_tracks(filename, lag = 10)
 ```
 
 ```
-1-element Vector{Main.##WeaveSandBox#416.VideoTracking.Track}:
- Tracked blob with framespan nspan = 13:55
+3-element Vector{Main.##WeaveSandBox#607.VideoTracking.Track}:
+ Tracked blob with framespan nspan = 13:150
+
+ Tracked blob with framespan nspan = 82:150
+
+ Tracked blob with framespan nspan = 114:150
 ```
 
 
@@ -606,14 +606,15 @@ DisplayMovie.display_movie("../../../_assets/attachments/img/pendulo_70cm_1_redu
 Error: MethodError: no method matching show(::IOContext{IOBuffer}, ::MIME{S
 ymbol("text/html")}, ::String)
 Closest candidates are:
-  show(::IO, ::MIME{Symbol("text/html")}, !Matched::DataFrames.GroupedDataF
-rame) at ~/.julia/packages/DataFrames/zqFGs/src/abstractdataframe/io.jl:291
   show(::IO, ::MIME{Symbol("text/html")}, !Matched::DataFrames.DataFrameRow
 ; summary, eltypes) at ~/.julia/packages/DataFrames/zqFGs/src/abstractdataf
 rame/io.jl:268
   show(::IO, ::MIME{Symbol("text/html")}, !Matched::DataFrames.AbstractData
 Frame; summary, eltypes) at ~/.julia/packages/DataFrames/zqFGs/src/abstract
 dataframe/io.jl:130
+  show(::IO, ::MIME{Symbol("text/html")}, !Matched::DataFrames.DataFrameRow
+s; summary, eltypes) at ~/.julia/packages/DataFrames/zqFGs/src/abstractdata
+frame/io.jl:275
   ...
 ```
 
@@ -624,8 +625,12 @@ tracks_70cm1
 ```
 
 ```
-1-element Vector{Main.##WeaveSandBox#416.VideoTracking.Track}:
- Tracked blob with framespan nspan = 13:55
+3-element Vector{Main.##WeaveSandBox#607.VideoTracking.Track}:
+ Tracked blob with framespan nspan = 13:150
+
+ Tracked blob with framespan nspan = 82:150
+
+ Tracked blob with framespan nspan = 114:150
 ```
 
 
@@ -635,7 +640,7 @@ tracks_70cm1[1].nspan
 ```
 
 ```
-13:55
+13:150
 ```
 
 
@@ -645,102 +650,27 @@ tracks_70cm1[1].path
 ```
 
 ```
-43-element Vector{Main.##WeaveSandBox#416.VideoTracking.Blob}:
- Blob Object
-  Centroid coordinates: (x, y) = (849.1062271062272, 208.7948717948718)
-  Span values: (xspan, yspan) = (840:854, 177:240)
-  Occupied: area = 546
-
- Blob Object
-  Centroid coordinates: (x, y) = (847.6581769436997, 214.25067024128685)
-  Span values: (xspan, yspan) = (837:854, 183:247)
-  Occupied: area = 746
-
- Blob Object
-  Centroid coordinates: (x, y) = (846.3590285110877, 217.86061246040126)
-  Span values: (xspan, yspan) = (834:854, 183:253)
-  Occupied: area = 947
-
- Blob Object
-  Centroid coordinates: (x, y) = (845.1462585034013, 220.17942176870747)
-  Span values: (xspan, yspan) = (831:854, 183:256)
-  Occupied: area = 1176
-
- Blob Object
-  Centroid coordinates: (x, y) = (843.8523297491039, 222.40071684587812)
-  Span values: (xspan, yspan) = (829:854, 179:257)
-  Occupied: area = 1395
-
- Blob Object
-  Centroid coordinates: (x, y) = (843.0366013071896, 223.26797385620915)
-  Span values: (xspan, yspan) = (827:854, 179:258)
-  Occupied: area = 1530
-
- Blob Object
-  Centroid coordinates: (x, y) = (843.1176084099868, 222.32982917214193)
-  Span values: (xspan, yspan) = (827:854, 179:258)
-  Occupied: area = 1522
-
- Blob Object
-  Centroid coordinates: (x, y) = (843.275722932078, 221.93678547410894)
-  Span values: (xspan, yspan) = (827:854, 179:258)
-  Occupied: area = 1487
-
- Blob Object
-  Centroid coordinates: (x, y) = (843.2882273342354, 222.37753721244925)
-  Span values: (xspan, yspan) = (827:854, 180:258)
-  Occupied: area = 1478
-
- Blob Object
-  Centroid coordinates: (x, y) = (843.3896648044692, 223.02932960893855)
-  Span values: (xspan, yspan) = (827:854, 180:257)
-  Occupied: area = 1432
-
+138-element Vector{Main.##WeaveSandBox#607.VideoTracking.Blob}:
+ (xspan, yspan) = (840:854, 177:240)
+ (xspan, yspan) = (837:854, 183:247)
+ (xspan, yspan) = (834:854, 183:253)
+ (xspan, yspan) = (831:854, 183:256)
+ (xspan, yspan) = (829:854, 179:257)
+ (xspan, yspan) = (827:854, 179:258)
+ (xspan, yspan) = (827:854, 179:258)
+ (xspan, yspan) = (827:854, 179:258)
+ (xspan, yspan) = (827:854, 180:258)
+ (xspan, yspan) = (827:854, 180:257)
  ⋮
- Blob Object
-  Centroid coordinates: (x, y) = (837.734181689643, 233.8221986567692)
-  Span values: (xspan, yspan) = (813:854, 176:276)
-  Occupied: area = 2829
-
- Blob Object
-  Centroid coordinates: (x, y) = (836.0925600468659, 241.8945518453427)
-  Span values: (xspan, yspan) = (807:854, 178:289)
-  Occupied: area = 3414
-
- Blob Object
-  Centroid coordinates: (x, y) = (832.6118686868687, 255.65984848484848)
-  Span values: (xspan, yspan) = (802:854, 184:306)
-  Occupied: area = 3960
-
- Blob Object
-  Centroid coordinates: (x, y) = (804.2969808995687, 302.09303758471964)
-  Span values: (xspan, yspan) = (782:827, 281:325)
-  Occupied: area = 1623
-
- Blob Object
-  Centroid coordinates: (x, y) = (778.301724137931, 322.82635467980293)
-  Span values: (xspan, yspan) = (756:802, 301:345)
-  Occupied: area = 1624
-
- Blob Object
-  Centroid coordinates: (x, y) = (747.879472693032, 345.85310734463275)
-  Span values: (xspan, yspan) = (726:771, 324:367)
-  Occupied: area = 1593
-
- Blob Object
-  Centroid coordinates: (x, y) = (711.4871007371007, 367.28132678132675)
-  Span values: (xspan, yspan) = (690:735, 345:390)
-  Occupied: area = 1628
-
- Blob Object
-  Centroid coordinates: (x, y) = (670.0882352941177, 387.8469387755102)
-  Span values: (xspan, yspan) = (648:693, 366:411)
-  Occupied: area = 1666
-
- Blob Object
-  Centroid coordinates: (x, y) = (624.7634730538922, 405.8550898203593)
-  Span values: (xspan, yspan) = (603:648, 384:428)
-  Occupied: area = 1670
+ (xspan, yspan) = (651:695, 367:410)
+ (xspan, yspan) = (686:731, 350:392)
+ (xspan, yspan) = (717:760, 332:373)
+ (xspan, yspan) = (742:785, 314:355)
+ (xspan, yspan) = (762:806, 299:337)
+ (xspan, yspan) = (778:821, 284:323)
+ (xspan, yspan) = (789:833, 271:310)
+ (xspan, yspan) = (797:840, 262:300)
+ (xspan, yspan) = (801:845, 256:294)
 ```
 
 
@@ -750,10 +680,7 @@ tracks_70cm1[1].path[1]
 ```
 
 ```
-Blob Object
-  Centroid coordinates: (x, y) = (849.1062271062272, 208.7948717948718)
-  Span values: (xspan, yspan) = (840:854, 177:240)
-  Occupied: area = 546
+(xspan, yspan) = (840:854, 177:240)
 ```
 
 
@@ -818,7 +745,9 @@ n_minima
 ```
 
 ```
-Int64[]
+2-element Vector{Int64}:
+  72
+ 125
 ```
 
 
@@ -832,19 +761,15 @@ vline!(plt, n_minima, label = "minima")
 display(plt)
 ```
 
-```
-Error: BoundsError: attempt to access 0-element Vector{Float64} at index [1
-]
-```
-
-
+\fig{images/0707-Pendulo_angulos_grandes_45_1.png}
 
 ```julia
 (n_minima[2:end] - n_minima[1:end-1]) / 29.5
 ```
 
 ```
-Float64[]
+1-element Vector{Float64}:
+ 1.7966101694915255
 ```
 
 
@@ -925,7 +850,7 @@ center_point = Optim.optimize(error, [400.0, 800.0, 500])
 * Status: success
 
  * Candidate solution
-    Final objective value:     0.000000e+00
+    Final objective value:     4.747098e+06
 
  * Found with
     Algorithm:     Nelder-Mead
@@ -935,8 +860,8 @@ center_point = Optim.optimize(error, [400.0, 800.0, 500])
 
  * Work counters
     Seconds run:   0  (vs limit Inf)
-    Iterations:    0
-    f(x) calls:    5
+    Iterations:    151
+    f(x) calls:    280
 ```
 
 
@@ -946,7 +871,7 @@ Optim.minimum(center_point)
 ```
 
 ```
-0.0
+4.74709830356046e6
 ```
 
 
@@ -957,9 +882,9 @@ center_nx, center_ny, radius_n = Optim.minimizer(center_point)
 
 ```
 3-element Vector{Float64}:
- 400.0
- 800.0
- 500.0
+ 466.4527735778014
+ 556.9310990759983
+ 504.68671280430794
 ```
 
 
@@ -983,7 +908,7 @@ scale = radius_n / l # points per meter
 ```
 
 ```
-714.2857142857143
+720.9810182918685
 ```
 
 
@@ -994,27 +919,27 @@ data_scaled_y = (data_y .- center_ny) / scale
 ```
 
 ```
-43-element Vector{Float64}:
- -0.7389128205128205
- -0.7465509383378015
- -0.7516048574445617
- -0.7548511904761904
- -0.7579610035842294
- -0.7591751633986928
- -0.7578617608409987
- -0.7573114996637526
- -0.7579285520974289
- -0.7588410614525138
+138-element Vector{Float64}:
+ -0.3949146560688051
+ -0.4024818434260268
+ -0.40748882991738683
+ -0.4107050162655377
+ -0.41378595046604316
+ -0.4149888351305877
+ -0.41368762932867925
+ -0.4131424780860513
+ -0.4137538003360941
+ -0.4146578357821777
   ⋮
- -0.7739510781194767
- -0.7852523725834797
- -0.8045237878787878
- -0.8695302526186075
- -0.8985568965517241
- -0.9307943502824857
- -0.9607938574938573
- -0.9895857142857141
- -1.0147971257485031
+ -0.6432782364647945
+ -0.6194322054302688
+ -0.5943266060424751
+ -0.5693437498002181
+ -0.5457688568949555
+ -0.5250531928206692
+ -0.5073704469891157
+ -0.4948678346300161
+ -0.4867289226758497
 ```
 
 
@@ -1071,40 +996,40 @@ t: 32-element Vector{Float64}:
  0.05520287578278107
  0.1186994834079412
  0.20021318382712075
- 0.3059148580456768
- 0.4289016257510082
- 0.556918677400161
+ 0.30591484896808435
+ 0.4289016061113905
+ 0.5569186555915231
  ⋮
- 3.336085982741865
- 3.5798111245515645
- 3.789943545334064
- 4.033677951692835
- 4.248777445772274
- 4.4897245954065665
- 4.712943195270591
- 4.948794481749135
+ 3.3360855745835023
+ 3.5798106962143854
+ 3.7899430036121617
+ 4.033677409516851
+ 4.248776802620724
+ 4.489724053643603
+ 4.712942542004417
+ 4.948793974730231
  5.0
 u: 32-element Vector{Vector{Float64}}:
  [0.5235987755982988, 0.0]
- [0.5235987044417862, -0.000998093740288535]
- [0.5235901656815024, -0.01097897701799843]
- [0.52272227807514, -0.1107323314966049]
- [0.5129658631370241, -0.3840406425996626]
- [0.4749871723737738, -0.8072478724104671]
- [0.38897468427160925, -1.2882714483013225]
- [0.22681172050256487, -1.7418841189469372]
- [-0.0034489023047863383, -1.936781391381158]
- [-0.24165889846355013, -1.7139642610036754]
+ [0.5235987044417862, -0.0009980937402885351]
+ [0.5235901656815024, -0.010978977017998427]
+ [0.52272227807514, -0.11073233149660491]
+ [0.5129658631370241, -0.38404064259966264]
+ [0.4749871723737738, -0.8072478724104674]
+ [0.3889746842716092, -1.2882714483013231]
+ [0.22681173631479296, -1.7418840903686386]
+ [-0.0034488642665777836, -1.9367813923292037]
+ [-0.24165886108376364, -1.7139643340721666]
  ⋮
- [0.5009792538381039, 0.5577247215218519]
- [0.43312617648070506, -1.0800631782759451]
- [0.10380905787269706, -1.8977493321783012]
- [-0.33772189369520583, -1.4733195325856954]
- [-0.5219374197998773, -0.15523391826013316]
- [-0.36422595366369465, 1.3840456727974355]
- [0.02882117308366698, 1.9341610901039223]
- [0.41822224613478143, 1.157201337942282]
- [0.4697150850563418, 0.8484644241876123]
+ [0.5009790261865464, 0.5577274667872847]
+ [0.43312663917777644, -1.0800606609666108]
+ [0.10381008615004722, -1.8977485458829486]
+ [-0.33772109481584195, -1.4733220488166103]
+ [-0.5219373201122955, -0.15523840887687057]
+ [-0.3642267037960671, 1.384042971093617]
+ [0.028819909227411733, 1.9341613541835863]
+ [0.4182216594902942, 1.1572042219330516]
+ [0.46971508519163835, 0.8484644252456572]
 ```
 
 
@@ -1307,25 +1232,25 @@ t: 448-element Vector{Float64}:
  14.914914914914915
 u: 448-element Vector{Vector{Float64}}:
  [0.5235987755982988, 0.0]
- [0.5197064819391027, -0.23304144136133412]
- [0.5080822001687986, -0.4629302691579846]
- [0.4888836986777478, -0.6865155884298499]
- [0.4623737395236549, -0.9006563907399178]
+ [0.5197064819391027, -0.23304144136133448]
+ [0.5080822001687986, -0.46293026915798463]
+ [0.4888836986777477, -0.6865155884298502]
+ [0.4623737395236549, -0.9006563907399179]
  [0.4289196227578826, -1.102237149997166]
- [0.38899141026001216, -1.2882025121646734]
- [0.3431598607272609, -1.4556077279107655]
- [0.292091806799435, -1.6016605695364805]
- [0.2365413522541745, -1.7238352335086886]
+ [0.38899141026001216, -1.2882025121646739]
+ [0.3431598607272918, -1.4556077279088206]
+ [0.29209180679930413, -1.6016605695348598]
+ [0.2365413522541491, -1.723835233508896]
  ⋮
- [28090.07891643648, 34866.91338648441]
- [28488.192435986246, 35311.92111707113]
- [28890.514850955977, 35761.12504741425]
- [29297.075665576012, 36214.55110628541]
- [29707.90448809942, 36672.225310044014]
- [30123.031029820882, 37134.1737250366]
- [30542.48510451509, 37600.42252594703]
- [30966.29663012595, 38070.99794359826]
- [31394.495623644285, 38545.92630662419]
+ [28090.076115343432, 34867.02594964842]
+ [28488.189596449276, 35312.03523725597]
+ [28890.51197192504, 35761.24074459752]
+ [29297.072746048078, 36214.66840753737]
+ [29707.901529797746, 36672.34420745299]
+ [30123.028031235135, 37134.294248783204]
+ [30542.482064244345, 37600.54470140422]
+ [30966.293547238365, 38071.1217838308]
+ [31394.492499643053, 38546.05182533289]
 ```
 
 
@@ -1396,37 +1321,37 @@ t: 81-element Vector{Float64}:
   0.4361696895237713
   0.5660126318578794
   ⋮
- 14.757103758523856
- 14.975837242139237
- 15.220528172168207
- 15.435739323889688
- 15.681990504266405
- 15.899891324886354
- 16.144987068343934
- 16.367029004899734
+ 14.75710393351784
+ 14.975837376148979
+ 15.220528314715068
+ 15.4357394488737
+ 15.68199060915447
+ 15.899891437531256
+ 16.14498715319801
+ 16.367029104543224
  16.45
 u: 81-element Vector{RecursiveArrayTools.ArrayPartition{Float64, Tuple{Vect
 or{Float64}, Vector{Float64}}}}:
  ([0.0], [0.5235987755982988])
  ([-0.0009980900796482302], [0.523598702408922])
  ([-0.010978532676025766], [0.5235899199226164])
- ([-0.11068567653652728], [0.5226974863498236])
- ([-0.3813143284771497], [0.5127947624143488])
- ([-0.7977890197442175], [0.4745408968992312])
- ([-1.268356249332695], [0.38830121752424207])
- ([-1.7078585641373931], [0.22627879083954483])
- ([-1.8891348315194079], [-0.0020668325633487585])
- ([-1.6627067086680587], [-0.23711503637629103])
+ ([-0.1106856765365273], [0.5226974863498236])
+ ([-0.38131432847714974], [0.5127947624143487])
+ ([-0.7977890197442177], [0.47454089689923107])
+ ([-1.2683562493326956], [0.38830121752424207])
+ ([-1.7078585641373936], [0.22627879083954466])
+ ([-1.8891348315194052], [-0.0020668325633489415])
+ ([-1.6627067086680574], [-0.2371150363762909])
  ⋮
- ([0.49103571221118436], [-0.3359401762753514])
- ([1.2181504266325172], [-0.13835450159398452])
- ([1.1421234168083245], [0.17172686806385645])
- ([0.35132874328089825], [0.3409458558094231])
- ([-0.7548617910520811], [0.28745266963945754])
- ([-1.2735027218362773], [0.053843944407130785])
- ([-0.93261168688129], [-0.2363744318904869])
- ([-0.008989184610849575], [-0.34667806040764854])
- ([0.36875503600834453], [-0.33163121749061913])
+ ([0.4910364935793956], [-0.3359400903659479])
+ ([1.2181506703554332], [-0.13835433828158172])
+ ([1.1421230770911266], [0.17172703098371234])
+ ([0.3513281719783554], [0.34094589979533435])
+ ([-0.7548621921063656], [0.2874525904670078])
+ ([-1.2735027973864756], [0.053843800899205596])
+ ([-0.9326114124256897], [-0.23637451107073632])
+ ([-0.008988723570449997], [-0.34667806133206513])
+ ([0.36875503620207184], [-0.3316312175041112])
 ```
 
 
@@ -1460,7 +1385,7 @@ res = Optim.optimize(objective, [π / 3, 0.7, 0.0])
 * Status: success
 
  * Candidate solution
-    Final objective value:     6.611662e-03
+    Final objective value:     1.323686e-03
 
  * Found with
     Algorithm:     Nelder-Mead
@@ -1470,8 +1395,8 @@ res = Optim.optimize(objective, [π / 3, 0.7, 0.0])
 
  * Work counters
     Seconds run:   0  (vs limit Inf)
-    Iterations:    79
-    f(x) calls:    151
+    Iterations:    71
+    f(x) calls:    135
 ```
 
 
@@ -1482,9 +1407,9 @@ res = Optim.optimize(objective, [π / 3, 0.7, 0.0])
 
 ```
 3-element Vector{Float64}:
- 0.5593021113003932
- 0.7423176561595073
- 0.03619218099878478
+ 0.5566387971294271
+ 0.7420963830767683
+ 0.03745649548388733
 ```
 
 
@@ -1494,7 +1419,7 @@ res = Optim.optimize(objective, [π / 3, 0.7, 0.0])
 ```
 
 ```
-5.616986938035155
+5.6438621773956665
 ```
 
 
@@ -1504,7 +1429,7 @@ res = Optim.optimize(objective, [π / 3, 0.7, 0.0])
 ```
 
 ```
-0.0035532649401545102
+0.0008899507691884079
 ```
 
 
@@ -1517,7 +1442,7 @@ prob_rmk = remake(prob_pendulum_2nd, u0 = ArrayPartition([0.0], [θ₀]), p = [l
 ODEProblem with uType RecursiveArrayTools.ArrayPartition{Float64, Tuple{Vec
 tor{Float64}, Vector{Float64}}} and tType Float64. In-place: true
 timespan: (0.0, 16.45)
-u0: ([0.0], [0.5593021113003932])
+u0: ([0.0], [0.5566387971294271])
 ```
 
 
