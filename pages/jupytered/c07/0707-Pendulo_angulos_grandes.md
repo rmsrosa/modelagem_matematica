@@ -30,7 +30,7 @@ using Optim
 
 ```julia
 using DifferentialEquations.OrdinaryDiffEq
-using DifferentialEquations.RecursiveArrayTools
+import DifferentialEquations.RecursiveArrayTools
 ```
 
 
@@ -40,7 +40,7 @@ include("../../../_assets/attachments/scripts/VideoTracking.jl")
 ```
 
 ```
-Main.##WeaveSandBox#607.VideoTracking
+Main.##WeaveSandBox#624.VideoTracking
 ```
 
 
@@ -540,7 +540,7 @@ filter!(p -> p.area ≥ min_area, components_location)
 ```
 
 ```
-1-element Vector{Main.##WeaveSandBox#607.VideoTracking.Blob}:
+1-element Vector{Main.##WeaveSandBox#624.VideoTracking.Blob}:
  (xspan, yspan) = (644:697, 364:412)
 ```
 
@@ -563,7 +563,7 @@ filter!(p -> p.area ≥ min_area, components_location)
 ```
 
 ```
-1-element Vector{Main.##WeaveSandBox#607.VideoTracking.Blob}:
+1-element Vector{Main.##WeaveSandBox#624.VideoTracking.Blob}:
  (xspan, yspan) = (644:697, 364:412)
 ```
 
@@ -583,7 +583,7 @@ tracks_70cm1 = VideoTracking.find_tracks(filename, lag = 10)
 ```
 
 ```
-3-element Vector{Main.##WeaveSandBox#607.VideoTracking.Track}:
+3-element Vector{Main.##WeaveSandBox#624.VideoTracking.Track}:
  Tracked blob with framespan nspan = 13:150
 
  Tracked blob with framespan nspan = 82:150
@@ -620,12 +620,19 @@ frame/io.jl:275
 
 
 
+
+<video src="../../../_assets/attachments/img/pendulo_70cm_1_reduzido_curto_tracked.mp4" controls="controls" style="max-width: 730px;">
+</video>
+
+
+![video](/assets/attachments/img/pendulo_70cm_1_reduzido_curto_tracked.mp4)
+
 ```julia
 tracks_70cm1
 ```
 
 ```
-3-element Vector{Main.##WeaveSandBox#607.VideoTracking.Track}:
+3-element Vector{Main.##WeaveSandBox#624.VideoTracking.Track}:
  Tracked blob with framespan nspan = 13:150
 
  Tracked blob with framespan nspan = 82:150
@@ -650,7 +657,7 @@ tracks_70cm1[1].path
 ```
 
 ```
-138-element Vector{Main.##WeaveSandBox#607.VideoTracking.Blob}:
+138-element Vector{Main.##WeaveSandBox#624.VideoTracking.Blob}:
  (xspan, yspan) = (840:854, 177:240)
  (xspan, yspan) = (837:854, 183:247)
  (xspan, yspan) = (834:854, 183:253)
@@ -1307,51 +1314,7 @@ sol_rmk = solve(prob_rmk)
 ```
 
 ```
-retcode: Success
-Interpolation: specialized 4th order "free" interpolation
-t: 81-element Vector{Float64}:
-  0.0
-  0.00014665867806746294
-  0.0016132454587420922
-  0.016279113265488386
-  0.05646261671975408
-  0.1210661584895972
-  0.20394094443174465
-  0.3114428714445593
-  0.4361696895237713
-  0.5660126318578794
-  ⋮
- 14.75710393351784
- 14.975837376148979
- 15.220528314715068
- 15.4357394488737
- 15.68199060915447
- 15.899891437531256
- 16.14498715319801
- 16.367029104543224
- 16.45
-u: 81-element Vector{RecursiveArrayTools.ArrayPartition{Float64, Tuple{Vect
-or{Float64}, Vector{Float64}}}}:
- ([0.0], [0.5235987755982988])
- ([-0.0009980900796482302], [0.523598702408922])
- ([-0.010978532676025766], [0.5235899199226164])
- ([-0.1106856765365273], [0.5226974863498236])
- ([-0.38131432847714974], [0.5127947624143487])
- ([-0.7977890197442177], [0.47454089689923107])
- ([-1.2683562493326956], [0.38830121752424207])
- ([-1.7078585641373936], [0.22627879083954466])
- ([-1.8891348315194052], [-0.0020668325633489415])
- ([-1.6627067086680574], [-0.2371150363762909])
- ⋮
- ([0.4910364935793956], [-0.3359400903659479])
- ([1.2181506703554332], [-0.13835433828158172])
- ([1.1421230770911266], [0.17172703098371234])
- ([0.3513281719783554], [0.34094589979533435])
- ([-0.7548621921063656], [0.2874525904670078])
- ([-1.2735027973864756], [0.053843800899205596])
- ([-0.9326114124256897], [-0.23637451107073632])
- ([-0.008988723570449997], [-0.34667806133206513])
- ([0.36875503620207184], [-0.3316312175041112])
+Error: UndefVarError: ArrayPartition not defined
 ```
 
 
@@ -1382,21 +1345,7 @@ res = Optim.optimize(objective, [π / 3, 0.7, 0.0])
 ```
 
 ```
-* Status: success
-
- * Candidate solution
-    Final objective value:     1.323686e-03
-
- * Found with
-    Algorithm:     Nelder-Mead
-
- * Convergence measures
-    √(Σ(yᵢ-ȳ)²)/n ≤ 1.0e-08
-
- * Work counters
-    Seconds run:   0  (vs limit Inf)
-    Iterations:    71
-    f(x) calls:    135
+Error: UndefVarError: ArrayPartition not defined
 ```
 
 
@@ -1406,10 +1355,7 @@ res = Optim.optimize(objective, [π / 3, 0.7, 0.0])
 ```
 
 ```
-3-element Vector{Float64}:
- 0.5566387971294271
- 0.7420963830767683
- 0.03745649548388733
+Error: UndefVarError: res not defined
 ```
 
 
@@ -1419,7 +1365,7 @@ res = Optim.optimize(objective, [π / 3, 0.7, 0.0])
 ```
 
 ```
-5.6438621773956665
+6.0
 ```
 
 
@@ -1429,7 +1375,7 @@ res = Optim.optimize(objective, [π / 3, 0.7, 0.0])
 ```
 
 ```
-0.0008899507691884079
+-0.032150070761939875
 ```
 
 
@@ -1439,10 +1385,7 @@ prob_rmk = remake(prob_pendulum_2nd, u0 = ArrayPartition([0.0], [θ₀]), p = [l
 ```
 
 ```
-ODEProblem with uType RecursiveArrayTools.ArrayPartition{Float64, Tuple{Vec
-tor{Float64}, Vector{Float64}}} and tType Float64. In-place: true
-timespan: (0.0, 16.45)
-u0: ([0.0], [0.5566387971294271])
+Error: UndefVarError: ArrayPartition not defined
 ```
 
 
@@ -1453,7 +1396,7 @@ sol_2nd.retcode
 ```
 
 ```
-:Success
+Error: UndefVarError: prob_rmk not defined
 ```
 
 

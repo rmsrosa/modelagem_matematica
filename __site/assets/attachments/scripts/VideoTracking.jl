@@ -42,9 +42,6 @@ RectanglePoints(p::Blob) =
         Point(last(p.xspan), last(p.yspan))
     )
 
-#intersect(p1::Blob, p2::Blob) = 
-#    length(intersect(p1.xspan, p2.xspan)) > 0 && length(intersect(p1.yspan, p2.yspan)) > 0
-
 intersect(p1::Blob, p2::Blob, lag = 0) = 
     (
         last(p1.xspan) - first(p2.xspan) + lag ≥ 0 || last(p1.xspan) - first(p2.xspan) + lag ≥ 0
@@ -88,8 +85,7 @@ function find_tracks(filename; threshold = 0.15, min_area = 500, min_span = 30, 
     position_list = Vector{Vector{Blob}}()
     background = convert.(RGB{Float16}, video[1])
     mask = convert.(Gray{Float16}, background) .> 1
-#    @showprogress "Processing $(length(video)) frames ..." for vd in video
-    for vd in video
+    @showprogress "Processing $(length(video)) frames ..." for vd in video
         mask .= convert.(
             Gray{Float16},
             abs.(
@@ -107,8 +103,7 @@ function find_tracks(filename; threshold = 0.15, min_area = 500, min_span = 30, 
 
     tracks = Vector{Track}()
 
-#    @showprogress "Gathering tracks ..." for n in 2:length(video)
-    for n in 2:length(video)
+    @showprogress "Gathering tracks ..." for n in 2:length(video)
         for t in position_list[n]
 
             new = true
@@ -141,8 +136,7 @@ function tracks_on_video(
     trackedvideo = copy(video)
     colorset = distinguishable_colors(length(tracks), colorant"black", dropseed = true)
 
-#    @showprogress "Drawing tracks ..." for (k, v) in enumerate(tracks)
-    for (k, v) in enumerate(tracks)
+    @showprogress "Drawing tracks ..." for (k, v) in enumerate(tracks)
         for (n, p) in zip(v.nspan, v.path)
             draw!(trackedvideo[n], Polygon(RectanglePoints(p)), colorset[k]) 
         end
