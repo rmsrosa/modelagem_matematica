@@ -1,5 +1,5 @@
 """
-VideoTracking v0.0.2
+VideoTracking v0.0.3
 
 """
 module VideoTracking
@@ -130,7 +130,8 @@ function tracks_on_video(
         filename::AbstractString,
         tracks::Vector{Track},
         outputfile::AbstractString = "";
-        encoder_options::NamedTuple = (crf=23, preset="medium")
+        encoder_options::NamedTuple = (crf=23, preset="medium"),
+        target_pix_fmt::Int32 = VideoIO.AV_PIX_FMT_YUV420P
 )
     video = VideoIO.load(filename)
     trackedvideo = copy(video)
@@ -152,7 +153,8 @@ function tracks_on_video(
         outputfile,
         trackedvideo,
         framerate = framerate,
-        encoder_options = encoder_options
+        encoder_options = encoder_options,
+        target_pix_fmt = target_pix_fmt
     )
     
     @info "Video saved with $(length(video)) frames and $(length(tracks)) tracks"

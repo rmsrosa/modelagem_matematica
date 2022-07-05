@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="" />
+  <meta name="author" content="and contributors" />
+   <title>Lupulagem e a conversão de humulone em iso-humulone considerando saturação</title>  
+  <link rel="shortcut icon" type="image/png" href="/modelagem_matematica/assets/images/favicon.png"/>
+  <link rel="stylesheet" href="/modelagem_matematica/css/base.css"/>
+  
+  <script src="/modelagem_matematica/libs/mousetrap/mousetrap.min.js"></script>
+
+  
+    <link rel="stylesheet" href="/modelagem_matematica/libs/highlight/github.min.css">
+    <script src="/modelagem_matematica/libs/highlight/highlight.pack.js"></script>
+    <script src="/modelagem_matematica/libs/highlight/julia.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', (event) => {
+        document.querySelectorAll('pre').forEach((el) => {
+          hljs.highlightElement(el);
+        });
+      });
+    </script>
+  
+
+  
+    <link rel="stylesheet" href="/modelagem_matematica/libs/katex/katex.min.css">
+  
+</head>
+
+<body>
+
+  <div class="books-container">
+
+  <aside class="books-menu">
+  <input type="checkbox" id="menu">
+  <label for="menu">☰</label>
+
+  <div class="books-title">
+    <a href="/modelagem_matematica/">Modelagem Matemática</a>
+  </div>
+
+  <br />
+
+  <div class="books-subtitle">
+    Notas de aula
+  </div>
+
+  <br />
+
+  <div class="books-author">
+    <a href="https://rmsrosa.github.io">Ricardo M. S. Rosa</a>
+  </div>
+
+  <div class="books-menu-content">
+    <div class="menu-level-1">
+    <li><a href="/modelagem_matematica/pages/intro">Introdução</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>PARTE I</li>
+    </div>
+    <div class="menu-level-1">
+    <li>1. Preliminares</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c01/0101-Aspectos_curso">1.1. Aspectos do curso</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c01/0102-Instalando_acessando_Julia">1.2. Instalando e acessando o Julia</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c01/0103-Primeiros_passos_Julia">1.3. Primeiros passos em Julia</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>PARTE II</li>
+    </div>
+    <div class="menu-level-1">
+    <li>2. Princípios de Modelagem Matemática</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c02/0201-Principios_basicos">2.1. Princípios básicos de modelagem</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c02/0202-Exemplos_tipos_modelagem">2.2. Exemplos de tipos de modelagem</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>3. Análise Dimensional</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c03/0301-Quantidades_unidades_dimensoes">3.1. Quantidades, unidades e dimensões</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c03/0302-BuckinghamPi">3.2. Análise dimensional e o Teorema de Buckingham-Pi</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c03/0303-Unidades_Julia">3.3. Trabalhando com unidades e dimensões em Julia</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>4. Ajuste de Parâmetros</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c04/0401-Minimos_quadrados_ajuste">4.1. Mínimos quadrados e o ajuste de parâmetros</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c04/0402-Exemplos_ajuste_linear">4.2. Exemplos de ajuste linear</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c04/0403-Modelos_redutiveis_linear_aplicacoes">4.3. Modelos redutíveis ao caso linear nos parâmetros e aplicações</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c04/0404-Minimos_quadrados_nao_linear">4.4. Mínimos quadrados não-linear</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c04/0405-Exemplos_ajuste_naolinear">4.5. Exemplos de ajuste não-linear de parâmetros</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c04/0406-Redes_neurais">4.6. Redes neurais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c04/0407-Ajuste_em_redes_neurais">4.7. Ajuste de parâmetros em modelos de redes neurais</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>5. Erros e Incertezas</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c05/0501-Erros_e_incertezas">5.1. Erros e incertezas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c05/0502-Minimos_quadrados_verossimilhanca">5.2. Mínimos quadrados, maximização da verossimilhança e quantificação de incertezas em regressões lineares</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c05/0503-Propagacao_incertezas">5.3. Propagação de incertezas</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>6. Avaliação de Modelos</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c06/0601-Qualidade_do_modelo">6.1. Qualidade do ajuste</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c06/0602-Validacao_do_modelo">6.2. Validação de modelos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c06/0603-Comparacao_de_modelos">6.3. Comparação de modelos</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>PARTE III</li>
+    </div>
+    <div class="menu-level-1">
+    <li>7. Mecânica</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c07/0701-Mecanica_Newtoniana">7.1. Mecânica Newtoniana</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c07/0702-Mecanica_Lagrangiana">7.2. Mecânica Lagrangiana</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c07/0703-Conservacao_contexto_Newtoniano">7.3. Leis de conservação em um contexto Newtoniano</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c07/0704-Conservacao_contexto_Lagrangiano">7.4. Leis de conservação em um contexto Lagrangiano</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c07/0705-Hamiltonianos">7.5. Hamiltonianos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c07/0706-Pendulo">7.6. Análise do período de um pêndulo planar simples</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c07/0707-Pendulo_angulos_grandes">7.7. Experimentos com pêndulos</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>8. Modelos em Eletrônica</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c08/0801-Modelo_diodo">8.1. Modelagem da relação voltagem-corrente de um diodo</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>9. Reações Químicas</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c09/0901-Lei_acao_de_massas">9.1. Lei de ação de massas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c09/0902-Reacoes_enzimaticas">9.2. Modelagem de reações enzimática</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c09/0903-Isomerizacao">9.3. Lupulagem e a conversão de humulone em iso-humulone considerando saturação</a></li>
+    </div>
+<div>
+
+
+  
+    <a href="https://github.com/rmsrosa/modelagem_matematica/tree/modmat2022p1"><img src="/modelagem_matematica/assets/images/GitHub-Mark-32px.png" alt="GitHub repo" width="18" style="margin:5px 5px" align="left"></a>
+
+  
+
+</aside>
+
+
+  <div class="books-content">
+
+    
+      <div class="navbar">
+    <p id="nav">
+<span id="nav-prev" style="float: left;">
+<a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c09/0902-Reacoes_enzimaticas">9.2. Modelagem de reações enzimática <kbd>←</kbd></a>
+</span>
+    </p>
+</div>
+</br></br>
+
+    
+
+    
+      <div class="badges">
+<p>
+<a href="https://nbviewer.org/urls/rmsrosa.github.io/modelagem_matematica/generated/jupytered/c09/0903-Isomerizacao.ipynb"><img align="left" src="https://img.shields.io/badge/view%20in-nbviewer-orange" alt="View in NBViewer" title="View Jupyter notebook in NBViewer"></a>
+<a href="https://mybinder.org/v2/gh/rmsrosa/modelagem_matematica/julia-env-for-binder-2022p1?urlpath=git-pull%3Frepo%3Dhttps://github.com/rmsrosa/modelagem_matematica%26urlpath%3Dlab/tree%252Fmodelagem_matematica/generated/jupytered/c09/0903-Isomerizacao.ipynb%26branch%3Dgh-pages"><img align="left" src="https://mybinder.org/badge.svg" alt="Open in binder" title="Open in binder"></a>
+<a href="/modelagem_matematica/generated/jupytered/c09/0903-Isomerizacao.ipynb"><img align="left" src="https://img.shields.io/badge/download-notebook-blue" alt="Download notebook" title="Download Jupyter notebook"></a>
+<a href="/modelagem_matematica/src/jupyter/c09/0903-Isomerizacao.ipynb"><img align="left" src="https://img.shields.io/badge/view-source-lightblue" alt="View source" title="View source"></a>
+</p>
+</div></br>
+
+    
+<h1 id="get_title"><a href="#get_title" class="header-anchor">9.3. Lupulagem e a conversão de humulone em iso-humulone considerando saturação</a></h1>
+<ul>
+<li><p>O lúpulo é um componente fundamental da cerveja, que confere o amargor para equilibrar o dulçor do malte.</p>
+</li>
+<li><p>Mas esse amargor não está disponível de forma direta.</p>
+</li>
+<li><p>É necessário um processo químico, obtido através da fervura do mosto, para que o amargor seja bem aproveitado.</p>
+</li>
+<li><p>Vamos analisar alguns modelos para tratar esse processo.</p>
+</li>
+</ul>
+<pre><code class="language-julia">using DifferentialEquations
+using Statistics
+using LsqFit
+using Optim
+using Plots
+using Images</code></pre>
+<h2 id="forma_e_composição_do_lúpulo"><a href="#forma_e_composição_do_lúpulo" class="header-anchor">Forma e composição do lúpulo</a></h2>
+<ul>
+<li><p>O <a href="https://en.wikipedia.org/wiki/Hops">lúpulo</a> é uma flor de uma trepadeira da família <a href="https://pt.wikipedia.org/wiki/Cannabaceae">Cannabaceae</a>.</p>
+</li>
+<li><p>Os seus principais componentes são os óleos essenciais &#40;aroma&#41; e os alfa-ácidos &#40;amargor&#41;.</p>
+</li>
+<li><p>Os alfa-ácidos, em si, têm baixa solubilidade e pouco grau de amargor.</p>
+</li>
+<li><p>Durante a fervura do mosto, os alfa-ácidos são transformados em iso-alfa-ácidos, que possuem solubilidade e grau de amargor bem maiores, sendo a principal componente de amargor na cerveja.</p>
+</li>
+</ul>
+<p><img src="/modelagem_matematica/assets/attachments/img/hopcones_farm.jpg" alt="hop cones" /></p>
+<p><img src="/modelagem_matematica/assets/attachments/img/HopAnatomy_600x400.jpg" alt="Hop anatomy" /></p>
+<p><img src="/modelagem_matematica/assets/attachments/img/CompositionofHopCones.png" alt="Hop composition" /></p>
+<p><img src="/modelagem_matematica/assets/attachments/img/TotalResins_600.png" alt="Total resins" /></p>
+<h2 id="humulone"><a href="#humulone" class="header-anchor">Humulone</a></h2>
+<ul>
+<li><p>Há vários tipos de alfa-ácidos &#40;humulone, co-humulone, ad-humulone, etc.&#41; e iso-alfa-ácidos &#40;versões <em>cis</em> e <em>trans</em> de cada&#41;.</p>
+</li>
+<li><p>O mais abundante dos alfa-ácidos é o <a href="https://en.wikipedia.org/wiki/Humulone">humulone</a>.</p>
+</li>
+<li><p>No que se segue, vamos considerar dados de utilização do humulone, obtidos em laboratório, para ajustar alguns modelos e escolher o que nos dá o melhor ajuste.</p>
+</li>
+</ul>
+<p><img src="/modelagem_matematica/assets/attachments/img/distributionofalphaacids.png" alt="Alpha-acids distribution" /></p>
+<h2 id="dissociação_isomerização_e_degradação"><a href="#dissociação_isomerização_e_degradação" class="header-anchor">Dissociação, isomerização e degradação</a></h2>
+<ul>
+<li><p>Ao ser adicionado ao mosto, durante e ao longo da fervura, os seguinte principais processos acontecem:</p>
+<ul>
+<li><p>&#40;Dissociação&#41; Os alfa-ácidos se dissociam dos outros componentes do lúpulo;</p>
+</li>
+<li><p>&#40;Isomerização&#41; Os alfa-ácidos são convertidos em iso-alfa-ácidos, a taxas de reação dependentes da temperatura e do pH.</p>
+</li>
+<li><p>&#40;Degradação&#41; Os iso-alfa-ácidos são transformados, por hidrólise, em outras substâncias sem propriedades significativas de amargor.</p>
+</li>
+</ul>
+</li>
+<li><p>Podemos representar essas reações da seguinte forma, onde \(A\) indica um alfa-ácido; \(A_\mathrm{iso}\), um isômero de alfa-ácido; \(R\) o conjunto dos outros componentes do lúpulo; e \(S\) o conjunto de substâncias degradadas dos iso-alfa-ácidos:</p>
+<ul>
+<li><p>&#40;Dissociação&#41; \(AR \rightarrow pA + (1-p)R\);</p>
+</li>
+<li><p>&#40;Isomerização&#41; \(A + H_2 O \rightleftharpoons A_{\mathrm{iso}} + H_2 O\);</p>
+</li>
+<li><p>&#40;Hidrólise&#41; \(A_{\mathrm{iso}} + H_2 O \rightarrow S\).</p>
+</li>
+</ul>
+</li>
+<li><p>O fator \(p\) indica a porcentagem de alfa-ácidos em \(AR\).</p>
+</li>
+</ul>
+<p><img src="/modelagem_matematica/assets/attachments/img/IsomerizationandDegradation.png" alt="Isomerization and degradation" /></p>
+<h2 id="equações_de_reação"><a href="#equações_de_reação" class="header-anchor">Equações de reação</a></h2>
+<ul>
+<li><p>Vamos denotar as concentrações de \(AR\), \(R\), \(A\), \(A_\mathrm{iso}\), \(H_2O\) e \(S\) por \(b\), \(r\), \(a\), \(i\) e \(h\).</p>
+</li>
+<li><p>Sem a saturação, as reações nos levam às equações parcialmente acopladas</p>
+</li>
+</ul>
+\[ \begin{cases}
+  b' = - \kappa_0 b, \\
+  r' = \kappa_0 (1-p)b, \\
+  a' = \kappa_0 pb - \kappa_1 ah + \kappa_{-1}ih, \\
+  i' = \kappa_1 ah - \kappa_{-1}ih - \kappa_2ih, \\
+  s' = \kappa_2ih.
+\end{cases}
+\]
+<ul>
+<li><p>Quando \(a\) é fornecido diretamente, basta nos concentrarmos no sistema</p>
+</li>
+</ul>
+\[ \begin{cases}
+  a' = -\kappa_1 ah + \kappa_{-1}ih, \\
+  i' = \kappa_1 ah - \kappa_{-1}ih - \kappa_2ih, \\
+\end{cases}
+\]
+<ul>
+<li><p>Na prática, \(H_2O\) é abundante, com as outras substâncias sendo da ordem de miligramas por litro, ou, aproximadamente, partes por milhão, de tal forma que \(h\approx 1\).</p>
+</li>
+<li><p>Além disso, a reação inversa à de isomerização é negligível. Isso nos leva ao sistema</p>
+</li>
+</ul>
+\[ \begin{cases}
+  a' = -\kappa_1 a, \\
+  i' = \kappa_1 a - \kappa_2i, \\
+\end{cases}
+\]
+<h2 id="solubilidade"><a href="#solubilidade" class="header-anchor">Solubilidade</a></h2>
+<ul>
+<li><p>A principal característica que buscamos considerar é a solubilidade dos alfa-ácidos.</p>
+</li>
+<li><p>Os modelos usuais de cálculo de utilização não levam a solubilidade em consideração.</p>
+</li>
+<li><p>A solubilidade limita a taxa de reação, ao limitar a quantidade de alfa-ácidos disponível para a isomerização.</p>
+</li>
+<li><p>Vamos comparar o modelo sem saturação com os três modelos de saturação discutidos em trabalho sobre ..., além de uma variação de um desses modelos.</p>
+</li>
+<li><p>Como as solubilidades dos iso-alfa-ácidos e dos ácidos degradados são bem mais altas, vamos considerar a solubilidade apenas dos alfa-ácidos. No caso, apenas do humulone.</p>
+</li>
+</ul>
+<p><img src="/modelagem_matematica/assets/attachments/img/Spetsig-BitterAcidsofHops.png" alt="Bitter acids of hops" /></p>
+<ul>
+<li><p>Com saturação \(f = f(a, \bar a)\), consideramos</p>
+</li>
+</ul>
+\[ \begin{cases}
+  a' = -\kappa_1 f(a, \bar a), \\
+  i' = \kappa_1 f(a, \bar a) - \kappa_2i, \\
+\end{cases}
+\]
+<ul>
+<li><p>Temos </p>
+<ul>
+<li><p>\(f(a, \bar a) \approx a\), para \(a\ll \bar a\);</p>
+</li>
+<li><p>\(f(a, \bar a) \approx \bar a\), para \(a \approx \bar a\).</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="funções_de_modelagem_de_saturação"><a href="#funções_de_modelagem_de_saturação" class="header-anchor">Funções de modelagem de saturação</a></h3>
+<pre><code class="language-julia">nosat&#40;x, x̄&#41; &#61; x
+
+blackman&#40;x, x̄&#41; &#61; min&#40;x, x̄&#41;
+
+teissier&#40;x, x̄&#41; &#61; x̄ * &#40;1 - exp&#40;- 2 * log&#40;2&#41; * x / x̄&#41;&#41;
+
+teissier_mod&#40;x, x̄&#41; &#61; x̄ * &#40;1 - exp&#40; - x / x̄&#41;&#41;
+
+monod&#40;x, x̄&#41; &#61; x̄ * x / &#40; 2 * x̄ &#43; x&#41;
+
+# List of the symbols with the names of the defined functions saturation/no-saturation functions
+
+const SATFUNS &#61; &#40;:nosat, :blackman, :teissier, :teissier_mod, :monod&#41;
+
+nothing</code></pre>
+<pre><code class="language-julia"># Plot saturation functions
+#
+# solubility limit for the humulone alpha-acid in wort at 100C and pH about 5.2 &#40;Spetsig&#41;
+x̄ &#61; 380
+x &#61; 0.0:4.0x̄
+plot&#40;title&#61;&quot;Funções de saturação com limite de solubilidade x̄ &#61; &#36;x̄&quot;, ylim&#61;&#40;0, 1.5*x̄&#41;, titlefont&#61;10&#41;
+for f in SATFUNS
+    plot&#33;&#40;x, x -&gt; eval&#40;f&#41;&#40;x, x̄&#41;, label&#61;&quot;&#36;f&quot;&#41;
+end
+display&#40;plot&#33;&#40;xlabel&#61;&quot;concentração &#40;mg/l&#41;&quot;, ylabel&#61;&quot;concentração parte solubilizada &#40;mg/l&#41;&quot;&#41;&#41;</code></pre>
+<img src="/modelagem_matematica/assets/pages/jupytered/c09/0903-Isomerizacao/code/images/0903-Isomerizacao_3_1.png" alt="">
+<h3 id="equações_diferenciais_do_sistema_de_reações_químicas"><a href="#equações_diferenciais_do_sistema_de_reações_químicas" class="header-anchor">Equações diferenciais do sistema de reações químicas</a></h3>
+<pre><code class="language-julia">&quot;&quot;&quot;
+    dudt_nosat&#33;&#40;du, u, params, t&#41;
+
+Right hand side of the system of reaction equations
+
+x&#39; &#61; -k₁x
+y&#39; &#61; k₁x - k₂y
+
+modeling the chain reaction X → Y → Z, with reaction rates k₁ and k₂,
+respectively.
+&quot;&quot;&quot;
+function dudt_nosat&#33;&#40;du, u, params, t&#41;
+    x, y &#61; u
+    k₁, k₂ &#61; params
+    f &#61; k₁ * x
+    g &#61; k₂ * y
+    du&#91;1&#93; &#61; - f
+    du&#91;2&#93; &#61; f - g
+end
+
+&quot;&quot;&quot;
+    dudt_Blackman&#33;&#40;du, u, params, t&#41;
+
+Right hand side for the system of reaction equations with Blackman-type
+saturation:
+
+x&#39; &#61; -k₁ * min&#40;x,x̄&#41;
+y&#39; &#61; k₁ * min&#40;x,x̄&#41; - k₂ * y
+
+It models the chain reaction X → Y → Z, with reaction rates k₁ and k₂,
+respectively, and with a hard threshold saturation behavior for the component x,
+i.e. the reaction rate is dictated by the saturation limit x̄, once the saturation
+is achieved, or by the concentration itself, even if it is close to the 
+saturation limit.
+&quot;&quot;&quot;
+function dudt_Blackman&#33;&#40;du, u, params, t&#41;
+    x, y &#61; u
+    k₁, k₂, x̄ &#61; params
+    f &#61; k₁ * min&#40;x, x̄&#41;
+    g &#61; k₂ * y
+    du&#91;1&#93; &#61; - f
+    du&#91;2&#93; &#61; f - g
+end
+
+&quot;&quot;&quot;
+    dudt_Teissier&#33;&#40;du,u, params,t&#41;
+
+Right hand side for the system of reaction equations with Teisser-type
+saturation behavior:
+
+x&#39; &#61; -k₁ * x̄ * &#40;1 - exp&#40;-2 * log&#40;2&#41; * x / x̄&#41;&#41;
+y&#39; &#61; k₁ * x̄ * &#40;1 - exp&#40;-2 * log&#40;2&#41; * x / x̄&#41;&#41; - k₂ * y
+
+It models the chain reaction X → Y → Z, with reaction rates k₁ and k₂,
+respectively, and with a smoothed out saturation behavior as modeled by Teissier.
+&quot;&quot;&quot;
+function dudt_Teissier&#33;&#40;du, u, params, t&#41;
+    x, y &#61; u
+    k₁, k₂, x̄ &#61; params
+    f &#61; k₁ * x̄ * &#40;1 - exp&#40;-2 * log&#40;2&#41; * x / x̄&#41;&#41;
+    g &#61; k₂ * y
+    du&#91;1&#93; &#61; - f
+    du&#91;2&#93; &#61; f - g
+end
+ 
+&quot;&quot;&quot;
+    dudt_Teissier_mod&#33;&#40;du, u, params, t&#41;
+
+Right hand side for the system of reaction equations with modified Teisser-type
+saturation behavior:
+
+x&#39; &#61; -k₁ * x̄ * &#40;1 - exp&#40; x / x̄ &#41;&#41;
+y&#39; &#61; k₁ * x̄ * &#40;1 - exp&#40; x / x̄ &#41;&#41; - k₂ * y
+
+It models the chain reaction X → Y → Z, with reaction rates k₁ and k₂,
+respectively, and with a smoothed out saturation behavior as modeled by 
+a slight modification of the Teissier model; see &#91;&#96;dudt_Teissier&#33;&#96;&#93;&#40;@ref&#41;.
+&quot;&quot;&quot;
+function dudt_Teissier_mod&#33;&#40;du, u, params, t&#41;
+    x, y &#61; u
+    k₁, k₂, x̄ &#61; params
+    f &#61; k₁ * x̄ * &#40;1 - exp&#40;- x / x̄&#41;&#41;
+    g &#61; k₂ * y
+    du&#91;1&#93; &#61; - f
+    du&#91;2&#93; &#61; f - g
+end
+
+&quot;&quot;&quot;
+    dudt_Monod&#33;&#40;du, u, params, t&#41;
+
+Right hand side for the system of reaction equations with Monod-type
+saturation behavior:
+
+x&#39; &#61; -k₁ * x̄ * x / &#40;2 * x̄ &#43; x&#41;
+y&#39; &#61; k₁ * x̄ * x / &#40;2 * x̄ &#43; x&#41; - k₂ * y
+
+It models the chain reaction X → Y → Z, with reaction rates k₁ and k₂,
+respectively, and with a smoothed out saturation behavior as modeled by 
+the Monod model.
+&quot;&quot;&quot;
+function dudt_Monod&#33;&#40;du, u, params, t&#41;
+    x, y &#61; u
+    k₁, k₂, x̄ &#61; params
+    f &#61; k₁ * x̄ * x / &#40; 2 * x̄ &#43; x &#41;
+    g &#61; k₂ * y
+    du&#91;1&#93; &#61; - f
+    du&#91;2&#93; &#61; f - g
+end
+
+&quot;&quot;&quot;
+    const RHSLAWS
+
+List of implemented RHS reaction laws.
+&quot;&quot;&quot;
+const RHSLAWS &#61; &#40;
+    :dudt_nosat&#33;, :dudt_Blackman&#33;, :dudt_Teissier&#33;, :dudt_Teissier_mod&#33;, :dudt_Monod&#33;
+&#41;
+
+nothing</code></pre>
+<h2 id="dados"><a href="#dados" class="header-anchor">Dados</a></h2>
+<ul>
+<li><p>Dados extraídos do artigo de Maule &#40;direto da figura&#41;.</p>
+</li>
+<li><p>Os dados são da concentração de humulone e iso-humulone tanto no mosto &#40;apó a fervura&#41; quanto no <em>hot-break</em>.</p>
+</li>
+<li><p>O <em>hot-break</em> é um agregado de material coagulado e que decanta com o resfriamento do mosto após a fervura.</p>
+</li>
+<li><p>Concentrações em mg/l.</p>
+</li>
+</ul>
+<p><img src="/modelagem_matematica/assets/attachments/img/Maule-FateofHumuloneDuringWortBoilingandCooling-JInstBrewing-1966-Figure4.png" alt="Fate of humulone during boil" /></p>
+<pre><code class="language-julia">humulone_in &#61; &#91;37.2; 79.1; 97.7; 118.6; 158.1; 190.7; 384.9; 672.1&#93;
+humulone_wort &#61; &#91;14.0; 24.4; 23.8; 34.9; 46.5; 52.3; 79.1; 99.4&#93;
+humulone_break &#61; &#91;7.0; 9.3; 10.5; 12.8; 15.1; 18.0; 62.2; 180.2&#93;
+isohumulone_wort &#61; &#91;27.3; 39.5; 51.2; 59.3; 76.7; 91.9; 159.3; 206.4&#93;
+isohumulone_break &#61; &#91;1.7; 4.1; 5.8; 7.0; 8.7; 12.2; 46.5; 96.5&#93;
+humulone_remaining &#61; humulone_wort &#43; humulone_break
+isohumulone_remaining &#61; isohumulone_wort &#43; isohumulone_break
+nothing</code></pre>
+<h3 id="exploração_dos_dados"><a href="#exploração_dos_dados" class="header-anchor">Exploração dos dados</a></h3>
+<ul>
+<li><p>Vamos examinar os dados, traçando os gráficos de humulone e iso-humulone, respectivamente.</p>
+</li>
+</ul>
+<pre><code class="language-julia">plot&#40;humulone_in, humulone_wort, label&#61;false, color&#61;1, linestyle&#61;:dot&#41;
+scatter&#33;&#40;humulone_in, humulone_wort, label&#61;&quot;humulone no mosto&quot;, legend&#61;:topleft, color&#61;1&#41;
+plot&#33;&#40;humulone_in, humulone_break, label&#61;false, color&#61;2, linestyle&#61;:dot&#41;
+scatter&#33;&#40;humulone_in, humulone_break, label&#61;&quot;humulone no hot-break&quot;, color&#61;2&#41;
+plot&#33;&#40;humulone_in, isohumulone_wort, label&#61;false, color&#61;3, linestyle&#61;:dot&#41;
+scatter&#33;&#40;humulone_in, isohumulone_wort, label&#61;&quot;iso-humulone no mosto&quot;, color&#61;3&#41;
+plot&#33;&#40;humulone_in, isohumulone_break, label&#61;false, color&#61;4, linestyle&#61;:dot&#41;
+scatter&#33;&#40;humulone_in, isohumulone_break, label&#61;&quot;iso-humulone no hot-break&quot;, color&#61;4&#41;
+plot&#33;&#40;title&#61;&quot;Destino de quantidades crescentes de humulone após fervura do mosto por 1h30min&quot;,
+    titlefont&#61;8, xlabel&#61;&quot;humulone adicionado &#40;mg/l&#41;&quot;, ylabel&#61;&quot;concentração &#40;mg/l&#41;&quot;&#41;</code></pre>
+<img src="/modelagem_matematica/assets/pages/jupytered/c09/0903-Isomerizacao/code/images/0903-Isomerizacao_6_1.png" alt="">
+<pre><code class="language-julia">plot&#40;humulone_in, isohumulone_remaining, label&#61;false, color&#61;3, linestyle&#61;:dot&#41;
+scatter&#33;&#40;humulone_in, isohumulone_remaining , label&#61;&quot;iso-humulone restante&quot;,  color&#61;3&#41;
+plot&#33;&#40;humulone_in, humulone_remaining, label&#61;false, color&#61;1, linestyle&#61;:dot&#41;
+scatter&#33;&#40;humulone_in, humulone_remaining , label&#61;&quot;humulone restante&quot;, color&#61;1&#41;
+plot&#33;&#40;title&#61;&quot;Humulone e iso-humulone restantes após fervura do mosto por 1h30min&quot;, legend&#61;:topleft,
+    titlefont&#61;8, xlabel&#61;&quot;humulone adicionado &#40;mg/l&#41;&quot;, ylabel&#61;&quot;concentração &#40;mg/l&#41;&quot;&#41;</code></pre>
+<img src="/modelagem_matematica/assets/pages/jupytered/c09/0903-Isomerizacao/code/images/0903-Isomerizacao_7_1.png" alt="">
+<pre><code class="language-julia">plot&#40;humulone_in, 100 * isohumulone_remaining ./ humulone_in,  label&#61;false, color&#61;7, linestyle&#61;:dot, ylims&#61;&#40;20.0, 80.0&#41;&#41;
+scatter&#33;&#40;humulone_in, 100 * isohumulone_remaining ./ humulone_in,  label&#61;false, color&#61;7, linestyle&#61;:dot&#41;
+plot&#33;&#40;title&#61;&quot;Taxa de rendimento após fervura do mosto por 1h30min&quot;, titlefont&#61;8, xlabel&#61;&quot;humulone adicionado &#40;mg/l&#41;&quot;, 
+        ylabel&#61;&quot;taxa de rendimento &#40;&#37;&#41;&quot;&#41;</code></pre>
+<img src="/modelagem_matematica/assets/pages/jupytered/c09/0903-Isomerizacao/code/images/0903-Isomerizacao_8_1.png" alt="">
+<h2 id="análise"><a href="#análise" class="header-anchor">Análise</a></h2>
+<h3 id="parâmetros_para_a_análise"><a href="#parâmetros_para_a_análise" class="header-anchor">Parâmetros para a análise</a></h3>
+<pre><code class="language-julia"># Both reaction rates from Malowicki and Shellhammer &#91;Agric. Food Chem., Vol. 53, No. 11, 2005&#93;, Table 3 for humulone at 100C
+k₁ &#61; 0.01141 
+k₂ &#61; 0.00263
+# solubility limit &#40;mg/l&#41; for the alpha-acid in wort at 100C and pH about 5.2 &#40;Spetsig&#41;
+x̄ &#61; 380
+# solubility limit &#40;mg/l&#41; for the iso-alpha-acid at 100C and pH 5.2 ???  
+ȳ &#61; 1000 # não usaremos esse dado nessa análise
+# parâmeros
+β₀ &#61; &#91;k₁, k₂, x̄&#93;
+# tempo de fervura
+tspan &#61; &#40;0.0, 90.0&#41;
+
+nothing</code></pre>
+<h3 id="solução_da_reação_pelos_diversos_modelos_e_sem_ajuste"><a href="#solução_da_reação_pelos_diversos_modelos_e_sem_ajuste" class="header-anchor">Solução da reação pelos diversos modelos e sem ajuste</a></h3>
+<pre><code class="language-julia">isohumulone_model &#61; Dict&#40;&#41;
+humulone_model &#61; Dict&#40;&#41;
+for rhs in RHSLAWS
+    isohumulone_model&#91;rhs&#93; &#61; zero&#40;humulone_in&#41;
+    humulone_model&#91;rhs&#93; &#61; zero&#40;humulone_in&#41;
+    for &#40;i,h&#41; in enumerate&#40;humulone_in&#41;
+        # lupulagem inicial &#40;humulone e iso-humulone&#41;
+        u0 &#61; &#91;h; 0.0&#93;
+        prob &#61; ODEProblem&#40;eval&#40;rhs&#41;, u0, tspan, β₀&#41;
+        sol &#61; solve&#40;prob,Tsit5&#40;&#41;&#41;
+        humulone_model&#91;rhs&#93;&#91;i&#93;, isohumulone_model&#91;rhs&#93;&#91;i&#93; &#61; sol&#40;90.0&#41;
+    end
+end</code></pre>
+<pre><code class="language-julia">plot&#40;humulone_in, isohumulone_remaining, label&#61;false, color&#61;3, linestyle&#61;:dot&#41;
+scatter&#33;&#40;humulone_in, isohumulone_remaining , label&#61;&quot;dados experimentais&quot;, legend&#61;:topleft, color&#61;3&#41;
+for &#40;i,rhs&#41; in enumerate&#40;RHSLAWS&#41;
+    plot&#33;&#40;humulone_in, isohumulone_model&#91;rhs&#93;, label&#61;false, color&#61;8, linestyle&#61;:dash&#41;
+    scatter&#33;&#40;humulone_in, isohumulone_model&#91;rhs&#93;, label&#61;&quot;modelo &#36;rhs&quot;, color&#61;12&#43;i&#41;
+end
+plot&#33;&#40;title&#61;&quot;Iso-humulone existente após fervura do mosto por 1h30min&quot;,
+    titlefont&#61;8, xlabel&#61;&quot;humulone adicionado &#40;mg/l&#41;&quot;, ylabel&#61;&quot;iso-humulone &#40;mg/l&#41;&quot;&#41;</code></pre>
+<img src="/modelagem_matematica/assets/pages/jupytered/c09/0903-Isomerizacao/code/images/0903-Isomerizacao_11_1.png" alt="">
+<pre><code class="language-julia">plot&#40;humulone_in, humulone_remaining, label&#61;false, color&#61;3, linestyle&#61;:dot&#41;
+scatter&#33;&#40;humulone_in, humulone_remaining , label&#61;&quot;dados experimentais&quot;, legend&#61;:topleft, color&#61;3&#41;
+for &#40;i,rhs&#41; in enumerate&#40;RHSLAWS&#41;
+    plot&#33;&#40;humulone_in, humulone_model&#91;rhs&#93;, label&#61;false, color&#61;8, linestyle&#61;:dash&#41;
+    scatter&#33;&#40;humulone_in, humulone_model&#91;rhs&#93;, label&#61;&quot;modelo &#36;rhs&quot;, color&#61;12&#43;i&#41;
+end
+plot&#33;&#40;title&#61;&quot;Humulone restante após fervura do mosto por 1h30min&quot;,
+    titlefont&#61;8, xlabel&#61;&quot;humulone adicionado &#40;mg/l&#41;&quot;, ylabel&#61;&quot;humulone &#40;mg/l&#41;&quot;&#41;</code></pre>
+<img src="/modelagem_matematica/assets/pages/jupytered/c09/0903-Isomerizacao/code/images/0903-Isomerizacao_12_1.png" alt="">
+<h2 id="ajuste_dos_modelos"><a href="#ajuste_dos_modelos" class="header-anchor">Ajuste dos modelos</a></h2>
+<h3 id="ajuste_pelo_humulone_via_lsqfit"><a href="#ajuste_pelo_humulone_via_lsqfit" class="header-anchor">Ajuste pelo humulone via LsqFit</a></h3>
+<ul>
+<li><p>O <code>LsqFit.jl</code> é um pacote simples e que funciona muito bem para o ajuste de funções escalares.</p>
+</li>
+<li><p>Vamos utilizá-lo para ajustar os parâmetros aos dados de iso-humulone restante.</p>
+</li>
+</ul>
+<pre><code class="language-julia">model &#61; Dict&#40;&#41;
+fit &#61; Dict&#40;&#41;
+N &#61; length&#40;isohumulone_remaining&#41;
+ih_mean &#61; mean&#40;isohumulone_remaining&#41;
+ih_ss_tot &#61; N * var&#40;isohumulone_remaining&#41;
+for &#40;i,rhs&#41; in enumerate&#40;RHSLAWS&#41;
+    model&#91;rhs&#93; &#61; &#40;h, β&#41; -&gt; solve&#40;ODEProblem&#40;eval&#40;rhs&#41;, &#91;h,0.0&#93;, &#40;0.0, 90.0&#41;, vcat&#40;β, &#91;x̄&#93;&#41;&#41;,Tsit5&#40;&#41;&#41;&#40;90.0&#41;&#91;2&#93;
+    fit&#91;rhs&#93; &#61; curve_fit&#40;&#40;h,β&#41; -&gt; model&#91;rhs&#93;.&#40;h, Ref&#40;β&#41;&#41;, humulone_in, isohumulone_remaining, β₀&#91;1:2&#93;&#41;    
+    β &#61; fit&#91;rhs&#93;.param
+    ih_ss_reg &#61; sum&#40;abs2, reduce&#40;vcat, model&#91;rhs&#93;.&#40;humulone_in, Ref&#40;β&#41;&#41;&#41; .- ih_mean&#41;
+    ih_r_sq &#61; ih_ss_reg/ih_ss_tot
+    ih_ss_res &#61; sum&#40;abs2, reduce&#40;vcat, model&#91;rhs&#93;.&#40;humulone_in, Ref&#40;β&#41;&#41;&#41; - isohumulone_remaining&#41;
+    ih_rms &#61; sqrt&#40;ih_ss_res/N&#41;
+    println&#40;&quot;&#36;rhs&quot;&#41;
+    println&#40;&quot;Parâmetros &#40;k₁, k₂&#41;: &#36;β&quot;&#41;
+    println&#40;&quot;R-quadrado isohumolone: &#36;ih_r_sq&quot;&#41;
+    println&#40;&quot;RMS isohumulone: &#36;ih_rms&quot;&#41;
+    println&#40;&#41;
+end</code></pre>
+<pre><code class="language-julia">dudt_nosat&#33;
+Parâmetros &#40;k₁, k₂&#41;: &#91;0.008631773605844035, 0.002257256566397736&#93;
+R-quadrado isohumolone: 1.0278876944934439
+RMS isohumulone: 13.329220883890573
+
+dudt_Blackman&#33;
+Parâmetros &#40;k₁, k₂&#41;: &#91;0.009017424706878007, 0.0004900353686267176&#93;
+R-quadrado isohumolone: 0.9144030917374586
+RMS isohumulone: 3.6669139849711962
+
+dudt_Teissier&#33;
+Parâmetros &#40;k₁, k₂&#41;: &#91;0.015499377349404684, 0.0069404684918681365&#93;
+R-quadrado isohumolone: 0.883999806954589
+RMS isohumulone: 3.4948075279649196
+
+dudt_Teissier_mod&#33;
+Parâmetros &#40;k₁, k₂&#41;: &#91;0.015873469676036946, 0.004665427076832028&#93;
+R-quadrado isohumolone: 0.8784681370300489
+RMS isohumulone: 3.8355465568571203
+
+dudt_Monod&#33;
+Parâmetros &#40;k₁, k₂&#41;: &#91;0.026064526353466903, 0.0025606061854166772&#93;
+R-quadrado isohumolone: 0.8749924203205051
+RMS isohumulone: 4.268874164020054</code></pre>
+<h3 id="ajuste_por_humulone_e_iso-humulone_via_optim"><a href="#ajuste_por_humulone_e_iso-humulone_via_optim" class="header-anchor">Ajuste por humulone e iso-humulone via Optim</a></h3>
+<h4 id="ajustando_parâmetros_de_reação"><a href="#ajustando_parâmetros_de_reação" class="header-anchor">Ajustando parâmetros de reação</a></h4>
+<ul>
+<li><p>Mas fixando limite de solubilidade \(\bar x\) conhecido.</p>
+</li>
+</ul>
+<pre><code class="language-julia">model &#61; Dict&#40;&#41;
+result &#61; Dict&#40;&#41;
+N &#61; length&#40;humulone_remaining&#41;
+h_mean &#61; mean&#40;humulone_remaining&#41;
+ih_mean &#61; mean&#40;isohumulone_remaining&#41;
+h_ss_tot &#61; N * var&#40;humulone_remaining&#41;
+ih_ss_tot &#61; N * var&#40;isohumulone_remaining&#41;
+for &#40;i,rhs&#41; in enumerate&#40;RHSLAWS&#41;
+    model&#91;rhs&#93; &#61; &#40;h, β&#41; -&gt; solve&#40;ODEProblem&#40;eval&#40;rhs&#41;, &#91;h,0.0&#93;, &#40;0.0, 90.0&#41;, vcat&#40;β, &#91;x̄&#93;&#41;&#41;,Tsit5&#40;&#41;&#41;&#40;90.0&#41;
+    custo&#40;β&#41; &#61; sum&#40;abs2, &#91;humulone_remaining isohumulone_remaining&#93; - reduce&#40;hcat, model&#91;rhs&#93;.&#40;humulone_in, Ref&#40;β&#41;&#41;&#41;&#39;&#41;
+    result&#91;rhs&#93; &#61; optimize&#40;custo, β₀&#91;1:2&#93;&#41;
+    β &#61; Optim.minimizer&#40;result&#91;rhs&#93;&#41;
+    sol &#61; model&#91;rhs&#93;.&#40;humulone_in, Ref&#40;β&#41;&#41;
+    h_ss_reg &#61; sum&#40;abs2, getindex.&#40;sol,1&#41; .- h_mean&#41;
+    ih_ss_reg &#61; sum&#40;abs2, getindex.&#40;sol,2&#41; .- ih_mean&#41;
+    h_r_sq &#61; h_ss_reg/h_ss_tot
+    ih_r_sq &#61; ih_ss_reg/ih_ss_tot
+    println&#40;&quot;&#36;rhs&quot;&#41;
+    println&#40;&quot;Parâmetros &#40;k₁, k₂&#41;: &#36;β&quot;&#41;
+    println&#40;&quot;Mínimo: &#36;&#40;Optim.minimum&#40;result&#91;rhs&#93;&#41;&#41;&quot;&#41;
+    println&#40;&quot;R-quadrado humolone: &#36;h_r_sq&quot;&#41;
+    println&#40;&quot;R-quadrado isohumolone: &#36;ih_r_sq&quot;&#41;
+    println&#40;&quot;RMS: &#36;&#40;√Optim.minimum&#40;result&#91;rhs&#93;&#41;/2/N&#41;&quot;&#41;
+    println&#40;&#41;
+end</code></pre>
+<pre><code class="language-julia">dudt_nosat&#33;
+Parâmetros &#40;k₁, k₂&#41;: &#91;0.010144418040115682, 0.0042858097157648725&#93;
+Mínimo: 1799.2582466924716
+R-quadrado humolone: 0.8452650111289023
+R-quadrado isohumolone: 1.0278884590217867
+RMS: 2.651104020241844
+
+dudt_Blackman&#33;
+Parâmetros &#40;k₁, k₂&#41;: &#91;0.01155359801957841, 0.004398130472054673&#93;
+Mínimo: 692.9510956956045
+R-quadrado humolone: 0.9713057530089871
+R-quadrado isohumolone: 0.9726383177243538
+RMS: 1.6452477678334516
+
+dudt_Teissier&#33;
+Parâmetros &#40;k₁, k₂&#41;: &#91;0.013347266166541175, 0.004892959840850376&#93;
+Mínimo: 3131.5938376748395
+R-quadrado humolone: 1.1772500256018745
+R-quadrado isohumolone: 0.8295778965885672
+RMS: 3.4975403397841376
+
+dudt_Teissier_mod&#33;
+Parâmetros &#40;k₁, k₂&#41;: &#91;0.015764104097738225, 0.004567617167143235&#93;
+Mínimo: 1531.7371758338352
+R-quadrado humolone: 1.0929345565160673
+R-quadrado isohumolone: 0.876711898127038
+RMS: 2.446088375979273
+
+dudt_Monod&#33;
+Parâmetros &#40;k₁, k₂&#41;: &#91;0.029690161789117438, 0.004433290937858485&#93;
+Mínimo: 1067.3083103721667
+R-quadrado humolone: 1.0512347400315978
+R-quadrado isohumolone: 0.8997602316814145
+RMS: 2.0418553052043813</code></pre>
+<h4 id="ajustando_parâmetros_de_reação_e_limite_de_solubilidade"><a href="#ajustando_parâmetros_de_reação_e_limite_de_solubilidade" class="header-anchor">Ajustando parâmetros de reação e limite de solubilidade</a></h4>
+<pre><code class="language-julia">model &#61; Dict&#40;&#41;
+result &#61; Dict&#40;&#41;
+N &#61; length&#40;humulone_remaining&#41;
+h_mean &#61; mean&#40;humulone_remaining&#41;
+ih_mean &#61; mean&#40;isohumulone_remaining&#41;
+h_ss_tot &#61; N * var&#40;humulone_remaining&#41;
+ih_ss_tot &#61; N * var&#40;isohumulone_remaining&#41;
+for &#40;i,rhs&#41; in enumerate&#40;RHSLAWS&#41;
+    model&#91;rhs&#93; &#61; &#40;h, β&#41; -&gt; solve&#40;ODEProblem&#40;eval&#40;rhs&#41;, &#91;h,0.0&#93;, &#40;0.0, 90.0&#41;, β&#41;,Tsit5&#40;&#41;&#41;&#40;90.0&#41;
+    custo&#40;β&#41; &#61; sum&#40;abs2, &#91;humulone_remaining isohumulone_remaining&#93; - reduce&#40;hcat, model&#91;rhs&#93;.&#40;humulone_in, Ref&#40;β&#41;&#41;&#41;&#39;&#41;
+    result&#91;rhs&#93; &#61; optimize&#40;custo, β₀&#41;
+    β &#61; Optim.minimizer&#40;result&#91;rhs&#93;&#41;
+    sol &#61; model&#91;rhs&#93;.&#40;humulone_in, Ref&#40;β&#41;&#41;
+    h_ss_reg &#61; sum&#40;abs2, getindex.&#40;sol,1&#41; .- h_mean&#41;
+    ih_ss_reg &#61; sum&#40;abs2, getindex.&#40;sol,2&#41; .- ih_mean&#41;
+    h_r_sq &#61; h_ss_reg/h_ss_tot
+    ih_r_sq &#61; ih_ss_reg/ih_ss_tot
+    println&#40;&quot;&#36;rhs&quot;&#41;
+    println&#40;&quot;Parâmetros &#40;k₁, k₂, x̄&#41;: &#36;β&quot;&#41;
+    println&#40;&quot;Mínimo: &#36;&#40;Optim.minimum&#40;result&#91;rhs&#93;&#41;&#41;&quot;&#41;
+    println&#40;&quot;R-quadrado humolone: &#36;h_r_sq&quot;&#41;
+    println&#40;&quot;R-quadrado isohumolone: &#36;ih_r_sq&quot;&#41;
+    println&#40;&quot;RMS: &#36;&#40;√Optim.minimum&#40;result&#91;rhs&#93;&#41;/2/N&#41;&quot;&#41;
+    println&#40;&#41;
+end</code></pre>
+<pre><code class="language-julia">dudt_nosat&#33;
+Parâmetros &#40;k₁, k₂, x̄&#41;: &#91;0.010144417674465214, 0.004285813285149323, 446.9
+614039181065&#93;
+Mínimo: 1799.2582466356318
+R-quadrado humolone: 0.8452650675331407
+R-quadrado isohumolone: 1.0278880905035894
+RMS: 2.651104020199969
+
+dudt_Blackman&#33;
+Parâmetros &#40;k₁, k₂, x̄&#41;: &#91;0.011460271899265306, 0.0043601433019040585, 385.
+47195347537354&#93;
+Mínimo: 691.3157433181836
+R-quadrado humolone: 0.9661980332722065
+R-quadrado isohumolone: 0.9773700890397345
+RMS: 1.6433052432024475
+
+dudt_Teissier&#33;
+Parâmetros &#40;k₁, k₂, x̄&#41;: &#91;0.009243128310965382, 0.004309517864384318, 1005.
+4298395740384&#93;
+Mínimo: 739.2449526006355
+R-quadrado humolone: 0.97900675690795
+R-quadrado isohumolone: 0.9457493497183038
+RMS: 1.6993162142745042
+
+dudt_Teissier_mod&#33;
+Parâmetros &#40;k₁, k₂, x̄&#41;: &#91;0.01281368245065706, 0.00430951157355529, 725.267
+1893158265&#93;
+Mínimo: 739.244952591077
+R-quadrado humolone: 0.9790065770093259
+R-quadrado isohumolone: 0.9457499024113977
+RMS: 1.6993162142635179
+
+dudt_Monod&#33;
+Parâmetros &#40;k₁, k₂, x̄&#41;: &#91;0.025789473854399413, 0.004306270657952952, 641.5
+316294095612&#93;
+Mínimo: 753.4164478848406
+R-quadrado humolone: 0.9780758205297444
+R-quadrado isohumolone: 0.9453347892550671
+RMS: 1.7155270325909058</code></pre>
+<p><strong>Observação:</strong></p>
+<ul>
+<li><p>Além de ter o menor RMS, note quão próximos os parâmetros do ajuste desse modelo ficaram dos extraídos da literatura.</p>
+</li>
+</ul>
+<pre><code class="language-julia">isohumulone_model_adj &#61; Dict&#40;&#41;
+humulone_model_adj &#61; Dict&#40;&#41;
+for rhs in RHSLAWS
+    isohumulone_model_adj&#91;rhs&#93; &#61; zero&#40;humulone_in&#41;
+    humulone_model_adj&#91;rhs&#93; &#61; zero&#40;humulone_in&#41;
+    for &#40;i,h&#41; in enumerate&#40;humulone_in&#41;
+        # lupulagem inicial &#40;humulone e iso-humulone&#41;
+        u0 &#61; &#91;h; 0.0&#93;
+        prob &#61; ODEProblem&#40;eval&#40;rhs&#41;, u0, tspan, Optim.minimizer&#40;result&#91;rhs&#93;&#41;&#41;
+        sol &#61; solve&#40;prob, Tsit5&#40;&#41;&#41;
+        humulone_model_adj&#91;rhs&#93;&#91;i&#93;, isohumulone_model_adj&#91;rhs&#93;&#91;i&#93; &#61; sol&#40;90.0&#41;
+    end
+end</code></pre>
+<pre><code class="language-julia">plot&#40;humulone_in, isohumulone_remaining, label&#61;false, color&#61;3, linestyle&#61;:dot&#41;
+scatter&#33;&#40;humulone_in, isohumulone_remaining, marker&#61;:star, label&#61;&quot;dados experimentais&quot;, legend&#61;:topleft, color&#61;3&#41;
+for &#40;i,rhs&#41; in enumerate&#40;RHSLAWS&#41;
+    plot&#33;&#40;humulone_in, isohumulone_model_adj&#91;rhs&#93;, label&#61;false, color&#61;8, linestyle&#61;:dash&#41;
+    scatter&#33;&#40;humulone_in, isohumulone_model_adj&#91;rhs&#93;, label&#61;&quot;modelo &#36;rhs&quot;, color&#61;12&#43;i&#41;
+end
+plot&#33;&#40;title&#61;&quot;Iso-humulone existente após fervura do mosto por 1h30min&quot;,
+    titlefont&#61;8, xlabel&#61;&quot;humulone adicionado &#40;mg/l&#41;&quot;, ylabel&#61;&quot;iso-humulone &#40;mg/l&#41;&quot;&#41;</code></pre>
+<img src="/modelagem_matematica/assets/pages/jupytered/c09/0903-Isomerizacao/code/images/0903-Isomerizacao_17_1.png" alt="">
+<pre><code class="language-julia">for &#40;i, rhs&#41; in enumerate&#40;RHSLAWS&#41;
+    p &#61; plot&#40;humulone_in, isohumulone_remaining, label&#61;false, color&#61;3, linestyle&#61;:dot&#41;
+    scatter&#33;&#40;p, humulone_in, isohumulone_remaining, marker&#61;:star, legend&#61;nothing, color&#61;3&#41;
+    plot&#33;&#40;p, humulone_in, isohumulone_model_adj&#91;rhs&#93;, color&#61;8, linestyle&#61;:dash&#41;
+    scatter&#33;&#40;p, humulone_in, isohumulone_model_adj&#91;rhs&#93;, color&#61;12&#43;i&#41;
+    plot&#33;&#40;p, title&#61;&quot;Iso-humulone restante; modelo &#36;rhs&quot;,
+        titlefont&#61;8, xlabel&#61;&quot;humulone adicionado &#40;mg/l&#41;&quot;, ylabel&#61;&quot;iso-humulone &#40;mg/l&#41;&quot;&#41;
+    display&#40;p&#41;
+end</code></pre>
+<p><img src="/modelagem_matematica/assets/pages/jupytered/c09/0903-Isomerizacao/code/images/0903-Isomerizacao_18_1.png" alt=""> <img src="/modelagem_matematica/assets/pages/jupytered/c09/0903-Isomerizacao/code/images/0903-Isomerizacao_18_2.png" alt=""> <img src="/modelagem_matematica/assets/pages/jupytered/c09/0903-Isomerizacao/code/images/0903-Isomerizacao_18_3.png" alt=""> <img src="/modelagem_matematica/assets/pages/jupytered/c09/0903-Isomerizacao/code/images/0903-Isomerizacao_18_4.png" alt=""> <img src="/modelagem_matematica/assets/pages/jupytered/c09/0903-Isomerizacao/code/images/0903-Isomerizacao_18_5.png" alt=""></p>
+<pre><code class="language-julia">plot&#40;humulone_in, humulone_remaining, label&#61;false, color&#61;3, linestyle&#61;:dot&#41;
+scatter&#33;&#40;humulone_in, humulone_remaining , marker&#61;:star,
+    label&#61;&quot;dados experimentais&quot;, legend&#61;:topleft, color&#61;3&#41;
+for &#40;i,rhs&#41; in enumerate&#40;RHSLAWS&#41;
+    plot&#33;&#40;humulone_in, humulone_model_adj&#91;rhs&#93;, label&#61;false, color&#61;8, linestyle&#61;:dash&#41;
+    scatter&#33;&#40;humulone_in, humulone_model_adj&#91;rhs&#93;, label&#61;&quot;modelo &#36;rhs&quot;, color&#61;12&#43;i&#41;
+end
+plot&#33;&#40;title&#61;&quot;Humulone restante após fervura do mosto por 1h30min&quot;,
+    titlefont&#61;8, xlabel&#61;&quot;humulone adicionado &#40;mg/l&#41;&quot;, ylabel&#61;&quot;humulone &#40;mg/l&#41;&quot;&#41;</code></pre>
+<img src="/modelagem_matematica/assets/pages/jupytered/c09/0903-Isomerizacao/code/images/0903-Isomerizacao_19_1.png" alt="">
+<h2 id="evolução_temporal_wip"><a href="#evolução_temporal_wip" class="header-anchor">Evolução temporal &#40;WIP&#41;</a></h2>
+<ul>
+<li><p>Vamos analisar, agora, a evolução temporal das concentrações de humulone e iso-humulone.</p>
+</li>
+<li><p>Dados obtidos da figura 1 do artigo do Maule.</p>
+</li>
+<li><p>Cada 360 pixels equivalem aproximadamente a 1h no eixo horizontal e a 20mg/l no eixo vertical.</p>
+</li>
+<li><p>Os números abaixo são aproximações com mais ou menos 2 pixels de precisão.</p>
+</li>
+<li><p>Convertidos para mg/l multiplicando-se por 1/18 mg/l/pixel &#61; &#40;20mg/l&#41;/&#40;360 pixels&#41;.</p>
+</li>
+<li><p>As medições foram feitas a cada 30 minutos, em um período de 3h de fervura.</p>
+</li>
+</ul>
+<p><img src="/modelagem_matematica/assets/attachments/img/Maule-FateofHumuloneDuringWortBoilingandCooling-JInstBrewing-1966-Figure1.png" alt="Fate of humulone" /></p>
+<pre><code class="language-julia">tempos &#61; 60.0 * &#40;0.5:0.5:3.0&#41;
+hum_wort &#61; &#91;670, 597, 523, 448, 386, 333&#93;./18
+hum_break &#61; &#91;117, 115, 114, 95, 72, 56&#93;./18
+iso_wort &#61; &#91;552, 820, 958, 1038, 1095, 1130&#93;./18
+iso_break &#61; &#91;40, 49, 69, 79, 100, 116&#93;./18
+nothing</code></pre>
+<pre><code class="language-julia">scatter&#40;tempos, hum_wort, color&#61;1, label&#61;&quot;humulone mosto&quot;&#41;
+plot&#33;&#40;tempos, hum_wort, color&#61;1, linestyle&#61;:dash, label&#61;false&#41;
+scatter&#33;&#40;tempos, hum_break, color&#61;2, label&#61;&quot;humulone hot-break&quot;&#41;
+plot&#33;&#40;tempos, hum_break, color&#61;2, linestyle&#61;:dash, label&#61;false&#41;
+scatter&#33;&#40;tempos, iso_wort, color&#61;3, label&#61;&quot;isohumulone mosto&quot;&#41;
+plot&#33;&#40;tempos, iso_wort, color&#61;3, linestyle&#61;:dash, label&#61;false&#41;
+scatter&#33;&#40;tempos, iso_break, color&#61;4, label&#61;&quot;isohumulone hot-break&quot;&#41;
+plot&#33;&#40;tempos, iso_break, color&#61;4, linestyle&#61;:dash, label&#61;false&#41;
+plot&#33;&#40;title&#61;&quot;Evolução humulone e isomulone no mosto e no hot-break&quot;, titlefont&#61;10,
+    xlabel &#61; &quot;tempo &#40;hr&#41;&quot;, ylabel&#61;&quot;concentração &#40;mg/l&#41;&quot;, 
+    xlim&#61;&#40;0.0, 3.5 * 60.0&#41;, legend&#61;:topleft&#41;</code></pre>
+<img src="/modelagem_matematica/assets/pages/jupytered/c09/0903-Isomerizacao/code/images/0903-Isomerizacao_21_1.png" alt="">
+<pre><code class="language-julia">rhs &#61; :dudt_Blackman&#33;
+β &#61; Optim.minimizer&#40;result&#91;rhs&#93;&#41;
+println&#40;β&#41;
+println&#40;β₀&#41;
+prob &#61; ODEProblem&#40;eval&#40;rhs&#41;, &#91;20.0, 50.0&#93;, &#40;0.0, 180.0&#41;, β&#41;
+sol &#61; solve&#40;prob, Tsit5&#40;&#41;&#41;
+nothing</code></pre>
+<pre><code class="language-julia">&#91;0.011460271899265306, 0.0043601433019040585, 385.47195347537354&#93;
+&#91;0.01141, 0.00263, 380.0&#93;</code></pre>
+<pre><code class="language-julia">scatter&#40;tempos, hum_wort &#43; hum_break, color&#61;1, label&#61;&quot;humulone &#40;dados&#41;&quot;&#41;
+scatter&#33;&#40;tempos, iso_wort &#43; iso_break, color&#61;2, label&#61;&quot;iso-humulone &#40;dados&#41;&quot;&#41;
+plot&#33;&#40;sol, label&#61;&#91;&quot;humulone&quot; &quot;isohumulone&quot;&#93;&#41;
+plot&#33;&#40;title&#61;&quot;Evolução humulone e iso-humulone &#40;dados e modelo &#36;rhs&#41;&quot;, titlefont&#61;10,
+    xlabel &#61; &quot;tempo &#40;s&#41;&quot;, ylabel&#61;&quot;concentração &#40;mg/l&#41;&quot;, 
+    xlim&#61;&#40;0.0, 3.5 * 60.0&#41;, legend&#61;:topleft&#41;</code></pre>
+<img src="/modelagem_matematica/assets/pages/jupytered/c09/0903-Isomerizacao/code/images/0903-Isomerizacao_23_1.png" alt="">
+
+    <div class="navbar">
+    <p id="nav">
+<span id="nav-prev" style="float: left;">
+<a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c09/0902-Reacoes_enzimaticas">9.2. Modelagem de reações enzimática <kbd>←</kbd></a>
+</span>
+    </p>
+</div>
+</br></br>
+
+
+
+<div class="page-foot">
+    
+        <div class="license">
+            <a href=https://creativecommons.org/licenses/by-nc-nd/4.0/>(CC BY-NC-ND 4.0) Attribution-NonCommercial-NoDerivatives 4.0 International </a>
+            
+        </div>
+    
+
+    Last modified: July 05, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
+</div><!-- CONTENT ENDS HERE -->
+
+      </div> <!-- .books-content -->
+    </div> <!-- .books-container -->
+
+    
+        <script src="/modelagem_matematica/libs/katex/katex.min.js"></script>
+        <script src="/modelagem_matematica/libs/katex/auto-render.min.js"></script>
+        <script>renderMathInElement(document.body)</script>
+    
+
+    
+        <script src="/modelagem_matematica/libs/highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();hljs.configure({tabReplace: '    '});</script>
+    
+
+  </body>
+</html>
