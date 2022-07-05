@@ -20,6 +20,12 @@
     <priority>0.5</priority>
 </url>
 <url>
+    <loc>pages/jupytered/c10/1002-Ajuste_SIR/index.html</loc>
+    <lastmod>2022-07-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
     <loc>pages/jupytered/c03/0301-Quantidades_unidades_dimensoes/index.html</loc>
     <lastmod>2022-06-21</lastmod>
     <changefreq>monthly</changefreq>
@@ -158,6 +164,12 @@
     <priority>0.5</priority>
 </url>
 <url>
+    <loc>pages/jupytered/c10/1001-Modelos_epidemiologicos_compartimentais/index.html</loc>
+    <lastmod>2022-07-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
     <loc>pages/jupytered/c01/0103-Primeiros_passos_Julia/index.html</loc>
     <lastmod>2022-06-21</lastmod>
     <changefreq>monthly</changefreq>
@@ -166,6 +178,12 @@
 <url>
     <loc>pages/jupytered/c07/0701-Mecanica_Newtoniana/index.html</loc>
     <lastmod>2022-06-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/jupytered/c10/1003-Compartimentais_estruturados/index.html</loc>
+    <lastmod>2022-07-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
