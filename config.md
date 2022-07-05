@@ -81,12 +81,7 @@ menu = [
         "src/jupyter/c07/0706-Pendulo.ipynb"
         "src/jupyter/c07/0707-Pendulo_angulos_grandes.ipynb"
     ],
-]
-menu_left = [
-    "Mecânica" => [
-    ],
     "Modelos em Eletrônica" => [
-        "src/jupyter/c08/0800-Eletronica.ipynb"
         "src/jupyter/c08/0801-Modelo_diodo.ipynb"
     ],
     "Reações Químicas" => [
@@ -94,6 +89,8 @@ menu_left = [
         "src/jupyter/c09/0902-Reacoes_enzimaticas.ipynb"
         "src/jupyter/c09/0903-Isomerizacao.ipynb"
     ],
+]
+menu_left = [
     "Modelos Epidemiológicos" => [
         "src/jupyter/c10/1000-Modelos_epidemiologicos.ipynb"
         "src/jupyter/c10/1001-Modelos_epidemiologicos_compartimentais.ipynb"

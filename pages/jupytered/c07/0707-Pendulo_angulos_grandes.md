@@ -40,10 +40,13 @@ include("../../../_assets/attachments/scripts/VideoTracking.jl")
 ```
 
 ```
-Main.##WeaveSandBox#644.VideoTracking
+Main.##WeaveSandBox#293.VideoTracking
 ```
 
 
+
+
+## Filmando um pêndulo caseiro
 
 
 ![pendulo](/assets/attachments/img/pendulo_70cm_1_reduzido_curto.mp4)
@@ -556,7 +559,7 @@ filter!(p -> p.area ≥ min_area, components_location)
 ```
 
 ```
-1-element Vector{Main.##WeaveSandBox#644.VideoTracking.Blob}:
+1-element Vector{Main.##WeaveSandBox#293.VideoTracking.Blob}:
  (xspan, yspan) = (644:697, 364:412)
 ```
 
@@ -579,7 +582,7 @@ filter!(p -> p.area ≥ min_area, components_location)
 ```
 
 ```
-1-element Vector{Main.##WeaveSandBox#644.VideoTracking.Blob}:
+1-element Vector{Main.##WeaveSandBox#293.VideoTracking.Blob}:
  (xspan, yspan) = (644:697, 364:412)
 ```
 
@@ -599,7 +602,7 @@ tracks_70cm1 = VideoTracking.find_tracks(filename, lag = 10)
 ```
 
 ```
-3-element Vector{Main.##WeaveSandBox#644.VideoTracking.Track}:
+3-element Vector{Main.##WeaveSandBox#293.VideoTracking.Track}:
  Tracked blob with framespan nspan = 13:150
 
  Tracked blob with framespan nspan = 82:150
@@ -640,15 +643,25 @@ frame/io.jl:275
 <video src="../../../_assets/attachments/img/pendulo_70cm_1_reduzido_curto_tracked.mp4" controls="controls" style="max-width: 730px;">
 </video>
 
+```julia
+isfile("../../../_assets/attachments/img/pendulo_70cm_1_reduzido_curto_tracked.mp4")
+```
 
-![video](/assets/attachments/img/pendulo_70cm_1_reduzido_curto_tracked.mp4)
+```
+true
+```
+
+
+
+
+![pendulo_tracked](/assets/attachments/img/pendulo_70cm_1_reduzido_curto_tracked.mp4)
 
 ```julia
 tracks_70cm1
 ```
 
 ```
-3-element Vector{Main.##WeaveSandBox#644.VideoTracking.Track}:
+3-element Vector{Main.##WeaveSandBox#293.VideoTracking.Track}:
  Tracked blob with framespan nspan = 13:150
 
  Tracked blob with framespan nspan = 82:150
@@ -673,7 +686,7 @@ tracks_70cm1[1].path
 ```
 
 ```
-138-element Vector{Main.##WeaveSandBox#644.VideoTracking.Blob}:
+138-element Vector{Main.##WeaveSandBox#293.VideoTracking.Blob}:
  (xspan, yspan) = (840:854, 177:240)
  (xspan, yspan) = (837:854, 183:247)
  (xspan, yspan) = (834:854, 183:253)
@@ -718,7 +731,7 @@ end
 display(plt)
 ```
 
-\fig{images/0707-Pendulo_angulos_grandes_40_1.png}
+\fig{images/0707-Pendulo_angulos_grandes_41_1.png}
 
 ```julia
 plt = plot(title = "Coordinate x of $(length(tracks_70cm1)) tracks", titlefont = 10, legend=:topleft)
@@ -728,7 +741,7 @@ end
 display(plt)
 ```
 
-\fig{images/0707-Pendulo_angulos_grandes_41_1.png}
+\fig{images/0707-Pendulo_angulos_grandes_42_1.png}
 
 ```julia
 plt = plot(title = "Coordinate y of $(length(tracks_70cm1)) tracks", titlefont = 10, legend=:topright)
@@ -738,7 +751,7 @@ end
 display(plt)
 ```
 
-\fig{images/0707-Pendulo_angulos_grandes_42_1.png}
+\fig{images/0707-Pendulo_angulos_grandes_43_1.png}
 
 ```julia
 size(vd[1])
@@ -784,7 +797,7 @@ vline!(plt, n_minima, label = "minima")
 display(plt)
 ```
 
-\fig{images/0707-Pendulo_angulos_grandes_46_1.png}
+\fig{images/0707-Pendulo_angulos_grandes_47_1.png}
 
 ```julia
 (n_minima[2:end] - n_minima[1:end-1]) / 29.5
@@ -924,7 +937,7 @@ plot!(plt, 1:854, nx -> center_ny - √(radius_n^2 - (nx - center_nx)^2), linest
 display(plt)
 ```
 
-\fig{images/0707-Pendulo_angulos_grandes_55_1.png}
+\fig{images/0707-Pendulo_angulos_grandes_56_1.png}
 
 ```julia
 scale = radius_n / l # points per meter
@@ -1062,8 +1075,8 @@ display(plot(sol, label = ["θ(t)" "ω(t)"]))
 display(plot(sol, vars = 1, label = "θ(t)"))
 ```
 
-\fig{images/0707-Pendulo_angulos_grandes_61_1.png}
-\fig{images/0707-Pendulo_angulos_grandes_61_2.png}
+\fig{images/0707-Pendulo_angulos_grandes_62_1.png}
+\fig{images/0707-Pendulo_angulos_grandes_62_2.png}
 
 ```julia
 n0 = 34
@@ -1072,7 +1085,7 @@ scatter!(plt, (0:length(data_x)-n0) ./ 29.5, data_scaled_x[n0:end], label="track
 display(plt)
 ```
 
-\fig{images/0707-Pendulo_angulos_grandes_62_1.png}
+\fig{images/0707-Pendulo_angulos_grandes_63_1.png}
 
 ```julia
 df = CSV.read("../../../_assets/attachments/data/pendulo_70cm_reduzido.csv", DataFrame)
@@ -1114,8 +1127,8 @@ scatter!(plt, df.nf, size(vd[1], 1) .+ 1 .- df.ny, label = nothing)
 display(plt)
 ```
 
-\fig{images/0707-Pendulo_angulos_grandes_64_1.png}
-\fig{images/0707-Pendulo_angulos_grandes_64_2.png}
+\fig{images/0707-Pendulo_angulos_grandes_65_1.png}
+\fig{images/0707-Pendulo_angulos_grandes_65_2.png}
 
 ```julia
 data2_scaled_t = (df.nf[n0:end] .- df.nf[n0]) / 29.97
@@ -1125,8 +1138,8 @@ display(scatter(data2_scaled_t, data2_scaled_x))
 display(scatter(data2_scaled_t, data2_scaled_y))
 ```
 
-\fig{images/0707-Pendulo_angulos_grandes_65_1.png}
-\fig{images/0707-Pendulo_angulos_grandes_65_2.png}
+\fig{images/0707-Pendulo_angulos_grandes_66_1.png}
+\fig{images/0707-Pendulo_angulos_grandes_66_2.png}
 
 ```julia
 n_minima2 = Int[]
@@ -1186,7 +1199,7 @@ vline!(plt, n_minima2, label = "minima")
 display(plt)
 ```
 
-\fig{images/0707-Pendulo_angulos_grandes_69_1.png}
+\fig{images/0707-Pendulo_angulos_grandes_70_1.png}
 
 ```julia
 g = 9.8 # 9,8 m/s^2
@@ -1283,7 +1296,7 @@ plot(data2_scaled_t, sol2(data2_scaled_t)[1,:], label = "ODE", ylims=(-1,1))
 scatter!(data2_scaled_t, data2_scaled_x, label = "data")
 ```
 
-\fig{images/0707-Pendulo_angulos_grandes_73_1.png}
+\fig{images/0707-Pendulo_angulos_grandes_74_1.png}
 
 ```julia
 function ddu_pendulum!(ddu, du, u, p, t)
@@ -1322,7 +1335,7 @@ plot(data2_scaled_t, sol_2nd(data2_scaled_t)[2,:], label = "ODE", ylims=(-1,1))
 scatter!(data2_scaled_t, data2_scaled_x, label = "data")
 ```
 
-\fig{images/0707-Pendulo_angulos_grandes_76_1.png}
+\fig{images/0707-Pendulo_angulos_grandes_77_1.png}
 
 ```julia
 prob_rmk = remake(prob_pendulum_2nd; u0 = ArrayPartition([0.0], [θ₀]), p = [l, g, α])
@@ -1486,4 +1499,4 @@ plot(data2_scaled_t, sol_2nd(data2_scaled_t)[2,:], label = "ODE", ylims=(-1,1))
 scatter!(data2_scaled_t, data2_scaled_x, label = "data")
 ```
 
-\fig{images/0707-Pendulo_angulos_grandes_85_1.png}
+\fig{images/0707-Pendulo_angulos_grandes_86_1.png}

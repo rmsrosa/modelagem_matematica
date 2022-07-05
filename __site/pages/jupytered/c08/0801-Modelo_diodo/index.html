@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="" />
+  <meta name="author" content="and contributors" />
+   <title>Modelagem da relação voltagem-corrente de um diodo</title>  
+  <link rel="shortcut icon" type="image/png" href="/modelagem_matematica/assets/images/favicon.png"/>
+  <link rel="stylesheet" href="/modelagem_matematica/css/base.css"/>
+  
+  <script src="/modelagem_matematica/libs/mousetrap/mousetrap.min.js"></script>
+
+  
+    <link rel="stylesheet" href="/modelagem_matematica/libs/highlight/github.min.css">
+    <script src="/modelagem_matematica/libs/highlight/highlight.pack.js"></script>
+    <script src="/modelagem_matematica/libs/highlight/julia.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', (event) => {
+        document.querySelectorAll('pre').forEach((el) => {
+          hljs.highlightElement(el);
+        });
+      });
+    </script>
+  
+
+  
+    <link rel="stylesheet" href="/modelagem_matematica/libs/katex/katex.min.css">
+  
+</head>
+
+<body>
+
+  <div class="books-container">
+
+  <aside class="books-menu">
+  <input type="checkbox" id="menu">
+  <label for="menu">☰</label>
+
+  <div class="books-title">
+    <a href="/modelagem_matematica/">Modelagem Matemática</a>
+  </div>
+
+  <br />
+
+  <div class="books-subtitle">
+    Notas de aula
+  </div>
+
+  <br />
+
+  <div class="books-author">
+    <a href="https://rmsrosa.github.io">Ricardo M. S. Rosa</a>
+  </div>
+
+  <div class="books-menu-content">
+    <div class="menu-level-1">
+    <li><a href="/modelagem_matematica/pages/intro">Introdução</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>PARTE I</li>
+    </div>
+    <div class="menu-level-1">
+    <li>1. Preliminares</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c01/0101-Aspectos_curso">1.1. Aspectos do curso</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c01/0102-Instalando_acessando_Julia">1.2. Instalando e acessando o Julia</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c01/0103-Primeiros_passos_Julia">1.3. Primeiros passos em Julia</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>PARTE II</li>
+    </div>
+    <div class="menu-level-1">
+    <li>2. Princípios de Modelagem Matemática</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c02/0201-Principios_basicos">2.1. Princípios básicos de modelagem</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c02/0202-Exemplos_tipos_modelagem">2.2. Exemplos de tipos de modelagem</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>3. Análise Dimensional</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c03/0301-Quantidades_unidades_dimensoes">3.1. Quantidades, unidades e dimensões</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c03/0302-BuckinghamPi">3.2. Análise dimensional e o Teorema de Buckingham-Pi</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c03/0303-Unidades_Julia">3.3. Trabalhando com unidades e dimensões em Julia</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>4. Ajuste de Parâmetros</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c04/0401-Minimos_quadrados_ajuste">4.1. Mínimos quadrados e o ajuste de parâmetros</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c04/0402-Exemplos_ajuste_linear">4.2. Exemplos de ajuste linear</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c04/0403-Modelos_redutiveis_linear_aplicacoes">4.3. Modelos redutíveis ao caso linear nos parâmetros e aplicações</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c04/0404-Minimos_quadrados_nao_linear">4.4. Mínimos quadrados não-linear</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c04/0405-Exemplos_ajuste_naolinear">4.5. Exemplos de ajuste não-linear de parâmetros</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c04/0406-Redes_neurais">4.6. Redes neurais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c04/0407-Ajuste_em_redes_neurais">4.7. Ajuste de parâmetros em modelos de redes neurais</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>5. Erros e Incertezas</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c05/0501-Erros_e_incertezas">5.1. Erros e incertezas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c05/0502-Minimos_quadrados_verossimilhanca">5.2. Mínimos quadrados, maximização da verossimilhança e quantificação de incertezas em regressões lineares</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c05/0503-Propagacao_incertezas">5.3. Propagação de incertezas</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>6. Avaliação de Modelos</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c06/0601-Qualidade_do_modelo">6.1. Qualidade do ajuste</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c06/0602-Validacao_do_modelo">6.2. Validação de modelos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c06/0603-Comparacao_de_modelos">6.3. Comparação de modelos</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>PARTE III</li>
+    </div>
+    <div class="menu-level-1">
+    <li>7. Mecânica</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c07/0701-Mecanica_Newtoniana">7.1. Mecânica Newtoniana</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c07/0702-Mecanica_Lagrangiana">7.2. Mecânica Lagrangiana</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c07/0703-Conservacao_contexto_Newtoniano">7.3. Leis de conservação em um contexto Newtoniano</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c07/0704-Conservacao_contexto_Lagrangiano">7.4. Leis de conservação em um contexto Lagrangiano</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c07/0705-Hamiltonianos">7.5. Hamiltonianos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c07/0706-Pendulo">7.6. Análise do período de um pêndulo planar simples</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c07/0707-Pendulo_angulos_grandes">7.7. Experimentos com pêndulos</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>8. Modelos em Eletrônica</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c08/0801-Modelo_diodo">8.1. Modelagem da relação voltagem-corrente de um diodo</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>9. Reações Químicas</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c09/0901-Lei_acao_de_massas">9.1. Lei de ação de massas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c09/0902-Reacoes_enzimaticas">9.2. Modelagem de reações enzimática</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c09/0903-Isomerizacao">9.3. Lupulagem e a conversão de humulone em iso-humulone considerando saturação</a></li>
+    </div>
+<div>
+
+
+  
+    <a href="https://github.com/rmsrosa/modelagem_matematica/tree/modmat2022p1"><img src="/modelagem_matematica/assets/images/GitHub-Mark-32px.png" alt="GitHub repo" width="18" style="margin:5px 5px" align="left"></a>
+
+  
+
+</aside>
+
+
+  <div class="books-content">
+
+    
+      <div class="navbar">
+    <p id="nav">
+<span id="nav-prev" style="float: left;">
+<a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c07/0707-Pendulo_angulos_grandes">7.7. Experimentos com pêndulos <kbd>←</kbd></a>
+</span>
+<span id="nav-next" style="float: right;">
+    <a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c09/0901-Lei_acao_de_massas"><kbd>→</kbd> 9.1. Lei de ação de massas</a>
+</span>
+    </p>
+</div>
+</br></br>
+
+    
+
+    
+      <div class="badges">
+<p>
+<a href="https://nbviewer.org/urls/rmsrosa.github.io/modelagem_matematica/generated/jupytered/c08/0801-Modelo_diodo.ipynb"><img align="left" src="https://img.shields.io/badge/view%20in-nbviewer-orange" alt="View in NBViewer" title="View Jupyter notebook in NBViewer"></a>
+<a href="https://mybinder.org/v2/gh/rmsrosa/modelagem_matematica/julia-env-for-binder-2022p1?urlpath=git-pull%3Frepo%3Dhttps://github.com/rmsrosa/modelagem_matematica%26urlpath%3Dlab/tree%252Fmodelagem_matematica/generated/jupytered/c08/0801-Modelo_diodo.ipynb%26branch%3Dgh-pages"><img align="left" src="https://mybinder.org/badge.svg" alt="Open in binder" title="Open in binder"></a>
+<a href="/modelagem_matematica/generated/jupytered/c08/0801-Modelo_diodo.ipynb"><img align="left" src="https://img.shields.io/badge/download-notebook-blue" alt="Download notebook" title="Download Jupyter notebook"></a>
+<a href="/modelagem_matematica/src/jupyter/c08/0801-Modelo_diodo.ipynb"><img align="left" src="https://img.shields.io/badge/view-source-lightblue" alt="View source" title="View source"></a>
+</p>
+</div></br>
+
+    
+<h1 id="get_title"><a href="#get_title" class="header-anchor">8.1. Modelagem da relação voltagem-corrente de um diodo</a></h1>
+<ul>
+<li><p>Vamos exemplificar o processo modelagem com a relação entre a voltagem aplicada e a corrente através de um diodo.</p>
+</li>
+</ul>
+<pre><code class="language-julia">using Random
+using Statistics
+using LsqFit
+using LinearAlgebra
+using Distributions: MvNormal, Normal
+using Plots</code></pre>
+<h2 id="diodos"><a href="#diodos" class="header-anchor">Diodos</a></h2>
+<ul>
+<li><p>Um <a href="https://en.wikipedia.org/wiki/Diode">diodo</a> é um componente eletrônico cuja propriedade principal é a de conduzir corrente essencialmente em apenas uma direção.</p>
+</li>
+<li><p>Possui baixa resistência à corrente em um sentido, facilitando esse sentido de condução, e alta resitência no outro sentido.</p>
+</li>
+<li><p>É usado para proteger um circuito; para converter um sinal de corrente alternada em corrente contínua; para extrair informações moduladas de sinais de rádio; etc.</p>
+</li>
+<li><p>Há vários tipos de diodos, sendo um deles o das conhecidas &quot;luzes&quot; de LEDs.</p>
+</li>
+</ul>
+<h2 id="dados_de_voltagem_e_corrente"><a href="#dados_de_voltagem_e_corrente" class="header-anchor">Dados de voltagem e corrente</a></h2>
+<ul>
+<li><p>Vamos usar duas amostras de dados.</p>
+</li>
+<li><p>A primeira que vamos considerar foi extraída de um circuito em um Raspberry Pi e reportada por um membro do servidor Discord <a href="https://disboard.org/server/762167454973296644">Humans of Julia</a>.</p>
+</li>
+<li><p>Os dados de voltagem estão em <a href="https://michaelis.uol.com.br/busca?r&#61;0&amp;f&#61;0&amp;t&#61;0&amp;palavra&#61;volt">Volts &#40;V&#41;</a> e os de corrente em <a href="https://michaelis.uol.com.br/busca?id&#61;G9bqx">miliamperes &#40;mA&#41;</a>.</p>
+</li>
+</ul>
+<pre><code class="language-julia">V_data &#61; &#91;0.0, 0.2, 0.3, 0.47, 0.52, 0.56, 0.58, 0.62, 0.65, 0.66, 0.69, 0.7, 0.72&#93;
+I_data &#61; &#91;0.0, 0.0, 0.0, 0.1, 0.25, 0.55, 1.0, 2.0, 4.0, 6.0, 10.0, 15.0, 19.5&#93;
+nothing</code></pre>
+<pre><code class="language-julia">scatter&#40;V_data, I_data, legend&#61;false, color&#61;2,
+    title&#61;&quot;Dados de corrente e voltagem através de um diodo&quot;, titlefont&#61;10,
+    xlabel&#61;&quot;Voltagem &#40;V&#41;&quot;, ylabel&#61;&quot;Corrente &#40;mA&#41;&quot;&#41;</code></pre>
+<img src="/modelagem_matematica/assets/pages/jupytered/c08/0801-Modelo_diodo/code/images/0801-Modelo_diodo_3_1.png" alt="">
+<h2 id="modelo"><a href="#modelo" class="header-anchor">Modelo</a></h2>
+<h3 id="analisando_a_taxa_de_crescimento_da_corrente"><a href="#analisando_a_taxa_de_crescimento_da_corrente" class="header-anchor">Analisando a taxa de crescimento da corrente</a></h3>
+<ul>
+<li><p>Observe que o crescimento é bem rápido. Pode ser polinomial ou exponential ou até mesmo ter uma singularidade.</p>
+</li>
+<li><p>Podemos investigar melhor o que acontece usando escala logarítmica na ordenada.</p>
+</li>
+<li><p>Esse procedimento parece indicar um crescimento exponencial da corrente, em relação à voltagem.</p>
+</li>
+</ul>
+<pre><code class="language-julia">scatter&#40;V_data&#91;4:end&#93;,I_data&#91;4:end&#93;, legend&#61;false, yscale&#61;:log10, color&#61;2,
+    title&#61;&quot;Dados de corrente e voltagem através de um diodo&quot;, titlefont&#61;10,
+    xlabel&#61;&quot;Voltagem &#40;V&#41;&quot;, ylabel&#61;&quot;Corrente &#40;mA&#41;&quot;&#41;</code></pre>
+<img src="/modelagem_matematica/assets/pages/jupytered/c08/0801-Modelo_diodo/code/images/0801-Modelo_diodo_4_1.png" alt="">
+<h3 id="translação"><a href="#translação" class="header-anchor">Translação</a></h3>
+<ul>
+<li><p>E observe, naturalmente, que a corrente é nula quando a voltagem é nula.</p>
+</li>
+<li><p>A corrente continua sendo nula quando a voltagem é relativamente muito baixa, provavelmente devida à resistência do próprio fio/condutor. Mas isso não será levado em consideração em um modelo &quot;ideal&quot;.</p>
+</li>
+<li><p>De qualquer forma, um modelo puramente exponencial \(V \mapsto \beta_0 e^{\beta_1 V}\) não tem como se anular na origem &#40;nem em qualquer ponto&#41;.</p>
+</li>
+<li><p>Para isso, podemos considerar uma <em>translação:</em></p>
+</li>
+</ul>
+\[ I = \beta_0 (e^{\beta_1 V} - 1)
+\]
+<h3 id="modelo_de_dois_parâmetros"><a href="#modelo_de_dois_parâmetros" class="header-anchor">Modelo de dois parâmetros</a></h3>
+<ul>
+<li><p>Chegamos, assim, ao seguinte modelo de dois parâmetros.</p>
+</li>
+</ul>
+<pre><code class="language-julia">model&#40;V,β&#41; &#61; β&#91;1&#93; * &#40;exp.&#40;β&#91;2&#93; * V&#41; .- 1&#41;</code></pre>
+<pre><code class="language-julia">model &#40;generic function with 1 method&#41;</code></pre>
+<h3 id="o_modelo_de_shockley"><a href="#o_modelo_de_shockley" class="header-anchor">O modelo de Shockley</a></h3>
+<ul>
+<li><p>O modelo acima tem exatamente a forma &#40;em relação a \(V\)&#41; da <a href="https://en.wikipedia.org/wiki/Shockley_diode_equation">equação de Shockley de um diodo ideal</a>:</p>
+</li>
+</ul>
+\[ {\displaystyle I=I_{\mathrm{S}}\left(e^{\displaystyle \frac{qV}{nkT}}-1\right)}
+\]
+<ul>
+<li><p>Parâmetros:</p>
+<ul>
+<li><p>\(I_{\mathrm{S}}\) é uma corrente de saturação;</p>
+</li>
+<li><p>\(V_T=nkT/q\) é a voltagem térmica; onde</p>
+</li>
+<li><p>\(k\) é a constante de Boltzmann;</p>
+</li>
+<li><p>\(T\) é a temperatura; </p>
+</li>
+<li><p>\(q\) é a carga elétrica de um elétron; e</p>
+</li>
+<li><p>\(n\) é um fator de idealidade, qualidade, ou, ainda, coeficiente de emissão.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="ajuste_do_modelo"><a href="#ajuste_do_modelo" class="header-anchor">Ajuste do modelo</a></h2>
+<ul>
+<li><p>Façamos, agora, o ajuste do modelo, usando o pacote <a href="https://github.com/JuliaNLSolvers/LsqFit.jl">JuliaNLSolvers/LsqFit.jl</a>, de mínimos quadrados não-linear.</p>
+</li>
+</ul>
+<pre><code class="language-julia">function info_ajuste2&#40;dados_x, dados_y, model_y, m&#41;
+    N &#61; length&#40;dados_x&#41;
+    y_mean &#61; mean&#40;dados_y&#41;
+    residuos &#61; model_y - dados_y
+    ss &#61; norm&#40;residuos&#41;^2
+    rms &#61; sqrt&#40;ss/N&#41;
+    ss_y &#61; norm&#40;dados_y&#41;^ 2
+    rms_y &#61; sqrt&#40;ss_y/N&#41;
+
+    ss_rel &#61; ss/ss_y
+    rms_rel &#61; sqrt&#40;ss_rel&#41;
+    ss_tot &#61; N*var&#40;dados_y&#41;
+    ss_reg &#61; norm&#40;model_y .- y_mean&#41;^2
+    r_sq &#61; ss_reg/ss_tot
+    r_sq_aj &#61; 1 - &#40;1 - r_sq&#41;*&#40;N-1&#41;/&#40;N-m&#41;
+    
+    aic &#61; N*log&#40;ss/N&#41; &#43; 2*m
+    aicc &#61; N*log&#40;ss/N&#41; &#43; &#40;2*m*&#40;m&#43;1&#41;&#41;/&#40;N-m-1&#41;
+    bic &#61;  N*log&#40;ss/N&#41; &#43; 2*log&#40;N&#41;*m
+    
+    return &#40;
+        residuos&#61;residuos, rms&#61;rms, rms_rel&#61;rms_rel, ss&#61;ss, ss_rel&#61;ss_rel,
+        r_sq&#61;r_sq, r_sq_aj&#61;r_sq_aj, aic&#61;aic, aicc&#61;aicc, bic&#61;bic
+    &#41;
+end</code></pre>
+<pre><code class="language-julia">info_ajuste2 &#40;generic function with 1 method&#41;</code></pre>
+<h3 id="chute_inicial"><a href="#chute_inicial" class="header-anchor">Chute inicial</a></h3>
+<ul>
+<li><p>Nos métodos para o problema de mínimos quadrados não linear, precisamos de um &quot;chute inicial&quot; nos parâmetros.</p>
+</li>
+<li><p>Podemos observar o gráfico acima para esse chute.</p>
+</li>
+<li><p>Para isso, consideramos a aproximação </p>
+</li>
+</ul>
+\[ \ln I = \ln \beta[1] + \ln(\exp(\beta[2] * V) - 1 ) \approx \ln\beta[1] + \ln(\beta[2] V) \approx \ln\beta[1] + \beta[2] V.
+\]
+<ul>
+<li><p>No gráfico, \(I\) varia, aproximadamente, de \(0.1\) a \(10\), enquanto que \(V\) vai de, aproximadamente, \(0.47\) a \(0.72\).</p>
+</li>
+<li><p>Em termos de logaritmo natural, \(\ln I\) varia de \(\ln(0.1)\) a \(\ln 10\)</p>
+</li>
+<li><p>Ou seja, \(\beta[2] \approx (\ln(10)-\ln(0.1))/(0.72-0.47) \approx 4.6/0.25 \approx 18.4\)</p>
+</li>
+<li><p>E escolhendo o décimo-primeiro dado, temos </p>
+</li>
+</ul>
+\[ I\_\textrm{data}[11] \approx \textrm{model}(V\_\textrm{data}[11], \beta) = \beta[1] * (\exp(18.4 * V\_\textrm{data}[11]) - 1)
+\]
+<ul>
+<li><p>Ou seja,</p>
+</li>
+</ul>
+\[ \beta[1] \approx \frac{10.0}{\exp(18.4 * 0.69) - 1)} \approx 3 \times 10^{-5}.
+\]
+<ul>
+<li><p>Assim, escolhemos \(\boldsymbol{\beta} = (\beta_0, \beta_1) = (3 \times 10^{-5}, 18.4)\) como o &quot;chute inicial&quot; para o método de mínimos quadrados não-linear.</p>
+</li>
+</ul>
+<h3 id="a_aproximação_com_o_chute_inicial"><a href="#a_aproximação_com_o_chute_inicial" class="header-anchor">A aproximação com o chute inicial</a></h3>
+<ul>
+<li><p>Só de curiosidade, vamos comparar com a modelagem com o &quot;chute inicial&quot;.</p>
+</li>
+</ul>
+<pre><code class="language-julia">β₀ &#61; &#91;3e-5, 18.4&#93;
+info0 &#61; info_ajuste2&#40;
+            V_data, I_data, 
+            model.&#40;V_data, Ref&#40;β₀&#41;&#41;, length&#40;β₀&#41;
+    &#41;</code></pre>
+<pre><code class="language-julia">&#40;residuos &#61; &#91;0.0, 0.0011593918221771775, 0.007459051115690811, 0.0709321355
+8909225, 0.1789636438766955, 0.3455236252015743, 0.2939035258466902, 0.7011
+448924068566, 0.6911625430045394, -0.36114233411716157, -0.2068441372886056
+2, -3.228465634497889, -2.491978940235665&#93;, rms &#61; 1.1772964363886456, rms_r
+el &#61; 0.15370995187368747, ss &#61; 18.018349688734258, ss_rel &#61; 0.0236267493050
+1132, r_sq &#61; 0.6662962289273413, r_sq_aj &#61; 0.6359595224661905, aic &#61; 8.2437
+37008206054, aicc &#61; 5.443737008206055, bic &#61; 14.503534438052203&#41;</code></pre>
+<pre><code class="language-julia">v &#61; 0.0:0.01:0.73
+plot&#40;v, v -&gt; model&#40;v, β₀&#41;, 
+    label&#61;&quot;modelo com chute inicial &#40;R²_aj &#61; &#36;&#40;round&#40;info0.r_sq_aj, digits&#61;3&#41;&#41;, RMS_rel &#61; &#36;&#40;round&#40;info0.rms_rel, digits&#61;3&#41;&#41;&#41;&quot;&#41;
+scatter&#33;&#40;V_data, I_data, color&#61;2, label&#61;&quot;dados&quot;, legend&#61;:topleft,
+    xlabel&#61;&quot;Voltagem &#40;V&#41;&quot;, ylabel&#61;&quot;Corrente &#40;mA&#41;&quot;,
+    title&#61;&quot;Dados e modelo inicial de corrente e voltagem através de um diodo&quot;, titlefont&#61;10&#41;</code></pre>
+<img src="/modelagem_matematica/assets/pages/jupytered/c08/0801-Modelo_diodo/code/images/0801-Modelo_diodo_8_1.png" alt="">
+<pre><code class="language-julia">v &#61; 0.4:0.01:0.73
+plot&#40;v, v -&gt; model&#40;v, β₀&#41;, yscale&#61;:log10&#41;
+scatter&#33;&#40;V_data&#91;4:end&#93;,I_data&#91;4:end&#93;, legend&#61;false, yscale&#61;:log10, color&#61;2,
+    title&#61;&quot;Dados de corrente e voltagem através de um diodo&quot;, titlefont&#61;10,
+    xlabel&#61;&quot;Voltagem &#40;V&#41;&quot;, ylabel&#61;&quot;Corrente &#40;mA&#41;&quot;&#41;</code></pre>
+<img src="/modelagem_matematica/assets/pages/jupytered/c08/0801-Modelo_diodo/code/images/0801-Modelo_diodo_9_1.png" alt="">
+<h3 id="ajuste"><a href="#ajuste" class="header-anchor">Ajuste</a></h3>
+<pre><code class="language-julia">β₀ &#61; &#91;3e-5, 18.4&#93;
+fit &#61; curve_fit&#40;model, V_data, I_data, β₀&#41;
+β_fit &#61; fit.param</code></pre>
+<pre><code class="language-julia">2-element Vector&#123;Float64&#125;:
+  5.26982332347709e-6
+ 21.05152457954139</code></pre>
+<pre><code class="language-julia">info &#61; info_ajuste2&#40;
+            V_data, I_data, 
+            model.&#40;V_data, Ref&#40;β_fit&#41;&#41;, length&#40;β_fit&#41;
+    &#41;</code></pre>
+<pre><code class="language-julia">&#40;residuos &#61; &#91;0.0, 0.00034979548971481906, 0.0029092320810440893, 0.00441858
+1513577241, 0.04917142140402786, 0.1444274783315661, 0.057984363698019514, 
+0.4557430229716335, 0.6180665168044328, -0.29985520550449607, 0.71921309176
+83546, -1.7691253579516832, 0.657646894938626&#93;, rms &#61; 0.6067479472790648, r
+ms_rel &#61; 0.07921810929947973, ss &#61; 4.785859929855664, ss_rel &#61; 0.0062755088
+40984316, r_sq &#61; 0.9036207367856988, r_sq_aj &#61; 0.8948589855843987, aic &#61; -8
+.990687255581598, aicc &#61; -11.790687255581599, bic &#61; -2.730889825735451&#41;</code></pre>
+<pre><code class="language-julia">v &#61; 0.0:0.01:0.73
+plot&#40;v, v -&gt; model&#40;v, β_fit&#41;, 
+    label&#61;&quot;modelo ajustado &#40;R²_aj &#61; &#36;&#40;round&#40;info.r_sq_aj, digits&#61;3&#41;&#41;, RMS_rel &#61; &#36;&#40;round&#40;info.rms_rel, digits&#61;3&#41;&#41;&#41;&quot;&#41;
+scatter&#33;&#40;V_data, I_data, color&#61;2, label&#61;&quot;dados&quot;, legend&#61;:topleft,
+    xlabel&#61;&quot;Voltagem &#40;V&#41;&quot;, ylabel&#61;&quot;Corrente &#40;mA&#41;&quot;,
+    title&#61;&quot;Dados e modelo de corrente e voltagem através de um diodo&quot;, titlefont&#61;10&#41;</code></pre>
+<img src="/modelagem_matematica/assets/pages/jupytered/c08/0801-Modelo_diodo/code/images/0801-Modelo_diodo_12_1.png" alt="">
+<pre><code class="language-julia">v &#61; 0.4:0.01:0.73
+plot&#40;v, v -&gt; model&#40;v, β_fit&#41;, yscale&#61;:log10&#41;
+scatter&#33;&#40;V_data&#91;4:end&#93;,I_data&#91;4:end&#93;, legend&#61;false, yscale&#61;:log10, color&#61;2,
+    title&#61;&quot;Dados de corrente e voltagem através de um diodo&quot;, titlefont&#61;10,
+    xlabel&#61;&quot;Voltagem &#40;V&#41;&quot;, ylabel&#61;&quot;Corrente &#40;mA&#41;&quot;&#41;</code></pre>
+<img src="/modelagem_matematica/assets/pages/jupytered/c08/0801-Modelo_diodo/code/images/0801-Modelo_diodo_13_1.png" alt="">
+<h2 id="um_modelo_com_três_parâmetros"><a href="#um_modelo_com_três_parâmetros" class="header-anchor">Um modelo com três parâmetros</a></h2>
+<ul>
+<li><p>No artigo <a href="https://arxiv.org/abs/1608.05638v1">E. Cataldo, A. Di Lieto F. Maccarrone, G. Paffuti, Measurements and analysis of current-voltage characteristic of a pn diode for an undergraduate physics laboratory</a>, um modelo de três parâmetros é considerado, buscando capturar pequenos desvios em relação ao comportamente exponencial.</p>
+</li>
+<li><p>O modelo aparece na equação &#40;5&#41;, cujos parâmetros são \(G\), \(I_\mathrm{S}\) e \(B\):</p>
+</li>
+</ul>
+\[ I = GV + I_{\mathrm{S}}\left(e^{BV} - 1\right).
+\]
+<pre><code class="language-julia">model2&#40;V,β&#41; &#61; β&#91;1&#93; * &#40;exp.&#40;β&#91;2&#93; * V&#41; .- 1&#41; .&#43; β&#91;3&#93; * V</code></pre>
+<pre><code class="language-julia">model2 &#40;generic function with 1 method&#41;</code></pre>
+<h3 id="chute_inicial__2"><a href="#chute_inicial__2" class="header-anchor">Chute inicial</a></h3>
+<ul>
+<li><p>Para \(\beta[1]\) e \(\beta[2]\), usamos o mesmo chute inicial que antes &#40;outra opção é usar os parâmetros obtidos com o ajuste acima&#41;.</p>
+</li>
+<li><p>Em relação a \(\beta[3]\), como esperamos que a sua contribuição seja pequena, vamos simplesmente chutá-lo como sendo nulo.</p>
+</li>
+</ul>
+<h3 id="ajuste__2"><a href="#ajuste__2" class="header-anchor">Ajuste</a></h3>
+<pre><code class="language-julia">β₀ &#61; &#91;3e-5, 18.4, 0.0&#93;
+fit2 &#61; curve_fit&#40;model2, V_data, I_data, β₀&#41;
+β_fit2 &#61; fit2.param</code></pre>
+<pre><code class="language-julia">3-element Vector&#123;Float64&#125;:
+  9.11666361672336e-6
+ 20.307925387730236
+ -0.45014624223549293</code></pre>
+<pre><code class="language-julia">info2 &#61; info_ajuste2&#40;
+            V_data, I_data, 
+            model2.&#40;V_data, Ref&#40;β_fit2&#41;&#41;, length&#40;β_fit2&#41;
+    &#41;</code></pre>
+<pre><code class="language-julia">&#40;residuos &#61; &#91;0.0, -0.089508994389216, -0.13101911921302076, -0.184210738939
+7697, -0.13249371959379905, -0.009912434212696164, -0.07200183975959273, 0.
+4000703284071925, 0.6344675938393474, -0.260607267593163, 0.790686053503566
+9, -1.7141414131529569, 0.5914919659748712&#93;, rms &#61; 0.5965153993472702, rms_
+rel &#61; 0.07788212933595749, ss &#61; 4.625798081559632, ss_rel &#61; 0.0060656260699
+02811, r_sq &#61; 0.9174789330728714, r_sq_aj &#61; 0.9009747196874457, aic &#61; -7.43
+2905761711048, aicc &#61; -10.766239095044382, bic &#61; 1.9567903830581734&#41;</code></pre>
+<pre><code class="language-julia">v &#61; 0.0:0.01:0.73
+plot&#40;v, v -&gt; model2&#40;v, β_fit2&#41;, 
+    label&#61;&quot;modelo 2 ajustado &#40;R²_aj &#61; &#36;&#40;round&#40;info2.r_sq_aj, digits&#61;3&#41;&#41;, RMS_rel &#61; &#36;&#40;round&#40;info2.rms_rel, digits&#61;3&#41;&#41;&#41;&quot;&#41;
+scatter&#33;&#40;V_data, I_data, color&#61;2, label&#61;&quot;dados&quot;, legend&#61;:topleft,
+    xlabel&#61;&quot;Voltagem &#40;V&#41;&quot;, ylabel&#61;&quot;Corrente &#40;mA&#41;&quot;,
+    title&#61;&quot;Dados e modelo 2&quot;, titlefont&#61;10&#41;</code></pre>
+<img src="/modelagem_matematica/assets/pages/jupytered/c08/0801-Modelo_diodo/code/images/0801-Modelo_diodo_17_1.png" alt="">
+<pre><code class="language-julia">v &#61; 0.0:0.01:0.73
+plot&#40;v, v -&gt; model&#40;v, β_fit&#41;, 
+    label&#61;&quot;modelo 1 ajustado &#40;R²_aj &#61; &#36;&#40;round&#40;info.r_sq_aj, digits&#61;3&#41;&#41;, RMS_rel &#61; &#36;&#40;round&#40;info.rms_rel, digits&#61;3&#41;&#41;&#41;&quot;&#41;
+plot&#33;&#40;v, v -&gt; model2&#40;v, β_fit2&#41;, 
+    label&#61;&quot;modelo 2 ajustado &#40;R²_aj &#61; &#36;&#40;round&#40;info2.r_sq_aj, digits&#61;3&#41;&#41;, RMS_rel &#61; &#36;&#40;round&#40;info2.rms_rel, digits&#61;3&#41;&#41;&#41;&quot;&#41;
+scatter&#33;&#40;V_data, I_data, color&#61;2, label&#61;&quot;dados&quot;, legend&#61;:topleft,
+    xlabel&#61;&quot;Voltagem &#40;V&#41;&quot;, ylabel&#61;&quot;Corrente &#40;mA&#41;&quot;,
+    title&#61;&quot;Dados e modelos exponenciais&quot;, titlefont&#61;10&#41;</code></pre>
+<img src="/modelagem_matematica/assets/pages/jupytered/c08/0801-Modelo_diodo/code/images/0801-Modelo_diodo_18_1.png" alt="">
+<h2 id="modelo_polinomial"><a href="#modelo_polinomial" class="header-anchor">Modelo polinomial</a></h2>
+<ul>
+<li><p>Vamos, ainda, buscar modelos polinomiais, apenas para ilustração.</p>
+</li>
+<li><p>Como estes são modelos lineares nos parâmetros, usamos o método de mínimos quadrados linear.</p>
+</li>
+<li><p>Nesse caso, não precisamos de &quot;chutes iniciais&quot;.</p>
+</li>
+</ul>
+<pre><code class="language-julia">model_pol&#40;V,β,grau&#41; &#61; β ⋅ &#91;V^j for j &#61; 0:grau&#93;</code></pre>
+<pre><code class="language-julia">model_pol &#40;generic function with 1 method&#41;</code></pre>
+<pre><code class="language-julia">A&#40;grau&#41; &#61; reduce&#40;hcat, &#91;V_data.^j for j&#61;0:grau&#93;&#41;
+
+β_pol &#61; Dict&#40;&#41;
+info_pol &#61; Dict&#40;&#41;
+
+grau_range &#61; &#40;3, 4, 6, 8, 12&#41;
+for grau in grau_range
+    β_pol&#91;grau&#93; &#61; A&#40;grau&#41; \ I_data
+    info_pol&#91;grau&#93; &#61; info_ajuste2&#40;
+            V_data, I_data, 
+            model_pol.&#40;V_data, Ref&#40;β_pol&#91;grau&#93;&#41;, grau&#41;, length&#40;β_pol&#91;grau&#93;&#41;
+    &#41;
+end</code></pre>
+<pre><code class="language-julia">v &#61; 0.0:0.001:0.73
+scatter&#40;V_data, I_data, color&#61;2, label&#61;&quot;dados&quot;, legend&#61;:topleft, ylim&#61;&#40;-5,25.5&#41;&#41;
+for grau in grau_range
+    plot&#33;&#40;v, v -&gt; model_pol&#40;v, β_pol&#91;grau&#93;, grau&#41;, color &#61; grau,
+        label&#61;&quot;modelo grau&#61;&#36;grau &#40;R²_aj &#61; &#36;&#40;round&#40;info_pol&#91;grau&#93;.r_sq_aj, digits&#61;3&#41;&#41;, RMS_rel &#61; &#36;&#40;round&#40;info_pol&#91;grau&#93;.rms_rel, digits&#61;3&#41;&#41;&#41;&quot;&#41;
+end
+plot&#33;&#40;xlabel&#61;&quot;Voltagem &#40;V&#41;&quot;, ylabel&#61;&quot;Corrente &#40;mA&#41;&quot;,
+    title&#61;&quot;Dados e modelos polinomiais&quot;, titlefont&#61;10&#41;</code></pre>
+<img src="/modelagem_matematica/assets/pages/jupytered/c08/0801-Modelo_diodo/code/images/0801-Modelo_diodo_21_1.png" alt="">
+<h2 id="comparando_os_modelos"><a href="#comparando_os_modelos" class="header-anchor">Comparando os modelos</a></h2>
+<ul>
+<li><p>Nesse caso, não há dúvidas de que os modelos polinomiais são inadequados, mas vamos efetuar a comparação de qualquer modo, para efeito ilustrativo.</p>
+</li>
+</ul>
+<pre><code class="language-julia">println&#40;&quot;modelo exponencial 1: aicc&#61;&#36;&#40;round&#40;info.aicc, digits&#61;2&#41;&#41;, bic&#61;&#36;&#40;round&#40;info.bic, digits&#61;2&#41;&#41;&quot;&#41;
+println&#40;&quot;modelo exponencial 2: aicc&#61;&#36;&#40;round&#40;info2.aicc, digits&#61;2&#41;&#41;, bic&#61;&#36;&#40;round&#40;info2.bic, digits&#61;2&#41;&#41;&quot;&#41;
+for grau in grau_range
+    println&#40;&quot;modelo polin. grau &#36;grau: aicc&#61;&#36;&#40;round&#40;info_pol&#91;grau&#93;.aicc, digits&#61;2&#41;&#41;, , bic&#61;&#36;&#40;round&#40;info_pol&#91;grau&#93;.bic, digits&#61;2&#41;&#41;&quot;&#41;
+end</code></pre>
+<pre><code class="language-julia">modelo exponencial 1: aicc&#61;-11.79, bic&#61;-2.73
+modelo exponencial 2: aicc&#61;-10.77, bic&#61;1.96
+modelo polin. grau 3: aicc&#61;22.04, , bic&#61;37.56
+modelo polin. grau 4: aicc&#61;8.13, , bic&#61;25.21
+modelo polin. grau 6: aicc&#61;6.59, , bic&#61;20.1
+modelo polin. grau 8: aicc&#61;42.06, , bic&#61;28.23
+modelo polin. grau 12: aicc&#61;-553.5, , bic&#61;-122.81</code></pre>
+<h2 id="validação"><a href="#validação" class="header-anchor">Validação</a></h2>
+<ul>
+<li><p>Vamos buscar validar o modelo original, de dois parâmetros, escolhido pela análise acima.</p>
+</li>
+<li><p>Separamos, aleatoriamente, entre dois terços e três quartos dos dados para um novo treino, com o mesmo modelo, e usamos o restante dos dados para o teste.</p>
+</li>
+</ul>
+<h3 id="validação_cruzada"><a href="#validação_cruzada" class="header-anchor">Validação cruzada</a></h3>
+<ul>
+<li><p>Primeiro, vamos fazer um validação cruzada sem dobras</p>
+</li>
+</ul>
+<pre><code class="language-julia">seed &#61; MersenneTwister&#40;17002&#41;
+ind_shuffled &#61; shuffle&#40;seed, 1:length&#40;V_data&#41;&#41;
+ind_treino &#61; sort&#40;ind_shuffled&#91;begin:div&#40;3*end,4&#41;&#93;&#41;
+ind_teste &#61; sort&#40;ind_shuffled&#91;div&#40;3*end,4&#41;&#43;1:end&#93;&#41;
+println&#40;&quot;Índices pra treino: &#36;ind_treino&quot;&#41;
+println&#40;&quot;Índices pra teste: &#36;ind_teste&quot;&#41;</code></pre>
+<pre><code class="language-julia">Índices pra treino: &#91;1, 2, 5, 6, 7, 8, 9, 10, 12&#93;
+Índices pra teste: &#91;3, 4, 11, 13&#93;</code></pre>
+<pre><code class="language-julia">β₀ &#61; &#91;3e-5, 18.4&#93;
+fit_treino &#61; curve_fit&#40;model, V_data&#91;ind_treino&#93;, I_data&#91;ind_treino&#93;, β₀&#41;
+β_fit_treino &#61; fit_treino.param</code></pre>
+<pre><code class="language-julia">2-element Vector&#123;Float64&#125;:
+  5.30342455131964e-7
+ 24.51264341712596</code></pre>
+<pre><code class="language-julia">info_treino &#61; info_ajuste2&#40;
+            V_data&#91;ind_treino&#93;, I_data&#91;ind_treino&#93;, 
+            model.&#40;V_data&#91;ind_treino&#93;, Ref&#40;β_fit_treino&#41;&#41;, length&#40;β_fit_treino&#41;
+    &#41;</code></pre>
+<pre><code class="language-julia">&#40;residuos &#61; &#91;0.0, 7.086954864155832e-5, -0.06789489028076545, -0.0645425691
+6174944, -0.20737922270333142, 0.1129725981368459, 0.40823861887130786, -0.
+3672281097096022, 0.01586726040251918&#93;, rms &#61; 0.2017455599877888, rms_rel &#61;
+ 0.036018017809183935, ss &#61; 0.36631143877307837, ss_rel &#61; 0.001297297606902
+6909, r_sq &#61; 0.8922584435322665, r_sq_aj &#61; 0.8768667926083046, aic &#61; -24.81
+3463632254923, aicc &#61; -26.813463632254923, bic &#61; -20.024565322910043&#41;</code></pre>
+<pre><code class="language-julia">info_teste &#61; info_ajuste2&#40;
+            V_data&#91;ind_teste&#93;, I_data&#91;ind_teste&#93;, 
+            model.&#40;V_data&#91;ind_teste&#93;, Ref&#40;β_fit_treino&#41;&#41;, length&#40;β_fit_treino&#41;
+    &#41;</code></pre>
+<pre><code class="language-julia">&#40;residuos &#61; &#91;0.000827923137692699, -0.04653940355314284, 1.751501449768277,
+ 5.016842770958704&#93;, rms &#61; 2.657001849764165, rms_rel &#61; 0.24248431079807833
+, ss &#61; 28.238635318600778, ss_rel &#61; 0.05879864098321905, r_sq &#61; 1.207721250
+1264294, r_sq_aj &#61; 1.3115818751896442, aic &#61; 11.81758690370134, aicc &#61; 19.8
+1758690370134, bic &#61; 13.362764348180903&#41;</code></pre>
+<pre><code class="language-julia">v &#61; 0.0:0.01:0.73
+plot&#40;v, v -&gt; model&#40;v, β_fit&#41;, 
+    label&#61;&quot;modelo ajustado completo &#40;RMS_rel &#61; &#36;&#40;round&#40;info.rms_rel, digits&#61;3&#41;&#41;&#41;&quot;&#41;
+plot&#33;&#40;v, v -&gt; model&#40;v, β_fit_treino&#41;, color&#61;5,
+    label&#61;&quot;modelo ajustado treino &#40;RMS_rel &#61; &#36;&#40;round&#40;info_treino.rms_rel, digits&#61;3&#41;&#41;&#41;&quot;&#41;
+scatter&#33;&#40;V_data&#91;ind_treino&#93;, I_data&#91;ind_treino&#93;, color&#61;2, label&#61;&quot;dados treino &#40;RMS_rel &#61; &#36;&#40;round&#40;info_treino.rms_rel, digits&#61;3&#41;&#41;&#41;&quot;&#41;
+scatter&#33;&#40;V_data&#91;ind_teste&#93;, I_data&#91;ind_teste&#93;, color&#61;:orange,
+    label&#61;&quot;dados teste &#40;RMS_rel &#61; &#36;&#40;round&#40;info_teste.rms_rel, digits&#61;3&#41;&#41;&#41;&quot;,
+    legend&#61;:topleft, xlabel&#61;&quot;Voltagem &#40;V&#41;&quot;, ylabel&#61;&quot;Corrente &#40;mA&#41;&quot;,
+    title&#61;&quot;Dados, treino e teste de validação do modelo&quot;, titlefont&#61;10&#41;</code></pre>
+<img src="/modelagem_matematica/assets/pages/jupytered/c08/0801-Modelo_diodo/code/images/0801-Modelo_diodo_27_1.png" alt="">
+<h3 id="comentário"><a href="#comentário" class="header-anchor">Comentário</a></h3>
+<ul>
+<li><p>Observe que, apesar de visualmente a aproximação parecer boa, o erro quadrático médio relativo aumentou consideravelmente.</p>
+</li>
+<li><p>Isso se deve mais ao baixo número de dados, aliado a uma qualidade não muito boa dos mesmos.</p>
+</li>
+<li><p>Mais a seguir, faremos uma outra análise com dados melhores.</p>
+</li>
+</ul>
+<h3 id="validação_cruzada_com_dobras"><a href="#validação_cruzada_com_dobras" class="header-anchor">Validação cruzada com dobras</a></h3>
+<pre><code class="language-julia">seed &#61; MersenneTwister&#40;17003&#41;
+ind_shuffled &#61; shuffle&#40;seed, 1:length&#40;V_data&#41;&#41;
+size_test &#61; div&#40;length&#40;V_data&#41;, 4&#41;
+β₀ &#61; &#91;3e-5, 18.4&#93;
+fator &#61; 0
+for i in 1:size_test:length&#40;V_data&#41;-size_test&#43;1
+    ind_test &#61; sort&#40;ind_shuffled&#91;i:&#40;i &#43; size_test - 1&#41;&#93;&#41;
+    ind_treino &#61; filter&#40;n -&gt; &#33;&#40;n in ind_test&#41;, 1:length&#40;V_data&#41;&#41;
+    fit_treino &#61; curve_fit&#40;model, V_data&#91;ind_treino&#93;, I_data&#91;ind_treino&#93;, β₀&#41;
+    β_fit_treino &#61; fit_treino.param
+    info_treino &#61; info_ajuste2&#40;
+            V_data&#91;ind_treino&#93;, I_data&#91;ind_treino&#93;, 
+            model.&#40;V_data&#91;ind_treino&#93;, Ref&#40;β_fit_treino&#41;&#41;, length&#40;β_fit_treino&#41;
+    &#41;
+    info_teste &#61; info_ajuste2&#40;
+            V_data&#91;ind_teste&#93;, I_data&#91;ind_teste&#93;, 
+            model.&#40;V_data&#91;ind_teste&#93;, Ref&#40;β_fit_treino&#41;&#41;, length&#40;β_fit_treino&#41;
+    &#41;
+    
+    fator &#43;&#61; info_teste.rms_rel / info_treino.rms_rel
+    println&#40;ind_test&#41;
+    println&#40;ind_treino&#41;
+    println&#40;info_treino.rms_rel&#41;
+    println&#40;info_teste.rms_rel&#41;
+    println&#40;&#41;
+end
+
+fator /&#61; div&#40;length&#40;V_data&#41;, size_test&#41;
+println&#40;div&#40;length&#40;V_data&#41;, size_test&#41;&#41;
+println&#40;fator&#41;</code></pre>
+<pre><code class="language-julia">Error: UndefVarError: fator not defined</code></pre>
+<h2 id="propagação_de_incertezas"><a href="#propagação_de_incertezas" class="header-anchor">Propagação de incertezas</a></h2>
+<ul>
+<li><p>Matrizes de covariância e de correlação</p>
+</li>
+</ul>
+<pre><code class="language-julia">covar &#61; estimate_covar&#40;fit&#41;</code></pre>
+<pre><code class="language-julia">2×2 Matrix&#123;Float64&#125;:
+  1.84002e-11  -4.94724e-6
+ -4.94724e-6    1.33131</code></pre>
+<pre><code class="language-julia">estimate_covar&#40;fit&#41; ./ &#40;stderror&#40;fit&#41; * stderror&#40;fit&#41;&#39;&#41;</code></pre>
+<pre><code class="language-julia">2×2 Matrix&#123;Float64&#125;:
+  1.0       -0.999567
+ -0.999567   1.0</code></pre>
+<pre><code class="language-julia">num_amostras &#61; 400
+plot&#40;title&#61;&quot;Amostragem dos parâmetros&quot;, titlefont&#61;10, legend&#61;false&#41;
+scatter&#33;&#40;&#40;r -&gt; &#40;r&#91;1,:&#93;, r&#91;2,:&#93;&#41;&#41;&#40;rand&#40;MersenneTwister&#40;17011&#41;,MvNormal&#40;β_fit,covar&#41;, num_amostras&#41;&#41;, label&#61;&quot;com correlação&quot;&#41;
+scatter&#33;&#40;&#40;rand&#40;MersenneTwister&#40;17012&#41;, Normal&#40;β_fit&#91;1&#93;,stderror&#40;fit&#41;&#91;1&#93;&#41;,num_amostras&#41;,
+        rand&#40;MersenneTwister&#40;17013&#41;, Normal&#40;β_fit&#91;2&#93;,stderror&#40;fit&#41;&#91;2&#93;&#41;,num_amostras&#41;&#41;, label&#61;&quot;sem correlação&quot;,
+        legend&#61;:topleft, xlabel&#61;&quot;β&#91;1&#93;&quot;, ylabel&#61;&quot;β&#91;2&#93;&quot;&#41;</code></pre>
+<img src="/modelagem_matematica/assets/pages/jupytered/c08/0801-Modelo_diodo/code/images/0801-Modelo_diodo_31_1.png" alt="">
+<pre><code class="language-julia">v &#61; 0.0:0.02:0.73
+num_amostras &#61; 200
+simulations &#61; fill&#40;0.0, length&#40;v&#41;, num_amostras&#41;
+plot&#40;title&#61;&quot;Simulações, média e intervalo de confiança de 68&#37;&quot;, titlefont&#61;10&#41;
+for &#40;n,β̃&#41; in 
+        enumerate&#40;eachcol&#40;rand&#40;MersenneTwister&#40;17011&#41;, MvNormal&#40;β_fit,covar&#41;, num_amostras&#41;&#41;&#41;
+    simulations&#91;:,n&#93; &#61; model.&#40;v,Ref&#40;β̃&#41;&#41;
+    plot&#33;&#40;v, simulations&#91;:,n&#93;, label&#61;false, alpha&#61;0.1 , legend&#61;:bottomright,
+        color&#61;3&#41;
+end
+plot&#33;&#40;v, model.&#40;v, Ref&#40;β_fit&#41;&#41;, ribbon&#61;sqrt.&#40;var&#40;simulations, dims&#61;2&#41;&#41;, fillalpha&#61;0.2, 
+    color&#61;4, label&#61;&quot;modelo ajustado e CI 68&#37;&quot;&#41;
+plot&#33;&#40;v, mean&#40;simulations, dims&#61;2&#41;, color&#61;6, label&#61;&quot;média simulações&quot;&#41;
+scatter&#33;&#40;V_data, I_data, color&#61;2, label&#61;&quot;dados&quot;, legend&#61;:topleft, ylim&#61;&#40;-5,25.5&#41;,
+    xlabel&#61;&quot;Voltagem &#40;V&#41;&quot;, ylabel&#61;&quot;Corrente &#40;mA&#41;&quot;&#41;</code></pre>
+<img src="/modelagem_matematica/assets/pages/jupytered/c08/0801-Modelo_diodo/code/images/0801-Modelo_diodo_32_1.png" alt="">
+<h3 id="comentário__2"><a href="#comentário__2" class="header-anchor">Comentário</a></h3>
+<ul>
+<li><p>Novamente, a baixa qualidade dos dados afetou consideravelmente a performance do método.</p>
+</li>
+<li><p>Para outros sorteios &#40;para o método de Monte-Carlo usado acima&#41;, o resultado é ainda pior.</p>
+</li>
+<li><p>Observe as simulações onde a corrente assume valores negativos.</p>
+</li>
+<li><p>Isso é consequência dos dados gerados para o parâmetro \(\beta[1]\), que estão em um largo intervalo, entre \(-1.0 \times 10^{-5}\) e \(2.0 \times 10^{-5}\), que inclui valores negativos de \(\beta[1]\).</p>
+</li>
+<li><p>O parâmetro \(\beta[2]\), por sua vez, aparece como um expoente no modelo e tem uma variação grande, levando, também, a uma grande sensibilidade do modelo.</p>
+</li>
+</ul>
+<h2 id="outro_experimento"><a href="#outro_experimento" class="header-anchor">Outro experimento</a></h2>
+<ul>
+<li><p>Vamos usar, agora, uma amostra maior de dados e obtidos com mais precisão.</p>
+</li>
+<li><p>Novamente, dados de voltagem em Volts &#40;V&#41; e de corrente em miliamperes &#40;mA&#41;.</p>
+</li>
+<li><p>Fonte: <a href="https://www.cmi.ac.in/~debangshu/lab1/diode.pdf">&quot;EXPERIMENT 6:Observation of the V-I characteristic of a diode&quot;</a> from <a href="https://www.cmi.ac.in/~debangshu/">Debangshu Mukherjee &#40;BS.c Physics,1st Year Chennai Mathematical Institute&#41;</a>.</p>
+</li>
+<li><p>Observe que esses dados foram obtidos com outros componentes eletrônicos e em outras condições, portanto os parâmetros naturalmente podem ser diferentes do anterior.</p>
+</li>
+<li><p>Esses dados foram obtidos em um laboratório científico, com um controle melhor, equipamento mais apropriado e, consequentemente, com um qualidade melhor dos dados.</p>
+</li>
+</ul>
+<h3 id="dados"><a href="#dados" class="header-anchor">Dados</a></h3>
+<pre><code class="language-julia">V_data_b &#61; &#91;0.283, 0.347, 0.370, 0.395, 0.425, 0.435, 0.445, 0.467, 0.485, 0.496, 0.503, 0.517, 0.525, 0.527, 0.538, 0.544, 0.555, 0.563, 0.573, 0.575, 0.585, 0.592, 0.598, 0.605, 0.618, 0.623, 0.630, 0.646, 0.653, 0.658, 0.665, 0.672, 0.677, 0.680&#93;
+I_data_b &#61; &#91;0.000, 0.001, 0.001, 0.005, 0.009, 0.012, 0.018, 0.047, 0.060, 0.082, 0.101, 0.145, 0.175, 0.181, 0.246, 0.306, 0.412, 0.509, 0.646, 0.693, 0.822, 0.979, 1.112, 1.335, 1.805, 2.007, 2.392, 3.4, 3.9, 4.3, 5.3, 6.7, 7.6, 8.0&#93;
+nothing</code></pre>
+<h3 id="ajuste__3"><a href="#ajuste__3" class="header-anchor">Ajuste</a></h3>
+<pre><code class="language-julia">β₀ &#61; &#91;3e-5, 18.4&#93;
+fit_b &#61; curve_fit&#40;model, V_data_b, I_data_b, β₀&#41;
+β_fit_b &#61; fit_b.param</code></pre>
+<pre><code class="language-julia">2-element Vector&#123;Float64&#125;:
+  4.0641570657696866e-7
+ 24.693695999288067</code></pre>
+<pre><code class="language-julia">info_b &#61; info_ajuste2&#40;
+            V_data_b, I_data_b, 
+            model.&#40;V_data_b, Ref&#40;β_fit_b&#41;&#41;, length&#40;β_fit_b&#41;
+    &#41;</code></pre>
+<pre><code class="language-julia">&#40;residuos &#61; &#91;0.00044010538413855553, 0.0011391071498461354, 0.0027750961557
+936626, 0.001999353882426909, 0.00568254106833347, 0.00679521135415562, 0.0
+06059834059495055, -0.005577997303504202, 0.004605674958743561, 0.002769381
+2062940526  …  -0.08071133295917554, -0.056115019304928015, -0.072993152752
+36173, 0.04263857205517585, 0.19224653723562524, 0.3300264758020752, 0.2036
+8832663729464, -0.15779440180925786, -0.198054705820355, -0.028888566806690
+72&#93;, rms &#61; 0.09572597205098078, rms_rel &#61; 0.034666563060762635, ss &#61; 0.3115
+5769865357524, ss_rel &#61; 0.0012017705944458324, r_sq &#61; 0.9758130805204194, r
+_sq_aj &#61; 0.9750572392866825, aic &#61; -155.5460626394362, aicc &#61; -159.15896586
+524266, bic &#61; -145.44062054097157&#41;</code></pre>
+<h3 id="visualização"><a href="#visualização" class="header-anchor">Visualização</a></h3>
+<ul>
+<li><p>Observe o \(R^2\) ajustado bem mais próximo de 1, dessa vez.</p>
+</li>
+</ul>
+<pre><code class="language-julia">v &#61; 0.0:0.01:0.73
+plot&#40;v, v -&gt; model&#40;v, β_fit_b&#41;, 
+    label&#61;&quot;modelo ajustado &#40;R²_aj &#61; &#36;&#40;round&#40;info_b.r_sq_aj, digits&#61;3&#41;&#41;, RMS_rel &#61; &#36;&#40;round&#40;info_b.rms_rel, digits&#61;3&#41;&#41;&#41;&quot;&#41;
+scatter&#33;&#40;V_data_b, I_data_b, color&#61;2, label&#61;&quot;dados&quot;, legend&#61;:topleft,
+    xlabel&#61;&quot;Voltagem &#40;V&#41;&quot;, ylabel&#61;&quot;Corrente &#40;mA&#41;&quot;,
+    title&#61;&quot;Dados e modelo de corrente e voltagem através de um diodo&quot;, titlefont&#61;10&#41;</code></pre>
+<img src="/modelagem_matematica/assets/pages/jupytered/c08/0801-Modelo_diodo/code/images/0801-Modelo_diodo_36_1.png" alt="">
+<h3 id="validação__2"><a href="#validação__2" class="header-anchor">Validação</a></h3>
+<ul>
+<li><p>O \(R^2\) ajustado também se comporta bem melhor, dessa vez, nos permitindo confortavelmente validar o modelo.</p>
+</li>
+</ul>
+<pre><code class="language-julia">seed_b &#61; MersenneTwister&#40;17201&#41;
+ind_treino_b &#61; sort&#40;shuffle&#40;seed, 1:length&#40;V_data_b&#41;&#41;&#91;begin:div&#40;3*end,4&#41;&#93;&#41;
+ind_teste_b &#61; sort&#40;shuffle&#40;seed, 1:length&#40;V_data_b&#41;&#41;&#91;div&#40;3*end,4&#41;&#43;1:end&#93;&#41;
+println&#40;&quot;Índices pra treino: &#36;ind_treino_b&quot;&#41;
+println&#40;&quot;Índices pra teste: &#36;ind_teste_b&quot;&#41;</code></pre>
+<pre><code class="language-julia">Índices pra treino: &#91;1, 2, 5, 7, 8, 10, 11, 12, 13, 14, 15, 16, 17, 19, 20,
+ 21, 23, 25, 26, 27, 28, 29, 30, 32, 34&#93;
+Índices pra teste: &#91;5, 8, 12, 13, 14, 21, 28, 32, 34&#93;</code></pre>
+<pre><code class="language-julia">β₀ &#61; &#91;3e-5, 18.4&#93;
+fit_treino_b &#61; curve_fit&#40;model, V_data_b&#91;ind_treino_b&#93;, I_data_b&#91;ind_treino_b&#93;, β₀&#41;
+β_fit_treino_b &#61; fit_treino_b.param</code></pre>
+<pre><code class="language-julia">2-element Vector&#123;Float64&#125;:
+  4.219582816794821e-7
+ 24.632454258221042</code></pre>
+<pre><code class="language-julia">info_treino_b &#61; info_ajuste2&#40;
+            V_data_b&#91;ind_treino_b&#93;, I_data_b&#91;ind_treino_b&#93;, 
+            model.&#40;V_data_b&#91;ind_treino_b&#93;, Ref&#40;β_fit_treino_b&#41;&#41;, length&#40;β_fit_treino_b&#41;
+    &#41;</code></pre>
+<pre><code class="language-julia">&#40;residuos &#61; &#91;0.00044907798452057117, 0.0011742058346466792, 0.0058523862506
+53603, 0.006308368629510289, -0.0052064536115072335, 0.0033779834445139822,
+ 0.0004449437308721854, -0.0017814481936530846, -0.0005859694075767974, 0.0
+02221716250083078  …  -0.05737839167797698, -0.05878450651206735, -0.081258
+7044216937, -0.05733141822035126, -0.07543238436260236, 0.0356493311265238,
+ 0.1821880885585343, 0.3172321514599066, -0.181464002819828, -0.06161815953
+309713&#93;, rms &#61; 0.0921475453306192, rms_rel &#61; 0.03529594954649204, ss &#61; 0.21
+227925276146295, ss_rel &#61; 0.0012458040543885114, r_sq &#61; 0.9652383278328822,
+ r_sq_aj &#61; 0.963726950782138, aic &#61; -115.21821164894455, aicc &#61; -118.672757
+10349, bic &#61; -106.34270834947175&#41;</code></pre>
+<pre><code class="language-julia">info_teste_b &#61; info_ajuste2&#40;
+            V_data_b&#91;ind_teste_b&#93;, I_data_b&#91;ind_teste_b&#93;, 
+            model.&#40;V_data_b&#91;ind_teste_b&#93;, Ref&#40;β_fit_treino_b&#41;&#41;, length&#40;β_fit_treino_b&#41;
+    &#41;</code></pre>
+<pre><code class="language-julia">&#40;residuos &#61; &#91;0.005852386250653603, -0.0052064536115072335, -0.0017814481936
+530846, -0.0005859694075767974, 0.002221716250083078, -0.05737839167797698,
+ 0.0356493311265238, -0.181464002819828, -0.06161815953309713&#93;, rms &#61; 0.067
+78966413342688, rms_rel &#61; 0.018471885955884827, ss &#61; 0.041358947069905415, 
+ss_rel &#61; 0.00034121057076721506, r_sq &#61; 0.8654532209310952, r_sq_aj &#61; 0.846
+2322524926802, aic &#61; -44.444219757198, aicc &#61; -46.444219757198, bic &#61; -39.6
+5532144785312&#41;</code></pre>
+<pre><code class="language-julia">v &#61; 0.0:0.01:0.73
+plot&#40;v, v -&gt; model&#40;v, β_fit_b&#41;, 
+    label&#61;&quot;modelo completo &#40;R²_aj &#61; &#36;&#40;round&#40;info_b.r_sq_aj, digits&#61;3&#41;&#41;&#41;&quot;&#41;
+plot&#33;&#40;v, v -&gt; model&#40;v, β_fit_treino_b&#41;, color&#61;5,
+    label&#61;&quot;modelo teste &#40;R²_aj &#61; &#36;&#40;round&#40;info_treino_b.r_sq_aj, digits&#61;3&#41;&#41;; RMS_rel &#61; &#36;&#40;round&#40;info_treino_b.rms_rel, digits&#61;3&#41;&#41;&#41;&quot;&#41;
+scatter&#33;&#40;V_data_b&#91;ind_treino_b&#93;, I_data_b&#91;ind_treino_b&#93;, color&#61;2, label&#61;&quot;dados treino&quot;&#41;
+scatter&#33;&#40;V_data_b&#91;ind_teste_b&#93;, I_data_b&#91;ind_teste_b&#93;, color&#61;:orange,
+    label&#61;&quot;dados teste &#40;R²_aj &#61; &#36;&#40;round&#40;info_teste_b.r_sq_aj, digits&#61;3&#41;&#41;; RMS_rel &#61; &#36;&#40;round&#40;info_teste_b.rms_rel, digits&#61;3&#41;&#41;&#41;&quot;,
+    legend&#61;:topleft, xlabel&#61;&quot;Voltagem &#40;V&#41;&quot;, ylabel&#61;&quot;Corrente &#40;mA&#41;&quot;,
+    title&#61;&quot;Dados, treino e teste de validação do modelo&quot;, titlefont&#61;10&#41;</code></pre>
+<img src="/modelagem_matematica/assets/pages/jupytered/c08/0801-Modelo_diodo/code/images/0801-Modelo_diodo_41_1.png" alt="">
+<h3 id="propagação_de_incertezas__2"><a href="#propagação_de_incertezas__2" class="header-anchor">Propagação de incertezas</a></h3>
+<ul>
+<li><p>Da mesma forma, com esses dados de maior qualidade, os intervalos de confiança aparecem bem mais &quot;justos&quot;.</p>
+</li>
+</ul>
+<pre><code class="language-julia">covar_b &#61; estimate_covar&#40;fit_b&#41;</code></pre>
+<pre><code class="language-julia">2×2 Matrix&#123;Float64&#125;:
+  8.56058e-15  -3.15705e-8
+ -3.15705e-8    0.116513</code></pre>
+<pre><code class="language-julia">estimate_covar&#40;fit_b&#41; ./ &#40;stderror&#40;fit_b&#41; * stderror&#40;fit_b&#41;&#39;&#41;</code></pre>
+<pre><code class="language-julia">2×2 Matrix&#123;Float64&#125;:
+  1.0       -0.999637
+ -0.999637   1.0</code></pre>
+<pre><code class="language-julia">num_amostras &#61; 200
+plot&#40;title&#61;&quot;Amostragem dos parâmetros&quot;, titlefont&#61;10, legend&#61;false&#41;
+scatter&#33;&#40;&#40;r -&gt; &#40;r&#91;1,:&#93;, r&#91;2,:&#93;&#41;&#41;&#40;rand&#40;MersenneTwister&#40;17211&#41;,MvNormal&#40;β_fit_b,covar_b&#41;, num_amostras&#41;&#41;, label&#61;&quot;com correlação&quot;&#41;
+scatter&#33;&#40;&#40;rand&#40;MersenneTwister&#40;17212&#41;, Normal&#40;β_fit_b&#91;1&#93;,stderror&#40;fit_b&#41;&#91;1&#93;&#41;,num_amostras&#41;,
+        rand&#40;MersenneTwister&#40;17213&#41;, Normal&#40;β_fit_b&#91;2&#93;,stderror&#40;fit_b&#41;&#91;2&#93;&#41;,num_amostras&#41;&#41;, label&#61;&quot;sem correlação&quot;,
+        legend&#61;:topleft, xlabel&#61;&quot;β&#91;1&#93;&quot;, ylabel&#61;&quot;β&#91;2&#93;&quot;&#41;</code></pre>
+<img src="/modelagem_matematica/assets/pages/jupytered/c08/0801-Modelo_diodo/code/images/0801-Modelo_diodo_44_1.png" alt="">
+<pre><code class="language-julia">v &#61; 0.0:0.01:0.73
+num_amostras &#61; 200
+simulations_b &#61; fill&#40;0.0, length&#40;v&#41;, num_amostras&#41;
+plot&#40;title&#61;&quot;Simulações, média e intervalo de confiança de 68&#37;&quot;, titlefont&#61;10&#41;
+for &#40;n,β̃&#41; in 
+        enumerate&#40;eachcol&#40;rand&#40;MersenneTwister&#40;17211&#41;, MvNormal&#40;β_fit_b,covar_b&#41;, num_amostras&#41;&#41;&#41;
+    simulations_b&#91;:,n&#93; &#61; model.&#40;v, Ref&#40;β̃&#41;&#41;
+    plot&#33;&#40;v, simulations_b&#91;:,n&#93;, label&#61;false, alpha&#61;0.1 , legend&#61;:bottomright,
+        color&#61;3&#41;
+end
+plot&#33;&#40;v, model.&#40;v, Ref&#40;β_fit_b&#41;&#41;, ribbon&#61;sqrt.&#40;var&#40;simulations_b, dims&#61;2&#41;&#41;, fillalpha&#61;0.2,
+    yerror&#61;2*sqrt.&#40;var&#40;simulations_b, dims&#61;2&#41;&#41;, color&#61;4, label&#61;&quot;modelo ajustado e CI 68&#37; e 95&#37;&quot;&#41;
+plot&#33;&#40;v, mean&#40;simulations_b, dims&#61;2&#41;, color&#61;6, label&#61;&quot;média simulações&quot;&#41;
+scatter&#33;&#40;V_data_b, I_data_b, color&#61;2, label&#61;&quot;dados&quot;, legend&#61;:topleft, ylim&#61;&#40;-5,25.5&#41;,
+    xlabel&#61;&quot;Voltagem &#40;V&#41;&quot;, ylabel&#61;&quot;Corrente &#40;mA&#41;&quot;&#41;</code></pre>
+<img src="/modelagem_matematica/assets/pages/jupytered/c08/0801-Modelo_diodo/code/images/0801-Modelo_diodo_45_1.png" alt="">
+<h3 id="comentários"><a href="#comentários" class="header-anchor">Comentários</a></h3>
+<ul>
+<li><p>Observe como o modelo apresenta um grau de confiança muito melhor.</p>
+</li>
+<li><p>A forma de se analisar a propagação de erros é a mesma.</p>
+</li>
+<li><p>O que é melhorou foi a qualidade do ajuste dos dados.</p>
+</li>
+<li><p>Observe, em particular, que o parâmetro \(\beta[1]\) foi gerado com um erro padrão muito menor, com as amostras desse parâmetro ficando restritas a um intervalo muito menor, entre \(1.0 \times 10^{-7}\) e \(6.0 \times 10^{-7}\). Não tendo valores negativos, não há casos de corrente negativa.</p>
+</li>
+<li><p>O parâmetro \(\beta[2]\), por sua vez, implica em extrema sensibilidade do modelo, por ser um expoente, mas ele também ficou restrito a um intervalo relativamente pequeno.</p>
+</li>
+</ul>
+<h2 id="exercício"><a href="#exercício" class="header-anchor">Exercício</a></h2>
+<ol>
+<li><p>Faça a validação do modelo de três parâmetros utilizando a segunda amostra de dados.</p>
+</li>
+<li><p>Faça a análise de propagação de incertezas do modelo de três parâmetros e utilizando a segunda amostra de dados.</p>
+</li>
+<li><p>Faça a validação cruzada do modelo polinomial de grau quatro.</p>
+</li>
+<li><p>Um outro modelo de três parâmetros aparece em <a href="https://arxiv.org/abs/1608.05638v1">E. Cataldo, A. Di Lieto F. Maccarrone, G. Paffuti, Measurements and analysis of current-voltage characteristic of a pn diode for an undergraduate physics laboratory</a>, na equação &#40;4&#41;, que podemos escrever como</p>
+</li>
+</ol>
+\[ I = GV + I_\mathrm{S} \left( e^{\displaystyle B(V-R_\mathrm{S}(I - GV)} - 1 \right).
+\]
+<p>O parâmetro \(G\) é relativamente baixo, de modo que, para correntes maiores, ele pode ser desprezado e o modelo, reduzido a</p>
+\[ I = I_\mathrm{S} \left( e^{\displaystyle B(V-R_\mathrm{S}I)} - 1 \right).
+\]
+<p>Conforme feito em &#40;7&#41;, no artigo, é mais fácil tratar essa aproximação na forma de voltagem em função da corrente, reescrevendo-o como</p>
+\[ V = \frac{1}{B}\ln\left( \frac{I}{I_\mathrm{S}} + 1 \right) + R_\mathrm{S} I.
+\]
+<p>Faça o ajuste dos parâmetros desse modelo ao segundo conjunto de dados.</p>
+
+    <div class="navbar">
+    <p id="nav">
+<span id="nav-prev" style="float: left;">
+<a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c07/0707-Pendulo_angulos_grandes">7.7. Experimentos com pêndulos <kbd>←</kbd></a>
+</span>
+<span id="nav-next" style="float: right;">
+    <a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c09/0901-Lei_acao_de_massas"><kbd>→</kbd> 9.1. Lei de ação de massas</a>
+</span>
+    </p>
+</div>
+</br></br>
+
+
+
+<div class="page-foot">
+    
+        <div class="license">
+            <a href=https://creativecommons.org/licenses/by-nc-nd/4.0/>(CC BY-NC-ND 4.0) Attribution-NonCommercial-NoDerivatives 4.0 International </a>
+            
+        </div>
+    
+
+    Last modified: July 05, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
+</div><!-- CONTENT ENDS HERE -->
+
+      </div> <!-- .books-content -->
+    </div> <!-- .books-container -->
+
+    
+        <script src="/modelagem_matematica/libs/katex/katex.min.js"></script>
+        <script src="/modelagem_matematica/libs/katex/auto-render.min.js"></script>
+        <script>renderMathInElement(document.body)</script>
+    
+
+    
+        <script src="/modelagem_matematica/libs/highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();hljs.configure({tabReplace: '    '});</script>
+    
+
+  </body>
+</html>
