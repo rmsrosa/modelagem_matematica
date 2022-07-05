@@ -89,14 +89,14 @@ menu = [
         "src/jupyter/c09/0902-Reacoes_enzimaticas.ipynb"
         "src/jupyter/c09/0903-Isomerizacao.ipynb"
     ],
-]
-menu_left = [
-    "Modelos Epidemiológicos" => [
-        "src/jupyter/c10/1000-Modelos_epidemiologicos.ipynb"
+"Modelos Epidemiológicos" => [
         "src/jupyter/c10/1001-Modelos_epidemiologicos_compartimentais.ipynb"
         "src/jupyter/c10/1002-Ajuste_SIR.ipynb"
         "src/jupyter/c10/1003-Compartimentais_estruturados.ipynb"
     ],
+]
+menu_left = [
+    
     "Séries de Fourier e Aplicações" => [
         "src/jupyter/c11/1100-Fourier_e_aplicacoes.ipynb"
         "src/jupyter/c11/1101-Series_Fourier.ipynb"
