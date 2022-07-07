@@ -93,6 +93,7 @@ menu = [
         "src/jupyter/c10/1001-Modelos_epidemiologicos_compartimentais.ipynb"
         "src/jupyter/c10/1002-Ajuste_SIR.ipynb"
         "src/jupyter/c10/1003-Compartimentais_estruturados.ipynb"
+        "src/jupyter/c10/1004-Individual_estocastico.ipynb"
     ],
     "Séries de Fourier e Aplicações" => [
         "src/jupyter/c11/1101-Series_Fourier.ipynb"
