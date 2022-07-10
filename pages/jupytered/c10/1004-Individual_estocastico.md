@@ -65,26 +65,26 @@ recuperacao = 1 ./ (1 .+ 6 * rand(N) .* suscetibilidade) # distribuição entre 
 
 ```
 10000-element Vector{Float64}:
- 0.202812025717553
- 0.7720213377995687
- 0.3662390603208049
- 0.3476172757098888
- 0.23473149749831035
- 0.6854621373643908
- 0.5750803329023751
- 0.53417200220299
- 0.1637133376368967
- 0.5374528097880864
+ 0.3512647726380822
+ 0.22178354767138586
+ 0.1828262770204902
+ 0.15496799650440546
+ 0.31915011832406576
+ 0.8795454347513427
+ 0.1337346035422036
+ 0.7289188356437403
+ 0.6006042765187306
+ 0.10936702545497624
  ⋮
- 0.3404457736809909
- 0.359490048964357
- 0.5701764137350188
- 0.1140227328450712
- 0.16202214378074084
- 0.9615699131144833
- 0.3596302164889069
- 0.4904906670403304
- 0.23095587466761777
+ 0.2232304093874936
+ 0.12863751567461906
+ 0.3811599642501084
+ 0.24503797070905461
+ 0.2577004209284512
+ 0.2628714359655289
+ 0.17437929509313205
+ 0.7168404588190401
+ 0.22020614487043197
 ```
 
 
@@ -133,7 +133,26 @@ $$
 
 * Quando maior $\lambda$, menor $e^{-\lambda \Delta t}$ e maior a probabilidade de um determinado indivíduo suscetível se tornar infectado.
 
-* No caso estocástico discreto, isso é alcançado sorteando-se, para cada indivíduo suscetível, um número aleatório uniformemente entre zero e um e verificando se esse número é maior do $e^{-\lambda \Delta t}$ ou não. Caso positivo, o indivíduo se torna infectado. Caso contrário, permanece suscetível.
+* No caso estocástico discreto, isso é alcançado sorteando-se, para cada indivíduo suscetível, um número aleatório uniformemente entre zero e um e verificando se esse número é maior do que $e^{-\lambda \Delta t}$ ou não. Caso positivo, o indivíduo se torna infectado. Caso contrário, permanece suscetível.
+
+
+### Recuperação
+
+* Da mesma forma, no caso compartimental contínuo, a recuperação é determinada pela componente $I' = - \gamma I$.
+
+* Após um tempo $\Delta t$, temos uma variação no número de infectados, por conta da recuperação, da ordem de
+$$
+I(t + \Delta t) = I(t) e^{-\gamma \Delta t}.
+$$
+
+* No caso temporal discreto, vemos que a recuperação, a cada passo de tempo $\Delta t$, é proporcional a um fator dependente da taxa de recuperação $\gamma_i$ de cada indivíduo:
+$$
+e^{-\gamma_i \Delta t}.
+$$
+
+* Quanto maior a taxa de recuperação $\gamma_i$, maiores as chances do indivíduo se recuperar.
+
+* Na simulação, sorteamos, então, um número aleatório $r$ distribuído uniformemente entre $0$ e $1$ e vericamos se este número é maior ou menor do que $e^{-\gamma_i \Delta t}$. Caso positivo, o indivíduo se recupera, caso contrário, permanece infectado.
 
 
 ### Contatos
@@ -196,7 +215,7 @@ for n in 2:num_iter
     for i in 1:N
         if estado[i] == 0 && rand() > exp(-λ[i] * dt)
             estado[i] = 1
-        elseif estado[i] == 1 && rand() < recuperacao[i] * dt
+        elseif estado[i] == 1 && rand() > exp(-recuperacao[i] * dt)
             estado[i] = 2
         end        
     end
@@ -222,6 +241,11 @@ plot!(tempos, infectados, ylim = (0.0, min(1.5 * maximum(infectados), N)), label
 ```
 
 \fig{images/1004-Individual_estocastico_6_1.png}
+
+
+## Exercícios
+
+1. Implemente uma versão SEIR do modelo individual discreto estocástico descrito acima.
 
 
 
