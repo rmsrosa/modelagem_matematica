@@ -61,32 +61,8 @@ infectividade = 0.5 .+ rand(N)
 suscetibilidade = 0.5 .+ rand(N)
 recuperacao = 1 ./ (1 .+ 9 * rand(N)) # distribuição uniforme entre 1 e 10 dias de recuperação
 recuperacao = 1 ./ (1 .+ 6 * rand(N) .* suscetibilidade) # distribuição entre 1 e 9, correlacionada com a suscetibilidade
+nothing
 ```
-
-```
-10000-element Vector{Float64}:
- 0.3512647726380822
- 0.22178354767138586
- 0.1828262770204902
- 0.15496799650440546
- 0.31915011832406576
- 0.8795454347513427
- 0.1337346035422036
- 0.7289188356437403
- 0.6006042765187306
- 0.10936702545497624
- ⋮
- 0.2232304093874936
- 0.12863751567461906
- 0.3811599642501084
- 0.24503797070905461
- 0.2577004209284512
- 0.2628714359655289
- 0.17437929509313205
- 0.7168404588190401
- 0.22020614487043197
-```
-
 
 
 ```julia
@@ -175,21 +151,22 @@ $$
 
 ```julia
 # Evolução
-num_dias = 180
-dt = 1/2
-tempos = range(0.0, num_dias, step = dt)
-num_iter = length(tempos)
+num_dias = 180 # número (inteiro) de dias
+passos_dias = 4 # número (inteiro) de passos por dia
+dt = 1/passos_dias # tamanho do passo
+len_tempos = passos_dias * num_dias + 1 # tamanho malha temporal
+tempos = range(0.0, num_dias, length = len_tempos) # malha temporal, começando com tempos[1] = 0 e terminando em tempos[end] = float(num_dias)
 
 # inicialização
-ninf0 = 2
-inf0 = sample(1:N, ninf0)
-estado = zeros(Int, N)
-estado[inf0] .= 1
+ninf0 = 5 # número inicial de infectados
+inf0 = sample(1:N, ninf0) # seleção aleatória dos infectados
+estado = zeros(Int, N) # inicialização da população como todos suscetíveis
+estado[inf0] .= 1 # infectados iniciais
 
 # compartimentos
-suscetiveis = zeros(Int, num_iter)
-infectados = zeros(Int, num_iter)
-recuperados = zeros(Int, num_iter)
+suscetiveis = zeros(Int, len_tempos)
+infectados = zeros(Int, len_tempos)
+recuperados = zeros(Int, len_tempos)
 suscetiveis[1] = count(estado .== 0)
 infectados[1] = count(estado .== 1)
 recuperados[1] = count(estado .== 2)
@@ -201,9 +178,11 @@ recuperados[1] = count(estado .== 2)
 contatos = collect(1:N)
 
 # evolução
-for n in 2:num_iter
+for n in 2:len_tempos
     λ .= 0.0
-    shuffle!(contatos)
+    if rem(n, passos_dias) == 0 # shuffle once a day
+        shuffle!(contatos)
+    end
     i = 1
     while i ≤ N
         ip = min(i + rand(div(κ, 2):2κ), N)
@@ -219,9 +198,9 @@ for n in 2:num_iter
             estado[i] = 2
         end        
     end
-    suscetiveis[n] = count(estado .== 0)
-    infectados[n] = count(estado .== 1)
-    recuperados[n] = count(estado .== 2)
+    suscetiveis[n] = count(estado .== 0) # contabiliza compartimento suscetíveis
+    infectados[n] = count(estado .== 1) # contabiliza compartimento infectados
+    recuperados[n] = count(estado .== 2) # contabiliza compartimento recuperados
 end
 ```
 
