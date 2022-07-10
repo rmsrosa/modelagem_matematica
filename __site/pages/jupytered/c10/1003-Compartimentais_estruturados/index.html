@@ -201,6 +201,9 @@
     <div class="menu-level-2">
     <li><a href="/modelagem_matematica/pages/jupytered/c10/1003-Compartimentais_estruturados">10.3. Modelos compartimentais estruturados</a></li>
     </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c10/1004-Individual_estocastico">10.4. Modelos individuais</a></li>
+    </div>
     <div class="menu-level-1">
     <li>11. Séries de Fourier e Aplicações</li>
     </div>
@@ -236,7 +239,7 @@
 <a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c10/1002-Ajuste_SIR">10.2. Ajustando um modelo SIR a uma epidemia de Influenza <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c11/1101-Series_Fourier"><kbd>→</kbd> 11.1. Séries de Fourier</a>
+    <a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c10/1004-Individual_estocastico"><kbd>→</kbd> 10.4. Modelos individuais</a>
 </span>
     </p>
 </div>
@@ -349,9 +352,9 @@ using Images</code></pre>
 <h3 id="parâmetros"><a href="#parâmetros" class="header-anchor">Parâmetros</a></h3>
 <p>Os parâmetros são similares ao do SIS homogêneo, mas levando em consideração as peculiaridades de cada grupo. Mais precisamente:</p>
 <ul>
-<li><p>\(\beta_{HH} =\) taxa de transmissão por unidade de tempo por indivíduo suscetível de baixo risco a partir de interações com o indivíduos infectados de alto risco &#40;&quot;high to high&quot;&#41;.</p>
+<li><p>\(\beta_{HH} =\) taxa de transmissão por unidade de tempo por indivíduo suscetível de alto risco a partir de interações com o indivíduos infectados de alto risco &#40;&quot;high to high&quot;&#41;.</p>
 </li>
-<li><p>\(\beta_{HL} =\) taxa de transmissão por unidade de tempo por indivíduo suscetível de baixo risco a partir de interações com o indivíduos infectados de baixo risco &#40;&quot;low to high&quot;&#41;.</p>
+<li><p>\(\beta_{HL} =\) taxa de transmissão por unidade de tempo por indivíduo suscetível de alto risco a partir de interações com o indivíduos infectados de baixo risco &#40;&quot;low to high&quot;&#41;.</p>
 </li>
 <li><p>\(\beta_{LH} =\) taxa de transmissão por unidade de tempo por indivíduo suscetível de baixo risco a partir de interações com o indivíduos infectados de alto risco &#40;&quot;high to low&quot;&#41;.</p>
 </li>
@@ -510,7 +513,7 @@ using Images</code></pre>
 <p>vemos que</p>
 \[ \mathop{\mathrm{tr}}(NB-\Gamma)^2 - 4\det(NB-\Gamma) = ((\beta_{HH}n_H - \gamma_H) - (\beta_{LL}n_L - \gamma_L))^2 + 4\beta_{HL}n_H\beta_{LL}n_L.
 \]
-<p>Esperamos que \(\beta_{HH}>> \beta_{LL}\), mas também que \(n_L \gg n_H\), então a relação entre os dois termos do traço não é claro. De qualquer forma, vamos considerar o caso em que \(\beta_{HH}n_H - \gamma_H \geq \beta_{LL}n_L - \gamma_L\).</p>
+<p>Esperamos que \(\beta_{HH} \gg \beta_{LL}\), mas também que \(n_L \gg n_H\), então a relação entre os dois termos do traço não é claro. De qualquer forma, vamos considerar o caso em que \(\beta_{HH}n_H - \gamma_H \geq \beta_{LL}n_L - \gamma_L\).</p>
 <p>Assumindo \(\beta_{HH}n_H - \gamma_H \geq \beta_{LL}n_L - \gamma_L\), \(n_L \geq n_H\) e \(\beta_{LH} = \beta_{HL}\), temos</p>
 \[ \sqrt{\mathop{\mathrm{tr}}(NB-\Gamma)^2 - 4\det(NB-\Gamma)} \leq (\beta_{HH}n_H - \gamma_H) - (\beta_{LL}n_L - \gamma_L) + 2\sqrt{\beta_{HL}n_H\beta_{LH}n_L},
 \]
@@ -667,7 +670,7 @@ vectors:
 <a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c10/1002-Ajuste_SIR">10.2. Ajustando um modelo SIR a uma epidemia de Influenza <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c11/1101-Series_Fourier"><kbd>→</kbd> 11.1. Séries de Fourier</a>
+    <a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c10/1004-Individual_estocastico"><kbd>→</kbd> 10.4. Modelos individuais</a>
 </span>
     </p>
 </div>
@@ -683,7 +686,7 @@ vectors:
         </div>
     
 
-    Last modified: July 05, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
+    Last modified: July 10, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

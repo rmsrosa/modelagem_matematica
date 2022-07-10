@@ -129,9 +129,9 @@ $$
 
 Os parâmetros são similares ao do SIS homogêneo, mas levando em consideração as peculiaridades de cada grupo. Mais precisamente:
 
-- $\beta_{HH} =$ taxa de transmissão por unidade de tempo por indivíduo suscetível de baixo risco a partir de interações com o indivíduos infectados de alto risco ("high to high").
+- $\beta_{HH} =$ taxa de transmissão por unidade de tempo por indivíduo suscetível de alto risco a partir de interações com o indivíduos infectados de alto risco ("high to high").
 
-- $\beta_{HL} =$ taxa de transmissão por unidade de tempo por indivíduo suscetível de baixo risco a partir de interações com o indivíduos infectados de baixo risco ("low to high").
+- $\beta_{HL} =$ taxa de transmissão por unidade de tempo por indivíduo suscetível de alto risco a partir de interações com o indivíduos infectados de baixo risco ("low to high").
 
 - $\beta_{LH} =$ taxa de transmissão por unidade de tempo por indivíduo suscetível de baixo risco a partir de interações com o indivíduos infectados de alto risco ("high to low").
 
@@ -402,7 +402,7 @@ vemos que
 $$ \mathop{\mathrm{tr}}(NB-\Gamma)^2 - 4\det(NB-\Gamma) = ((\beta_{HH}n_H - \gamma_H) - (\beta_{LL}n_L - \gamma_L))^2 + 4\beta_{HL}n_H\beta_{LL}n_L.
 $$
 
-Esperamos que $\beta_{HH}>> \beta_{LL}$, mas também que $n_L \gg n_H$, então a relação entre os dois termos do traço não é claro. De qualquer forma, vamos considerar o caso em que $\beta_{HH}n_H - \gamma_H \geq \beta_{LL}n_L - \gamma_L$.
+Esperamos que $\beta_{HH} \gg \beta_{LL}$, mas também que $n_L \gg n_H$, então a relação entre os dois termos do traço não é claro. De qualquer forma, vamos considerar o caso em que $\beta_{HH}n_H - \gamma_H \geq \beta_{LL}n_L - \gamma_L$.
 
 
 Assumindo $\beta_{HH}n_H - \gamma_H \geq \beta_{LL}n_L - \gamma_L$, $n_L \geq n_H$ e $\beta_{LH} = \beta_{HL}$, temos

@@ -21,25 +21,25 @@
 </url>
 <url>
     <loc>pages/jupytered/c04/0403-Modelos_redutiveis_linear_aplicacoes/index.html</loc>
-    <lastmod>2022-07-05</lastmod>
+    <lastmod>2022-06-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
     <loc>pages/jupytered/c04/0402-Exemplos_ajuste_linear/index.html</loc>
-    <lastmod>2022-07-05</lastmod>
+    <lastmod>2022-06-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
     <loc>pages/jupytered/c01/0102-Instalando_acessando_Julia/index.html</loc>
-    <lastmod>2022-07-05</lastmod>
+    <lastmod>2022-06-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
     <loc>pages/jupytered/c04/0404-Exemplos_ajuste_naolinear/index.html</loc>
-    <lastmod>2022-07-05</lastmod>
+    <lastmod>2022-06-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
@@ -63,13 +63,13 @@
 </url>
 <url>
     <loc>pages/jupytered/c10/1001-Modelos_epidemiologicos_compartimentais/index.html</loc>
-    <lastmod>2022-07-05</lastmod>
+    <lastmod>2022-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
     <loc>pages/jupytered/c10/1003-Compartimentais_estruturados/index.html</loc>
-    <lastmod>2022-07-05</lastmod>
+    <lastmod>2022-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
@@ -93,7 +93,7 @@
 </url>
 <url>
     <loc>pages/jupytered/c10/1002-Ajuste_SIR/index.html</loc>
-    <lastmod>2022-07-05</lastmod>
+    <lastmod>2022-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
@@ -160,6 +160,12 @@
 <url>
     <loc>pages/intro/index.html</loc>
     <lastmod>2022-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/jupytered/c10/1004-Individual_estocastico/index.html</loc>
+    <lastmod>2022-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
