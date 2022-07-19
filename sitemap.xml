@@ -2,133 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
-    <loc>pages/jupytered/c01/0103-Primeiros_passos_Julia/index.html</loc>
-    <lastmod>2022-06-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>pages/jupytered/c10/1003-Compartimentais_estruturados/index.html</loc>
-    <lastmod>2022-07-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>pages/jupytered/c09/0902-Reacoes_enzimaticas/index.html</loc>
-    <lastmod>2022-07-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>pages/jupytered/c04/0403-Minimos_quadrados_nao_linear/index.html</loc>
-    <lastmod>2022-06-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>pages/intro/index.html</loc>
-    <lastmod>2022-06-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>pages/jupytered/c07/0703-Conservacao_contexto_Newtoniano/index.html</loc>
-    <lastmod>2022-06-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>pages/jupytered/c03/0303-Unidades_Julia/index.html</loc>
-    <lastmod>2022-06-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>pages/jupytered/c07/0701-Mecanica_Newtoniana/index.html</loc>
-    <lastmod>2022-06-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>pages/jupytered/c03/0301-Quantidades_unidades_dimensoes/index.html</loc>
-    <lastmod>2022-06-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>pages/jupytered/c04/0404-Exemplos_ajuste_naolinear/index.html</loc>
-    <lastmod>2022-06-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>pages/jupytered/c04/0403-Modelos_redutiveis_linear_aplicacoes/index.html</loc>
-    <lastmod>2022-06-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>pages/jupytered/c05/0501-Erros_e_incertezas/index.html</loc>
-    <lastmod>2022-06-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>pages/jupytered/c03/0302-BuckinghamPi/index.html</loc>
-    <lastmod>2022-06-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>pages/jupytered/c04/0405-Exemplos_ajuste_naolinear/index.html</loc>
-    <lastmod>2022-06-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>pages/jupytered/c06/0602-Validacao_do_modelo/index.html</loc>
-    <lastmod>2022-06-05</lastmod>
+    <loc>pages/jupytered/c12/1206-EDP_onda_bidimensional/index.html</loc>
+    <lastmod>2022-07-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
     <loc>pages/jupytered/c07/0702-Mecanica_Lagrangiana/index.html</loc>
-    <lastmod>2022-06-05</lastmod>
+    <lastmod>2022-07-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>pages/jupytered/c04/0407-Ajuste_em_redes_neurais/index.html</loc>
+    <loc>pages/jupytered/c11/1101-Series_Fourier/index.html</loc>
+    <lastmod>2022-07-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/jupytered/c11/1102-Transformada_discreta_Fourier/index.html</loc>
+    <lastmod>2022-07-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/jupytered/c04/0403-Modelos_redutiveis_linear_aplicacoes/index.html</loc>
     <lastmod>2022-06-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>pages/jupytered/c09/0901-Lei_acao_de_massas/index.html</loc>
-    <lastmod>2022-07-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>pages/jupytered/c10/1002-Ajuste_SIR/index.html</loc>
-    <lastmod>2022-07-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>pages/jupytered/c02/0201-Principios_basicos/index.html</loc>
-    <lastmod>2022-06-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>pages/jupytered/c06/0603-Comparacao_de_modelos/index.html</loc>
-    <lastmod>2022-06-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>pages/jupytered/c06/0601-Qualidade_do_modelo/index.html</loc>
+    <loc>pages/jupytered/c04/0402-Exemplos_ajuste_linear/index.html</loc>
     <lastmod>2022-06-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -140,116 +44,56 @@
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>pages/jupytered/c02/0202-Exemplos_tipos_modelagem/index.html</loc>
+    <loc>pages/jupytered/c04/0404-Exemplos_ajuste_naolinear/index.html</loc>
     <lastmod>2022-06-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>pages/jupytered/c10/1004-Individual_estocastico/index.html</loc>
-    <lastmod>2022-07-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>pages/jupytered/c11/1103-Ondas_sonoras_elementos_musicais/index.html</loc>
-    <lastmod>2022-07-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>pages/jupytered/c11/1102-Transformada_discreta_Fourier/index.html</loc>
-    <lastmod>2022-07-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>pages/jupytered/c10/1001-Modelos_epidemiologicos_compartimentais/index.html</loc>
-    <lastmod>2022-07-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>pages/jupytered/c04/0402-Exemplos_ajuste_linear/index.html</loc>
-    <lastmod>2022-06-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>pages/jupytered/c04/0406-Ajuste_em_redes_neurais/index.html</loc>
-    <lastmod>2022-06-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>pages/jupytered/c11/1104-Compressao_audio/index.html</loc>
-    <lastmod>2022-07-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>pages/jupytered/c09/0903-Isomerizacao/index.html</loc>
-    <lastmod>2022-07-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>pages/jupytered/c04/0404-Minimos_quadrados_nao_linear/index.html</loc>
-    <lastmod>2022-06-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>index.html</loc>
-    <lastmod>2022-06-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>pages/jupytered/c01/0101-Aspectos_curso/index.html</loc>
-    <lastmod>2022-06-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>pages/jupytered/c04/0405-Ajuste_em_redes_neurais/index.html</loc>
-    <lastmod>2022-06-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>pages/jupytered/c07/0705-Hamiltonianos/index.html</loc>
-    <lastmod>2022-06-09</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>pages/jupytered/c11/1101-Series_Fourier/index.html</loc>
-    <lastmod>2022-07-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>pages/jupytered/c08/0801-Modelo_diodo/index.html</loc>
-    <lastmod>2022-07-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>pages/jupytered/c04/0406-Redes_neurais/index.html</loc>
+    <loc>pages/jupytered/c04/0405-Exemplos_ajuste_naolinear/index.html</loc>
     <lastmod>2022-06-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>pages/jupytered/c07/0707-Pendulo_angulos_grandes/index.html</loc>
+    <loc>pages/jupytered/c07/0704-Conservacao_contexto_Lagrangiano/index.html</loc>
     <lastmod>2022-07-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>pages/jupytered/c04/0401-Minimos_quadrados_ajuste/index.html</loc>
-    <lastmod>2022-06-02</lastmod>
+    <loc>pages/jupytered/c09/0903-Isomerizacao/index.html</loc>
+    <lastmod>2022-07-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/jupytered/c10/1001-Modelos_epidemiologicos_compartimentais/index.html</loc>
+    <lastmod>2022-07-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/jupytered/c10/1003-Compartimentais_estruturados/index.html</loc>
+    <lastmod>2022-07-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/jupytered/c12/1208-Resfriamento_rapido_morangos/index.html</loc>
+    <lastmod>2022-07-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/jupytered/c07/0706-Pendulo/index.html</loc>
+    <lastmod>2022-06-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/jupytered/c11/1103-Ondas_sonoras_elementos_musicais/index.html</loc>
+    <lastmod>2022-07-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
@@ -260,13 +104,205 @@
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>pages/jupytered/c07/0704-Conservacao_contexto_Lagrangiano/index.html</loc>
-    <lastmod>2022-06-07</lastmod>
+    <loc>pages/jupytered/c10/1002-Ajuste_SIR/index.html</loc>
+    <lastmod>2022-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>pages/jupytered/c07/0706-Pendulo/index.html</loc>
+    <loc>pages/jupytered/c07/0703-Conservacao_contexto_Newtoniano/index.html</loc>
+    <lastmod>2022-06-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/jupytered/c12/1203-EDP_calor/index.html</loc>
+    <lastmod>2022-07-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/jupytered/c07/0705-Hamiltonianos/index.html</loc>
+    <lastmod>2022-06-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/jupytered/c05/0503-Propagacao_incertezas/index.html</loc>
+    <lastmod>2022-06-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/jupytered/c01/0101-Aspectos_curso/index.html</loc>
+    <lastmod>2022-06-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/jupytered/c04/0405-Ajuste_em_redes_neurais/index.html</loc>
+    <lastmod>2022-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/jupytered/c04/0407-Ajuste_em_redes_neurais/index.html</loc>
+    <lastmod>2022-06-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/jupytered/c11/1104-Compressao_audio/index.html</loc>
+    <lastmod>2022-07-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/jupytered/c08/0801-Modelo_diodo/index.html</loc>
+    <lastmod>2022-07-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/jupytered/c12/1204-EDP_onda/index.html</loc>
+    <lastmod>2022-07-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/jupytered/c12/1207-Ondas_sismicas/index.html</loc>
+    <lastmod>2022-07-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/jupytered/c02/0201-Principios_basicos/index.html</loc>
+    <lastmod>2022-06-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/jupytered/c09/0902-Reacoes_enzimaticas/index.html</loc>
+    <lastmod>2022-07-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/intro/index.html</loc>
+    <lastmod>2022-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/jupytered/c10/1004-Individual_estocastico/index.html</loc>
+    <lastmod>2022-07-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/jupytered/c04/0406-Ajuste_em_redes_neurais/index.html</loc>
+    <lastmod>2022-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/jupytered/c04/0403-Minimos_quadrados_nao_linear/index.html</loc>
+    <lastmod>2022-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/jupytered/c06/0603-Comparacao_de_modelos/index.html</loc>
+    <lastmod>2022-06-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/jupytered/c05/0501-Erros_e_incertezas/index.html</loc>
+    <lastmod>2022-06-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/jupytered/c07/0701-Mecanica_Newtoniana/index.html</loc>
+    <lastmod>2022-06-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/jupytered/c03/0303-Unidades_Julia/index.html</loc>
+    <lastmod>2022-06-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/jupytered/c12/1205-EDP_calor_bidimensional/index.html</loc>
+    <lastmod>2022-07-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/jupytered/c03/0302-BuckinghamPi/index.html</loc>
+    <lastmod>2022-06-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/jupytered/c04/0406-Redes_neurais/index.html</loc>
+    <lastmod>2022-06-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/jupytered/c03/0301-Quantidades_unidades_dimensoes/index.html</loc>
+    <lastmod>2022-06-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/jupytered/c12/1202-EDP_advecao/index.html</loc>
+    <lastmod>2022-07-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/jupytered/c09/0901-Lei_acao_de_massas/index.html</loc>
+    <lastmod>2022-07-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/jupytered/c06/0602-Validacao_do_modelo/index.html</loc>
+    <lastmod>2022-06-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>index.html</loc>
+    <lastmod>2022-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/jupytered/c04/0404-Minimos_quadrados_nao_linear/index.html</loc>
+    <lastmod>2022-06-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/jupytered/c12/1201-EDP_e_diferencas_finitas/index.html</loc>
+    <lastmod>2022-07-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/jupytered/c01/0103-Primeiros_passos_Julia/index.html</loc>
+    <lastmod>2022-06-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/jupytered/c02/0202-Exemplos_tipos_modelagem/index.html</loc>
     <lastmod>2022-06-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -278,8 +314,20 @@
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>pages/jupytered/c05/0503-Propagacao_incertezas/index.html</loc>
+    <loc>pages/jupytered/c06/0601-Qualidade_do_modelo/index.html</loc>
     <lastmod>2022-06-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/jupytered/c04/0401-Minimos_quadrados_ajuste/index.html</loc>
+    <lastmod>2022-06-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/jupytered/c07/0707-Pendulo_angulos_grandes/index.html</loc>
+    <lastmod>2022-07-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
