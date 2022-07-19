@@ -155,7 +155,7 @@ $$
 $$ f(x) = \frac{a_0}{2} + \sum_{k=1}^\infty a_k \cos\left(\frac{2k \pi x}{L}\right), \quad x\in [-L/2,L/2].
 $$
 
-* Observe, ainda, que, por conta de $x \mapsto f(x)\cos(2k\pi x/L)$ ser simétrico em relação a $x -> -x$, os coeficientes restantes, $a_k$, podem ser escritos como
+* Observe, ainda, que, por conta de $x \mapsto f(x)\cos(2k\pi x/L)$ ser simétrico em relação a $x \mapsto -x$, os coeficientes restantes, $a_k$, podem ser escritos como
 $$ \begin{align*}
   a_0 & = \frac{2}{L} \int_0^{L/2} f(x) \;\mathrm{d}x, \\
   a_k & = \frac{4}{L}\int_0^{L/2} f(x)\cos\left(\frac{2k\pi x}{L}\right) \;\mathrm{d}x, & & k = 1, 2, \ldots.
@@ -185,7 +185,7 @@ $$
 $$ f(x) = \sum_{k=1}^\infty b_k \sin\left(\frac{2k \pi x}{L}\right), \quad x\in [-L/2,L/2].
 $$
 
-* Da mesma forma, como $x \mapsto f(x)\sin(2k\pi x/L)$ é simétrico em relação a $x -> -x$, os coeficientes restantes, $b_k$, podem ser escritos como
+* Da mesma forma, como $x \mapsto f(x)\sin(2k\pi x/L)$ é simétrico em relação a $x \mapsto -x$, os coeficientes restantes, $b_k$, podem ser escritos como
 $$ b_k = \frac{4}{L}\int_0^{L/2} f(x)\sin\left(\frac{2k\pi x}{L}\right) \;\mathrm{d}x,  k = 1, 2, \ldots.
 $$
 
@@ -289,10 +289,10 @@ $$ \begin{align*}
   \end{align*}
 $$
 
-* Escolhendo a fase $\varphi$ tal que $\alpha = \sin\varphi$ e $\beta=-\cos\varphi$, também podemos escrever
+* Escolhendo, de outra forma, a fase $\varphi$ tal que $\alpha = -\sin\varphi$ e $\beta=\cos\varphi$, também podemos escrever
 $$ \begin{align*}
   A\sin\left(\frac{2k\pi x}{L}\right) + B \cos\left(\frac{2k\pi x}{L}\right) & = \sqrt{A^2+B^2}\left(\alpha\sin\left(\frac{2k\pi x}{L}\right) + \beta \cos\left(\frac{2k\pi x}{L}\right) \right) \\
-  & = \sqrt{A^2+B^2}\left(\sin\varphi\sin\left(\frac{2k\pi x}{L}\right) - \cos\varphi \cos\left(\frac{2k\pi x}{L}\right) \right) \\
+  & = \sqrt{A^2+B^2}\left(-\sin\varphi\sin\left(\frac{2k\pi x}{L}\right) + \cos\varphi \cos\left(\frac{2k\pi x}{L}\right) \right) \\
   & = \sqrt{A^2+B^2}
   \cos\left(\varphi + \frac{2k\pi x}{L}\right).
   \end{align*}
@@ -334,7 +334,7 @@ $$
 
 * As convergências **pontual** e **uniforme** acima se estendem, ainda, aos casos em que $f$ é **Hölder contínua** no ponto ou no intervalo, respectivamente.
 
-* Caso a função seja **descontínua em um ponto, mas com limites e derivadas bem definidas em cada lado do ponto**, então a série converge naquele ponto, para o valor médio dos limites laterais da função, sofrendo, no entando, o **efeito de Gibbs**, em que as somas parcias da série oscilam cada vez mais, conforme mais termos são incluídos.
+* Caso a função seja **descontínua em um ponto, mas com limites e derivadas bem definidas em cada lado do ponto**, então a série converge naquele ponto, para o valor médio dos limites laterais da função, sofrendo, no entanto, o **efeito de Gibbs**, em que as somas parcias da série oscilam cada vez mais, conforme mais termos são incluídos.
 
 * Caso a função seja de **quadrado integrável**, então a convergência se dá na **norma $L^2$**, i.e. do espaço de funções de quadrado integrável.
 
@@ -424,7 +424,7 @@ $$
 
 * Como $S_n(f), S_m(f)\in E_n$, então $S_n(f)-S_m(f) \in E_n$.
 
-* Como $S_n(f)$ é a projeção ortogonal de $f$ em $E_n$, então $f-S_n(f)$ é perpendicular a $E_n$, em paricular ortogonal a $S_n(f)-S_m(f)$.
+* Como $S_n(f)$ é a projeção ortogonal de $f$ em $E_n$, então $f-S_n(f)$ é perpendicular a $E_n$, em particular ortogonal a $S_n(f)-S_m(f)$.
 
 * Assim, $\langle f - S_n(f), S_n(f) - S_m(f) \rangle = 0$, de modo que
 $$ \|f - S_m(f)\|^2 =  \|f - S_n(f)\|^2 + \|S_n(f) - S_m(f)\|^2 \geq  \|f - S_n(f)\|^2.
@@ -437,7 +437,7 @@ $$
 
 #### Convergência
 
-* A convergência é o ponto mais delicado.
+* A convergência é mais delicada.
 
 * Vamos simplificar assumindo hipóteses mais fortes de regularidade.
 
@@ -469,7 +469,13 @@ $$
 
 #### Convergência para $f$
 
-* Falta mostra que $s=f$, ou seja, que a série converge, de fato, para $f$, ao invés de para alguma outra função (por exemplo, se $\bigcup E_n \subsetneqq L^2$).
+* Falta mostra que $s=f$, ou seja, que a série converge, de fato, para $f$, ao invés de para alguma outra função.
+
+* Em princípio, poderíamos ter que o *fecho* (i.e. os limites) da união dos subespaços $E_n$ fosse um subespaço próprio de $L^2$, i.e. $\overline{\bigcup E_n} \subsetneqq L^2$. Felizmente, isso não acontece.
+
+* Se isso fosse verdade, então teríamos $f - s$ ortogonal a todos os subespaços $E_n$. Ou seja, seria ortogonal a todos os $w_{s, k}$.
+
+* Mas é possível mostrar que se uma função $g\in L^2(0, L)$ é ortogonal a todos os $w_{s, k}$, então $g$ é nula. Aplicando isso a $g = f - s$, obtemos que $f = s$.
 
 
 ## Exemplos
@@ -525,7 +531,7 @@ end
 ```
 
 ```
-Main.##WeaveSandBox#419.serie_senos
+Main.##WeaveSandBox#431.serie_senos
 ```
 
 
@@ -550,17 +556,17 @@ f̂pol, Spol = serie_senos(fpol, x, L, M)
 ```
 
 ```
-([0.0556930353147588, 3.0545193924116225e-18, -0.008265038705959678, 8.3531
-00112643008e-19, -0.00196370725860613, 9.173705631942974e-19, -0.0007335498
-612589687, -3.3867765363015947e-19, -0.0003486041924548693, 1.2077334575130
-715e-18  …  -1.4517390709079492e-7, -4.2859867131067597e-19, -1.11723880302
-19007e-7, 3.941549235435271e-18, -7.917319701423036e-8, 3.496856938126763e-
-18, -4.725419758099793e-8, -5.403429846574312e-17, -1.5709988264326937e-8, 
--1.8523187059874747e-18], [0.0 0.0 … 0.0 0.0; 0.0017493605146015794 0.00174
-93605146015796 … 9.800999999984776e-5 9.800999999984776e-5; … ; 0.001749360
-5146015763 0.0017493605146015761 … 9.800999999982142e-5 9.800999999982142e-
-5; 6.820429743301986e-18 6.8204297433019855e-18 … -2.7134784824953443e-19 -
-2.713478482495381e-19])
+([0.0556930353147588, 4.2081105039362e-18, -0.008265038705959678, 5.6209106
+37979537e-19, -0.0019637072586061294, 7.2655098083684865e-19, -0.0007335498
+612589683, -4.948027664680721e-19, -0.0003486041924548694, 1.21640707489295
+56e-18  …  -1.4517390709121127e-7, -7.928906012658055e-19, -1.1172388030253
+702e-7, 4.006601365784401e-18, -7.917319701436914e-8, 2.9916187257485184e-1
+8, -4.7254197580442814e-8, -5.4604588808470495e-17, -1.5709988264326937e-8,
+ -1.8523187059874905e-18], [0.0 0.0 … 0.0 0.0; 0.0017493605146015794 0.0017
+493605146015796 … 9.800999999983855e-5 9.800999999983855e-5; … ; 0.00174936
+05146015763 0.0017493605146015761 … 9.800999999982155e-5 9.800999999982155e
+-5; 6.820429743301986e-18 6.8204297433019855e-18 … -2.713478482494707e-19 -
+2.7134784824947434e-19])
 ```
 
 
