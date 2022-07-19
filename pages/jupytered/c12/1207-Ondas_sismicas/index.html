@@ -668,8 +668,8 @@ sol.retcode</code></pre>
 pmax &#61; maximum&#40;&#91;maximum&#40;sol.u&#91;k&#93;&#41; for k in 1:length&#40;sol.u&#41;&#93;&#41;
 println&#40;&quot;Mínimo de pressão acústica: &#36;&#40;round&#40;pmin, digits&#61;4&#41;&#41;&quot;&#41;
 println&#40;&quot;Máximo de pressão acústica: &#36;&#40;round&#40;pmax, digits&#61;4&#41;&#41;&quot;&#41;</code></pre>
-<pre><code class="language-julia">Mínimo de pressão acústica: -0.0143
-Máximo de pressão acústica: 0.0136</code></pre>
+<pre><code class="language-julia">Mínimo de pressão acústica: -0.0109
+Máximo de pressão acústica: 0.0109</code></pre>
 <pre><code class="language-julia">heatmap&#40;x, z, sol.u&#91;div&#40;end,2&#41;&#93;&#91;:,:,1&#93;&#41;#, clims&#61;&#40;pmin,pmax&#41;&#41;</code></pre>
 <img src="/modelagem_matematica/assets/pages/jupytered/c12/1207-Ondas_sismicas/code/images/1207-Ondas_sismicas_17_1.png" alt="">
 <pre><code class="language-julia">control &#61; 0
@@ -686,9 +686,9 @@ anim &#61; @animate for &#40;t,U&#41; in zip&#40;sol.t, sol.u&#41;
     scatter&#33;&#40;dx * sensor_i, dz * sensor_j, label&#61;&quot;sensores&quot;, color&#61;:lightgreen&#41;
     scatter&#33;&#40;&#91;&#40;fonte_foco_i-1&#41;*dx&#93;, &#91;&#40;fonte_foco_j-1&#41;*dz&#93;, label&#61;&quot;fonte&quot;, color&#61;:orange&#41;
 end
-gif&#40;anim, &quot;../../../_assets/attachments/img/anim_sismica_a.gif&quot;, fps &#61; 20&#41;</code></pre>
-<pre><code class="language-julia">Plots.AnimatedGif&#40;&quot;/Users/rrosa/Documents/git_repositories/modelagem_matema
-tica/_assets/attachments/img/anim_sismica_a.gif&quot;&#41;</code></pre>
+gif&#40;anim, &quot;../../../_assets/attachments/img/anim_sismica_a.gif&quot;, fps &#61; 20&#41;
+nothing</code></pre>
+<p><img src="/modelagem_matematica/assets/attachments/img/anim_sismica_a.gif" alt="sismicwaves" /></p>
 <h2 id="leitura_dos_sensores"><a href="#leitura_dos_sensores" class="header-anchor">Leitura dos sensores</a></h2>
 <pre><code class="language-julia">n &#61; 1
 signals &#61; fill&#40;0.0, length&#40;sol.t&#41;, length&#40;sensor_j&#41;&#41;
