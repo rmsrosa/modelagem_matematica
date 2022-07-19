@@ -470,7 +470,7 @@ nothing</code></pre>
 <pre><code class="language-julia">X &#61; fft&#40;x&#41;
 Xr &#61; rfft&#40;x&#41;
 maximum&#40;abs.&#40;X&#91;1:length&#40;Xr&#41;&#93; - Xr&#41;&#41;</code></pre>
-<pre><code class="language-julia">5.411807174143749e-14</code></pre>
+<pre><code class="language-julia">5.409610308782961e-14</code></pre>
 <pre><code class="language-julia">Z &#61; &#91;abs&#40;Xr&#91;1&#93;&#41;/N; 2abs.&#40;Xr&#91;2:end&#93;&#41;/N&#93;
 
 println&#40;&quot;Amplitude dada diretamente no espaço físico: W &#61; &#36;W&quot;&#41;
@@ -499,7 +499,7 @@ plot&#40;tempos, x, xlabel &#61; &quot;tempo &#40;s&#41;&quot;, ylabel&#61;&quot
 <pre><code class="language-julia">X &#61; fft&#40;x&#41;
 Xr &#61; rfft&#40;x&#41;
 maximum&#40;abs.&#40;X&#91;1:length&#40;Xr&#41;&#93; - Xr&#41;&#41;</code></pre>
-<pre><code class="language-julia">1.1368683772161603e-13</code></pre>
+<pre><code class="language-julia">9.018901711841947e-14</code></pre>
 <pre><code class="language-julia">Z &#61; &#91;abs&#40;Xr&#91;1&#93;&#41;/N; 2abs.&#40;Xr&#91;2:end&#93;/N&#41;&#93;
 
 println&#40;&quot;Amplitude dada diretamente no espaço físico: W &#61; &#36;W&quot;&#41;
@@ -525,16 +525,16 @@ plot&#40;tempos, x, xlabel &#61; &quot;tempo &#40;s&#41;&quot;, ylabel&#61;&quot
 <pre><code class="language-julia">X &#61; fft&#40;x&#41;
 Xr &#61; rfft&#40;x&#41;
 maximum&#40;abs.&#40;X&#91;1:length&#40;Xr&#41;&#93; - Xr&#41;&#41;</code></pre>
-<pre><code class="language-julia">2.842170943040401e-14</code></pre>
+<pre><code class="language-julia">3.1776437161565096e-14</code></pre>
 <pre><code class="language-julia">Z &#61; &#91;abs&#40;Xr&#91;1&#93;&#41;/N; 2abs.&#40;Xr&#91;2:end&#93;/N&#41;&#93;
 
 println&#40;&quot;Amplitudes dadas diretamente no espaço físico: W &#61; &#36;Ws&quot;&#41;
 println&#40;&quot;Amplitudes calculadas via FFT: |X_k|/N &#61; &#36;&#40;&#91;Z&#91;i&#43;1&#93; for i in ks&#93;&#41;&quot;&#41;</code></pre>
-<pre><code class="language-julia">Amplitudes dadas diretamente no espaço físico: W &#61; &#91;0.47909225701696007, 0.
-8889259686760375, 0.6859758269683474, 1.183803229323326, 0.6310005703957934
-&#93;
-Amplitudes calculadas via FFT: |X_k|/N &#61; &#91;0.4875060346816496, 0.89677581110
-07518, 0.6863111279872673, 1.1982492557872806, 0.592171153946578&#93;</code></pre>
+<pre><code class="language-julia">Amplitudes dadas diretamente no espaço físico: W &#61; &#91;0.8283940081422632, 0.9
+543363785738578, 0.6945005986909628, 0.9967345166751823, 0.3857676993077362
+4&#93;
+Amplitudes calculadas via FFT: |X_k|/N &#61; &#91;0.8397719183213538, 0.95904303663
+7107, 0.6937572061402019, 1.0021378307416826, 0.35341120582108815&#93;</code></pre>
 <pre><code class="language-julia">scatter&#40;abs.&#40;X&#41;, markersize&#61;2, label&#61;nothing, xlabel&#61;&quot;índice&quot;, ylabel&#61;&quot;amplitude&quot;,
     title&#61;&quot;Amplitude dos coeficientes da transformada discreta complexa de Fourier&quot;, titlefont&#61;10&#41;</code></pre>
 <img src="/modelagem_matematica/assets/pages/jupytered/c11/1102-Transformada_discreta_Fourier/code/images/1102-Transformada_discreta_Fourier_18_1.png" alt="">
@@ -582,7 +582,7 @@ length&#40;Z&#41; &#61; 221
         </div>
     
 
-    Last modified: July 14, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
+    Last modified: July 19, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
