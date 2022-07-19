@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="" />
+  <meta name="author" content="and contributors" />
+   <title>Equação de adveçcão</title>  
+  <link rel="shortcut icon" type="image/png" href="/modelagem_matematica/assets/images/favicon.png"/>
+  <link rel="stylesheet" href="/modelagem_matematica/css/base.css"/>
+  
+  <script src="/modelagem_matematica/libs/mousetrap/mousetrap.min.js"></script>
+
+  
+    <link rel="stylesheet" href="/modelagem_matematica/libs/highlight/github.min.css">
+    <script src="/modelagem_matematica/libs/highlight/highlight.pack.js"></script>
+    <script src="/modelagem_matematica/libs/highlight/julia.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', (event) => {
+        document.querySelectorAll('pre').forEach((el) => {
+          hljs.highlightElement(el);
+        });
+      });
+    </script>
+  
+
+  
+    <link rel="stylesheet" href="/modelagem_matematica/libs/katex/katex.min.css">
+  
+</head>
+
+<body>
+
+  <div class="books-container">
+
+  <aside class="books-menu">
+  <input type="checkbox" id="menu">
+  <label for="menu">☰</label>
+
+  <div class="books-title">
+    <a href="/modelagem_matematica/">Modelagem Matemática</a>
+  </div>
+
+  <br />
+
+  <div class="books-subtitle">
+    Notas de aula
+  </div>
+
+  <br />
+
+  <div class="books-author">
+    <a href="https://rmsrosa.github.io">Ricardo M. S. Rosa</a>
+  </div>
+
+  <div class="books-menu-content">
+    <div class="menu-level-1">
+    <li><a href="/modelagem_matematica/pages/intro">Introdução</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>PARTE I</li>
+    </div>
+    <div class="menu-level-1">
+    <li>1. Preliminares</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c01/0101-Aspectos_curso">1.1. Aspectos do curso</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c01/0102-Instalando_acessando_Julia">1.2. Instalando e acessando o Julia</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c01/0103-Primeiros_passos_Julia">1.3. Primeiros passos em Julia</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>PARTE II</li>
+    </div>
+    <div class="menu-level-1">
+    <li>2. Princípios de Modelagem Matemática</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c02/0201-Principios_basicos">2.1. Princípios básicos de modelagem</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c02/0202-Exemplos_tipos_modelagem">2.2. Exemplos de tipos de modelagem</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>3. Análise Dimensional</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c03/0301-Quantidades_unidades_dimensoes">3.1. Quantidades, unidades e dimensões</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c03/0302-BuckinghamPi">3.2. Análise dimensional e o Teorema de Buckingham-Pi</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c03/0303-Unidades_Julia">3.3. Trabalhando com unidades e dimensões em Julia</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>4. Ajuste de Parâmetros</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c04/0401-Minimos_quadrados_ajuste">4.1. Mínimos quadrados e o ajuste de parâmetros</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c04/0402-Exemplos_ajuste_linear">4.2. Exemplos de ajuste linear</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c04/0403-Modelos_redutiveis_linear_aplicacoes">4.3. Modelos redutíveis ao caso linear nos parâmetros e aplicações</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c04/0404-Minimos_quadrados_nao_linear">4.4. Mínimos quadrados não-linear</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c04/0405-Exemplos_ajuste_naolinear">4.5. Exemplos de ajuste não-linear de parâmetros</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c04/0406-Redes_neurais">4.6. Redes neurais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c04/0407-Ajuste_em_redes_neurais">4.7. Ajuste de parâmetros em modelos de redes neurais</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>5. Erros e Incertezas</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c05/0501-Erros_e_incertezas">5.1. Erros e incertezas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c05/0502-Minimos_quadrados_verossimilhanca">5.2. Mínimos quadrados, maximização da verossimilhança e quantificação de incertezas em regressões lineares</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c05/0503-Propagacao_incertezas">5.3. Propagação de incertezas</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>6. Avaliação de Modelos</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c06/0601-Qualidade_do_modelo">6.1. Qualidade do ajuste</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c06/0602-Validacao_do_modelo">6.2. Validação de modelos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c06/0603-Comparacao_de_modelos">6.3. Comparação de modelos</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>PARTE III</li>
+    </div>
+    <div class="menu-level-1">
+    <li>7. Mecânica</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c07/0701-Mecanica_Newtoniana">7.1. Mecânica Newtoniana</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c07/0702-Mecanica_Lagrangiana">7.2. Mecânica Lagrangiana</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c07/0703-Conservacao_contexto_Newtoniano">7.3. Leis de conservação em um contexto Newtoniano</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c07/0704-Conservacao_contexto_Lagrangiano">7.4. Leis de conservação em um contexto Lagrangiano</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c07/0705-Hamiltonianos">7.5. Hamiltonianos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c07/0706-Pendulo">7.6. Análise do período de um pêndulo planar simples</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c07/0707-Pendulo_angulos_grandes">7.7. Experimentos com pêndulos</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>8. Modelos em Eletrônica</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c08/0801-Modelo_diodo">8.1. Modelagem da relação voltagem-corrente de um diodo</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>9. Reações Químicas</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c09/0901-Lei_acao_de_massas">9.1. Lei de ação de massas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c09/0902-Reacoes_enzimaticas">9.2. Modelagem de reações enzimática</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c09/0903-Isomerizacao">9.3. Lupulagem e a conversão de humulone em iso-humulone considerando saturação</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>10. Modelos Epidemiológicos</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c10/1001-Modelos_epidemiologicos_compartimentais">10.1. Modelos epidemiológicos compartimentais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c10/1002-Ajuste_SIR">10.2. Ajustando um modelo SIR a uma epidemia de Influenza</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c10/1003-Compartimentais_estruturados">10.3. Modelos compartimentais estruturados</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c10/1004-Individual_estocastico">10.4. Modelos individuais</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>11. Séries de Fourier e Aplicações</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c11/1101-Series_Fourier">11.1. Séries de Fourier</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c11/1102-Transformada_discreta_Fourier">11.2. Transformada discreta de Fourier</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c11/1103-Ondas_sonoras_elementos_musicais">11.3. Ondas sonoras e elementos musicais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c11/1104-Compressao_audio">11.4. Séries de Fourier e compressão de audio</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>12. Equações a Derivadas Parciais</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c12/1201-EDP_e_diferencas_finitas">12.1. Equações a derivadas parciais e diferenças finitas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c12/1202-EDP_advecao">12.2. Equação de adveçcão</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c12/1203-EDP_calor">12.3. Equação do calor unidimensional</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c12/1204-EDP_onda">12.4. Equação da onda unidimensional</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c12/1205-EDP_calor_bidimensional">12.5. Equação do calor em duas dimensões espaciais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c12/1206-EDP_onda_bidimensional">12.6. Equação da onda em duas dimensões espaciais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c12/1207-Ondas_sismicas">12.7. Ondas sísmicas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c12/1208-Resfriamento_rapido_morangos">12.8. Modelagem matemática e simulação numérica do resfriamento rápido de morangos com o ar forçado</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li><a href="/modelagem_matematica/pages/appendix">Appendix</a></li>
+    </div>
+<div>
+
+
+  
+    <a href="https://github.com/rmsrosa/modelagem_matematica/tree/modmat2022p1"><img src="/modelagem_matematica/assets/images/GitHub-Mark-32px.png" alt="GitHub repo" width="18" style="margin:5px 5px" align="left"></a>
+
+  
+
+</aside>
+
+
+  <div class="books-content">
+
+    
+      <div class="navbar">
+    <p id="nav">
+<span id="nav-prev" style="float: left;">
+<a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c12/1201-EDP_e_diferencas_finitas">12.1. Equações a derivadas parciais e diferenças finitas <kbd>←</kbd></a>
+</span>
+<span id="nav-next" style="float: right;">
+    <a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c12/1203-EDP_calor"><kbd>→</kbd> 12.3. Equação do calor unidimensional</a>
+</span>
+    </p>
+</div>
+</br></br>
+
+    
+
+    
+      <div class="badges">
+<p>
+<a href="https://nbviewer.org/urls/rmsrosa.github.io/modelagem_matematica/generated/jupytered/c12/1202-EDP_advecao.ipynb"><img align="left" src="https://img.shields.io/badge/view%20in-nbviewer-orange" alt="View in NBViewer" title="View Jupyter notebook in NBViewer"></a>
+<a href="https://mybinder.org/v2/gh/rmsrosa/modelagem_matematica/julia-env-for-binder-2022p1?urlpath=git-pull%3Frepo%3Dhttps://github.com/rmsrosa/modelagem_matematica%26urlpath%3Dlab/tree%252Fmodelagem_matematica/generated/jupytered/c12/1202-EDP_advecao.ipynb%26branch%3Dgh-pages"><img align="left" src="https://mybinder.org/badge.svg" alt="Open in binder" title="Open in binder"></a>
+<a href="/modelagem_matematica/generated/jupytered/c12/1202-EDP_advecao.ipynb"><img align="left" src="https://img.shields.io/badge/download-notebook-blue" alt="Download notebook" title="Download Jupyter notebook"></a>
+<a href="/modelagem_matematica/src/jupyter/c12/1202-EDP_advecao.ipynb"><img align="left" src="https://img.shields.io/badge/view-source-lightblue" alt="View source" title="View source"></a>
+</p>
+</div></br>
+
+    
+<h1 id="get_title"><a href="#get_title" class="header-anchor">12.2. Equação de adveçcão</a></h1>
+<ul>
+<li><p>Como primeiro exemplo de simulação numérica, vamos considerar a equação de advecção</p>
+</li>
+</ul>
+\[ u_t + au_x = 0.
+\]
+<pre><code class="language-julia">using DifferentialEquations
+using Plots</code></pre>
+<h2 id="solução_analítica_da_equação_de_advecção"><a href="#solução_analítica_da_equação_de_advecção" class="header-anchor">Solução analítica da equação de advecção</a></h2>
+<ul>
+<li><p>Vamos começar estudando a equação de advecção em uma dimensão:</p>
+</li>
+</ul>
+\[ u_t + a u_x = 0
+\]
+<ul>
+<li><p>Vamos considerar o domínio \(x\in \mathbb{R}\) e uma condição inicial \(u_0(x)\).</p>
+</li>
+<li><p>A solução dessa equação é simples:</p>
+</li>
+</ul>
+\[ u(t,x) = u_0(x-at).
+\]
+<ul>
+<li><p>De fato, </p>
+</li>
+</ul>
+\[ u_t(t,x) = -au_0'(x-at), \quad u_x = u_0'(x-at), \quad \Longrightarrow u_t + au_x = -au_0'(x-at) + a u_0'(x-at) = 0.
+\]
+<ul>
+<li><p>Portanto, a solução é o deslocamento da condição inicial \(u_0\) com velocidade constante \(a\).</p>
+</li>
+<li><p>Em aplicacões, \(u_0(x)\) representa alguma quantidade no ponto \(x\), digamos &#40;densidade de&#41; massa, calor, etc., que é então transportada com velocidade \(a\).</p>
+</li>
+<li><p>Caso \(a>0\), a solução se desloca para a direita.</p>
+</li>
+<li><p>Caso \(a<0\), a solucão se desloca para a esquerda.</p>
+</li>
+</ul>
+<h3 id="condições_de_contorno_em_domínios_limitados"><a href="#condições_de_contorno_em_domínios_limitados" class="header-anchor">Condições de contorno em domínios limitados</a></h3>
+<ul>
+<li><p>Em domínios limitados, é preciso incluir condições de contorno.</p>
+</li>
+<li><p>Uma das condições mais simples é assumir condições periódicas. Nesse caso, é como se o domínio fosse a reta toda e a condição inicial e a solução fossem copiadas infinitas vezes para os dois lados, de maneira periódica.</p>
+</li>
+<li><p>Outras condições clássicas são a de Dirichlet, \(u(t, \tilde x)=f(t)\), e a de Neumann, \(u_x(t, \tilde x)=g(t)\), onde \(\tilde x\) é um ponto no bordo.</p>
+</li>
+<li><p>Mas nesses casos, como a condição inicial é transportada para um dos dois lados, dependento do sinal de \(a\), só podemos impor a condição de contorno &quot;no lado de origem&quot;, para evitar conflitos.</p>
+</li>
+<li><p>Por exemplo, se o dominio é o intervalo \(I=[0, L]\) e \(a>0\), então só podemos impor \(u(t,0)=f(t)\) ou \(u_x(t,0)=g(t)\).  Se \(a<0\), então só podemos impor \(u(t,L)=f(t)\) ou \(u_x(t,L)=g(t)\).</p>
+</li>
+<li><p>No caso em que \(f=0\), temos a condição de Dirichlet homogêna.</p>
+</li>
+<li><p>No caso em que \(g=0\), temos a condição de Neumann homogênea.</p>
+</li>
+</ul>
+<h3 id="simulação_de_deslocamento_para_a_direita"><a href="#simulação_de_deslocamento_para_a_direita" class="header-anchor">Simulação de deslocamento para a direita</a></h3>
+<ul>
+<li><p>Vamos assumir, aqui, condições de contorno periódicas.</p>
+</li>
+<li><p>O intervalo espacial é \(I=[0,2\pi]\), com condição inicial \(u_0(x) = \sin(x)\).</p>
+</li>
+<li><p>No caso de deslocamento para a direita, temos \(a>0\).</p>
+</li>
+<li><p>Nesse caso, vamos usar diferenças finitas &quot;para frente&quot;.</p>
+</li>
+</ul>
+\[ \partial_x u(x) \approx \frac{u(x+h) - u(x)}{h}
+\]
+<ul>
+<li><p>O uso de diferenças centradas ou para trás, nesse caso, nos leva a métodos instáveis.</p>
+</li>
+</ul>
+<pre><code class="language-julia">&quot;&quot;&quot;
+Operador de diferenças finitas para trás, com condições de contorno periódicas
+&quot;&quot;&quot;
+function δ⁻&#40;u::Vector&#123;Float64&#125;, h::Float64, ::Val&#123;:per&#125;&#41;
+    du &#61; zero&#40;u&#41;
+    for j &#61; 2:length&#40;u&#41;
+        du&#91;j&#93; &#61; &#40;u&#91;j&#93; - u&#91;j-1&#93;&#41;/h
+    end
+    du&#91;1&#93; &#61; &#40;u&#91;1&#93; - u&#91;end&#93;&#41;/h
+    return du
+end</code></pre>
+<pre><code class="language-julia">Main.##WeaveSandBox#2348.δ⁻</code></pre>
+<pre><code class="language-julia">function dudt_advection⁻&#33;&#40;dudt::Vector&#123;Float64&#125;, u::Vector&#123;Float64&#125;,
+        p::Vector&#123;Float64&#125;, t::Float64&#41;
+    a, h &#61; p
+    du &#61; δ⁻&#40;u, h, Val&#40;:per&#41;&#41;
+    dudt .&#61; - a * du
+    return nothing
+end</code></pre>
+<pre><code class="language-julia">dudt_advection⁻&#33; &#40;generic function with 1 method&#41;</code></pre>
+<pre><code class="language-julia">a &#61; 0.5 # # velocidade de propagação
+L &#61; 2π # comprimento do intervalo &#91;0,L&#93;
+N &#61; 60 # número de pontos da malha
+h &#61; L/&#40;N-1&#41; # comprimento de cada partição na malha
+x &#61; range&#40;0.0, L, length&#61;N&#41; # discretização do intervalo &#91;0,L&#93; com N pontos, incluindo os extremos
+u₀ &#61; sin.&#40;x&#41; # condição inicial, com N pontos &#40;incluindo os dois extremos&#41;
+p &#61; &#91;a, h&#93; # parâmetros
+Tf &#61; L/a # tempo final &#40;volta completa&#41;
+τ &#61; 0.1 # intervalo de tempo para guardar a solução
+tspan &#61; &#40;0.0,Tf&#41; # intervalo de tempo
+prob &#61; ODEProblem&#40;dudt_advection⁻&#33;, u₀, tspan, p, saveat &#61; τ&#41;
+nothing</code></pre>
+<pre><code class="language-julia">sol &#61; solve&#40;prob, Tsit5&#40;&#41;&#41;
+sol.retcode</code></pre>
+<pre><code class="language-julia">:Success</code></pre>
+<pre><code class="language-julia">sol</code></pre>
+<pre><code class="language-julia">retcode: Success
+Interpolation: 1st order linear
+t: 127-element Vector&#123;Float64&#125;:
+  0.0
+  0.1
+  0.2
+  0.30000000000000004
+  0.4
+  0.5
+  0.6
+  0.7000000000000001
+  0.8
+  0.9
+  ⋮
+ 11.8
+ 11.9
+ 12.0
+ 12.1
+ 12.200000000000001
+ 12.3
+ 12.4
+ 12.5
+ 12.566370614359172
+u: 127-element Vector&#123;Vector&#123;Float64&#125;&#125;:
+ &#91;0.0, 0.1062934856473654, 0.21138262362962432, 0.31407671202194876, 0.4132
+1218576837815, 0.5076658003388399, 0.5963673585385013, 0.6783118362696161, 
+0.7525707698561385, 0.818302775908169  …  -0.8183027759081689, -0.752570769
+8561385, -0.678311836269616, -0.5963673585385014, -0.5076658003388399, -0.4
+132121857683782, -0.3140767120219489, -0.21138262362962446, -0.106293485647
+3656, -2.4492935982947064e-16&#93;
+ &#91;-0.010057738237594612, 0.06501077026477718, 0.163223305414004, 0.26576579
+31936173, 0.3663089519262535, 0.4628236467591097, 0.5541060018585185, 0.639
+1110385057801, 0.716874754385409, 0.7865159965125561  …  -0.843710012505852
+9, -0.7823996938086538, -0.7122244739495479, -0.6339794662101336, -0.548551
+2177932172, -0.45690766488875856, -0.3600871655700709, -0.25918673478194354
+, -0.15534961472297215, -0.049752321454633215&#93;
+ &#91;-0.03491395517909536, 0.03221843247436807, 0.11969124185206435, 0.2183941
+765271467, 0.3190127507882637, 0.4171101673112569, 0.5106947341982397, 0.59
+85272095014396, 0.6795828289036198, 0.7529390619287903  …  -0.8668811992358
+952, -0.8101218009089822, -0.7441833988695237, -0.6698131015602751, -0.5878
+53554166613, -0.49923339110988135, -0.40495671424833357, -0.306091716001858
+9, -0.20375857630503938, -0.09911677052088776&#93;
+ &#91;-0.06885415877009127, 0.0004261340836274087, 0.08052968410737261, 0.17339
+50497053458, 0.2721383481398302, 0.3708600471578879, 0.4662983918605027, 0.
+5566784832932634, 0.6407979346460464, 0.7176653235382805  …  -0.88777049206
+30689, -0.8356792274505559, -0.7741193832705517, -0.7037884571556811, -0.62
+54833266016381, -0.5400912200267424, -0.44857966411944206, -0.3519855213743
+295, -0.2514032420257675, -0.14797246348941534&#93;
+ &#91;-0.10825998537024044, -0.03336287717760085, 0.043774944564390926, 0.13113
+429113454383, 0.22652497314434983, 0.3246089940667689, 0.42118870442562617,
+ 0.5137206892891587, 0.6006352974750342, 0.6807938343162147  …  -0.90633797
+32196288, -0.859019807851681, -0.8019686048138743, -0.7358307770331313, -0.
+6613556925255428, -0.5793871837573137, -0.49085398668574226, -0.39675921780
+972007, -0.2981690084589744, -0.19620042510009789&#93;
+ &#91;-0.15082405540983232, -0.06995238702801365, 0.007571289970565295, 0.09109
+733031221806, 0.18264136226457903, 0.2789388511374286, 0.37575183973668824,
+ 0.46987726398827534, 0.5592383361909753, 0.642434819883182  …  -0.92254971
+92282772, -0.880097174412376, -0.8276727769413946, -0.7658705161864064, -0.
+6953906364566956, -0.61703170295193, -0.5316815536993607, -0.44030723999420
+87, -0.34394406932207566, -0.24368387491144677&#93;
+ &#91;-0.19506280973116166, -0.10915168116828244, -0.029320254398060255, 0.0523
+8423456058695, 0.1404968728347125, 0.23429613512252867, 0.330424621772988, 
+0.4254453572320648, 0.5167955957884458, 0.6027196311450815  …  -0.936377853
+2477576, -0.8988708415422388, -0.8511792640314818, -0.7938434853452716, -0.
+727513142766337, -0.6529397855803578, -0.5709683597222531, -0.4825276342011
+145, -0.3886196777762172, -0.29030850511757167&#93;
+ &#91;-0.2400008768554447, -0.15040974717974037, -0.06751072441535269, 0.014105
+302140079996, 0.09975092210464613, 0.1908847771454309, 0.2855996469413286, 
+0.38076889856495205, 0.47354744202648835, 0.561811697802743  …  -0.94780058
+34138211, -0.9153062767881148, -0.8724411843085675, -0.8196909846009951, -0
+.7576533585059946, -0.6870312171162002, -0.6086247375127338, -0.52332229643
+91426, -0.43209040463791604, -0.3359627558975765&#93;
+ &#91;-0.28499548641412276, -0.19306848542937052, -0.10715342119602696, -0.0244
+3970005645516, 0.05989219239252852, 0.14867050568774368, 0.2415519209789440
+7, 0.3361874838599753, 0.4297728796645624, 0.5199112783232667  …  -0.956802
+222718198, -0.9293749524157446, -0.8914174925430325, -0.8433599162874508, -
+0.785746735190808, -0.7192307296159879, -0.6445655524846016, -0.56259719008
+82379, -0.4742543767257437, -0.3805380717725133&#93;
+ &#91;-0.3295939697325999, -0.23653941069701878, -0.1481098935377706, -0.063664
+02363205881, 0.020400722196437397, 0.10742699511421115, 0.1983939785882194,
+ 0.2919838099937211, 0.38576506390988585, 0.4772530326013565  …  -0.9633731
+993902748, -0.9410543893969673, -0.9080730571455373, -0.8648028943090657, -
+0.8117341691223688, -0.7494681714469986, -0.6787103999168471, -0.6002625683
+567239, -0.5150135220443649, -0.42392916673828207&#93;
+ ⋮
+ &#91;0.37192464851716756, 0.4349805667138085, 0.49355332340878383, 0.546969347
+4288438, 0.594635688603873, 0.635962187521526, 0.6704889221304032, 0.697737
+4622424506, 0.7174246551760444, 0.7292030045338865  …  -0.3461264803595214,
+ -0.2782664400589284, -0.20757715885043654, -0.13477546799809692, -0.060589
+629820450394, 0.014240837043286478, 0.08897141035010009, 0.1628509988054537
+3, 0.23513239123850097, 0.30506678813204746&#93;
+ &#91;0.3402045189495545, 0.40497349415110784, 0.4655645532971141, 0.5213415325
+603236, 0.5716221641036762, 0.6158839844259836, 0.6535201143001204, 0.68417
+12846913245, 0.7073272034154481, 0.7228387425361502  …  -0.3758564770557767
+4, -0.30972648144128445, -0.2404427204866894, -0.168710883615327, -0.095255
+7762140554, -0.020808161155651636, 0.05388578223236816, 0.12808446754166927
+, 0.20103070386109945, 0.27198885556549635&#93;
+ &#91;0.30788690768513605, 0.3741971066988441, 0.43666770671908195, 0.494635652
+676545, 0.547419332445063, 0.5944506448819934, 0.635127296235385, 0.6690200
+352640516, 0.6956342992824712, 0.7147206568589823  …  -0.40459226987961977,
+ -0.34034002772137495, -0.2726124303379551, -0.20210754144170037, -0.129541
+11517252512, -0.05563977275118616, 0.01885628591863274, 0.09320609043318874
+, 0.16665660356105894, 0.23846753024242262&#93;
+ &#91;0.27504474605281504, 0.3427318176541016, 0.40692930723790155, 0.466931011
+87149016, 0.5220820769632126, 0.5717388309295743, 0.6153474089253674, 0.652
+3566597119849, 0.6823582656913754, 0.7049177763724263  …  -0.43226957784504
+516, -0.37003888974546695, -0.3040158998791361, -0.23489233575455726, -0.16
+337171932262295, -0.09017765665725314, -0.016041460142672458, 0.05829446748
+704872, 0.13208561944371713, 0.20458286482577454&#93;
+ &#91;0.24175073794641416, 0.310659380853296, 0.3764156519256706, 0.43830989287
+89298, 0.4956645881896955, 0.5478308070104877, 0.5942152193738947, 0.634263
+7256741024, 0.6675059975746545, 0.6935147251876345  …  -0.4588280264349227,
+ -0.3987553531155658, -0.3345849250953767, -0.2669926926487829, -0.19667486
+500815845, -0.1243458615123862, -0.05073252149635986, 0.023428078279558687,
+ 0.09739288134545614, 0.17041530069875782&#93;
+ &#91;0.20808360692795208, 0.27805374894814205, 0.3452047669728601, 0.408840725
+6458539, 0.46824221802505295, 0.5227848528149925, 0.5718012765885625, 0.614
+783835445274, 0.651141524710659, 0.680532564815542  …  -0.4842064423152944,
+ -0.4264258514980204, -0.3642512273823508, -0.2983385787275558, -0.22937757
+62994235, -0.15807052301646363, -0.08514088417666317, -0.011317253644510583
+, 0.06265630959791312, 0.13604088786476543&#93;
+ &#91;0.17412401071618835, 0.2449866064243466, 0.31337884335583643, 0.378588097
+3041394, 0.43989813960812824, 0.4966525099216349, 0.5481895479268631, 0.593
+9478826331004, 0.6333503790083213, 0.6659727774826663  …  -0.50834461031922
+07, -0.45298984339007925, -0.3929474251213936, -0.32886179919644676, -0.261
+4074267246844, -0.19127903168598598, -0.11919060189653188, -0.0458668578170
+6144, 0.027954484464707965, 0.10153420832584711&#93;
+ &#91;0.13994636098722865, 0.21153849366834698, 0.2810087219867361, 0.347633435
+919795, 0.4106952041091286, 0.4695152832426865, 0.5234288656732847, 0.57183
+70343782172, 0.6141599600523543, 0.6499167464651002  …  -0.5311902709723673
+, -0.47838543219410634, -0.4206106477198846, -0.3584937531861596, -0.292694
+8696188668, -0.22389813351506663, -0.15280832585854287, -0.0801442367210667
+4, -0.006637618782546359, 0.06697412885446286&#93;
+ &#91;0.11717981009686074, 0.18916610244290644, 0.25926143582328326, 0.32673777
+46750376, 0.3908747517648745, 0.4509837243591549, 0.5063935384151819, 0.556
+4883474438383, 0.6006786477776407, 0.6384585180627257  …  -0.54561364700501
+79, -0.4945673816265967, -0.4383699471042769, -0.3776362649836241, -0.31301
+67304327781, -0.24518718877501564, -0.17484610256637628, -0.102707364221741
+95, -0.029498793410548965, 0.04404446832972245&#93;</code></pre>
+<pre><code class="language-julia">plot&#40;x, sol.u&#91;end&#93;, ylims&#61;&#40;-1.1, 1.1&#41;, label&#61;&quot;solução no tempo final &#36;&#40;sol.t&#91;end&#93;&#41;&quot;&#41;</code></pre>
+<img src="/modelagem_matematica/assets/pages/jupytered/c12/1202-EDP_advecao/code/images/1202-EDP_advecao_7_1.png" alt="">
+<pre><code class="language-julia">anim &#61; @animate for &#40;t,u&#41; in zip&#40;sol.t, sol.u&#41;
+    plot&#40;x, u, ylims&#61;&#40;-1.1, 1.1&#41;, label&#61;&quot;t&#61;&#36;&#40;round&#40;t,digits&#61;2&#41;&#41;&quot;,
+        title&#61;&quot;Uma solução da equação de adveção com a&#61;&#36;a&quot;, titlefont&#61;10&#41;
+end
+gif&#40;anim, &quot;../../../_assets/attachments/img/anim_adveccao_dir.gif&quot;, fps &#61; 20&#41;</code></pre>
+<pre><code class="language-julia">Plots.AnimatedGif&#40;&quot;/Users/rrosa/Documents/git_repositories/modelagem_matema
+tica/_assets/attachments/img/anim_adveccao_dir.gif&quot;&#41;</code></pre>
+<h3 id="deslocamento_para_a_esquerda"><a href="#deslocamento_para_a_esquerda" class="header-anchor">Deslocamento para a esquerda</a></h3>
+<pre><code class="language-julia">&quot;&quot;&quot;
+Operador diferenças finitas para frente, com condições de contorno periódicas.
+&quot;&quot;&quot;
+function δ⁺&#40;u, h, ::Val&#123;:per&#125;&#41;
+    du &#61; zero&#40;u&#41;
+    for j &#61; 1:length&#40;u&#41;-1
+        du&#91;j&#93; &#61; &#40;u&#91;j&#43;1&#93; - u&#91;j&#93;&#41;/h
+    end
+    du&#91;end&#93; &#61; &#40;u&#91;1&#93; - u&#91;end&#93;&#41;/h
+    return du
+end</code></pre>
+<pre><code class="language-julia">Main.##WeaveSandBox#2348.δ⁺</code></pre>
+<pre><code class="language-julia">function dudt_advection⁺&#33;&#40;dudt, u, p, t&#41;
+    a, h &#61; p
+    du &#61; δ⁺&#40;u, h, Val&#40;:per&#41;&#41;
+    dudt .&#61; - a * du
+    return nothing
+end</code></pre>
+<pre><code class="language-julia">dudt_advection⁺&#33; &#40;generic function with 1 method&#41;</code></pre>
+<pre><code class="language-julia">a &#61; -0.5 # velocidade de propagação
+p &#61; &#91;a, h&#93; # parâmetros
+prob &#61; ODEProblem&#40;dudt_advection⁺&#33;, u₀, tspan, p, saveat &#61; τ&#41;
+sol &#61; solve&#40;prob, Tsit5&#40;&#41;&#41;
+sol.retcode</code></pre>
+<pre><code class="language-julia">:Success</code></pre>
+<pre><code class="language-julia">anim &#61; @animate for &#40;t,u&#41; in zip&#40;sol.t, sol.u&#41;
+    plot&#40;x, u, ylims&#61;&#40;-1.1, 1.1&#41;, label&#61;&quot;t&#61;&#36;&#40;round&#40;t,digits&#61;2&#41;&#41;&quot;,
+        title&#61;&quot;Uma solução da equação de adveção com a&#61;&#36;a&quot;, titlefont&#61;10&#41;
+end
+gif&#40;anim, &quot;../../../_assets/attachments/img/anim_adveccao_esq.gif&quot;, fps &#61; 20&#41;</code></pre>
+<pre><code class="language-julia">Plots.AnimatedGif&#40;&quot;/Users/rrosa/Documents/git_repositories/modelagem_matema
+tica/_assets/attachments/img/anim_adveccao_esq.gif&quot;&#41;</code></pre>
+<h2 id="exercícios"><a href="#exercícios" class="header-anchor">Exercícios</a></h2>
+<ol>
+<li><p>Implemente o operador diferenças finitas para trás com condições de contorno de Dirichlet homogênea \(u(0)=0\) e faça a simulação para algum parâmetro \(a>0\).</p>
+</li>
+<li><p>Implemente o operador diferenças finitas para frente com condições de contorno de Dirichlet homogênea \(u(0)=0\), faça a simulação no caso \(a>0\) e observe a instabilidade do método nesse caso.</p>
+</li>
+<li><p>Implemente o operador diferenças finitas para frente com condições de contorno de Neumann homogênea \(u'(L)=0\) e faça a simulação para algum parâmetro \(a<0\).</p>
+</li>
+<li><p>Implemente o operador diferenças finitas para trás com condições de contorno de Neumann não-homogênea \(u'(0)=b\), com um novo parâmetro \(b>0\), e faça a simulação para algum parâmetro \(a>0\).</p>
+</li>
+<li><p>Implemente o operador diferenças centradas, com condições de contorno periódicas, faça a simulação para algum parâmetro \(a>0\) e observe a instabilidade do método.</p>
+</li>
+<li><p>Com condições de contorno periódicas, em um intervalo \(I\), mostre que a &quot;massa&quot; \(\int_I u(t,x)\;\mathrm{d}x\) é constante em \(t\).</p>
+</li>
+<li><p>Da mesma forma, mostre que \(\int_I u^n(t,x)\;\mathrm{d}x\) também é constante em \(t\), para todo \(n\in \mathbb{N}\).</p>
+</li>
+<li><p>Calcule \(m[k] = \sum_i u(k\tau,x_i)h\), \(k=1, \ldots\), no exemplo de condições periódicas de contorno e observe a evolução dessa quantidade através de um gráfico.</p>
+</li>
+</ol>
+
+    <div class="navbar">
+    <p id="nav">
+<span id="nav-prev" style="float: left;">
+<a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c12/1201-EDP_e_diferencas_finitas">12.1. Equações a derivadas parciais e diferenças finitas <kbd>←</kbd></a>
+</span>
+<span id="nav-next" style="float: right;">
+    <a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c12/1203-EDP_calor"><kbd>→</kbd> 12.3. Equação do calor unidimensional</a>
+</span>
+    </p>
+</div>
+</br></br>
+
+
+
+<div class="page-foot">
+    
+        <div class="license">
+            <a href=https://creativecommons.org/licenses/by-nc-nd/4.0/>(CC BY-NC-ND 4.0) Attribution-NonCommercial-NoDerivatives 4.0 International </a>
+            
+        </div>
+    
+
+    Last modified: July 19, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
+</div><!-- CONTENT ENDS HERE -->
+
+      </div> <!-- .books-content -->
+    </div> <!-- .books-container -->
+
+    
+        <script src="/modelagem_matematica/libs/katex/katex.min.js"></script>
+        <script src="/modelagem_matematica/libs/katex/auto-render.min.js"></script>
+        <script>renderMathInElement(document.body)</script>
+    
+
+    
+        <script src="/modelagem_matematica/libs/highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();hljs.configure({tabReplace: '    '});</script>
+    
+
+  </body>
+</html>

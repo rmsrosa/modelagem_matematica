@@ -2,44 +2,50 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
+    <loc>pages/jupytered/c12/1206-EDP_onda_bidimensional/index.html</loc>
+    <lastmod>2022-07-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
     <loc>pages/jupytered/c07/0702-Mecanica_Lagrangiana/index.html</loc>
-    <lastmod>2022-07-10</lastmod>
+    <lastmod>2022-07-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
     <loc>pages/jupytered/c11/1101-Series_Fourier/index.html</loc>
-    <lastmod>2022-07-10</lastmod>
+    <lastmod>2022-07-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
     <loc>pages/jupytered/c11/1102-Transformada_discreta_Fourier/index.html</loc>
-    <lastmod>2022-07-10</lastmod>
+    <lastmod>2022-07-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
     <loc>pages/jupytered/c04/0403-Modelos_redutiveis_linear_aplicacoes/index.html</loc>
-    <lastmod>2022-07-10</lastmod>
+    <lastmod>2022-06-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
     <loc>pages/jupytered/c04/0402-Exemplos_ajuste_linear/index.html</loc>
-    <lastmod>2022-07-10</lastmod>
+    <lastmod>2022-06-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
     <loc>pages/jupytered/c01/0102-Instalando_acessando_Julia/index.html</loc>
-    <lastmod>2022-07-10</lastmod>
+    <lastmod>2022-06-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
     <loc>pages/jupytered/c04/0404-Exemplos_ajuste_naolinear/index.html</loc>
-    <lastmod>2022-07-10</lastmod>
+    <lastmod>2022-06-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
@@ -74,6 +80,12 @@
     <priority>0.5</priority>
 </url>
 <url>
+    <loc>pages/jupytered/c12/1208-Resfriamento_rapido_morangos/index.html</loc>
+    <lastmod>2022-07-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
     <loc>pages/jupytered/c07/0706-Pendulo/index.html</loc>
     <lastmod>2022-06-22</lastmod>
     <changefreq>monthly</changefreq>
@@ -100,6 +112,12 @@
 <url>
     <loc>pages/jupytered/c07/0703-Conservacao_contexto_Newtoniano/index.html</loc>
     <lastmod>2022-06-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/jupytered/c12/1203-EDP_calor/index.html</loc>
+    <lastmod>2022-07-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
@@ -142,6 +160,18 @@
 <url>
     <loc>pages/jupytered/c08/0801-Modelo_diodo/index.html</loc>
     <lastmod>2022-07-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/jupytered/c12/1204-EDP_onda/index.html</loc>
+    <lastmod>2022-07-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/jupytered/c12/1207-Ondas_sismicas/index.html</loc>
+    <lastmod>2022-07-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
@@ -206,6 +236,12 @@
     <priority>0.5</priority>
 </url>
 <url>
+    <loc>pages/jupytered/c12/1205-EDP_calor_bidimensional/index.html</loc>
+    <lastmod>2022-07-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
     <loc>pages/jupytered/c03/0302-BuckinghamPi/index.html</loc>
     <lastmod>2022-06-21</lastmod>
     <changefreq>monthly</changefreq>
@@ -220,6 +256,12 @@
 <url>
     <loc>pages/jupytered/c03/0301-Quantidades_unidades_dimensoes/index.html</loc>
     <lastmod>2022-06-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/jupytered/c12/1202-EDP_advecao/index.html</loc>
+    <lastmod>2022-07-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
@@ -244,6 +286,12 @@
 <url>
     <loc>pages/jupytered/c04/0404-Minimos_quadrados_nao_linear/index.html</loc>
     <lastmod>2022-06-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/jupytered/c12/1201-EDP_e_diferencas_finitas/index.html</loc>
+    <lastmod>2022-07-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>

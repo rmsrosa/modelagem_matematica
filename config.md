@@ -101,8 +101,6 @@ menu = [
         "src/jupyter/c11/1103-Ondas_sonoras_elementos_musicais.ipynb"
         "src/jupyter/c11/1104-Compressao_audio.ipynb"
     ],
-]
-menu_left = [
     "Equações a Derivadas Parciais" => [
         "src/jupyter/c12/1201-EDP_e_diferencas_finitas.ipynb"
         "src/jupyter/c12/1202-EDP_advecao.ipynb"

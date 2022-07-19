@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="" />
+  <meta name="author" content="and contributors" />
+   <title>Ondas sísmicas</title>  
+  <link rel="shortcut icon" type="image/png" href="/modelagem_matematica/assets/images/favicon.png"/>
+  <link rel="stylesheet" href="/modelagem_matematica/css/base.css"/>
+  
+  <script src="/modelagem_matematica/libs/mousetrap/mousetrap.min.js"></script>
+
+  
+    <link rel="stylesheet" href="/modelagem_matematica/libs/highlight/github.min.css">
+    <script src="/modelagem_matematica/libs/highlight/highlight.pack.js"></script>
+    <script src="/modelagem_matematica/libs/highlight/julia.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', (event) => {
+        document.querySelectorAll('pre').forEach((el) => {
+          hljs.highlightElement(el);
+        });
+      });
+    </script>
+  
+
+  
+    <link rel="stylesheet" href="/modelagem_matematica/libs/katex/katex.min.css">
+  
+</head>
+
+<body>
+
+  <div class="books-container">
+
+  <aside class="books-menu">
+  <input type="checkbox" id="menu">
+  <label for="menu">☰</label>
+
+  <div class="books-title">
+    <a href="/modelagem_matematica/">Modelagem Matemática</a>
+  </div>
+
+  <br />
+
+  <div class="books-subtitle">
+    Notas de aula
+  </div>
+
+  <br />
+
+  <div class="books-author">
+    <a href="https://rmsrosa.github.io">Ricardo M. S. Rosa</a>
+  </div>
+
+  <div class="books-menu-content">
+    <div class="menu-level-1">
+    <li><a href="/modelagem_matematica/pages/intro">Introdução</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>PARTE I</li>
+    </div>
+    <div class="menu-level-1">
+    <li>1. Preliminares</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c01/0101-Aspectos_curso">1.1. Aspectos do curso</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c01/0102-Instalando_acessando_Julia">1.2. Instalando e acessando o Julia</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c01/0103-Primeiros_passos_Julia">1.3. Primeiros passos em Julia</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>PARTE II</li>
+    </div>
+    <div class="menu-level-1">
+    <li>2. Princípios de Modelagem Matemática</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c02/0201-Principios_basicos">2.1. Princípios básicos de modelagem</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c02/0202-Exemplos_tipos_modelagem">2.2. Exemplos de tipos de modelagem</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>3. Análise Dimensional</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c03/0301-Quantidades_unidades_dimensoes">3.1. Quantidades, unidades e dimensões</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c03/0302-BuckinghamPi">3.2. Análise dimensional e o Teorema de Buckingham-Pi</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c03/0303-Unidades_Julia">3.3. Trabalhando com unidades e dimensões em Julia</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>4. Ajuste de Parâmetros</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c04/0401-Minimos_quadrados_ajuste">4.1. Mínimos quadrados e o ajuste de parâmetros</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c04/0402-Exemplos_ajuste_linear">4.2. Exemplos de ajuste linear</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c04/0403-Modelos_redutiveis_linear_aplicacoes">4.3. Modelos redutíveis ao caso linear nos parâmetros e aplicações</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c04/0404-Minimos_quadrados_nao_linear">4.4. Mínimos quadrados não-linear</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c04/0405-Exemplos_ajuste_naolinear">4.5. Exemplos de ajuste não-linear de parâmetros</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c04/0406-Redes_neurais">4.6. Redes neurais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c04/0407-Ajuste_em_redes_neurais">4.7. Ajuste de parâmetros em modelos de redes neurais</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>5. Erros e Incertezas</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c05/0501-Erros_e_incertezas">5.1. Erros e incertezas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c05/0502-Minimos_quadrados_verossimilhanca">5.2. Mínimos quadrados, maximização da verossimilhança e quantificação de incertezas em regressões lineares</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c05/0503-Propagacao_incertezas">5.3. Propagação de incertezas</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>6. Avaliação de Modelos</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c06/0601-Qualidade_do_modelo">6.1. Qualidade do ajuste</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c06/0602-Validacao_do_modelo">6.2. Validação de modelos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c06/0603-Comparacao_de_modelos">6.3. Comparação de modelos</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>PARTE III</li>
+    </div>
+    <div class="menu-level-1">
+    <li>7. Mecânica</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c07/0701-Mecanica_Newtoniana">7.1. Mecânica Newtoniana</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c07/0702-Mecanica_Lagrangiana">7.2. Mecânica Lagrangiana</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c07/0703-Conservacao_contexto_Newtoniano">7.3. Leis de conservação em um contexto Newtoniano</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c07/0704-Conservacao_contexto_Lagrangiano">7.4. Leis de conservação em um contexto Lagrangiano</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c07/0705-Hamiltonianos">7.5. Hamiltonianos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c07/0706-Pendulo">7.6. Análise do período de um pêndulo planar simples</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c07/0707-Pendulo_angulos_grandes">7.7. Experimentos com pêndulos</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>8. Modelos em Eletrônica</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c08/0801-Modelo_diodo">8.1. Modelagem da relação voltagem-corrente de um diodo</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>9. Reações Químicas</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c09/0901-Lei_acao_de_massas">9.1. Lei de ação de massas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c09/0902-Reacoes_enzimaticas">9.2. Modelagem de reações enzimática</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c09/0903-Isomerizacao">9.3. Lupulagem e a conversão de humulone em iso-humulone considerando saturação</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>10. Modelos Epidemiológicos</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c10/1001-Modelos_epidemiologicos_compartimentais">10.1. Modelos epidemiológicos compartimentais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c10/1002-Ajuste_SIR">10.2. Ajustando um modelo SIR a uma epidemia de Influenza</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c10/1003-Compartimentais_estruturados">10.3. Modelos compartimentais estruturados</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c10/1004-Individual_estocastico">10.4. Modelos individuais</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>11. Séries de Fourier e Aplicações</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c11/1101-Series_Fourier">11.1. Séries de Fourier</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c11/1102-Transformada_discreta_Fourier">11.2. Transformada discreta de Fourier</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c11/1103-Ondas_sonoras_elementos_musicais">11.3. Ondas sonoras e elementos musicais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c11/1104-Compressao_audio">11.4. Séries de Fourier e compressão de audio</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>12. Equações a Derivadas Parciais</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c12/1201-EDP_e_diferencas_finitas">12.1. Equações a derivadas parciais e diferenças finitas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c12/1202-EDP_advecao">12.2. Equação de adveçcão</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c12/1203-EDP_calor">12.3. Equação do calor unidimensional</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c12/1204-EDP_onda">12.4. Equação da onda unidimensional</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c12/1205-EDP_calor_bidimensional">12.5. Equação do calor em duas dimensões espaciais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c12/1206-EDP_onda_bidimensional">12.6. Equação da onda em duas dimensões espaciais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c12/1207-Ondas_sismicas">12.7. Ondas sísmicas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/modelagem_matematica/pages/jupytered/c12/1208-Resfriamento_rapido_morangos">12.8. Modelagem matemática e simulação numérica do resfriamento rápido de morangos com o ar forçado</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li><a href="/modelagem_matematica/pages/appendix">Appendix</a></li>
+    </div>
+<div>
+
+
+  
+    <a href="https://github.com/rmsrosa/modelagem_matematica/tree/modmat2022p1"><img src="/modelagem_matematica/assets/images/GitHub-Mark-32px.png" alt="GitHub repo" width="18" style="margin:5px 5px" align="left"></a>
+
+  
+
+</aside>
+
+
+  <div class="books-content">
+
+    
+      <div class="navbar">
+    <p id="nav">
+<span id="nav-prev" style="float: left;">
+<a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c12/1206-EDP_onda_bidimensional">12.6. Equação da onda em duas dimensões espaciais <kbd>←</kbd></a>
+</span>
+<span id="nav-next" style="float: right;">
+    <a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c12/1208-Resfriamento_rapido_morangos"><kbd>→</kbd> 12.8. Modelagem matemática e simulação numérica do resfriamento rápido de morangos com o ar forçado</a>
+</span>
+    </p>
+</div>
+</br></br>
+
+    
+
+    
+      <div class="badges">
+<p>
+<a href="https://nbviewer.org/urls/rmsrosa.github.io/modelagem_matematica/generated/jupytered/c12/1207-Ondas_sismicas.ipynb"><img align="left" src="https://img.shields.io/badge/view%20in-nbviewer-orange" alt="View in NBViewer" title="View Jupyter notebook in NBViewer"></a>
+<a href="https://mybinder.org/v2/gh/rmsrosa/modelagem_matematica/julia-env-for-binder-2022p1?urlpath=git-pull%3Frepo%3Dhttps://github.com/rmsrosa/modelagem_matematica%26urlpath%3Dlab/tree%252Fmodelagem_matematica/generated/jupytered/c12/1207-Ondas_sismicas.ipynb%26branch%3Dgh-pages"><img align="left" src="https://mybinder.org/badge.svg" alt="Open in binder" title="Open in binder"></a>
+<a href="/modelagem_matematica/generated/jupytered/c12/1207-Ondas_sismicas.ipynb"><img align="left" src="https://img.shields.io/badge/download-notebook-blue" alt="Download notebook" title="Download Jupyter notebook"></a>
+<a href="/modelagem_matematica/src/jupyter/c12/1207-Ondas_sismicas.ipynb"><img align="left" src="https://img.shields.io/badge/view-source-lightblue" alt="View source" title="View source"></a>
+</p>
+</div></br>
+
+    
+<h1 id="get_title"><a href="#get_title" class="header-anchor">12.7. Ondas sísmicas</a></h1>
+<ul>
+<li><p>Propagação de onda em meios elásticos heterogêneos</p>
+</li>
+<li><p>Simulação de ondas sísmicas e terremotos</p>
+</li>
+</ul>
+<pre><code class="language-julia">using DifferentialEquations
+using Plots
+using Images</code></pre>
+<h2 id="equações_de_movimento_de_materiais_elásticos"><a href="#equações_de_movimento_de_materiais_elásticos" class="header-anchor">Equações de movimento de materiais elásticos</a></h2>
+<h3 id="representação_lagrangiana"><a href="#representação_lagrangiana" class="header-anchor">Representação Lagrangiana</a></h3>
+<p>Em mecânica do contínuo, a <strong>representação Lagrangiana</strong> da deformação de um corpo material &#40;sólido, líquido, gás, etc.&#41; ao longo do tempo se dá através de uma variável temporal \(t\), uma variável de referência \(\mathbf{X}\) para cada &quot;partícula&quot; do corpo e uma função</p>
+\[ \mathbf{x} = \mathbf{\chi}(t,\mathbf{X})
+\]
+<p>que representa a posição da partícula \(\mathbf{X}\) no instante \(t\). </p>
+<pre><code class="language-julia">load&#40;&quot;../../../_assets/attachments/img/lagrangian_formulation.png&quot;&#41;</code></pre>
+<p><span style="color:red;">// Image matching '/assets/pages/jupytered/c12/1207-Ondas_sismicas/code/images/1207-Ondas_sismicas_2_1.png' not found. //</span></p>
+<h3 id="campo_de_deslocamentos"><a href="#campo_de_deslocamentos" class="header-anchor">Campo de deslocamentos</a></h3>
+<p>Em muitos casos, é útil considerarmos o <strong>deslocamento</strong> do corpo em relação a uma certa posição de referência.</p>
+<p>Caso tomemos \(\mathbf{x} = \mathbf{\chi}(t_0, \mathbf{X})\) como uma nova variável de referência, temos</p>
+\[ \mathbf{u}(t,\mathbf{x}) = \mathbf{\chi}(t_0+t, \mathbf{X}) - \mathbf{\chi}(t_0, \mathbf{X}) = \mathbf{\chi}(t, \mathbf{x}) - \mathbf{x}.
+\]
+<p>Observe que</p>
+\[ \dot{\mathbf{u}} = \dot{\mathbf{\chi}}, \qquad  \ddot{\mathbf{u}} = \ddot{\mathbf{\chi}}
+\]
+<p>representam a <strong>velocidade</strong> e <strong>aceleração</strong> de um ponto material do corpo, com essa notação de &quot;ponto&quot; indicando derivadas temporais.</p>
+<p>A segunda lei de Newton nos dá que</p>
+\[ \rho \ddot{\mathbf{u}} = \text{ somatório das forças },
+\]
+<p>onde \(\rho = \rho(t, \mathbf{x})\) é a densidade do material no instante \(t\) e posição \(\mathbf{x}\).</p>
+<h3 id="equações_de_navier_para_pequenas_deformações"><a href="#equações_de_navier_para_pequenas_deformações" class="header-anchor">Equações de Navier para pequenas deformações</a></h3>
+<p>No caso de <em>pequenas deformações</em>, utilizando \(\mathbf{x}\) e \(\mathbf{u}\) como variáveis independente e dependente, conforme descrito acima,  as <strong>equações de Navier</strong> de um meio contínuo consistem nas equações de <strong>conservação de momento linear</strong></p>
+\[ \rho \frac{\partial^2 \mathbf{u}}{\partial t^2} = \mathbf{\nabla} \cdot \mathsf{\sigma} + \mathbf{f},
+\]
+<p>além de outras equações relevantes &#40;conservação de massa, temperatura, lei de estado, leis constitutivas, etc.&#41;.</p>
+<p>Acima, </p>
+<ul>
+<li><p>\(\rho = \rho(t, \mathbf{x})\) é a densidade do material no instante \(t\) e posição \(\mathbf{x}\); </p>
+</li>
+<li><p>\(\mathbf{f}=\mathbf{f}(t,\mathbf{x})\) representa o campo de forças externas agindo no corpo, como a força gravitacional; e </p>
+</li>
+<li><p>\(\mathsf{\sigma}\) é o tensor de tensões, indicando as forças &quot;de superfície&quot; dadas pela interação/tensão molecular entre as diferentes partes do corpo.</p>
+</li>
+</ul>
+<p>Em temos de coordenadas, podemos escrever, mais explicitamente,</p>
+\[ \rho\frac{\partial^2 u_i}{\partial t^2} = \sum_{j=1}^d\frac{\partial \sigma_{ij}}{\partial x_j} + f_i, \qquad i= 1, \ldots, d,
+\]
+<h3 id="lei_constitutiva_de_um_material_elástico_hookeano"><a href="#lei_constitutiva_de_um_material_elástico_hookeano" class="header-anchor">Lei constitutiva de um material elástico Hookeano</a></h3>
+<p>Uma <strong>lei constitutiva</strong> relaciona o tensor de tensões \(\mathsf{\sigma}\) a outras variáveis do estado do material. Ela caracteriza o material e depende das condições mecânicas &#40;deformações&#41;, dinâmicas &#40;velocidades de deformação&#41; e termodinâmicas do mesmo &#40;temperatura, pressão, etc.&#41;.</p>
+<p>Um ponto de partida é assumir que o meio em que estamos interessados é um meio elástico modelado por uma lei constitutiva que segue a lei de Hooke</p>
+\[
+  \mathsf{\sigma} = \mathsf{C} \mathcal{E}
+\]
+<p>onde </p>
+\[ \mathcal{E} = \frac{1}{2}\left( \frac{\partial u_i}{\partial x_j} + \frac{\partial u_j}{\partial x_i} \right)_{i,j=1}^d = \frac{1}{2} \left( \nabla \mathbf{u} + (\nabla \mathbf{u})^\rm{t}\right).
+\]
+<p>é o <strong>tensor de deformações</strong> do material, \(\nabla \mathbf{u}\) é o <strong>gradiente de deformações</strong>, \((\nabla\mathbf{u})^\rm{t}\) é a sua transposta, e \(\mathsf{C}\) é um tensor de quarta ordem chamado de <strong>tensor de elasticidade</strong>.</p>
+<h3 id="material_elástico_hookeano_isotrópico"><a href="#material_elástico_hookeano_isotrópico" class="header-anchor">Material elástico Hookeano isotrópico</a></h3>
+<p>Assumindo um material elástico Hookeano <strong>isotrópico</strong> e usando outras simetrias intrínsicas ao tensor de tensões, o tensor de tensões desse material é determinado por apenas dois parâmetros e a lei consitutiva se reduz à forma</p>
+\[ \mathsf{\sigma} = \lambda \rm{tr}(\mathcal{E})\mathcal{I} + 2\mu \mathcal{E}.
+\]
+<p>onde \(\lambda\) e \(\mu\) são chamados de <strong>coeficientes de Lamé</strong>.</p>
+<h3 id="divergente_do_tensor_de_tensões_de_um_material_elástico_hookeano_isotrópico"><a href="#divergente_do_tensor_de_tensões_de_um_material_elástico_hookeano_isotrópico" class="header-anchor">Divergente do tensor de tensões de um material elástico Hookeano isotrópico</a></h3>
+<p>Usando a relação </p>
+\[ \mathsf{\sigma} = \lambda \rm{tr}(\mathcal{E})\mathcal{I} + 2\mu \mathcal{E},
+\]
+<p>o divergente de \(\mathsf{\sigma}\), que aparece na equação de Navier, é dado por</p>
+\[ 
+\mathbf{\nabla} \cdot \mathsf{\sigma} = \rm{tr}(\mathcal{E}) \mathsf{\mathbf{\nabla}}\lambda  + \lambda \mathbf{\nabla} \cdot (\rm{tr}(\mathcal{E})\mathsf{I}) + 2\mathbf{\nabla} \mu \cdot \mathcal{E} + 2\mu \mathbf{\nabla} \cdot \mathcal{E}.
+\]
+<h3 id="equações_de_navier_de_um_material_elástico_hookeano_isotrópico"><a href="#equações_de_navier_de_um_material_elástico_hookeano_isotrópico" class="header-anchor">Equações de Navier de um material elástico Hookeano isotrópico</a></h3>
+<p>Com a forma acima para o divergente do tensor de tensões, e utilizando algumas identidades vetoriais, obtemos as equações de movimento na forma</p>
+\[ \rho \mathbf{\ddot u} = \mathsf{\mathbf{\nabla}}\lambda (\mathbf{\nabla} \cdot \mathbf{u}) + \mathbf{\nabla} \mu \cdot\left( \mathbf{\nabla} \mathbf{u} + (\mathbf{\nabla} \mathbf{u})^\rm{t}\right) + (\lambda + 2\mu)\mathbf{\nabla} (\mathbf{\nabla} \cdot \mathbf{u})  - \mu \mathbf{\nabla} \times (\mathbf{\nabla} \times \mathbf{u}) + \mathbf{f}.
+\]
+<h3 id="desprezando_os_gradientes_dos_coeficientes_de_lamé"><a href="#desprezando_os_gradientes_dos_coeficientes_de_lamé" class="header-anchor">Desprezando os gradientes dos coeficientes de Lamé</a></h3>
+<p>Os termos envolvendo os gradientes \(\mathsf{\mathbf{\nabla}}\lambda\) e \(\mathsf{\mathbf{\nabla}}\mu\) dos coeficientes de Lamé são relativamente pequenos para perturbações de frequências relativamente altas.</p>
+<p>Por esse motivo, em muitos casos, esses termos são normalmente desprezados e nos levam à equação vetorial</p>
+\[ \rho \mathbf{\ddot u} = (\lambda + 2\mu)\mathbf{\nabla} (\mathbf{\nabla} \cdot \mathbf{u})  - \mu \mathbf{\nabla} \times (\mathbf{\nabla} \times \mathbf{u}) + \mathbf{f}.
+\]
+<h3 id="ondas_p_e_s"><a href="#ondas_p_e_s" class="header-anchor">Ondas P e S</a></h3>
+<p>O deslocamento \(\mathbf{u}=(u_i)_{i=1, \ldots, d}\) é uma quantidade bi- ou tri-dimensional.</p>
+<p>Ele pode ser decomposto em duas partes, relativas a <strong>ondas P</strong> e <strong>ondas S</strong>, aplicando o divergente e o rotacional a \(\mathbf{u}\) &#40;quando \(d=3\)&#41;:</p>
+\[w_P = \mathbf{\nabla}\cdot \mathbf{u};\]
+\[\mathbf{w}_S = \mathbf{\nabla}\times \mathbf{u}.\]
+<p>No caso bidimensional &#40;\(d=2\)&#41;, a onda S também nos leva a um escalar \(w_S\) e temos, mais explicitamente, escrevendo \(\mathbf{u} = (u,v)\),</p>
+\[w_P = u_x + v_y;\]
+\[w_S = v_x - u_y.\]
+<h3 id="recuperando_a_onda_original"><a href="#recuperando_a_onda_original" class="header-anchor">Recuperando a onda original</a></h3>
+<p>No caso bidimensional, conhecidas as ondas </p>
+\[ w_P = \partial_x u + \partial_y v, \qquad w_S = \partial_x v - \partial_y u,
+\]
+<p>podemos ver que</p>
+\[ \partial_x w_P - \partial_y w_S = \Delta u, \qquad \partial_y w_P + \partial_x w_S = \Delta v,
+\]
+<p>de modo que as coordenadas \(u\) e \(v\) do deslocamento \(\mathbf{u}=(u,v)\) podem ser obtidas separadamente através da resolução de problemas elípticos. </p>
+<p>Analogamente no caso tridimensional.</p>
+<h3 id="equações_para_os_termos_associados_às_ondas_p_e_s"><a href="#equações_para_os_termos_associados_às_ondas_p_e_s" class="header-anchor">Equações para os termos associados às ondas P e S</a></h3>
+<p>Aplicando o divergente e o rotacional à equação e usando algumas identidades vetoriais, chega-se às seguintes equações, no caso bidimensional, para os termos \(w_P\) e \(w_S\):</p>
+\[
+\frac{\partial^2 w_P}{\partial t^2} =  \frac{\lambda + 2\mu}{\rho} \Delta w_P + h_P,
+\]
+\[
+\frac{\partial^2 w_S}{\partial t^2} = \frac{\mu}{\rho} \Delta w_S + h_S,
+\]
+<p>onde </p>
+\[ h_P = \mathbf{\nabla} \cdot \mathbf{f}, \qquad h_S = \mathbf{\nabla} \times \mathbf{f}
+\]
+<p>Ambas são da forma</p>
+\[ \frac{\partial^2 w}{\partial t^2} =  c^2 \Delta w + h,
+\]
+<p>com velocidades respectivas \(c=c_P\) e \(c_S\) dadas por</p>
+\[ c_P = \sqrt{\frac{\lambda + 2\mu}{\rho}}, \qquad c_S = \sqrt{\frac{\mu}{\rho}}.
+\]
+<p>Tipicamente, \(\lambda, \mu>0\), de modo que \(c_P > c_S\).</p>
+<h3 id="velocidades_típicas_de_ondas_p_de_certas_rochas"><a href="#velocidades_típicas_de_ondas_p_de_certas_rochas" class="header-anchor">Velocidades típicas de ondas P de certas rochas </a></h3>
+<p>Os parâmetros \(\lambda, \mu\) e \(\rho\) são diferentes para diferentes tipos de rocha e, mesmo para um mesmo tipo de rocha, variam de acordo com suas propriedades termodinâmicas, como temperatura e pressão.</p>
+<p>De qualquer forma, aqui vai uma tabela com valores típicos da velocidade \(c_P\) das ondas primárias &#40;e das ondas acústicas&#41; de materias da crosta terrestre.</p>
+<table><tr><th align="right">Tipo de rocha</th><th align="center">velocidade &#40;m/s&#41;</th></tr><tr><td align="right">xisto</td><td align="center">1800 - 4900</td></tr><tr><td align="right">Arenito</td><td align="center">5800</td></tr><tr><td align="right">Calcário</td><td align="center">5800 - 6400</td></tr><tr><td align="right">Anidrita</td><td align="center">6100</td></tr><tr><td align="right">Granito</td><td align="center">5800 - 6100</td></tr><tr><td align="right">Dolomita</td><td align="center">6400 - 7300</td></tr><tr><td align="right">Gabro</td><td align="center">7200</td></tr></table>
+<h2 id="ondas_acústicas"><a href="#ondas_acústicas" class="header-anchor">Ondas acústicas</a></h2>
+<p><strong>Ondas acústicas</strong> estão associadas às ondas P por</p>
+\[ p = \lambda \mathbf{\nabla} \cdot \mathbf{u} = \lambda w_P.
+\]
+<p>Essas equações modelam tanto a propagação de ondas sísmicas &#40;pelo menos a parte associada às ondas P&#41; na crosta terrestre como a de ondas sonoras que escutamos ao nosso entorno.</p>
+<p>Nesse caso, temos</p>
+\[
+\frac{\partial^2 p}{\partial t^2} = c^2 \Delta p + g,
+\]
+<p>onde \(c=c(\mathbf{x})\) é a velocidade de propagação da onda acústica &#40;mesma que a da onda P&#41; no ponto \(\mathbf{x},\) em um meio possivelmente heterogêneo, e \(g=g(t,\mathbf{x})\) é uma fonte externa de geração de ondas acústicas.</p>
+<h3 id="decomposição_de_helmholtz_e_os_potenciais_das_ondas_p_e_s"><a href="#decomposição_de_helmholtz_e_os_potenciais_das_ondas_p_e_s" class="header-anchor">Decomposição de Helmholtz e os potenciais das ondas P e S</a></h3>
+<p>O deslocamento \(\mathbf{u}\) pode ser escrito em termos da decomposição de Helmholtz, como a soma de um termo gradiente e outro de divergente nulo, i.e</p>
+\[ \mathbf{u} = \mathbf{\nabla} \phi + \mathbf{\nabla} \times \mathbf{\Psi},
+\]
+<p>onde \(\phi\) é um campo potencial escalar e \(\mathbf{\Psi}\) é um campo potencial vetorial.</p>
+<p>Com isso, temos, explicitamente, a decomposição em ondas P e ondas S dada por</p>
+\[ \mathbf{u} = \mathbf{u}_P + \mathbf{u}_S, \qquad \mathbf{u}_P = \mathbf{\nabla} \phi, \quad \mathbf{u}_S = \mathbf{\nabla} \times \mathbf{\Psi}.
+\]
+<p>Observe que</p>
+\[  \mathbf{\nabla}\times \mathbf{u}_P = \mathbf{\nabla} \times \mathbf{\nabla} \phi = 0, \qquad \mathbf{\nabla}\cdot \mathbf{u}_S = \mathbf{\nabla} \cdot \mathbf{\nabla} \times \mathbf{\Psi} = 0,
+\]
+<p>de modo que</p>
+\[ \mathbf{\nabla}\cdot \mathbf{u} = \Delta \phi, \qquad \mathbf{\nabla} \times \mathbf{u} = - \Delta \mathbf{\Psi}.
+\]
+<p>justificando a associação de \(\phi\) e \(\mathbf{\Psi}\) diretamente às ondas P e ondas S, respectivamente.</p>
+<h3 id="potenciais_no_caso_bidimensional"><a href="#potenciais_no_caso_bidimensional" class="header-anchor">Potenciais no caso bidimensional</a></h3>
+<p>No caso bidimensional, podemos considerar \(\mathbf{\Psi}\) como um campo escalar \(\Psi\), e temos</p>
+\[ \Delta \phi = w_P, \qquad \Delta \psi = - w_S.
+\]
+<p>Os potenciais \(\phi\) e \(\psi\) satisfazem equações da onda idênticas às equações para \(w_P\) e \(w_S\).</p>
+<h2 id="ondas_acústicas_em_um_meio_bidimensional"><a href="#ondas_acústicas_em_um_meio_bidimensional" class="header-anchor">Ondas acústicas em um meio bidimensional</a></h2>
+<p>A seguir, para simplificar, consideramos apenas a propagação de ondas acústicas em um meio bidimensional em um plano \(xz\), com \(x\) representando uma variável horizontal, paralela à superfície da Terra, e \(z\) a profundidade a partir da superfície. Nesse caso,</p>
+\[
+\frac{\partial^2 p}{\partial t^2} = c^2 \left(\frac{\partial^2 p}{\partial x^2} + \frac{\partial^2 p}{\partial z^2}\right) + g,
+\]
+<p>onde \(c=c(x,z)\) é a velocidade de propagação da onda acústica &#40;mesma que a da onda P&#41; no ponto \((x,z)\), em um meio possivelmente heterogêneo, e \(g=g(t,x,z)\) é uma fonte externa de geração de ondas acústicas.</p>
+<h2 id="discretização_espaço-temporal_via_diferenças_finitas"><a href="#discretização_espaço-temporal_via_diferenças_finitas" class="header-anchor">Discretização espaço-temporal via diferenças finitas</a></h2>
+<p>Uma opção é fazermos uma discretização espaço-temporal.</p>
+<p>Consideramos uma malha espacial uniforme \((x_i, z_j)\), com intervalos espaciais \(\mathrm{d} x\) e \(\mathrm{d} z\) em cada direção, e uma malha temporal \(t_n\), com intervalo temporal \(\mathrm{d} t\).  </p>
+<p>Aproximamos as derivadas de segunda ordem pelo método clássico de segunda ordem usando três pontos &#40;na direção correspondente&#41;.</p>
+<p>A aproximação de \(p=p(t_n,x_i,z_j)\) nos pontos da malha é denotada por \(p_{i,j}^n\). Analogamente para \(c\) e \(g\), exceto que assumimos que \(c\) não depende de \(t\).</p>
+<p>Isso nos leva à equação em diferenças finitas</p>
+\[
+ \frac{p_{i,j}^{n+1} - 2 p_{i,j}^n + p_{i,j}^{n-1}}{\mathrm{d}t^2}  = c_{i,j}^2 \left( \frac{p_{i+1,j}^{n} - 2 p_{i,j}^n + p_{i-1,j}^{n}}{\mathrm{d}x^2} + \frac{p_{i,j+1}^{n} - 2 p_{i,j}^n + p_{i,j-1}^{n}}{\mathrm{d}z^2}\right) \ + g_{i,j}^n.
+\]
+<p>Essa equação pode ser escrita para \(p^{n+1}\) explicitamente em função dos passos anteriores \(p^n\), \(p^{n-1}\) e dos parâmetros conhecidos \(g^n\) e \(c\).</p>
+<h2 id="discretização_espacial"><a href="#discretização_espacial" class="header-anchor">Discretização espacial</a></h2>
+<p>Outra opção é uma discretização apenas espacial, em um malha \((x_i,z_j)\), com \(p=p_{i,j}(t)\), chegando a um sistema de EDOs</p>
+\[ \frac{\mathrm{d}p_{i,j}}{\mathrm{d}t}(t) = c_{i,j}^2 \left( \frac{p_{i+1,j}(t) - 2 p_{i,j}(t) + p_{i-1,j}(t)}{\mathrm{d}x^2} + \frac{p_{i,j+1}(t) - 2 p_{i,j}(t) + p_{i,j-1}(t)}{\mathrm{d}z^2}\right) \ + g_{i,j}(t).
+\]
+<p>Esta é um sistema de equações de segunda ordem no tempo, que pode ser transformado em outro sistema de equações de primeira ordem,</p>
+<h2 id="parâmetros_do_domínio_espacial_e_de_sua_discretização"><a href="#parâmetros_do_domínio_espacial_e_de_sua_discretização" class="header-anchor">Parâmetros do domínio espacial e de sua discretização</a></h2>
+<pre><code class="language-julia">Lx &#61; 6000    # extensão &#40;horizontal&#41; do domínio &#40;metros&#41;
+Lz &#61; 4000    # profundidade do domínio &#40;metros&#41;
+Nx &#61; 600      # número de pontos da malha na direção horizontal
+Nz &#61; 400      # número de pontos da malha na direção vertical
+dx &#61; Lx/&#40;Nx-1&#41;    # distância entre os pontos da malha na direção horizontal
+dz &#61; Lz/&#40;Nz-1&#41;    # distância entre os pontos da malha na direção vertical
+x &#61; range&#40;0.0, Lx, length&#61;Nx&#41;
+z &#61; range&#40;0.0, Lz, length&#61;Nz&#41;
+println&#40;&quot;Parâmetros:&quot;&#41;
+println&#40;&quot;  Lx &#61; &#36;Lx m&quot;&#41;
+println&#40;&quot;  Lz &#61; &#36;Lz m&quot;&#41;
+println&#40;&quot;  Nx &#61; &#36;Nx&quot;&#41;
+println&#40;&quot;  Nz &#61; &#36;Nz&quot;&#41;
+println&#40;&quot;  dx &#61; &#36;&#40;round&#40;dx, digits&#61;2&#41;&#41; m&quot;&#41;
+println&#40;&quot;  dz &#61; &#36;&#40;round&#40;dz, digits&#61;2&#41;&#41; m&quot;&#41;</code></pre>
+<pre><code class="language-julia">Parâmetros:
+  Lx &#61; 6000 m
+  Lz &#61; 4000 m
+  Nx &#61; 600
+  Nz &#61; 400
+  dx &#61; 10.02 m
+  dz &#61; 10.03 m</code></pre>
+<h2 id="estrutura_geológica"><a href="#estrutura_geológica" class="header-anchor">Estrutura geológica</a></h2>
+<p>A crosta terrestre é composta de diferentes materiais. Para efeito da propagação de ondas sísmicas, precisamos definir as velocidades de propagação de ondas elásticas do meio. Vamos considerar algumas estruturas, definidas por uma função <code>campo_de_velocidades</code>, que retorna o campo de velocidades \(c(x,z)\) para cada <code>tipo</code> de perfil do meio, com uma velocidade de referência \(c0\) e para algum ruído \(\varepsilon\).</p>
+<pre><code class="language-julia">function campo_de_velocidades&#40;Nx::Int64, Nz::Int64, tipo::Symbol;
+        c0::Float64 &#61; 6000.0, ε::Float64 &#61; 0.0&#41;::Matrix&#123;Float64&#125;
+
+    if tipo &#61;&#61; :homogenea
+        c &#61; c0 * ones&#40;Nz, Nx&#41;
+    elseif tipo &#61;&#61; :camada_inclinada
+        c &#61; c0 * ones&#40;Nz, Nx&#41;
+        for i in 1:Nx
+            for j in 1:Int&#40;floor&#40;&#40;2&#43;3i/Nx&#41; * Nz/6&#41;&#41;
+                c&#91;j, i&#93; &#61;  0.9 * c0
+            end
+        end
+    elseif tipo &#61;&#61; :camadas_inclinadas
+        c &#61; c0 * ones&#40;Nz, Nx&#41;
+        for m in &#40;6, 8, 12, 14, 17, 20, 22, 25, 28, 30&#41; # &#40;30, 28, 25, 22, 20, 17, 14, 12, 8, 6&#41;
+            for i in 1:Nx
+                for j in 1:Int&#40;floor&#40;&#40;m/100 * &#40;2 &#43; i/Nx&#41;&#41; * Nz&#41;&#41;
+                    c&#91;j, i&#93; -&#61;  0.01 * c0
+                end
+            end
+        end
+    else
+        throw&#40;ArgumentError&#40;&quot;Tipo &#36;tipo não implementado&quot;&#41;&#41;
+    end
+
+    c .&#43;&#61; ε * c0 * randn&#40;Nz, Nx&#41; 
+        
+    return c
+end</code></pre>
+<pre><code class="language-julia">campo_de_velocidades &#40;generic function with 1 method&#41;</code></pre>
+<h3 id="visualizando_as_estruturas"><a href="#visualizando_as_estruturas" class="header-anchor">Visualizando as estruturas</a></h3>
+<pre><code class="language-julia">tipos &#61; &#40;:homogenea, :camada_inclinada, :camadas_inclinadas&#41;
+ruidos &#61; &#40;0.0, 0.005&#41;
+plts &#61; &#91;&#93;
+c0 &#61; 6200.0
+for tipo in tipos
+    for ε in ruidos
+        c &#61; campo_de_velocidades&#40;Nx, Nz, tipo, c0&#61;c0, ε&#61;ε&#41;
+        push&#33;&#40;plts, heatmap&#40;x, z, c, clims&#61;&#40;0.5*c0, 1.1*c0&#41;, yflip&#61;true,
+                title&#61;&quot;Estrutura tipo &#36;tipo com ruído ε&#61;&#36;ε&quot;, titlefont&#61;6&#41;&#41;
+    end
+end
+ncols &#61; 2
+nlinhas &#61; divrem&#40;length&#40;tipos&#41;*length&#40;ruidos&#41;, ncols&#41; |&gt; drn -&gt; drn&#91;1&#93; &#43; sign&#40;drn&#91;2&#93;&#41;
+plot&#40;plts..., layout &#61; &#40;nlinhas, ncols&#41;, size&#61;&#40;600,div&#40;600*Lz*nlinhas,Lx*ncols&#41;&#41;&#41;</code></pre>
+<img src="/modelagem_matematica/assets/pages/jupytered/c12/1207-Ondas_sismicas/code/images/1207-Ondas_sismicas_5_1.png" alt="">
+<h2 id="sensores"><a href="#sensores" class="header-anchor">Sensores</a></h2>
+<p>Consideramos alguns sensores &#40;de pressão, no caso&#41; localizados próximos a superfície. Definimos, no momento, as suas coordenadas \((x,z)\).</p>
+<pre><code class="language-julia">sensor_i &#61; &#91;div&#40;k*Nz,10&#41; for k&#61;5:9&#93; # &#91;2*nz//10 , 3*nz//10, 4*nz//10, 5*nz//10, 6*nz//10&#93;
+sensor_j &#61; div&#40;1*Nx,20&#41; * ones&#40;Integer,length&#40;sensor_i&#41;&#41;
+println&#40;&quot;Temos &#36;&#40;length&#40;sensor_j&#41;&#41; sensores, localizados nas seguintes coordenadas:&quot;&#41;
+for k in 1:length&#40;sensor_j&#41;
+    println&#40;&quot;  Sensor &#36;k localizado em &#40;x,z&#41; &#61; &#40;&#36;&#40;round&#40;sensor_i&#91;k&#93;*dx,digits&#61;2&#41;&#41;, &#36;&#40;round&#40;sensor_j&#91;k&#93;*dz,digits&#61;2&#41;&#41;&#41; m&quot;&#41;
+end</code></pre>
+<pre><code class="language-julia">Temos 5 sensores, localizados nas seguintes coordenadas:
+  Sensor 1 localizado em &#40;x,z&#41; &#61; &#40;2003.34, 300.75&#41; m
+  Sensor 2 localizado em &#40;x,z&#41; &#61; &#40;2404.01, 300.75&#41; m
+  Sensor 3 localizado em &#40;x,z&#41; &#61; &#40;2804.67, 300.75&#41; m
+  Sensor 4 localizado em &#40;x,z&#41; &#61; &#40;3205.34, 300.75&#41; m
+  Sensor 5 localizado em &#40;x,z&#41; &#61; &#40;3606.01, 300.75&#41; m</code></pre>
+<h3 id="visualizando_a_posição_dos_sensores"><a href="#visualizando_a_posição_dos_sensores" class="header-anchor">Visualizando a posição dos sensores</a></h3>
+<pre><code class="language-julia">tipo &#61; :camadas_inclinadas
+c &#61; campo_de_velocidades&#40;Nx, Nz, tipo&#41;
+heatmap&#40;x, z, c, clims&#61;&#40;0.5*c0, 1.1*c0&#41;, yflip&#61;true,
+    xlabel&#61;&quot;extensão &#40;m&#41;&quot;, ylabel&#61;&quot;profundidade &#40;m&#41;&quot;, legend&#61;:bottomright,
+    title&#61;&quot;Estrutura geológica e sensores&quot;, titlefont&#61;10&#41;
+scatter&#33;&#40;dx * sensor_i, dz * sensor_j, label&#61;&quot;sensores&quot;, color&#61;:lightgreen&#41;</code></pre>
+<img src="/modelagem_matematica/assets/pages/jupytered/c12/1207-Ondas_sismicas/code/images/1207-Ondas_sismicas_7_1.png" alt="">
+<h2 id="parâmetros_para_a_evolução_temporal"><a href="#parâmetros_para_a_evolução_temporal" class="header-anchor">Parâmetros para a evolução temporal</a></h2>
+<p>Definimos um tempo final \(T_{\rm max}\) para a simulação numérica.</p>
+<p>Vamos aproximar as derivadas de segunda ordem, tanto no tempo como no espaço, pelo método padrão de diferenças finitas usando três pontos, que dá uma aproximação de segunda ordem.</p>
+<p>Por questões de estabilidade, a condição de CFL &#40;Courant-Friedrichs-Lewy&#41; deve ser satisfeita. Essencialmente, ela requer que o cone de influência da condição inicial em um ponto \((t,x,z)\) da solução pela EDP deve estar contido no cone correspondente da equações em diferenças finitas.</p>
+<p>No caso em questão &#40;equação da onda bidimensional, com aproximação de segunda ordem padrão, velocidade máxima \(c\) e passos distintos \(\rm{d}x\) e \(\rm{d}y\) em cada direção&#41;, a condição de CFL local tem a forma</p>
+\[ \rm{d} t \leq \frac{1}{c}\frac{\rm{d} x\rm{d} y}{\sqrt{\rm{d}x^2 + \rm{d}y^2}}.
+\]
+<h2 id="definição_dos_parâmetros_temporais"><a href="#definição_dos_parâmetros_temporais" class="header-anchor">Definição dos parâmetros temporais</a></h2>
+<p>Assim, definimos os parâmetros temporais </p>
+<pre><code class="language-julia">Tf &#61; 1.0 # tempo final &#40;segundos&#41;
+#dt_lim &#61; dx*dz / sqrt&#40;dx^2 &#43; dz^2&#41; / maximum&#40;abs.&#40;c&#41;&#41; # limite pro passo temporal &#40;segundos&#41;
+#Nt &#61; Int&#40;ceil&#40;Tf / dt_lim&#41;&#41;
+Nt &#61; 50
+dt &#61; Tf / Nt
+t_intervalo &#61; range&#40;0.0, Tf, length&#61;Nt&#41;
+t_span &#61; &#40;0.0, Tf&#41;
+
+println&#40;&quot;Tempo final da simulação: &#36;&#40;round&#40;Tf,digits&#61;2&#41;&#41; s&quot;&#41;
+println&#40;&quot;Número de passos temporais: &#36;Nt&quot;&#41;
+println&#40;&quot;Passo temporal: &#36;&#40;round&#40;1000*dt,digits&#61;2&#41;&#41; ms&quot;&#41;</code></pre>
+<pre><code class="language-julia">Tempo final da simulação: 1.0 s
+Número de passos temporais: 50
+Passo temporal: 20.0 ms</code></pre>
+<h2 id="termo_de_fonte"><a href="#termo_de_fonte" class="header-anchor">Termo de fonte</a></h2>
+<p>Consideramos uma fonte de onda acústica em algum ponto no interior do domínio, com uma forma Gaussiana no tempo.</p>
+<pre><code class="language-julia">fonte_foco_i &#61; div&#40;3*Nx,10&#41; # índice da posição longitudinal do foco
+fonte_foco_j &#61; div&#40;3*Nz,5&#41; # índice da posição vertical do foco
+fonte_pico_t &#61; 0.1 # instante de tempo do pico do sinal da fonte &#40;segundos&#41;
+fonte_freq &#61; 20.0 # frequência de onda fonte &#40;Hertz&#41;
+fonte_periodo &#61; 1/fonte_freq # período de onda da fonte &#40;segundos&#41;
+
+println&#40;&quot;Instante do pico da fonte do tremor: &#36;&#40;round&#40;fonte_pico_t,digits&#61;2&#41;&#41; s&quot;&#41;
+println&#40;&quot;Posição do foco: &#40;&#36;&#40;round&#40;fonte_foco_i*dx,digits&#61;1&#41;&#41;, &#36;&#40;round&#40;fonte_foco_j*dz,digits&#61;1&#41;&#41; m&quot;&#41;
+println&#40;&quot;Índices do foco: &#40;i,j&#41; &#61; &#40;&#36;&#40;fonte_foco_i&#41;, &#36;&#40;fonte_foco_j&#41;&quot;&#41;
+println&#40;&quot;Frequência principal da fonte de tremor: &#36;&#40;fonte_freq&#41; Hz&quot;&#41;
+println&#40;&quot;Período principal da fonte de tremor: &#36;&#40;1000*fonte_periodo&#41; ms &quot;&#41;</code></pre>
+<pre><code class="language-julia">Instante do pico da fonte do tremor: 0.1 s
+Posição do foco: &#40;1803.0, 2406.0 m
+Índices do foco: &#40;i,j&#41; &#61; &#40;180, 240
+Frequência principal da fonte de tremor: 20.0 Hz
+Período principal da fonte de tremor: 50.0 ms</code></pre>
+<h3 id="foco_da_fonte"><a href="#foco_da_fonte" class="header-anchor">Foco da fonte</a></h3>
+<pre><code class="language-julia">tipo &#61; :camadas_inclinadas
+#tipo &#61; :homogenea
+c &#61; campo_de_velocidades&#40;Nx, Nz, tipo, c0&#61;6200.0, ε&#61;0.005&#41;
+heatmap&#40;x, z, c, clims&#61;&#40;0.0, 1.1*c0&#41;, yflip&#61;true,
+    xlabel&#61;&quot;extensão &#40;m&#41;&quot;, ylabel&#61;&quot;profundidade &#40;m&#41;&quot;, legend&#61;:bottomright,
+    title&#61;&quot;Estrutura geológica, sensores e foco&quot;, titlefont&#61;10&#41;
+scatter&#33;&#40;&#40;sensor_i.-1&#41;*dx, &#40;sensor_j.-1&#41;*dz, label&#61;&quot;sensores&quot;, color&#61;:lightgreen&#41;
+scatter&#33;&#40;&#91;&#40;fonte_foco_i-1&#41;*dx&#93;, &#91;&#40;fonte_foco_j-1&#41;*dz&#93;, label&#61;&quot;fonte&quot;, color&#61;:orange&#41;</code></pre>
+<img src="/modelagem_matematica/assets/pages/jupytered/c12/1207-Ondas_sismicas/code/images/1207-Ondas_sismicas_10_1.png" alt="">
+<h2 id="sinal_temporal_da_fonte"><a href="#sinal_temporal_da_fonte" class="header-anchor">Sinal temporal da fonte</a></h2>
+<pre><code class="language-julia">fonte&#40;t&#41; &#61; &#40;-2&#40;t-fonte_pico_t&#41;/fonte_periodo^2&#41; * exp&#40;-&#40;t-fonte_pico_t&#41;^2/fonte_periodo^2&#41;
+plot&#40;0.0:0.002:1.0, fonte, legend&#61;false, xlabel&#61;&quot;t&quot;, ylabel&#61;&quot;Amplitude &#40;MPa&#41;&quot;,
+    title&#61;&quot;Sinal temporal da fonte de onda&quot;, titlefont&#61;10&#41;</code></pre>
+<img src="/modelagem_matematica/assets/pages/jupytered/c12/1207-Ondas_sismicas/code/images/1207-Ondas_sismicas_11_1.png" alt="">
+<h2 id="evolução_temporal"><a href="#evolução_temporal" class="header-anchor">Evolução temporal</a></h2>
+<h3 id="discretização_do_laplaciano"><a href="#discretização_do_laplaciano" class="header-anchor">Discretização do Laplaciano</a></h3>
+<pre><code class="language-julia">function δ²&#40;u::Matrix&#123;Float64&#125;, hx2::Float64, hy2::Float64, ::Val&#123;:dir&#125;&#41;
+    n, m &#61; size&#40;u&#41;
+    ddu &#61; zero&#40;u&#41;
+    for j &#61; 2:m-1
+        for i &#61; 2:n-1
+            ddu&#91;i,j&#93; &#61; &#40;u&#91;i,j&#43;1&#93; - 2u&#91;i,j&#93; &#43; u&#91;i,j-1&#93;&#41;/hx2 &#43; 
+                &#40;u&#91;i&#43;1,j&#93; - 2u&#91;i,j&#93; &#43; u&#91;i-1,j&#93;&#41;/hy2
+        end
+    end
+    return ddu
+end</code></pre>
+<pre><code class="language-julia">δ² &#40;generic function with 1 method&#41;</code></pre>
+<h2 id="lei_de_evolução"><a href="#lei_de_evolução" class="header-anchor">Lei de evolução</a></h2>
+<ul>
+<li><p>Transformamos a equação de segunda ordem no tempo \(p_{tt} = c\Delta p + g\) em um sistema de primeira ordem</p>
+</li>
+</ul>
+\[ \begin{cases}
+    p_t = q, \\
+    q_t = c\Delta p + g.
+\end{cases}
+\]
+<ul>
+<li><p>Nesse caso, fazemos, novamente, \(U=(p,q)\), onde as discretizações de \(p\) e \(q\) são matrizes.</p>
+</li>
+<li><p>Assim, definimos \(U\) como um array de dimensões \(Nx\times Nz \times 2\), onde</p>
+</li>
+</ul>
+\[ p = U[:,:,1], \qquad q = U[:,:,2]
+\]
+<pre><code class="language-julia">function dUdt_onda2d&#33;&#40;dUdt, U, params, t&#41;
+    c2, hx2, hz2, fonte, fonte_foco_i, fonte_foco_j &#61; params
+    p &#61; U&#91;:,:,1&#93;
+    q &#61; U&#91;:,:,2&#93;
+    dUdt&#91;:,:,1&#93; .&#61; q
+    dUdt&#91;:,:,2&#93; .&#61; c2 .* δ²&#40;p, hz2, hx2, Val&#40;:dir&#41;&#41;
+    dUdt&#91;fonte_foco_j, fonte_foco_i,2&#93; &#43;&#61; fonte&#40;t&#41;
+    return nothing
+end</code></pre>
+<pre><code class="language-julia">dUdt_onda2d&#33; &#40;generic function with 1 method&#41;</code></pre>
+<pre><code class="language-julia"># inicializa sismograma
+sismograma &#61; zeros&#40;&#40;length&#40;sensor_j&#41;, Nt&#41;&#41; 
+
+# inicializa pressão p e sua derivada temporal inicial q&#61;p_t
+p₀ &#61; q₀ &#61; zeros&#40;Nz, Nx&#41;
+U₀ &#61; fill&#40;0.0, size&#40;p₀&#41;..., 2&#41;
+U₀&#91;:,:,1&#93; .&#61; p₀ 
+U₀&#91;:,:,2&#93; .&#61; q₀
+params &#61; &#91;c.^2, dx^2, dz^2, fonte, fonte_foco_i, fonte_foco_j&#93; # parâmetros
+
+prob &#61; ODEProblem&#40;dUdt_onda2d&#33;, U₀, t_span, params, saveat &#61; dt&#41;
+nothing</code></pre>
+<pre><code class="language-julia">sol &#61; solve&#40;prob, Tsit5&#40;&#41;&#41;
+sol.retcode</code></pre>
+<pre><code class="language-julia">:Success</code></pre>
+<pre><code class="language-julia">pmin &#61; minimum&#40;&#91;minimum&#40;sol.u&#91;k&#93;&#41; for k in 1:length&#40;sol.u&#41;&#93;&#41;
+pmax &#61; maximum&#40;&#91;maximum&#40;sol.u&#91;k&#93;&#41; for k in 1:length&#40;sol.u&#41;&#93;&#41;
+println&#40;&quot;Mínimo de pressão acústica: &#36;&#40;round&#40;pmin, digits&#61;4&#41;&#41;&quot;&#41;
+println&#40;&quot;Máximo de pressão acústica: &#36;&#40;round&#40;pmax, digits&#61;4&#41;&#41;&quot;&#41;</code></pre>
+<pre><code class="language-julia">Mínimo de pressão acústica: -0.0143
+Máximo de pressão acústica: 0.0136</code></pre>
+<pre><code class="language-julia">heatmap&#40;x, z, sol.u&#91;div&#40;end,2&#41;&#93;&#91;:,:,1&#93;&#41;#, clims&#61;&#40;pmin,pmax&#41;&#41;</code></pre>
+<img src="/modelagem_matematica/assets/pages/jupytered/c12/1207-Ondas_sismicas/code/images/1207-Ondas_sismicas_17_1.png" alt="">
+<pre><code class="language-julia">control &#61; 0
+anim &#61; @animate for &#40;t,U&#41; in zip&#40;sol.t, sol.u&#41;
+    global control &#43;&#61; 1
+    if control &#61;&#61; 40
+        break
+    end
+    #heatmap&#40;x, z, c, clims&#61;&#40;0.0, 1.1*c0&#41;,
+    #    xlabel&#61;&quot;extensão &#40;m&#41;&quot;, ylabel&#61;&quot;profundidade &#40;m&#41;&quot;,
+    #    title&#61;&quot;Evolução da sísmica&quot;, titlefont&#61;10&#41;
+    heatmap&#40;x, z, U&#91;:,:,1&#93;, alpha&#61;1.0, yflip&#61;true, size&#61;&#40;600,400&#41;, #clims&#61;&#40;pmin, pmax&#41;, 
+        label&#61;&quot;t&#61;&#36;&#40;round&#40;t,digits&#61;2&#41;&#41;&quot;, colorbar&#61;false&#41;
+    scatter&#33;&#40;dx * sensor_i, dz * sensor_j, label&#61;&quot;sensores&quot;, color&#61;:lightgreen&#41;
+    scatter&#33;&#40;&#91;&#40;fonte_foco_i-1&#41;*dx&#93;, &#91;&#40;fonte_foco_j-1&#41;*dz&#93;, label&#61;&quot;fonte&quot;, color&#61;:orange&#41;
+end
+gif&#40;anim, &quot;../../../_assets/attachments/img/anim_sismica_a.gif&quot;, fps &#61; 20&#41;</code></pre>
+<pre><code class="language-julia">Plots.AnimatedGif&#40;&quot;/Users/rrosa/Documents/git_repositories/modelagem_matema
+tica/_assets/attachments/img/anim_sismica_a.gif&quot;&#41;</code></pre>
+<h2 id="leitura_dos_sensores"><a href="#leitura_dos_sensores" class="header-anchor">Leitura dos sensores</a></h2>
+<pre><code class="language-julia">n &#61; 1
+signals &#61; fill&#40;0.0, length&#40;sol.t&#41;, length&#40;sensor_j&#41;&#41;
+for n &#61; 1:length&#40;sensor_j&#41;
+    for k &#61; 1:length&#40;sol.t&#41;
+        signals&#91;k, n&#93; &#61; sol.u&#91;k&#93;&#91;sensor_j&#91;n&#93;, sensor_i&#91;n&#93;,1&#93;
+    end
+end</code></pre>
+<pre><code class="language-julia">plot&#40;sol.t, signals, legend&#61;false, 
+    title&#61;&#91;&quot;Sensor 1&quot; &quot;Sensor 2&quot; &quot;Sensor 3&quot; &quot;Sensor 4&quot; &quot;Sensor 5&quot;&#93;, titlefont&#61;8,
+    layout&#61;&#40;5,1&#41;, xlabel&#61;&quot;tempo &#40;s&#41;&quot;, ylabel&#61;&quot;pressão &#40;MPa&#41;&quot;, size&#61;&#40;600, 800&#41;&#41;</code></pre>
+<img src="/modelagem_matematica/assets/pages/jupytered/c12/1207-Ondas_sismicas/code/images/1207-Ondas_sismicas_20_1.png" alt="">
+<h2 id="exercícios"><a href="#exercícios" class="header-anchor">Exercícios</a></h2>
+<ol>
+<li><p>Escreva as equações para os potenciais \(\phi\) e \(\psi\), no caso bidimensional.</p>
+</li>
+<li><p>Modifique o código acima para resolver numericamente os potenciais \(\phi\) e \(\psi\).</p>
+</li>
+<li><p>A partir de \(\phi\) e \(\psi\), obtenha as coordenadas \(u\) e \(v\) do campo de deslocamentos.</p>
+</li>
+<li><p>Faça os sensores lerem os deslocamentos vertical e horizontal do deslocamento.</p>
+</li>
+</ol>
+
+    <div class="navbar">
+    <p id="nav">
+<span id="nav-prev" style="float: left;">
+<a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c12/1206-EDP_onda_bidimensional">12.6. Equação da onda em duas dimensões espaciais <kbd>←</kbd></a>
+</span>
+<span id="nav-next" style="float: right;">
+    <a class="menu-level-1" href="/modelagem_matematica/pages/jupytered/c12/1208-Resfriamento_rapido_morangos"><kbd>→</kbd> 12.8. Modelagem matemática e simulação numérica do resfriamento rápido de morangos com o ar forçado</a>
+</span>
+    </p>
+</div>
+</br></br>
+
+
+
+<div class="page-foot">
+    
+        <div class="license">
+            <a href=https://creativecommons.org/licenses/by-nc-nd/4.0/>(CC BY-NC-ND 4.0) Attribution-NonCommercial-NoDerivatives 4.0 International </a>
+            
+        </div>
+    
+
+    Last modified: July 19, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
+</div><!-- CONTENT ENDS HERE -->
+
+      </div> <!-- .books-content -->
+    </div> <!-- .books-container -->
+
+    
+        <script src="/modelagem_matematica/libs/katex/katex.min.js"></script>
+        <script src="/modelagem_matematica/libs/katex/auto-render.min.js"></script>
+        <script>renderMathInElement(document.body)</script>
+    
+
+    
+        <script src="/modelagem_matematica/libs/highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();hljs.configure({tabReplace: '    '});</script>
+    
+
+  </body>
+</html>
