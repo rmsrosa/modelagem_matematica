@@ -111,14 +111,12 @@ anim = @animate for (t,u) in zip(sol.t, sol.u)
         title="Evolução equação do calor bidimensional (κ=$κ)", titlefont=10)
 end
 gif(anim, "../../../_assets/attachments/img/anim_calor2D_a.gif", fps = 20)
-```
-
-```
-Plots.AnimatedGif("/Users/rrosa/Documents/git_repositories/modelagem_matema
-tica/_assets/attachments/img/anim_calor2D_a.gif")
+nothing
 ```
 
 
+
+![heat2d](/assets/attachments/img/anim_calor2D_a.gif)
 
 ```julia
 anim = @animate for (t,u) in zip(sol.t, sol.u)
@@ -126,14 +124,12 @@ anim = @animate for (t,u) in zip(sol.t, sol.u)
         title="Evolução equação do calor bidimensional (κ=$κ)", titlefont=10)
 end
 gif(anim, "../../../_assets/attachments/img/anim_calor2D_b.gif", fps = 20)
-```
-
-```
-Plots.AnimatedGif("/Users/rrosa/Documents/git_repositories/modelagem_matema
-tica/_assets/attachments/img/anim_calor2D_b.gif")
+nothing
 ```
 
 
+
+![heat2dcontour](/assets/attachments/img/anim_calor2D_b.gif)
 
 ```julia
 anim = @animate for (t,u) in zip(sol.t, sol.u)
@@ -141,11 +137,9 @@ anim = @animate for (t,u) in zip(sol.t, sol.u)
         title="Evolução equação do calor bidimensional (κ=$κ)", titlefont=10)
 end
 gif(anim, "../../../_assets/attachments/img/anim_calor2D_c.gif", fps = 20)
-```
-
-```
-Plots.AnimatedGif("/Users/rrosa/Documents/git_repositories/modelagem_matema
-tica/_assets/attachments/img/anim_calor2D_c.gif")
+nothing
 ```
 
 
+
+![heat2dheatmap](/assets/attachments/img/anim_calor2D_c.gif)

@@ -104,14 +104,12 @@ anim = @animate for (t,u) in zip(sol.t, sol.u)
         xlabel="x", ylabel="u")
 end
 gif(anim, "../../../_assets/attachments/img/anim_calor1D_a.gif", fps = 20)
-```
-
-```
-Plots.AnimatedGif("/Users/rrosa/Documents/git_repositories/modelagem_matema
-tica/_assets/attachments/img/anim_calor1D_a.gif")
+nothing
 ```
 
 
+
+![heat1d](/assets/attachments/img/anim_calor1D_a.gif)
 
 
 ### Outra simulação
@@ -139,14 +137,12 @@ anim = @animate for (t,u) in zip(sol.t, sol.u)
         xlabel="x", ylabel="u")
 end
 gif(anim, "../../../_assets/attachments/img/anim_calor1D_b.gif", fps = 20)
-```
-
-```
-Plots.AnimatedGif("/Users/rrosa/Documents/git_repositories/modelagem_matema
-tica/_assets/attachments/img/anim_calor1D_b.gif")
+nothing
 ```
 
 
+
+![heat1dB](/assets/attachments/img/anim_calor1D_b.gif)
 
 
 ## Exercicios:

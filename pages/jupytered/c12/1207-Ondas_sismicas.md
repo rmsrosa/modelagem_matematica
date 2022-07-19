@@ -646,8 +646,8 @@ println("Máximo de pressão acústica: $(round(pmax, digits=4))")
 ```
 
 ```
-Mínimo de pressão acústica: -0.0143
-Máximo de pressão acústica: 0.0136
+Mínimo de pressão acústica: -0.0109
+Máximo de pressão acústica: 0.0109
 ```
 
 
@@ -674,14 +674,12 @@ anim = @animate for (t,U) in zip(sol.t, sol.u)
     scatter!([(fonte_foco_i-1)*dx], [(fonte_foco_j-1)*dz], label="fonte", color=:orange)
 end
 gif(anim, "../../../_assets/attachments/img/anim_sismica_a.gif", fps = 20)
-```
-
-```
-Plots.AnimatedGif("/Users/rrosa/Documents/git_repositories/modelagem_matema
-tica/_assets/attachments/img/anim_sismica_a.gif")
+nothing
 ```
 
 
+
+![sismicwaves](/assets/attachments/img/anim_sismica_a.gif)
 
 
 ## Leitura dos sensores

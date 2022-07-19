@@ -286,7 +286,11 @@ scatter!(x,x->√((L/2)^2-(x-L/2)^2), markersize=3, legend=false)
 plot!(title="Distribuição dos pontos de Chebyshev", titlefont=10, size=(600,300))
 ```
 
-\fig{images/1201-EDP_e_diferencas_finitas_3_1.png}
+```
+Error: InterruptException:
+```
+
+
 
 
 ### Discretização espacial bidimensional uniforme
@@ -307,7 +311,11 @@ y = range(0.0, L_y, length=N_y)
 scatter(x, repeat(y',length(x)), legend=false, color=1, size=(600,300))
 ```
 
-\fig{images/1201-EDP_e_diferencas_finitas_4_1.png}
+```
+Error: InterruptException:
+```
+
+
 
 
 ### Discretização bidimensional não-uniforme

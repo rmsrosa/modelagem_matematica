@@ -219,11 +219,9 @@ anim = @animate for (t,U) in zip(sol.t, sol.u)
         title="Evolução equação da onda bidimensional (c=$c)", titlefont=10)
 end
 gif(anim, "../../../_assets/attachments/img/anim_onda2D_a.gif", fps = 20)
-```
-
-```
-Plots.AnimatedGif("/Users/rrosa/Documents/git_repositories/modelagem_matema
-tica/_assets/attachments/img/anim_onda2D_a.gif")
+nothing
 ```
 
 
+
+![wave2d](/assets/attachments/img/anim_onda2D_a.gif)
