@@ -93,10 +93,10 @@ $$
 $$
 onde 
 
-$$ \mathcal{E} = \frac{1}{2}\left( \frac{\partial u_i}{\partial x_j} + \frac{\partial u_j}{\partial x_i} \right)_{i,j=1}^d = \frac{1}{2} \left( \nabla \mathbf{u} + (\nabla \mathbf{u})^\rm{t}\right).
+$$ \mathcal{E} = \frac{1}{2}\left( \frac{\partial u_i}{\partial x_j} + \frac{\partial u_j}{\partial x_i} \right)_{i,j=1}^d = \frac{1}{2} \left( \nabla \mathbf{u} + (\nabla \mathbf{u})^\mathrm{t}\right).
 $$
 
-é o **tensor de deformações** do material, $\nabla \mathbf{u}$ é o **gradiente de deformações**, $(\nabla\mathbf{u})^\rm{t}$ é a sua transposta, e  $\mathsf{C}$ é um tensor de quarta ordem chamado de **tensor de elasticidade**.
+é o **tensor de deformações** do material, $\nabla \mathbf{u}$ é o **gradiente de deformações**, $(\nabla\mathbf{u})^\mathrm{t}$ é a sua transposta, e  $\mathsf{C}$ é um tensor de quarta ordem chamado de **tensor de elasticidade**.
 
 
 ### Material elástico Hookeano isotrópico
@@ -128,7 +128,7 @@ $$
 
 Com a forma acima para o divergente do tensor de tensões, e utilizando algumas identidades vetoriais, obtemos as equações de movimento na forma
 
-$$ \rho \mathbf{\ddot u} = \mathsf{\mathbf{\nabla}}\lambda (\mathbf{\nabla} \cdot \mathbf{u}) + \mathbf{\nabla} \mu \cdot\left( \mathbf{\nabla} \mathbf{u} + (\mathbf{\nabla} \mathbf{u})^\rm{t}\right) + (\lambda + 2\mu)\mathbf{\nabla} (\mathbf{\nabla} \cdot \mathbf{u})  - \mu \mathbf{\nabla} \times (\mathbf{\nabla} \times \mathbf{u}) + \mathbf{f}.
+$$ \rho \mathbf{\ddot u} = \mathsf{\mathbf{\nabla}}\lambda (\mathbf{\nabla} \cdot \mathbf{u}) + \mathbf{\nabla} \mu \cdot\left( \mathbf{\nabla} \mathbf{u} + (\mathbf{\nabla} \mathbf{u})^\mathrm{t}\right) + (\lambda + 2\mu)\mathbf{\nabla} (\mathbf{\nabla} \cdot \mathbf{u})  - \mu \mathbf{\nabla} \times (\mathbf{\nabla} \times \mathbf{u}) + \mathbf{f}.
 $$
 
 
@@ -646,8 +646,8 @@ println("Máximo de pressão acústica: $(round(pmax, digits=4))")
 ```
 
 ```
-Mínimo de pressão acústica: -0.0109
-Máximo de pressão acústica: 0.0109
+Mínimo de pressão acústica: -0.0108
+Máximo de pressão acústica: 0.0107
 ```
 
 

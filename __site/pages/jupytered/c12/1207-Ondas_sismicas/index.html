@@ -343,9 +343,9 @@ using Images</code></pre>
   \mathsf{\sigma} = \mathsf{C} \mathcal{E}
 \]
 <p>onde </p>
-\[ \mathcal{E} = \frac{1}{2}\left( \frac{\partial u_i}{\partial x_j} + \frac{\partial u_j}{\partial x_i} \right)_{i,j=1}^d = \frac{1}{2} \left( \nabla \mathbf{u} + (\nabla \mathbf{u})^\rm{t}\right).
+\[ \mathcal{E} = \frac{1}{2}\left( \frac{\partial u_i}{\partial x_j} + \frac{\partial u_j}{\partial x_i} \right)_{i,j=1}^d = \frac{1}{2} \left( \nabla \mathbf{u} + (\nabla \mathbf{u})^\mathrm{t}\right).
 \]
-<p>é o <strong>tensor de deformações</strong> do material, \(\nabla \mathbf{u}\) é o <strong>gradiente de deformações</strong>, \((\nabla\mathbf{u})^\rm{t}\) é a sua transposta, e \(\mathsf{C}\) é um tensor de quarta ordem chamado de <strong>tensor de elasticidade</strong>.</p>
+<p>é o <strong>tensor de deformações</strong> do material, \(\nabla \mathbf{u}\) é o <strong>gradiente de deformações</strong>, \((\nabla\mathbf{u})^\mathrm{t}\) é a sua transposta, e \(\mathsf{C}\) é um tensor de quarta ordem chamado de <strong>tensor de elasticidade</strong>.</p>
 <h3 id="material_elástico_hookeano_isotrópico"><a href="#material_elástico_hookeano_isotrópico" class="header-anchor">Material elástico Hookeano isotrópico</a></h3>
 <p>Assumindo um material elástico Hookeano <strong>isotrópico</strong> e usando outras simetrias intrínsicas ao tensor de tensões, o tensor de tensões desse material é determinado por apenas dois parâmetros e a lei consitutiva se reduz à forma</p>
 \[ \mathsf{\sigma} = \lambda \rm{tr}(\mathcal{E})\mathcal{I} + 2\mu \mathcal{E}.
@@ -361,7 +361,7 @@ using Images</code></pre>
 \]
 <h3 id="equações_de_navier_de_um_material_elástico_hookeano_isotrópico"><a href="#equações_de_navier_de_um_material_elástico_hookeano_isotrópico" class="header-anchor">Equações de Navier de um material elástico Hookeano isotrópico</a></h3>
 <p>Com a forma acima para o divergente do tensor de tensões, e utilizando algumas identidades vetoriais, obtemos as equações de movimento na forma</p>
-\[ \rho \mathbf{\ddot u} = \mathsf{\mathbf{\nabla}}\lambda (\mathbf{\nabla} \cdot \mathbf{u}) + \mathbf{\nabla} \mu \cdot\left( \mathbf{\nabla} \mathbf{u} + (\mathbf{\nabla} \mathbf{u})^\rm{t}\right) + (\lambda + 2\mu)\mathbf{\nabla} (\mathbf{\nabla} \cdot \mathbf{u})  - \mu \mathbf{\nabla} \times (\mathbf{\nabla} \times \mathbf{u}) + \mathbf{f}.
+\[ \rho \mathbf{\ddot u} = \mathsf{\mathbf{\nabla}}\lambda (\mathbf{\nabla} \cdot \mathbf{u}) + \mathbf{\nabla} \mu \cdot\left( \mathbf{\nabla} \mathbf{u} + (\mathbf{\nabla} \mathbf{u})^\mathrm{t}\right) + (\lambda + 2\mu)\mathbf{\nabla} (\mathbf{\nabla} \cdot \mathbf{u})  - \mu \mathbf{\nabla} \times (\mathbf{\nabla} \times \mathbf{u}) + \mathbf{f}.
 \]
 <h3 id="desprezando_os_gradientes_dos_coeficientes_de_lamé"><a href="#desprezando_os_gradientes_dos_coeficientes_de_lamé" class="header-anchor">Desprezando os gradientes dos coeficientes de Lamé</a></h3>
 <p>Os termos envolvendo os gradientes \(\mathsf{\mathbf{\nabla}}\lambda\) e \(\mathsf{\mathbf{\nabla}}\mu\) dos coeficientes de Lamé são relativamente pequenos para perturbações de frequências relativamente altas.</p>
@@ -668,8 +668,8 @@ sol.retcode</code></pre>
 pmax &#61; maximum&#40;&#91;maximum&#40;sol.u&#91;k&#93;&#41; for k in 1:length&#40;sol.u&#41;&#93;&#41;
 println&#40;&quot;Mínimo de pressão acústica: &#36;&#40;round&#40;pmin, digits&#61;4&#41;&#41;&quot;&#41;
 println&#40;&quot;Máximo de pressão acústica: &#36;&#40;round&#40;pmax, digits&#61;4&#41;&#41;&quot;&#41;</code></pre>
-<pre><code class="language-julia">Mínimo de pressão acústica: -0.0109
-Máximo de pressão acústica: 0.0109</code></pre>
+<pre><code class="language-julia">Mínimo de pressão acústica: -0.0108
+Máximo de pressão acústica: 0.0107</code></pre>
 <pre><code class="language-julia">heatmap&#40;x, z, sol.u&#91;div&#40;end,2&#41;&#93;&#91;:,:,1&#93;&#41;#, clims&#61;&#40;pmin,pmax&#41;&#41;</code></pre>
 <img src="/modelagem_matematica/assets/pages/jupytered/c12/1207-Ondas_sismicas/code/images/1207-Ondas_sismicas_17_1.png" alt="">
 <pre><code class="language-julia">control &#61; 0
@@ -735,7 +735,7 @@ end</code></pre>
         </div>
     
 
-    Last modified: July 19, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
+    Last modified: July 26, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
